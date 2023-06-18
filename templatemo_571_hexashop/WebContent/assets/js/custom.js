@@ -67,9 +67,11 @@
 	  if (scroll > 0) {
 		  $("header").addClass("background-header");
 		  $(".main-banner").css("padding-top", "0px");
+		  $("header").css("top", "0px");
 		} else {
 			$("header").removeClass("background-header");
-			$(".main-banner").css("padding-top", "200px");
+			$(".main-banner").css("padding-top", "130px");
+			$("header").css("top", "80px");
 		}
 
 	});

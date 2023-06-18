@@ -236,7 +236,7 @@ header
   box-shadow: none;
   background-color: #fff;
   position: absolute;
-  top: 0px;
+  top: 80px;
   left: 0px;
   right: 0px;
   z-index: 100;
@@ -413,7 +413,7 @@ header
   cursor: pointer;
   display: block;
   position: absolute;
-  top: 33px;
+  /* top: 33px; */
   width: 32px;
   height: 40px;
   text-indent: -9999em;
@@ -664,7 +664,7 @@ banner
 
 .main-banner {
   border-bottom: 3px dotted #eee;
-  padding-top: 200px;
+  padding-top: 130px;
   padding-bottom: 30px;
   -webkit-transition: all .3s ease 0s;
   -moz-transition: all .3s ease 0s;
