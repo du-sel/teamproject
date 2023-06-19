@@ -599,7 +599,7 @@ header
     
   }
   .header-area .main-nav .nav div:first-child {
-    border-top: 1px solid #eee;
+    /* border-top: 1px solid #eee; */
   }
   .header-area.header-sticky .nav {
     margin-top: 100px !important;
@@ -607,7 +607,7 @@ header
   .header-area .main-nav .nav div {
     width: 100%;
     background: #fff;
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
@@ -616,12 +616,15 @@ header
     line-height: 50px !important;
     padding: 0px !important;
     border: none !important;
-    background: #f7f7f7 !important;
+    background: #fff !important;
     color: #191a20 !important;
   }
   .header-area .main-nav .nav div a:hover {
     background: #eee !important;
     color: #aaa!important;
+  }
+  .header-area .main-nav .nav div#logo_container {
+  	display: none;
   }
   .header-area .main-nav .nav div.submenu ul {
     position: relative;
