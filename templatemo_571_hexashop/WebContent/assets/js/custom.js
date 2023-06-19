@@ -70,7 +70,7 @@
 		  $("header").css("top", "0px");
 		} else {
 			$("header").removeClass("background-header");
-			$(".main-banner").css("padding-top", "130px");
+			$(".main-banner").css("padding-top", "80px");
 			$("header").css("top", "80px");
 		}
 
