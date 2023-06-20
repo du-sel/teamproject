@@ -6,7 +6,7 @@
 
 
 
-function onLoginModal() { $('.modal-content').load("./modal/login-modal.html"); }
+function onSigninModal() { $('.modal-content').load("./modal/signin-modal.html"); }
 function onSignupModal() { $('.modal-content').load("./modal/signup-modal.html"); }
 function onShopModal() { $('.modal-content').load("./modal/shop-create-modal.html"); }
 function changeSignupModal(){ $('.scroll-to-section').eq(1).click(); } 		// login-modal.html에서 사용
