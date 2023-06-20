@@ -4,8 +4,6 @@
  * shop-create-modal
  */
 
-
-
 function onSigninModal() { $('.modal-content').load("./modal/signin-modal.html"); }
 function onSignupModal() { $('.modal-content').load("./modal/signup-modal.html"); }
 function onShopModal() { $('.modal-content').load("./modal/shop-create-modal.html"); }
@@ -17,15 +15,6 @@ let brand_flag = -1;
 let url_flag = -1;
 let inputs, parents;
 
-/***** 중복확인 실시간 변경 시에도 동작하도록 *****/
-(function() {
-	$('.keyup').keyup(function() {
-		console.log("11");
-		id_flag = -1;
-		brand_flag = -1;
-		url_flag = -1;
-	});
-});
 // 중복확인 초기화
 function chk_reset(flag){
 	if(flag == "id"){ id_flag = -1; }

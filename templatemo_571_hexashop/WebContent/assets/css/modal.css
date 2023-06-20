@@ -51,14 +51,14 @@ body {
 }
 .modal-container .btn-chk {        
 	background: #fff;
-	border-left: 1px dotted #ced4da;
-	border-bottom: 1px solid #ced4da;
+	border-left: 1px dotted #aaa;
+	border-bottom: 1px solid #aaa;
     border-radius: 0px;
 	min-width: 80px;
     color: #000;
 }
 .modal-container .btn:hover, .modal-login .btn:focus {
-	background: #ced4da;
+	background: #aaa;
 }
 .modal-container .hint-text {
 	text-align: center;
@@ -116,6 +116,6 @@ body {
 .modal-container .input-group .base-url{
 	width: 80px;
 	border:none;
-	border-bottom: 1px solid #ced4da;
+	border-bottom: 1px solid #aaa;
 	text-align: center;
 }
