@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
-	
+
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
 
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="assets/css/lightbox.css">
     
     <link rel="stylesheet" href="assets/css/modal.css"><!-- modal -->
+    
 <!--
 
 TemplateMo 571 Hexashop
@@ -50,23 +51,23 @@ https://templatemo.com/tm-571-hexashop
     </div>  
     <!-- ***** Preloader End ***** -->
     
-    <div id="test" style="background-color: #333;" >
+    <div id="test" style="  height: 80px; background-color: #333;" >
 		<div style="margin: 0; background-color: #fff; width: 70%;  height: 80px; display: inline-block; border-radius: 0 40px 0 0; /* border: 1px solid black; */">test1</div>
-		<div style="margin: 0; background-color: #333; width: 29.7%; height: 80px;  display: inline-block;">test2</div>
+		<div style="margin: 0; background-color: #333; width: 29%; height: 80px;  display: inline-block;">test2</div>
 	</div>
     <!-- test -->
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
-        <div class="container">
+        <div class="container-xl">
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Menu Start ***** -->
-                        <div class="nav  justify-content-between">
+                        <div class="nav">
                             <!-- <li class="scroll-to-section"><a href="#top" class="active">Home</a></li> -->
                             <!-- <li class="scroll-to-section"><a href="#men">Men's</a></li> -->
                             <!-- <li class="scroll-to-section"><a href="#women">Women's</a></li> -->
-                            <div class="align-self-center">
+                            <div>
 	                            <div class="submenu">
 	                                <a href="javascript:;">Products</a>
 	                                <ul>
@@ -86,15 +87,15 @@ https://templatemo.com/tm-571-hexashop
 	                                </ul>
 	                            </div>
 							</div>
-	                        <div>
-                                <!-- ***** Logo Start ***** -->
+                            <!-- ***** Logo Start ***** -->
+	                        <div id="logo_container">
                                 <a href="index.html" class="logo">
                                     <img src="assets/images/logo.png">
                                 </a>
-                                <!-- ***** Logo End ***** -->
                             </div>
-							<div class="align-self-center">
-                           		<div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">Sign In</a></div>
+                            <!-- ***** Logo End ***** -->
+							<div>
+                           		<<div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">Sign In</a></div>
                           		<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">Sign Up</a></div>
                           		<div class="scroll-to-section" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">Shop</a></div>
                             </div>
@@ -129,15 +130,6 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-
-	<!-- ***** Modal Start ***** -->
-	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered modal-container" role="document">
-	    <div class="modal-content">
-		</div>
-	  </div>
-	</div>
-	<!-- ***** Modal End ***** -->
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
@@ -870,12 +862,12 @@ https://templatemo.com/tm-571-hexashop
     
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
-    
-    <!-- Modal -->
-	<script src="assets/js/modal.js"></script> 
 
-    <script>
+	<!-- Modal -->
+	<script src="assets/js/modal.js"></script> 
 	
+    <script>
+
         $(function() {
             var selectedClass = "";
             $("p").click(function(){
@@ -889,6 +881,7 @@ https://templatemo.com/tm-571-hexashop
                 
             });
         });
+
     </script>
 
   </body>
