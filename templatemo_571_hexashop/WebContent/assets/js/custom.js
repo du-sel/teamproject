@@ -63,16 +63,20 @@
 	  var box = $('#top').height();
 	  var header = $('header').height();
 
+	 
 	  
 	  if (scroll > 0) {
 		  $("header").addClass("background-header");
-		  $(".main-banner").css("padding-top", "0px");
 		  $("header").css("top", "0px");
 		} else {
+			// scroll == 0 이면 
 			$("header").removeClass("background-header");
-			$(".main-banner").css("padding-top", "80px");
 			$("header").css("top", "80px");
-		}
+
+		}	  
+	  setTimeout(function() {
+			$(".main-banner").css("padding-top", $('header').height());
+		}, 100);
 
 	});
 	
@@ -176,6 +180,9 @@
 	// Window Resize Mobile Menu Fix
 	$(window).on('resize', function() {
 		mobileNav();
+		setTimeout(function() {
+			$(".main-banner").css("padding-top", $('header').height());
+		}, 100);
 	});
 
 
@@ -184,7 +191,7 @@
 		var width = $(window).width();
 		$('.submenu').on('click', function() {
 			if(width < 767) {
-				$('.submenu ul').removeClass('active');
+				//$('.submenu ul').removeClass('active');
 				$(this).find('ul').toggleClass('active');
 			}
 		});
