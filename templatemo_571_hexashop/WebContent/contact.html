@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
+    
+    <link rel="stylesheet" href="assets/css/animations.css">
 <!--
 
 TemplateMo 571 Hexashop
@@ -42,7 +44,15 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </div>  
     <!-- ***** Preloader End ***** -->
-    
+ 
+	<div id="tab"  style=" background-color: #333; position: relative;" >
+		<div id="test1" style=" background-color: #fff; width: 70%;  height: 81px; display: inline-block; border-radius: 0 40px 0 0; /* border: 1px solid black; */
+                            "></div>
+        <div id="test2" style=" margin: 0; width: 70%;  height: 81px; display: inline-block; position: absolute; right: 0; border-radius: 40px 0 0 0; /* border: 1px solid black; */
+                            "
+            ></div>
+	</div>
+    <!-- test -->    
     
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
@@ -92,6 +102,8 @@ https://templatemo.com/tm-571-hexashop
     </header>
     <!-- ***** Header Area End ***** -->
 
+
+	<div id="contact">
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading about-page-heading" id="top">
         <div class="container">
@@ -108,7 +120,7 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Main Banner Area End ***** -->
 
     <!-- ***** Contact Area Starts ***** -->
-    <div class="contact-us">
+    <div class="contact-us">  
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -262,7 +274,8 @@ https://templatemo.com/tm-571-hexashop
             </div>
         </div>
     </footer>
-    
+    </div>
+    <div id="index"></div>
 
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
@@ -303,6 +316,51 @@ https://templatemo.com/tm-571-hexashop
         });
 
     </script>
+    <script>
+
+        //contact.html 불러오기 
+        async function fetchHtmlAsText(url) {
+            return await (await fetch(url)).text();
+        }
+
+        async function importPage(target) {
+            document.querySelector('#' + target).innerHTML = await fetchHtmlAsText(target + '.html');
+        }
+        importPage('index');
+
+
+        //애니메이션
+        $(()=>{
+            $('#tab div').bind('click',function(e){
+
+                let tab = e.target.getAttribute('id');
+            console.log(tab);   
+                if(tab=='test1'){
+                    e.preventDefault();
+                    $(this).removeClass('stretchRight');
+                    $('#test1').css({backgroundColor:'#fff', zIndex:'0'});
+                    $('#test2').css({backgroundColor:'#333', zIndex:'-10'});
+                    $('#contact').show();
+                    $('#index').hide();
+                    $(this).addClass('stretchRight');
+                 
+                     
+                }else if(tab=='test2'){
+                    e.preventDefault();
+                    $('this').removeClass('stretcLeft');
+                    $('#test2').css({backgroundColor:'#fff', zIndex:'0'});
+                    $('#test1').css({backgroundColor:'#333', zIndex:'-10'});
+                    $('#contact').hide();
+                    $('#index').show();
+                    $(this).addClass('stretchLeft');
+                    
+                }
+            });
+        });
+
+
+    </script>
+    
 
   </body>
 
