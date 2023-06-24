@@ -29,6 +29,32 @@ function tel_hyphen(target){
 						.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, '');
 }
 
+/***** user-pwd-modify.html *****/
+//비밀번호 변경 전 확인
+function change_pwd_chk(pwd){
+	res = true;
+	
+	inputs = $('#modify-input-container input:password');
+	
+	// 기존 비밀번호 체크
+	if($(inputs[0]).val() == pwd){
+		$(inputs[0]).parent().next().text("");
+	}else{
+		$(inputs[0]).parent().next().text("비밀번호가 틀렸습니다.").css('color','#f00');
+		res = false;
+	}
+	
+	// 신규 비밀번호 체크
+	if($(inputs[1]).val() == $(inputs[2]).val()){
+		$(inputs[2]).parent().next().text("");
+	}else{
+		$(inputs[2]).parent().next().text("비밀번호가 일치하지않습니다.").css('color','#f00');
+		res = false;
+	}
+	
+	return res;
+}
+
 /***** singup-modal.html *****/
 // singup-modal.html 유효성 검사 판단
 function sign_chk(){    	
