@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>회원정보 수정</title>
+    <title>비밀번호 수정</title>
 
 
     <!-- Additional CSS Files -->
@@ -47,9 +47,6 @@
 			height:100%;
 			text-align: left;
 		}
-		/* #modify-input-container .form-group h4{
-			margin-top: 40px;
-		} */
 		#modify-input-container .form-control {
 			min-height: 38px;
 			padding-left: 5px;
@@ -169,7 +166,7 @@ https://templatemo.com/tm-571-hexashop
 			<div class="row">
                 <div class="col-lg-12">
                     <div class="center-content">
-                        <h2 class="page-title">회원정보 수정</h2>
+                        <h2 class="page-title">비밀번호 수정</h2>
                     </div>
                 </div>
             </div>
@@ -181,53 +178,34 @@ https://templatemo.com/tm-571-hexashop
     <section class="section" id="products">
 		<div class="container">
 			<div id="modify-input-container" class="d-flex flex-column">
-				<form action="#" method="post">
-					<div class="form-group">		<!-- 이름(닉네임) -->
+				<form action="#" method="post" onsubmit="return change_pwd_chk('1234');">
+					<!-- 비밀번호 변경 -->
+					<div class="form-group">		<!-- 기존 비밀번호 -->
 						<div class="input-group">
-							<p>이름</p>
-							<input type="text" class="form-control" name="name" value="김회원" placeholder="Name" required>
-						</div>
-					</div>
-					<div class="form-group">		<!-- 이메일 -->
-						<div class="input-group">
-							<p>이메일</p>
-							<input type="email" class="form-control" name="email" value="customer@naver.com" placeholder="UserEmail" required>
-						</div>
-					</div>
-					<div class="form-group">		<!-- 핸드폰번호 -->
-						<div class="input-group">
-							<p>전화번호</p>
-							<input type="text" class="form-control" name="tel" value="010-1234-5678" placeholder="PhoneNumber" maxlength="13" oninput="tel_hyphen(this);" required>
-						</div>
-					</div>
-					
-					<!-- <div class="form-group">
-						<h4>비밀번호 변경</h4>
-					</div>
-					비밀번호 변경
-					<div class="form-group">		기존 비밀번호
-						<div class="input-group">
-							<input type="password" class="form-control" name="password" placeholder="기존 비밀번호" required">
+							<p>기존 비밀번호</p>
+							<input type="password" class="form-control" name="password" placeholder="8자리 이상" required>
 						</div>
 						<p></p>
 					</div>
 					
-					<div class="form-group">		신규 비밀번호
+					<div class="form-group">		<!-- 신규 비밀번호 -->
 						<div class="input-group">
-							<input type="password" class="form-control" name="password" placeholder="신규 비밀번호" required>
+							<p>신규 비밀번호</p>
+							<input type="password" class="form-control" name="password" placeholder="8자리 이상" required>
 						</div>
 					</div>
 					
-					<div class="form-group">		신규 비밀번호 확인
+					<div class="form-group">		<!-- 신규 비밀번호 확인 -->
 						<div class="input-group">
-							<input type="password" class="form-control" name="password_chk" placeholder="신규 비밀번호 확인">
+							<p>신규 비밀번호 확인</p>
+							<input type="password" class="form-control" name="password_chk" placeholder="8자리 이상">
 						</div>
 						<p></p>
-					</div>-->
+					</div>
 					
 					<div class="form-group">
 						<input type="submit" class="btn btn-block btn-lg" value="수정하기">
-					</div> 
+					</div>
 				</form>
 			</div>
 		</div>
