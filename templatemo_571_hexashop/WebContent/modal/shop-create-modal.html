@@ -2,7 +2,7 @@
 <!-- https://www.codehim.com/bootstrap/bootstrap-4-modal-popup-login-form/ -->
 
 <div class="modal-header border-bottom-0">
-	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="chk_reset('close');">
 		<span aria-hidden="true">&times;</span>
 	</button>
 </div>
@@ -22,8 +22,8 @@
 			<div class="form-group">		<!-- url주소 -->
 				<div class="input-group">
 					<input type="text" class="base-url" value="/shop/" disabled>
-					<input type="text" class="form-control" name="url" placeholder="URL" onkeyup="chk_reset('url')">
-					<button type="button" class="btn btn-chk" onclick="url_chk('test')">Check</button>
+					<input type="text" class="form-control" name="url" placeholder="URL" value="admin" onkeyup="chk_reset('url')">
+					<button type="button" class="btn btn-chk" onclick="url_chk('admin', false, 1)">Check</button>
 				</div>
 				<p></p>
 			</div>
@@ -38,21 +38,6 @@
 					<input type="text" class="form-control" name="tel_chk" placeholder="PhoneNumber" maxlength="13" oninput="tel_hyphen(this);" required>
 				</div>
 				<p></p>
-			</div>
-			<div class="form-group">		<!-- sns 링크 -->
-				<div class="input-group">
-              		<span class="input-group-addon"><i class="fa fa-instagram"></i></span>
-					<input type="text" class="form-control" name="sns" placeholder="URL">
-				</div>
-				<div class="input-group">
-              		<span class="input-group-addon"><i class="fa fa-youtube-play"></i></span>
-					<input type="text" class="form-control" name="sns" placeholder="URL">
-				</div>
-				<div class="input-group">
-              		<span class="input-group-addon"><i class="fa fa-twitter"></i></span>
-					<input type="text" class="form-control" name="sns" placeholder="URL">
-				</div>
-				
 			</div>
 			<div class="form-group">
 				<input type="submit" class="btn btn-block btn-lg" value="Create">

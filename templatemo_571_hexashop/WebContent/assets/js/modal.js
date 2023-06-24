@@ -9,7 +9,7 @@ function onSignupModal() { $('.modal-content').load("./modal/signup-modal.html")
 function onShopModal() { $('.modal-content').load("./modal/shop-create-modal.html"); }
 function changeSignupModal(){ $('.scroll-to-section').eq(1).click(); } 		// login-modal.html에서 사용
 
-let id_flag = -1;
+let email_flag = -1;
 let pwd_flag = false;
 let brand_flag = -1;
 let url_flag = -1;
@@ -17,9 +17,14 @@ let inputs, parents;
 
 // 중복확인 초기화
 function chk_reset(flag){
-	if(flag == "id"){ id_flag = -1; }
+	if(flag == "email"){ email_flag = -1; }
 	else if(flag == "brand"){ brand_flag = -1; }
 	else if(flag == "url"){ url_flag = -1 }
+	else{
+		email_flag = -1;
+		brand_flag = -1;
+		url_flag = -1;
+	}
 	
 }
 
@@ -27,6 +32,28 @@ function chk_reset(flag){
 function tel_hyphen(target){
 	target.value = target.value.replace(/[^0-9]/g, '')
 						.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, '');
+}
+
+//url 체크
+function url_chk(url, url_chk, idx){
+	inputs = $('#modal input');
+	parents = $('.form-group');
+	
+	let p = $(parents[idx]).children().last();
+	
+	if(url.length > 0 && $(inputs[idx+1]).val() == url){
+		p.text("기존 URL을 사용합니다.").css('color','#179b81');
+		url_flag = 1;
+	}else if(!url_chk){
+		p.text("중복된 URL입니다.").css('color','#f00');
+		url_flag = 0;
+	}else if($(inputs[idx+1]).val() != "" && url_chk){
+		p.text("사용 가능한 URL입니다.").css('color','#179b81');
+		url_flag = 1;
+	}else if($(inputs[idx+1]).val() == ""){
+		p.text("URL이 입력되지 않았습니다.").css('color','#f00');
+		url_flag = 0;
+	}
 }
 
 /***** user-pwd-modify.html *****/
@@ -61,38 +88,40 @@ function sign_chk(){
 	inputs = $('#modal input');
 	parents = $('.form-group');
 	
-	if(id_flag == -1){
-		let p = $(parents[0]).children().last();
-		
-		p.text("중복 확인이 되지않았습니다.");
-		p.css('color','#f00');
+	if(email_flag == -1 || url_flag == -1){
+		let p;
+		if(email_flag == -1){ p = $(parents[0]).children().last(); }
+		else if(url_flag == -1){ p = $(parents[4]).children().last(); }
+
+		p.text("중복 확인이 되지않았습니다.").css('color','#f00');
 		return false;
-	}else if(id_flag == 0 || !pwd_flag){
+	}else if(email_flag == 0 || !pwd_flag || url_flag == 0){
 		return false;
 	}
 	
 	return true;
 }
 
-// 아이디 중복 체크
-function id_chk(id_chk){
+// 이메일 중복 체크(?)
+function email_chk(email_chk){
 	inputs = $('#modal input');
 	parents = $('.form-group');
 	
 	let p = $(parents[0]).children().last();
+	let email = $(inputs[0]).val();
 	
-	if($(inputs[0]).val() == id_chk){
-		p.text("중복된 아이디입니다.");
-		p.css('color','#f00');
-		id_flag = 0;
-	}else if($(inputs[0]).val() != "" && $(inputs[0]).val() != id_chk){
-		p.text("사용 가능한 아이디입니다.");
-		p.css('color','#179b81');
-		id_flag = 1;
-	}else if($(inputs[0]).val() == ""){
-		p.text("아이디가 입력되지 않았습니다.");
-		p.css('color','#f00');
-		id_flag = 0;
+	if(!email.match("@")){
+		p.text("이메일 형식에 맞지 않습니다.").css('color','#f00');
+		email_flag = 0;
+	}else if(email == email_chk){
+		p.text("중복된 이메일입니다.").css('color','#f00');
+		email_flag = 0;
+	}else if(email != "" && email != email_chk){
+		p.text("사용 가능한 이메일입니다.").css('color','#179b81');
+		email_flag = 1;
+	}else if(email == ""){
+		p.text("이메일이 입력되지 않았습니다.").css('color','#f00');
+		email_flag = 0;
 	}
 }
 
@@ -102,16 +131,15 @@ function pwd_chk(){
 	parents = $('.form-group');
 	
 	let p = $(parents[2]).children().last();
+	let pwd = $(inputs[1]).val();
+	let pwd_chk = $(inputs[2]).val()
 	
-	if($(inputs[1]).val() == ""){
-		p.text("비밀번호를 먼저 입력해주세요.");
-		p.css('color','#f00');
-	}else if($(inputs[1]).val() != $(inputs[2]).val()){
-		p.text("비밀번호가 일치하지 않습니다.");
-		p.css('color','#f00');
-	}else if($(inputs[1]).val() == $(inputs[2]).val()){
-		p.text("비밀번호가 일치합니다.");
-		p.css('color','#179b81');
+	if(pwd == ""){
+		p.text("비밀번호를 먼저 입력해주세요.").css('color','#f00');
+	}else if(pwd != pwd_chk){
+		p.text("비밀번호가 일치하지 않습니다.").css('color','#f00');
+	}else if(pwd == pwd_chk){
+		p.text("비밀번호가 일치합니다.").css('color','#179b81');
 		pwd_flag = true;
 	}
 }
@@ -123,21 +151,17 @@ function shop_chk(){
 	inputs = $('#modal input');
 	parents = $('.form-group');
 	
-	console.log(brand_flag);
-	console.log(url_flag);
+	let email = re_chk("admin@naver.com", 2);
+	let tel = re_chk("010-1111-1111", 3);
 	
 	if(brand_flag == -1 || url_flag == -1){
 		let p;
-		if(brand_flag == -1){
-			p = $(parents[0]).children().last();
-			p.text("중복 확인이 되지않았습니다.");
-			p.css('color','#f00');
-		}
-		if(url_flag == -1){
-			$(parents[1]).children().last().text("중복 확인이 되지않았습니다.").css('color','#f00');
-		}
+		if(brand_flag == -1){ p = $(parents[0]).children().last(); }
+		else if(url_flag == -1){ p = $(parents[1]).children().last(); }
+		
+		p.text("중복 확인이 되지않았습니다.").css('color','#f00');
 		return false;
-	}else if(brand_flag == 0 || url_flag == 0 || !re_chk("test@email", 2) || !re_chk("010-1111-1111", 3)){
+	}else if(brand_flag == 0 || url_flag == 0 || !email || !tel){
 		return false;
 	}
 	
@@ -150,55 +174,31 @@ function brand_chk(brand_chk){
 	parents = $('.form-group');
 	
 	let p = $(parents[0]).children().last();
+	let brand = $(inputs[0]).val();
 	
-	if($(inputs[0]).val() == brand_chk){
-		p.text("중복된 브랜드 이름입니다.");
-		p.css('color','#f00');
+	if(brand == brand_chk){
+		p.text("중복된 브랜드 이름입니다.").css('color','#f00');
 		brand_flag = 0;
-	}else if($(inputs[0]).val() != "" && $(inputs[0]).val() != brand_chk){
-		p.text("사용 가능한 브랜드 이름입니다.");
-		p.css('color','#179b81');
+	}else if(brand != "" && brand != brand_chk){
+		p.text("사용 가능한 브랜드 이름입니다.").css('color','#179b81');
 		brand_flag = 1;
-	}else if($(inputs[0]).val() == ""){
-		p.text("브랜드 이름이 입력되지 않았습니다.");
-		p.css('color','#f00');
+	}else if(brand == ""){
+		p.text("브랜드 이름이 입력되지 않았습니다.").css('color','#f00');
 		brand_flag = 0;
 	}
 }
 
-// url 체크
-function url_chk(url_chk){
-	inputs = $('#modal input');
-	parents = $('.form-group');
-	
-	let p = $(parents[1]).children().last();
-	
-	if($(inputs[2]).val() == url_chk){
-		p.text("중복된 URL입니다.");
-		p.css('color','#f00');
-		url_flag = 0;
-	}else if($(inputs[2]).val() != "" && $(inputs[2]).val() != url_chk){
-		p.text("사용 가능한 URL입니다.");
-		p.css('color','#179b81');
-		url_flag = 1;
-	}else if($(inputs[2]).val() == ""){
-		p.text("URL이 입력되지 않았습니다.");
-		p.css('color','#f00');
-		url_flag = 0;
-	}
-}
 
-function re_chk(re_chk, idx){
+function re_chk(value, idx){
 	inputs = $('#modal input');
 	parents = $('.form-group');
 	
 	let p = $(parents[idx]).children().last();
 	
-	if($(inputs[idx+1]).val() != re_chk){
-		p.text("사용자 정보와 일치하지않습니다.");
-		p.css('color','#f00');
+	if($(inputs[idx+1]).val() != value){
+		p.text("사용자 정보와 일치하지않습니다.").css('color','#f00');
 		return false;
-	}else if($(inputs[idx+1]).val() == re_chk){
+	}else if($(inputs[idx+1]).val() == value){
 		p.text("");
 		return true;
 	}
