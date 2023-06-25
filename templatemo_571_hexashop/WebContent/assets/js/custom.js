@@ -76,6 +76,7 @@
 		}	  
 	  setTimeout(function() {
 			$(".main-banner").css("padding-top", $('header').height());
+			$(".page-title").css("padding-top", $('header').height()+30);
 		}, 100);
 
 	});
@@ -182,6 +183,7 @@
 		mobileNav();
 		setTimeout(function() {
 			$(".main-banner").css("padding-top", $('header').height());
+			$(".page-title").css("padding-top", $('header').height()+30);
 		}, 100);
 	});
 
