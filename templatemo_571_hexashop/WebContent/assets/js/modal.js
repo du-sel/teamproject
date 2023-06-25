@@ -14,18 +14,35 @@ let pwd_flag = false;
 let brand_flag = -1;
 let url_flag = -1;
 let inputs, parents;
+let pwd_chk_str = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
 
 // 중복확인 초기화
 function chk_reset(flag){
 	if(flag == "email"){ email_flag = -1; }
 	else if(flag == "brand"){ brand_flag = -1; }
-	else if(flag == "url"){ url_flag = -1 }
+	else if(flag == "url"){ url_flag = -1; }
+	else if(flag == "pwd"){ pwd_flag = false; }
 	else{
 		email_flag = -1;
 		brand_flag = -1;
 		url_flag = -1;
+		pwd_flag = false;
 	}
 	
+}
+
+//공백, 특수문자 제거
+function remove(type, target){
+	let reg;
+	
+	if(type==1){	// 공백 제거
+		reg = /[ ]/gim;
+	}else if(type==2){	// 공백 및 특수문자 제거(@,.제외)
+		reg = /[`~!#$%^&*()_|+\-=?;:'",<>\{\}\[\]\\\/ ]/gim;
+	}else if(type==3){	// 공백 및 특수문자 제거
+		reg = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gim;
+	}
+	target.value = target.value.replace(reg, '');
 }
 
 // 전화번호 하이픈 추가
@@ -56,6 +73,47 @@ function url_chk(url, url_chk, idx){
 	}
 }
 
+//비밀번호 유효성 검사
+function pwd_validation(id, target){
+	inputs = $('#'+id+' input');
+	parents = $('.form-group');
+	
+	let p = $(parents[1]).children().last();
+	let pwd = $(inputs[1]).val();
+	
+	target.value = target.value.replace(/[ ]/gim, '');
+	
+	if(!pwd_chk_str.test(pwd)){
+		p.text("비밀번호는 8~15자리이고 문자/숫자/특수문자를 포함해야 합니다.").css('color','#f00');
+	}else{
+		p.text("");		
+	}
+}
+
+//이메일 중복 체크(?)
+function email_chk(email_chk){
+	inputs = $('#modal input');
+	parents = $('.form-group');
+	
+	let p = $(parents[0]).children().last();
+	let email = $(inputs[0]).val();
+	let email_chk_str = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	
+	if(!email_chk_str.test(email)){
+		p.text("이메일 형식에 맞지 않습니다.").css('color','#f00');
+		email_flag = 0;
+	}else if(email == ""){
+		p.text("이메일이 입력되지 않았습니다.").css('color','#f00');
+		email_flag = 0;
+	}else if(!email_chk){
+		p.text("중복된 이메일입니다.").css('color','#f00');
+		email_flag = 0;
+	}else if(email != "" && email_chk){
+		p.text("사용 가능한 이메일입니다.").css('color','#179b81');
+		email_flag = 1;
+	}
+}
+
 /***** user-pwd-modify.html *****/
 //비밀번호 변경 전 확인
 function change_pwd_chk(pwd){
@@ -72,10 +130,18 @@ function change_pwd_chk(pwd){
 	}
 	
 	// 신규 비밀번호 체크
-	if($(inputs[1]).val() == $(inputs[2]).val()){
-		$(inputs[2]).parent().next().text("");
+	if(pwd_chk_str.test($(inputs[1]).val())){	// 비밀번호 형식에 맞아야함
+		if($(inputs[1]).val() == $(inputs[2]).val()){
+			$(inputs[2]).parent().next().text("");
+
+			console.log("bb");
+		}else{
+
+			console.log("aa");
+			$(inputs[2]).parent().next().text("비밀번호가 일치하지않습니다.").css('color','#f00');
+			res = false;
+		}
 	}else{
-		$(inputs[2]).parent().next().text("비밀번호가 일치하지않습니다.").css('color','#f00');
 		res = false;
 	}
 	
@@ -102,29 +168,6 @@ function sign_chk(){
 	return true;
 }
 
-// 이메일 중복 체크(?)
-function email_chk(email_chk){
-	inputs = $('#modal input');
-	parents = $('.form-group');
-	
-	let p = $(parents[0]).children().last();
-	let email = $(inputs[0]).val();
-	
-	if(!email.match("@")){
-		p.text("이메일 형식에 맞지 않습니다.").css('color','#f00');
-		email_flag = 0;
-	}else if(email == email_chk){
-		p.text("중복된 이메일입니다.").css('color','#f00');
-		email_flag = 0;
-	}else if(email != "" && email != email_chk){
-		p.text("사용 가능한 이메일입니다.").css('color','#179b81');
-		email_flag = 1;
-	}else if(email == ""){
-		p.text("이메일이 입력되지 않았습니다.").css('color','#f00');
-		email_flag = 0;
-	}
-}
-
 // 비밀번호 체크 실시간 확인
 function pwd_chk(){
 	inputs = $('#modal input');
@@ -132,15 +175,23 @@ function pwd_chk(){
 	
 	let p = $(parents[2]).children().last();
 	let pwd = $(inputs[1]).val();
-	let pwd_chk = $(inputs[2]).val()
-	
-	if(pwd == ""){
-		p.text("비밀번호를 먼저 입력해주세요.").css('color','#f00');
-	}else if(pwd != pwd_chk){
-		p.text("비밀번호가 일치하지 않습니다.").css('color','#f00');
-	}else if(pwd == pwd_chk){
-		p.text("비밀번호가 일치합니다.").css('color','#179b81');
-		pwd_flag = true;
+	let pwd_chk = $(inputs[2]).val();
+
+	if(pwd_chk == ""){
+		p.text("");
+		pwd_flag = false;
+	}
+	else if(!pwd_chk_str.test(pwd)){
+		p.text("비밀번호 형식에 맞지 않습니다.").css('color','#f00');
+		pwd_flag = false;
+	}else{
+		if(pwd != pwd_chk){
+			p.text("비밀번호가 일치하지 않습니다.").css('color','#f00');
+			pwd_flag = false;
+		}else if(pwd == pwd_chk){
+			p.text("비밀번호가 일치합니다.").css('color','#179b81');
+			pwd_flag = true;
+		}
 	}
 }
 

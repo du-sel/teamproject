@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>비밀번호 수정</title>
+    <title>내 소식</title>
 
 
     <!-- Additional CSS Files -->
@@ -34,47 +34,40 @@
 			-o-transition: all .05s ease 0s;
 			transition: all .05s ease 0s;
     	}
-    	#modify-input-container{
-    		max-width: 400px;
-    		min-width: 200px;
-    		margin: 30px auto 0;
+    	.container .row{
+    		height: max-content;
     	}
-    	
-    	
-    	/* 모달에서 빼옴 */
-    	#modify-input-container .form-group {
-			margin-bottom: 20px;
-		}
-		#modify-input-container .form-group p{
-			font-size:0.8rem;
-			width:100%;
-			height:100%;
-			text-align: left;
-		}
-		#modify-input-container .form-control {
-			min-height: 38px;
-			padding-left: 5px;
-			box-shadow: none !important;
-			border-width: 0 0 1px 0;
-			border-radius: 0;
-		}
-		#modify-input-container .form-control:focus {
-			border-color: #eee;
-		}
-		
-		#modify-input-container .btn {        
-		    font-size: 16px;
-		    font-weight: bold;
-			background: #000;
-		    border-radius: 3px;
-			border: none;
-			min-width: 140px;
-		    outline: none !important;
-		    color: #fff;
-		}
-		#modify-input-container .btn:hover, .modal-login .btn:focus {
-			background: #eee;
-		}
+    	.news-container{
+    		border-top: 2px solid #eee9;
+    		padding: 20px 0;
+    		cursor: pointer;
+    	}
+    	.news-container:hover{
+    		background-color: #eee;
+    	}
+    	.news-container:nth-child(1){
+    		border: none;
+    		margin-top: 10px;
+    	}
+    	.news-container .profile-img{
+    		border-radius: 50%;
+    		width: 80px;
+    		margin-right: 10px;
+    	}
+    	.news-container .news-img{
+    		border-radius: 0;
+    		width: 80px;
+    	}
+    	.news{
+    		padding: 0 20px;
+    	}
+    	.news h6{
+    		height: max-content;
+    		word-break: keep-all;
+    	}
+    	.check{
+    		background-color: #eee5;
+    	}
     </style>
     
     
@@ -165,48 +158,84 @@ https://templatemo.com/tm-571-hexashop
 	<!-- ***** Modal End ***** -->
 
     <!-- ***** Page Content Starts ***** -->
-    <section class="section">
+    <section class="section" id="page">
     	<div class="page-title">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>비밀번호 수정</h2>
+                        <h2>내 소식</h2>
                     </div>
                 </div>
             </div>
         </div>
 		<div class="container">
-			<div id="modify-input-container" class="d-flex flex-column">
-				<form action="#" method="post" onsubmit="return change_pwd_chk('1234');">
-					<!-- 비밀번호 변경 -->
-					<div class="form-group">		<!-- 기존 비밀번호 -->
-						<div class="input-group">
-							<p>기존 비밀번호</p>
-							<input type="password" class="form-control" name="password" placeholder="8자리 이상" required oninput="remove(1, this);">
-						</div>
-						<p></p>
-					</div>
-					
-					<div class="form-group">		<!-- 신규 비밀번호 -->
-						<div class="input-group">
-							<p>신규 비밀번호</p>
-							<input type="password" class="form-control" name="password" placeholder="8자리 이상" required oninput="pwd_validation('modify-input-container', this);">
-						</div>
-						<p></p>
-					</div>
-					
-					<div class="form-group">		<!-- 신규 비밀번호 확인 -->
-						<div class="input-group">
-							<p>신규 비밀번호 확인</p>
-							<input type="password" class="form-control" name="password_chk" placeholder="8자리 이상" oninput="remove(1, this);">
-						</div>
-						<p></p>
-					</div>
-					
-					<div class="form-group">
-						<input type="submit" class="btn btn-block btn-lg" value="수정하기">
-					</div>
-				</form>
+			<div class="row justify-content-center">
+            	<!-- 소식 Start -->
+				<div class="col-lg-12 news-container" onclick="location.href='#'">
+					<div class="news d-flex justify-content-between" >
+						<div class="d-flex justify-content-center">
+                  			<img src="assets/images/men-01.jpg" alt="" class="profile-img">
+                  			<div class="d-flex flex-column justify-content-center">
+                  				<h6>OOO님이 회원님의 피드에 댓글을 남겼습니다.</h6>
+                  			</div>
+                  		</div>
+                  		<img src="assets/images/men-01.jpg" alt="" class="news-img">
+	           		</div>
+				</div>
+				<!-- 소식 End -->
+				
+				<div class="col-lg-12 news-container check" onclick="location.href='#'">
+					<div class="news d-flex justify-content-between" >
+                  		<div class="d-flex justify-content-center">
+                  			<img src="assets/images/men-01.jpg" alt="" class="profile-img">
+                  			<div class="d-flex flex-column justify-content-center">
+                  				<h6>OOO님이 회원님의 피드를 좋아합니다.</h6>
+                  			</div>
+                  		</div>
+                  		<img src="assets/images/men-01.jpg" alt="" class="news-img">
+	           		</div>
+				</div>
+				<div class="col-lg-12 news-container" onclick="location.href='#'">
+					<div class="news d-flex justify-content-start">
+                  		<div class="d-flex justify-content-center">
+                  			<img src="assets/images/men-01.jpg" alt="" class="profile-img">
+                  			<div class="d-flex flex-column justify-content-center">
+                  				<h6>OOO님이 '작품 이름' 판매를 시작하였습니다.</h6>
+                  			</div>
+                  		</div>
+	           		</div>
+				</div>
+				<div class="col-lg-12 news-container check" onclick="location.href='#'">
+					<div class="news d-flex justify-content-start" >
+                  		<div class="d-flex justify-content-center">
+                  			<img src="assets/images/men-01.jpg" alt="" class="profile-img">
+                  			<div class="d-flex flex-column justify-content-center">
+                  				<h6>OOO님이 회원님의 피드에 댓글을 남겼습니다.</h6>
+                  			</div>
+                  		</div>
+	           		</div>
+				</div>
+				<div class="col-lg-12 news-container check" onclick="location.href='#'">
+					<div class="news d-flex justify-content-start" >
+                  		<div class="d-flex justify-content-center">
+                  			<img src="assets/images/men-01.jpg" alt="" class="profile-img">
+                  			<div class="d-flex flex-column justify-content-center">
+                  				<h6>OOO님이 회원님의 피드를 좋아합니다.</h6>
+                  			</div>
+                  		</div>
+	           		</div>
+				</div>
+				<div class="col-lg-12 news-container check" onclick="location.href='#'">
+					<div class="news d-flex justify-content-start" >
+                  		<div class="d-flex justify-content-center">
+                  			<img src="assets/images/men-01.jpg" alt="" class="profile-img">
+                  			<div class="d-flex flex-column justify-content-center">
+                  				<h6>OOO님이 회원님의 피드를 좋아합니다.</h6>
+                  			</div>
+                  		</div>
+	           		</div>
+				</div>
+                
 			</div>
 		</div>
     </section>
@@ -296,5 +325,6 @@ https://templatemo.com/tm-571-hexashop
 
 	<!-- Modal -->
 	<script src="assets/js/modal.js"></script> 
+
   </body>
 </html>
