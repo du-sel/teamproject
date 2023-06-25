@@ -10,13 +10,202 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="./assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
+		<link rel="stylesheet" href="assets/css/animations.css">
+
+		<!-- <script src="./assets/js/jquery.min.js"></script> -->
+		
+		
+		<!-- jQuery -->
+	    <script src="assets/js/jquery-2.1.0.min.js"></script>
+	
+	    <!-- Bootstrap -->
+	    <script src="assets/js/popper.js"></script>
+	    <script src="assets/js/bootstrap.min.js"></script>
+	
+	    <!-- Plugins -->
+	    <script src="assets/js/owl-carousel.js"></script>
+	    <script src="assets/js/accordions.js"></script>
+	    <script src="assets/js/datepicker.js"></script>
+	    <script src="assets/js/scrollreveal.min.js"></script>
+	    <script src="assets/js/waypoints.min.js"></script>
+	    <script src="assets/js/jquery.counterup.min.js"></script>
+	    <script src="assets/js/imgfix.min.js"></script> 
+	    <script src="assets/js/slick.js"></script> 
+	    <script src="assets/js/lightbox.js"></script> 
+	    <script src="assets/js/isotope.js"></script> 
+	    
+	    <!-- Global Init -->
+	    <script src="assets/js/custom.js"></script>
+	
+		<!-- Modal -->
+		<script src="assets/js/modal.js"></script> 
+		
+		
+		
+		<script>
+			$( document ).ready( function() {
+				$( 'button.comment' ).click( function() {
+				$( '.divcomment' ).slideToggle();
+				} );
+			} );
+			
+			$( document ).ready( function() {
+				$( 'button.commentList' ).click( function() {
+				$( '.ulcommentList' ).slideToggle();
+				} );
+			} );
+		</script>
+		 <script>
+
+			//shop.html 불러오기 
+			 async function fetchHtmlAsText(url) {
+			 	return await (await fetch(url)).text();
+			 }
+	
+			 async function importPage() {
+			 	/* document.querySelector('#' + target).innerHTML = await fetchHtmlAsText('http://localhost:8080/templatemo_571_hexashop/'+target+'.html'); */
+			 	document.querySelector('#shop').innerHTML =  '<object type="text/html" data="http://localhost:8080/templatemo_571_hexashop/shop.html" ></object>';
+			 }
+			 importPage();
+			 
+			/*  $(document).ready(function(){
+				    $(#shop).load("../shop.html");
+				}); */
+	
+	
+			//애니메이션
+			$(()=>{
+				$('#tab div').bind('click',function(e){
+	
+					let tab = e.target.getAttribute('id');
+				console.log(tab);   
+					if(tab=='test1'){
+						e.preventDefault();
+						$(this).removeClass('stretchRight');
+						$('#test1').css(zIndex,'0');
+						$('#test2').css(zIndex,'-10');
+						$('#index').show();
+						$('#shop').hide();
+						$(this).addClass('stretchRight');
+					 
+						 
+					}else if(tab=='test2'){
+						e.preventDefault();
+						$('this').removeClass('stretcLeft');
+						$('#test2').css(zIndex,'0');
+						$('#test1').css(zIndex,'-10');
+						$('#index').hide();
+						$('#shop').show();
+						$(this).addClass('stretchLeft');
+						
+					}
+				});
+			});
+	
+	
+		</script>
 	</head>
 	<body class="single is-preload">
+
+	<!-- Tab -->	
+	<div id="tab" style="  height: 2rem; background-color: #96baec; position: relative;" >
+		<div id="test1" style="margin: 0; background-color: #f1f4fa; width: 70%;  height: 2rem; display: inline-block; border-radius: 0 40px 0 0; /* border: 1px solid black; */">test1</div>
+		<div id="test2" style="margin: 0; background-color: #96baec; width: 70%; height: 2rem; position: absolute; right: 0; display: inline-block;">test2</div>
+	</div>
+
+    <!-- test -->
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container-xl">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Menu Start ***** -->
+                        <div class="nav">
+                            <!-- <li class="scroll-to-section"><a href="#top" class="active">Home</a></li> -->
+                            <!-- <li class="scroll-to-section"><a href="#men">Men's</a></li> -->
+                            <!-- <li class="scroll-to-section"><a href="#women">Women's</a></li> -->
+                            <div>
+	                            <div class="submenu">
+	                                <a href="javascript:;">Products</a>
+	                                <ul>
+	                                    <li><a href="about.html">About Us</a></li>
+	                                    <li><a href="products.html">Products</a></li>
+	                                    <li><a href="single-product.html">Single Product</a></li>
+	                                    <li><a href="contact.html">Contact Us</a></li>
+	                                </ul>
+                            	</div>
+	    	                    <div class="submenu">
+	                                <a href="javascript:;">Creators</a>
+	                                <ul>
+	                                    <li><a href="about.html">About Us</a></li>
+	                                    <li><a href="products.html">Products</a></li>
+	                                    <li><a href="single-product.html">Single Product</a></li>
+	                                    <li><a href="contact.html">Contact Us</a></li>
+	                                </ul>
+	                            </div>
+							</div>
+                            <!-- ***** Logo Start ***** -->
+	                        <div id="logo_container">
+                                <a href="index.html" class="logo">
+                                    <img src="assets/images/logo.png">
+                                </a>
+                            </div>
+                            <!-- ***** Logo End ***** -->
+							<div>
+                           		<div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">Sign In</a></div>
+                          		<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">Sign Up</a></div>
+                          		<div class="scroll-to-section" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">Shop</a></div>
+                            </div>
+                           <!--   <li class="submenu">
+                                <a href="javascript:;">Pages</a>
+                                <ul>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="products.html">Products</a></li>
+                                    <li><a href="single-product.html">Single Product</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                </ul>
+                            </li> -->
+                            <!-- <li class="submenu">
+                                <a href="javascript:;">Features</a>
+                                <ul>
+                                    <li><a href="#">Features Page 1</a></li>
+                                    <li><a href="#">Features Page 2</a></li>
+                                    <li><a href="#">Features Page 3</a></li>
+                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section"><a href="#explore">Explore</a></li> -->
+                        </div> 	       
+						                  
+						<a class="menu-trigger">
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                	</nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Modal Start ***** -->
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-container" role="document" >
+      		<div class="modal-content">
+			</div>
+     	</div>
+	</div>
+	<!-- ***** Modal End ***** -->
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Header -->
+				<!-- Header
 					<header id="header">
 						<h1><a href="index.html">Future Imperfect</a></h1>
 						<nav class="links">
@@ -41,7 +230,7 @@
 								</li>
 							</ul>
 						</nav>
-					</header>
+					</header> -->
 
 				<!-- Menu -->
 					<section id="menu">
@@ -93,7 +282,7 @@
 					</section>
 
 				<!-- Main -->
-					<div id="main">
+					<div id="main" style="margin: 250px">
 
 						<!-- Post -->
 							<article class="post">
@@ -110,12 +299,32 @@
 								<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
 								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
 								<p>Nunc quis dui scelerisque, scelerisque urna ut, dapibus orci. Sed vitae condimentum lectus, ut imperdiet quam. Maecenas in justo ut nulla aliquam sodales vel at ligula. Sed blandit diam odio, sed fringilla lectus molestie sit amet. Praesent eu tortor viverra lorem mattis pulvinar feugiat in turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce ullamcorper tellus sit amet mattis dignissim. Phasellus ut metus ligula. Curabitur nec leo turpis. Ut gravida purus quis erat pretium, sed pellentesque massa elementum. Fusce vestibulum porta augue, at mattis justo. Integer sed sapien fringilla, dapibus risus id, faucibus ante. Pellentesque mattis nunc sit amet tortor pellentesque, non placerat neque viverra. </p>
-								<footer>
-									<ul class="stats">
-										<li><a href="#">General</a></li>
-										<li><a href="#" class="icon solid fa-heart">28</a></li>
-										<li><a href="#" class="icon solid fa-comment">128</a></li>
+								<button class="commentList">댓글 더보기</button>
+								<ul class="stats commment_stats">
+										<li><a href="#" class="icon solid fa-heart">좋아요</a> 1</li>
+								</ul>
+								<footer style="background-color: #fff">
+									<ul class="actions">
+										<!-- <li><button class="comment "><a class="button large">댓글 입력창 (슬라이드 토글 사용) </a></button></li> -->
+										<li id="comment_li"><button class="comment ">댓글 입력창</button></li>
+										<li id="comment_li"><div class="divcomment"><input type="text" name="comment"></div></li>									
+										<li>댓글 내용</li>
+										<li>댓글 내용</li>
+										<ul class="ulcommentList" style="display: none;">
+											<li>댓글 내용</li>											
+											<li>댓글 내용</li>											
+											<li>댓글 내용</li>											
+											<li>댓글 내용</li>											
+											<li>댓글 내용</li>											
+										</ul>
 									</ul>
+									
+									
+									<!-- <ul class="stats">
+										<li><a href="#">댓글 보기</a></li>
+										<li><a href="#" class="icon solid fa-heart">좋아요</a> 1</li>
+										
+									</ul> -->
 								</footer>
 							</article>
 
