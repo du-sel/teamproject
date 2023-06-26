@@ -1952,7 +1952,26 @@ Single Product Page
  .quantity.buttons_added .plus:focus {
   outline: none; }
 
+/* ------------------chocomaster--------------------- */
 
+/* tab¸Þ´º */
+.nav-tabs li {
+  margin-right: 50px;
+}
+
+.nav-tabs a{
+    color:black;
+    font-weight:bold;
+}
+
+.nav-tabs a:hover {
+    color:black !important;
+    border-bottom:3px solid grey;
+}
+
+.tab-content div{
+   text-align:center;
+}
 
 /* 
 ---------------------------------------------

@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Hexashop - Product Detail Page</title>
+    <title>상품 상세페이지</title>
 
 
     <!-- Additional CSS Files -->
@@ -110,18 +110,66 @@ https://templatemo.com/tm-571-hexashop
 
     <!-- ***** Product Area Starts ***** -->
     <section class="section" id="product">
+        
+        
+        <!-- 화면 왼쪽 위에 목록으로 돌아가기 -->
+        <a href="products.html" style="position: absolute; top: 10px; left: 10px;">목록으로 돌아가기</a>
+        
+        
+        <!-- sticky 결제창 -->
+    	<div class="sticky-payment" style="position: sticky; top: 20px; right: 0; display:flex; flex-direction: column;
+    									   align-items:center; background-color:#fff; padding:20px;
+										   width:140px; height:420px;
+    									   border-radius:10px;
+    									   box-shadow: 10px 10px 5px -5px #888888;
+    									   ">
+	    	<br>
+	    	<h6 style="font-size:.9rem;">최근 본 상품</h6>
+			<br>
+		    <!-- 최근 본 상품 이미지-->
+		    <div style="display:flex; flex-direction: column;">
+		        <img src ="assets/images/최근본상품1.jpg" alt="" width = "100px" height="100px" style="margin-bottom:10px;">
+		        <img src ="assets/images/최근본상품2.jpg" alt="" width = "100px" height="100px">
+		    </div>
+			<br>
+			
+		     <!-- 장바구니 버튼 -->
+		    	<button type="button"
+                        onmouseover="
+                            this.style.backgroundColor='#000'; 
+                            this.style.color='#fff';
+                        "
+                        onmouseout="
+                            this.style.backgroundColor='#fff'; 
+                            this.style.color='#333'"
+                    	style="
+                    		border:none;
+                        	background-color:#fff;
+                        	color:#333;
+                        	font-size:.8rem;
+                        	padding:.4rem .8rem;
+                        	border-radius:.25em;
+							margin-top:auto; 
+							margin-bottom:.7rem;
+							text-align:center; width:max-content;">장바구니
+                </button>
+                <br>
+                <a href="products.html" style="color: black; font-size: 11px;">목록으로 돌아가기</a>
+                <br><br>
+		</div>
+        
+        <!-- 상품 썸네일과 가격 -->
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                 <div class="left-images">
-                    <img src="assets/images/single-product-01.jpg" alt="">
-                    <img src="assets/images/single-product-02.jpg" alt="">
+                    <img src="assets/images/썸네일.jpg" alt="">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="right-content">
-                    <h4>New Green Jacket</h4>
-                    <span class="price">$75.00</span>
+                    <h4>라이언 다이어리</h4>
+                    <span class="price">700원</span>
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
@@ -129,13 +177,13 @@ https://templatemo.com/tm-571-hexashop
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                     </ul>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod kon tempor incididunt ut labore.</span>
+                    <span>라이언 다이어리 입니다.</span>
                     <div class="quote">
-                        <i class="fa fa-quote-left"></i><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.</p>
+                        <i class="fa fa-quote-left"></i><p>세상에 하나뿐인 나만의 라이언 다이어리</p>
                     </div>
                     <div class="quantity-content">
                         <div class="left-content">
-                            <h6>No. of Orders</h6>
+                            <h6>구매수량</h6>
                         </div>
                         <div class="right-content">
                             <div class="quantity buttons_added">
@@ -144,13 +192,111 @@ https://templatemo.com/tm-571-hexashop
                         </div>
                     </div>
                     <div class="total">
-                        <h4>Total: $210.00</h4>
-                        <div class="main-border-button"><a href="#">Add To Cart</a></div>
+                        <h4>합계 : 21000원</h4>
+                        <br><br><br>
+                        <div class="main-border-button"><a href="#">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        								<a href="#">구매하기</a></div>
+                        <br><br><br><br><br>
                     </div>
                 </div>
-            </div>
+            </div> 
             </div>
         </div>
+        
+        <!-- 탭 메뉴 -->
+        <ul class="nav nav-tabs justify-content-center" role="tablist">
+        <br><br>
+  			<li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">상세정보</a></li>
+  			<li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab">구매후기</a></li>
+  			<li role="presentation"><a href="#inquiry" aria-controls="inquiry" role="tab" data-toggle="tab">상품문의</a></li>
+		</ul>
+
+         <!-- 회색 선 -->
+         <!-- <hr style = "border-color: grey; margin-top:15px; margin-bottom:20px"> -->
+
+         <!-- 각각의 탭 내용-->
+         <!-- 첫번째 탭 (상세정보) -->
+         <div class = "tab-content">
+           <!-- 상세정보 페이지 이미지 크게 들어갈 공간만 있으면 되므로 img태그만 사용합니다.-->
+           <div id = "description" class ="tab-pane active">
+	            <br>
+	            <img src ="assets/images/상세1.jpg" alt=""><br><br>
+	            <img src ="assets/images/상세2.jpg" alt=""><br><br>
+	            <img src ="assets/images/상세3.jpg" alt=""><br><br>
+	            <img src ="assets/images/상세4.jpg" alt=""><br><br>
+	            <img src ="assets/images/상세5.jpg" alt=""><br><br>
+	            <img src ="assets/images/상세6.jpg" alt=""><br><br>
+	            <img src ="assets/images/상세7.jpg" alt=""><br><br>
+           </div>
+
+          <!-- 두번째 탭 (구매후기) -->
+          <div id = 'review'class ='tab-pane'>
+            <br>
+            <form>
+               <label for="user_id">아이디</label><br>
+               <input type="text" id="user_id" name="user_id"><br><br>
+               <label for="product_name_review">상품명</label><br>
+               <input type="text" id= "product_name_review" name="product_name_review" ><br>   
+               <br>
+               <span style =" margin-right:10px;">별점</span>
+               <!-- <ul class="stars" style ="display:inline;">
+	                별점을 선택할 수 있도록 i태그와 input태그를 사용합니다. 
+	                <li><i class='fa fa-star'></i></li>  
+	                <li><i class='fa fa-star'></i></li> 
+	                <li><i class='fa fa-star'></i></li> 
+	                <li><i class='fa fa-star'></i></li>
+	                <li><i class='fa fa-star'></i></li> 
+	                <li><input type="radio" name = "rating" value ="5"></li>
+               </ul> -->
+               <br>
+               <select id="star-rating" name="star-rating">
+		            <option value="5">★★★★★</option>
+		            <option value="4">★★★★</option>
+		            <option value="3">★★★</option>
+		            <option value="2">★★</option>
+		            <option value="1">★</option>
+		       </select><br/><br/>
+               
+
+              	<!-- 날짜와 후기 내용을 입력받을 textarea태그를 사용합니다.-->
+             	<p>구매한 날짜<br/>
+             	<!-- 현재날짜에서 몇일전인지 계산하여 placeholder값으로 넣어줍니다.-->
+              	<textarea rows ="1" cols ="30"  placeholder="(YYYY-MM-DD)" ></textarea></p>
+
+             	구매후기<br/><textarea rows ="5" cols ="50" placeholder="리뷰를 작성해주세요."> </textarea>
+             	
+             	<input type="submit" value="작성 완료"/>
+            </form>
+          </div>
+
+
+         <!-- 세번째 탭 (상품문의) -->
+          <div id = "inquiry" class ="tab-pane">
+            <br>
+            <form>
+               <label for="user_id_inquiry">구매자 아이디:</label><br>
+               <!-- 구매자 아이디를 입력받을 input태그입니다.--> 
+               <input type="text" id="user_id_inquiry" name="user_id"><br><br>
+
+               <!-- 상품명을 입력받을 input태그입니다.-->
+              <label for="product_name_inquiry"> 상품명:</label><br>
+              <input type ="text" id= "product_name_inquiry" name="product_name_review" ><br><br>   
+
+             <!-- 문의사항을 입력받기 위해 textarea태그를 사용합니다.-->   
+             	
+             	상품문의<br><br/><textarea rows ='4' cols = '50'> </textarea>
+
+            </form>
+          </div>
+        </div>
+        
+        <!-- 화면 오른쪽 아래에 top▲ 버튼 추가-->
+        <a href="#" style="position: fixed; bottom: 20px; right: 20px; color: white;">
+            Top▲
+        </a>
+        
+        
+        
     </section>
     <!-- ***** Product Area Ends ***** -->
     
@@ -210,9 +356,6 @@ https://templatemo.com/tm-571-hexashop
                     </div>
                 </div>
             </div>
-            
-            
-            
         </div>
     </footer>
     
