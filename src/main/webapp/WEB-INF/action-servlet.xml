@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/products.do">product</prop>
+				<prop key="/product-single.do">product</prop>
+				<prop key="/creators.do">product</prop>
+				<prop key="/signin-modal.do">product</prop>
+				<prop key="/signup-modal.do">product</prop>
+				<prop key="/shop-create-modal.do">product</prop>
+				<prop key="/co-main.do">product</prop>
+				<prop key="/st-main.do">product</prop>
+				<prop key="/cart.do">product</prop>
+				<prop key="/purchase-history.do">product</prop>
+				<prop key="/inquiry-history.do">product</prop>
+				<prop key="/user-modify.do">product</prop>
+				<prop key="/user-pwd-modify.do">product</prop>
+				<prop key="/news.do">product</prop>
+				<prop key="/sales-status.do">product</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="product" class="com.teamproject.trackers.TmpHandler"></bean>
+
+
+</beans>
