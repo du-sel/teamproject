@@ -10,37 +10,37 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="./assets/css/main.css" />
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-	    <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
-		<link rel="stylesheet" href="assets/css/animations.css">
+		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="../assets/css/templatemo-hexashop.css">
+		<link rel="stylesheet" href="../assets/css/animations.css">
 
 		<!-- <script src="./assets/js/jquery.min.js"></script> -->
 		
 		
 		<!-- jQuery -->
-	    <script src="assets/js/jquery-2.1.0.min.js"></script>
+	    <script src="../assets/js/jquery-2.1.0.min.js"></script>
 	
 	    <!-- Bootstrap -->
-	    <script src="assets/js/popper.js"></script>
-	    <script src="assets/js/bootstrap.min.js"></script>
+	    <script src="../assets/js/popper.js"></script>
+	    <script src="../assets/js/bootstrap.min.js"></script>
 	
 	    <!-- Plugins -->
-	    <script src="assets/js/owl-carousel.js"></script>
-	    <script src="assets/js/accordions.js"></script>
-	    <script src="assets/js/datepicker.js"></script>
-	    <script src="assets/js/scrollreveal.min.js"></script>
-	    <script src="assets/js/waypoints.min.js"></script>
-	    <script src="assets/js/jquery.counterup.min.js"></script>
-	    <script src="assets/js/imgfix.min.js"></script> 
-	    <script src="assets/js/slick.js"></script> 
-	    <script src="assets/js/lightbox.js"></script> 
-	    <script src="assets/js/isotope.js"></script> 
+	    <script src="../assets/js/owl-carousel.js"></script>
+	    <script src="../assets/js/accordions.js"></script>
+	    <script src="../assets/js/datepicker.js"></script>
+	    <script src="../assets/js/scrollreveal.min.js"></script>
+	    <script src="../assets/js/waypoints.min.js"></script>
+	    <script src="../assets/js/jquery.counterup.min.js"></script>
+	    <script src="../assets/js/imgfix.min.js"></script> 
+	    <script src="../assets/js/slick.js"></script> 
+	    <script src="../assets/js/lightbox.js"></script> 
+	    <script src="../assets/js/isotope.js"></script> 
 	    
 	    <!-- Global Init -->
-	    <script src="assets/js/custom.js"></script>
+	    <script src="../assets/js/custom.js"></script>
 	
 		<!-- Modal -->
-		<script src="assets/js/modal.js"></script> 
+		<script src="../assets/js/modal.js"></script> 
 		
 		
 		
@@ -57,24 +57,9 @@
 				} );
 			} );
 		</script>
-		 <script>
+		  <script>
 
-			//shop.html 불러오기 
-			 async function fetchHtmlAsText(url) {
-			 	return await (await fetch(url)).text();
-			 }
-	
-			 async function importPage() {
-			 	/* document.querySelector('#' + target).innerHTML = await fetchHtmlAsText('http://localhost:8080/templatemo_571_hexashop/'+target+'.html'); */
-			 	document.querySelector('#shop').innerHTML =  '<object type="text/html" data="http://localhost:8080/templatemo_571_hexashop/shop.html" ></object>';
-			 }
-			 importPage();
-			 
-			/*  $(document).ready(function(){
-				    $(#shop).load("../shop.html");
-				}); */
-	
-	
+				
 			//애니메이션
 			$(()=>{
 				$('#tab div').bind('click',function(e){
@@ -84,22 +69,19 @@
 					if(tab=='test1'){
 						e.preventDefault();
 						$(this).removeClass('stretchRight');
-						$('#test1').css(zIndex,'0');
-						$('#test2').css(zIndex,'-10');
-						$('#index').show();
-						$('#shop').hide();
+						$('#test1').css({zIndex:'0'});
+						$('#test2').css({zIndex:'-10'});
 						$(this).addClass('stretchRight');
+						$(location).attr('href','http://localhost:8080/templatemo_571_hexashop/index.html');
 					 
 						 
 					}else if(tab=='test2'){
 						e.preventDefault();
 						$('this').removeClass('stretcLeft');
-						$('#test2').css(zIndex,'0');
-						$('#test1').css(zIndex,'-10');
-						$('#index').hide();
-						$('#shop').show();
+						$('#test2').css({zIndex:'0'});
+						$('#test1').css({zIndex:'-10'});
 						$(this).addClass('stretchLeft');
-						
+						$(location).attr('href','http://localhost:8080/templatemo_571_hexashop/community/index.html');
 					}
 				});
 			});
@@ -111,8 +93,8 @@
 
 	<!-- Tab -->	
 	<div id="tab" style="  height: 2rem; background-color: #96baec; position: relative;" >
-		<div id="test1" style="margin: 0; background-color: #f1f4fa; width: 70%;  height: 2rem; display: inline-block; border-radius: 0 40px 0 0; /* border: 1px solid black; */">test1</div>
 		<div id="test2" style="margin: 0; background-color: #96baec; width: 70%; height: 2rem; position: absolute; right: 0; display: inline-block;">test2</div>
+		<div id="test1" style="margin: 0; background-color: #f1f4fa; width: 70%;  height: 2rem; display: inline-block; border-radius: 0 40px 0 0; /* border: 1px solid black; */">test1</div>
 	</div>
 
     <!-- test -->
@@ -205,32 +187,6 @@
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Header
-					<header id="header">
-						<h1><a href="index.html">Future Imperfect</a></h1>
-						<nav class="links">
-							<ul>
-								<li><a href="#">Lorem</a></li>
-								<li><a href="#">Ipsum</a></li>
-								<li><a href="#">Feugiat</a></li>
-								<li><a href="#">Tempus</a></li>
-								<li><a href="#">Adipiscing</a></li>
-							</ul>
-						</nav>
-						<nav class="main">
-							<ul>
-								<li class="search">
-									<a class="fa-search" href="#search">Search</a>
-									<form id="search" method="get" action="#">
-										<input type="text" name="query" placeholder="Search" />
-									</form>
-								</li>
-								<li class="menu">
-									<a class="fa-bars" href="#menu">Menu</a>
-								</li>
-							</ul>
-						</nav>
-					</header> -->
 
 				<!-- Menu -->
 					<section id="menu">
@@ -286,28 +242,25 @@
 
 						<!-- Post -->
 							<article class="post">
-								<header>
-									<div class="title">
-										<h2><a href="#">Magna sed adipiscing</a></h2>
-										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+								<div style="border-bottom: solid 1px rgba(160, 160, 160, 0.3); height: 5em"><!-- <header>였던 것을 <div>로 수정했음, <header>일때 background-header의 영향을 받음 -->
+									<div class="meta" style="border-left: 0; padding: 1.5em 0 1.75em 3em; width:670px">
+										<a href="#" class="author" style="padding-left:0"><img src="images/avatar.jpg" alt="" style="width: 1.5em"/><span class="name">Jane Doe</span></a>
+										<time class="published" datetime="2015-11-01" style="float: right">November 1, 2015</time>
 									</div>
-									<div class="meta">
-										<time class="published" datetime="2015-11-01">November 1, 2015</time>
-										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-									</div>
-								</header>
-								<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
+								</div>
+								<span class="image featured"><img src="images/pic01.jpg" alt="" width="100%"/></span>
 								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
 								<p>Nunc quis dui scelerisque, scelerisque urna ut, dapibus orci. Sed vitae condimentum lectus, ut imperdiet quam. Maecenas in justo ut nulla aliquam sodales vel at ligula. Sed blandit diam odio, sed fringilla lectus molestie sit amet. Praesent eu tortor viverra lorem mattis pulvinar feugiat in turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce ullamcorper tellus sit amet mattis dignissim. Phasellus ut metus ligula. Curabitur nec leo turpis. Ut gravida purus quis erat pretium, sed pellentesque massa elementum. Fusce vestibulum porta augue, at mattis justo. Integer sed sapien fringilla, dapibus risus id, faucibus ante. Pellentesque mattis nunc sit amet tortor pellentesque, non placerat neque viverra. </p>
+								<p><!-- 여백 -->
 								<button class="commentList">댓글 더보기</button>
 								<ul class="stats commment_stats">
 										<li><a href="#" class="icon solid fa-heart">좋아요</a> 1</li>
 								</ul>
-								<footer style="background-color: #fff">
+								<footer style="background-color: #fff; margin-top:0">
 									<ul class="actions">
 										<!-- <li><button class="comment "><a class="button large">댓글 입력창 (슬라이드 토글 사용) </a></button></li> -->
 										<li id="comment_li"><button class="comment ">댓글 입력창</button></li>
-										<li id="comment_li"><div class="divcomment"><input type="text" name="comment"></div></li>									
+										<li id="comment_li"><div class="divcomment"  style="display: none;"><input type="text" name="comment"></div></li>									
 										<li>댓글 내용</li>
 										<li>댓글 내용</li>
 										<ul class="ulcommentList" style="display: none;">
@@ -320,11 +273,6 @@
 									</ul>
 									
 									
-									<!-- <ul class="stats">
-										<li><a href="#">댓글 보기</a></li>
-										<li><a href="#" class="icon solid fa-heart">좋아요</a> 1</li>
-										
-									</ul> -->
 								</footer>
 							</article>
 
