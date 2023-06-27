@@ -39,6 +39,7 @@
               <p class="card-content">판매 현황</p>
             </a>
           </li>
+          <li>
             <a href="product-management.do">
               <i class="tim-icons icon-pin"></i>
               <p>상품 관리</p>

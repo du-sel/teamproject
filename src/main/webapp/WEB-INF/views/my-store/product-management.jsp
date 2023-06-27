@@ -35,14 +35,8 @@
         <ul class="nav">
           <li>
             <a href="sales-status.do">
-              <i class="tim-icons icon-chart-pie-36"></i>
+              <i class="tim-icons icon-coins"></i>
               <p>판매 현황</p>
-            </a>
-          </li>
-          <li>
-            <a href="./icons.html">
-              <i class="tim-icons icon-atom"></i>
-              <p>정산 내역</p>
             </a>
           </li>
           <li class="active ">
@@ -52,7 +46,7 @@
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="review-management.do">
               <i class="tim-icons icon-bell-55"></i>
               <p>후기 관리</p>
             </a>

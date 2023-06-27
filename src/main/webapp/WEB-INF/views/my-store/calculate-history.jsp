@@ -34,19 +34,19 @@
         </div>
         <ul class="nav">
           <li class="active ">
-            <a href="./sales-status.do">
+            <a href="sales-status.do">
               <i class="tim-icons icon-coins"></i>
               <p class="card-content">판매 현황</p>
             </a>
           </li>
           <li>
-            <a href="./map.html">
+            <a href="product-management.do">
               <i class="tim-icons icon-pin"></i>
               <p>상품 관리</p>
             </a>
           </li>
           <li>
-            <a href="./review-management.do">
+            <a href="review-management.do">
               <i class="tim-icons icon-bell-55"></i>
               <p>후기 관리</p>
             </a>
