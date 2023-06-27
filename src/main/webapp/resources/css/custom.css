@@ -1530,11 +1530,12 @@ st-creator
 */
 
 	
-#creators .sort {
+#creators .sort{
 	padding: 30px 0;
 }
 
-#creators .sort select {
+#creators .sort select,
+#calculate-history .sort select {
 	height: 2rem;
 	width: 7rem;
 	text-align: center;
