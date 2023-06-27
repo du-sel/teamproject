@@ -133,11 +133,7 @@ function change_pwd_chk(pwd){
 	if(pwd_chk_str.test($(inputs[1]).val())){	// 비밀번호 형식에 맞아야함
 		if($(inputs[1]).val() == $(inputs[2]).val()){
 			$(inputs[2]).parent().next().text("");
-
-			console.log("bb");
 		}else{
-
-			console.log("aa");
 			$(inputs[2]).parent().next().text("비밀번호가 일치하지않습니다.").css('color','#f00');
 			res = false;
 		}
@@ -157,7 +153,7 @@ function sign_chk(){
 	if(email_flag == -1 || url_flag == -1){
 		let p;
 		if(email_flag == -1){ p = $(parents[0]).children().last(); }
-		else if(url_flag == -1){ p = $(parents[4]).children().last(); }
+		else if(url_flag == -1){ p = $(parents[5]).children().last(); }
 
 		p.text("중복 확인이 되지않았습니다.").css('color','#f00');
 		return false;
@@ -253,4 +249,22 @@ function re_chk(value, idx){
 		p.text("");
 		return true;
 	}
+}
+
+
+/***** user-modify.html *****/
+//user-modify.html 유효성 검사 판단
+function modify_chk(){    	
+	parents = $('.form-group');
+	
+	if(url_flag == -1){
+		let p = $(parents[2]).children().last();
+
+		p.text("중복 확인이 되지않았습니다.").css('color','#f00');
+		return false;
+	}else if(url_flag == 0){
+		return false;
+	}
+	
+	return true;
 }

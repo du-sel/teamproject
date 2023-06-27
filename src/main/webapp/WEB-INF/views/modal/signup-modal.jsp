@@ -33,16 +33,21 @@
 				</div>
 				<p></p>
 			</div>
+			<div class="form-group">		<!-- 이름-->
+				<div class="input-group">
+					<input type="text" class="form-control" name="name" placeholder="UserName" required oninput="remove(3, this)">
+				</div>
+			</div>
 			<div class="form-group">		<!-- 핸드폰번호 -->
 				<div class="input-group">
 					<input type="text" class="form-control" name="tel" placeholder="PhoneNumber" maxlength="13" oninput="tel_hyphen(this);" required>
 				</div>
 			</div>
-			<div class="form-group">		<!-- url주소 -->
+			<div class="form-group">		<!-- 프로필 url -->
 				<div class="input-group">
 					<input type="text" class="base-url" value="/shop/" disabled>
 					<input type="text" class="form-control" name="url" placeholder="ProfileURL" onkeyup="chk_reset('url')" oninput="remove(3, this)">
-					<button type="button" class="btn btn-chk" onclick="url_chk('', true, 4)">Check</button>
+					<button type="button" class="btn btn-chk" onclick="url_chk('', true, 5)">Check</button>
 				</div>
 				<p></p>
 			</div>
