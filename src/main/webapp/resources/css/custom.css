@@ -1815,13 +1815,13 @@ cart
 */
 
 
-	/* 삭제 아이콘 */
+/* 삭제 아이콘 */
 #cart .fa-times:hover{
 	color: #f00;
 }
 
 	
- 	/* 결제 박스 */
+/* 결제 박스 */
 #cart .payment{
 	border: 1px solid #000;
 	min-height: 6rem;
@@ -2094,6 +2094,20 @@ user-modify, user-pwd-modify
 	height:100%;
 	text-align: left;
 }
+.user-modify #modify-input-container .input-group-addon {
+	max-width: 42px;
+	text-align: center;
+	background: none;
+	border-width: 0 0 1px 0;
+	padding-left: 5px;
+	border-radius: 0;
+	padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    border-bottom: 1px solid #ccc;
+}
 .user-modify #modify-input-container .form-control {
 	min-height: 38px;
 	padding-left: 5px;
@@ -2102,7 +2116,7 @@ user-modify, user-pwd-modify
 	border-radius: 0;
 }
 .user-modify #modify-input-container .form-control:focus {
-	border-color: #eee;
+	border-color: #aaa;
 }
 
 .user-modify #modify-input-container .btn {        
@@ -2115,10 +2129,30 @@ user-modify, user-pwd-modify
     outline: none !important;
     color: #fff;
 }
-.user-modify #modify-input-container .btn:hover, .modal-login .btn:focus {
-	background: #eee;
+.user-modify #modify-input-container .btn-chk {        
+	background: #fff;
+	border-left: 1px dotted #ced4da;
+	border-bottom: 1px solid #ced4da;
+    border-radius: 0px;
+	min-width: 80px;
+    color: #000;
 }
-
+.user-modify #modify-input-container .form-control:focus+.btn-chk{
+	border-left: 1px dotted #aaa;
+	border-bottom: 1px solid #aaa;
+}
+.user-modify #modify-input-container .btn:hover, .modal-login .btn:focus {
+	background: #aaa;
+}
+.user-modify #modify-input-container .fa {
+	font-size: 21px;
+}
+.user-modify #modify-input-container .input-group .base-url{
+	width: 80px;
+	border:none;
+	border-bottom: 1px solid #ced4da;
+	text-align: center;
+}
 
 
 
