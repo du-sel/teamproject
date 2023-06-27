@@ -22,6 +22,8 @@
 				<prop key="/user-pwd-modify.do">product</prop>
 				<prop key="/news.do">product</prop>
 				<prop key="/sales-status.do">product</prop>
+				<prop key="/calculate-history.do">product</prop>
+				<prop key="/review-management.do">product</prop>
 			</props>
 		</property>
 	</bean>

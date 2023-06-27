@@ -35,14 +35,8 @@
         <ul class="nav">
           <li class="active ">
             <a href="./sales-status.do">
-              <i class="tim-icons icon-chart-pie-36"></i>
+              <i class="tim-icons icon-coins"></i>
               <p class="card-content">판매 현황</p>
-            </a>
-          </li>
-          <li>
-            <a href="./icons.html">
-              <i class="tim-icons icon-atom"></i>
-              <p>정산 내역</p>
             </a>
           </li>
           <li>
@@ -52,7 +46,7 @@
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="./review-management.do">
               <i class="tim-icons icon-bell-55"></i>
               <p>후기 관리</p>
             </a>
@@ -78,20 +72,6 @@
     <div class="main-panel">     
       <div class="content">
         <div class="row">
-          <div class="col-lg-4">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">2023년 06월</h5>
-                <h3 class="card-title">이번달 수익</h3>
-              </div>
-              <div class="card-body">
-                <div class="chart-area d-flex flex-column justify-content-center revenue">
-               		<p class="card-content">￦<span id="m_revenue">0</span></p>
-                  <!-- <canvas id="chartLineGreen"></canvas> -->
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="col-lg-8">
             <div class="card card-chart">
               <div class="card-header ">
@@ -109,6 +89,20 @@
               </div>
             </div>
           </div>
+          <div class="col-lg-4">
+            <div class="card card-chart m-revenue">
+              <div class="card-header">
+                <h5 class="card-category">2023년 06월</h5>
+                <h3 class="card-title">이번달 수익</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area d-flex flex-column justify-content-center revenue">
+               		<p class="card-content" style="width: max-content;">￦<span id="m-revenue">0</span></p>
+                </div>
+                <button type="button" class="cal-history" onclick="javascript:location.href='./calculate-history.do';">정산 내역 보러가기<i class="tim-icons icon-double-right"></i></button>
+              </div>
+            </div>
+          </div>
         </div>
         
         <div class="row">
@@ -116,7 +110,7 @@
             <div class="card card-chart bar-chart">
               <div class="card-header">
                 <h5 class="card-category">Best5 상품 수익</h5>
-                <h2 class="card-title">Total. ￦<span id="p_revenue">0</span></h2>
+                <h2 class="card-title">Total. ￦<span id="p-revenue">0</span></h2>
               </div>
               <div class="card-body">
                 <div class="chart-area">
@@ -132,8 +126,8 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table tablesorter " id="">
-                    <thead class=" text-primary">
+                  <table class="table tablesorter best-p" id="">
+                    <thead>
                       <tr>
                         <th>
                           Name
@@ -220,6 +214,7 @@
   
 
   
+  <script src="/resources/js/my-store.js"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -275,43 +270,13 @@
           }, 1000);
         });
         
-		countingUp($('#m_revenue'), 3000000);
+		countingUp($('#m-revenue'), 3000000);
 		countingUp($('#revenue'), 12345678);
-		countingUp($('#p_revenue'), 450000);
-		
-		
-		// Window Resize Mobile Menu Fix
-	  	$(window).on('resize', function() {
-	  		console.log("resize1");
-	  		setTimeout(function() {
-	  			$('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
-	  		}, 10);
-	  	});
-        
+		countingUp($('#p-revenue'), 450000);
 	  });
 	   
-	  // 숫자 카운팅 함수	  
-	  function countingUp(target, count){
-		  $({ val : 0 }).animate({ val : count }, {
-			  duration: 1500,
-			  step: function() {
-				  var num = numberWithCommas(Math.floor(this.val));
-				  target.text(num);
-			  },
-			  complete: function() {
-				  var num = numberWithCommas(Math.floor(this.val));
-				  target.text(num);
-			  }
-		  });
-	  }
-	      
-	  // 세자리 마다 콤마(,) 넣는 함수
-	  function numberWithCommas(x) {
-		  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	  }
   	});
   </script>
-  
   
   
   

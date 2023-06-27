@@ -5211,10 +5211,37 @@ input[type="button"].btn-block {
 	text-align: center;
 }
 
+.m-revenue{
+	min-width: max-content;
+}
+
 .revenue{
+	position: relative;
 	padding-bottom: 21px;
 	width: 20rem;
     margin: 0 auto;
+    overflow-x: auto; 
+}
+/* 스크롤 커스텀 */
+.revenue::-webkit-scrollbar {
+    height: 5px;  /* 스크롤바의 너비 */
+}
+.revenue::-webkit-scrollbar-thumb {
+    /* width: 10%; */ /* 스크롤바의 길이 */
+    background: #000; /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+.revenue::-webkit-scrollbar-track {
+    background: #ccce;  /*스크롤바 뒷 배경 색상*/
+    border-radius: 10px;
+}
+
+.revenue p{
+	margin: 0 auto;
+	padding: 0 20px;
+}
+.revenue p span{
+	
 }
 
 .card-text:last-child {
@@ -20443,5 +20470,29 @@ Copyright (c) 2015 Daniel Eden
 /* 추가 */
 .bar-chart{
 	padding-bottom: 28.22px;
+}
+.best-p{
+	table-layout: fixed;
+}
+.best-p td{
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.m-revenue .cal-history{
+	position: absolute;
+    border: none;
+    background: #fff;
+    bottom: 30px;
+    right: 10px;
+    font-size: 12px;
+}
+.m-revenue .cal-history:hover{
+	font-weight: 600;
+}
+.sort{
+	position: absolute;
+	top: 15px;
+	right: 15px;
 }
 /*# sourceMappingURL=dashboard-free.css.map */
