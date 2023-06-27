@@ -2,12 +2,13 @@
  * login-modal
  * signup-modal
  * shop-create-modal
+ * user-modify
  */
 
 function onSigninModal() { $('.modal-content').load("signin-modal.do"); }
 function onSignupModal() { $('.modal-content').load("signup-modal.do"); }
 function onShopModal() { $('.modal-content').load("shop-create-modal.do"); }
-function changeSignupModal(){ $('.scroll-to-section').eq(1).click(); } 		// login-modal.html에서 사용
+function changeSignupModal(){ $('.scroll-to-section').eq(1).click(); } 		// login-modal.jsp에서 사용
 
 let email_flag = -1;
 let pwd_flag = false;
@@ -114,7 +115,7 @@ function email_chk(email_chk){
 	}
 }
 
-/***** user-pwd-modify.html *****/
+/***** user-pwd-modify.jsp *****/
 //비밀번호 변경 전 확인
 function change_pwd_chk(pwd){
 	res = true;
@@ -144,8 +145,8 @@ function change_pwd_chk(pwd){
 	return res;
 }
 
-/***** singup-modal.html *****/
-// singup-modal.html 유효성 검사 판단
+/***** singup-modal.jsp *****/
+// singup-modal.jsp 유효성 검사 판단
 function sign_chk(){    	
 	inputs = $('#modal input');
 	parents = $('.form-group');
@@ -192,8 +193,8 @@ function pwd_chk(){
 }
 
 
-/***** shop-create-modal.html *****/
-//shop-create-modal.html 유효성 검사 판단
+/***** shop-create-modal.jsp *****/
+//shop-create-modal.jsp 유효성 검사 판단
 function shop_chk(){
 	inputs = $('#modal input');
 	parents = $('.form-group');
@@ -252,8 +253,8 @@ function re_chk(value, idx){
 }
 
 
-/***** user-modify.html *****/
-//user-modify.html 유효성 검사 판단
+/***** user-modify.jsp *****/
+//user-modify.jsp 유효성 검사 판단
 function modify_chk(){    	
 	parents = $('.form-group');
 	
