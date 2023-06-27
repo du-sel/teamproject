@@ -126,7 +126,7 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table tablesorter best-p" id="">
+                  <table class="table tablesorter best-p">
                     <thead>
                       <tr>
                         <th>
