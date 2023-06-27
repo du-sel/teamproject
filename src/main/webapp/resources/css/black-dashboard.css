@@ -5205,10 +5205,16 @@ input[type="button"].btn-block {
 
 .row .card-content{
 	color: #000 !important;
-	font-size: 3.5rem;
+	font-size: 3rem;
 	font-weight: 300;
 	width: 100%;
 	text-align: center;
+}
+
+.revenue{
+	padding-bottom: 21px;
+	width: 20rem;
+    margin: 0 auto;
 }
 
 .card-text:last-child {
@@ -14562,7 +14568,7 @@ fieldset[disabled] .btn-link.active {
   border-radius: 0.4285rem;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .dropdown-toggle:after {
     display: inline-block;
     width: 0;
@@ -14631,7 +14637,7 @@ fieldset[disabled] .btn-link.active {
   content: " ";
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .footer {
     padding-left: 0px;
   }
@@ -15934,7 +15940,7 @@ img {
   font-size: 20px;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .navbar .container-fluid {
     padding-right: 15px;
     padding-left: 15px;
@@ -16827,7 +16833,7 @@ hr {
 }
 
 .table-responsive {
-  overflow: scroll;
+  overflow: auto;
   padding-bottom: 10px;
 }
 
@@ -17367,6 +17373,11 @@ table.tablesorter thead tr .headerSortDown {
   color: #fff;
 }
 
+.sidebar .nav li p{
+	color: #fff;
+}
+
+
 .sidebar .sidebar-wrapper,
 .off-canvas-sidebar .sidebar-wrapper {
   width: 100%;
@@ -17658,6 +17669,10 @@ table.tablesorter thead tr .headerSortDown {
   transform: translate3d(0px, 0, 0);
 }
 
+.logo-normal{
+	margin-left: 12px;	
+}
+
 .sidebar .logo:after,
 .off-canvas-sidebar .logo:after {
   content: '';
@@ -17795,7 +17810,7 @@ table.tablesorter thead tr .headerSortDown {
   float: right;
   width: 100%;
   min-height: 100vh;
-  border-top: 2px solid #000;
+  /* border-top: 2px solid #000; */
   /* background: linear-gradient(#1e1e2f, #1e1e24); */
   background: #fff;
   -webkit-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
@@ -17824,7 +17839,7 @@ table.tablesorter thead tr .headerSortDown {
   max-height: 100%;
 }
 
-@media (min-width: 991px) {
+@media (min-width: 768px) {
 
   .sidebar,
   .main-panel,
@@ -17975,7 +17990,7 @@ table.tablesorter thead tr .headerSortDown {
   height: 380px;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .sidebar {
     position: fixed;
     display: block;
@@ -17999,25 +18014,25 @@ table.tablesorter thead tr .headerSortDown {
   }
 }
 
-@media screen and (max-width: 991px) and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) and (prefers-reduced-motion: reduce) {
   .sidebar {
     transition: none;
   }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .wrapper {
     transition: 0.5s, cubic-bezier(0.685, 0.0473, 0.346, 1);
   }
 }
 
-@media screen and (max-width: 991px) and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) and (prefers-reduced-motion: reduce) {
   .wrapper {
     transition: none;
   }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .main-panel {
     width: 100%;
   }
@@ -18045,13 +18060,13 @@ table.tablesorter thead tr .headerSortDown {
   }
 }
 
-@media screen and (max-width: 991px) and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) and (prefers-reduced-motion: reduce) {
   .nav-open .sidebar {
     transition: none;
   }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .nav-open .sidebar:before {
     content: unset;
   }
@@ -18109,7 +18124,7 @@ table.tablesorter thead tr .headerSortDown {
   }
 }
 
-@media screen and (max-width: 991px) and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) and (prefers-reduced-motion: reduce) {
   #bodyClick {
     transition: none;
   }
@@ -18499,7 +18514,7 @@ code {
   color: #f3a4b5;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .profile-photo .profile-photo-small {
     margin-left: -2px;
   }
@@ -18674,7 +18689,7 @@ code {
   left: 10px;
 }
 
-@media (min-width: 991px) {
+@media (min-width: 768px) {
   .rtl.sidebar-mini .main-panel .content {
     padding-right: 130px;
     padding-left: 50px;
@@ -18690,7 +18705,7 @@ code {
   }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .rtl .sidebar {
     margin-right: 0;
   }
@@ -19967,6 +19982,7 @@ Copyright (c) 2015 Daniel Eden
   color: #9A9A9A;
   margin-bottom: 5px;
   font-weight: 300;
+  font-size: 1rem;
 }
 
 .card .map {
