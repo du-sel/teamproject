@@ -113,7 +113,7 @@
         
         <div class="row">
           <div class="col-lg-6 col-md-12">
-            <div class="card card-chart">
+            <div class="card card-chart bar-chart">
               <div class="card-header">
                 <h5 class="card-category">Best5 상품 수익</h5>
                 <h2 class="card-title">Total. ￦<span id="p_revenue">0</span></h2>
@@ -236,8 +236,9 @@
         window_width = $(window).width();
 
         fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-
+        
+        // sidebar height 지정
+        $('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
 
         $('.fixed-plugin a').click(function(event) {
           if ($(this).hasClass('switch-trigger')) {
@@ -277,8 +278,18 @@
 		countingUp($('#m_revenue'), 3000000);
 		countingUp($('#revenue'), 12345678);
 		countingUp($('#p_revenue'), 450000);
+		
+		
+		// Window Resize Mobile Menu Fix
+	  	$(window).on('resize', function() {
+	  		console.log("resize1");
+	  		setTimeout(function() {
+	  			$('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
+	  		}, 10);
+	  	});
+        
 	  });
-      
+	   
 	  // 숫자 카운팅 함수	  
 	  function countingUp(target, count){
 		  $({ val : 0 }).animate({ val : count }, {
