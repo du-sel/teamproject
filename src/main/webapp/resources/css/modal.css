@@ -49,11 +49,15 @@
 }
 .modal-container .btn-chk {        
 	background: #fff;
-	border-left: 1px dotted #aaa;
-	border-bottom: 1px solid #aaa;
+	border-left: 1px dotted #ced4da;
+	border-bottom: 1px solid #ced4da;
     border-radius: 0px;
 	min-width: 80px;
     color: #000;
+}
+.modal-container .form-control:focus+.btn-chk{
+	border-left: 1px dotted #aaa;
+	border-bottom: 1px solid #aaa;
 }
 .modal-container .btn:hover, .modal-login .btn:focus {
 	background: #aaa;
