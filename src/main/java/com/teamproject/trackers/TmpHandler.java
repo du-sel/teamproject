@@ -64,6 +64,9 @@ public class TmpHandler implements Controller {
 		else if(path.equals("/sales-status.do")) {			
 			mav.setViewName("./WEB-INF/views/my-store/sales-status.jsp");			
 		}
+		else if(path.equals("/myprofile.do")) {			
+			mav.setViewName("./WEB-INF/views/profile/myprofile.jsp");			
+		}
 		
 		
 		
