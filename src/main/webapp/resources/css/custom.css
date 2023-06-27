@@ -3215,22 +3215,36 @@ my-store 공통 (sidebar 위주)
 
 /* 
 ---------------------------------------------
-sales-status
+product-management
 --------------------------------------------- 
 */
 
 
+#product-management .info .row {
+	margin: 0 10px;
+}
+
+#product-management .product-info {
+	height: 100%;
+}
+
+#product-management .info .btn-container {
+    margin-bottom: 10px;
+}
+#product-management .info .signature-btn {
+    padding: 5px;
+}
+#product-management .info .btn-container button {
+    padding: 5px 10px;
+}
 
 
-
-
-
-
-
-
-
-
-
+#product-management .listtop {
+	padding: 30px 10px;
+}
+#product-management .listtop button {
+	padding: 5px;
+}
 
 
 
