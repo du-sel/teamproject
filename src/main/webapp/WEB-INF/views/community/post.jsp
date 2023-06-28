@@ -10,7 +10,7 @@
 	    <!-- Bootstrap -->
 	    <script src="../resources/js/popper.js"></script>
 	    <script src="../resources/js/bootstrap.min.js"></script>
-	
+	  
 	    <!-- Plugins -->
 	    <script src="../resources/js/owl-carousel.js"></script>
 	    <script src="../resources/js/accordions.js"></script>
@@ -125,7 +125,7 @@
 											<li>댓글 내용</li>											
 											<li>댓글 내용</li>											
 											<li>댓글 내용</li>											
-											<li>댓글 내용</li>											
+											<li>댓글 내용</li>										
 										</ul>
 									</ul>
 									

@@ -20489,6 +20489,7 @@ Copyright (c) 2015 Daniel Eden
 #sales-status tbody tr:nth-child(1) td,
 #inquiry-management thead th:nth-child(1),
 #inquiry-management tbody tr:nth-child(1) td{
+
 	width: 70px;
 }
 .m-revenue .cal-history{
@@ -20507,6 +20508,7 @@ Copyright (c) 2015 Daniel Eden
 	top: 15px;
 	right: 15px;
 }
+
 
 #inquiry-management thead th:nth-child(3),
 #inquiry-management tbody tr:nth-child(3) td,
