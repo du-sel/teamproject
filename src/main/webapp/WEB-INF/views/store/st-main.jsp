@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="section-heading">
-                        <h2>베스트 상품 test</h2>
+                        <h2>베스트 상품</h2>
                         <span>지금 가장 인기있는 상품들을 만나보세요!</span>
                     </div>
                 </div>

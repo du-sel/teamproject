@@ -244,7 +244,9 @@ body {
   font-style: italic;
   font-weight: 400;
 }
-
+button:focus {
+	outline: none;
+}
 
 
 /* 
@@ -1981,17 +1983,18 @@ purchase-history
 --------------------------------------------- 
 */
 
-#purchase-history .download{
+#purchase-history .button {
 	background-color:#fff;
 	border: 1px solid #000;
 }
-#purchase-history .download:hover{
+#purchase-history .button:hover {
 	background-color:#000;
 	color: #fff;
 	font-weight:bolder;
 }
-
-
+#purchase-history .download {
+	margin-bottom: 10px;
+}
 
 
 
@@ -3228,14 +3231,22 @@ product-management
 	height: 100%;
 }
 
-#product-management .info .btn-container {
+#product-management .info .up-del-btn-container {
     margin-bottom: 10px;
 }
 #product-management .info .signature-btn {
     padding: 5px;
+    width: 7rem;
 }
-#product-management .info .btn-container button {
+#product-management .info .signature-btn:hover {
+	
+}
+
+#product-management .info .up-del-btn-container button {
     padding: 5px 10px;
+    width: 3.4rem;
+    border: none;
+    background: transparent;
 }
 
 
@@ -3244,6 +3255,9 @@ product-management
 }
 #product-management .listtop button {
 	padding: 5px;
+}
+#product-management .listtop button:hover {
+	
 }
 
 
