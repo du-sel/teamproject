@@ -17,13 +17,9 @@ body{
 }
 .firstcontainer{
 /* 	border: 1px solid gray; */
-	padding-top:200px;
+	padding-top:100px;
+}
 
-}
-.secondcontainer{
-	border: 1px solid gray;
-	
-}
 
 /* 상단이미지 */
 .topimg{
@@ -40,12 +36,20 @@ body{
 	display: none;
 	width: 100px;
 	height: 100px;
+	position: relative;
+    left: 490px;
+    top: 40px;
 	
 }
 
 .seconddiv{
-	height: 280px;
+	min-height: 160px;
+	height:flex;
 	padding-top: 20px;
+	
+}
+.thriddiv{
+	margin-top: 10px;
 }
 
 /* 프로필 이미지 */
@@ -65,21 +69,34 @@ body{
 }
 
 .nickname{
-	border: 1px solid lightgray;
+/* 	border: 1px solid lightgray; */
 	height: 40px;
-	font-size: 22px;
 	padding-top: 3px;
+	min-width: 80px;
+	
+	font-size: 24px;
+    font-weight: 700;
+    
+    
 }
-.btn{
+.fbtn,.sbtn{
+
+}
+#buttonright{
+	display: inline-block;
 	border: 1px solid lightgray;
-	height: 40px;
+	width: 120px;
+    height: 44px;
 	padding-top: 10px;
+	text-align: center;
 }
 .fakerow{
 	height:15px;
 }
 .addressdiv{
-	height: 20px;
+	height: 30px;
+	font-size: 17px;
+	padding-top: 3px;
 }
 .addressdiv > a{
 	text-decoration: none;
@@ -97,6 +114,20 @@ body{
 	display: none;	
 }
 
+.navli{
+	text-align: center;
+	padding-top: 5px;
+	width: 80px;
+	height: 40px;
+	font-size: 20px;
+	font-weight: 700;
+	margin-right: 20px;
+	border: 1px solid lightgray;
+}
+
+.tab-content{
+	height: 500px;
+}
 
 
 /* 모달 스타일링을 위한 CSS 코드 */
@@ -114,12 +145,13 @@ body{
   border-radius: 10px;
 }
 
-.modal-content {
+.mcontent {
+  text-align:center;
   background-color: #fefefe;
-  margin: 2%;
+  margin: auto;
   padding: 5px;
   border: 1px solid #888;
-  width: 370px;
+  width: 300px;
   height: 460px;
   position: relative;
   top:10px;
