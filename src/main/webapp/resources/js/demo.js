@@ -327,9 +327,10 @@ demo = {
             zeroLineColor: "transparent",
           },
           ticks: {
-            suggestedMin: 60,
-            suggestedMax: 120,
-            padding: 20,
+            suggestedMin: 0,
+            suggestedMax: 30,
+            padding: 1,
+            stepSize: 5,
             fontColor: "#9e9e9e"
           }
         }],
@@ -498,9 +499,9 @@ demo = {
         display: false
       },
       data: {
-        labels: ['템플릿1', '템플릿2', '템플릿3', '템플릿4', '템플릿5'],
+        labels: ['1', '2', '3', '4', '5'],
         datasets: [{
-          label: "Countries",
+          label: "Quantity",
           fill: true,
           backgroundColor: gradientStroke,
           hoverBackgroundColor: gradientStroke,
@@ -508,7 +509,7 @@ demo = {
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          data: [53, 20, 10, 80, 100],
+          data: [8, 6, 5, 5, 4],
         }]
       },
       options: gradientBarChartConfiguration
