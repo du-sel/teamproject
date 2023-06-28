@@ -71,13 +71,8 @@
     
     <div class="main-panel">     
       <div class="content">
-      	<div class="row justify-content-center listtop">
-      		<div class="col-xl-10 col-lg-12 d-flex justify-content-between align-items-center">
-				<div>
-					<h5>총 상품 개수</h5>
-				</div>
-				<button type="button" onclick="location.href='insert-product.do'">신규 상품 등록</button>
-			</div>
+      	<div class="row justify-content-center page-title">
+			<h2>신규 상품 등록</h2>
       	</div>
       
         <div class="row justify-content-center">

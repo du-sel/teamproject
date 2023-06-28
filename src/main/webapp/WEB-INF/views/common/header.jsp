@@ -49,15 +49,7 @@
     
     
     
-    
 
-    
-    
-    
-    
-    
-    
-    
     
     </head>
     
@@ -90,7 +82,7 @@
 	    <!-- ***** Header Area Start ***** -->
 	    <header class="header-area header-sticky">
 	        <div class="container-xl">
-	            <div class="row">
+	            <div class="row header-row">
 	                <div class="col-12">
 	                    <nav class="main-nav">
 	                        <!-- ***** Menu Start ***** -->
@@ -123,20 +115,28 @@
 	                          			<img src="/resources/images/baner-right-image-02.jpg" alt="프로필사진" id="profile-image">
 	                          			<ul>
 		                                    <li><a href="cart.do">장바구니</a></li>
+		                                    <li><a href="news.do">내 소식</a></li>
 		                                    <li><a href="purchase-history.do">구매 내역</a></li>
 		                                    <li><a href="inquiry-history.do">문의 내역</a></li>
-		                                    <li><a href="news.do">내 소식</a></li>
 		                                    <li><a href="user-modify.do">회원정보 변경</a></li>
 		                                    <li><a href="user-pwd-modify.do">비밀번호 변경</a></li>
+		                                    <li><a href="logout.do">로그아웃</a></li>
 		                                </ul>
 	                          		</div>
 	                          		<div class="scroll-to-section" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
 	                            </div>
 	                        </div> 	       
-							                  
-							<a class='menu-trigger'>
-	                            <span>Menu</span>
-	                        </a>
+							
+							<div class="nav-mobile">
+								<div class="logo-mobile-container">
+	                                <a href="st-main.do" class="logo">
+	                                    <img src="/resources/images/trackers-mobile.svg">
+	                                </a>
+	                            </div>
+								<a class='menu-trigger'>
+		                            <span>Menu</span>
+		                        </a>
+							</div>                  
 	                        <!-- ***** Menu End ***** -->
 	                	</nav>
 	                </div>

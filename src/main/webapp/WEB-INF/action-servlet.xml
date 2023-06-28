@@ -26,6 +26,7 @@
 				<prop key="/calculate-history.do">product</prop>
 				<prop key="/review-management.do">product</prop>
 				<prop key="/post.do">product</prop> 
+				<prop key="/insert-product.do">product</prop> 
 			</props>
 		</property>
 	</bean>
