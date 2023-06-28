@@ -75,7 +75,7 @@ public class TmpHandler implements Controller {
 		}
 		else if(path.equals("/post.do")) {			
 			mav.setViewName("./WEB-INF/views/community/post.jsp");			
-		}
+		} 
 		
 		
 		
