@@ -2,12 +2,12 @@
 const topimgContainer = document.querySelector('.topimg');
 
 topimgContainer.addEventListener('mouseenter', function() {
-  const topimgModify = topimgContainer.querySelector('.img-topimgmodify');
+  const topimgModify = topimgContainer.querySelector('#img-topimgmodify');
   topimgModify.style.display = 'block';
 });
 
 topimgContainer.addEventListener('mouseleave', function() {
-  const topimgModify = topimgContainer.querySelector('.img-topimgmodify');
+  const topimgModify = topimgContainer.querySelector('#img-topimgmodify');
   topimgModify.style.display = 'none';
 });
 
@@ -28,7 +28,7 @@ profileimgContainer.addEventListener('mouseleave', function() {
 
 
 //모달창 띄우기
-const topimgModify = document.querySelector(".img-topimgmodify");
+const topimgModify = document.querySelector("#img-topimgmodify");
 const profileimgModify = document.querySelector(".profileimgmodify");
 const modalClose = document.querySelector(".modalclose");
 

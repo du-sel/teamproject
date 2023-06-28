@@ -15,9 +15,7 @@ public class TmpHandler implements Controller {
 		
 		String path = request.getServletPath();
 		System.out.println("getServletPath(): "+path);
-		
-		
-		
+
 		
 		if(path.equals("/products.do")) {
 			mav.setViewName("./WEB-INF/views/store/st-products.jsp");			
@@ -43,7 +41,7 @@ public class TmpHandler implements Controller {
 		else if(path.equals("/st-main.do")) {			
 			mav.setViewName("./WEB-INF/views/store/st-main.jsp");			
 		}
-		else if(path.equals("/cart.do")) {			
+		else if(path.equals("/cart.do")) {	
 			mav.setViewName("./WEB-INF/views/my/cart.jsp");			
 		}
 		else if(path.equals("/purchase-history.do")) {			
@@ -64,10 +62,9 @@ public class TmpHandler implements Controller {
 		else if(path.equals("/sales-status.do")) {			
 			mav.setViewName("./WEB-INF/views/my-store/sales-status.jsp");			
 		}
-		else if(path.equals("/myprofile.do")) {			
-			mav.setViewName("./WEB-INF/views/profile/myprofile.jsp");			
+		else if(path.equals("/profile.do")) {		
+			mav.setViewName("./WEB-INF/views/profile/profile.jsp");			
 		}
-		
 		
 		
 		return mav;
