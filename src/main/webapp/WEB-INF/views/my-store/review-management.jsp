@@ -24,7 +24,7 @@
 
 
 
-  <main id="inquiry-management" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+  <main id="review-management" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
     <div class="sidebar">
       <div class="sidebar-wrapper">
         <div class="logo">
@@ -45,13 +45,13 @@
               <p>상품 관리</p>
             </a>
           </li>
-          <li>
+          <li class="active ">
             <a href="review-management.do">
               <i class="tim-icons icon-pencil"></i>
               <p>후기 관리</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="inquiry-management.do">
               <i class="tim-icons icon-chat-33"></i>
               <p>문의 관리</p>
@@ -81,7 +81,7 @@
           <div class="col-lg-12">
             <div class="col-lg-12 card">
               <div class="card-header">
-                <h2 class="card-title text-center">문의 관리</h2>
+                <h2 class="card-title text-center">후기 관리</h2>
               </div>
               <div class="card-body">
                 <div class="table-responsive scroll-custom">
@@ -92,7 +92,7 @@
                           	No.
                         </th>
                         <th>
-                          	제목
+                          	상품명
                         </th>
                         <th>
                           	작성자
@@ -101,17 +101,17 @@
                           	작성일자
                         </th>
                         <th>
-                          	답변여부
+                          	별점
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr onclick="location.href='inquiry-management-form.do'">
+                      <tr onclick="location.href='review-management-form.do'">
                       	<td>
                           	10
                         </td>
                         <td>
-                          	영구 다운로드 가능한가요?
+                          	아기토끼 굿노트그림일기 다이어리_베이비핑크_아이패드 굿노트 속지
                         </td>
                         <td>
                           	이고객
@@ -120,7 +120,11 @@
                           2023.06.28
                         </td>
                         <td>
-                          	미답변
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
                       <tr>
@@ -128,7 +132,7 @@
                           	9
                         </td>
                         <td>
-                          	영구 다운로드 가능한가요?
+                          	아기토끼 굿노트그림일기 다이어리_베이비핑크_아이패드 굿노트 속지
                         </td>
                         <td>
                           	이고객
@@ -137,15 +141,19 @@
                           2023.06.28
                         </td>
                         <td>
-                          	미답변
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
-                      <tr class="answer">
+                      <tr>
                       	<td>
                           	8
                         </td>
                         <td>
-                          	영구 다운로드 가능한가요?
+                          	리훈 이야기 다이어리 굿노트 아이패드 속지
                         </td>
                         <td>
                           	이고객
@@ -154,15 +162,19 @@
                           2023.06.28
                         </td>
                         <td>
-                          	답변
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
-                      <tr class="answer">
+                      <tr>
                       	<td>
                           	7
                         </td>
                         <td>
-                          	영구 다운로드 가능한가요?
+                          	영이의숲_2023 굿노트 스터디플래너
                         </td>
                         <td>
                           	이고객
@@ -171,15 +183,19 @@
                           2023.06.28
                         </td>
                         <td>
-                          	답변
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
-                      <tr class="answer">
+                      <tr>
                       	<td>
                           	6
                         </td>
                         <td>
-                          	영구 다운로드 가능한가요?
+                          	리훈 이야기 다이어리 굿노트 아이패드 속지
                         </td>
                         <td>
                           	이고객
@@ -188,15 +204,19 @@
                           2023.06.28
                         </td>
                         <td>
-                          	답변
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
-                      <tr class="answer">
+                      <tr>
                       	<td>
                           	5
                         </td>
                         <td>
-                          	영구 다운로드 가능한가요?
+                          	리훈 이야기 다이어리 굿노트 아이패드 속지
                         </td>
                         <td>
                           	이고객
@@ -205,15 +225,19 @@
                           2023.06.28
                         </td>
                         <td>
-                          	답변
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
-                      <tr class="answer">
+                      <tr>
                       	<td>
                           	4
                         </td>
                         <td>
-                          	영구 다운로드 가능한가요?
+                          	리훈 이야기 다이어리 굿노트 아이패드 속지
                         </td>
                         <td>
                           	이고객
@@ -222,15 +246,19 @@
                           2023.06.28
                         </td>
                         <td>
-                          	답변
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
-                      <tr class="answer">
+                      <tr>
                       	<td>
                           	3
                         </td>
                         <td>
-                          	영구 다운로드 가능한가요?
+                          	영이의숲_2023 굿노트 스터디플래너
                         </td>
                         <td>
                           	이고객
@@ -239,15 +267,19 @@
                           2023.06.28
                         </td>
                         <td>
-                          	답변
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
-                      <tr class="answer">
+                      <tr>
                       	<td>
                           	2
                         </td>
                         <td>
-                          	영구 다운로드 가능한가요?
+                          	영이의숲_2023 굿노트 스터디플래너
                         </td>
                         <td>
                           	이고객
@@ -256,15 +288,19 @@
                           2023.06.28
                         </td>
                         <td>
-                          	답변
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
-                      <tr class="answer">
+                      <tr>
                       	<td>
                           	1
                         </td>
                         <td>
-                          	영구 다운로드 가능한가요?
+                          	리훈 이야기 다이어리 굿노트 아이패드 속지
                         </td>
                         <td>
                           	이고객
@@ -273,7 +309,11 @@
                           2023.06.28
                         </td>
                         <td>
-                          	답변
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
                     </tbody>
