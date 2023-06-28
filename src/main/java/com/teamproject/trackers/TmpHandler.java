@@ -62,9 +62,34 @@ public class TmpHandler implements Controller {
 		else if(path.equals("/sales-status.do")) {			
 			mav.setViewName("./WEB-INF/views/my-store/sales-status.jsp");			
 		}
+		else if(path.equals("/product-management.do")) {			
+			mav.setViewName("./WEB-INF/views/my-store/product-management.jsp");			
+		}
+		else if(path.equals("/calculate-history.do")) {			
+			mav.setViewName("./WEB-INF/views/my-store/calculate-history.jsp");			
+		}
+		else if(path.equals("/review-management.do")) {			
+			mav.setViewName("./WEB-INF/views/my-store/review-management.jsp");			
+		}
+		else if(path.equals("/inquiry-management.do")) {			
+			mav.setViewName("./WEB-INF/views/my-store/inquiry-management.jsp");			
+		}
+		else if(path.equals("/inquiry-management-form.do")) {			
+			mav.setViewName("./WEB-INF/views/my-store/inquiry-management-form.jsp");			
+		}
+		else if(path.equals("/notice-management.do")) {			
+			mav.setViewName("./WEB-INF/views/my-store/notice-management.jsp");			
+		}
+		else if(path.equals("/store-management.do")) {			
+			mav.setViewName("./WEB-INF/views/my-store/store-management.jsp");			
+		}
+		else if(path.equals("/post.do")) {			
+			mav.setViewName("./WEB-INF/views/community/post.jsp");			
+		} 
 		else if(path.equals("/profile.do")) {		
 			mav.setViewName("./WEB-INF/views/profile/profile.jsp");			
 		}
+
 		
 		
 		return mav;

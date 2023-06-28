@@ -22,7 +22,16 @@
 				<prop key="/user-pwd-modify.do">product</prop>
 				<prop key="/news.do">product</prop>
 				<prop key="/sales-status.do">product</prop>
-				<prop key="/profile.do">product</prop>
+				<prop key="/product-management.do">product</prop>
+				<prop key="/calculate-history.do">product</prop>
+				<prop key="/review-management.do">product</prop>
+				<prop key="/inquiry-management.do">product</prop>
+				<prop key="/inquiry-management-form.do">product</prop>
+				<prop key="/notice-management.do">product</prop>
+				<prop key="/store-management.do">product</prop>
+				<prop key="/post.do">product</prop> 
+        <prop key="/profile.do">product</prop>
+
 			</props>
 		</property>
 	</bean>

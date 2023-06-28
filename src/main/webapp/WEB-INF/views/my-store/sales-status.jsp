@@ -34,39 +34,39 @@
         </div>
         <ul class="nav">
           <li class="active ">
-            <a href="./sales-status.do">
-              <i class="tim-icons icon-chart-pie-36"></i>
-              <p class="card-content">판매 현황</p>
+            <a href="sales-status.do">
+              <i class="tim-icons icon-money-coins"></i>
+              <p>판매 현황</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
-              <i class="tim-icons icon-atom"></i>
-              <p>정산 내역</p>
-            </a>
-          </li>
-          <li>
-            <a href="./map.html">
-              <i class="tim-icons icon-pin"></i>
+            <a href="product-management.do">
+              <i class="tim-icons icon-gift-2"></i>
               <p>상품 관리</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
-              <i class="tim-icons icon-bell-55"></i>
+            <a href="review-management.do">
+              <i class="tim-icons icon-pencil"></i>
               <p>후기 관리</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
-              <i class="tim-icons icon-world"></i>
+            <a href="inquiry-management.do">
+              <i class="tim-icons icon-chat-33"></i>
+              <p>문의 관리</p>
+            </a>
+          </li>
+          <li>
+            <a href="notice-management.do">
+              <i class="tim-icons icon-volume-98"></i>
               <p>공지 관리</p>
             </a>
           </li>
           <li>
-            <a href="./user.html">
-              <i class="tim-icons icon-single-02"></i>
-              <p>스튜디오 관리</p>
+            <a href="store-management.do">
+              <i class="tim-icons icon-basket-simple"></i>
+              <p>스토어 관리</p>
             </a>
           </li>
         </ul>
@@ -78,20 +78,6 @@
     <div class="main-panel">     
       <div class="content">
         <div class="row">
-          <div class="col-lg-4">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">2023년 06월</h5>
-                <h3 class="card-title">이번달 수익</h3>
-              </div>
-              <div class="card-body">
-                <div class="chart-area d-flex flex-column justify-content-center revenue">
-               		<p class="card-content">￦<span id="m_revenue">0</span></p>
-                  <!-- <canvas id="chartLineGreen"></canvas> -->
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="col-lg-8">
             <div class="card card-chart">
               <div class="card-header ">
@@ -109,14 +95,28 @@
               </div>
             </div>
           </div>
+          <div class="col-lg-4">
+            <div class="card card-chart m-revenue">
+              <div class="card-header">
+                <h5 class="card-category">2023년 06월</h5>
+                <h3 class="card-title">이번달 수익</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area d-flex flex-column justify-content-center revenue">
+               		<p class="card-content" style="width: max-content;">￦<span id="m-revenue">0</span></p>
+                </div>
+                <button type="button" class="cal-history" onclick="javascript:location.href='calculate-history.do';">정산 내역 보러가기<i class="tim-icons icon-double-right"></i></button>
+              </div>
+            </div>
+          </div>
         </div>
         
         <div class="row">
           <div class="col-lg-6 col-md-12">
-            <div class="card card-chart">
+            <div class="card card-chart bar-chart">
               <div class="card-header">
                 <h5 class="card-category">Best5 상품 수익</h5>
-                <h2 class="card-title">Total. ￦<span id="p_revenue">0</span></h2>
+                <h2 class="card-title">Total. ￦<span id="p-revenue">0</span></h2>
               </div>
               <div class="card-body">
                 <div class="chart-area">
@@ -132,74 +132,92 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table tablesorter " id="">
-                    <thead class=" text-primary">
+                  <table class="table tablesorter table-custom">
+                    <thead>
                       <tr>
-                        <th>
-                          Name
+                      	<th>
+                          	No.
                         </th>
                         <th>
-                          Quantity
+                          	상품명
                         </th>
-                        <th class="text-center">
-                          TotalPrice
+                        <th>
+                        	 판매수량
+                        </th>
+                        <th>
+                          	판매금액
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>
-                          Dakota Rice
+                      	<td>
+                          1
                         </td>
                         <td>
-                          Niger
+                          	리훈 이야기 다이어리 굿노트 아이패드 속지
                         </td>
-                        <td class="text-center">
-                          $36,738
+                        <td>
+                          8건
+                        </td>
+                        <td>
+                          	￦ 64,000
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          Minerva Hooper
+                          2
                         </td>
                         <td>
-                          Curaçao
+                          	영이의숲_2023 굿노트 스터디플래너
                         </td>
-                        <td class="text-center">
-                          $23,789
+                        <td>
+                          6건
+                        </td>
+                        <td>
+                          	￦ 54,000
+                        </td>
+                      </tr>
+                      <tr>
+                      	<td>
+                          3
+                        </td>
+                        <td>
+                          	타임라인 디지털 플래너 굿노트 속지 PDF
+                        </td>
+                        <td>
+                          	5건
+                        </td>
+                        <td>
+                          	￦ 45,000
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          Sage Rodriguez
+                          4
                         </td>
                         <td>
-                          Netherlands
+                          	아기토끼 굿노트그림일기 다이어리_베이비핑크_아이패드 굿노트 속지
                         </td>
-                        <td class="text-center">
-                          $56,142
+                        <td>
+                          	5건
+                        </td>
+                        <td>
+                          	￦ 45,000
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          Philip Chaney
+                          5
                         </td>
                         <td>
-                          Korea, South
-                        </td>
-                        <td class="text-center">
-                          $38,735
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Doris Greene
+                          	2023 굿노트 스티커북 (673개 스티커 포함)
                         </td>
                         <td>
-                          Malawi
+                          	4건
                         </td>
-                        <td class="text-center">
-                          $63,542
+                        <td>
+                          	￦ 36,000
                         </td>
                       </tr>
                     </tbody>
@@ -219,7 +237,7 @@
 
   
 
-  
+  <script src="/resources/js/my-store.js"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -236,8 +254,9 @@
         window_width = $(window).width();
 
         fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-
+        
+        // sidebar height 지정
+        $('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
 
         $('.fixed-plugin a').click(function(event) {
           if ($(this).hasClass('switch-trigger')) {
@@ -274,30 +293,10 @@
           }, 1000);
         });
         
-		countingUp($('#m_revenue'), 3000000);
+		countingUp($('#m-revenue'), 3000000);
 		countingUp($('#revenue'), 12345678);
-		countingUp($('#p_revenue'), 450000);
+		countingUp($('#p-revenue'), 450000);
 	  });
-      
-	  // 숫자 카운팅 함수	  
-	  function countingUp(target, count){
-		  $({ val : 0 }).animate({ val : count }, {
-			  duration: 1500,
-			  step: function() {
-				  var num = numberWithCommas(Math.floor(this.val));
-				  target.text(num);
-			  },
-			  complete: function() {
-				  var num = numberWithCommas(Math.floor(this.val));
-				  target.text(num);
-			  }
-		  });
-	  }
-	      
-	  // 세자리 마다 콤마(,) 넣는 함수
-	  function numberWithCommas(x) {
-		  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	  }
   	});
   </script>
   
