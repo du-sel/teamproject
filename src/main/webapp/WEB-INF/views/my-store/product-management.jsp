@@ -71,8 +71,8 @@
     
     <div class="main-panel">     
       <div class="content">
-      	<div class="row justify-content-between listtop">
-      		<div class="col-lg-12 d-flex justify-content-between align-items-center">
+      	<div class="row justify-content-center listtop">
+      		<div class="col-xl-10 col-lg-12 d-flex justify-content-between align-items-center">
 				<div>
 					<h5>총 상품 개수</h5>
 				</div>
@@ -81,7 +81,7 @@
       	</div>
       
         <div class="row justify-content-center">
-          <div class="col-lg-12 info">
+          <div class="col-xl-10 col-lg-12 info">
             <div class="card">
               <div class="card-body">
                 <div class="row">
@@ -96,9 +96,9 @@
 	                        <h4>7,000원</h4>
 	                    </div>
 	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center">
-	                    <div class="d-flex flex-column justify-content-center">
-		                    <div class="btn-container d-flex flex-row justify-content-between">
+	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
+	                    <div class="d-flex flex-column justify-content-center align-items-center">
+		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
 			                    <button type="button" class="update-btn">수정</button>
 			                    <button type="button" class="delete-btn">삭제</button>
 		                    </div>
@@ -112,7 +112,7 @@
         </div>
         
         <div class="row justify-content-center">
-          <div class="col-lg-12 info">
+          <div class="col-xl-10 col-lg-12 info">
             <div class="card">
               <div class="card-body">
                 <div class="row">
@@ -127,9 +127,9 @@
 	                        <h4>7,000원</h4>
 	                    </div>
 	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center">
-	                    <div class="d-flex flex-column justify-content-center">
-		                    <div class="btn-container d-flex flex-row justify-content-between">
+	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
+	                    <div class="d-flex flex-column justify-content-center align-items-center">
+		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
 			                    <button type="button" class="update-btn">수정</button>
 			                    <button type="button" class="delete-btn">삭제</button>
 		                    </div>
@@ -143,7 +143,7 @@
         </div>
         
         <div class="row justify-content-center">
-          <div class="col-lg-12 info">
+          <div class="col-xl-10 col-lg-12 info">
             <div class="card">
               <div class="card-body">
                 <div class="row">
@@ -158,9 +158,9 @@
 	                        <h4>7,000원</h4>
 	                    </div>
 	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center">
-	                    <div class="d-flex flex-column justify-content-center">
-		                    <div class="btn-container d-flex flex-row justify-content-between">
+	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
+	                    <div class="d-flex flex-column justify-content-center align-items-center">
+		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
 			                    <button type="button" class="update-btn">수정</button>
 			                    <button type="button" class="delete-btn">삭제</button>
 		                    </div>
@@ -174,7 +174,7 @@
         </div>
         
         <div class="row justify-content-center">
-          <div class="col-lg-12 info">
+          <div class="col-xl-10 col-lg-12 info">
             <div class="card">
               <div class="card-body">
                 <div class="row">
@@ -189,9 +189,9 @@
 	                        <h4>7,000원</h4>
 	                    </div>
 	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center">
-	                    <div class="d-flex flex-column justify-content-center">
-		                    <div class="btn-container d-flex flex-row justify-content-between">
+	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
+	                    <div class="d-flex flex-column justify-content-center align-items-center">
+		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
 			                    <button type="button" class="update-btn">수정</button>
 			                    <button type="button" class="delete-btn">삭제</button>
 		                    </div>
@@ -205,7 +205,7 @@
         </div>
         
         <div class="row justify-content-center">
-          <div class="col-lg-12 info">
+          <div class="col-xl-10 col-lg-12 info">
             <div class="card">
               <div class="card-body">
                 <div class="row">
@@ -220,9 +220,9 @@
 	                        <h4>7,000원</h4>
 	                    </div>
 	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center">
-	                    <div class="d-flex flex-column justify-content-center">
-		                    <div class="btn-container d-flex flex-row justify-content-between">
+	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
+	                    <div class="d-flex flex-column justify-content-center align-items-center">
+		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
 			                    <button type="button" class="update-btn">수정</button>
 			                    <button type="button" class="delete-btn">삭제</button>
 		                    </div>
@@ -236,7 +236,31 @@
         </div>
         
 
-
+		<!-- 페이지 번호 -->
+        <div class="col-lg-12">
+          <div class="pagination">
+              <ul>
+                  <li>
+                      <a href="#"><</a>
+                  </li>
+                  <li>
+                      <a href="#">1</a>
+                  </li>
+                  <li class="active">
+                      <a href="#">2</a>
+                  </li>
+                  <li>
+                      <a href="#">3</a>
+                  </li>
+                  <li>
+                      <a href="#">4</a>
+                  </li>
+                  <li>
+                      <a href="#">></a>
+                  </li>
+              </ul>
+          </div>
+        </div>
       
       
 

@@ -36,7 +36,10 @@
 		                    </div>
 		                </div>
 		                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center">
-		                    <button class="download">다운로드</button>
+		                    <div class="d-flex flex-column justify-content-center">
+			                    <button type="button" class="download button">다운로드</button>
+			                    <button type="button" class="review button">후기 작성</button>			                    
+		                    </div>
 		                </div>
 	                </div>
 				</div>
@@ -58,7 +61,10 @@
 		                    </div>
 		                </div>
 		                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center">
-		                    <button class="download">다운로드</button>
+		                    <div class="d-flex flex-column justify-content-center">
+			                    <button type="button" class="download button">다운로드</button>
+			                    <button type="button" class="review button">후기 작성</button>			                    
+		                    </div>
 		                </div>
 	                </div>
 				</div>
@@ -78,7 +84,10 @@
 		                    </div>
 		                </div>
 		                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center">
-		                    <button class="download">다운로드</button>
+		                    <div class="d-flex flex-column justify-content-center">
+			                    <button type="button" class="download button">다운로드</button>
+			                    <button type="button" class="review button">후기 작성</button>			                    
+		                    </div>
 		                </div>
 	                </div>
 				</div>
@@ -98,7 +107,10 @@
 		                    </div>
 		                </div>
 		                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center">
-		                    <button class="download">다운로드</button>
+		                    <div class="d-flex flex-column justify-content-center">
+			                    <button type="button" class="download button">다운로드</button>
+			                    <button type="button" class="review button">후기 작성</button>			                    
+		                    </div>
 		                </div>
 	                </div>
 				</div>
@@ -118,7 +130,10 @@
 		                    </div>
 		                </div>
 		                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center">
-		                    <button class="download">다운로드</button>
+		                    <div class="d-flex flex-column justify-content-center">
+			                    <button type="button" class="download button">다운로드</button>
+			                    <button type="button" class="review button">후기 작성</button>			                    
+		                    </div>
 		                </div>
 	                </div>
 				</div>        
