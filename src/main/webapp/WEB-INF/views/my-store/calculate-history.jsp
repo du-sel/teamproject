@@ -113,7 +113,7 @@
                           2023.06.30
                         </td>
                         <td>
-                          	￦<span>50000</span>
+                          	￦<span class="price">50000</span>
                         </td>
                       </tr>
                       <tr>
@@ -121,7 +121,7 @@
                           2023.05.31
                         </td>
                         <td>
-                          	￦<span>35000</span>
+                          	￦<span class="price">35000</span>
                         </td>
                       </tr>
                       <tr>
@@ -129,7 +129,7 @@
                           2023.04.30
                         </td>
                         <td>
-                          	￦<span>30000</span>
+                          	￦<span class="price">30000</span>
                         </td>
                       </tr>
                       <tr>
@@ -137,7 +137,7 @@
                           2023.03.31
                         </td>
                         <td>
-                          	￦<span>9000</span>
+                          	￦<span class="price">9000</span>
                         </td>
                       </tr>
                       <tr>
@@ -145,7 +145,7 @@
                           2023.02.28
                         </td>
                         <td>
-                          	￦<span>14000</span>
+                          	￦<span class="price">14000</span>
                         </td>
                       </tr>
                     </tbody>
@@ -223,7 +223,7 @@
         
         // total 금액
         let sum = 0
-        let price = $('.text-center span');
+        let price = $('.price');
         for(let i=0; i<price.length; i++){
         	sum +=parseInt($(price[i]).text());
         	$(price[i]).text(numberWithCommas(Math.floor($(price[i]).text())));

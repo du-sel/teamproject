@@ -24,7 +24,7 @@
 
 
 
-  <main id="inquiry-management-form" class="my-store wrapper broad management-form"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+  <main id="review-management-form" class="my-store wrapper broad management-form"><!-- 추후 좁은헤더로 class명 변경 필요 -->
     <div class="sidebar">
       <div class="sidebar-wrapper">
         <div class="logo">
@@ -45,13 +45,13 @@
               <p>상품 관리</p>
             </a>
           </li>
-          <li>
+          <li class="active ">
             <a href="review-management.do">
               <i class="tim-icons icon-pencil"></i>
               <p>후기 관리</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="inquiry-management.do">
               <i class="tim-icons icon-chat-33"></i>
               <p>문의 관리</p>
@@ -81,7 +81,7 @@
           <div class="col-lg-12">
             <div class="col-lg-12 card">
               <div class="card-header">
-                <h2 class="card-title text-center">문의 답변</h2>
+                <h2 class="card-title text-center">후기 답변</h2>
               </div>
               <div class="card-body">
                 <div class="row">
@@ -104,11 +104,15 @@
                 	</div>
                 	<div class="col-lg-12">
 	                	<div class="management-data">
-	                		<h6>문의 제목</h6>
-	                		<p>영구 다운로드 가능한가요?</p>
+	                		<h6>별점</h6>
+	                		<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
 	                	</div>
-                		<h6>문의 내용</h6>
-                		<p>구매하면 영구 다운로드인가요</p>
+                		<h6>후기</h6>
+                		<p>잘 쓰고 있습니다!</p>
                 	</div>
                 	<form class="col-lg-12" action="inquiry-management.do">
                 		<textarea maxlength="300" placeholder="답변 내용 작성"></textarea>

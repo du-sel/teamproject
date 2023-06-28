@@ -81,11 +81,11 @@
           <div class="col-lg-12">
             <div class="col-lg-12 card">
               <div class="card-header">
-                <h2 class="card-title text-center">후기 관리</h2>
+                <h2 class="card-title text-center">문의 관리</h2>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table tablesorter table-hover table-custom">
+                <div class="table-responsive scroll-custom">
+                  <table class="table tablesorter table-hover table-custom table-management">
                     <thead>
                       <tr>
                       	<th>

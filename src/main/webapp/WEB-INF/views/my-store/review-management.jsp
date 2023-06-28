@@ -24,7 +24,7 @@
 
 
 
-  <main id="sales-status" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+  <main id="review-management" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
     <div class="sidebar">
       <div class="sidebar-wrapper">
         <div class="logo">
@@ -35,32 +35,38 @@
         <ul class="nav">
           <li>
             <a href="sales-status.do">
-              <i class="tim-icons icon-coins"></i>
-              <p class="card-content">판매 현황</p>
+              <i class="tim-icons icon-money-coins"></i>
+              <p>판매 현황</p>
             </a>
           </li>
           <li>
             <a href="product-management.do">
-              <i class="tim-icons icon-pin"></i>
+              <i class="tim-icons icon-gift-2"></i>
               <p>상품 관리</p>
             </a>
           </li>
           <li class="active ">
             <a href="review-management.do">
-              <i class="tim-icons icon-bell-55"></i>
+              <i class="tim-icons icon-pencil"></i>
               <p>후기 관리</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
-              <i class="tim-icons icon-world"></i>
+            <a href="inquiry-management.do">
+              <i class="tim-icons icon-chat-33"></i>
+              <p>문의 관리</p>
+            </a>
+          </li>
+          <li>
+            <a href="notice-management.do">
+              <i class="tim-icons icon-volume-98"></i>
               <p>공지 관리</p>
             </a>
           </li>
           <li>
-            <a href="./user.html">
-              <i class="tim-icons icon-single-02"></i>
-              <p>스튜디오 관리</p>
+            <a href="store-management.do">
+              <i class="tim-icons icon-basket-simple"></i>
+              <p>스토어 관리</p>
             </a>
           </li>
         </ul>
@@ -72,132 +78,270 @@
     <div class="main-panel">     
       <div class="content">
         <div class="row">
-          <div class="col-lg-8">
-            <div class="card card-chart">
-              <div class="card-header ">
-                <div class="row">
-                  <div class="col-sm-12 text-left">
-                    <h5 class="card-category">월별 판매 수익</h5>
-                    <h2 class="card-title">Total. ￦<span id="revenue">0</span></h2>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="chartBig1"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card card-chart m-revenue">
+          <div class="col-lg-12">
+            <div class="col-lg-12 card">
               <div class="card-header">
-                <h5 class="card-category">2023년 06월</h5>
-                <h3 class="card-title">이번달 수익</h3>
+                <h2 class="card-title text-center">후기 관리</h2>
               </div>
               <div class="card-body">
-                <div class="chart-area d-flex flex-column justify-content-center revenue">
-               		<p class="card-content" style="width: max-content;">￦<span id="m-revenue">0</span></p>
-                </div>
-                <button type="button" class="cal-history" onclick="javascript:location.href='./calculate-history.do';">정산 내역 보러가기<i class="tim-icons icon-double-right"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-lg-6 col-md-12">
-            <div class="card card-chart bar-chart">
-              <div class="card-header">
-                <h5 class="card-category">Best5 상품 수익</h5>
-                <h2 class="card-title">Total. ￦<span id="p-revenue">0</span></h2>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="CountryChart"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">Best5 상품</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table tablesorter best-p">
+                <div class="table-responsive scroll-custom">
+                  <table class="table tablesorter table-hover table-custom table-management">
                     <thead>
                       <tr>
-                        <th>
-                          Name
+                      	<th>
+                          	No.
                         </th>
                         <th>
-                          Quantity
+                          	상품명
                         </th>
-                        <th class="text-center">
-                          TotalPrice
+                        <th>
+                          	작성자
+                        </th>
+                        <th>
+                          	작성일자
+                        </th>
+                        <th>
+                          	별점
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                          Dakota Rice
+                      <tr onclick="location.href='review-management-form.do'">
+                      	<td>
+                          	10
                         </td>
                         <td>
-                          Niger
+                          	아기토끼 굿노트그림일기 다이어리_베이비핑크_아이패드 굿노트 속지
                         </td>
-                        <td class="text-center">
-                          $36,738
+                        <td>
+                          	이고객
+                        </td>
+                        <td>
+                          2023.06.28
+                        </td>
+                        <td>
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
                       <tr>
-                        <td>
-                          Minerva Hooper
+                      	<td>
+                          	9
                         </td>
                         <td>
-                          Curaçao
+                          	아기토끼 굿노트그림일기 다이어리_베이비핑크_아이패드 굿노트 속지
                         </td>
-                        <td class="text-center">
-                          $23,789
+                        <td>
+                          	이고객
+                        </td>
+                        <td>
+                          2023.06.28
+                        </td>
+                        <td>
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
                       <tr>
-                        <td>
-                          Sage Rodriguez
+                      	<td>
+                          	8
                         </td>
                         <td>
-                          Netherlands
+                          	리훈 이야기 다이어리 굿노트 아이패드 속지
                         </td>
-                        <td class="text-center">
-                          $56,142
+                        <td>
+                          	이고객
+                        </td>
+                        <td>
+                          2023.06.28
+                        </td>
+                        <td>
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
                       <tr>
-                        <td>
-                          Philip Chaney
+                      	<td>
+                          	7
                         </td>
                         <td>
-                          Korea, South
+                          	영이의숲_2023 굿노트 스터디플래너
                         </td>
-                        <td class="text-center">
-                          $38,735
+                        <td>
+                          	이고객
+                        </td>
+                        <td>
+                          2023.06.28
+                        </td>
+                        <td>
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
                       <tr>
-                        <td>
-                          Doris Greene
+                      	<td>
+                          	6
                         </td>
                         <td>
-                          Malawi
+                          	리훈 이야기 다이어리 굿노트 아이패드 속지
                         </td>
-                        <td class="text-center">
-                          $63,542
+                        <td>
+                          	이고객
+                        </td>
+                        <td>
+                          2023.06.28
+                        </td>
+                        <td>
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
+                        </td>
+                      </tr>
+                      <tr>
+                      	<td>
+                          	5
+                        </td>
+                        <td>
+                          	리훈 이야기 다이어리 굿노트 아이패드 속지
+                        </td>
+                        <td>
+                          	이고객
+                        </td>
+                        <td>
+                          2023.06.28
+                        </td>
+                        <td>
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
+                        </td>
+                      </tr>
+                      <tr>
+                      	<td>
+                          	4
+                        </td>
+                        <td>
+                          	리훈 이야기 다이어리 굿노트 아이패드 속지
+                        </td>
+                        <td>
+                          	이고객
+                        </td>
+                        <td>
+                          2023.06.28
+                        </td>
+                        <td>
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
+                        </td>
+                      </tr>
+                      <tr>
+                      	<td>
+                          	3
+                        </td>
+                        <td>
+                          	영이의숲_2023 굿노트 스터디플래너
+                        </td>
+                        <td>
+                          	이고객
+                        </td>
+                        <td>
+                          2023.06.28
+                        </td>
+                        <td>
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
+                        </td>
+                      </tr>
+                      <tr>
+                      	<td>
+                          	2
+                        </td>
+                        <td>
+                          	영이의숲_2023 굿노트 스터디플래너
+                        </td>
+                        <td>
+                          	이고객
+                        </td>
+                        <td>
+                          2023.06.28
+                        </td>
+                        <td>
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
+                        </td>
+                      </tr>
+                      <tr>
+                      	<td>
+                          	1
+                        </td>
+                        <td>
+                          	리훈 이야기 다이어리 굿노트 아이패드 속지
+                        </td>
+                        <td>
+                          	이고객
+                        </td>
+                        <td>
+                          2023.06.28
+                        </td>
+                        <td>
+                          	<span class="star">
+								★★★★★
+								<span style="width: 50%;">★★★★★</span>
+								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+							</span>
                         </td>
                       </tr>
                     </tbody>
                   </table>
+                  <div>
+	                 <div class="pagination">
+	                     <ul>
+	                         <li>
+	                             <a href="#"><</a>
+	                         </li>
+	                         <li>
+	                             <a href="#">1</a>
+	                         </li>
+	                         <li class="active">
+	                             <a href="#">2</a>
+	                         </li>
+	                         <li>
+	                             <a href="#">3</a>
+	                         </li>
+	                         <li>
+	                             <a href="#">4</a>
+	                         </li>
+	                         <li>
+	                             <a href="#">></a>
+	                         </li>
+	                     </ul>
+	                 </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -213,7 +357,6 @@
 
   
 
-  
   <script src="/resources/js/my-store.js"></script>
   <script>
     $(document).ready(function() {
@@ -270,26 +413,17 @@
           }, 1000);
         });
         
-		countingUp($('#m-revenue'), 3000000);
-		countingUp($('#revenue'), 12345678);
-		countingUp($('#p-revenue'), 450000);
+        // total 금액
+        let sum = 0
+        let price = $('.text-center span');
+        for(let i=0; i<price.length; i++){
+        	sum +=parseInt($(price[i]).text());
+        	$(price[i]).text(numberWithCommas(Math.floor($(price[i]).text())));
+        }
+		countingUp($('#t-revenue'), sum);   
 	  });
-	   
   	});
   </script>
-  
-  
-  
-  
-
- 
-<script>
-  $(document).ready(function() {
-    // Javascript method's body can be found in assets/js/demos.js
-    demo.initDashboardPageCharts();
-
-  });
-</script> 
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
