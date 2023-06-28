@@ -20468,16 +20468,28 @@ Copyright (c) 2015 Daniel Eden
 }
 
 /* 추가 */
-.bar-chart{
-	padding-bottom: 28.22px;
+.table td, .table th{
+	text-align: center;
 }
-.best-p{
+.bar-chart{
+	padding-bottom: 21.22px;
+}
+.table-custom{
 	table-layout: fixed;
 }
-.best-p td{
+.table-custom td{
 	text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+.answer{
+	background-color: #eee5;
+}
+#sales-status thead th:nth-child(1),
+#sales-status tbody tr:nth-child(1) td,
+#review-management thead th:nth-child(1),
+#review-management tbody tr:nth-child(1) td{
+	width: 70px;
 }
 .m-revenue .cal-history{
 	position: absolute;
@@ -20495,4 +20507,14 @@ Copyright (c) 2015 Daniel Eden
 	top: 15px;
 	right: 15px;
 }
+
+#review-management thead th:nth-child(3),
+#review-management tbody tr:nth-child(3) td,
+#review-management thead th:nth-child(4),
+#review-management tbody tr:nth-child(4) td,
+#review-management thead th:nth-child(5),
+#review-management tbody tr:nth-child(5) td{
+	width: 20%;
+}
+
 /*# sourceMappingURL=dashboard-free.css.map */
