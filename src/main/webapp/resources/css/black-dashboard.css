@@ -20487,8 +20487,9 @@ Copyright (c) 2015 Daniel Eden
 }
 #sales-status thead th:nth-child(1),
 #sales-status tbody tr:nth-child(1) td,
-#review-management thead th:nth-child(1),
-#review-management tbody tr:nth-child(1) td{
+#inquiry-management thead th:nth-child(1),
+#inquiry-management tbody tr:nth-child(1) td{
+
 	width: 70px;
 }
 .m-revenue .cal-history{
@@ -20508,12 +20509,13 @@ Copyright (c) 2015 Daniel Eden
 	right: 15px;
 }
 
-#review-management thead th:nth-child(3),
-#review-management tbody tr:nth-child(3) td,
-#review-management thead th:nth-child(4),
-#review-management tbody tr:nth-child(4) td,
-#review-management thead th:nth-child(5),
-#review-management tbody tr:nth-child(5) td{
+
+#inquiry-management thead th:nth-child(3),
+#inquiry-management tbody tr:nth-child(3) td,
+#inquiry-management thead th:nth-child(4),
+#inquiry-management tbody tr:nth-child(4) td,
+#inquiry-management thead th:nth-child(5),
+#inquiry-management tbody tr:nth-child(5) td{
 	width: 20%;
 }
 

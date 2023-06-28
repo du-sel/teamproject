@@ -35,32 +35,38 @@
         <ul class="nav">
           <li class="active ">
             <a href="sales-status.do">
-              <i class="tim-icons icon-coins"></i>
-              <p class="card-content">판매 현황</p>
+              <i class="tim-icons icon-money-coins"></i>
+              <p>판매 현황</p>
             </a>
           </li>
           <li>
             <a href="product-management.do">
-              <i class="tim-icons icon-pin"></i>
+              <i class="tim-icons icon-gift-2"></i>
               <p>상품 관리</p>
             </a>
           </li>
           <li>
             <a href="review-management.do">
-              <i class="tim-icons icon-bell-55"></i>
+              <i class="tim-icons icon-pencil"></i>
               <p>후기 관리</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
-              <i class="tim-icons icon-world"></i>
+            <a href="inquiry-management.do">
+              <i class="tim-icons icon-chat-33"></i>
+              <p>문의 관리</p>
+            </a>
+          </li>
+          <li>
+            <a href="notice-management.do">
+              <i class="tim-icons icon-volume-98"></i>
               <p>공지 관리</p>
             </a>
           </li>
           <li>
-            <a href="./user.html">
-              <i class="tim-icons icon-single-02"></i>
-              <p>스튜디오 관리</p>
+            <a href="store-management.do">
+              <i class="tim-icons icon-basket-simple"></i>
+              <p>스토어 관리</p>
             </a>
           </li>
         </ul>
