@@ -77,187 +77,36 @@
       
         <div class="row justify-content-center">
           <div class="col-xl-10 col-lg-12 info">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-	                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-	                   <div class="thumb">
-	                       <a href="#"><img src="/resources/images/men-01.jpg" alt=""></a>
-	                   </div>
-	                </div>
-	                <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
-	                    <div class="down-content d-flex flex-column justify-content-around product-info">
-	                        <h4>상품명</h4>
-	                        <h4>7,000원</h4>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
-	                    <div class="d-flex flex-column justify-content-center align-items-center">
-		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
-			                    <button type="button" class="update-btn">수정</button>
-			                    <button type="button" class="delete-btn">삭제</button>
-		                    </div>
-		                    <button type="button" class="signature-btn button">대표 상품 등록</button>
-	                    </div>
-	                </div>
-	             </div>
-              </div>
+            <div class="row">
+	           	<label for="product-name"><h5>상품명</h5></label>
+	           	<input type="text" name="name" id="product-name" class="form-control" placeholder="상품명을 입력하세요">
             </div>
+            <div class="row">
+	           	<label for="product-price"><h5>금액</h5></label>
+	           	<input type="text" name="name" id="product-price" class="form-control" placeholder="금액을 입력하세요">
+            </div>
+			<div class="row flex-column">
+	           	<h5>할인 여부</h5>
+	           	<div class="do-sale">
+	           		<label for="yes-sale">할인 적용</label>
+	           		<input type="radio" name="do-sale" id="yes-sale" value="yes">
+	           		<label for="no-sale">할인 미적용</label>
+	           		<input type="radio" name="do-sale" id="no-sale" value="no">
+	           	</div>
+	           	<div class="sale-info">
+	           		<label for="product-sale"><h5>할인 금액</h5></label>
+	           		<div class="d-flex">
+		          	 	<input type="text" name="sale" id="product-sale" class="form-control" placeholder="할인 금액을 입력하세요">
+		           		<p>할인</p>
+	           		</div>
+	           		<h5>할인 적용가</h5>
+	          	 	<input type="text" name="sale" id="product-sale-final" class="form-control" value="" disabled>
+	           	</div>
+			</div>	           	
+            
           </div>
         </div>
         
-        <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-	                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-	                   <div class="thumb">
-	                       <a href="#"><img src="/resources/images/men-01.jpg" alt=""></a>
-	                   </div>
-	                </div>
-	                <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
-	                    <div class="down-content d-flex flex-column justify-content-around product-info">
-	                        <h4>상품명</h4>
-	                        <h4>7,000원</h4>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
-	                    <div class="d-flex flex-column justify-content-center align-items-center">
-		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
-			                    <button type="button" class="update-btn">수정</button>
-			                    <button type="button" class="delete-btn">삭제</button>
-		                    </div>
-		                    <button type="button" class="signature-btn button">대표 상품 등록</button>
-	                    </div>
-	                </div>
-	             </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-	                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-	                   <div class="thumb">
-	                       <a href="#"><img src="/resources/images/men-01.jpg" alt=""></a>
-	                   </div>
-	                </div>
-	                <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
-	                    <div class="down-content d-flex flex-column justify-content-around product-info">
-	                        <h4>상품명</h4>
-	                        <h4>7,000원</h4>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
-	                    <div class="d-flex flex-column justify-content-center align-items-center">
-		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
-			                    <button type="button" class="update-btn">수정</button>
-			                    <button type="button" class="delete-btn">삭제</button>
-		                    </div>
-		                    <button type="button" class="signature-btn button">대표 상품 등록</button>
-	                    </div>
-	                </div>
-	             </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-	                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-	                   <div class="thumb">
-	                       <a href="#"><img src="/resources/images/men-01.jpg" alt=""></a>
-	                   </div>
-	                </div>
-	                <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
-	                    <div class="down-content d-flex flex-column justify-content-around product-info">
-	                        <h4>상품명</h4>
-	                        <h4>7,000원</h4>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
-	                    <div class="d-flex flex-column justify-content-center align-items-center">
-		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
-			                    <button type="button" class="update-btn">수정</button>
-			                    <button type="button" class="delete-btn">삭제</button>
-		                    </div>
-		                    <button type="button" class="signature-btn button">대표 상품 등록</button>
-	                    </div>
-	                </div>
-	             </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-	                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-	                   <div class="thumb">
-	                       <a href="#"><img src="/resources/images/men-01.jpg" alt=""></a>
-	                   </div>
-	                </div>
-	                <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
-	                    <div class="down-content d-flex flex-column justify-content-around product-info">
-	                        <h4>상품명</h4>
-	                        <h4>7,000원</h4>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
-	                    <div class="d-flex flex-column justify-content-center align-items-center">
-		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
-			                    <button type="button" class="update-btn">수정</button>
-			                    <button type="button" class="delete-btn">삭제</button>
-		                    </div>
-		                    <button type="button" class="signature-btn button">대표 상품 등록</button>
-	                    </div>
-	                </div>
-	             </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-
-		<!-- 페이지 번호 -->
-        <div class="col-lg-12">
-          <div class="pagination">
-              <ul>
-                  <li>
-                      <a href="#"><</a>
-                  </li>
-                  <li>
-                      <a href="#">1</a>
-                  </li>
-                  <li class="active">
-                      <a href="#">2</a>
-                  </li>
-                  <li>
-                      <a href="#">3</a>
-                  </li>
-                  <li>
-                      <a href="#">4</a>
-                  </li>
-                  <li>
-                      <a href="#">></a>
-                  </li>
-              </ul>
-          </div>
-        </div>
-      
-      
 
       </div>
     </div>

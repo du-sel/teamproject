@@ -21,7 +21,7 @@
 				</div>
 				<p></p>
 			</div>
-			<div class="form-group">		<!-- url주소 -->
+			<div class="form-group">		<!-- url주소 재확인 OR 변경 -->
 				<div class="input-group">
 					<input type="text" class="base-url" value="/shop/" disabled>
 					<input type="text" class="form-control" name="url" placeholder="URL" value="admin" onkeyup="chk_reset('url')" oninput="remove(3, this);">
