@@ -90,16 +90,16 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <div class="card card-chart">
+            <div class="card card-chart m-revenue">
               <div class="card-header">
                 <h5 class="card-category">2023년 06월</h5>
                 <h3 class="card-title">이번달 수익</h3>
               </div>
               <div class="card-body">
                 <div class="chart-area d-flex flex-column justify-content-center revenue">
-               		<p class="card-content">￦<span id="m-revenue">0</span></p>
-                  <!-- <canvas id="chartLineGreen"></canvas> -->
+               		<p class="card-content" style="width: max-content;">￦<span id="m-revenue">0</span></p>
                 </div>
+                <button type="button" class="cal-history" onclick="javascript:location.href='calculate-history.do';">정산 내역 보러가기<i class="tim-icons icon-double-right"></i></button>
               </div>
             </div>
           </div>
@@ -126,74 +126,92 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table tablesorter best-p" id="">
+                  <table class="table tablesorter table-custom">
                     <thead>
                       <tr>
-                        <th>
-                          Name
+                      	<th>
+                          	No.
                         </th>
                         <th>
-                          Quantity
+                          	상품명
                         </th>
-                        <th class="text-center">
-                          TotalPrice
+                        <th>
+                        	 판매수량
+                        </th>
+                        <th>
+                          	판매금액
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>
-                          Dakota Rice
+                      	<td>
+                          1
                         </td>
                         <td>
-                          Niger
+                          	리훈 이야기 다이어리 굿노트 아이패드 속지
                         </td>
-                        <td class="text-center">
-                          $36,738
+                        <td>
+                          8건
+                        </td>
+                        <td>
+                          	￦ 64,000
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          Minerva Hooper
+                          2
                         </td>
                         <td>
-                          Curaçao
+                          	영이의숲_2023 굿노트 스터디플래너
                         </td>
-                        <td class="text-center">
-                          $23,789
+                        <td>
+                          6건
+                        </td>
+                        <td>
+                          	￦ 54,000
+                        </td>
+                      </tr>
+                      <tr>
+                      	<td>
+                          3
+                        </td>
+                        <td>
+                          	타임라인 디지털 플래너 굿노트 속지 PDF
+                        </td>
+                        <td>
+                          	5건
+                        </td>
+                        <td>
+                          	￦ 45,000
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          Sage Rodriguez
+                          4
                         </td>
                         <td>
-                          Netherlands
+                          	아기토끼 굿노트그림일기 다이어리_베이비핑크_아이패드 굿노트 속지
                         </td>
-                        <td class="text-center">
-                          $56,142
+                        <td>
+                          	5건
+                        </td>
+                        <td>
+                          	￦ 45,000
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          Philip Chaney
+                          5
                         </td>
                         <td>
-                          Korea, South
-                        </td>
-                        <td class="text-center">
-                          $38,735
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Doris Greene
+                          	2023 굿노트 스티커북 (673개 스티커 포함)
                         </td>
                         <td>
-                          Malawi
+                          	4건
                         </td>
-                        <td class="text-center">
-                          $63,542
+                        <td>
+                          	￦ 36,000
                         </td>
                       </tr>
                     </tbody>
