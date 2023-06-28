@@ -15,9 +15,7 @@ public class TmpHandler implements Controller {
 		
 		String path = request.getServletPath();
 		System.out.println("getServletPath(): "+path);
-		
-		
-		
+
 		
 		if(path.equals("/products.do")) {
 			mav.setViewName("./WEB-INF/views/store/st-products.jsp");			
@@ -43,7 +41,7 @@ public class TmpHandler implements Controller {
 		else if(path.equals("/st-main.do")) {			
 			mav.setViewName("./WEB-INF/views/store/st-main.jsp");			
 		}
-		else if(path.equals("/cart.do")) {			
+		else if(path.equals("/cart.do")) {	
 			mav.setViewName("./WEB-INF/views/my/cart.jsp");			
 		}
 		else if(path.equals("/purchase-history.do")) {			
@@ -73,13 +71,25 @@ public class TmpHandler implements Controller {
 		else if(path.equals("/review-management.do")) {			
 			mav.setViewName("./WEB-INF/views/my-store/review-management.jsp");			
 		}
+		else if(path.equals("/inquiry-management.do")) {			
+			mav.setViewName("./WEB-INF/views/my-store/inquiry-management.jsp");			
+		}
+		else if(path.equals("/inquiry-management-form.do")) {			
+			mav.setViewName("./WEB-INF/views/my-store/inquiry-management-form.jsp");			
+		}
+		else if(path.equals("/notice-management.do")) {			
+			mav.setViewName("./WEB-INF/views/my-store/notice-management.jsp");			
+		}
+		else if(path.equals("/store-management.do")) {			
+			mav.setViewName("./WEB-INF/views/my-store/store-management.jsp");			
+		}
 		else if(path.equals("/post.do")) {			
 			mav.setViewName("./WEB-INF/views/community/post.jsp");			
 		} 
-		else if(path.equals("/insert-product.do")) {			
-			mav.setViewName("./WEB-INF/views/my-store/insert-product.jsp");			
-		} 
-		
+		else if(path.equals("/profile.do")) {		
+			mav.setViewName("./WEB-INF/views/profile/profile.jsp");			
+		}
+
 		
 		
 		return mav;

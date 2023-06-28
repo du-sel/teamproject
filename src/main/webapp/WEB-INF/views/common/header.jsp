@@ -12,6 +12,9 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <title>Trackers</title>
+    
+    <!-- 내가 작성 -->
+	<link rel="stylesheet" href="/resources/css/profile.css" >
 
 	<!-- FONT -->
 	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
@@ -24,6 +27,7 @@
     <link rel="stylesheet" href="/resources/css/custom.css">
 
     <link rel="stylesheet" href="/resources/css/owl-carousel.css">
+    
 
     <!-- <link rel="stylesheet" href="/resources/css/lightbox.css"> -->
     
@@ -36,6 +40,11 @@
     
     <!-- tab JS -->
     <script src="/resources/js/tab.js"></script>
+
+<!--탭 부분 -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
        
     <script>

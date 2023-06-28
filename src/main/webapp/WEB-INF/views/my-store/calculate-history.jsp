@@ -35,32 +35,38 @@
         <ul class="nav">
           <li class="active ">
             <a href="sales-status.do">
-              <i class="tim-icons icon-coins"></i>
-              <p class="card-content">판매 현황</p>
+              <i class="tim-icons icon-money-coins"></i>
+              <p>판매 현황</p>
             </a>
           </li>
           <li>
             <a href="product-management.do">
-              <i class="tim-icons icon-pin"></i>
+              <i class="tim-icons icon-gift-2"></i>
               <p>상품 관리</p>
             </a>
           </li>
           <li>
             <a href="review-management.do">
-              <i class="tim-icons icon-bell-55"></i>
+              <i class="tim-icons icon-pencil"></i>
               <p>후기 관리</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
-              <i class="tim-icons icon-world"></i>
+            <a href="inquiry-management.do">
+              <i class="tim-icons icon-chat-33"></i>
+              <p>문의 관리</p>
+            </a>
+          </li>
+          <li>
+            <a href="notice-management.do">
+              <i class="tim-icons icon-volume-98"></i>
               <p>공지 관리</p>
             </a>
           </li>
           <li>
-            <a href="./user.html">
-              <i class="tim-icons icon-single-02"></i>
-              <p>스튜디오 관리</p>
+            <a href="store-management.do">
+              <i class="tim-icons icon-basket-simple"></i>
+              <p>스토어 관리</p>
             </a>
           </li>
         </ul>
@@ -75,7 +81,7 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">정산 내역</h4>
+                <h4 class="card-title font-weight-bold">정산 내역</h4>
                 <h5 class="card-title">Total. ￦<span id="t-revenue">0</span></h5>
                 
               	<form class="sort">
@@ -90,55 +96,55 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table tablesorter" id="">
+                  <table class="table tablesorter">
                     <thead>
                       <tr>
-                        <th>
-                          Date
+           	            <th>
+                          	정산 일자
                         </th>
-                        <th class="text-center">
-                          Total
+                        <th>
+                          	총 금액 
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>
-                          2023.06
+                          2023.06.30
                         </td>
-                        <td class="text-center">
+                        <td>
                           	￦<span>50000</span>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          2023.05
+                          2023.05.31
                         </td>
-                        <td class="text-center">
+                        <td>
                           	￦<span>35000</span>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          2023.04
+                          2023.04.30
                         </td>
-                        <td class="text-center">
+                        <td>
                           	￦<span>30000</span>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          2023.03
+                          2023.03.31
                         </td>
-                        <td class="text-center">
+                        <td>
                           	￦<span>9000</span>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          2023.02
+                          2023.02.28
                         </td>
-                        <td class="text-center">
+                        <td>
                           	￦<span>14000</span>
                         </td>
                       </tr>
