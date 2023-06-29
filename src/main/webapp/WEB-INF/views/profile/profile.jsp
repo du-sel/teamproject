@@ -4,17 +4,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-	<div class="container firstcontainer">
+	<div id="myprofile" class="container firstcontainer">
 		<!--상단 이미지-->
 		<div class="row topimg">
-			<div class=" col-md-12 topimgdiv" >
-				<img id="img-topimgmodify" src="/resources/images/arrow-bar-up%20(1).svg">
-			</div>
+			<div class="col-md-12 topimgdiv" >
+				<!-- <img id="img-topimgmodify" src="/resources/images/arrow-bar-up%20(1).svg"> -->
+				<p id="img-topimgmodify"> IMAGE UPLOAD </p>
+			</div> 
 		</div>
 
 		<div class="row seconddiv">
 			<!--프로필 이미지 -->
-			<div class="col-lg col-md-2  profilediv">
+			<div class=" col-md-12  profilediv">
 				<div class="profile">
 					<img class="profileimgmodify" src="/resources/images/images%20(1).svg" >
 				</div>
@@ -53,7 +54,7 @@
 	<br>
 	
 	<!-- 피드 스튜디오 공지 탭 -->
-	<div class="container shadow-sm p-3 mb-5 ">
+	<div id="myprofile" class="container shadow-sm p-3 mb-5 ">
 
 		<div style="margin:10px;">
 			
@@ -105,9 +106,29 @@
 	</div>
 
 
-	<div class="modal">
+	<div id="myprofile" class="modal">
 		<span class="modalclose">&times;</span> 
 		<div class=" mcontent">
+				<!-- 코드추가 -->
+				<div class="image-upload" id="image-upload">
+		            <form method="post" enctype="multipart/form-data">
+		                <div class="button">
+		                    <label for="chooseFile">  CLICK HERE!  </label>
+		                </div>
+		                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+		            </form>
+		
+		            <div class="fileContainer">
+		                <div class="fileInput">
+		                    <p>FILE NAME: </p>
+		                    <p id="fileName"></p>
+		                </div>
+		                <div class="buttonContainer">
+		                    <div class="submitButton" id="submitButton">SUBMIT</div>
+		                </div>
+		            </div>
+		        </div>
+		        <!--  
 			<form>
 			<p>
 				<h4>사진 업로드</h4><br>
@@ -118,10 +139,8 @@
 					<span>업로드</span>
 					</label>
 				</div>
-			<!-- 
-				<br>
-				닉네임: <input type="text" name="nickname"> -->
-			</form>
+
+			</form> -->
 		</div>
 
 	</div>
