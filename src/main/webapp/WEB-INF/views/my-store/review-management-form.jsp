@@ -29,7 +29,7 @@
     <div class="main-panel">     
       <div class="content">
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-xl-10 col-lg-12">
             <div class="col-lg-12 card">
               <div class="card-header">
                 <h2 class="card-title text-center">후기 답변</h2>

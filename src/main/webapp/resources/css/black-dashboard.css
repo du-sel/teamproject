@@ -15831,7 +15831,10 @@ img {
 
 .navbar.navbar-absolute {
   position: absolute;
-  z-index: 1050;
+  z-index: 1;
+  top: 120px;
+  left: 15px;
+  width: max-content;
 }
 
 .navbar.navbar-transparent {
@@ -17532,7 +17535,7 @@ table.tablesorter thead tr .headerSortDown {
   position: relative;
   text-transform: uppercase;
   cursor: pointer;
-  font-size: 0.62475rem;
+  /* font-size: 0.62475rem; */
   padding: 10px 8px;
   line-height: 1.625rem;
 }
@@ -20467,6 +20470,24 @@ Copyright (c) 2015 Daniel Eden
     white-space: nowrap;
 }
 
+
+/* 화면 작을 때 사이드바 toggle 버튼 */
+.navbar-toggler{
+	background-color: #000 !important;
+	width: 290px !important;
+	text-align: right !important;
+	height: 50px !important;
+		
+}
+.navbar-toggler i{
+	font-size: 20px !important;
+	color: #fff;
+	transition: all ease 1s;
+}
+.navbar-toggler:hover i{
+	transform: rotate( 180deg );
+}
+
 /* 별점 */
 .star {
   position: relative;
@@ -20571,6 +20592,9 @@ Copyright (c) 2015 Daniel Eden
 	background-color: #f2f2f6;
 }
 /* 후기 관리 폼, 문의관리 폼 */
+.management-form .main-panel .content .row>.col-xl-10{
+	margin: 0 auto;
+}
 .management-form h6{
 	font-size: 18px;
 }
@@ -20593,6 +20617,9 @@ Copyright (c) 2015 Daniel Eden
 }
 .management-form .p-info p{
 	display: inline-block;
+}
+.management-form .p-info+div+form textarea{
+	height: 250px;
 }
 .management-form .p-info .p-text-info{
 	width: 100%;
@@ -20624,31 +20651,94 @@ Copyright (c) 2015 Daniel Eden
 .management-form .management-data p{
 	display: inline-block;
 }
-.management-form .p-info+div+form textarea{
+
+/* 후기 관리 폼, 문의관리 폼, 공지관리 common */
+.management-form .p-info+div+form textarea,
+#notice-management .notice-box textarea{
 	resize: none;
 	width: 100%;
-	height: 250px;
 	border:1px solid #e4e4eb;
 	padding: 10px;	
 }
-.management-form .p-info+div+form button{
-	height: 32px;
-    width: 112px;
+
+.management-form .p-info+div+form button,
+#notice-management button{
+    width: 150px;
+	height: 40px;
     text-align: center;
     border-radius: 5px;
+    float: right;
     cursor: pointer;
     background-color: #e4e4eb;
    	border: none;
     margin: 15px 0 0;
-    float: right;
 	line-height: 0;
 	font-weight: 600;
+    font-size: 18px;
 }
-.management-form .p-info+div+form button:hover{
+.management-form .p-info+div+form button:hover,
+#notice-management button:hover{
 	color: #b8b8c4;
     background-color: #586579;
 }
-.management-form .p-info+div+form{
+
+.management-form .p-info+div+form,
+#notice-management .btn-box{
 	clear: both;
+}
+
+/* 공지 관리 */
+#notice-management .card-body{
+	position: relative;
+}
+.management-form .p-info+div+form textarea,
+#notice-management .notice-box textarea{
+	height: 150px;
+}
+#notice-management h6{
+	line-height: 25px;
+	font-size: 19px;
+	padding: 0 5px;
+}
+#notice-management .notice-box{
+	margin: 0 auto;
+	width: 100%;
+}
+#notice-management .notice-box .notice{
+	padding: 10px;
+}
+#notice-management .notice-box .notice .img-box{
+	width: 100%;
+	overflow-x: auto;
+	padding-bottom: 10px;
+}
+#notice-management .notice-box .notice img{
+	width: auto;
+	height: 300px;
+	margin: 20px 5px 0;
+}
+#notice-management .btn-box input[type='file']{
+	display: inline-block;
+	margin-top: 15px;
+	width: max-content;
+}
+#notice-management .btn-box button{
+	margin-left: 5px;
+}
+
+/* 스토어 관리 */
+#store-management .row {
+	margin: 0 10px 40px;
+}
+#store-management .row h5 {
+	color: #000;
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+#store-management .page-title {
+	margin: 30px 0 50px;
+}
+#store-management .store-input {
+	margin-left: 25px;
 }
 /*# sourceMappingURL=dashboard-free.css.map */

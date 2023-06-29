@@ -2,20 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
-<!DOCTYPE HTML>
-<html>
-	<head>
 
-		<script>			
-			$( document ).ready( function() {
-				$( 'button.commentList' ).click( function() {
-				$( '.ulcommentList' ).slideToggle();
-				} );
-			} );
-		</script>
-
-	</head>
-	<body class="single is-preload">
 		<!-- Wrapper -->
 			<div id="wrapper" class="col-lg-12">
 
@@ -48,7 +35,7 @@
 										<li id="comment_li"><button class="comment" style="background-color: #e4e4eb; border-radius:5px; font-size:15px; border:0; width=92px; height:30px; text-align: center;">댓글 입력창</button></li>
 										<li id="comment_li">
 											<div class="divcomment"  style="display: none;">
-												<input type="text" name="comment">
+												<textarea id="co-textarea" class="col-12" rows="2" style="display:block; height:59px; resize: none; border: 1px solid #e4e4eb;"></textarea>
 											</div>
 										</li>									
 									
@@ -85,6 +72,7 @@
 								</footer>
 							</article>
 
+					</div>
 					</div>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
