@@ -34,7 +34,7 @@
 			<h2>신규 상품 등록</h2>
       	</div>
       
-      	<form name="frm" id="frm" action="" method="post">      	
+      	<form name="frm" id="frm" action="" method="post" enctype="multipart/form-data">      	
 	        <div class="row justify-content-center page-content">
 	          <div class="col-xxl-8 col-xl-10 col-lg-12 info">
 	            <div class="row name-container">
@@ -151,8 +151,8 @@
   
   
   
-  <!-- 네이버 스마트에디터 실행 코드 -->
-  <script src="resources/smarteditor2_9/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+  <!-- 네이버 스마트에디터(사진기본포함) 실행 코드 -->
+<!--   <script src="resources/smarteditor2_9/js/service/HuskyEZCreator.js" charset="utf-8"></script>
   <script>
 	$(document).ready(function () {
 			
@@ -169,6 +169,21 @@
 		smartEditorIFrame();
 	});
   </script>
+   -->
+  
+	<script src="resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+
+	<script type="text/javascript">
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+		 oAppRef: oEditors,
+		 elPlaceHolder: "content",
+		 sSkinURI: "resources/smarteditor/SmartEditor2Skin.html",
+		 fCreator: "createSEditor2"
+		});
+	</script>
+  
+  
   
   
   
