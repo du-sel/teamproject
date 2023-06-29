@@ -44,7 +44,7 @@
 	           	<label for="product-price"><h5>금액</h5></label>
 	           	<div class="form-control-container d-flex">
 	           		<span>&#8361;</span>
-	           		<input type="text" name="price" id="product-price" class="form-control" placeholder="금액을 입력하세요">
+	           		<input type="text" name="price" id="product-price" class="form-control form-number" placeholder="금액을 입력하세요" onchange="getNumber(this); getSalePrice();" onkeyup="getNumber(this);">
 	           	</div>
             </div>
 			<div class="row flex-column">
@@ -62,7 +62,7 @@
 	           		<div class="d-flex align-items-center product-sale-container">
 	           			<div class="form-control-container d-flex">
 			           		<span>&#8361;</span>
-			           		<input type="text" name="sale" id="product-sale" class="form-control" placeholder="할인 금액을 입력하세요">
+			           		<input type="text" name="sale" id="product-sale" class="form-control form-number" placeholder="할인 금액을 입력하세요" onchange="getNumber(this); getSalePrice();" onkeyup="getNumber(this);">
 			           	</div>
 		           		<p>할인</p>
 	           		</div>
@@ -71,7 +71,7 @@
 	           		<h5>할인 적용가</h5>
 	           		<div class="form-control-container d-flex">
 		           		<span>&#8361;</span>
-		           		<input type="text" name="sale-price" id="product-sale-final" class="form-control" value="" disabled>
+		           		<input type="text" name="sale-price" id="product-sale-final" class="form-control form-number" value="" disabled onchange="getNumber(this); getSalePrice(this);" onkeyup="getNumber(this);">
 		           	</div>
 	           	</div>
            	</div>
@@ -160,6 +160,43 @@
 		smartEditorIFrame();
 	});
   </script>
+  
+  
+  
+  <!-- 금액 입력창 -->
+  <script>
+
+    function getNumber(obj){
+	   var num01;
+	   var num02;
+	   num01 = obj.value;
+	   num02 = num01.replace(/\D/g,""); 
+	   num01 = numberWithCommas(num02);
+	   obj.value =  num01;
+	
+	   $('#test').text(num01);
+	}
+    
+    
+    function getSalePrice() {
+    	let price = document.getElementById('product-price').value.replace(/\D/g,"");
+    	let sale = document.getElementById('product-sale').value.replace(/\D/g,"");
+    	let saleFinal = price+"-"+sale;
+   	
+    	let saleFinalInput = document.getElementById('product-sale-final');    	
+    	saleFinalInput.value = numberWithCommas(eval(saleFinal));
+    }
+    
+    
+    
+    $(() => {
+    	
+    	
+    });
+  
+  </script>
+  
+  
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
