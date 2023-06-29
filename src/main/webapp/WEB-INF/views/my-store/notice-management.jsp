@@ -35,26 +35,23 @@
       	</div>
       
         <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info">
+          <div class="col-xl-10 col-lg-12">
             <div class="card">
               <div class="card-body">
                 <div class="row notice-box">
 	                <form class="notice col-lg-12" action="">
 	                	<textarea maxlength="300" placeholder="공지 작성"></textarea>
-	                	
 	                </form>
 	             </div>
                	 <div class="col-lg-12 btn-box">
                	 	 <input type="file" accept="image/*">
-               		 <button type="button">작성</button>
+               		 <button type="submit">작성</button>
                	 </div>
               </div>
             </div>
-            
-            
-            
+
             <div class="card">
-              <div class="card-body">
+              <form class="card-body" action='#' method='post'>
                 <div class="row notice-box">
 	                <div class="notice col-lg-12">
 	                	<h6>
@@ -73,11 +70,109 @@
 	             </div>
                	 <div class="col-lg-12 btn-box">
                		 <button type="button">삭제</button>
-               		 <button type="button" onclick="">수정</button>
+               		 <button type="button" onclick="notice_modify(this);">수정</button>
                	 </div>
-              </div>
+              </form>
+            </div>
+            <div class="card">
+              <form class="card-body" action='#' method='post'>
+                <div class="row notice-box">
+	                <div class="notice col-lg-12">
+	                	<h6>
+	                		안녕하세요. ooo몰입니다!<br>
+	                		~~~<br>
+	                		~~~~~~~<br>
+	                		~~~~~~~~~~~~~~~~~~<br>
+	                		~~~~~~~~~~~~~~~~~~~~~~~~~~
+	                	</h6>
+	                	<div class="d-flex justify-content-start img-box scroll-custom">
+		                	<img src="/resources/images/men-01.jpg" alt="">
+		                	<img src="/resources/images/men-01.jpg" alt="">
+		                	<img src="/resources/images/men-01.jpg" alt="">
+	                	</div>
+	                </div>
+	             </div>
+               	 <div class="col-lg-12 btn-box">
+               		 <button type="button">삭제</button>
+               		 <button type="button" onclick="notice_modify(this);">수정</button>
+               	 </div>
+              </form>
+            </div>
+            <div class="card">
+              <form class="card-body" action='#' method='post'>
+                <div class="row notice-box">
+	                <div class="notice col-lg-12">
+	                	<h6>
+	                		안녕하세요. ooo몰입니다!<br>
+	                		~~~<br>
+	                		~~~~~~~<br>
+	                		~~~~~~~~~~~~~~~~~~<br>
+	                		~~~~~~~~~~~~~~~~~~~~~~~~~~
+	                	</h6>
+	                	<div class="d-flex justify-content-start img-box scroll-custom">
+		                	<img src="/resources/images/men-01.jpg" alt="">
+		                	<img src="/resources/images/men-01.jpg" alt="">
+		                	<img src="/resources/images/men-01.jpg" alt="">
+	                	</div>
+	                </div>
+	             </div>
+               	 <div class="col-lg-12 btn-box">
+               		 <button type="button">삭제</button>
+               		 <button type="button" onclick="notice_modify(this);">수정</button>
+               	 </div>
+              </form>
+            </div>
+            <div class="card">
+              <form class="card-body" action='#' method='post'>
+                <div class="row notice-box">
+	                <div class="notice col-lg-12">
+	                	<h6>
+	                		안녕하세요. ooo몰입니다!<br>
+	                		~~~<br>
+	                		~~~~~~~<br>
+	                		~~~~~~~~~~~~~~~~~~<br>
+	                		~~~~~~~~~~~~~~~~~~~~~~~~~~
+	                	</h6>
+	                	<div class="d-flex justify-content-start img-box scroll-custom">
+		                	<img src="/resources/images/men-01.jpg" alt="">
+		                	<img src="/resources/images/men-01.jpg" alt="">
+		                	<img src="/resources/images/men-01.jpg" alt="">
+	                	</div>
+	                </div>
+	             </div>
+               	 <div class="col-lg-12 btn-box">
+               		 <button type="button">삭제</button>
+               		 <button type="button" onclick="notice_modify(this);">수정</button>
+               	 </div>
+              </form>
             </div>
           </div>
+          
+          <!-- 페이지 번호 -->
+          <div class="col-lg-12">
+	          <div class="pagination">
+	              <ul>
+	                  <li>
+	                      <a href="#"><</a>
+	                  </li>
+	                  <li>
+	                      <a href="#">1</a>
+	                  </li>
+	                  <li class="active">
+	                      <a href="#">2</a>
+	                  </li>
+	                  <li>
+	                      <a href="#">3</a>
+	                  </li>
+	                  <li>
+	                      <a href="#">4</a>
+	                  </li>
+	                  <li>
+	                      <a href="#">></a>
+	                  </li>
+	              </ul>
+	          </div>
+	        </div>
         </div>
       </div>
     </div>
@@ -87,7 +182,18 @@
 
   <script src="/resources/js/my-store.js"></script>
   <script>
-  
+  	function notice_modify(event){
+  		let notice = $(event).parent().prev().children();
+  		let content = $(event).parent().prev().children().children().eq(0);
+  		
+  		let btn = "<button type='submit'>완료</button>"
+  		let form = "<textarea maxlength='300' placeholder='공지 작성'>"+content.html().replace(/\s/gi, '').replace(/(<br>|<br\/>|<br \/>)/gi, '\r\n')+"</textarea>";
+  		
+  		$(notice).children('h6').remove();
+  		$(notice).prepend(form);
+  		$(event).after(btn);
+  		$(event).remove();
+  	}
   </script>
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
