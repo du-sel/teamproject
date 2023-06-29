@@ -3312,10 +3312,17 @@ insert-product
 	margin: 0 auto;
 }	
 #insert-product .info .row {
-	margin: 0 10px 40px;
+	margin: 0 10px 60px;
+}
+#insert-product .info .row h5 {
+	margin-bottom: 10px;
+	font-weight: 600;
 }
 #insert-product .page-title {
 	margin: 30px 0 50px;
+}
+#insert-product .page-title h2 {
+	font-weight: 600;
 }
 #insert-product .info #product-sale-final {
 	background: #fff; 
@@ -3359,13 +3366,17 @@ insert-product
 	box-shadow:0 0 0 .2rem rgba(0,123,255,.25)
 }
 
-
-
-
-
-
-
-
+#insert-product .category-card {
+	background: #f2f2f6;
+	padding: 30px 40px;
+	border-radius: 0.5rem;
+}
+#insert-product .category-card input {
+	margin-right: 40px;
+}
+#insert-product .category-card div:not(:last-of-type) {
+	margin-bottom: 20px;
+}
 
 
 
