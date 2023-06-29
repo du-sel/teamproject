@@ -34,7 +34,7 @@
 			<h2>신규 상품 등록</h2>
       	</div>
       
-        <div class="row justify-content-center">
+        <div class="row justify-content-center page-content">
           <div class="col-xxl-8 col-xl-10 col-lg-12 info">
             <div class="row">
 	           	<label for="product-name"><h5>상품명</h5></label>
@@ -42,7 +42,10 @@
             </div>
             <div class="row">
 	           	<label for="product-price"><h5>금액</h5></label>
-	           	<input type="text" name="name" id="product-price" class="form-control" placeholder="금액을 입력하세요">
+	           	<div class="form-control-container d-flex">
+	           		<span>&#8361;</span>
+	           		<input type="text" name="price" id="product-price" class="form-control" placeholder="금액을 입력하세요">
+	           	</div>
             </div>
 			<div class="row flex-column">
 	           	<h5>할인 여부</h5>
@@ -52,47 +55,63 @@
 	           		<label for="no-sale">할인 미적용</label>
 	           		<input type="radio" name="do-sale" id="no-sale" value="no">
 	           	</div>
-	           	<div class="sale-info">
+			</div>	 
+           	<div class="sale-info">
+				<div class="row flex-column">
 	           		<label for="product-sale"><h5>할인 금액</h5></label>
-	           		<div class="d-flex">
-		          	 	<input type="text" name="sale" id="product-sale" class="form-control" placeholder="할인 금액을 입력하세요">
+	           		<div class="d-flex align-items-center product-sale-container">
+	           			<div class="form-control-container d-flex">
+			           		<span>&#8361;</span>
+			           		<input type="text" name="sale" id="product-sale" class="form-control" placeholder="할인 금액을 입력하세요">
+			           	</div>
 		           		<p>할인</p>
 	           		</div>
-	           		<h5>할인 적용가</h5>
-	          	 	<input type="text" name="sale" id="product-sale-final" class="form-control" value="" disabled>
 	           	</div>
-			</div>	 
+	           	<div class="row">
+	           		<h5>할인 적용가</h5>
+	           		<div class="form-control-container d-flex">
+		           		<span>&#8361;</span>
+		           		<input type="text" name="sale-price" id="product-sale-final" class="form-control" value="" disabled>
+		           	</div>
+	           	</div>
+           	</div>
 			
-			<div class="row category flex-column">
-				<div>
+			<div class="category">
+				<div class="row flex-column">
 					<h5>디자인 카테고리</h5>
-					<label for="cate-design-minimal">미니멀</label>
-					<input type="checkbox" id="cate-design-minimal" name="category-design" value="미니멀">
-					<label for="cate-design-illust">일러스트</label>
-					<input type="checkbox" id="cate-design-illust" name="category-design" value="일러스트">
-					<label for="cate-design-photo">포토</label>
-					<input type="checkbox" id="cate-design-photo" name="category-design" value="포토">
+					<div>
+						<label for="cate-design-minimal">미니멀</label>
+						<input type="checkbox" id="cate-design-minimal" name="category-design" value="미니멀">
+						<label for="cate-design-illust">일러스트</label>
+						<input type="checkbox" id="cate-design-illust" name="category-design" value="일러스트">
+						<label for="cate-design-photo">포토</label>
+						<input type="checkbox" id="cate-design-photo" name="category-design" value="포토">
+					</div>
 				</div>
-				<div>
+				<div class="row flex-column">
 					<h5>페이지 카테고리</h5>
-					<label for="cate-page-whole">한달 세트</label>
-					<input type="checkbox" id="cate-page-whole" name="category-page" value="한달">
-					<label for="cate-page-monthly">먼슬리</label>
-					<input type="checkbox" id="cate-page-monthly" name="category-design" value="먼슬리">
-					<label for="cate-page-weekly">위클리</label>
-					<input type="checkbox" id="cate-page-weekly" name="category-design" value="먼슬리">
-					<label for="cate-page-habit">해빗트래커</label>
-					<input type="checkbox" id="cate-page-habit" name="category-design" value="먼슬리">
-					<label for="cate-page-mood">무드트래커</label>
-					<input type="checkbox" id="cate-page-mood" name="category-design" value="먼슬리">
-					<label for="cate-page-reading">독서트래커</label>
-					<input type="checkbox" id="cate-page-reading" name="category-design" value="먼슬리">
-					<label for="cate-page-expense">가계부</label>
-					<input type="checkbox" id="cate-page-expense" name="category-design" value="먼슬리">
-					<label for="cate-page-study">스터디</label>
-					<input type="checkbox" id="cate-page-study" name="category-design" value="먼슬리">
-					<label for="cate-page-sticker">스티커</label>
-					<input type="checkbox" id="cate-page-sticker" name="category-design" value="먼슬리">
+					<div>
+						<label for="cate-page-whole">한달 세트</label>
+						<input type="checkbox" id="cate-page-whole" name="category-page" value="한달 세트">
+						<label for="cate-page-monthly">먼슬리</label>
+						<input type="checkbox" id="cate-page-monthly" name="category-design" value="먼슬리">
+						<label for="cate-page-weekly">위클리</label>
+						<input type="checkbox" id="cate-page-weekly" name="category-design" value="위클리">
+						<label for="cate-page-habit">해빗트래커</label>
+						<input type="checkbox" id="cate-page-habit" name="category-design" value="해빗트래커">
+						<label for="cate-page-mood">무드트래커</label>
+						<input type="checkbox" id="cate-page-mood" name="category-design" value="무드트래커">
+						<label for="cate-page-reading">독서트래커</label>
+						<input type="checkbox" id="cate-page-reading" name="category-design" value="독서트래커">
+						<label for="cate-page-expense">가계부</label>
+						<input type="checkbox" id="cate-page-expense" name="category-design" value="가계부">
+						<label for="cate-page-study">스터디</label>
+						<input type="checkbox" id="cate-page-study" name="category-design" value="스터디">
+						<label for="cate-page-sticker">스티커</label>
+						<input type="checkbox" id="cate-page-sticker" name="category-design" value="스티커">
+						<label for="cate-page-etc">그 외</label>
+						<input type="checkbox" id="cate-page-etc" name="category-design" value="그 외">
+					</div>
 				</div>
 			</div>
 			     
