@@ -47,7 +47,7 @@ const modalClose = document.querySelector(".modalclose");
 
 
 
-
+/*
 const fileDOM2 = document.querySelector('#file2');
 const previews = document.querySelectorAll('.image-box');
 
@@ -56,7 +56,7 @@ fileDOM2.addEventListener('change', () => {
   previews.src = imageSrc;
 
 });
-
+*/
 
 //상단이미지 업로드 코드 추가
 var submit = document.getElementById('submitButton');
