@@ -59,17 +59,27 @@
 		<div style="margin:10px;">
 			
 			<ul class="nav nav-tabs">
+			 	<li class="nav-item navli">
+			 		<a class="nav-link active" href="#feed" data-toggle="tab">피드</a>
+			 	</li>
+			 	<li class="nav-item navli">
+			 		<a class="nav-link" href="#studio" data-toggle="tab">스튜디오</a>
+			 	</li>
+			 	<li class="nav-item navli">
+			 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
+			 	</li>
+			 	<!-- 
 				<li class="active navli"><a href="#feed" data-toggle="tab" >피드</a></li>
 				<li class="navli"><a href="#studio" data-toggle="tab">스튜디오</a></li>
 				<li class="navli"><a href="#notice" data-toggle="tab">공지</a></li>
+				 -->
 			</ul>
 
 			<div class="tab-content">
-
-				<div class="tab-pane fade in active" id="feed">
+				<div class="tab-pane fade show active" id="feed">
 					<br>
 					<div class="writenew">
-						<a >글 작성하기</a>
+						<a href="#">글 작성하기</a>
 					</div>
 					
 					<div class="container">
@@ -90,18 +100,99 @@
 
 				<div class="tab-pane fade" id="studio"><br>
 					<select name="shop__selector" id="shop__selector">
-						<option>기본 정렬</option>
+						<option selected>기본 정렬</option>
 						<option>가나다순</option>
 						<option>낮은 가격순</option>
 						<option>높은 가격순</option>
 					</select>
+					<div class="container">
+					<!-- 
+						<div class="row">
+							<div class="col-lg-4">
+			                    <div class="item">
+				                    <a href="product-single.do">
+				                        <div class="thumb">
+				                            <div class="hover-content">
+				                                <ul>
+				                                    <li><i class="fa fa-shopping-cart"></i></li>
+				                                </ul>
+				                            </div>
+				                            <img src="/resources/images/men-01.jpg" alt="">
+				                        </div>
+				                        <div class="down-content">
+				                            <h4>Classic Spring</h4>
+				                            <span>$120.00</span>
+				                            <ul class="stars">
+				                                <li><i class="fa fa-star"></i></li>
+				                                <li><i class="fa fa-star"></i></li>
+				                                <li><i class="fa fa-star"></i></li>
+				                                <li><i class="fa fa-star"></i></li>
+				                                <li><i class="fa fa-star"></i></li>
+				                            </ul>
+				                        </div>
+			                        </a>
+			                    </div>								
+							</div>
+							<div class="col-lg-4">
+			                    <div class="item">
+				                    <a href="product-single.do">
+				                        <div class="thumb">
+				                            <div class="hover-content">
+				                                <ul>
+				                                    <li><i class="fa fa-shopping-cart"></i></li>
+				                                </ul>
+				                            </div>
+				                            <img src="/resources/images/men-01.jpg" alt="">
+				                        </div>
+				                        <div class="down-content">
+				                            <h4>Classic Spring</h4>
+				                            <span>$120.00</span>
+				                            <ul class="stars">
+				                                <li><i class="fa fa-star"></i></li>
+				                                <li><i class="fa fa-star"></i></li>
+				                                <li><i class="fa fa-star"></i></li>
+				                                <li><i class="fa fa-star"></i></li>
+				                                <li><i class="fa fa-star"></i></li>
+				                            </ul>
+				                        </div>
+			                        </a>
+			                    </div>								
+							</div>
+							<div class="col-lg-4">
+			                    <div class="item">
+				                    <a href="product-single.do">
+				                        <div class="thumb">
+				                            <div class="hover-content">
+				                                <ul>
+				                                    <li><i class="fa fa-shopping-cart"></i></li>
+				                                </ul>
+				                            </div>
+				                            <img src="/resources/images/men-01.jpg" alt="">
+				                        </div>
+				                        <div class="down-content">
+				                            <h4>Classic Spring</h4>
+				                            <span>$120.00</span>
+				                            <ul class="stars">
+				                                <li><i class="fa fa-star"></i></li>
+				                                <li><i class="fa fa-star"></i></li>
+				                                <li><i class="fa fa-star"></i></li>
+				                                <li><i class="fa fa-star"></i></li>
+				                                <li><i class="fa fa-star"></i></li>
+				                            </ul>
+				                        </div>
+			                        </a>
+			                    </div>								
+							</div>
+						</div>
+					</div>
 				</div>
-
-				<div class="tab-pane fade" id="notice">
-					공지 페이지
-				</div>
-				
-			</div>
+				 -->
+			</div>	 
+		</div>
+		
+		
+		<div class="tab-pane fade" id="notice">
+			공지 페이지
 		</div>
 	</div>
 
@@ -109,7 +200,7 @@
 	<div class=" modal">
 		
 		<div class="mcontent">
-		<p class="modalclose">&times;</p> <br>
+		<p class="modalclose">&times;</p>
 				<!-- 코드추가 -->
 				<div class="image-upload" id="image-upload">
 		            <form method="post" enctype="multipart/form-data">

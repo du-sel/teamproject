@@ -13,9 +13,7 @@ time,mark,audio,video{
    margin: 0; padding: 0; border: 0; font-size: 100%;
 } */
 
-#myprofile{
-	min-width: 380px;
-}
+
 #myprofile .firstcontainer{
 /* 	border: 1px solid gray; */
 	padding-top:100px;
@@ -92,9 +90,7 @@ time,mark,audio,video{
     
     
 }
-#myprofile .fbtn,.sbtn{
 
-}
 #myprofile #buttonright{
 	display: inline-block;
 	border: 1px solid lightgray;
@@ -116,7 +112,6 @@ time,mark,audio,video{
 }
 
 
-
 /* 프로필 수정 이미지 */
 #myprofile .profileimgmodify{
 	width: 40px;
@@ -129,13 +124,13 @@ time,mark,audio,video{
 
 #myprofile .navli{
 	text-align: center;
-	padding-top: 5px;
-	width: 80px;
+	padding-top: 6px;
+	width: 110px;
 	height: 40px;
 	font-size: 20px;
 	font-weight: 700;
 	margin-right: 20px;
-	border: 1px solid lightgray;
+	/* border: 1px solid lightgray; */
 }
 
 #myprofile .tab-content{
@@ -144,6 +139,7 @@ time,mark,audio,video{
 
 /* 이미지 업도르 */
 #myprofile .image-upload {
+	margin-top: 20px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -153,15 +149,20 @@ time,mark,audio,video{
 #myprofile .button {
     display: flex;
     justify-content: center;
+    
 }
+
 
 #myprofile label {
     cursor: pointer;
-    font-size: 1em;
+    /* font-size: 1em; */
+    font-size: 30px;
+	font-weight: 500;
 }
 
 #myprofile #chooseFile {
     visibility: hidden;
+  
 }
 
 #myprofile .fileContainer {
@@ -211,28 +212,39 @@ time,mark,audio,video{
     position: absolute;
 }
 
+#myprofile li {
+	margin-bottom: 13px;
+}
+
+#myprofile #shop__selector{
+	border: none;
+}
+
 /* 모달 스타일링을 위한 CSS 코드 */
 #myprofile .modal {
   display: none;
   position: absolute;
   z-index: 9999;
-  left: 30em;
-  top: 50px;
-  width: 410px;
-  height: 500px;
+  width: 100%;
+  height: 540px;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5); 
   border: 1px solid lightgray;
   border-radius: 10px;
+  padding-top: 30px;
 }
 
 #myprofile .mcontent {
   text-align:center;
   background-color: #fefefe;
+
   margin: auto;
   padding: 5px;
+
   border: 1px solid #888;
-  width: 300px;
+  border-radius: 20px;
+  max-width: 500px;
+  width:auto;
   height: 460px;
   position: relative;
   top:10px;
@@ -277,9 +289,17 @@ time,mark,audio,video{
 	display: none;
 }
 
-#myprofile .writenew{
-	text-align: right;
+#myprofile .writenew {
+	width: 110px;
+	height: 50px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+	text-align: center;
+	padding-top: 12px;
+	float: right;
+	
 }
+
 
 #myprofile #studio{
 	text-align: right;
