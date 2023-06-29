@@ -99,6 +99,8 @@
 			<div class="row flex-column">
 				<h5>썸네일</h5>
 				<p>정사각형 사이즈 권장</p>
+				<input type="file" class="form-control">
+				
 			</div>     	
             
           </div>
