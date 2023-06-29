@@ -3,8 +3,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
-
-	<div  id="myprofile" class="container firstcontainer">
+<div id="myprofile">
+	<div  class="container firstcontainer">
 		<!--상단 이미지-->
 		<div class="row topimg">
 			<div class="col-md-12 topimgdiv" >
@@ -13,9 +13,9 @@
 			</div> 
 		</div>
 
-		<div class="row seconddiv">
+		<div class="row  seconddiv">
 			<!--프로필 이미지 -->
-			<div class=" col-md-12  profilediv">
+			<div class="col-md-2 profilediv">
 				<div class="profile">
 					<img class="profileimgmodify" src="/resources/images/images%20(1).svg" >
 				</div>
@@ -54,7 +54,7 @@
 	<br>
 	
 	<!-- 피드 스튜디오 공지 탭 -->
-	<div id="myprofile" class="container shadow-sm p-3 mb-5 ">
+	<div  class="container shadow-sm p-3 mb-5 ">
 
 		<div style="margin:10px;">
 			
@@ -106,18 +106,19 @@
 	</div>
 
 
-	<div id="myprofile" class="modal">
-		<span class="modalclose">&times;</span> 
-		<div class=" mcontent">
+	<div class=" modal">
+		
+		<div class="mcontent">
+		<p class="modalclose">&times;</p> <br>
 				<!-- 코드추가 -->
 				<div class="image-upload" id="image-upload">
 		            <form method="post" enctype="multipart/form-data">
-		                <div class="button">
+		                <div class=" button">
 		                    <label for="chooseFile">  CLICK HERE!  </label>
 		                </div>
 		                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
 		            </form>
-		
+			<br>
 		            <div class="fileContainer">
 		                <div class="fileInput">
 		                    <p>FILE NAME: </p>
@@ -144,5 +145,6 @@
 		</div>
 
 	</div>
+</div>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

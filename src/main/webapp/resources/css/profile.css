@@ -13,8 +13,7 @@ time,mark,audio,video{
    margin: 0; padding: 0; border: 0; font-size: 100%;
 } */
 
-
-#myprofile body{
+#myprofile{
 	min-width: 380px;
 }
 #myprofile .firstcontainer{
