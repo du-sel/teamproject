@@ -71,6 +71,9 @@ public class TmpHandler implements Controller {
 		else if(path.equals("/review-management.do")) {			
 			mav.setViewName("./WEB-INF/views/my-store/review-management.jsp");			
 		}
+		else if(path.equals("/review-management-form.do")) {			
+			mav.setViewName("./WEB-INF/views/my-store/review-management-form.jsp");			
+		}
 		else if(path.equals("/inquiry-management.do")) {			
 			mav.setViewName("./WEB-INF/views/my-store/inquiry-management.jsp");			
 		}
@@ -89,8 +92,10 @@ public class TmpHandler implements Controller {
 		else if(path.equals("/profile.do")) {		
 			mav.setViewName("./WEB-INF/views/profile/profile.jsp");			
 		}
+		else if(path.equals("/insert-product.do")) {		
+			mav.setViewName("./WEB-INF/views/my-store/insert-product.jsp");			
+		}
 
-		
 		
 		return mav;
 	}
