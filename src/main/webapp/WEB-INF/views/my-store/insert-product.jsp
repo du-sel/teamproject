@@ -102,7 +102,10 @@
 				<input type="file" accept="image/*" name="thumbnail">
 			</div>     	
 
-
+			<div class="row">
+				<h5>상세 정보</h5>
+				<textarea id="content" name="content" style="width:100%; height:412px;"></textarea>
+			</div>
 
 				
             
@@ -117,6 +120,27 @@
   
 
   <script src="/resources/js/my-store.js"></script>
+  
+  
+  
+  <!-- 네이버 스마트에디터 실행 코드 -->
+  <script src="resources/smarteditor2_9/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+  <script>
+	$(document).ready(function () {
+			
+		var oEditors = [];
+		function smartEditorIFrame() {
+			
+			nhn.husky.EZCreator.createInIFrame({
+				oAppRef : oEditors,
+				elPlaceHolder : "content",
+				sSkinURI : "resources/smarteditor2_9/SmartEditor2Skin.html",
+				fCreator : "createSEditor2"
+			});
+	      }
+		smartEditorIFrame();
+	});
+  </script>
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
