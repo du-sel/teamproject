@@ -91,16 +91,13 @@
           <!-- 두번째 탭 (구매후기) -->
           <div id = "review" class ="tab-pane">
             <br><br>
-            
 			<div class="speech-bubble">
-				<table style="width: 500px; margin: 0 auto;">
+				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
 				        <img src="/resources/images/프로필1.png" alt="프로필 이미지" width="70px" height="70px">
 				      </div>
-				    </td>
-				    <td>
 				      <div class="user-info">
 				        <div class="rating" style="color: red;">
 				          <i class="fa fa-star"></i>
@@ -111,13 +108,6 @@
 				        </div>
 				        <p class="user-id">mathl*** &nbsp;| &nbsp; 23.03.27</p>
 				        <p class="product-name">상품명 : 춘식이 다이어리</p>
-				      </div>
-				    </td>
-				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="product-info">
-				        <br>
 				      </div>
 				    </td>
 				  </tr>
@@ -134,14 +124,12 @@
 			<hr>
 			<br><br>
 			<div class="speech-bubble">
-				<table style="width: 500px; margin: 0 auto;">
+				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
 				        <img src="/resources/images/프로필2.png" alt="프로필 이미지" width="70px" height="70px">
 				      </div>
-				    </td>
-				    <td>
 				      <div class="user-info">
 				        <div class="rating" style="color: red;">
 				          <i class="fa fa-star"></i>
@@ -152,13 +140,6 @@
 				        </div>
 				        <p class="user-id">chick*** &nbsp;| &nbsp; 23.01.01</p>
 				        <p class="product-name">상품명 : 춘식이 다이어리</p>
-				      </div>
-				    </td>
-				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="product-info">
-				        <br>
 				      </div>
 				    </td>
 				  </tr>
@@ -175,14 +156,13 @@
 			<hr>
 			<br><br>
 			<div class="speech-bubble">
-				<table style="width: 500px; margin: 0 auto;">
+				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
 				        <img src="/resources/images/프로필3.png" alt="프로필 이미지" width="70px" height="70px">
 				      </div>
-				    </td>
-				    <td>
+				    
 				      <div class="user-info">
 				        <div class="rating" style="color: red;">
 				          <i class="fa fa-star"></i>
@@ -196,13 +176,7 @@
 				      </div>
 				    </td>
 				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="product-info">
-				        <br>
-				      </div>
-				    </td>
-				  </tr>
+				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -216,14 +190,13 @@
 			<hr>
 			<br><br>
 			<div class="speech-bubble">
-				<table style="width: 500px; margin: 0 auto;">
+				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
 				        <img src="/resources/images/프로필4.png" alt="프로필 이미지" width="70px" height="70px">
 				      </div>
-				    </td>
-				    <td>
+				    
 				      <div class="user-info">
 				        <div class="rating" style="color: red;">
 				          <i class="fa fa-star"></i>
@@ -237,13 +210,7 @@
 				      </div>
 				    </td>
 				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="product-info">
-				        <br>
-				      </div>
-				    </td>
-				  </tr>
+				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -257,14 +224,13 @@
 			<hr>
 			<br><br>
 			<div class="speech-bubble">
-				<table style="width: 500px; margin: 0 auto;">
+				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
 				        <img src="/resources/images/프로필5.png" alt="프로필 이미지" width="70px" height="70px">
 				      </div>
-				    </td>
-				    <td>
+				    
 				      <div class="user-info">
 				        <div class="rating" style="color: red;">
 				          <i class="fa fa-star"></i>
@@ -278,13 +244,7 @@
 				      </div>
 				    </td>
 				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="product-info">
-				        <br>
-				      </div>
-				    </td>
-				  </tr>
+				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -298,14 +258,13 @@
 			<hr>
 			<br><br>
 			<div class="speech-bubble">
-				<table style="width: 500px; margin: 0 auto;">
+				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
 				        <img src="/resources/images/프로필6.png" alt="프로필 이미지" width="70px" height="70px">
 				      </div>
-				    </td>
-				    <td>
+				    
 				      <div class="user-info">
 				        <div class="rating" style="color: red;">
 				          <i class="fa fa-star"></i>
@@ -319,13 +278,7 @@
 				      </div>
 				    </td>
 				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="product-info">
-				        <br>
-				      </div>
-				    </td>
-				  </tr>
+				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -339,14 +292,13 @@
 			<hr>
 			<br><br>
 			<div class="speech-bubble">
-				<table style="width: 500px; margin: 0 auto;">
+				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
 				        <img src="/resources/images/프로필7.png" alt="프로필 이미지" width="70px" height="70px">
 				      </div>
-				    </td>
-				    <td>
+				    
 				      <div class="user-info">
 				        <div class="rating" style="color: red;">
 				          <i class="fa fa-star"></i>
@@ -360,13 +312,7 @@
 				      </div>
 				    </td>
 				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="product-info">
-				        <br>
-				      </div>
-				    </td>
-				  </tr>
+				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">

@@ -1,5 +1,4 @@
 // 상단 수정이미지 보이게 하기
-
 const topimgContainer = document.querySelector('.topimg');
 
 topimgContainer.addEventListener('mouseenter', function() {
@@ -47,7 +46,7 @@ const modalClose = document.querySelector(".modalclose");
 
 
 
-/*
+/* 이미지 미리보기 인데...하
 const fileDOM2 = document.querySelector('#file2');
 const previews = document.querySelectorAll('.image-box');
 
@@ -74,7 +73,7 @@ function showImage() {
 
 function loadFile(input) {
     var file = input.files[0];
-
+s
     var name = document.getElementById('fileName');
     name.textContent = file.name;
 
@@ -92,5 +91,6 @@ function loadFile(input) {
     container.appendChild(newImage);
 };
 
+// 탭 피드 부분 시작하자마자 보이게
 
 
