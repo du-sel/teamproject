@@ -218,7 +218,13 @@ time,mark,audio,video{
 
 #myprofile #shop__selector{
 	border: none;
+	margin-top: 15px;
 }
+
+#myprofile .line{
+	display: inline-block;
+}
+
 
 /* 모달 스타일링을 위한 CSS 코드 */
 #myprofile .modal {
@@ -301,6 +307,3 @@ time,mark,audio,video{
 }
 
 
-#myprofile #studio{
-	text-align: right;
-}
