@@ -10,13 +10,17 @@
 	
     <section class="section">
 
-        
+        <br><br><br>
+        <!-- 화면 왼쪽 위에 목록으로 돌아가기 -->
+	    <div class="back">
+	    <a href="products.do">목록으로 돌아가기</a>
+	    </div>
+	    <br><br><br>
         
         <!-- 상품 썸네일과 가격 -->
         <div class="container">
-	        <!-- 화면 왼쪽 위에 목록으로 돌아가기 -->
-	        <a href="products.do">목록으로 돌아가기</a>
-        
+	        
+
             <div class="row">
                 <div class="col-lg-8">
                 <div class="left-images">
@@ -26,7 +30,7 @@
             <div class="col-lg-4">
                 <div class="right-content">
                     <h4>춘식이 다이어리</h4>
-                    <span class="price">700원</span>
+                    <span class="creator">'춘식이폼미쳤다' 님의 작품</span>
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
@@ -34,22 +38,20 @@
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                     </ul>
-                    <span>춘식이 다이어리 입니다.</span>
+                    <span>'춘식이폼미쳤다' 님의 한마디,</span>
                     <div class="quote">
-                        <i class="fa fa-quote-left"></i><p>세상에 하나뿐인 나만의 춘식이 다이어리</p>
+                        <i class="fa fa-quote-left"></i><p>세상에 하나뿐인 나만의 춘식이 다이어리를 작성해 보세요!</p>
                     </div>
                     <div class="quantity-content">
                         <div class="left-content">
-                            <h6>구매수량</h6>
+                            <h6>가격 : 7000원</h6>
                         </div>
-                        <div class="right-content">
-                            <div class="quantity buttons_added">
-                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
-                            </div>
+                        <div class="right-content">  
+                        	<h5>→ 10% 할인</h5>
                         </div>
                     </div>
                     <div class="total">
-                        <h4>합계 : 21000원</h4>
+                        <h4>합계 : 6300원</h4>
                         <br><br><br>
                         <div class="main-border-button"><a href="#">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         								<a href="#">구매하기</a></div>
