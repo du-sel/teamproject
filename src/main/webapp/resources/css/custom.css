@@ -1498,9 +1498,6 @@ Single Product Page
    text-align:center;
 }
 
-
-
-
 #product .sticky {
 	position: fixed;
 	top: 220px;
@@ -1511,7 +1508,7 @@ Single Product Page
     background-color:#fff;
     padding:20px;
 	width:140px;
-	height:320px;
+	height:340px;
     border-radius:10px;
     box-shadow: 10px 10px 5px -5px #888888;
     z-index: 100;
@@ -1548,6 +1545,87 @@ Single Product Page
 	 color: black;
 	 font-size: 11px;
 }
+
+/* -----------------말풍선 효과-------------------- */
+
+.speech-bubble {
+  width: 700px;
+  position: relative;
+  background-color: #F6F6F6;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin: 0 auto;
+}
+
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 10px solid transparent;
+  border-top-color: #F6F6F6;
+  transform: translateX(-50%);
+}
+
+/* ------------------표 꾸미기------------------ */
+
+#myTable {
+  margin: 0 auto; /* 표를 가운데로 정렬 */
+}
+
+td, th {
+  padding: 10px; /* 셀 내부 여백 */
+}
+
+th {
+  background-color: #f2f2f2; /* 헤더 배경색 */
+}
+
+tr:nth-child(odd) {
+  background-color: #f9f9f9; /* 홀수 행 배경색 */
+}
+
+tr:hover {
+  background-color: #e6e6e6; /* 행에 마우스 호버 시 배경색 */
+}
+
+.hidden-row {
+  height: 60px; /* 두 번째 숨겨진 행의 높이 */
+}
+
+/* ---------상품문의 표----------- */
+
+.my-custom-table {
+  margin: 0 auto; /* 표를 가운데로 정렬 */
+  width: 70%; /* 표 전체의 너비 */
+  table-layout: fixed; /* 셀의 너비를 고정 */
+}
+
+.my-custom-table td, .my-custom-table th {
+  padding: 10px; /* 셀 내부 여백 */
+  width: auto; /* 기본 너비로 설정 */
+}
+
+.my-custom-table td:nth-child(2), .my-custom-table th:nth-child(2) {
+  width: 50%; /* 2열 전체의 너비를 50%로 조정 */
+}
+
+.my-custom-table th {
+  background-color: #f2f2f2; /* 헤더 배경색 */
+}
+
+.my-custom-table tr:nth-child(odd) {
+  background-color: #f9f9f9; /* 홀수 행 배경색 */
+}
+
+.my-custom-table tr:hover {
+  background-color: #e6e6e6; /* 행에 마우스 호버 시 배경색 */
+}
+
+
+
+
 
 
 /* 
