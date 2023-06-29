@@ -8,7 +8,7 @@
 		<!--상단 이미지-->
 		<div class="row topimg">
 			<div class="col-md-12 topimgdiv" >
-				<!-- <img id="img-topimgmodify" src="/resources/images/arrow-bar-up%20(1).svg"> -->
+			
 				<p id="img-topimgmodify"> IMAGE UPLOAD </p>
 			</div> 
 		</div>
@@ -38,22 +38,11 @@
 	
 			</div>
 		</div>	
-		
-		<!-- <div class="col-md-12 fakerow"></div> -->
-		
-		<!-- SNS 주소
-		<div class="row">
-			<div class="offset-md-9 col-md-3">
-				<div class="addressdiv"><a href="https://www.instagram.com/?hl=ko" ><img src="resources/images/twitter.svg">&nbsp;인스타그램주소</a></div>
-				<div class="addressdiv"><a href="https://twitter.com/"><img src="resources/images/instagram.svg">&nbsp;트위터주소</a></div>
-				<div class="addressdiv"><a><img src="resources/images/facebook.svg">&nbsp;패이스북주소</a></div>
-			</div>
-		</div>
-		-->
+
 	</div>
 	<br>
 	
-	<!-- 피드 스튜디오 공지 탭 -->
+	<!-- 탭 -->
 	<div  class="container shadow-sm p-3 mb-5 ">
 
 		<div style="margin:10px;">
@@ -76,6 +65,7 @@
 			</ul>
 
 			<div class="tab-content">
+			<!-- 피드 탭 -->
 				<div class="tab-pane fade show active" id="feed">
 					<br>
 					<div class="writenew">
@@ -97,16 +87,25 @@
 					</div>
 					
 				</div>
-
+				<!-- 스튜디오 탭 -->
 				<div class="tab-pane fade" id="studio"><br>
-					<select name="shop__selector" id="shop__selector">
-						<option selected>기본 정렬</option>
-						<option>가나다순</option>
-						<option>낮은 가격순</option>
-						<option>높은 가격순</option>
-					</select>
-					<div class="container">
-					<!-- 
+					<div style="height:50px;">
+						<select class="line" name="shop__selector" id="shop__selector">
+							<option selected>기본 정렬</option>
+							<option>가나다순</option>
+							<option>낮은 가격순</option>
+							<option>높은 가격순</option>
+						</select>
+					
+						<div class="writenew line">
+							<a href="#">관리하기</a>
+						</div>					
+					
+					</div>
+					<br>
+					
+					<div id="products">
+					
 						<div class="row">
 							<div class="col-lg-4">
 			                    <div class="item">
@@ -186,56 +185,62 @@
 						</div>
 					</div>
 				</div>
-				 -->
-			</div>	 
-		</div>
 		
-		
-		<div class="tab-pane fade" id="notice">
-			공지 페이지
-		</div>
-	</div>
-
-
-	<div class=" modal">
-		
-		<div class="mcontent">
-		<p class="modalclose">&times;</p>
-				<!-- 코드추가 -->
-				<div class="image-upload" id="image-upload">
-		            <form method="post" enctype="multipart/form-data">
-		                <div class=" button">
-		                    <label for="chooseFile">  CLICK HERE!  </label>
-		                </div>
-		                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
-		            </form>
-			<br>
-		            <div class="fileContainer">
-		                <div class="fileInput">
-		                    <p>FILE NAME: </p>
-		                    <p id="fileName"></p>
-		                </div>
-		                <div class="buttonContainer">
-		                    <div class="submitButton" id="submitButton">SUBMIT</div>
-		                </div>
-		            </div>
-		        </div>
-		        <!--  
-			<form>
-			<p>
-				<h4>사진 업로드</h4><br>
-				<div class="wrapper">
-					<img src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" class="image-box" />
-					<label for="file2" class="upload-btn">
-					<input id="file2" type="file" accept="image/*"/>
-					<span>업로드</span>
-					</label>
+			<!-- 공지 탭 -->
+			<div class="tab-pane fade" id="notice">
+				<br>
+				<div class="writenew">
+					<a href="#">공지 관리</a>
 				</div>
+			</div>
 
-			</form> -->
+			
+			</div>	
 		</div>
-
 	</div>
+	
+	<!-- 이미지 업로드 모달  -->
+		<div class=" modal">
+			
+			<div class="mcontent">
+				<p class="modalclose">&times;</p>
+					<!-- 코드추가 -->
+					<div class="image-upload" id="image-upload">
+			            <form method="post" enctype="multipart/form-data">
+			                <div class=" button">
+			                    <label for="chooseFile">  CLICK HERE!  </label>
+			                </div>
+			                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+			            </form>
+				<br>
+			            <div class="fileContainer">
+			                <div class="fileInput">
+			                    <p>FILE NAME: </p>
+			                    <p id="fileName"></p>
+			                </div>
+			                <div class="buttonContainer">
+			                    <div class="submitButton" id="submitButton">SUBMIT</div>
+			                </div>
+			            </div>
+			        </div>
+			        <!--  
+				<form>
+				<p>
+					<h4>사진 업로드</h4><br>
+					<div class="wrapper">
+						<img src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" class="image-box" />
+						<label for="file2" class="upload-btn">
+						<input id="file2" type="file" accept="image/*"/>
+						<span>업로드</span>
+						</label>
+					</div>
+	
+				</form> -->
+			</div>
+	
+		</div>
+	
+	
 </div>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
