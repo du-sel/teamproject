@@ -20470,6 +20470,24 @@ Copyright (c) 2015 Daniel Eden
     white-space: nowrap;
 }
 
+
+/* 화면 작을 때 사이드바 toggle 버튼 */
+.navbar-toggler{
+	background-color: #000 !important;
+	width: 290px !important;
+	text-align: right !important;
+	height: 50px !important;
+		
+}
+.navbar-toggler i{
+	font-size: 20px !important;
+	color: #fff;
+	transition: all ease 1s;
+}
+.navbar-toggler:hover i{
+	transform: rotate( 180deg );
+}
+
 /* 별점 */
 .star {
   position: relative;
@@ -20702,24 +20720,25 @@ Copyright (c) 2015 Daniel Eden
 #notice-management .btn-box input[type='file']{
 	display: inline-block;
 	margin-top: 15px;
+	width: max-content;
 }
 #notice-management .btn-box button{
 	margin-left: 5px;
 }
 
-.navbar-toggler{
-	background-color: #000 !important;
-	width: 290px !important;
-	text-align: right !important;
-	height: 50px !important;
-		
+/* 스토어 관리 */
+#store-management .row {
+	margin: 0 10px 40px;
 }
-.navbar-toggler i{
-	font-size: 20px !important;
-	color: #fff;
-	transition: all ease 1s;
+#store-management .row h5 {
+	color: #000;
+	margin-bottom: 10px;
+	font-weight: 600;
 }
-.navbar-toggler:hover i{
-	transform: rotate( 180deg );
+#store-management .page-title {
+	margin: 30px 0 50px;
+}
+#store-management .store-input {
+	margin-left: 25px;
 }
 /*# sourceMappingURL=dashboard-free.css.map */
