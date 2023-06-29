@@ -333,6 +333,13 @@ header
   align-items: center;
 }
 
+/* .header-area>div.container-xl {
+	height: 100%;
+}
+.header-area .header-row {
+	height: 100%;
+} */
+
 .header-area .main-nav {
   min-height: 100%;
   background: transparent;
@@ -341,7 +348,7 @@ header
 }
 
 .header-area .main-nav .logo {
-  line-height: 100px;
+  /* line-height: 100px; */
   color: #fff;
   font-size: 28px;
   font-weight: 700;
@@ -499,6 +506,19 @@ header
 	 border-radius:50%;
 }
 
+.header-area .main-nav .nav-mobile {
+  display: none;
+  height: 100%;
+}
+.header-area .main-nav .logo-mobile-container {
+/* 	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	height: 100%; */
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
 .header-area .main-nav .menu-trigger {
   cursor: pointer;
   display: block;
@@ -509,7 +529,6 @@ header
   text-indent: -9999em;
   z-index: 99;
   right: 40px;
-  display: none;
 }
 
 .background-header .main-nav .menu-trigger {
@@ -667,8 +686,14 @@ header
   .header-area .logo {
     margin-left: 30px;
   }
+  .header-area .main-nav .nav-mobile {
+	  display: flex !important;
+	  height: 100%;
+	  align-items: center;
+	}
+
   .header-area .menu-trigger {
-    display: block !important;
+    /* display: block !important; */
     position: absolute;
   }
   .header-area .main-nav {
@@ -3260,6 +3285,24 @@ product-management
 #product-management .listtop button:hover {
 	
 }
+
+
+
+
+
+/* 
+---------------------------------------------
+insert-product
+--------------------------------------------- 
+*/
+
+#insert-product .info .row {
+	margin: 0 10px;
+}
+
+
+
+
 
 
 

@@ -20,61 +20,12 @@
   
     
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
+  <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 
 
   <main id="calculate-history" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
-    <div class="sidebar">
-      <div class="sidebar-wrapper">
-        <div class="logo">
-          <a href="javascript:void(0)" class="simple-text logo-normal">
-            Brand Name
-          </a>
-        </div>
-        <ul class="nav">
-          <li class="active ">
-            <a href="sales-status.do">
-              <i class="tim-icons icon-money-coins"></i>
-              <p>판매 현황</p>
-            </a>
-          </li>
-          <li>
-            <a href="product-management.do">
-              <i class="tim-icons icon-gift-2"></i>
-              <p>상품 관리</p>
-            </a>
-          </li>
-          <li>
-            <a href="review-management.do">
-              <i class="tim-icons icon-pencil"></i>
-              <p>후기 관리</p>
-            </a>
-          </li>
-          <li>
-            <a href="inquiry-management.do">
-              <i class="tim-icons icon-chat-33"></i>
-              <p>문의 관리</p>
-            </a>
-          </li>
-          <li>
-            <a href="notice-management.do">
-              <i class="tim-icons icon-volume-98"></i>
-              <p>공지 관리</p>
-            </a>
-          </li>
-          <li>
-            <a href="store-management.do">
-              <i class="tim-icons icon-basket-simple"></i>
-              <p>스토어 관리</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    
-    
-    
+    <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />     
     <div class="main-panel">     
       <div class="content">
         <div class="row">
@@ -113,7 +64,7 @@
                           2023.06.30
                         </td>
                         <td>
-                          	￦<span>50000</span>
+                          	￦<span class="price">50000</span>
                         </td>
                       </tr>
                       <tr>
@@ -121,7 +72,7 @@
                           2023.05.31
                         </td>
                         <td>
-                          	￦<span>35000</span>
+                          	￦<span class="price">35000</span>
                         </td>
                       </tr>
                       <tr>
@@ -129,7 +80,7 @@
                           2023.04.30
                         </td>
                         <td>
-                          	￦<span>30000</span>
+                          	￦<span class="price">30000</span>
                         </td>
                       </tr>
                       <tr>
@@ -137,7 +88,7 @@
                           2023.03.31
                         </td>
                         <td>
-                          	￦<span>9000</span>
+                          	￦<span class="price">9000</span>
                         </td>
                       </tr>
                       <tr>
@@ -145,7 +96,7 @@
                           2023.02.28
                         </td>
                         <td>
-                          	￦<span>14000</span>
+                          	￦<span class="price">14000</span>
                         </td>
                       </tr>
                     </tbody>
@@ -169,61 +120,9 @@
   <script>
     $(document).ready(function() {
       $().ready(function() {
-        $sidebar = $('.sidebar');
-        $navbar = $('.navbar');
-        $main_panel = $('.main-panel');
-
-        $full_page = $('.full-page');
-
-        $sidebar_responsive = $('body > .navbar-collapse');
-        sidebar_mini_active = true;
-        white_color = false;
-
-        window_width = $(window).width();
-
-        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-        
-        // sidebar height 지정
-        $('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
-
-        $('.fixed-plugin a').click(function(event) {
-          if ($(this).hasClass('switch-trigger')) {
-            if (event.stopPropagation) {
-              event.stopPropagation();
-            } else if (window.event) {
-              window.event.cancelBubble = true;
-            }
-          }
-        });
-
-
-        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
-          var $btn = $(this);
-
-          if (sidebar_mini_active == true) {
-            $('body').removeClass('sidebar-mini');
-            sidebar_mini_active = false;
-            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
-          } else {
-            $('body').addClass('sidebar-mini');
-            sidebar_mini_active = true;
-            blackDashboard.showSidebarMessage('Sidebar mini activated...');
-          }
-
-          // we simulate the window Resize so the charts will get updated in realtime.
-          var simulateWindowResize = setInterval(function() {
-            window.dispatchEvent(new Event('resize'));
-          }, 180);
-
-          // we stop the simulation of Window Resize after the animations are completed
-          setTimeout(function() {
-            clearInterval(simulateWindowResize);
-          }, 1000);
-        });
-        
         // total 금액
         let sum = 0
-        let price = $('.text-center span');
+        let price = $('.price');
         for(let i=0; i<price.length; i++){
         	sum +=parseInt($(price[i]).text());
         	$(price[i]).text(numberWithCommas(Math.floor($(price[i]).text())));
