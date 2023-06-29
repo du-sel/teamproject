@@ -24,49 +24,8 @@
 
 
 
-  <main id="product-management" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
-    <div class="sidebar">
-      <div class="sidebar-wrapper">
-        <div class="logo">
-          <a href="javascript:void(0)" class="simple-text logo-normal">
-            Brand Name
-          </a>
-        </div>
-        <ul class="nav">
-          <li>
-            <a href="sales-status.do">
-              <i class="tim-icons icon-coins"></i>
-              <p>판매 현황</p>
-            </a>
-          </li>
-          <li class="active ">
-            <a href="product-management.do">
-              <i class="tim-icons icon-pin"></i>
-              <p class="card-content">상품 관리</p>
-            </a>
-          </li>
-          <li>
-            <a href="review-management.do">
-              <i class="tim-icons icon-bell-55"></i>
-              <p>후기 관리</p>
-            </a>
-          </li>
-          <li>
-            <a href="./notifications.html">
-              <i class="tim-icons icon-world"></i>
-              <p>공지 관리</p>
-            </a>
-          </li>
-          <li>
-            <a href="./user.html">
-              <i class="tim-icons icon-single-02"></i>
-              <p>스튜디오 관리</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    
+  <main id="insert-product" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+    <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />     
     
     
     <div class="main-panel">     
@@ -76,7 +35,7 @@
       	</div>
       
         <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info">
+          <div class="col-xxl-8 col-xl-10 col-lg-12 info">
             <div class="row">
 	           	<label for="product-name"><h5>상품명</h5></label>
 	           	<input type="text" name="name" id="product-name" class="form-control" placeholder="상품명을 입력하세요">
@@ -102,7 +61,47 @@
 	           		<h5>할인 적용가</h5>
 	          	 	<input type="text" name="sale" id="product-sale-final" class="form-control" value="" disabled>
 	           	</div>
-			</div>	           	
+			</div>	 
+			
+			<div class="row category flex-column">
+				<div>
+					<h5>디자인 카테고리</h5>
+					<label for="cate-design-minimal">미니멀</label>
+					<input type="checkbox" id="cate-design-minimal" name="category-design" value="미니멀">
+					<label for="cate-design-illust">일러스트</label>
+					<input type="checkbox" id="cate-design-illust" name="category-design" value="일러스트">
+					<label for="cate-design-photo">포토</label>
+					<input type="checkbox" id="cate-design-photo" name="category-design" value="포토">
+				</div>
+				<div>
+					<h5>페이지 카테고리</h5>
+					<label for="cate-page-whole">한달 세트</label>
+					<input type="checkbox" id="cate-page-whole" name="category-page" value="한달">
+					<label for="cate-page-monthly">먼슬리</label>
+					<input type="checkbox" id="cate-page-monthly" name="category-design" value="먼슬리">
+					<label for="cate-page-weekly">위클리</label>
+					<input type="checkbox" id="cate-page-weekly" name="category-design" value="먼슬리">
+					<label for="cate-page-habit">해빗트래커</label>
+					<input type="checkbox" id="cate-page-habit" name="category-design" value="먼슬리">
+					<label for="cate-page-mood">무드트래커</label>
+					<input type="checkbox" id="cate-page-mood" name="category-design" value="먼슬리">
+					<label for="cate-page-reading">독서트래커</label>
+					<input type="checkbox" id="cate-page-reading" name="category-design" value="먼슬리">
+					<label for="cate-page-expense">가계부</label>
+					<input type="checkbox" id="cate-page-expense" name="category-design" value="먼슬리">
+					<label for="cate-page-study">스터디</label>
+					<input type="checkbox" id="cate-page-study" name="category-design" value="먼슬리">
+					<label for="cate-page-sticker">스티커</label>
+					<input type="checkbox" id="cate-page-sticker" name="category-design" value="먼슬리">
+				</div>
+			</div>
+			     
+			<div class="row flex-column">
+				<h5>썸네일</h5>
+				<p>정사각형 사이즈 권장</p>
+				<input type="file" class="form-control">
+				
+			</div>     	
             
           </div>
         </div>
@@ -115,111 +114,6 @@
   
 
   <script src="/resources/js/my-store.js"></script>
-  <script>
-    $(document).ready(function() {
-      $().ready(function() {
-        $sidebar = $('.sidebar');
-        $navbar = $('.navbar');
-        $main_panel = $('.main-panel');
-
-        $full_page = $('.full-page');
-
-        $sidebar_responsive = $('body > .navbar-collapse');
-        sidebar_mini_active = true;
-        white_color = false;
-
-        window_width = $(window).width();
-
-        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-        
-        // sidebar height 지정
-        $('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
-
-        $('.fixed-plugin a').click(function(event) {
-          if ($(this).hasClass('switch-trigger')) {
-            if (event.stopPropagation) {
-              event.stopPropagation();
-            } else if (window.event) {
-              window.event.cancelBubble = true;
-            }
-          }
-        });
-
-
-        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
-          var $btn = $(this);
-
-          if (sidebar_mini_active == true) {
-            $('body').removeClass('sidebar-mini');
-            sidebar_mini_active = false;
-            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
-          } else {
-            $('body').addClass('sidebar-mini');
-            sidebar_mini_active = true;
-            blackDashboard.showSidebarMessage('Sidebar mini activated...');
-          }
-
-          // we simulate the window Resize so the charts will get updated in realtime.
-          var simulateWindowResize = setInterval(function() {
-            window.dispatchEvent(new Event('resize'));
-          }, 180);
-
-          // we stop the simulation of Window Resize after the animations are completed
-          setTimeout(function() {
-            clearInterval(simulateWindowResize);
-          }, 1000);
-        });
-        
-		countingUp($('#m_revenue'), 3000000);
-		countingUp($('#revenue'), 12345678);
-		countingUp($('#p_revenue'), 450000);
-		
-		
-		// Window Resize Mobile Menu Fix
-	  	$(window).on('resize', function() {
-	  		console.log("resize1");
-	  		setTimeout(function() {
-	  			$('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
-	  		}, 10);
-	  	});
-        
-	  });
-	   
-	  // 숫자 카운팅 함수	  
-	  function countingUp(target, count){
-		  $({ val : 0 }).animate({ val : count }, {
-			  duration: 1500,
-			  step: function() {
-				  var num = numberWithCommas(Math.floor(this.val));
-				  target.text(num);
-			  },
-			  complete: function() {
-				  var num = numberWithCommas(Math.floor(this.val));
-				  target.text(num);
-			  }
-		  });
-	  }
-	      
-	  // 세자리 마다 콤마(,) 넣는 함수
-	  function numberWithCommas(x) {
-		  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	  }
-  	});
-  </script>
-  
-  
-  
-  
-  
-
- 
-<script>
-  $(document).ready(function() {
-    // Javascript method's body can be found in assets/js/demos.js
-    demo.initDashboardPageCharts();
-
-  });
-</script> 
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 

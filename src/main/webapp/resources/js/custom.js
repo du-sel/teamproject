@@ -180,7 +180,6 @@
 
 	// Window Resize Mobile Menu Fix
 	$(window).on('resize', function() {
-		console.log("resize");
 		mobileNav();
 		setTimeout(function() {
 			$('main.broad').css("margin-top", $('header').height());
