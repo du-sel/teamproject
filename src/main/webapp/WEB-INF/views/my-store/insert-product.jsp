@@ -83,51 +83,78 @@
 					<div class="category">
 						<div class="row flex-column">
 							<h5>디자인 카테고리</h5>
-							<div class="category-card">
-								<label for="cate-design-minimal">미니멀</label>
-								<input type="checkbox" id="cate-design-minimal" name="category-design" value="미니멀">
-								<label for="cate-design-illust">일러스트</label>
-								<input type="checkbox" id="cate-design-illust" name="category-design" value="일러스트">
-								<label for="cate-design-photo">포토</label>
-								<input type="checkbox" id="cate-design-photo" name="category-design" value="포토">
+							<div class="category-card d-flex flex-row">
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-design-minimal">미니멀</label>
+									<input type="checkbox" id="cate-design-minimal" name="category-design" value="미니멀">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-design-illust">일러스트</label>
+									<input type="checkbox" id="cate-design-illust" name="category-design" value="일러스트">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-design-photo">포토</label>
+									<input type="checkbox" id="cate-design-photo" name="category-design" value="포토">
+								</div>
 							</div>
 						</div>
 						<div class="row flex-column">
 							<h5>페이지 카테고리</h5>
-							<div class="category-card d-flex flex-column">
-								<div>
+							<div class="category-card d-flex flex-row">
+								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-whole">한달 세트</label>
 									<input type="checkbox" id="cate-page-whole" name="category-page" value="한달 세트">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-monthly">먼슬리</label>
 									<input type="checkbox" id="cate-page-monthly" name="category-design" value="먼슬리">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-weekly">위클리</label>
 									<input type="checkbox" id="cate-page-weekly" name="category-design" value="위클리">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-habit">해빗트래커</label>
 									<input type="checkbox" id="cate-page-habit" name="category-design" value="해빗트래커">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-mood">무드트래커</label>
 									<input type="checkbox" id="cate-page-mood" name="category-design" value="무드트래커">
 								</div>
-								<div>
+								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-reading">독서트래커</label>
 									<input type="checkbox" id="cate-page-reading" name="category-design" value="독서트래커">
+								</div>		
+								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-expense">가계부</label>
 									<input type="checkbox" id="cate-page-expense" name="category-design" value="가계부">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-study">스터디</label>
 									<input type="checkbox" id="cate-page-study" name="category-design" value="스터디">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-sticker">스티커</label>
 									<input type="checkbox" id="cate-page-sticker" name="category-design" value="스티커">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-etc">그 외</label>
 									<input type="checkbox" id="cate-page-etc" name="category-design" value="그 외">
-								</div>								
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				     
 				<div class="row flex-column">
-					<h5>썸네일</h5>
-					<p>정사각형 사이즈 권장</p>
-					<input type="file" accept="image/*" name="thumbnail">
+					<div class="d-flex align-items-center thumb-title">
+						<h5>썸네일</h5>
+						<p>(정사각형 사이즈 권장)</p>
+					</div>
+					<div id="thumb-preview" class="thumb-preview">
+						<img id="img-modify-white" src="/resources/images/img-modify-white.svg" alt="썸네일 업로드 버튼">
+					</div>
+					<input type="file" accept="image/*" name="thumbnail" onchange="imgPreview(this);">
 				</div>     	
 	
 				<div class="row">
@@ -187,9 +214,9 @@
   
   
   
-  <!-- 금액 입력창 -->
   <script>
 
+  /* 금액 입력창 */
     function getNumber(obj){
 	   var num01;
 	   var num02;
@@ -228,6 +255,29 @@
 
     	
     });
+    
+    
+    
+    
+    /* 썸네일 미리보기 */
+    function imgPreview(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('thumb-preview').style.backgroundImage = "url("+e.target.result+")";
+	      document.getElementById('thumb-preview').style.backgroundSize = "cover";
+	      document.getElementById('thumb-preview').style.backgroundColor = "transparent";
+	      document.getElementById('img-modify-white').style.display = "none";
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+		  document.getElementById('thumb-preview').style.backgroundImage = "none";
+	      document.getElementById('thumb-preview').style.backgroundColor = "#e4e4eb";
+	      document.getElementById('img-modify-white').style.display = "block";
+	  }
+	}
+    
+    
   
   </script>
   
