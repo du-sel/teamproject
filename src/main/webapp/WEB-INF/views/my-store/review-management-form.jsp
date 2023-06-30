@@ -32,7 +32,7 @@
           <div class="col-xl-10 col-lg-12">
             <div class="col-lg-12 card">
               <div class="card-header">
-                <h2 class="card-title text-center">후기 답변</h2>
+                <h2 class="card-title text-center management-title">후기 답변</h2>
               </div>
               <div class="card-body">
                 <div class="row">
@@ -67,7 +67,7 @@
                 	</div>
                 	<form class="col-lg-12" action="inquiry-management.do">
                 		<textarea maxlength="300" placeholder="답변 내용 작성"></textarea>
-                		<button>답변</button>
+                		<input class="management-btn" type="submit" value="답변">
                 	</form>
                 </div>
                 <form>

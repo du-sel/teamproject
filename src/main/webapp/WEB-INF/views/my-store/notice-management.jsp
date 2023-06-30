@@ -27,16 +27,11 @@
   <main id="notice-management" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
     <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />  
     <div class="main-panel">
-      <div class="content">
-      	<div class="row justify-content-center listtop">
-      		<div class="col-lg-12">				
-      			<h2 class="card-title text-center">공지 관리</h2>
-			</div>
-      	</div>
-      
+      <div class="content">      
         <div class="row justify-content-center">
           <div class="col-xl-10 col-lg-12">
             <div class="card">
+              <h2 class="card-title text-center management-title">공지 관리</h2>
               <div class="card-body">
                 <div class="row notice-box">
 	                <form class="notice col-lg-12" action="">
@@ -45,7 +40,7 @@
 	             </div>
                	 <div class="col-lg-12 btn-box">
                	 	 <input type="file" accept="image/*">
-               		 <button type="submit">작성</button>
+               		 <input class="management-btn" type="submit" value="작성">
                	 </div>
               </div>
             </div>
@@ -69,8 +64,8 @@
 	                </div>
 	             </div>
                	 <div class="col-lg-12 btn-box">
-               		 <button type="button">삭제</button>
-               		 <button type="button" onclick="notice_modify(this);">수정</button>
+               		 <input class="management-btn" type="submit" value="삭제">
+               		 <input class="management-btn" type="button" onclick="notice_modify(this);" value="수정">
                	 </div>
               </form>
             </div>
@@ -93,8 +88,8 @@
 	                </div>
 	             </div>
                	 <div class="col-lg-12 btn-box">
-               		 <button type="button">삭제</button>
-               		 <button type="button" onclick="notice_modify(this);">수정</button>
+               		 <input class="management-btn" type="submit" value="삭제">
+               		 <input class="management-btn" type="button" onclick="notice_modify(this);" value="수정">
                	 </div>
               </form>
             </div>
@@ -117,8 +112,8 @@
 	                </div>
 	             </div>
                	 <div class="col-lg-12 btn-box">
-               		 <button type="button">삭제</button>
-               		 <button type="button" onclick="notice_modify(this);">수정</button>
+               		 <input class="management-btn" type="submit" value="삭제">
+               		 <input class="management-btn" type="button" onclick="notice_modify(this);" value="수정">
                	 </div>
               </form>
             </div>
@@ -141,8 +136,8 @@
 	                </div>
 	             </div>
                	 <div class="col-lg-12 btn-box">
-               		 <button type="button">삭제</button>
-               		 <button type="button" onclick="notice_modify(this);">수정</button>
+               		 <input class="management-btn" type="submit" value="삭제">
+               		 <input class="management-btn" type="button" onclick="notice_modify(this);" value="수정">
                	 </div>
               </form>
             </div>
@@ -186,7 +181,7 @@
   		let notice = $(event).parent().prev().children();
   		let content = $(event).parent().prev().children().children().eq(0);
   		
-  		let btn = "<button type='submit'>완료</button>"
+  		let btn = "<input class='management-btn' type='submit' value='완료'>";
   		let form = "<textarea maxlength='300' placeholder='공지 작성'>"+content.html().replace(/\s/gi, '').replace(/(<br>|<br\/>|<br \/>)/gi, '\r\n')+"</textarea>";
   		
   		$(notice).children('h6').remove();
