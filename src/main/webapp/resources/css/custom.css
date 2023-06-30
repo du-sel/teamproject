@@ -3448,7 +3448,6 @@ insert-product
 	text-align: center;
 }
 #insert-product .form-control-container {
-	display: block;
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);
     padding: 0.375rem 0.75rem;
@@ -3461,6 +3460,7 @@ insert-product
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	align-items: center;
 }
 #insert-product .form-control-container .form-control {
 	border: none;
@@ -3479,18 +3479,55 @@ insert-product
 	outline:0;
 	box-shadow:0 0 0 .2rem rgba(0,123,255,.25)
 }
+#insert-product .form-control-container span {
+	font-weight: 600;
+	font-size: 110%;
+}
 
 #insert-product .category-card {
 	background: #f2f2f6;
-	padding: 30px 40px;
+	padding: 30px 40px 10px;
 	border-radius: 0.5rem;
+	flex-wrap: wrap;
 }
 #insert-product .category-card input {
 	margin-right: 40px;
 }
-#insert-product .category-card div:not(:last-of-type) {
+#insert-product .do-sale input {
+	margin-right: 20px;
+}
+#insert-product .category-card .category-checkbox {
+	flex-wrap: nowrap;
+	flex-shrink: 0;
+	align-items: center;
 	margin-bottom: 20px;
 }
+#insert-product .category-card .category-checkbox label {
+	margin-right: 5px;
+}
+#insert-product .thumb-title p {
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+#insert-product .thumb-title h5 {
+	margin-right: 5px;
+}
+#insert-product .thumb-preview {
+	background: #e4e4eb;
+	width: 200px;
+	height: 200px;
+	border-radius: 0.25rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10px;
+}
+#insert-product .thumb-preview img {
+	width: 50px;
+}
+
+
+
 
 
 
