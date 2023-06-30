@@ -280,9 +280,9 @@ tab
 	 display: flex;
 	 justify-content: center;
 	 align-items: center;
-	 font-size: 20px;
+	 font-size: 18px;
 	 font-weight: 600;
-	 color: #b8b8c4;
+	 color: #b2bfc2;
 }
 #tab #co-tab {
 	border-radius: 0 40px 0 0;
@@ -297,6 +297,7 @@ tab
 	background-color: #fff;
 	width: 70%;
 	z-index: 50;
+	font-size: 20px;
 	color: #586579;
 }
 
