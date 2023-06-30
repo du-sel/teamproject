@@ -267,16 +267,22 @@ tab
 */
 
 #tab {
-	 background-color: #333;
+	 background-color: #dce0e3;
 	 position: relative;
 	 height: 50px;
 }
 
 #tab div {
-	 background: #333;
+	 background: #dce0e3;
 	 width: 29%;
 	 height: 110%;
 	 position: absolute;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 font-size: 20px;
+	 font-weight: 600;
+	 color: #b8b8c4;
 }
 #tab #co-tab {
 	border-radius: 0 40px 0 0;
@@ -291,6 +297,7 @@ tab
 	background-color: #fff;
 	width: 70%;
 	z-index: 50;
+	color: #586579;
 }
 
 

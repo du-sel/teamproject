@@ -111,9 +111,9 @@
 	    
 		<!-- ***** Tab Start ***** -->
 	    <div id="tab">
-			<div id="co-tab" ></div>
+			<div id="co-tab" >COMMUNITY</div>
 			<!-- onclick="location.href='co-main.do'" -->
-	        <div id="st-tab" class="active"></div>
+	        <div id="st-tab" class="active">STORE</div>
 	         <!-- onclick="location.href='st-main.do'" -->
 		</div>
 		<!-- ***** Tab End ***** -->
