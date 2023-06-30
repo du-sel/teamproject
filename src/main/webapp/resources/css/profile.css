@@ -19,7 +19,9 @@ time,mark,audio,video{
 	padding-top:100px;
 }
 
-
+#myprofile #notice{
+	height: auto;
+}
 /* 상단이미지 */
 #myprofile .topimg{
 	border-bottom:1px solid lightgray;
@@ -28,7 +30,6 @@ time,mark,audio,video{
 }
 #myprofile .topimgdiv{
 	height: 158px;
-	
 	background-color: #e6e9eb;
 }
 
@@ -134,7 +135,7 @@ time,mark,audio,video{
 }
 
 #myprofile .tab-content{
-	height: 500px;
+	height: auto;
 }
 
 /* 이미지 업도르 */
@@ -223,6 +224,11 @@ time,mark,audio,video{
 
 #myprofile .line{
 	display: inline-block;
+}
+
+#myprofile #studioimg{
+	width: 60px;
+	height: 60px;
 }
 
 
