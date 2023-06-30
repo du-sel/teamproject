@@ -3419,7 +3419,14 @@ product-management
 	
 }
 
-
+#product-management button.signature-btn {
+	background: #e4e4eb;
+	border: none;
+}
+#product-management button.signature-btn:hover {
+	background: #586579;
+	color: #fff;
+}
 
 
 

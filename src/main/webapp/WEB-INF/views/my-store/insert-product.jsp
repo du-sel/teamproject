@@ -229,7 +229,8 @@
   	<script>
 		$(function () {
 			CKEDITOR.replace('content', {
-				filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do'
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do',
+				contentsCss: '/resources/css/custom.css'
 			});
 		});
 	</script>
