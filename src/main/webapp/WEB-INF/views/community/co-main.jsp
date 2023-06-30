@@ -1,256 +1,351 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<!--
-	Future Imperfect by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
+
+
  
 		<!-- Wrapper -->
-			<main id="co-main" class="broad">
+		<div id="wrapper">
+		<main id="co-main" class="broad" style="margin-top: 200px">
 
-
-				<!-- Menu -->
-					<section id="menu">
-
-						<!-- Search -->
-							<section>
-								<form class="search" method="get" action="#">
-									<input type="text" name="query" placeholder="Search" />
-								</form>
-							</section>
-
-						<!-- Links -->
-							<section>
-								<ul class="links">
-									<li>
-										<a href="#">
-											<h3>Lorem ipsum</h3>
-											<p>Feugiat tempus veroeros dolor</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<h3>Dolor sit amet</h3>
-											<p>Sed vitae justo condimentum</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<h3>Feugiat veroeros</h3>
-											<p>Phasellus sed ultricies mi congue</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<h3>Etiam sed consequat</h3>
-											<p>Porta lectus amet ultricies</p>
-										</a>
-									</li>
-								</ul>
-							</section>
-
-						<!-- Actions -->
-							<section>
-								<ul class="actions stacked">
-									<li><a href="#" class="button large fit">Log In</a></li>
-								</ul>
-							</section>
-
-					</section>
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Post -->
-							<article class="post">
-								<header>
-									<div class="title">
-										<p>
-											<a href="#" class="author"><img src="/resources/images/avatar.jpg" alt="" />&nbsp;&nbsp;<span class="name">Jane Doe</span></a>
-										</p>
-										<p>
-											<time class="published" datetime="2015-11-01">November 1, 2015</time>
-										</p>
-										
-									</div>
-								</header>
-								<div class="post_img"><img src="/resources/images/pic01.jpg" alt="" /></div>
-								<div class="post_img"><img src="/resources/images/pic01.jpg" alt="" /></div>				
-								
-								<!-- <a href="single.html" class="image featured"><img src="/resources/images/pic01.jpg" alt="" /></a> -->
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-								<ul class="stats commment_stats">
-										<li><a href="#">댓글 보기</a></li>
-										<li><a href="#" class="icon solid fa-heart"><i class="fa-solid fa-heart"></i>좋아요</a> 1</li>
-										
-								</ul>
-								<footer >
-									<ul class="actions">
-										<!-- <li><button class="comment "><a class="button large">댓글 입력창 (슬라이드 토글 사용) </a></button></li> -->
-										<li id="comment_li"><button class="comment ">댓글 입력창</button></li>
-										<li id="comment_li"><div class="divcomment"><input type="text" name="comment"></div></li>
-									</ul>
-							</footer>
-							</article>
-
-						<!-- Post -->
-							<article class="post">
-								<header>
-									<div class="title">
-										<h2><a href="single.html">Ultricies sed magna euismod enim vitae gravida</a></h2>
-										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
-									</div>
-									<div class="meta">
-										<time class="published" datetime="2015-10-25">October 25, 2015</time>
-										<a href="#" class="author"><span class="name">Jane Doe</span><img src="/resources/images/avatar.jpg" alt="" /></a>
-									</div>
-								</header>
-								<a href="single.html" class="image featured"><img src="/resources/images/pic02.jpg" alt="" /></a>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper.</p>
-								<footer>
-									<ul class="actions">
-										<li><a href="single.html" class="button large">Continue Reading</a></li>
-									</ul>
-									<ul class="stats">
-										<li><a href="#">General</a></li>
-										<li><a href="#" class="icon solid fa-heart">28</a></li>
-										<li><a href="#" class="icon solid fa-comment">128</a></li>
-									</ul>
-								</footer>
-							</article>
-
-						<!-- Post -->
-							<article class="post">
-								<header>
-									<div class="title">
-										<h2><a href="single.html">Euismod et accumsan</a></h2>
-										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
-									</div>
-									<div class="meta">
-										<time class="published" datetime="2015-10-22">October 22, 2015</time>
-										<a href="#" class="author"><span class="name">Jane Doe</span><img src="/resources/images/avatar.jpg" alt="" /></a>
-									</div>
-								</header>
-								<a href="single.html" class="image featured"><img src="/resources/images/pic03.jpg" alt="" /></a>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Cras vehicula tellus eu ligula viverra, ac fringilla turpis suscipit. Quisque vestibulum rhoncus ligula.</p>
-								<footer>
-									<ul class="actions">
-										<li><a href="single.html" class="button large">Continue Reading</a></li>
-									</ul>
-									<ul class="stats">
-										<li><a href="#">General</a></li>
-										<li><a href="#" class="icon solid fa-heart">28</a></li>
-										<li><a href="#" class="icon solid fa-comment">128</a></li>
-									</ul>
-								</footer>
-							</article>
-
-
-
-						<!-- Pagination -->
-							<ul id="pagination" class="actions pagination">
-								<li><a href="#" class="button large previous">◀</a></li>
-								<li><a href="#" class="button large" >1</a></li>
-								<li><a href="#" class="button large" >2</a></li>
-								<li><a href="#" class="button large" >3</a></li>
-								<li><a href="#" class="button large next">▶</a></li>
-							</ul>
-
+			
+			
+			<!-- Main -->
+				<div id="main" class="col-7 m-auto" style="float: right;">
+					
+					<!-- input -->
+					<div class="post col-12" style="padding: 1em 3em; border-radius: 10px">
+						<div style="border-bottom: solid 1px rgba(160, 160, 160, 0.3); height: 75px; position: relative;"><!-- <header>였던 것을 <div>로 수정했음, <header>일때 background-header의 영향을 받음 -->
+							<div class="meta" style="border-left: 0; padding: 1.5em 0 0 1em;">
+								<a href="#" class="author" style="padding-left:0; font-size:20px">
+									<img src="/resources/images/avatar.jpg" alt="" style="width: 1.5em"/>
+									<span class="name" style="margin-left:10px">Jane Doe</span>
+								</a>
+							<button class="submitcomment" style="display:none; position: absolute; right: 77px; bottom: 10px; 
+														background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0;
+														height:30px; text-align: center; line-height: 0; padding: 0 1.2em">등록</button>
+							<button class="insertcomment" style="position: absolute; right: 0; bottom: 10px; 
+														background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0;
+														height:30px; text-align: center; line-height: 0; padding: 0 1.2em">입력</button>
+							</div>
+						</div>
+						<div style="margin:20px 5px 15px 5px; display:none;" class="submitcomment">
+							<textarea id="co-textarea" class="col-12" rows="2" style="display:block; height:59px; resize: none; border: 1px solid #e4e4eb;"></textarea>
+						</div>
 					</div>
-
-				<!-- Sidebar -->
-					<section id="sidebar">
-						<section>
-							<nav class="sidebar_nav">
-								<ul>
-									<li class="menu" >
-										<a class="fa-bars" href="#menu">Menu</a>
-									</li>
-									<li class="sidebar_search" >
-										<a class="fa-search" href="">Search</a>
-										<form id="sidebar_search" method="get" action="#">
-											<input type="text" name="query" placeholder="Search" />
-										</form>
-									</li>
-									
-								</ul>
-							</nav>
-						</section>
-
-						<!-- Posts List -->
-							<section>
-								<ul class="posts">
-									<li>
-										<article>
-											<header>
-												<h3><a href="single.html">saler J</a></h3>
-												<time class="published" datetime="2015-1-20">October 20, 2015</time>
-											</header>
-											<a href="single.html" class="image"><div id="article_img1"></div></a>
-										</article>
-									</li>
-									<li>
-										<article>
-											<header>
-												<h3><a href="single.html">saler A</a></h3>
-												<p>update <em style="color:blueviolet">new</em></p>
-											</header>
-											<a href="single.html" class="image"><div id="article_img2"></div></a>
-										</article>
-									</li>
-									<li>
-										<article>
-											<header>
-												<h3><a href="single.html">saler Q</a></h3>
-												<p>update <em style="color:blueviolet">new</em></p>
-												
-											</header>
-											<a href="single.html" class="image"><div id="article_img3"></div></a>
-										</article>
-									</li>
-									<li>
-										<article>
-											<header>
-												<h3><a href="single.html">saler K</a></h3>
-												<time class="published" datetime="2015-10-08">October 8, 2015</time>
-											</header>
-											<a href="single.html" class="image"><div id="article_img4"></div></a>
-										</article>
-									</li>
-									<li>
-										<article>
-											<header>
-												<h3><a href="single.html">saler I</a></h3>
-												<time class="published" datetime="2015-10-06">October 7, 2015</time>
-											</header>
-											<a href="single.html" class="image"><div id="article_img5"></div></a>
-										</article>
-									</li>
-								</ul>
-							</section>
-
-						<!-- About -->
-							<section class="blurb">
-								<h2>About US</h2>
-								<p>
-									Contect&nbsp;:&nbsp;&nbsp;<a>project@forwin.com</a>
-
-								</p>
+					
+					<article class="post col-12" style="border-radius: 10px">
+								<div style="border-bottom: solid 1px rgba(160, 160, 160, 0.3); height: 75px;"><!-- <header>였던 것을 <div>로 수정했음, <header>일때 background-header의 영향을 받음 -->
+									<div class="meta" style="border-left: 0; padding: 1.5em 0 0 1em;">
+										<a href="#" class="author" style="padding-left:0; font-size:20px">
+											<img src="/resources/images/avatar.jpg" alt="" style="width: 1.5em"/>
+											<span class="name" style="margin-left:10px">Jane Doe</span>
+										</a>
+										<time class="published" datetime="2015-11-01" style="float: right; margin-top:-7px">November 1, 2015</time>
+									</div>
+								</div>
+								<div style="margin:20px">
+									<a href="/post.do" class="image featured"><img src="/resources/images/pic02.jpg" alt="" width="100%" style="margin-bottom:20px"/></a>
+									<br>
+									<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+									<p>Nunc quis dui scelerisque, scelerisque urna ut, dapibus orci. Sed vitae condimentum lectus, ut imperdiet quam. Maecenas in justo ut nulla aliquam sodales vel at ligula. Sed blandit diam odio, sed fringilla lectus molestie sit amet. Praesent eu tortor viverra lorem mattis pulvinar feugiat in turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce ullamcorper tellus sit amet mattis dignissim. Phasellus ut metus ligula. Curabitur nec leo turpis. Ut gravida purus quis erat pretium, sed pellentesque massa elementum. Fusce vestibulum porta augue, at mattis justo. Integer sed sapien fringilla, dapibus risus id, faucibus ante. Pellentesque mattis nunc sit amet tortor pellentesque, non placerat neque viverra. </p>
+								</div>
+		
 								
-								<ul class="actions">
-									<li><a href="#" class="button">More</a></li>
-								</ul>
-							</section>
+								<div style="background-color: #fff; margin:40px 0;">
+									<div class="col-12 row justify-content-between" style="margin-left: 0; margin-bottom:20px">
+										<button class="comment" style="line-height: 0; background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0; height:30px; text-align: center; padding:0">댓글 더보기</button>
+										<button class="" style="float: right; line-height: 0; background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0; width=92px; height:30px; text-align: center; padding:0">♥ 좋아요</button>
+									</div>
+									<div class="actions col-12 m-auto row justify-content-around" style=" flex-direction: column;">
+										<!-- <li><button class="comment "><a class="button large">댓글 입력창 (슬라이드 토글 사용) </a></button></li> -->
+																			
+									
+										<ul>
+											<li>
+												<div class="divcomment" style="display: none; margin:0 10px 20px 10px;">
+													<textarea id="textarea" class="col-10" rows="2" style="display:inline-block; height:59px; resize: none; border: 1px solid #e4e4eb; padding:0;"></textarea>
+													<button class="col-1 ml-auto" style="float: right; line-height: 0; background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0; height:30px; text-align: center; padding:0">등록</button>
+												</div>
+												<div>
+													<div style="width:50px; display: inline-block;">이름</div>
+													<div style="width:200px; display: inline-block;">댓글 내용</div>								
+												</div>
+												<div>
+													<div style="width:50px; display: inline-block;">이름</div>
+													<div style="width:200px; display: inline-block;">댓글 내용</div>								
+												</div>		
+												<div class="divcomment" style="display: none;">										
+													<div>
+														<div style="width:50px; display: inline-block;">이름</div>
+														<div style="width:200px; display: inline-block;">댓글 내용</div>								
+													</div>
+													<div>
+														<div style="width:50px; display: inline-block;">이름</div>
+														<div style="width:200px; display: inline-block;">댓글 내용</div>								
+													</div>
+													<div>
+														<div style="width:50px; display: inline-block;">이름</div>
+														<div style="width:200px; display: inline-block;">댓글 내용</div>								
+													</div>
+												</div>
+												</table>
+											</li>									
+										</ul>
+									</div>
+									
+									
+								</div>
+							</article>
+					
+					
+					<article class="post col-12" style="border-radius: 10px">
+								<div style="border-bottom: solid 1px rgba(160, 160, 160, 0.3); height: 75px;"><!-- <header>였던 것을 <div>로 수정했음, <header>일때 background-header의 영향을 받음 -->
+									<div class="meta" style="border-left: 0; padding: 1.5em 0 0 1em;">
+										<a href="#" class="author" style="padding-left:0; font-size:20px">
+											<img src="/resources/images/avatar.jpg" alt="" style="width: 1.5em"/>
+											<span class="name" style="margin-left:10px">Jane Doe</span>
+										</a>
+										<time class="published" datetime="2015-11-01" style="float: right; margin-top:-7px">November 1, 2015</time>
+									</div>
+								</div>
+								<div style="margin:20px">
+									<a href="/post.do" class="image featured"><img src="/resources/images/pic02.jpg" alt="" width="100%" style="margin-bottom:20px"/></a>
+									<br>
+									<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+									<p>Nunc quis dui scelerisque, scelerisque urna ut, dapibus orci. Sed vitae condimentum lectus, ut imperdiet quam. Maecenas in justo ut nulla aliquam sodales vel at ligula. Sed blandit diam odio, sed fringilla lectus molestie sit amet. Praesent eu tortor viverra lorem mattis pulvinar feugiat in turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce ullamcorper tellus sit amet mattis dignissim. Phasellus ut metus ligula. Curabitur nec leo turpis. Ut gravida purus quis erat pretium, sed pellentesque massa elementum. Fusce vestibulum porta augue, at mattis justo. Integer sed sapien fringilla, dapibus risus id, faucibus ante. Pellentesque mattis nunc sit amet tortor pellentesque, non placerat neque viverra. </p>
+								</div>
+		
+								
+								<div style="background-color: #fff; margin:40px 0;">
+									<div class="col-12 row justify-content-between" style="margin-left: 0; margin-bottom:20px">
+										<button class="comment" style="line-height: 0; background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0; height:30px; text-align: center; padding:0">댓글 더보기</button>
+										<button class="" style="float: right; line-height: 0; background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0; width=92px; height:30px; text-align: center; padding:0">♥ 좋아요</button>
+									</div>
+									<div class="actions col-12 m-auto row justify-content-around" style=" flex-direction: column;">
+										<!-- <li><button class="comment "><a class="button large">댓글 입력창 (슬라이드 토글 사용) </a></button></li> -->
+																			
+									
+										<ul>
+											<li>
+												<div class="divcomment" style="display: none; margin:0 10px 20px 10px;">
+													<textarea id="textarea" class="col-10" rows="2" style="display:inline-block; height:59px; resize: none; border: 1px solid #e4e4eb; padding:0;"></textarea>
+													<button class="col-1 ml-auto" style="float: right; line-height: 0; background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0; height:30px; text-align: center; padding:0">등록</button>
+												</div>
+												<div>
+													<div style="width:50px; display: inline-block;">이름</div>
+													<div style="width:200px; display: inline-block;">댓글 내용</div>								
+												</div>
+												<div>
+													<div style="width:50px; display: inline-block;">이름</div>
+													<div style="width:200px; display: inline-block;">댓글 내용</div>								
+												</div>		
+												<div class="divcomment" style="display: none;">										
+													<div>
+														<div style="width:50px; display: inline-block;">이름</div>
+														<div style="width:200px; display: inline-block;">댓글 내용</div>								
+													</div>
+													<div>
+														<div style="width:50px; display: inline-block;">이름</div>
+														<div style="width:200px; display: inline-block;">댓글 내용</div>								
+													</div>
+													<div>
+														<div style="width:50px; display: inline-block;">이름</div>
+														<div style="width:200px; display: inline-block;">댓글 내용</div>								
+													</div>
+												</div>
+												</table>
+											</li>									
+										</ul>
+									</div>
+									
+									
+								</div>
+							</article>
+							
+							
+							<article class="post col-12" style="border-radius: 10px">
+								<div style="border-bottom: solid 1px rgba(160, 160, 160, 0.3); height: 75px;"><!-- <header>였던 것을 <div>로 수정했음, <header>일때 background-header의 영향을 받음 -->
+									<div class="meta" style="border-left: 0; padding: 1.5em 0 0 1em;">
+										<a href="#" class="author" style="padding-left:0; font-size:20px">
+											<img src="/resources/images/avatar.jpg" alt="" style="width: 1.5em"/>
+											<span class="name" style="margin-left:10px">Jane Doe</span>
+										</a>
+										<time class="published" datetime="2015-11-01" style="float: right; margin-top:-7px">November 1, 2015</time>
+									</div>
+								</div>
+								<div style="margin:20px">
+									<a href="/post.do" class="image featured"><img src="/resources/images/pic02.jpg" alt="" width="100%" style="margin-bottom:20px"/></a>
+									<br>
+									<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+									<p>Nunc quis dui scelerisque, scelerisque urna ut, dapibus orci. Sed vitae condimentum lectus, ut imperdiet quam. Maecenas in justo ut nulla aliquam sodales vel at ligula. Sed blandit diam odio, sed fringilla lectus molestie sit amet. Praesent eu tortor viverra lorem mattis pulvinar feugiat in turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce ullamcorper tellus sit amet mattis dignissim. Phasellus ut metus ligula. Curabitur nec leo turpis. Ut gravida purus quis erat pretium, sed pellentesque massa elementum. Fusce vestibulum porta augue, at mattis justo. Integer sed sapien fringilla, dapibus risus id, faucibus ante. Pellentesque mattis nunc sit amet tortor pellentesque, non placerat neque viverra. </p>
+								</div>
+		
+								
+								<div style="background-color: #fff; margin:40px 0;">
+									<div class="col-12 row justify-content-between" style="margin-left: 0; margin-bottom:20px">
+										<button class="comment" style="line-height: 0; background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0; height:30px; text-align: center; padding:0">댓글 더보기</button>
+										<button class="" style="float: right; line-height: 0; background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0; width=92px; height:30px; text-align: center; padding:0">♥ 좋아요</button>
+									</div>
+									<div class="actions col-12 m-auto row justify-content-around" style=" flex-direction: column;">
+										<!-- <li><button class="comment "><a class="button large">댓글 입력창 (슬라이드 토글 사용) </a></button></li> -->
+																			
+									
+										<ul>
+											<li>
+												<div class="divcomment" style="display: none; margin:0 10px 20px 10px;">
+													<textarea id="textarea" class="col-10" rows="2" style="display:inline-block; height:59px; resize: none; border: 1px solid #e4e4eb; padding:0;"></textarea>
+													<button class="col-1 ml-auto" style="float: right; line-height: 0; background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0; height:30px; text-align: center; padding:0">등록</button>
+												</div>
+												<div>
+													<div style="width:50px; display: inline-block;">이름</div>
+													<div style="width:200px; display: inline-block;">댓글 내용</div>								
+												</div>
+												<div>
+													<div style="width:50px; display: inline-block;">이름</div>
+													<div style="width:200px; display: inline-block;">댓글 내용</div>								
+												</div>		
+												<div class="divcomment" style="display: none;">										
+													<div>
+														<div style="width:50px; display: inline-block;">이름</div>
+														<div style="width:200px; display: inline-block;">댓글 내용</div>								
+													</div>
+													<div>
+														<div style="width:50px; display: inline-block;">이름</div>
+														<div style="width:200px; display: inline-block;">댓글 내용</div>								
+													</div>
+													<div>
+														<div style="width:50px; display: inline-block;">이름</div>
+														<div style="width:200px; display: inline-block;">댓글 내용</div>								
+													</div>
+												</div>
+												</table>
+											</li>									
+										</ul>
+									</div>
+									
+									
+								</div>
+							</article>
+					
+					
+					
+					
+					
 
+
+
+
+					<!-- Pagination -->
+						<ul id="pagination" class="actions pagination">
+							<li><a href="#" class="button large previous">◀</a></li>
+							<li><a href="#" class="button large" >1</a></li>
+							<li><a href="#" class="button large" >2</a></li>
+							<li><a href="#" class="button large" >3</a></li>
+							<li><a href="#" class="button large next">▶</a></li>
+						</ul>
+
+				</div>
+			<!-- Sidebar -->
+			<section id="sidebar" class="col-2 menu-trigger" style="float: left; margin-right: 5em">
+				<section>
+					<nav class="sidebar_nav">
+						<ul>
+							<li class="menu" style="margin:10px 0">
+								<a class="fa-bars" href="#menu">전체 포스트</a>
+							</li>
+							<li class="menu" style="margin:10px 0">
+								<a class="fa-bars" href="#menu">팔로잉 포스트</a>
+							</li>
+							<li class="menu" style="margin:10px 0">
+								<a class="fa-bars" href="#menu">판매자 포스트</a>
+							</li>
+							<li class="menu" style="margin:10px 0">
+								<a class="fa-bars" href="#menu">댓글 포스트</a>
+							</li>
+							<li class="menu" style="margin:10px 0">
+								<a class="fa-bars" href="#menu">좋아요 포스트</a>
+							</li>
+							<li class="sidebar_search" style="margin:10px 0">
+								<form id="sidebar_search" method="get" action="#">
+									<input type="text" name="query" placeholder="Search" />&nbsp;&nbsp;&nbsp;
+									<input type="submit" value="검색" style="padding: 0">
+								</form>
+							</li>
+							
+						</ul>
+					</nav>
+				</section>
+	
+				<!-- Posts List -->
+					<section>
+						<ul class="posts">
+							<li>
+								<div>
+									<a href="single.html">
+										<div id="article_img1" style="display: inline-block;"></div>
+										<div style="display: inline-block; float: right; margin-top: 30px; font-size: 24px">saler J</div>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div>
+									<a href="single.html">
+										<div id="article_img2" style="display: inline-block;"></div>
+										<div style="display: inline-block; float: right; margin-top: 30px; font-size: 24px">saler A</div>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div>
+									<a href="single.html">
+										<div id="article_img3" style="display: inline-block;"></div>
+										<div style="display: inline-block; float: right; margin-top: 30px; font-size: 24px">saler Q</div>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div>
+									<a href="single.html">
+										<div id="article_img4" style="display: inline-block;"></div>
+										<div style="display: inline-block; float: right; margin-top: 30px; font-size: 24px">saler K</div>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div>
+									<a href="single.html">
+										<div id="article_img5" style="display: inline-block;"></div>
+										<div style="display: inline-block; float: right; margin-top: 30px; font-size: 24px">saler I</div>
+									</a>
+								</div>
+							</li>
+						</ul>
 					</section>
+	
+				<!-- About -->
+					<section class="blurb">
+						<h2>About US</h2>
+						<p>
+							Contect&nbsp;:&nbsp;&nbsp;<a>project@forwin.com</a>
+	
+						</p>
+						
+						<ul class="actions">
+							<li><a href="#" class="button">More</a></li>
+						</ul>
+					</section>
+	
+			</section>	
+			
 
-			</main>
+
+		</main>
+		</div>
+		
 
 <div id="st-main"></div>
+
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

@@ -36,7 +36,7 @@
                     <ul>
                         <li><a href="#">고객센터</a></li>
                         <li><a href="sales-status.do">마이스토어</a></li>
-                        <li><a href="myprofile.do">프로필</a></li>
+                        <li><a href="profile.do">프로필</a></li>
                         <!-- 마이스토어 링크 넣어둘 곳이 없어서 임시로 연결해둠 -->
                     </ul>
                 </div>

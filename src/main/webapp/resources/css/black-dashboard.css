@@ -15831,7 +15831,10 @@ img {
 
 .navbar.navbar-absolute {
   position: absolute;
-  z-index: 1050;
+  z-index: 1;
+  top: 120px;
+  left: 15px;
+  width: max-content;
 }
 
 .navbar.navbar-transparent {
@@ -17363,7 +17366,7 @@ table.tablesorter thead tr .headerSortDown {
 
 .sidebar,
 .off-canvas-sidebar {
-  background: #000;
+  background: #586579;
   /* background: -webkit-linear-gradient(0deg, #ba54f5 0%, #e14eca 100%);
   background: -o-linear-gradient(0deg, #ba54f5 0%, #e14eca 100%);
   background: -moz-linear-gradient(0deg, #ba54f5 0%, #e14eca 100%);
@@ -17379,7 +17382,7 @@ table.tablesorter thead tr .headerSortDown {
   background-size: cover;
   background-position: center center;
   display: block;
-  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 #b8b8c4;
   margin-top: 80px;
   margin-left: 20px;
   border-radius: 5px;
@@ -17532,7 +17535,7 @@ table.tablesorter thead tr .headerSortDown {
   position: relative;
   text-transform: uppercase;
   cursor: pointer;
-  font-size: 0.62475rem;
+  /* font-size: 0.62475rem; */
   padding: 10px 8px;
   line-height: 1.625rem;
 }
@@ -20467,6 +20470,44 @@ Copyright (c) 2015 Daniel Eden
     white-space: nowrap;
 }
 
+/* 공지 관리, 문의 관리, 스토어 관리  */
+.management-title{
+	font-weight: 600 !important;
+}
+.management-btn{
+	text-align: center;
+    border-radius: 5px;
+    background-color: #e4e4eb;
+   	border: none;
+	line-height: 0;
+	font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+	height: 40px;
+}
+.management-btn:hover{
+	color: #b8b8c4;
+    background-color: #586579;
+}
+
+
+/* 화면 작을 때 사이드바 toggle 버튼 */
+.navbar-toggler{
+	background-color: #000 !important;
+	width: 290px !important;
+	text-align: right !important;
+	height: 50px !important;
+		
+}
+.navbar-toggler i{
+	font-size: 20px !important;
+	color: #fff;
+	transition: all ease 1s;
+}
+.navbar-toggler:hover i{
+	transform: rotate( 180deg );
+}
+
 /* 별점 */
 .star {
   position: relative;
@@ -20571,6 +20612,9 @@ Copyright (c) 2015 Daniel Eden
 	background-color: #f2f2f6;
 }
 /* 후기 관리 폼, 문의관리 폼 */
+.management-form .main-panel .content .row>.col-xl-10{
+	margin: 0 auto;
+}
 .management-form h6{
 	font-size: 18px;
 }
@@ -20593,6 +20637,9 @@ Copyright (c) 2015 Daniel Eden
 }
 .management-form .p-info p{
 	display: inline-block;
+}
+.management-form .p-info+div+form textarea{
+	height: 250px;
 }
 .management-form .p-info .p-text-info{
 	width: 100%;
@@ -20624,31 +20671,105 @@ Copyright (c) 2015 Daniel Eden
 .management-form .management-data p{
 	display: inline-block;
 }
-.management-form .p-info+div+form textarea{
+
+/* 후기 관리 폼, 문의관리 폼, 공지관리 common */
+.management-form .p-info+div+form textarea,
+#notice-management .notice-box textarea{
 	resize: none;
 	width: 100%;
-	height: 250px;
 	border:1px solid #e4e4eb;
 	padding: 10px;	
 }
-.management-form .p-info+div+form button{
-	height: 32px;
-    width: 112px;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #e4e4eb;
-   	border: none;
-    margin: 15px 0 0;
+.management-form .p-info+div+form .management-btn,
+#notice-management .management-btn{
+    width: 150px;
     float: right;
-	line-height: 0;
+    margin: 15px 0 0;
+}
+
+.management-form .p-info+div+form,
+#notice-management .btn-box{
+	clear: both;
+}
+
+/* 공지 관리 */
+#notice-management .card-body{
+	position: relative;
+}
+#notice-management .management-title{
+	padding-top: 20px;
+	margin-bottom: 0;
+}
+.management-form .p-info+div+form textarea,
+#notice-management .notice-box textarea{
+	height: 150px;
+}
+#notice-management h6{
+	line-height: 25px;
+	font-size: 19px;
+	padding: 0 5px;
+}
+#notice-management .notice-box{
+	margin: 0 auto;
+	width: 100%;
+}
+#notice-management .notice-box .notice{
+	padding: 10px;
+}
+#notice-management .notice-box .notice .img-box{
+	width: 100%;
+	overflow-x: auto;
+	padding-bottom: 10px;
+}
+#notice-management .notice-box .notice img{
+	width: auto;
+	height: 300px;
+	margin: 20px 5px 0;
+}
+#notice-management .btn-box input[type='file']{
+	display: inline-block;
+	margin-top: 15px;
+	width: max-content;
+}
+#notice-management .btn-box .management-btn{
+	margin-left: 5px;
+}
+
+
+.navbar-toggler{
+	background-color: #586579 !important;
+	width: 290px !important;
+	text-align: right !important;
+	height: 50px !important;
+}	
+
+/* 스토어 관리 */
+#store-management .main-btn{
+	width: 100%;
+}
+#store-management .card{
+	margin: 0 auto;
+}
+#store-management .page-title {
+	margin: 30px 0 50px;
+}
+#store-management .store-form {
+	padding: 0 10px;
+	margin: 0 auto 35px;
+}
+#store-management .store-form h5 {
+	color: #000;
+	margin-bottom: 10px;
 	font-weight: 600;
 }
-.management-form .p-info+div+form button:hover{
-	color: #b8b8c4;
-    background-color: #586579;
+#store-management .store-form .store-input .store-base-url{
+	width: 90px;
 }
-.management-form .p-info+div+form{
-	clear: both;
+#store-management .store-form .store-input .sub-btn{
+	padding: 0;
+}
+#store-management .store-form .store-input select{
+	width: 180px;
+	text-align: center;
 }
 /*# sourceMappingURL=dashboard-free.css.map */
