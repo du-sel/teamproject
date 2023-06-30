@@ -192,6 +192,36 @@
 				<div class="writenew">
 					<a href="#">공지 관리</a>
 				</div>
+				
+				
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-xl-10 col-lg-12">
+				            <div class="card">
+				              <form class="card-body" action='#' method='post'>
+				                <div class="row notice-box">
+					                <div class="notice col-lg-12">
+					                	<div>
+												안녕하세요,기쁘게도 8월 초에 온라인 상품 판매 서비스를 곧 출시할 예정입니다! <br>
+												이를 앞두고 여러분과 소중한 정보를 공유하고자 합니다.<br>
+												새로운 캐릭터 템플릿과 넓은 범위의 다양한 디자인 템플릿 pdf 상품을 공개합니다.<br> 
+												풍부한 제품 선택지를 제공하여 다양한 관심사와 요구에 부응할 수 있도록 노력하였습니다. 
+											
+						                						                	
+					                	</div>
+										<br>
+					                	<div class="d-flex justify-content-start img-box scroll-custom">
+						                	<img id="studioimg" src="/resources/images/men-01.jpg" alt="">
+						                	<img id="studioimg" src="/resources/images/men-01.jpg" alt="">
+						                	<img id="studioimg" src="/resources/images/men-01.jpg" alt="">
+					                	</div>
+					                </div>
+					             </div>
+								</form>				
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			
