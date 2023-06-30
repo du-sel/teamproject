@@ -157,7 +157,7 @@
 					<input type="file" accept="image/*" name="thumbnail" onchange="imgPreview(this);">
 				</div>     	
 	
-				<div class="row">
+				<div class="row flex-column">
 					<h5>상세 정보</h5>
 					<textarea id="content" name="content" style="width:100%; height:412px;"></textarea>
 				</div>
@@ -198,7 +198,9 @@
   </script>
    -->
   
-	<script src="resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+  
+  	<!-- 네이버스마트 사진없는버전 -->
+<!-- 	<script src="resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 
 	<script type="text/javascript">
 		var oEditors = [];
@@ -208,10 +210,30 @@
 		 sSkinURI: "resources/smarteditor/SmartEditor2Skin.html",
 		 fCreator: "createSEditor2"
 		});
+	</script> -->
+  
+  
+  
+  	<!-- CKEditor5 Classic -->
+<!--   	<script src="resources/ckeditor5/build/ckeditor.js"></script>
+    <script>
+    	ClassicEditor.create( document.querySelector( '#content' ) );
+    	
+    	ClassicEditor.config.contentsCss = 'resources/ckeditor5/sample/ck-custom.css';
+    </script> -->
+  	
+  	
+  	
+  	<!-- CKEditor4 Standard -->
+  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4/ckeditor.js"></script>
+  	<script>
+		$(function () {
+			CKEDITOR.replace('content', {
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do'
+			});
+		});
 	</script>
-  
-  
-  
+  	
   
   
   <script>
