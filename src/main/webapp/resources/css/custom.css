@@ -1326,7 +1326,7 @@ Single Product Page
   margin-bottom: 0px;
 }
 
-#product .right-content span.price {
+#product .right-content span.creator {
   font-size: 18px;
   color: #a1a1a1;
   font-weight: 500;
@@ -1400,7 +1400,8 @@ Single Product Page
 }
 
 #product .quantity-content .left-content h6 {
-  padding-top: 7px;
+  /* padding-top: 7px; */
+  text-decoration: line-through;
   font-size: 20px;
   font-weight: 700;
   color: #aaa;
@@ -1416,12 +1417,17 @@ Single Product Page
 }
 
 #product .total .main-border-button {
-  text-align: right;
+  text-align: center;
 }
 
 #product .total .main-border-button a {
-  border-color: #2a2a2a;
   color: #2a2a2a;
+  font-size: 13px;
+  border: 1px solid #2a2a2a;
+  padding: 12px 25px;
+  display: inline-block;
+  font-weight: 500;
+  transition: all .3s;
 }
 
 #product .total .main-border-button a:hover {
@@ -1429,7 +1435,7 @@ Single Product Page
   background-color: #2a2a2a;
 }
 
-#product .quantity {
+/* #product .quantity {
   display: inline-block; 
  }
  
@@ -1446,7 +1452,8 @@ Single Product Page
   text-align: left;
   position: relative;
   white-space: nowrap;
-  vertical-align: top; }
+  vertical-align: top;
+ }
  
  #product .quantity.buttons_added input {
   display: inline-block;
@@ -1486,7 +1493,7 @@ Single Product Page
  #product .quantity.buttons_added .minus:focus,
  #product .quantity.buttons_added .plus:focus {
   outline: none; 
- }
+ } */
 
 /* ------------------chocomaster--------------------- */
 
@@ -1509,9 +1516,6 @@ Single Product Page
    text-align:center;
 }
 
-
-
-
 #product .sticky {
 	position: fixed;
 	top: 220px;
@@ -1522,7 +1526,7 @@ Single Product Page
     background-color:#fff;
     padding:20px;
 	width:140px;
-	height:320px;
+	height:340px;
     border-radius:10px;
     box-shadow: 10px 10px 5px -5px #888888;
     z-index: 100;
@@ -1559,6 +1563,116 @@ Single Product Page
 	 color: black;
 	 font-size: 11px;
 }
+
+/* -----------------말풍선 효과-------------------- */
+
+#product .speech-bubble {
+  width: 1100px;
+  position: relative;
+  background-color: #F6F6F6;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin: 0 auto;
+}
+
+#product .speech-bubble table{
+	width: 900px;
+	margin: 0 auto;
+}
+
+#product .speech-bubble::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 10px solid transparent;
+  border-top-color: #F6F6F6;
+  transform: translateX(-50%);
+}
+
+/* ------------------표 꾸미기------------------ */
+
+.profile, .user-info {
+  display: inline-block; /* div를 가로로 나열하기 위해 inline-block 속성 추가 */
+  vertical-align: middle; /* 가운데 정렬을 위해 vertical-align: middle 속성 추가 */
+}
+
+.user-info {
+  margin-left: 10px; /* profile과 user-info 사이의 간격을 조정하기 위해 margin-left 속성 추가 */
+}
+
+td .profile {
+  float: left;
+}
+
+td .user-info {
+  margin-left: 10px;
+  float: left;
+}
+
+
+
+#product #myTable {
+  margin: 0 auto; /* 표를 가운데로 정렬 */
+}
+
+#product td, th {
+  padding: 10px; /* 셀 내부 여백 */
+}
+
+#product th {
+  background-color: #f2f2f2; /* 헤더 배경색 */
+}
+
+#product tr:nth-child(odd) {
+  background-color: #f9f9f9; /* 홀수 행 배경색 */
+}
+
+#product tr:hover {
+  background-color: #e6e6e6; /* 행에 마우스 호버 시 배경색 */
+}
+
+#product .hidden-row {
+  height: 60px; /* 두 번째 숨겨진 행의 높이 */
+}
+
+/* ---------상품문의 표----------- */
+
+#product .my-custom-table {
+  margin: 0 auto; /* 표를 가운데로 정렬 */
+  width: 65%; /* 표 전체의 너비 */
+  table-layout: fixed; /* 셀의 너비를 고정 */
+}
+
+#product .my-custom-table td, .my-custom-table th {
+  padding: 10px; /* 셀 내부 여백 */
+  width: auto; /* 기본 너비로 설정 */
+}
+
+#product .my-custom-table td:nth-child(2), .my-custom-table th:nth-child(2) {
+  width: 50%; /* 2열 전체의 너비를 50%로 조정 */
+}
+
+#product .my-custom-table th {
+  background-color: #f2f2f2; /* 헤더 배경색 */
+}
+
+#product .my-custom-table tr:nth-child(odd) {
+  background-color: #f9f9f9; /* 홀수 행 배경색 */
+}
+
+#product .my-custom-table tr:hover {
+  background-color: #e6e6e6; /* 행에 마우스 호버 시 배경색 */
+}
+
+#product .back {
+  padding: 20px;
+  margin: 20px;
+  font-size: 15px;
+}
+
+
 
 
 /* 
