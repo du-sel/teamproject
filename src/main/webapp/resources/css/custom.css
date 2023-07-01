@@ -3377,6 +3377,266 @@ my-store 공통 (sidebar 위주)
 
 /* 
 ---------------------------------------------
+score
+--------------------------------------------- 
+*/
+
+.star {
+  position: relative;
+  font-size: 20px;
+  color: #ddd;
+}
+
+.star input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+
+.star span {
+  width: 0;
+  position: absolute;
+  left: 0;
+  color: #e97d7d;
+  overflow: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* 
+---------------------------------------------
+scroll custom
+--------------------------------------------- 
+*/
+
+.scroll-custom::-webkit-scrollbar {
+    height: 5px;  /* scrollbar heigh */
+}
+.scroll-custom::-webkit-scrollbar-thumb {
+    /* width: 10%; */ /* scrollbar width */
+    background: #000; /* scrollbar color */
+    border-radius: 10px;
+}
+.scroll-custom::-webkit-scrollbar-track {
+    background: #ccce;  /*scrollbar background color*/
+    border-radius: 10px;
+}
+
+/* 
+---------------------------------------------
+my-store common
+--------------------------------------------- 
+*/
+
+/* sidebar toggle */
+	.navbar-toggler{
+		background-color: #000 !important;
+		width: 290px !important;
+		text-align: right !important;
+		height: 50px !important;
+			
+	}
+	.navbar-toggler i{
+		font-size: 20px !important;
+		color: #fff;
+		transition: all ease 1s;
+	}
+	.navbar-toggler:hover i{
+		transform: rotate( 180deg );
+	}
+
+/* table css */
+	.table td, .table th{
+		text-align: center;
+	}
+	.table-custom{
+		table-layout: fixed;
+	}
+	.table-custom td{
+		text-overflow: ellipsis;
+	    overflow: hidden;
+	    white-space: nowrap;
+	}
+	.table-custom thead th:nth-child(1),
+	.table-custom tbody tr td:nth-child(1){
+		width: 70px;
+		min-width: 70px;
+	}
+
+/* notice, inquiry, store - managemnet  */
+	.management-title{
+		font-weight: 600 !important;
+	}
+	.management-btn{
+		text-align: center;
+	    border-radius: 5px;
+	    background-color: #e4e4eb;
+	   	border: none;
+		line-height: 0;
+		font-weight: 600;
+	    font-size: 18px;
+	    cursor: pointer;
+		height: 40px;
+	}
+	.management-btn:hover{
+		color: #b8b8c4;
+	    background-color: #586579;
+	}
+
+/* review, inquiry - managemnet  */
+	.table-management td{
+		cursor: pointer;
+	}
+	.table-management+div .pagination{
+		min-width: 345px;
+	}
+	.table-management thead th:nth-child(3),
+	.table-management tbody tr td:nth-child(3),
+	.table-management thead th:nth-child(4),
+	.table-management tbody tr td:nth-child(4),
+	.table-management thead th:nth-child(5),
+	.table-management tbody tr td:nth-child(5){
+		width: 18%;
+		min-width: 110px;
+	}
+	
+	@media (min-width:769px) and (max-width:991px){
+		.table-management{
+			width: initial !important;
+		}
+		.table-management thead th:nth-child(2),
+		.table-management tbody tr td:nth-child(2){
+			max-width: 185px;
+		}
+	}
+	@media (max-width:637px){
+		.table-management{
+			width: initial !important;
+		}
+		.table-management thead th:nth-child(2),
+		.table-management tbody tr td:nth-child(2){
+			max-width: 185px;
+		}
+	} 
+
+/* review, inquiry - form */
+	.management-form .main-panel .content .row>.col-xl-10{
+		margin: 0 auto;
+	}
+	.management-form h6{
+		font-size: 18px;
+	}
+	.management-form .p-info{
+		overflow-x: auto; 
+	}
+	.management-form .p-info img{
+		width: auto;
+		height: 150px;
+		margin-right: 10px;
+	}
+	.management-form .p-info h6{
+		line-height: 25px;
+		border-right: 1px solid #e4e4eb;
+		text-align: center;
+		display: inline-block;
+		width: 100px;
+		padding: 3px 10px;
+		margin: 10px;
+	}
+	.management-form .p-info p{
+		display: inline-block;
+	}
+	.management-form .p-info+div+form textarea{
+		height: 250px;
+	}
+	.management-form .p-info .p-text-info{
+		width: 100%;
+	}
+	.management-form .p-info .p-text-info .row{
+		margin: 10px 0;
+	    width: 100%;
+	}
+	.management-form .p-info .p-text-info>div{
+		width: 200px;
+	}
+	.management-form .p-info+div{
+		margin-bottom: 15px;
+		padding: 15px;
+		border-bottom: 1px solid #e4e4eb;
+		word-break: keep-all;
+	}
+	.management-form .p-info+div p{
+		padding: 10px 0 0 10px;
+	}
+	.management-form .management-data{
+		margin-bottom: 10px;
+	}
+	.management-form .management-data h6{
+		border-right: 1px solid #e4e4eb;
+		padding-right: 10px;
+	}
+	.management-form .management-data h6,
+	.management-form .management-data p{
+		display: inline-block;
+	}
+
+/* review, inquiry, notice - form */
+	.management-form .p-info+div+form textarea,
+	#notice-management .notice-box textarea{
+		resize: none;
+		width: 100%;
+		border:1px solid #e4e4eb;
+		padding: 10px;	
+	}
+	.management-form .p-info+div+form .management-btn,
+	#notice-management .management-btn{
+	    width: 150px;
+	    float: right;
+	    margin: 15px 0 0;
+	}
+	
+	.management-form .p-info+div+form,
+	#notice-management .btn-box{
+		clear: both;
+	}
+
+
+/* 
+---------------------------------------------
+calculate-history
+--------------------------------------------- 
+*/
+
+#sales-status .m-revenue .cal-history{
+	position: absolute;
+    border: none;
+    background: #fff;
+    bottom: 30px;
+    right: 10px;
+    font-size: 12px;
+}
+#sales-status .m-revenue .cal-history:hover{
+	font-weight: 600;
+}
+
+
+/* 
+---------------------------------------------
+calculate-history
+--------------------------------------------- 
+*/
+
+#calculate-history .sort{
+	position: absolute;
+	top: 15px;
+	right: 30px;
+}
+
+
+/* 
+---------------------------------------------
 product-management
 --------------------------------------------- 
 */
@@ -3550,6 +3810,123 @@ insert-product
 	/* font-size: 12px;  */
 }
 
+
+/* 
+---------------------------------------------
+inquiry-management
+--------------------------------------------- 
+*/
+
+#inquiry-management .answer{
+	background-color: #f2f2f6;
+}
+
+
+/* 
+---------------------------------------------
+notice-management
+--------------------------------------------- 
+*/
+#notice-management .card-body{
+	position: relative;
+}
+#notice-management .management-title{
+	padding-top: 20px;
+	margin-bottom: 0;
+}
+.management-form .p-info+div+form textarea,
+#notice-management .notice-box textarea{
+	height: 150px;
+}
+#notice-management h6{
+	line-height: 25px;
+	font-size: 19px;
+	padding: 0 5px;
+}
+#notice-management .notice-box{
+	margin: 0 auto;
+	width: 100%;
+}
+#notice-management .notice-box .notice{
+	padding: 10px;
+}
+#notice-management .notice-box .notice .img-box{
+	width: 100%;
+	overflow-x: auto;
+	padding-bottom: 10px;
+}
+#notice-management .notice-box .notice img{
+	width: auto;
+	height: 300px;
+	margin: 20px 5px 0;
+}
+#notice-management .btn-box input[type='file']{
+	display: inline-block;
+	margin-top: 15px;
+	width: max-content;
+}
+#notice-management .btn-box .management-btn{
+	margin-left: 5px;
+}
+
+/* 
+---------------------------------------------
+store-management
+--------------------------------------------- 
+*/
+
+#store-management .col-xl-10{
+	margin: 0 auto;
+}
+#store-management .card-body{
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+#store-management .card{
+	margin: 0 auto;
+}
+#store-management .page-title {
+	margin: 30px 0 50px;
+}
+#store-management .store-form {
+	padding: 0 10px;
+	margin: 0 auto 35px;
+}
+#store-management .store-form h5 {
+	color: #000;
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+#store-management .store-form .main-btn{
+	width: 100%;
+	margin: 10px 0 -20px;
+}
+#store-management .store-form .store-input{
+	width: 100%;
+	margin: 0;
+}
+#store-management .store-form .store-input:nth-child(2)>div{
+	padding-left:0;
+}
+#store-management .store-form .store-input .store-base-url{
+	width: 90px;
+}
+#store-management .store-form .store-input .sub-btn{
+	padding: 0;
+}
+#store-management .store-form .store-input select{
+	width: 180px;
+	text-align: center;
+}
+@media (max-width: 576px){
+	#store-management .store-form .store-input:nth-child(2)>div{
+		padding-right:0;
+	}
+	#store-management .store-form .store-input .sub-btn{
+		margin: 10px 0 0;
+	}
+}
 
 
 
@@ -4693,6 +5070,131 @@ community-main
 
 
 
+
+
+
+
+
+
+
+
+
+
+/* review, inquiry - form */
+	#insert-review #page .container,
+	#product-inquiry #page .container,
+	#customer-inquiry #page .container{
+		margin-top: 30px;
+		position: relative;
+	}
+	.my-info-form .back{
+		position: absolute;
+	    font-weight: 600;
+	    top: -60px;
+	    left: 15px;
+	}
+	.my-info-form .back:hover{
+		color: #b8b8c4;
+	}
+	.my-info-form h6{
+		font-size: 18px;
+	}
+	.my-info-form .form-data{
+		padding: 15px;
+	}
+	.my-info-form .p-info+.form-data,
+	.my-info-form .back+.form-data{
+    	border-bottom: 1px solid #e4e4eb;
+		margin-bottom: 15px;
+		word-break: keep-all;
+	}
+	.my-info-form .p-info{
+		overflow-x: auto; 
+	}
+	.my-info-form .p-info img{
+		width: auto;
+		height: 150px;
+		margin-right: 10px;
+	}
+	.my-info-form .p-info h6{
+		line-height: 25px;
+		border-right: 1px solid #e4e4eb;
+		text-align: center;
+		display: inline-block;
+		width: 120px;
+		padding: 3px 10px;
+		margin: 10px;
+	}
+	.my-info-form .p-info p{
+		display: inline-block;
+	}
+	.my-info-form .p-info+form textarea{
+		height: 250px;
+		resize: none;
+		width: 100%;
+		border:1px solid #e4e4eb;
+		padding: 10px;	
+	}
+	.my-info-form .p-info .p-text-info{
+		width: 100%;
+	}
+	.my-info-form .p-info .p-text-info .row{
+		margin: 10px 0;
+	    width: 100%;
+	}
+	.my-info-form .p-info .p-text-info>div{
+		width: 220px;
+	}
+	.my-info-form .p-info+form+div p{
+		padding: 10px 0 0 10px;
+	}
+	.my-info-form .sub-title:nth-child(1){
+		margin-bottom: 25px;
+	}
+	.my-info-form .sub-title:nth-child(2){
+		margin-bottom: 10px;
+	}
+	.my-info-form .sub-title:nth-child(1) h6{
+		border-right: 1px solid #e4e4eb;
+		padding-right: 10px;
+		margin-right: 4px;
+	}
+	.my-info-form .sub-title h6,
+	.my-info-form .sub-title p{
+		display: inline-block;
+	}
+	.my-info-form .p-info+form .form-btn{
+		text-align: center;
+	    border-radius: 5px;
+	    background-color: #e4e4eb;
+	   	border: none;
+		line-height: 0;
+		font-weight: 600;
+	    font-size: 18px;
+	    cursor: pointer;
+		height: 40px;
+	    width: 150px;
+	    float: right;
+	    margin: 15px 0 0;
+	}
+	.my-info-form .p-info+form .form-btn:hover{
+		color: #b8b8c4;
+	    background-color: #586579;
+	}
+	.my-info-form .p-info+form{
+		clear: both;
+	}
+	.my-info-form .sub-title:nth-child(1) h6{
+		border-right: 1px solid #e4e4eb;
+		padding-right: 10px;
+	}
+	.my-info-form .sub-title h6,
+	.my-info-form .sub-title p{
+		display: inline-block;
+	}
+	.my-info-form .sub-content{
+		padding: 10px 0 0 10px;
+	}
 
 
 

@@ -59,7 +59,7 @@
 	                		<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+								<input type="range" value="1" step="1" min="0" max="10">
 							</span>
 	                	</div>
                 		<h6>후기</h6>
@@ -70,9 +70,6 @@
                 		<input class="management-btn" type="submit" value="답변">
                 	</form>
                 </div>
-                <form>
-                
-                </form>
               </div>
             </div>
           </div>
