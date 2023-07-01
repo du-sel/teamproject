@@ -8,7 +8,6 @@
 		<!--상단 이미지-->
 		<div class="row topimg">
 			<div class="col-md-12 topimgdiv" >
-			
 				<p id="img-topimgmodify"> IMAGE UPLOAD </p>
 			</div> 
 		</div>
@@ -43,7 +42,7 @@
 	<br>
 	
 	<!-- 탭 -->
-	<div  class="container shadow-sm p-3 mb-5 ">
+	<div  class="container tabcontainer shadow-sm p-3 mb-5 ">
 
 		<div style="margin:10px;">
 			
@@ -57,15 +56,10 @@
 			 	<li class="nav-item navli">
 			 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
 			 	</li>
-			 	<!-- 
-				<li class="active navli"><a href="#feed" data-toggle="tab" >피드</a></li>
-				<li class="navli"><a href="#studio" data-toggle="tab">스튜디오</a></li>
-				<li class="navli"><a href="#notice" data-toggle="tab">공지</a></li>
-				 -->
 			</ul>
 
 			<div class="tab-content">
-			<!-- 피드 탭 -->
+				<!-- 피드 탭 -->
 				<div class="tab-pane fade show active" id="feed">
 					<br>
 					<div class="writenew">
@@ -74,19 +68,13 @@
 					
 					<div class="container">
 						<div class="offset-md-3 col-md-5">
-							<!-- 프로필이미지,닉네임 -->
-							<div>
-								
-								
-							</div>
-							<!-- 상품이미지,글, 좋아요, 댓글 -->
-							<div>
+							<!-- 피드 부분 -->
 
-							</div>
 						</div>
 					</div>
-					
 				</div>
+				
+				
 				<!-- 스튜디오 탭 -->
 				<div class="tab-pane fade" id="studio"><br>
 					<div style="height:50px;">

@@ -22,6 +22,11 @@ time,mark,audio,video{
 #myprofile #notice{
 	height: auto;
 }
+#myprofile .tabcontainer{
+	min-height: 600px;
+}
+
+
 /* 상단이미지 */
 #myprofile .topimg{
 	border-bottom:1px solid lightgray;
