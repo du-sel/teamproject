@@ -93,8 +93,8 @@
     <!-- Global Init -->
     <script src="/resources/js/custom.js"></script>
 
-	<!-- Modal -->
-	<script src="/resources/js/modal.js"></script> 
+	<!-- Validation -->
+	<script src="/resources/js/validation.js"></script> 
 	
 	
 	<!-- co-main -->
