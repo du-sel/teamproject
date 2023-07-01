@@ -42,9 +42,9 @@
     <script src="/resources/js/tab.js"></script>
 
 <!--탭 부분 -->
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
        
     <script>
@@ -53,8 +53,40 @@
 			$( '.divcomment' ).slideToggle();
 			} );
 		} );
+		
+		$( document ).ready( function() {
+			$( 'button.commentList' ).click( function() {
+			$( '.ulcommentList' ).slideToggle();
+			} );
+		} );
+		
+		$( document ).ready( function() {
+			$( 'button.insertcomment' ).click( function() {
+			$( '.submitcomment' ).slideToggle();
+			} );
+		} );
+			
+		
 	</script>
-    
+	<script type="text/javascript">
+		/* co-main.do, post.do textarea */
+		const DEFAULT_HEIGHT = 31; // textarea 기본 height
+	
+	    let textarea = document.getElementById('co-textarea');
+	    
+	 	// Textarea 자동 높이 조절
+	    textarea.oninput = (event) => {
+	      let target = event.target;
+	
+	      target.style.height = 0;
+	      if(target.scrollHeight >51){ //2줄일 때 높이
+		      target.style.height = 7 + target.scrollHeight + 'px';  // 마지막 줄 아래 여백생기지 않음  	  
+	      }else{
+		      target.style.height = DEFAULT_HEIGHT + target.scrollHeight + 'px';  //2줄일 때 높이 유지  	      	  
+	      }
+	    };
+	</script>
+    	
     
     
     
@@ -79,9 +111,9 @@
 	    
 		<!-- ***** Tab Start ***** -->
 	    <div id="tab">
-			<div id="co-tab" ></div>
+			<div id="co-tab" >커뮤니티</div>
 			<!-- onclick="location.href='co-main.do'" -->
-	        <div id="st-tab" class="active"></div>
+	        <div id="st-tab" class="active">스토어</div>
 	         <!-- onclick="location.href='st-main.do'" -->
 		</div>
 		<!-- ***** Tab End ***** -->

@@ -24,49 +24,8 @@
 
 
 
-  <main id="product-management" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
-    <div class="sidebar">
-      <div class="sidebar-wrapper">
-        <div class="logo">
-          <a href="javascript:void(0)" class="simple-text logo-normal">
-            Brand Name
-          </a>
-        </div>
-        <ul class="nav">
-          <li>
-            <a href="sales-status.do">
-              <i class="tim-icons icon-coins"></i>
-              <p>판매 현황</p>
-            </a>
-          </li>
-          <li class="active ">
-            <a href="product-management.do">
-              <i class="tim-icons icon-pin"></i>
-              <p class="card-content">상품 관리</p>
-            </a>
-          </li>
-          <li>
-            <a href="review-management.do">
-              <i class="tim-icons icon-bell-55"></i>
-              <p>후기 관리</p>
-            </a>
-          </li>
-          <li>
-            <a href="./notifications.html">
-              <i class="tim-icons icon-world"></i>
-              <p>공지 관리</p>
-            </a>
-          </li>
-          <li>
-            <a href="./user.html">
-              <i class="tim-icons icon-single-02"></i>
-              <p>스튜디오 관리</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    
+  <main id="insert-product" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+    <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />     
     
     
     <div class="main-panel">     
@@ -75,189 +34,139 @@
 			<h2>신규 상품 등록</h2>
       	</div>
       
-        <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-	                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-	                   <div class="thumb">
-	                       <a href="#"><img src="/resources/images/men-01.jpg" alt=""></a>
-	                   </div>
-	                </div>
-	                <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
-	                    <div class="down-content d-flex flex-column justify-content-around product-info">
-	                        <h4>상품명</h4>
-	                        <h4>7,000원</h4>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
-	                    <div class="d-flex flex-column justify-content-center align-items-center">
-		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
-			                    <button type="button" class="update-btn">수정</button>
-			                    <button type="button" class="delete-btn">삭제</button>
-		                    </div>
-		                    <button type="button" class="signature-btn button">대표 상품 등록</button>
-	                    </div>
-	                </div>
-	             </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-	                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-	                   <div class="thumb">
-	                       <a href="#"><img src="/resources/images/men-01.jpg" alt=""></a>
-	                   </div>
-	                </div>
-	                <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
-	                    <div class="down-content d-flex flex-column justify-content-around product-info">
-	                        <h4>상품명</h4>
-	                        <h4>7,000원</h4>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
-	                    <div class="d-flex flex-column justify-content-center align-items-center">
-		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
-			                    <button type="button" class="update-btn">수정</button>
-			                    <button type="button" class="delete-btn">삭제</button>
-		                    </div>
-		                    <button type="button" class="signature-btn button">대표 상품 등록</button>
-	                    </div>
-	                </div>
-	             </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-	                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-	                   <div class="thumb">
-	                       <a href="#"><img src="/resources/images/men-01.jpg" alt=""></a>
-	                   </div>
-	                </div>
-	                <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
-	                    <div class="down-content d-flex flex-column justify-content-around product-info">
-	                        <h4>상품명</h4>
-	                        <h4>7,000원</h4>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
-	                    <div class="d-flex flex-column justify-content-center align-items-center">
-		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
-			                    <button type="button" class="update-btn">수정</button>
-			                    <button type="button" class="delete-btn">삭제</button>
-		                    </div>
-		                    <button type="button" class="signature-btn button">대표 상품 등록</button>
-	                    </div>
-	                </div>
-	             </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-	                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-	                   <div class="thumb">
-	                       <a href="#"><img src="/resources/images/men-01.jpg" alt=""></a>
-	                   </div>
-	                </div>
-	                <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
-	                    <div class="down-content d-flex flex-column justify-content-around product-info">
-	                        <h4>상품명</h4>
-	                        <h4>7,000원</h4>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
-	                    <div class="d-flex flex-column justify-content-center align-items-center">
-		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
-			                    <button type="button" class="update-btn">수정</button>
-			                    <button type="button" class="delete-btn">삭제</button>
-		                    </div>
-		                    <button type="button" class="signature-btn button">대표 상품 등록</button>
-	                    </div>
-	                </div>
-	             </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-	                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-	                   <div class="thumb">
-	                       <a href="#"><img src="/resources/images/men-01.jpg" alt=""></a>
-	                   </div>
-	                </div>
-	                <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
-	                    <div class="down-content d-flex flex-column justify-content-around product-info">
-	                        <h4>상품명</h4>
-	                        <h4>7,000원</h4>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
-	                    <div class="d-flex flex-column justify-content-center align-items-center">
-		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
-			                    <button type="button" class="update-btn">수정</button>
-			                    <button type="button" class="delete-btn">삭제</button>
-		                    </div>
-		                    <button type="button" class="signature-btn button">대표 상품 등록</button>
-	                    </div>
-	                </div>
-	             </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-
-		<!-- 페이지 번호 -->
-        <div class="col-lg-12">
-          <div class="pagination">
-              <ul>
-                  <li>
-                      <a href="#"><</a>
-                  </li>
-                  <li>
-                      <a href="#">1</a>
-                  </li>
-                  <li class="active">
-                      <a href="#">2</a>
-                  </li>
-                  <li>
-                      <a href="#">3</a>
-                  </li>
-                  <li>
-                      <a href="#">4</a>
-                  </li>
-                  <li>
-                      <a href="#">></a>
-                  </li>
-              </ul>
-          </div>
-        </div>
-      
-      
+      	<form name="frm" id="frm" action="" method="post" enctype="multipart/form-data">      	
+	        <div class="row justify-content-center page-content">
+	          <div class="col-xxl-8 col-xl-10 col-lg-12 info">
+	            <div class="row name-container">
+		           	<label for="product-name"><h5>상품명</h5></label>
+		           	<input type="text" name="name" id="product-name" class="form-control" placeholder="상품명을 입력하세요">
+	            </div>
+	            <div class="price-container">
+		            <div class="row">
+			           	<label for="product-price"><h5>금액</h5></label>
+			           	<div class="form-control-container d-flex">
+			           		<span>&#8361;</span>
+			           		<input type="text" name="price" id="product-price" class="form-control form-number" placeholder="금액을 입력하세요" onchange="getNumber(this); getSalePrice();" onkeyup="getNumber(this);">
+			           	</div>
+		            </div>
+					<div class="row flex-column">
+			           	<h5>할인 여부</h5>
+			           	<div class="do-sale">
+			           		<label for="yes-sale">할인 적용</label>
+			           		<input type="radio" name="do-sale" id="yes-sale" value="yes">
+			           		<label for="no-sale">할인 미적용</label>
+			           		<input type="radio" name="do-sale" id="no-sale" value="no" checked>
+			           	</div>
+					</div>	 
+		           	<div class="sale-info">
+						<div class="row flex-column">
+			           		<label for="product-sale"><h5>할인 금액</h5></label>
+			           		<div class="d-flex align-items-center product-sale-container">
+			           			<div class="form-control-container d-flex">
+					           		<span>&#8361;</span>
+					           		<input type="text" name="sale" id="product-sale" class="form-control form-number" placeholder="할인 금액을 입력하세요" onchange="getNumber(this); getSalePrice();" onkeyup="getNumber(this);">
+					           	</div>
+				           		<p>할인</p>
+			           		</div>
+			           	</div>
+			           	<div class="row">
+			           		<h5>할인 적용가</h5>
+			           		<div class="form-control-container d-flex">
+				           		<span>&#8361;</span>
+				           		<input type="text" name="sale-price" id="product-sale-final" class="form-control form-number" value="" disabled onchange="getNumber(this); getSalePrice(this);" onkeyup="getNumber(this);">
+				           	</div>
+			           	</div>
+		           	</div>
+	            </div>
+				
+				<div class="category-container">
+					<div class="category">
+						<div class="row flex-column">
+							<h5>디자인 카테고리</h5>
+							<div class="category-card d-flex flex-row">
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-design-minimal">미니멀</label>
+									<input type="checkbox" id="cate-design-minimal" name="category-design" value="미니멀">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-design-illust">일러스트</label>
+									<input type="checkbox" id="cate-design-illust" name="category-design" value="일러스트">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-design-photo">포토</label>
+									<input type="checkbox" id="cate-design-photo" name="category-design" value="포토">
+								</div>
+							</div>
+						</div>
+						<div class="row flex-column">
+							<h5>페이지 카테고리</h5>
+							<div class="category-card d-flex flex-row">
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-page-whole">한달 세트</label>
+									<input type="checkbox" id="cate-page-whole" name="category-page" value="한달 세트">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-page-monthly">먼슬리</label>
+									<input type="checkbox" id="cate-page-monthly" name="category-design" value="먼슬리">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-page-weekly">위클리</label>
+									<input type="checkbox" id="cate-page-weekly" name="category-design" value="위클리">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-page-habit">해빗트래커</label>
+									<input type="checkbox" id="cate-page-habit" name="category-design" value="해빗트래커">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-page-mood">무드트래커</label>
+									<input type="checkbox" id="cate-page-mood" name="category-design" value="무드트래커">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-page-reading">독서트래커</label>
+									<input type="checkbox" id="cate-page-reading" name="category-design" value="독서트래커">
+								</div>		
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-page-expense">가계부</label>
+									<input type="checkbox" id="cate-page-expense" name="category-design" value="가계부">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-page-study">스터디</label>
+									<input type="checkbox" id="cate-page-study" name="category-design" value="스터디">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-page-sticker">스티커</label>
+									<input type="checkbox" id="cate-page-sticker" name="category-design" value="스티커">
+								</div>
+								<div class="d-flex flex-row category-checkbox">
+									<label for="cate-page-etc">그 외</label>
+									<input type="checkbox" id="cate-page-etc" name="category-design" value="그 외">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				     
+				<div class="row flex-column">
+					<div class="d-flex align-items-center thumb-title">
+						<h5>썸네일</h5>
+						<p>(정사각형 사이즈 권장)</p>
+					</div>
+					<div id="thumb-preview" class="thumb-preview">
+						<img id="img-modify-white" src="/resources/images/img-modify-white.svg" alt="썸네일 업로드 버튼">
+					</div>
+					<input type="file" accept="image/*" name="thumbnail" onchange="imgPreview(this);">
+				</div>     	
+	
+				<div class="row flex-column">
+					<h5>상세 정보</h5>
+					<textarea id="content" name="content" style="width:100%; height:412px;"></textarea>
+				</div>
+	
+					
+	            
+	          </div>
+	        </div>
+        </form>
 
       </div>
     </div>
@@ -266,111 +175,136 @@
   
 
   <script src="/resources/js/my-store.js"></script>
+  
+  
+  
+  <!-- 네이버 스마트에디터(사진기본포함) 실행 코드 -->
+<!--   <script src="resources/smarteditor2_9/js/service/HuskyEZCreator.js" charset="utf-8"></script>
   <script>
-    $(document).ready(function() {
-      $().ready(function() {
-        $sidebar = $('.sidebar');
-        $navbar = $('.navbar');
-        $main_panel = $('.main-panel');
+	$(document).ready(function () {
+			
+		var oEditors = [];
+		function smartEditorIFrame() {
+			
+			nhn.husky.EZCreator.createInIFrame({
+				oAppRef : oEditors,
+				elPlaceHolder : "content",
+				sSkinURI : "resources/smarteditor2_9/SmartEditor2Skin.html",
+				fCreator : "createSEditor2"
+			});
+	      }
+		smartEditorIFrame();
+	});
+  </script>
+   -->
+  
+  
+  	<!-- 네이버스마트 사진없는버전 -->
+<!-- 	<script src="resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 
-        $full_page = $('.full-page');
+	<script type="text/javascript">
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+		 oAppRef: oEditors,
+		 elPlaceHolder: "content",
+		 sSkinURI: "resources/smarteditor/SmartEditor2Skin.html",
+		 fCreator: "createSEditor2"
+		});
+	</script> -->
+  
+  
+  
+  	<!-- CKEditor5 Classic -->
+<!--   	<script src="resources/ckeditor5/build/ckeditor.js"></script>
+    <script>
+    	ClassicEditor.create( document.querySelector( '#content' ) );
+    	
+    	ClassicEditor.config.contentsCss = 'resources/ckeditor5/sample/ck-custom.css';
+    </script> -->
+  	
+  	
+  	
+  	<!-- CKEditor4 Standard -->
+  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4/ckeditor.js"></script>
+  	<script>
+		$(function () {
+			CKEDITOR.replace('content', {
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do',
+				contentsCss: '/resources/css/custom.css'
+			});
+		});
+	</script>
+  	
+  
+  
+  <script>
 
-        $sidebar_responsive = $('body > .navbar-collapse');
-        sidebar_mini_active = true;
-        white_color = false;
-
-        window_width = $(window).width();
-
-        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-        
-        // sidebar height 지정
-        $('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
-
-        $('.fixed-plugin a').click(function(event) {
-          if ($(this).hasClass('switch-trigger')) {
-            if (event.stopPropagation) {
-              event.stopPropagation();
-            } else if (window.event) {
-              window.event.cancelBubble = true;
-            }
-          }
-        });
-
-
-        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
-          var $btn = $(this);
-
-          if (sidebar_mini_active == true) {
-            $('body').removeClass('sidebar-mini');
-            sidebar_mini_active = false;
-            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
-          } else {
-            $('body').addClass('sidebar-mini');
-            sidebar_mini_active = true;
-            blackDashboard.showSidebarMessage('Sidebar mini activated...');
-          }
-
-          // we simulate the window Resize so the charts will get updated in realtime.
-          var simulateWindowResize = setInterval(function() {
-            window.dispatchEvent(new Event('resize'));
-          }, 180);
-
-          // we stop the simulation of Window Resize after the animations are completed
-          setTimeout(function() {
-            clearInterval(simulateWindowResize);
-          }, 1000);
-        });
-        
-		countingUp($('#m_revenue'), 3000000);
-		countingUp($('#revenue'), 12345678);
-		countingUp($('#p_revenue'), 450000);
+  /* 금액 입력창 */
+    function getNumber(obj){
+	   var num01;
+	   var num02;
+	   num01 = obj.value;
+	   num02 = num01.replace(/\D/g,""); 
+	   num01 = numberWithCommas(num02);
+	   obj.value =  num01;
+	
+	   $('#test').text(num01);
+	}
+    
+    
+    function getSalePrice() {
+    	let price = document.getElementById('product-price').value.replace(/\D/g,"");
+    	let sale = document.getElementById('product-sale').value.replace(/\D/g,"");
+    	let saleFinal = price+"-"+sale;
+   	
+    	let saleFinalInput = document.getElementById('product-sale-final');    	
+    	saleFinalInput.value = numberWithCommas(eval(saleFinal));
+    }
+    
+    
+    
+    $(() => {
+    	
+    	//할인정보 슬라이드업다운
+ 		$('.sale-info').hide();		
+		let do_sale = document.getElementsByName('do-sale');
+		let do_sale_val = null;
 		
+		$(do_sale).on('change', function() {
+			do_sale_val = $("input[name='do-sale']:checked").val();
+			$('.sale-info').slideToggle('300');
+		});
 		
-		// Window Resize Mobile Menu Fix
-	  	$(window).on('resize', function() {
-	  		console.log("resize1");
-	  		setTimeout(function() {
-	  			$('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
-	  		}, 10);
-	  	});
-        
-	  });
-	   
-	  // 숫자 카운팅 함수	  
-	  function countingUp(target, count){
-		  $({ val : 0 }).animate({ val : count }, {
-			  duration: 1500,
-			  step: function() {
-				  var num = numberWithCommas(Math.floor(this.val));
-				  target.text(num);
-			  },
-			  complete: function() {
-				  var num = numberWithCommas(Math.floor(this.val));
-				  target.text(num);
-			  }
-		  });
+
+    	
+    });
+    
+    
+    
+    
+    /* 썸네일 미리보기 */
+    function imgPreview(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('thumb-preview').style.backgroundImage = "url("+e.target.result+")";
+	      document.getElementById('thumb-preview').style.backgroundSize = "cover";
+	      document.getElementById('thumb-preview').style.backgroundColor = "transparent";
+	      document.getElementById('img-modify-white').style.display = "none";
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+		  document.getElementById('thumb-preview').style.backgroundImage = "none";
+	      document.getElementById('thumb-preview').style.backgroundColor = "#e4e4eb";
+	      document.getElementById('img-modify-white').style.display = "block";
 	  }
-	      
-	  // 세자리 마다 콤마(,) 넣는 함수
-	  function numberWithCommas(x) {
-		  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	  }
-  	});
+	}
+    
+    
+  
   </script>
   
   
-  
-  
-  
-
- 
-<script>
-  $(document).ready(function() {
-    // Javascript method's body can be found in assets/js/demos.js
-    demo.initDashboardPageCharts();
-
-  });
-</script> 
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 

@@ -182,7 +182,6 @@
 	
 	// Window Resize Mobile Menu Fix
 	$(window).on('resize', function() {
-		console.log("resize");
 		myMenu();
 		mobileNav();
 		setTimeout(function() {
