@@ -183,11 +183,8 @@
 	// Window Resize Mobile Menu Fix
 	$(window).on('resize', function() {
 		console.log("resize");
+		myMenu();
 		mobileNav();
-		if($(window).width()>=500 && $(window).width() <=900){
-			console.log($(window).width());
-			myMenu();
-		}
 		setTimeout(function() {
 			$('main.broad').css("margin-top", $('header').height());
 		}, 300);
@@ -220,4 +217,5 @@
 			menu_flag = false;
 		}
 	}
+	
 })(window.jQuery);
