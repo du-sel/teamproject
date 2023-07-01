@@ -3,12 +3,13 @@
  * signup-modal
  * shop-create-modal
  * user-modify
+ * store-management
  */
 
 function onSigninModal() { $('.modal-content').load("signin-modal.do"); }
 function onSignupModal() { $('.modal-content').load("signup-modal.do"); }
 function onShopModal() { $('.modal-content').load("shop-create-modal.do"); }
-function changeSignupModal(){ $('.scroll-to-section').eq(1).click(); } 		// login-modal.jsp에서 사용
+function changeSignupModal(){ $('.scroll-to-section').eq(1).click(); } 		// signin-modal.jsp에서 사용
 
 let email_flag = -1;
 let pwd_flag = false;
@@ -32,7 +33,7 @@ function chk_reset(flag){
 	
 }
 
-//공백, 특수문자 제거
+//공백, 특수문자 제거 + 숫자입력
 function remove(type, target){
 	let reg;
 	
@@ -42,6 +43,9 @@ function remove(type, target){
 		reg = /[`~!#$%^&*()_|+\-=?;:'",<>\{\}\[\]\\\/ ]/gim;
 	}else if(type==3){	// 공백 및 특수문자 제거
 		reg = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gim;
+	}
+	else if(type==4){	// 숫자만 입력 가능
+		reg = /[^0-9]/gim;
 	}
 	target.value = target.value.replace(reg, '');
 }
@@ -53,19 +57,25 @@ function tel_hyphen(target){
 }
 
 //url 체크
-function url_chk(url, url_chk, idx){
-	inputs = $('#modal input');
-	parents = $('.form-group');
+function url_chk(url, url_chk, idx, path){			// 기존 url(수정 시 사용), 중복된 url인지(후에 db로, true가 중복), input 위치, 함수 사용 페이지
+	
+	if(path == 'store'){
+		inputs = $('#store-management input');
+		parents = $('.store-form');
+	}else{
+		inputs = $('#modal input');
+		parents = $('.form-group');
+	}
 	
 	let p = $(parents[idx]).children().last();
 	
 	if(url.length > 0 && $(inputs[idx+1]).val() == url){
 		p.text("기존 URL을 사용합니다.").css('color','#179b81');
 		url_flag = 1;
-	}else if(!url_chk){
+	}else if(url_chk){
 		p.text("중복된 URL입니다.").css('color','#f00');
 		url_flag = 0;
-	}else if($(inputs[idx+1]).val() != "" && url_chk){
+	}else if($(inputs[idx+1]).val() != "" && !url_chk){
 		p.text("사용 가능한 URL입니다.").css('color','#179b81');
 		url_flag = 1;
 	}else if($(inputs[idx+1]).val() == ""){
@@ -253,13 +263,17 @@ function re_chk(value, idx){
 }
 
 
-/***** user-modify.jsp *****/
-//user-modify.jsp 유효성 검사 판단
-function modify_chk(){    	
-	parents = $('.form-group');
+/***** user-modify.jsp, store-management.jsp *****/
+//user-modify.jsp, store-management.jsp 유효성 검사 판단
+function modify_chk(path, idx){    		// 함수 사용 페이지, input 위치
+	if(path == 'store'){
+		parents = $('.store-form');
+	}else{
+		parents = $('.form-group');
+	}
 	
 	if(url_flag == -1){
-		let p = $(parents[2]).children().last();
+		let p = $(parents[idx]).children().last();
 
 		p.text("중복 확인이 되지않았습니다.").css('color','#f00');
 		return false;

@@ -20744,8 +20744,13 @@ Copyright (c) 2015 Daniel Eden
 }	
 
 /* 스토어 관리 */
-#store-management .main-btn{
+#store-management .col-xl-10{
+	margin: 0 auto;
+}
+#store-management .card-body{
 	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
 }
 #store-management .card{
 	margin: 0 auto;
@@ -20762,6 +20767,17 @@ Copyright (c) 2015 Daniel Eden
 	margin-bottom: 10px;
 	font-weight: 600;
 }
+#store-management .store-form .main-btn{
+	width: 100%;
+	margin: 10px 0 -20px;
+}
+#store-management .store-form .store-input{
+	width: 100%;
+	margin: 0;
+}
+#store-management .store-form .store-input:nth-child(2)>div{
+	padding-left:0;
+}
 #store-management .store-form .store-input .store-base-url{
 	width: 90px;
 }
@@ -20771,5 +20787,13 @@ Copyright (c) 2015 Daniel Eden
 #store-management .store-form .store-input select{
 	width: 180px;
 	text-align: center;
+}
+@media (max-width: 576px){
+	#store-management .store-form .store-input:nth-child(2)>div{
+		padding-right:0;
+	}
+	#store-management .store-form .store-input .sub-btn{
+		margin: 10px 0 0;
+	}
 }
 /*# sourceMappingURL=dashboard-free.css.map */
