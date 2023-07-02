@@ -16,37 +16,37 @@
 		<form action="#" method="post" onsubmit="return sign_chk();">
 			<div class="form-group">		<!-- 아이디(이메일) -->
 				<div class="input-group">
-					<input type="email" class="form-control" name="email" placeholder="UserEmail" onkeyup="chk_reset('email')" oninput="remove(2, this)" required>
+					<input type="email" class="form-control" name="email" placeholder="이메일" onkeyup="chk_reset('email')" oninput="remove(2, this)" required>
 					<button type="button" class="btn btn-chk" onclick="email_chk(true)">Check</button>
 				</div>
 				<p></p>
 			</div>
 			<div class="form-group">		<!-- 비밀번호 -->
 				<div class="input-group">
-					<input type="password" class="form-control" name="password" placeholder="Password" required onkeyup="pwd_chk();" oninput="pwd_validation('modal', this);">
+					<input type="password" class="form-control" name="password" placeholder="비밀번호" required onkeyup="pwd_chk();" oninput="pwd_validation('modal', this);">
 				</div>
 				<p></p>
 			</div>
 			<div class="form-group">		<!-- 비밀번호 확인 -->
 				<div class="input-group">
-					<input type="password" class="form-control" name="password_chk" placeholder="PasswordCheck" required onkeyup="pwd_chk();" oninput="remove(1, this)">
+					<input type="password" class="form-control" name="password_chk" placeholder="비밀번호 확인" required onkeyup="pwd_chk();" oninput="remove(1, this)">
 				</div>
 				<p></p>
 			</div>
 			<div class="form-group">		<!-- 이름-->
 				<div class="input-group">
-					<input type="text" class="form-control" name="name" placeholder="UserName" required oninput="remove(3, this)">
+					<input type="text" class="form-control" name="name" placeholder="이름" required oninput="remove(3, this)">
 				</div>
 			</div>
 			<div class="form-group">		<!-- 핸드폰번호 -->
 				<div class="input-group">
-					<input type="text" class="form-control" name="tel" placeholder="PhoneNumber" maxlength="13" oninput="tel_hyphen(this);" required>
+					<input type="text" class="form-control" name="tel" placeholder="핸드폰 번호" maxlength="13" oninput="tel_hyphen(this);" required>
 				</div>
 			</div>
 			<div class="form-group">		<!-- 프로필 url -->
 				<div class="input-group">
 					<input type="text" class="base-url" value="/shop/" disabled>
-					<input type="text" class="form-control" name="url" placeholder="ProfileURL" onkeyup="chk_reset('url')" oninput="remove(3, this)">
+					<input type="text" class="form-control" name="url" placeholder="프로필 URL" onkeyup="chk_reset('url')" oninput="remove(3, this)">
 					<button type="button" class="btn btn-chk" onclick="url_chk('', false, 5, 'user')">Check</button>
 				</div>
 				<p></p>

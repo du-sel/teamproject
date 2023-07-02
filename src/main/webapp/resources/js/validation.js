@@ -62,6 +62,9 @@ function url_chk(url, url_chk, idx, path){			// 기존 url(수정 시 사용), �
 	if(path == 'store'){
 		inputs = $('#store-management input');
 		parents = $('.store-form');
+	}else if(path == 'modify'){
+		inputs = $('#modify-input-container input');
+		parents = $('.form-group');
 	}else{
 		inputs = $('#modal input');
 		parents = $('.form-group');
