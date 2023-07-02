@@ -34,7 +34,7 @@
 			<h2>신규 상품 등록</h2>
       	</div>
       
-      	<form name="frm" id="frm" action="" method="post" enctype="multipart/form-data">      	
+      	<form name="frm" id="frm" action="insert-test.do" method="post">      	
 	        <div class="row justify-content-center page-content">
 	          <div class="col-xxl-8 col-xl-10 col-lg-12 info">
 	            <div class="row name-container">
@@ -159,10 +159,13 @@
 	
 				<div class="row flex-column">
 					<h5>상세 정보</h5>
+					<!-- CKEditor 적용 -->
 					<textarea id="content" name="content" style="width:100%; height:412px;"></textarea>
 				</div>
 	
-					
+				<div id="insert-btn-container" class="row justify-content-center insert-btn-container">
+					<button>상품 등록하기</button>
+				</div>
 	            
 	          </div>
 	        </div>
@@ -176,57 +179,13 @@
 
   <script src="/resources/js/my-store.js"></script>
   
-  
-  
-  <!-- 네이버 스마트에디터(사진기본포함) 실행 코드 -->
-<!--   <script src="resources/smarteditor2_9/js/service/HuskyEZCreator.js" charset="utf-8"></script>
-  <script>
-	$(document).ready(function () {
-			
-		var oEditors = [];
-		function smartEditorIFrame() {
-			
-			nhn.husky.EZCreator.createInIFrame({
-				oAppRef : oEditors,
-				elPlaceHolder : "content",
-				sSkinURI : "resources/smarteditor2_9/SmartEditor2Skin.html",
-				fCreator : "createSEditor2"
-			});
-	      }
-		smartEditorIFrame();
-	});
-  </script>
-   -->
-  
-  
-  	<!-- 네이버스마트 사진없는버전 -->
-<!-- 	<script src="resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
-
-	<script type="text/javascript">
-		var oEditors = [];
-		nhn.husky.EZCreator.createInIFrame({
-		 oAppRef: oEditors,
-		 elPlaceHolder: "content",
-		 sSkinURI: "resources/smarteditor/SmartEditor2Skin.html",
-		 fCreator: "createSEditor2"
-		});
-	</script> -->
-  
-  
-  
-  	<!-- CKEditor5 Classic -->
-<!--   	<script src="resources/ckeditor5/build/ckeditor.js"></script>
-    <script>
-    	ClassicEditor.create( document.querySelector( '#content' ) );
-    	
-    	ClassicEditor.config.contentsCss = 'resources/ckeditor5/sample/ck-custom.css';
-    </script> -->
-  	
-  	
-  	
-  	<!-- CKEditor4 Standard -->
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4/ckeditor.js"></script>
-  	<script>
+ 
+	
+	
+	
+	<!-- CKEditor standard -->
+ 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4/ckeditor.js"></script>
+	<script>
 		$(function () {
 			CKEDITOR.replace('content', {
 				filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do',
@@ -234,6 +193,17 @@
 			});
 		});
 	</script>
+	
+	<!-- CKEditor Custom -->
+<%--  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_custom/ckeditor.js"></script>
+	<script>
+		$(function () {
+			CKEDITOR.replace('content', {
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do',
+				contentsCss: '/resources/css/custom.css'
+			});
+		});
+	</script> --%>
   	
   
   

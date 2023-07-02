@@ -3551,7 +3551,7 @@ my-store common
 
 /* sidebar toggle */
 	.navbar-toggler{
-		background-color: #000 !important;
+		background-color: #586579 !important;
 		width: 290px !important;
 		text-align: right !important;
 		height: 50px !important;
@@ -3919,15 +3919,33 @@ insert-product
 #insert-product .thumb-preview img {
 	width: 50px;
 }
+#insert-product input[type=file]::file-selector-button {
+	background: #e4e4eb;
+	border: none;
+	padding: 5px 10px;
+}
+#insert-product input[type=file]::file-selector-button:hover {
+	background: #586579;
+	color: #fff;
+}
+#insert-product #insert-btn-container {
+	margin-top: 160px;
+}
+#insert-product #insert-btn-container button {
+	padding: 15px 30px;
+	background: #e4e4eb;
+	border: none;
+	border-radius: 0.25rem;
+	font-size: 20px;
+	font-weight: 600;
+}
+#insert-product #insert-btn-container button:hover {
+	background: #e97d7d;
+	color: #fff;
+}
 
-/* 상세정보 에디터 */
-.ck-editor__editable { 
-	height: 400px;
-	width: 100%;
-}
-.ck-content { 
-	/* font-size: 12px;  */
-}
+
+
 
 
 /* 
