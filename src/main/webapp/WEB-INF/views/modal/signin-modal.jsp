@@ -15,7 +15,7 @@
 		<h4 class="font-weight-bold">Sign In</h4>
 	</div>
 	<div class="d-flex flex-column text-center">
- 		<form>
+ 		<form action="" method="post">
 			<div class="form-group">		<!-- 아이디(이메일) -->
 				<div class="input-group">		
 					<span class="input-group-addon"><i class="fa fa-user"></i></span>
