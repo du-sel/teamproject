@@ -42,7 +42,7 @@
 					<div class="form-group">		<!-- 신규 비밀번호 확인 -->
 						<div class="input-group">
 							<p>신규 비밀번호 확인</p>
-							<input type="password" class="form-control" name="password_chk" placeholder="8자리 이상" oninput="remove(1, this);">
+							<input type="password" class="form-control" name="password_chk" placeholder="8자리 이상" oninput="remove(1, this);" required>
 						</div>
 						<p></p>
 					</div>

@@ -49,7 +49,7 @@
                 	</div>
                 	<div>
                			<h6>후기</h6>
-               			<textarea maxlength="300" placeholder="후기 내용을 입력하세요."></textarea>
+               			<textarea maxlength="300" placeholder="후기 내용을 입력하세요." required></textarea>
 	               		<input class="form-btn" type="submit" value="작성">
                		</div>
                	</form>
