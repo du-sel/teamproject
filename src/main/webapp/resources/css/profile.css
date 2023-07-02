@@ -25,7 +25,10 @@ time,mark,audio,video{
 #myprofile .tabcontainer{
 	min-height: 600px;
 }
-
+#myprofile .carddiv{
+	
+	height:auto;
+}
 
 /* 상단이미지 */
 #myprofile .topimg{
@@ -53,7 +56,7 @@ time,mark,audio,video{
 /* 상단 이미지 업로드 글씨 */
 #myprofile #img-topimgmodify{
 	display: none;
-	padding-top: 85px;
+	padding-top: 80px;
 	text-align: center;
 	font-size: 30px;
 	
@@ -100,10 +103,14 @@ time,mark,audio,video{
 #myprofile #buttonright{
 	display: inline-block;
 	border: 1px solid lightgray;
-	width: 120px;
+	min-width: 120px;
+	width: auto;
     height: 44px;
 	padding-top: 10px;
 	text-align: center;
+	padding-right: 4px;
+	padding-left: 4px;
+	
 }
 .fakerow{
 	height:15px;
@@ -230,12 +237,51 @@ time,mark,audio,video{
 #myprofile .line{
 	display: inline-block;
 }
-
-#myprofile #studioimg{
-	width: 60px;
-	height: 60px;
+#myprofile .studioimgdiv{
+	margin: 2px;
+}
+#myprofile #studioimg{	
+	max-width: 100%;
+	height: auto;
+	margin-right: 2px;
+	object-fit:cover;
 }
 
+/* 카드 글씨 라인 줄이기 */
+#myprofile .card-description{
+	display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
+}
+/* 카드 더보기 추가 */
+#myprofile .card-content__more-btn {
+  appearance: none;
+  border: 1px solid #3d3f40;
+  padding-top:3px;
+  border-radius: 0.25em;
+  cursor: pointer;
+  margin-top: 1rem;
+  height: 30px;
+  width: 80px;
+  text-align: center;
+  color: #3d3f40;
+  
+}
+
+#myprofile .card-content__more-btn::before {
+
+  content: '더보기';
+}
+
+#myprofile .card-content__more-btn:checked::before {
+
+  content: '닫기';
+}
+
+#myprofile .card-description:has(+ .card-content__more-btn:checked) {
+  -webkit-line-clamp:unset
+}
 
 /* 모달 스타일링을 위한 CSS 코드 */
 #myprofile .modal {
