@@ -2394,6 +2394,7 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
 	width: 100%;
 	border:1px solid #e4e4eb;
 	padding: 10px;	
+	margin-top: 10px;
 }
 .my-info-form .p-info .p-text-info{
 	width: 100%;
@@ -2405,24 +2406,37 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
 .my-info-form .p-info .p-text-info>div{
 	width: 300px;
 }
+.my-info-form .p-info+form+div{
+	padding: 15px;
+}
 .my-info-form .p-info+form+div p{
 	padding: 10px 0 0 10px;
 }
-.my-info-form .sub-title:nth-child(1){
+.my-info-form .form-data div{
 	margin-bottom: 25px;
 }
-.my-info-form .sub-title:nth-child(2){
+.my-info-form .form-data div:last-child{
 	margin-bottom: 10px;
 }
-.my-info-form .sub-title:nth-child(1) h6{
+.my-info-form h6{
 	border-right: 1px solid #e4e4eb;
 	padding-right: 10px;
-	margin-right: 4px;
+	margin-right: 6px;
+	width: max-content;
 }
 .my-info-form .sub-title h6,
 .my-info-form .sub-title p{
 	display: inline-block;
 }
+.my-info-form .answer{
+	display: inline-block;
+}
+.my-info-form .answer+p{
+	display: inline-block;
+	padding: 0 !important;
+	
+}
+
 .my-info-form .p-info+form .form-btn{
 	text-align: center;
     border-radius: 5px;
@@ -2435,7 +2449,7 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
 	height: 40px;
     width: 150px;
     float: right;
-    margin: 15px 0 0;
+    margin: 5px 0 0;
 }
 .my-info-form .p-info+form .form-btn:hover{
 	color: #b8b8c4;
@@ -3693,6 +3707,10 @@ my-store common
 	}
 	.management-form h6{
 		font-size: 18px;
+		border-right: 1px solid #e4e4eb;
+		width: max-content;
+		padding-right: 10px;
+		margin-right: 5px;
 	}
 	.management-form .p-info{
 		overflow-x: auto; 
@@ -3704,7 +3722,6 @@ my-store common
 	}
 	.management-form .p-info h6{
 		line-height: 25px;
-		border-right: 1px solid #e4e4eb;
 		text-align: center;
 		display: inline-block;
 		width: 100px;
@@ -3739,13 +3756,12 @@ my-store common
 	.management-form .management-data{
 		margin-bottom: 10px;
 	}
-	.management-form .management-data h6{
-		border-right: 1px solid #e4e4eb;
-		padding-right: 10px;
-	}
 	.management-form .management-data h6,
 	.management-form .management-data p{
 		display: inline-block;
+	}
+	.management-form .management-data p{
+		padding-left:0 !important;
 	}
 
 /* review, inquiry, notice - form */

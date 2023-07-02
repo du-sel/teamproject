@@ -36,6 +36,8 @@
 				<prop key="/post.do">product</prop> 
 		        <prop key="/profile.do">product</prop>
 				<prop key="/insert-product.do">product</prop> 
+				<prop key="/notice-popup.do">product</prop> 
+				<prop key="/customer-center.do">product</prop> 
 			</props>
 		</property>
 	</bean>

@@ -66,23 +66,14 @@
                 		<input class="management-btn" type="submit" value="답변">
                 	</form>
                 </div>
-                <form>
-                
-                </form>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-      
-      
-
     </div>
   </main>
-
   
-
   <script src="/resources/js/my-store.js"></script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
