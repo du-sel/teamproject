@@ -5204,7 +5204,7 @@ input[type="button"].btn-block {
 }
 
 .row .card-content{
-	color: #000 !important;
+	color: #2a2a2a !important;
 	font-size: 3rem;
 	font-weight: 300;
 	width: 100%;
@@ -19991,7 +19991,7 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .card .card-header .card-title {
-  color: #000;
+  color: #2a2a2a;
   font-weight: 100;
 }
 
@@ -20454,8 +20454,4 @@ Copyright (c) 2015 Daniel Eden
   padding-right: 0;
 }
 
-/* 추가 */
-.bar-chart{
-	padding-bottom: 21.22px;
-}
 /*# sourceMappingURL=dashboard-free.css.map */

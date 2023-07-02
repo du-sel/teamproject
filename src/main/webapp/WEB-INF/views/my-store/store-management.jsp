@@ -45,7 +45,7 @@
 		           		<div class="store-input d-flex justify-content-center row">
 			           		<div class="col-sm-9 d-flex">
 				           		<input type="text" class="form-control text-center store-base-url" value="/shop/" disabled>
-								<input type="text" id="url" class="form-control" name="url" placeholder="ProfileURL" value="test" onkeyup="chk_reset('url')" oninput="remove(3, this)">
+								<input type="text" id="url" class="form-control" name="url" placeholder="프로필 URL을 입력하세요." value="test" onkeyup="chk_reset('url')" oninput="remove(3, this)">
 							</div>
 							<button type="button" class="management-btn sub-btn col-sm-3" onclick="url_chk('test', false, 1, 'store')">Check</button>
 						</div>

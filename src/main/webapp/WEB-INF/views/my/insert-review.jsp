@@ -47,16 +47,15 @@
 							<input type="range" oninput="score(this);" value="1" step="1" min="0" max="10">
 						</span>
                 	</div>
-                	<div class="sub-title">
+                	<div>
                			<h6>후기</h6>
-               		</div>
-               		<div class="col-lg-12">
-	               		<textarea maxlength="300" placeholder="후기 내용을 입력하세요."></textarea>
+               			<textarea maxlength="300" placeholder="후기 내용을 입력하세요."></textarea>
 	               		<input class="form-btn" type="submit" value="작성">
-	               	</div>
+               		</div>
                	</form>
                	<div class="col-lg-12">
-               		<h6>크리에이터 답변</h6>
+               		<h6 class="answer">크리에이터 답변</h6>
+               		<p>답변 일자: <span>2023.07.02</span></p>
                		<p>구매해주셔서 감사합니다!</p>
                	</div>
 			</div>
