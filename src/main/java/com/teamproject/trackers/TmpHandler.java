@@ -47,8 +47,17 @@ public class TmpHandler implements Controller {
 		else if(path.equals("/purchase-history.do")) {			
 			mav.setViewName("./WEB-INF/views/my/purchase-history.jsp");			
 		}
+		else if(path.equals("/insert-review.do")) {			
+			mav.setViewName("./WEB-INF/views/my/insert-review.jsp");			
+		}
 		else if(path.equals("/inquiry-history.do")) {			
 			mav.setViewName("./WEB-INF/views/my/inquiry-history.jsp");			
+		}
+		else if(path.equals("/product-inquiry.do")) {			
+			mav.setViewName("./WEB-INF/views/my/product-inquiry.jsp");			
+		}
+		else if(path.equals("/customer-inquiry.do")) {			
+			mav.setViewName("./WEB-INF/views/my/customer-inquiry.jsp");			
 		}
 		else if(path.equals("/user-modify.do")) {			
 			mav.setViewName("./WEB-INF/views/my/user-modify.jsp");			
@@ -94,6 +103,24 @@ public class TmpHandler implements Controller {
 		}
 		else if(path.equals("/insert-product.do")) {		
 			mav.setViewName("./WEB-INF/views/my-store/insert-product.jsp");			
+		}
+		else if(path.equals("/notice-popup.do")) {		
+			mav.setViewName("./WEB-INF/views/admin/notice-popup.jsp");			
+		}
+		else if(path.equals("/customer-center.do")) {		
+			mav.setViewName("./WEB-INF/views/admin/customer-center.jsp");			
+		}
+		else if(path.equals("/notice-popup-form.do")) {		
+			mav.setViewName("./WEB-INF/views/admin/notice-popup-form.jsp");			
+		}
+		else if(path.equals("/customer-center-form.do")) {		
+			mav.setViewName("./WEB-INF/views/admin/customer-center-form.jsp");			
+    }
+		else if(path.equals("/insert-test.do")) {
+			System.out.println("name: "+request.getParameter("name"));
+			System.out.println("thumbnail: "+request.getParameter("thumbnail"));
+			System.out.println("content: "+request.getParameter("content"));
+			mav.setViewName("./WEB-INF/views/my-store/st-main.jsp");			
 		}
 
 		

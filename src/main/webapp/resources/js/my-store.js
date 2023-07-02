@@ -25,6 +25,7 @@ var navbar_initialized = false;
 var backgroundOrange = false;
 var sidebar_mini_active = false;
 var toggle_initialized = false;
+var $admin = $('main').attr('id');
 
 $(document).on('click', '.navbar-toggle', function() {
 	var $toggle = $(this);
@@ -111,7 +112,11 @@ $(document).ready(function() {
         fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
         
         // sidebar height 지정
-        $('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
+        if($admin.includes('popup') ||  $admin.includes('center')){
+    	    $('.sidebar').css("height", ($('.admin').innerHeight())+"px");    
+        }else{
+        	$('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
+		}
 
         $('.fixed-plugin a').click(function(event) {
           if ($(this).hasClass('switch-trigger')) {
@@ -151,7 +156,11 @@ $(document).ready(function() {
 		// 사이드바  크기 조절
 	  	$(window).on('resize', function() {
 	  		setTimeout(function() {
-	  			$('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
+	  			if($admin.includes('popup') ||  $admin.includes('center')){
+		  			$('.sidebar').css("height", ($('.admin').innerHeight())+"px"); 
+		        }else{
+		        	$('.sidebar').css("height", ($('.my-store').innerHeight())+"px");
+				}
 	  		}, 10);
 	  	});
 	  	

@@ -35,9 +35,10 @@
                     <h4>고객지원</h4>
                     <ul>
                         <li><a href="#">고객센터</a></li>
+                        <!-- 마이스토어,프로필,관리자 링크 넣어둘 곳이 없어서 임시로 연결해둠 -->
                         <li><a href="sales-status.do">마이스토어</a></li>
                         <li><a href="profile.do">프로필</a></li>
-                        <!-- 마이스토어 링크 넣어둘 곳이 없어서 임시로 연결해둠 -->
+                        <li><a href="notice-popup.do">관리자</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-12">
@@ -93,8 +94,8 @@
     <!-- Global Init -->
     <script src="/resources/js/custom.js"></script>
 
-	<!-- Modal -->
-	<script src="/resources/js/modal.js"></script> 
+	<!-- Validation -->
+	<script src="/resources/js/validation.js"></script> 
 	
 	
 	<!-- co-main -->

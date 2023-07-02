@@ -59,20 +59,17 @@
 	                		<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+								<input type="range" value="1" step="1" min="0" max="10">
 							</span>
 	                	</div>
                 		<h6>후기</h6>
                 		<p>잘 쓰고 있습니다!</p>
                 	</div>
                 	<form class="col-lg-12" action="inquiry-management.do">
-                		<textarea maxlength="300" placeholder="답변 내용 작성"></textarea>
+                		<textarea maxlength="300" placeholder="답변 내용 작성" required></textarea>
                 		<input class="management-btn" type="submit" value="답변">
                 	</form>
                 </div>
-                <form>
-                
-                </form>
               </div>
             </div>
           </div>
