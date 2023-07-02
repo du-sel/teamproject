@@ -1,320 +1,3 @@
-<<<<<<< HEAD
-@charset "UTF-8";
-
-/* html,body,div,span,applet,object,iframe,
-h1 h2,h3,h4,h5,h6,p,blockquote,pre,
-a,abbr,acronym,address,big,cite,code,
-del,dfn,em,img,ins,kbd,q,s,samp,small,
-strike,strong,sub,sup,tt,var,b,u,i,center,
-fieldset,form,label,legend,table,caption,
-tbody,tfoot,thead,tr,th,td,article,aside,
-canvas,details,embed,figure,figcaption,footer,
-header,main,menu,nav,output,ruby,section,summary,
-time,mark,audio,video{
-   margin: 0; padding: 0; border: 0; font-size: 100%;
-} */
-
-
-#myprofile .firstcontainer{
-/* 	border: 1px solid gray; */
-	padding-top:100px;
-}
-
-#myprofile #notice{
-	height: auto;
-}
-/* 상단이미지 */
-#myprofile .topimg{
-	border-bottom:1px solid lightgray;
-	height: 208px;
-	padding-top: 50px;
-}
-#myprofile .topimgdiv{
-	height: 158px;
-	background-color: #e6e9eb;
-}
-
-/* #img-topimgmodify{
-	display: none;
-	width: 100px;
-	height: 100px;
-	padding-top: 20px;
-	position: relative;
-    left: 490px;
-    top: 40px;
-	
-} */
-
-
-/* 상단 이미지 업로드 글씨 */
-#myprofile #img-topimgmodify{
-	display: none;
-	padding-top: 85px;
-	text-align: center;
-	font-size: 30px;
-	
-}
-
-#myprofile .seconddiv{
-	min-height: 160px;
-	height:flex;
-	padding-top: 20px;
-	
-}
-#myprofile .thriddiv{
-	margin-top: 10px;
-}
-
-/* 프로필 이미지 */
-
-#myprofile .profile{
-	width: 120px;
-	height: 120px;
-	background-color: #edeff0;
-	border: 4px solid #edeff0;
-	border-radius: 50%;
-	position: relative;
-	left: 28px;
-	top: -40px;
-	justify-content: center;
-	overflow: hidden;
-
-}
-
-#myprofile .nickname{
-/* 	border: 1px solid lightgray; */
-	height: 40px;
-	padding-top: 3px;
-	min-width: 80px;
-	
-	font-size: 24px;
-    font-weight: 700;
-    
-    
-}
-
-#myprofile #buttonright{
-	display: inline-block;
-	border: 1px solid lightgray;
-	width: 120px;
-    height: 44px;
-	padding-top: 10px;
-	text-align: center;
-}
-.fakerow{
-	height:15px;
-}
-.addressdiv{
-	height: 30px;
-	font-size: 17px;
-	padding-top: 3px;
-}
-.addressdiv > a{
-	text-decoration: none;
-}
-
-
-/* 프로필 수정 이미지 */
-#myprofile .profileimgmodify{
-	width: 40px;
-	height: 40px;
-	position: absolute;
-	left: 35px;
-	top: 35px;
-	display: none;	
-}
-
-#myprofile .navli{
-	text-align: center;
-	padding-top: 6px;
-	width: 110px;
-	height: 40px;
-	font-size: 20px;
-	font-weight: 700;
-	margin-right: 20px;
-	/* border: 1px solid lightgray; */
-}
-
-#myprofile .tab-content{
-	height: auto;
-}
-
-/* 이미지 업도르 */
-#myprofile .image-upload {
-	margin-top: 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-#myprofile .button {
-    display: flex;
-    justify-content: center;
-    
-}
-
-
-#myprofile label {
-    cursor: pointer;
-    /* font-size: 1em; */
-    font-size: 30px;
-	font-weight: 500;
-}
-
-#myprofile #chooseFile {
-    visibility: hidden;
-  
-}
-
-#myprofile .fileContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#myprofile .fileInput {
-    display: flex;
-    align-items: center;
-    border-bottom: solid 2px black;
-    width: 60%;
-    height: 30px;
-}
-
-#myprofile #fileName {
-    margin-left: 5px;
-}
-
-#myprofile .buttonContainer {
-    width: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-    background-color: black;
-    color: white;
-    border-radius: 30px;
-    padding: 10px;
-    font-size: 0.8em;
-
-    cursor: pointer;
-}
-
-#myprofile .image-show {
-    z-index: -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-#myprofile .img {
-    position: absolute;
-}
-
-#myprofile li {
-	margin-bottom: 13px;
-}
-
-#myprofile #shop__selector{
-	border: none;
-	margin-top: 15px;
-}
-
-#myprofile .line{
-	display: inline-block;
-}
-
-#myprofile #studioimg{
-	width: 60px;
-	height: 60px;
-}
-
-
-/* 모달 스타일링을 위한 CSS 코드 */
-#myprofile .modal {
-  display: none;
-  position: absolute;
-  z-index: 9999;
-  width: 100%;
-  height: 540px;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5); 
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  padding-top: 30px;
-}
-
-#myprofile .mcontent {
-  text-align:center;
-  background-color: #fefefe;
-
-  margin: auto;
-  padding: 5px;
-
-  border: 1px solid #888;
-  border-radius: 20px;
-  max-width: 500px;
-  width:auto;
-  height: 460px;
-  position: relative;
-  top:10px;
-  left:6.3px;
-}
-
-#myprofile .modalclose {
-  color: #aaa;
-  float: right;
-  margin-right: 5px;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-#myprofile .modalclose:hover,
-.modalclose:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-#myprofile .modal-content form{
-	text-align: center;
-}
-
-
-
-#myprofile .image-box {
-	width: 200px;
-	height: 200px;
-	object-fit: cover;
-	display: block;
-	margin: 10px auto;
-}
-#myprofile .upload-btn {
-	width: 90px;
-	height: 10px;
-	display: inline-block;
-	cursor: pointer;
-}
-#myprofile input[type=file] {
-	display: none;
-}
-
-#myprofile .writenew {
-	width: 110px;
-	height: 50px;
-	border: 1px solid lightgray;
-	border-radius: 10px;
-	text-align: center;
-	padding-top: 12px;
-	float: right;
-	
-}
-
-
-=======
 @charset "UTF-8";
 
 /* html,body,div,span,applet,object,iframe,
@@ -342,7 +25,10 @@ time,mark,audio,video{
 #myprofile .tabcontainer{
 	min-height: 600px;
 }
-
+#myprofile .carddiv{
+	
+	height:auto;
+}
 
 /* 상단이미지 */
 #myprofile .topimg{
@@ -370,7 +56,7 @@ time,mark,audio,video{
 /* 상단 이미지 업로드 글씨 */
 #myprofile #img-topimgmodify{
 	display: none;
-	padding-top: 85px;
+	padding-top: 80px;
 	text-align: center;
 	font-size: 30px;
 	
@@ -417,10 +103,14 @@ time,mark,audio,video{
 #myprofile #buttonright{
 	display: inline-block;
 	border: 1px solid lightgray;
-	width: 120px;
+	min-width: 120px;
+	width: auto;
     height: 44px;
 	padding-top: 10px;
 	text-align: center;
+	padding-right: 4px;
+	padding-left: 4px;
+	
 }
 .fakerow{
 	height:15px;
@@ -547,12 +237,51 @@ time,mark,audio,video{
 #myprofile .line{
 	display: inline-block;
 }
-
-#myprofile #studioimg{
-	width: 60px;
-	height: 60px;
+#myprofile .studioimgdiv{
+	margin: 2px;
+}
+#myprofile #studioimg{	
+	max-width: 100%;
+	height: auto;
+	margin-right: 2px;
+	object-fit:cover;
 }
 
+/* 카드 글씨 라인 줄이기 */
+#myprofile .card-description{
+	display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
+}
+/* 카드 더보기 추가 */
+#myprofile .card-content__more-btn {
+  appearance: none;
+  border: 1px solid #3d3f40;
+  padding-top:3px;
+  border-radius: 0.25em;
+  cursor: pointer;
+  margin-top: 1rem;
+  height: 30px;
+  width: 80px;
+  text-align: center;
+  color: #3d3f40;
+  
+}
+
+#myprofile .card-content__more-btn::before {
+
+  content: '더보기';
+}
+
+#myprofile .card-content__more-btn:checked::before {
+
+  content: '닫기';
+}
+
+#myprofile .card-description:has(+ .card-content__more-btn:checked) {
+  -webkit-line-clamp:unset
+}
 
 /* 모달 스타일링을 위한 CSS 코드 */
 #myprofile .modal {
@@ -635,4 +364,3 @@ time,mark,audio,video{
 }
 
 
->>>>>>> branch 'main' of https://github.com/du-sel/teamproject.git
