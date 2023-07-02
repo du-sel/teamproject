@@ -1689,18 +1689,22 @@ st-creator
 --------------------------------------------- 
 */
 
+#creators .container{
+	color: #2a2a2a;
+}
 	
 #creators .sort{
 	padding: 30px 0;
 }
 
-#creators .sort select,
-#calculate-history .sort select {
+#creators .sort select{
 	height: 2rem;
 	width: 7rem;
 	text-align: center;
 	border-radius: 5px;
 	cursor: pointer;
+	border: 1px solid #2a2a2a;
+	color: #2a2a2a;
 }
 
 #creators .profile div {
@@ -1719,7 +1723,7 @@ st-creator
 #creators .rep h4 {
 	padding-bottom: 15px;
 	margin-bottom: 15px;
-	border-bottom: 2px solid #eee9;
+	border-bottom: 2px solid #e4e4eb99;
 }
 
 #creators .product a {
@@ -1737,15 +1741,15 @@ st-creator
 }
 
 #creators .creator-card {
-	border: 1px solid #eee;
+	border: 1px solid #e4e4eb;
 	padding: 30px 20px;
-	box-shadow: 2px 2px 6px #ccc;
+	box-shadow: 2px 2px 6px #e4e4eb;
 	border-radius: 10px;
 	cursor: pointer;
 	margin-bottom: 25px;
 }
 #creators .creator-card:hover{
-	box-shadow: 8px 8px 15px #999;
+	box-shadow: 8px 8px 15px #b8b8c4;
 }
 
 
@@ -1904,7 +1908,7 @@ my-info 공통 (cart, purchase-history,
 	padding-top: 30px;
 	padding-bottom: 30px;
 	text-align: center;
-	border-bottom: 3px dotted #eee;
+	border-bottom: 3px dotted #e4e4eb;
 	-webkit-transition: all .05s ease 0s;
 	-moz-transition: all .05s ease 0s;
 	-o-transition: all .05s ease 0s;
@@ -1934,10 +1938,9 @@ my-info 공통 (cart, purchase-history,
 }
 .my-info .info a{
 	text-decoration: none;
-	color: #000;
 }
 .my-info .info a:hover{
-	font-weight:bolder;
+	color: #b8b8c4;
 }
 .my-info .container .row{
 	height: max-content;
@@ -1975,16 +1978,19 @@ cart
 --------------------------------------------- 
 */
 
+#cart *{
+	color: #2a2a2a;
+}
 
 /* 삭제 아이콘 */
 #cart .fa-times:hover{
-	color: #f00;
+	color: #e97d7d;
 }
 
 	
 /* 결제 박스 */
 #cart .payment{
-	border: 1px solid #000;
+	border: 1px solid #e4e4eb;
 	min-height: 6rem;
 	padding: 1.5rem 1rem;
 	border-radius: 10px;
@@ -1997,14 +2003,15 @@ cart
 }
 #cart .purchase{
 	height: 60px;
-	background-color: #fff;
+	background-color: #e4e4eb;
+	border: none;
 	font-size: 1.3rem;
 	font-weight: 600;
 	border-radius: 10px;
 }
 #cart .purchase:hover{
 	color: #fff;
-	background-color: #000;
+	background-color: #586579;
 }
 
 #cart .form-check div{
@@ -2046,7 +2053,7 @@ cart
   cursor: pointer;
   border-radius: 3px;
   top: 0;
-  border: 1px solid #818181;
+  border: 1px solid #2a2a2a;
   -webkit-transition: opacity 0.3s linear;
   -moz-transition: opacity 0.3s linear;
   -o-transition: opacity 0.3s linear;
@@ -2057,7 +2064,7 @@ cart
 #cart .form-check input[type="checkbox"]:checked+.form-check-sign::before,
 #cart .form-check input[type="checkbox"]:checked+.form-check-sign::before {
   border: none;
-  background-color: #000;
+  background-color: #586579;
 }
 
 #cart .form-check .form-check-sign::after {
@@ -2141,13 +2148,15 @@ cart
 purchase-history
 --------------------------------------------- 
 */
-
+#purchase-history{
+	color: #2a2a2a;
+}
 #purchase-history .button {
-	background-color:#fff;
-	border: 1px solid #000;
+	background-color:#e4e4eb;
+	border: none;
 }
 #purchase-history .button:hover {
-	background-color:#000;
+	background-color:#586579;
 	color: #fff;
 	font-weight:bolder;
 }
@@ -2174,6 +2183,7 @@ inquiry-history
 	text-align: center;
 	border-radius: 5px;
 	cursor: pointer;
+	border: 1px solid #2a2a2a;
 }
    	
 #inquiry-history .table{
@@ -2197,12 +2207,12 @@ news
 
 
 #news .news-container{
-	border-top: 2px solid #eee9;
+	border-top: 2px solid #e4e4eb;
 	padding: 20px 0;
 	cursor: pointer;
 }
 #news .news-container:hover{
-	background-color: #eee;
+	background-color: #dce0e3;
 }
 #news .news-container:nth-child(1){
 	border: none;
@@ -2225,7 +2235,7 @@ news
 	word-break: keep-all;
 }
 #news .check{
-	background-color: #eee5;
+	background-color: #f2f2f6;
 }
 
 
@@ -2244,7 +2254,6 @@ user-modify, user-pwd-modify
 	min-width: 200px;
 	margin: 30px auto 0;
 }
- 	
  	
 /* 모달에서 빼옴 */
 .user-modify #modify-input-container .form-group {
@@ -2268,7 +2277,7 @@ user-modify, user-pwd-modify
     font-weight: 400;
     line-height: 1;
     color: #555;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #e4e4eb;
 }
 .user-modify #modify-input-container .form-control {
 	min-height: 38px;
@@ -2278,33 +2287,34 @@ user-modify, user-pwd-modify
 	border-radius: 0;
 }
 .user-modify #modify-input-container .form-control:focus {
-	border-color: #aaa;
+	border-color: #b8b8c4;
 }
 
 .user-modify #modify-input-container .btn {        
     font-size: 16px;
-    font-weight: bold;
-	background: #000;
+    font-weight: 600;
+	background: #e4e4eb;
     border-radius: 3px;
 	border: none;
 	min-width: 140px;
     outline: none !important;
-    color: #fff;
+    color: #2a2a2a;
 }
 .user-modify #modify-input-container .btn-chk {        
 	background: #fff;
-	border-left: 1px dotted #ced4da;
-	border-bottom: 1px solid #ced4da;
+	border-left: 1px dotted #e4e4eb;
+	border-bottom: 1px solid #e4e4eb;
     border-radius: 0px;
 	min-width: 80px;
     color: #000;
 }
 .user-modify #modify-input-container .form-control:focus+.btn-chk{
-	border-left: 1px dotted #aaa;
-	border-bottom: 1px solid #aaa;
+	border-left: 1px dotted #b8b8c4;
+	border-bottom: 1px solid #b8b8c4;
 }
 .user-modify #modify-input-container .btn:hover, .modal-login .btn:focus {
-	background: #aaa;
+	background: #586579;
+	color: #fff;
 }
 .user-modify #modify-input-container .fa {
 	font-size: 21px;
@@ -2312,10 +2322,18 @@ user-modify, user-pwd-modify
 .user-modify #modify-input-container .input-group .base-url{
 	width: 80px;
 	border:none;
-	border-bottom: 1px solid #ced4da;
+	border-bottom: 1px solid #e4e4eb;
 	text-align: center;
 }
 
+.user-modify #modify-input-container .user-remove{
+	font-weight: 600;
+	text-align: center;
+	text-decoration: underline !important;
+}
+.user-modify #modify-input-container .user-remove:hover{
+	color: #b8b8c4;
+}
 
 /* 
 ---------------------------------------------
@@ -2329,6 +2347,7 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
 	position: relative;
 }
 .my-info-form .back{
+	color: #2a2a2a;
 	position: absolute;
     font-weight: 600;
     top: -60px;
@@ -2384,7 +2403,7 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
     width: 100%;
 }
 .my-info-form .p-info .p-text-info>div{
-	width: 220px;
+	width: 300px;
 }
 .my-info-form .p-info+form+div p{
 	padding: 10px 0 0 10px;
@@ -3503,7 +3522,7 @@ score
 .star {
   position: relative;
   font-size: 20px;
-  color: #ddd;
+  color: #b8b8c4;
 }
 
 .star input {
@@ -3535,11 +3554,11 @@ scroll custom
 }
 .scroll-custom::-webkit-scrollbar-thumb {
     /* width: 10%; */ /* scrollbar width */
-    background: #000; /* scrollbar color */
+    background: #586579; /* scrollbar color */
     border-radius: 10px;
 }
 .scroll-custom::-webkit-scrollbar-track {
-    background: #ccce;  /*scrollbar background color*/
+    background: #e4e4eb;  /*scrollbar background color*/
     border-radius: 10px;
 }
 
@@ -3549,9 +3568,36 @@ my-store common
 --------------------------------------------- 
 */
 
+/* padding, color */
+.table thead th{
+	border-bottom: 2px solid #e4e4eb;
+}
+.table-bordered td, .table-bordered th{
+	border: 1px solid #e4e4eb;
+}
+.table td, .table th{
+	border-top: 1px solid #e4e4eb;
+}
+.table-hover tbody tr:hover{
+	color: #2a2a2a;
+	background-color: #dce0e3 !important;
+}
+.bar-chart{
+	padding-bottom: 21.22px;
+}
+.card .card-title, .card-body .table, h6{
+	color: #2a2a2a;
+}
+.form-control:disabled, .form-control[readonly]{
+	background: #e4e4eb;
+}
+.form-control{
+	border: 1px solid #e4e4eb;
+}
+
 /* sidebar toggle */
 	.navbar-toggler{
-		background-color: #000 !important;
+		background-color: #586579 !important;
 		width: 290px !important;
 		text-align: right !important;
 		height: 50px !important;
@@ -3589,6 +3635,7 @@ my-store common
 		font-weight: 600 !important;
 	}
 	.management-btn{
+		color: #2a2a2a;
 		text-align: center;
 	    border-radius: 5px;
 	    background-color: #e4e4eb;
@@ -3600,7 +3647,7 @@ my-store common
 		height: 40px;
 	}
 	.management-btn:hover{
-		color: #b8b8c4;
+		color: #fff;
 	    background-color: #586579;
 	}
 
@@ -3678,7 +3725,7 @@ my-store common
 	    width: 100%;
 	}
 	.management-form .p-info .p-text-info>div{
-		width: 200px;
+		width: 300px;
 	}
 	.management-form .p-info+div{
 		margin-bottom: 15px;
@@ -3729,15 +3776,17 @@ calculate-history
 */
 
 #sales-status .m-revenue .cal-history{
+	color: #2a2a2a;
 	position: absolute;
     border: none;
     background: #fff;
     bottom: 30px;
     right: 10px;
     font-size: 12px;
+	font-weight: 600;
 }
 #sales-status .m-revenue .cal-history:hover{
-	font-weight: 600;
+	color: #b8b8c4;
 }
 
 
@@ -3751,8 +3800,16 @@ calculate-history
 	position: absolute;
 	top: 15px;
 	right: 30px;
+	color: #2a2a2a;
 }
-
+#calculate-history .sort select {
+	height: 2rem;
+	width: 7rem;
+	text-align: center;
+	border-radius: 5px;
+	cursor: pointer;
+	border: 1px solid #2a2a2a;
+}
 
 /* 
 ---------------------------------------------
@@ -4013,7 +4070,7 @@ store-management
 	margin: 0 auto 35px;
 }
 #store-management .store-form h5 {
-	color: #000;
+	color: #2a2a2a;
 	margin-bottom: 10px;
 	font-weight: 600;
 }

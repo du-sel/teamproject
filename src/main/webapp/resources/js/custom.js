@@ -84,6 +84,8 @@
 
 	// Window Resize Mobile Menu Fix
 	mobileNav();
+	
+		console.log("out");	
 	// Window Resize Mobile Menu MyMenu
 	let menu_flag = false;		// myMenu flag
 	myMenu();
@@ -184,6 +186,7 @@
 	$(window).on('resize', function() {
 		myMenu();
 		mobileNav();
+		console.log("resize");	
 		setTimeout(function() {
 			$('main.broad').css("margin-top", $('header').height());
 		}, 300);
@@ -198,17 +201,18 @@
 			if(width < 767) {
 				//$('.submenu ul').removeClass('active');
 				$(this).find('ul').toggleClass('active');
+				console.log("active");
 			}
 		});
 	}
 	
-	// Window Resize Mobile Menu - MyMenu
+	// Window Resize Mobile Menu - MyMenuW
 	function myMenu() {
 		var width = $(window).width();
 		
 		if(width < 768 && !menu_flag) {
 			$('#user-menu').children('img').remove();
-			$('#user-menu').prepend("<a href='#'>마이 메뉴</a>");
+			$('#user-menu').prepend("<a>마이 메뉴</a>");
 			menu_flag = true;
 		}else if(width >= 768 && menu_flag){
 			$('#user-menu').children('a').remove();
