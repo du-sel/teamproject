@@ -22,6 +22,10 @@
 			<div class="row justify-content-center">
 				<a href="inquiry-history.do" class="back">&lt; 문의 내역</a>
                	<div class="col-lg-12 form-data">
+	               	<div class="sub-title">
+	               		<h6>작성 일자</h6>
+	               		<p>2023.07.02</p>
+	               	</div>
                		<div class="sub-title">
 	               		<h6>문의 제목</h6>
 	               		<p>영구 다운로드 가능한가요?</p>
@@ -32,7 +36,8 @@
                		</div>
                	</div>
                	<div class="col-lg-12 form-data">
-               		<h6>문의 답변</h6>
+               		<h6 class="answer">문의 답변</h6>
+               		<p>답변 일자: <span>2023.07.02</span></p>
                		<p class="sub-content">그렇습니다! 크리에이터가 상품을 삭제해도 삭제 전 구매 시 다운로드 가능합니다!</p>
                	</div>
 			</div>
