@@ -24,7 +24,7 @@
 
 
 
-  <main id="notice-popup" class="admin wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+  <main id="customer-center" class="admin wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
     <jsp:include page="/WEB-INF/views/common/admin-sidebar.jsp" />  
     <div class="main-panel">     
       <div class="content">
@@ -32,7 +32,7 @@
           <div class="col-lg-12">
             <div class="col-lg-12 card">
               <div class="card-header">
-                <h2 class="card-title text-center management-title">팝업 관리</h2>
+                <h2 class="card-title text-center management-title">고객 센터</h2>
               </div>
               <div class="card-body">
                 <div class="table-responsive scroll-custom">
@@ -46,26 +46,32 @@
                           	제목
                         </th>
                         <th>
-                          	시작일자
+                          	작성자
                         </th>
                         <th>
-                          	종료일자
+                          	작성일자
+                        </th>
+                        <th>
+                          	답변여부
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr onclick="location.href='notice-popup-form.do'">
+                      <tr onclick="location.href='customer-center-form.do'">
                       	<td>
                           	10
                         </td>
                         <td>
-                          	30% 세일!
+                          	영구 다운로드 가능한가요?
                         </td>
                         <td>
-                          	2023.06.28
+                          	이고객
                         </td>
                         <td>
-                          2023.07.05
+                          2023.06.28
+                        </td>
+                        <td>
+                          	미답변
                         </td>
                       </tr>
                       <tr>
@@ -73,125 +79,152 @@
                           	9
                         </td>
                         <td>
-                          	30% 세일!
+                          	영구 다운로드 가능한가요?
                         </td>
                         <td>
-                          	2023.06.28
+                          	이고객
                         </td>
                         <td>
-                          2023.07.05
+                          2023.06.28
+                        </td>
+                        <td>
+                          	미답변
                         </td>
                       </tr>
-                      <tr>
+                      <tr class="answer">
                       	<td>
                           	8
                         </td>
                         <td>
-                          	30% 세일!
+                          	영구 다운로드 가능한가요?
                         </td>
                         <td>
-                          	2023.06.28
+                          	이고객
                         </td>
                         <td>
-                          2023.07.05
+                          2023.06.28
+                        </td>
+                        <td>
+                          	답변
                         </td>
                       </tr>
-                      <tr>
+                      <tr class="answer">
                       	<td>
                           	7
                         </td>
                         <td>
-                          	30% 세일!
+                          	영구 다운로드 가능한가요?
                         </td>
                         <td>
-                          	2023.06.28
+                          	이고객
                         </td>
                         <td>
-                          2023.07.05
+                          2023.06.28
+                        </td>
+                        <td>
+                          	답변
                         </td>
                       </tr>
-                      <tr>
+                      <tr class="answer">
                       	<td>
                           	6
                         </td>
                         <td>
-                          	30% 세일!
+                          	영구 다운로드 가능한가요?
                         </td>
                         <td>
-                          	2023.06.28
+                          	이고객
                         </td>
                         <td>
-                          2023.07.05
+                          2023.06.28
+                        </td>
+                        <td>
+                          	답변
                         </td>
                       </tr>
-                      <tr>
+                      <tr class="answer">
                       	<td>
                           	5
                         </td>
                         <td>
-                          	30% 세일!
+                          	영구 다운로드 가능한가요?
                         </td>
                         <td>
-                          	2023.06.28
+                          	이고객
                         </td>
                         <td>
-                          2023.07.05
+                          2023.06.28
+                        </td>
+                        <td>
+                          	답변
                         </td>
                       </tr>
-                      <tr>
+                      <tr class="answer">
                       	<td>
                           	4
                         </td>
                         <td>
-                          	30% 세일!
+                          	영구 다운로드 가능한가요?
                         </td>
                         <td>
-                          	2023.06.28
+                          	이고객
                         </td>
                         <td>
-                          2023.07.05
+                          2023.06.28
+                        </td>
+                        <td>
+                          	답변
                         </td>
                       </tr>
-                      <tr>
+                      <tr class="answer">
                       	<td>
                           	3
                         </td>
                         <td>
-                          	30% 세일!
+                          	영구 다운로드 가능한가요?
                         </td>
                         <td>
-                          	2023.06.28
+                          	이고객
                         </td>
                         <td>
-                          2023.07.05
+                          2023.06.28
+                        </td>
+                        <td>
+                          	답변
                         </td>
                       </tr>
-                      <tr>
+                      <tr class="answer">
                       	<td>
                           	2
                         </td>
                         <td>
-                          	30% 세일!
+                          	영구 다운로드 가능한가요?
                         </td>
                         <td>
-                          	2023.06.28
+                          	이고객
                         </td>
                         <td>
-                          2023.07.05
+                          2023.06.28
+                        </td>
+                        <td>
+                          	답변
                         </td>
                       </tr>
-                      <tr>
+                      <tr class="answer">
                       	<td>
                           	1
                         </td>
                         <td>
-                          	30% 세일!
+                          	영구 다운로드 가능한가요?
                         </td>
                         <td>
-                          	2023.06.28
+                          	이고객
                         </td>
                         <td>
-                          2023.07.05
+                          2023.06.28
+                        </td>
+                        <td>
+                          	답변
                         </td>
                       </tr>
                     </tbody>
@@ -225,9 +258,15 @@
             </div>
           </div>
         </div>
+
       </div>
+      
+      
+
     </div>
   </main>
+
+  
 
   <script src="/resources/js/my-store.js"></script>
 

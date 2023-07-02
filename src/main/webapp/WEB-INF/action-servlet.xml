@@ -38,6 +38,8 @@
 				<prop key="/insert-product.do">product</prop> 
 				<prop key="/notice-popup.do">product</prop> 
 				<prop key="/customer-center.do">product</prop> 
+				<prop key="/notice-popup-form.do">product</prop> 
+				<prop key="/customer-center-form.do">product</prop> 
 			</props>
 		</property>
 	</bean>

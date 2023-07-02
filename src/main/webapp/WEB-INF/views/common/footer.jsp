@@ -38,7 +38,7 @@
                         <!-- 마이스토어,프로필,관리자 링크 넣어둘 곳이 없어서 임시로 연결해둠 -->
                         <li><a href="sales-status.do">마이스토어</a></li>
                         <li><a href="profile.do">프로필</a></li>
-                        <li><a href="notice-popup.do">프로필</a></li>
+                        <li><a href="notice-popup.do">관리자</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-12">
