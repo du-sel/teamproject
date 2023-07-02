@@ -2404,7 +2404,7 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
     width: 100%;
 }
 .my-info-form .p-info .p-text-info>div{
-	width: 300px;
+	width: max-content;
 }
 .my-info-form .p-info+form+div{
 	padding: 15px;
@@ -3578,7 +3578,7 @@ scroll custom
 
 /* 
 ---------------------------------------------
-my-store common
+my-store common + admin common
 --------------------------------------------- 
 */
 
@@ -3644,7 +3644,7 @@ my-store common
 		min-width: 70px;
 	}
 
-/* notice, inquiry, store - managemnet  */
+/* notice, inquiry, store - managemnet + notice-popup, customer-center */
 	.management-title{
 		font-weight: 600 !important;
 	}
@@ -3665,7 +3665,7 @@ my-store common
 	    background-color: #586579;
 	}
 
-/* review, inquiry - managemnet  */
+/* review, inquiry - managemnet + notice-popup, customer-center  */
 	.table-management td{
 		cursor: pointer;
 	}
@@ -3742,7 +3742,7 @@ my-store common
 	    width: 100%;
 	}
 	.management-form .p-info .p-text-info>div{
-		width: 300px;
+		width: max-content;
 	}
 	.management-form .p-info+div{
 		margin-bottom: 15px;
@@ -4083,6 +4083,7 @@ notice-management
 	margin-left: 5px;
 }
 
+
 /* 
 ---------------------------------------------
 store-management
@@ -4140,6 +4141,103 @@ store-management
 	#store-management .store-form .store-input .sub-btn{
 		margin: 10px 0 0;
 	}
+}
+
+
+/* 
+---------------------------------------------
+admin customer-center, notice-popup - form
+--------------------------------------------- 
+*/
+.admin .main-panel .content .row>.col-xl-10{
+	margin: 0 auto;
+}
+.admin .a-title{
+	font-weight: 600 !important;
+}
+.admin h6{
+	font-size: 18px;
+	border-right: 1px solid #e4e4eb;
+	width: 100px;
+	line-height: 25px;
+	display: inline-block;
+	padding: 3px 10px 3px 0;
+	margin: 10px 10px 10px 0;
+}
+.admin .a-info{
+	overflow-x: auto; 
+}
+.admin .a-info img{
+	width: auto;
+	height: 150px;
+	margin-right: 10px;
+}
+.admin .a-info p{
+	display: inline-block;
+}
+.admin .a-info+div{
+	padding-top:0 !important;
+}
+.admin .a-info+div+form textarea{
+	height: 250px;
+}
+.admin .a-info .a-text-info{
+	width: 100%;
+}
+.admin .a-info .a-text-info .row{
+	margin: 10px 0;
+    width: 100%;
+}
+.admin .a-info .a-text-info>div{
+	width: max-content;
+}
+.admin .a-info+div{
+	margin-bottom: 15px;
+	padding: 15px;
+	border-bottom: 1px solid #e4e4eb;
+	word-break: keep-all;
+}
+.admin .a-info+div p{
+	padding: 10px 0 0 10px;
+}
+.admin .management-data{
+	margin-bottom: 10px;
+}
+.admin .management-data h6,
+.admin .management-data p{
+	display: inline-block;
+}
+.admin .management-data p{
+	padding-left:0 !important;
+}
+.admin .a-info+div+form textarea{
+	resize: none;
+	width: 100%;
+	border:1px solid #e4e4eb;
+	padding: 10px;	
+}
+.admin .a-info+div+form .a-btn{
+    width: 150px;
+    float: right;
+    margin: 15px 0 0;
+    color: #2a2a2a;
+	text-align: center;
+    border-radius: 5px;
+    background-color: #e4e4eb;
+   	border: none;
+	line-height: 0;
+	font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+	height: 40px;
+}
+
+.admin .a-info+div+form  .a-btn:hover{
+	color: #fff;
+    background-color: #586579;
+}
+.admin .a-info+div+form{
+	clear: both;
 }
 
 
