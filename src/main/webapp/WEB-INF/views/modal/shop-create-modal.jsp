@@ -24,7 +24,7 @@
 			<div class="form-group">		<!-- url주소 재확인 OR 변경 -->
 				<div class="input-group">
 					<input type="text" class="base-url" value="/shop/" disabled>
-					<input type="text" class="form-control" name="url" value="admin" placeholder="프로필 URL" onkeyup="chk_reset('url')" oninput="remove(3, this);">
+					<input type="text" class="form-control" name="url" value="admin" placeholder="프로필 URL" onkeyup="chk_reset('url')" oninput="remove(3, this);" required>
 					<button type="button" class="btn btn-chk" onclick="url_chk('admin', true, 1, 'user')">Check</button>
 				</div>
 				<p></p>
@@ -44,7 +44,7 @@
 			<div class="form-group">		<!-- 계좌번호 -->
 				<div class="input-group">
 					<select class="form-control bank">
-		           		<option>우리은행</option>
+		           		<option selected>우리은행</option>
 		           		<option>국민은행</option>
 		           		<option>신한은행</option>
 		           	</select>

@@ -38,14 +38,14 @@
 				<form action="#" method="post" onsubmit="return modify_chk('store', 1);">
 					<div class="store-form">
 			           	<label for="brand-name"><h5>스토어 이름</h5></label>
-			           	<input type="text" name="name" id="brand-name" class="form-control store-input" value="BRAND NAME" placeholder="스토어 이름을 입력하세요.">
+			           	<input type="text" name="name" id="brand-name" class="form-control store-input" value="BRAND NAME" placeholder="스토어 이름을 입력하세요." required>
 		            </div>
 		            <div class="store-form">
 		           		<label for="url"><h5>개인 프로필 URL</h5></label>
 		           		<div class="store-input d-flex justify-content-center row">
 			           		<div class="col-sm-9 d-flex">
 				           		<input type="text" class="form-control text-center store-base-url" value="/shop/" disabled>
-								<input type="text" id="url" class="form-control" name="url" placeholder="프로필 URL을 입력하세요." value="test" onkeyup="chk_reset('url')" oninput="remove(3, this)">
+								<input type="text" id="url" class="form-control" name="url" placeholder="프로필 URL을 입력하세요." value="test" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
 							</div>
 							<button type="button" class="management-btn sub-btn col-sm-3" onclick="url_chk('test', false, 1, 'store')">Check</button>
 						</div>
@@ -55,11 +55,11 @@
 			           	<label for="account"><h5>정산 계좌</h5></label>
 			           	<div class="store-input d-flex justify-content-center">
 				           	<select class="form-control">
-				           		<option>우리은행</option>
+				           		<option selected>우리은행</option>
 				           		<option>국민은행</option>
 				           		<option>신한은행</option>
 				           	</select>
-				           	<input type="text" name="name" id="account" class="form-control" value="1002000000000" placeholder="계좌 번호를 입력하세요.(- 제외)" oninput="remove(4, this)">
+				           	<input type="text" name="name" id="account" class="form-control" value="1002000000000" placeholder="계좌 번호를 입력하세요.(- 제외)" oninput="remove(4, this)" required>
 		            	</div>
 		            </div>
 		            <div class="store-form">
