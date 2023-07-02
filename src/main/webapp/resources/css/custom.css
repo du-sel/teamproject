@@ -3992,6 +3992,10 @@ insert-product
 #insert-product .thumb-preview img {
 	width: 50px;
 }
+#insert-product input[type=file] {
+	display: inline-block;
+	width: 300px;
+}
 #insert-product input[type=file]::file-selector-button {
 	background: #e4e4eb;
 	border: none;
