@@ -53,7 +53,7 @@
                     <div class="total">
                         <h4>합계 : 6300원</h4>
                         <br><br><br>
-                        <div class="main-border-button"><a href="#">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="main-border-button"><a href="cart.do">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         								<a href="#">구매하기</a></div>
                         <br><br><br><br><br>
                     </div>
@@ -162,7 +162,6 @@
 				      <div class="profile">
 				        <img src="/resources/images/프로필3.png" alt="프로필 이미지" width="70px" height="70px">
 				      </div>
-				    
 				      <div class="user-info">
 				        <div class="rating" style="color: red;">
 				          <i class="fa fa-star"></i>
@@ -176,7 +175,6 @@
 				      </div>
 				    </td>
 				  </tr>
-				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -196,7 +194,6 @@
 				      <div class="profile">
 				        <img src="/resources/images/프로필4.png" alt="프로필 이미지" width="70px" height="70px">
 				      </div>
-				    
 				      <div class="user-info">
 				        <div class="rating" style="color: red;">
 				          <i class="fa fa-star"></i>
@@ -210,7 +207,6 @@
 				      </div>
 				    </td>
 				  </tr>
-				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -230,7 +226,6 @@
 				      <div class="profile">
 				        <img src="/resources/images/프로필5.png" alt="프로필 이미지" width="70px" height="70px">
 				      </div>
-				    
 				      <div class="user-info">
 				        <div class="rating" style="color: red;">
 				          <i class="fa fa-star"></i>
@@ -244,7 +239,6 @@
 				      </div>
 				    </td>
 				  </tr>
-				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -264,7 +258,6 @@
 				      <div class="profile">
 				        <img src="/resources/images/프로필6.png" alt="프로필 이미지" width="70px" height="70px">
 				      </div>
-				    
 				      <div class="user-info">
 				        <div class="rating" style="color: red;">
 				          <i class="fa fa-star"></i>
@@ -278,7 +271,6 @@
 				      </div>
 				    </td>
 				  </tr>
-				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -298,7 +290,6 @@
 				      <div class="profile">
 				        <img src="/resources/images/프로필7.png" alt="프로필 이미지" width="70px" height="70px">
 				      </div>
-				    
 				      <div class="user-info">
 				        <div class="rating" style="color: red;">
 				          <i class="fa fa-star"></i>
@@ -312,7 +303,6 @@
 				      </div>
 				    </td>
 				  </tr>
-				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -348,12 +338,6 @@
 			    <td>dms77***</td>
 			    <td>23.01.06</td>
 			  </tr>
-			  <!-- <tr id="hiddenRow1" class="hidden-row" style="display: none;">
-			    <td></td>
-			    <td></td>
-			    <td></td>
-			    <td></td>
-			  </tr> -->
 			  <tr id="hiddenRow2" class="hidden-row" style="display: none;">
 			    <td></td>
 			    <td>2023 춘식이 다이어리는 단종되었습니다</td>
@@ -471,7 +455,16 @@
 	    </div>
 		
 	    <!-- 장바구니 버튼 -->
-    	<button type="button" id="cart-btn">장바구니</button>
+    	<button type="button" id="cart-btn" onclick="redirectToPage()">장바구니</button>
+    	
+    	
+    	<script type="text/javascript">
+    	function redirectToPage() {
+    		  window.location.href = "cart.do";
+    		}
+    	</script>
+    	
+    	
 	</div>
 
 
