@@ -363,4 +363,14 @@ time,mark,audio,video{
 	
 }
 
+/* 팔로우 구독 취소 모달창*/
+#myprofile .minimodal{
+	width: 400px;
+	height: 300px;
+}
 
+#myprofile .minicontent{
+	text-align: center;
+	width: 300px;
+	height: 250px;
+}

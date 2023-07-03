@@ -275,29 +275,27 @@
 		</div>
 		
 		<!-- 구독 취소 모달  -->
-		<div class=" modal">
-			<div class="mcontent">
-				<p class="modalclose">&times;</p>
-					<div>
-						<p>____ 구독을 취소하시겠습니까?</p>
-						<form action="">
-							<input type="button" value="취소">
-							<input type="button" value="구독 취소" color="#055db5">
-						</form>
-					</div>
+		<div class="modal minimodal">
+			<div class="minicontent">
+				<div>
+					<p>____ 구독을 취소하시겠습니까?</p>
+					<form action="">
+						<p class="modalclose">취소</p>
+						<input type="button" value="구독 취소" color="#055db5">
+					</form>
+				</div>
 			</div>
 		</div>
 		<!-- 팔로우 취소 모달  -->
-		<div class=" modal">
-			<div class="mcontent">
-				<p class="modalclose">&times;</p>
-					<div>
-						<p>____ 팔로우를 취소하시겠습니까?</p>
-						<form action="">
-							<input type="button" value="취소">
-							<input type="button" value="팔로우 취소" color="#055db5">
-						</form>
-					</div>
+		<div class="modal minimodal">
+			<div class="minicontent">
+				<div>
+					<p>____ 팔로우를 취소하시겠습니까?</p>
+					<form action="">
+						<p class="modalclose">취소</p>
+						<input type="button" value="팔로우 취소" color="#055db5">
+					</form>
+				</div>
 			</div>
 		</div>
 	
