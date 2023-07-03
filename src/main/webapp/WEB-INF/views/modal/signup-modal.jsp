@@ -46,7 +46,7 @@
 			<div class="form-group">		<!-- 프로필 url -->
 				<div class="input-group">
 					<input type="text" class="base-url" value="/shop/" disabled>
-					<input type="text" class="form-control" name="url" placeholder="프로필 URL" onkeyup="chk_reset('url')" oninput="remove(3, this)">
+					<input type="text" class="form-control" name="url" placeholder="프로필 URL" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
 					<button type="button" class="btn btn-chk" onclick="url_chk('', false, 5, 'user')">Check</button>
 				</div>
 				<p></p>

@@ -20,17 +20,19 @@
 				</div>
 			</div>
 
-			<div class="offset-md-1 col-md-3 ">
+			<div class="offset-md-1 col-md-4 ">
 				<div class="nickname">mybulnet123</div>
 				<!-- 팔로우 구독 버튼 -->
-				<div  id="buttonright">팔로우</div>
-				<div  id="buttonright">구독</div>
-				<!-- <div class="btn" >마이스튜디오 개설</div>
-				<div class="btn" >마이스튜디오 관리</div> -->
+				<div id="buttonright">팔로우</div>
+				<div id="buttonright">구독</div>
+			<!--	<div id="buttonright">팔로우 중</div>
+				<div id="buttonright">구독 중</div>
+		    	<div id="buttonright" href="">마이스튜디오 개설</div>
+				<div id="buttonright" href="">마이스튜디오 관리</div>   -->
 			</div>
 			
 			<!-- SNS 주소 -->
-			<div class=" offset-md-3 col-md-3 thriddiv">
+			<div class=" offset-md-1 col-md-3 thriddiv">
 				<div class="addressdiv"><a href="https://www.instagram.com/?hl=ko" ><img src="resources/images/twitter.svg">&nbsp;인스타그램주소</a></div>
 				<div class="addressdiv"><a href="https://twitter.com/"><img src="resources/images/instagram.svg">&nbsp;트위터주소</a></div>
 				<div class="addressdiv"><a><img src="resources/images/facebook.svg">&nbsp;패이스북주소</a></div>
@@ -185,23 +187,37 @@
 				<div class="container">
 					<div class="row justify-content-center">
 						<div class="col-xl-10 col-lg-12">
-				            <div class="card">
+				            <div class="card carddiv">
 				              <form class="card-body" action='#' method='post'>
 				                <div class="row notice-box">
 					                <div class="notice col-lg-12">
 					                	<div>
-												안녕하세요,기쁘게도 8월 초에 온라인 상품 판매 서비스를 곧 출시할 예정입니다! <br>
+					                		<p class="card-description">
+												안녕하세요,기쁘게도 8월 초에 새로운 온라인 상품 판매 서비스를  출시할 예정입니다! <br>
 												이를 앞두고 여러분과 소중한 정보를 공유하고자 합니다.<br>
 												새로운 캐릭터 템플릿과 넓은 범위의 다양한 디자인 템플릿 pdf 상품을 공개합니다.<br> 
-												풍부한 제품 선택지를 제공하여 다양한 관심사와 요구에 부응할 수 있도록 노력하였습니다. 
-											
-						                						                	
+												풍부한 제품 선택지를 제공하여 다양한 관심사와 요구에 부응할 수 있도록 노력하겠습니다. <br>
+												안녕하세요,기쁘게도 8월 초에 새로운 온라인 상품 판매 서비스를  출시할 예정입니다! <br>
+												이를 앞두고 여러분과 소중한 정보를 공유하고자 합니다.<br>
+												새로운 캐릭터 템플릿과 넓은 범위의 다양한 디자인 템플릿 pdf 상품을 공개합니다.<br> 
+												풍부한 제품 선택지를 제공하여 다양한 관심사와 요구에 부응할 수 있도록 노력하겠습니다. <br>
+												안녕하세요,기쁘게도 8월 초에 새로운 온라인 상품 판매 서비스를  출시할 예정입니다! <br>
+												이를 앞두고 여러분과 소중한 정보를 공유하고자 합니다.<br>
+												새로운 캐릭터 템플릿과 넓은 범위의 다양한 디자인 템플릿 pdf 상품을 공개합니다.<br> 
+												풍부한 제품 선택지를 제공하여 다양한 관심사와 요구에 부응할 수 있도록 노력하겠습니다. <br>
+												안녕하세요,기쁘게도 8월 초에 새로운 온라인 상품 판매 서비스를  출시할 예정입니다! <br>
+												이를 앞두고 여러분과 소중한 정보를 공유하고자 합니다.<br>
+												새로운 캐릭터 템플릿과 넓은 범위의 다양한 디자인 템플릿 pdf 상품을 공개합니다.<br> 
+												풍부한 제품 선택지를 제공하여 다양한 관심사와 요구에 부응할 수 있도록 노력하겠습니다. <br>
+											</p>
+						                	<input type="checkbox" class="card-content__more-btn">				                	
 					                	</div>
 										<br>
 					                	<div class="d-flex justify-content-start img-box scroll-custom">
-						                	<img id="studioimg" src="/resources/images/men-01.jpg" alt="">
-						                	<img id="studioimg" src="/resources/images/men-01.jpg" alt="">
-						                	<img id="studioimg" src="/resources/images/men-01.jpg" alt="">
+						                	<div class="d-flex studioimgdiv"><img id="studioimg" src="/resources/images/춘식이스프링다이어리.jpg" alt=""></div>
+						                	<div class="d-flex studioimgdiv"><img id="studioimg" src="/resources/images/춘식이스프링다이어리1.jpg" alt=""></div>
+						                	<div class="d-flex studioimgdiv"><img id="studioimg"  src="/resources/images/춘식이스프링다이어리2.jpg" alt=""></div>
+						                	<div class="d-flex studioimgdiv"><img id="studioimg" src="/resources/images/춘식이스프링다이어리2.jpg" alt=""></div>
 					                	</div>
 					                </div>
 					             </div>
@@ -256,6 +272,33 @@
 				</form> -->
 			</div>
 	
+		</div>
+		
+		<!-- 구독 취소 모달  -->
+		<div class=" modal">
+			<div class="mcontent">
+				<p class="modalclose">&times;</p>
+					<div>
+						<p>____ 구독을 취소하시겠습니까?</p>
+						<form action="">
+							<input type="button" value="취소">
+							<input type="button" value="구독 취소" color="#055db5">
+						</form>
+					</div>
+			</div>
+		</div>
+		<!-- 팔로우 취소 모달  -->
+		<div class=" modal">
+			<div class="mcontent">
+				<p class="modalclose">&times;</p>
+					<div>
+						<p>____ 팔로우를 취소하시겠습니까?</p>
+						<form action="">
+							<input type="button" value="취소">
+							<input type="button" value="팔로우 취소" color="#055db5">
+						</form>
+					</div>
+			</div>
 		</div>
 	
 	

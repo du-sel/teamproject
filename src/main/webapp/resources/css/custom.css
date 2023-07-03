@@ -2346,6 +2346,9 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
 	margin-top: 30px;
 	position: relative;
 }
+.my-info-form h6{
+	font-weight: 600;
+}
 .my-info-form .back{
 	color: #2a2a2a;
 	position: absolute;
@@ -2404,7 +2407,7 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
     width: 100%;
 }
 .my-info-form .p-info .p-text-info>div{
-	width: 300px;
+	width: max-content;
 }
 .my-info-form .p-info+form+div{
 	padding: 15px;
@@ -2413,10 +2416,13 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
 	padding: 10px 0 0 10px;
 }
 .my-info-form .form-data div{
+	margin-bottom: 20px;
+}
+#customer-inquiry.my-info-form .form-data div{
 	margin-bottom: 25px;
 }
 .my-info-form .form-data div:last-child{
-	margin-bottom: 10px;
+	margin-bottom: 10px !important;
 }
 .my-info-form h6{
 	border-right: 1px solid #e4e4eb;
@@ -3578,7 +3584,7 @@ scroll custom
 
 /* 
 ---------------------------------------------
-my-store common
+my-store common + admin common
 --------------------------------------------- 
 */
 
@@ -3644,7 +3650,7 @@ my-store common
 		min-width: 70px;
 	}
 
-/* notice, inquiry, store - managemnet  */
+/* notice, inquiry, store - managemnet + notice-popup, customer-center */
 	.management-title{
 		font-weight: 600 !important;
 	}
@@ -3665,7 +3671,7 @@ my-store common
 	    background-color: #586579;
 	}
 
-/* review, inquiry - managemnet  */
+/* review, inquiry - managemnet + notice-popup, customer-center  */
 	.table-management td{
 		cursor: pointer;
 	}
@@ -3711,6 +3717,7 @@ my-store common
 		width: max-content;
 		padding-right: 10px;
 		margin-right: 5px;
+		font-weight: 600;
 	}
 	.management-form .p-info{
 		overflow-x: auto; 
@@ -3742,7 +3749,7 @@ my-store common
 	    width: 100%;
 	}
 	.management-form .p-info .p-text-info>div{
-		width: 300px;
+		width: max-content;
 	}
 	.management-form .p-info+div{
 		margin-bottom: 15px;
@@ -4079,6 +4086,7 @@ notice-management
 	margin-left: 5px;
 }
 
+
 /* 
 ---------------------------------------------
 store-management
@@ -4139,6 +4147,145 @@ store-management
 }
 
 
+/* 
+---------------------------------------------
+admin
+customer-center, notice-popup - form
+--------------------------------------------- 
+*/
+/* common */
+	.admin .main-panel .content .row>.col-xl-10{
+		margin: 0 auto;
+	}
+	.admin .a-title{
+		font-weight: 600 !important;
+	}
+	.admin h6{
+		font-size: 18px;
+		border-right: 1px solid #e4e4eb;
+		width: 100px;
+		line-height: 25px;
+		display: inline-block;
+		padding: 3px 10px 3px 0;
+		margin: 10px 10px 10px 0;
+		text-align: center;
+		font-weight: 600;
+	}
+	.admin .a-info{
+		overflow-x: auto; 
+	}
+	.admin .a-info img{
+		width: auto;
+		height: 150px;
+		margin-right: 10px;
+	}
+	.admin .a-info p{
+		display: inline-block;
+	}
+	.admin .a-info+div{
+		padding-top:0 !important;
+	}
+	.admin .a-info+div+form textarea{
+		height: 250px;
+	}
+	.admin .a-info .a-text-info{
+		width: 100%;
+	}
+	.admin .a-info .a-text-info .row{
+		margin: 10px 0;
+	    width: 100%;
+	}
+	.admin .a-info .a-text-info>div{
+		width: max-content;
+	}
+	.admin .a-info+div{
+		margin-bottom: 15px;
+		padding: 15px;
+		border-bottom: 1px solid #e4e4eb;
+		word-break: keep-all;
+	}
+	.admin .a-info+div p{
+		padding: 10px 0 0 10px;
+	}
+	.admin .management-data{
+		margin-bottom: 10px;
+	}
+	.admin .management-data h6,
+	.admin .management-data p{
+		display: inline-block;
+	}
+	.admin .management-data p{
+		padding-left:0 !important;
+	}
+	.admin .a-info+div+form textarea{
+		resize: none;
+		width: 100%;
+		border:1px solid #e4e4eb;
+		padding: 10px;	
+	}
+	.admin .a-btn{
+		width: 100%;
+	    margin: 15px 0 0;
+	    color: #2a2a2a;
+		text-align: center;
+	    border-radius: 5px;
+	    background-color: #e4e4eb;
+	   	border: none;
+		line-height: 0;
+		font-weight: 600;
+	    font-size: 18px;
+	    cursor: pointer;
+		height: 40px;
+	}
+	
+	.admin .a-btn:hover{
+		color: #fff;
+	    background-color: #586579;
+	}
+
+
+/* notice-popup-form */
+	#notice-popup-form.admin .card-body{
+		max-width: 1100px;
+		margin: 0 auto;
+	}
+	#notice-popup-form.admin .popup-info div{
+		margin-bottom: 25px;
+	}
+	#notice-popup-form.admin .popup-info div:last-child{
+		margin-bottom: 10px;
+	}
+	#notice-popup-form.admin .popup-info h6{
+		text-align: left;
+		padding: 0px;
+		font-weight: 600;
+		border: none;
+	}
+	#notice-popup-form.admin .popup-info input{
+		width: 100%;
+	}
+	#notice-popup-form.admin .popup-preview {
+	    background: #e4e4eb;
+	    width: 200px;
+	    height: 200px;
+	    border-radius: 0.25rem;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    margin-top: 10px;
+	}
+	#notice-popup-form .popup-preview img {
+	    width: 50px;
+	}
+
+/* customer-center-form */
+	#customer-center-form.admin .a-info+div+form{
+		clear: both;
+	}
+	#customer-center-form.admin .a-info+div+form .a-btn{
+	    float: right;
+	    width: 150px;
+	}
 
 
 /* 

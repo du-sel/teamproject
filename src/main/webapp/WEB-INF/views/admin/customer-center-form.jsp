@@ -24,66 +24,53 @@
 
 
 
-  <main id="review-management-form" class="my-store wrapper broad management-form"><!-- 추후 좁은헤더로 class명 변경 필요 -->
-    <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />  
+  <main id="customer-center-form" class="admin wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+    <jsp:include page="/WEB-INF/views/common/admin-sidebar.jsp" />  
     <div class="main-panel">     
       <div class="content">
         <div class="row">
           <div class="col-xl-10 col-lg-12">
             <div class="col-lg-12 card">
               <div class="card-header">
-                <h2 class="card-title text-center management-title">후기 답변</h2>
+                <h2 class="card-title text-center a-title">문의 답변</h2>
               </div>
               <div class="card-body">
                 <div class="row">
-                	<div class="col-lg-12 d-flex p-info scroll-custom">
-                		<img src="/resources/images/men-01.jpg" alt="">
-                		<div class="d-flex flex-column justify-content-center p-text-info">
-                			<div>
-		                		<h6>상품명</h6>
-		                		<p>무슨 플래너</p>
+                	<div class="col-lg-12 d-flex a-info scroll-custom">
+                		<div class="d-flex flex-column justify-content-center a-text-info">
+		                	<div>
+		                		<h6>작성 일자</h6>
+		                		<p>2023.06.28</p>
 		                	</div>
 		                	<div>
 		                		<h6>작성자</h6>
 		                		<p>이고객</p>
 		                	</div>
 		                	<div>
-		                		<h6>작성 일자</h6>
-		                		<p>2023.06.28</p>
+		                		<h6>문의 제목</h6>
+		                		<p>영구 다운로드 가능한가요?</p>
 		                	</div>
                 		</div>
                 	</div>
                 	<div class="col-lg-12">
-	                	<div class="management-data">
-	                		<h6>별점</h6>
-	                		<span class="star">
-								★★★★★
-								<span style="width: 50%;">★★★★★</span>
-								<input type="range" value="1" step="1" min="0" max="10">
-							</span>
-	                	</div>
-                		<h6>후기</h6>
-                		<p>잘 쓰고 있습니다!</p>
+                		<h6>문의 내용</h6>
+                		<p>구매하면 영구 다운로드인가요</p>
                 	</div>
                 	<form class="col-lg-12" action="inquiry-management.do">
                 		<textarea maxlength="300" placeholder="답변 내용 작성" required></textarea>
-                		<input class="management-btn" type="submit" value="답변">
+                		<input class="a-btn" type="submit" value="답변">
                 	</form>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-      
-      
-
     </div>
   </main>
-
-  <script src="/resources/js/my-store.js"></script>
   
+  <script src="/resources/js/my-store.js"></script>
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
    

@@ -36,7 +36,7 @@
 						<div class="input-group">
 							<p>개인 프로필 URL</p>
 							<input type="text" class="base-url" value="/shop/" disabled>
-							<input type="text" class="form-control" name="url" placeholder="ProfileURL" value="test" onkeyup="chk_reset('url')" oninput="remove(3, this)">
+							<input type="text" class="form-control" name="url" placeholder="ProfileURL" value="test" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
 							<button type="button" class="btn btn-chk" onclick="url_chk('test', false, 2, 'modify')">Check</button>
 						</div>
 						<p></p>
