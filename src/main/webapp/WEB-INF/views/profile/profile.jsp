@@ -32,8 +32,7 @@
 				<button id="buttonright" type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
 				   구독 중
 				</button>
-				<!-- <div id="buttonright" class="sbutton">구독 중</div> -->
-		   		<div id="buttonright" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">마이스튜디오 개설</a></div>
+		   	<div id="buttonright" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">마이스튜디오 개설</a></div>
 				<!-- <div id="buttonright" href="">마이스튜디오 관리</div>   -->
 			</div>
 			
