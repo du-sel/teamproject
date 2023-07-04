@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="/resources/css/modal.css"><!-- modal -->
 
     <link rel="stylesheet" href="/resources/css/animations.css"><!-- tab animation -->
+    	<link rel="stylesheet" href="/resources/css/community.css" />
 
     <!-- jQuery -->
     <script src="/resources/js/jquery-2.1.0.min.js"></script>
@@ -61,8 +62,8 @@
 		} );
 		
 		$( document ).ready( function() {
-			$( 'button.insertcomment' ).click( function() {
-			$( '.submitcomment' ).slideToggle();
+			$( 'button.insertpost' ).click( function() {
+			$( '.submitpost' ).slideToggle();
 			} );
 		} );
 			
