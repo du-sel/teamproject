@@ -152,7 +152,7 @@
 								<div>
 	                           		<!-- <div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
 	                          		<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div> -->
-	                          		<div class="scroll-to-section submenu">
+	                          		<div id="user-menu" class="scroll-to-section submenu">
 	                          			<img src="/resources/images/baner-right-image-02.jpg" alt="프로필사진" id="profile-image">
 	                          			<ul>
 		                                    <li><a href="cart.do">장바구니</a></li>
