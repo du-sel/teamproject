@@ -5,7 +5,6 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-
  
 		<!-- Wrapper -->
 		<div id="wrapper" class="co">
