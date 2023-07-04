@@ -196,12 +196,14 @@
 	// Window Resize Mobile Menu Fix
 	function mobileNav() {
 		var width = $(window).width();
-		
+		console.log($(this).find('ul'));
 		$('.submenu').on('click', function() {
-			if(width < 767) {
-				//$('.submenu ul').removeClass('active');
-				$(this).find('ul').toggleClass('active');
-				console.log("active");
+			if(width < 768) {
+				if($(this).find('ul').attr('class') == 'active'){
+					$(this).find('ul').removeClass('active');
+				}else{
+					$(this).find('ul').addClass('active');
+				}
 			}
 		});
 	}
