@@ -89,7 +89,7 @@
 	background-color: #fff; 
 	margin-top:0;
 }
-.co footer{
+.co+#st-main+footer{
 	clear: both;
 }
 .co #co-main .row{
@@ -140,7 +140,7 @@
 }
 .co #co-main .menu{
 	margin:10px 0;
-}
+} 
 .co #co-main #sidebar_search button{
 	padding: 0;
 }
@@ -159,6 +159,12 @@
 }
 
 
+.co #co-main #sidebar_search>input{
+	height: 50px; width: 150px;
+}
+.co #co-main .divlist{
+	width: 200px;
+}
 
 
 
