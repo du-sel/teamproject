@@ -44,7 +44,7 @@
 		           		<label for="url"><h5>개인 프로필 URL</h5></label>
 		           		<div class="store-input d-flex justify-content-center row">
 			           		<div class="col-sm-9 d-flex">
-				           		<input type="text" class="form-control text-center store-base-url" value="/shop/" disabled>
+				           		<input type="text" class="form-control text-center store-base-url" value="/store/" disabled>
 								<input type="text" id="url" class="form-control" name="url" placeholder="프로필 URL을 입력하세요." value="test" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
 							</div>
 							<button type="button" class="management-btn sub-btn col-sm-3" onclick="url_chk('test', false, 1, 'store')">Check</button>
@@ -62,10 +62,39 @@
 				           	<input type="text" name="name" id="account" class="form-control" value="1002000000000" placeholder="계좌 번호를 입력하세요.(- 제외)" oninput="remove(4, this)" required>
 		            	</div>
 		            </div>
+					<div class="store-form subscribe-form">
+			           	<label for="subscribe"><h5>구독 활성화 여부</h5></label>
+			           	<div class="do-subscribe">
+			           		<label for="yes-subscribe">활성화</label>
+			           		<input type="radio" name="do-subscribe" id="yes-subscribe" value="yes">
+			           		<label for="no-subscribe">비활성화</label>
+			           		<input type="radio" name="do-subscribe" id="no-subscribe" value="no" checked>
+			           	</div>	 
+			           	<div class="subscribe-info">
+			           		<div class="row flex-column">
+				           		<label for="subscribe-content"><h5>구독 내용</h5></label>
+				           		<div class="form-control-container d-flex subscribe">
+				           			<textarea name="subscribe" id="subscribe-content" class="form-control store-input" maxlength="300" placeholder="구독 내용 작성"></textarea>
+					           	</div>
+				           	</div>
+				           	<div class="row flex-column">
+				           		<label for="subscribe-price"><h5>구독 가격</h5></label>
+				           		<div class="form-control-container d-flex subscribe">
+					           		<span>&#8361;</span>
+					           		<input type="text" name="subscribe-price" id="subscribe-price" class="form-control store-input" value="" placeholder="구독 가격을 입력하세요." onchange="numberWithCommas(this);">
+					           	</div>
+				           	</div>
+			            </div>
+					</div>
+					
 		            <div class="store-form">
 						<input type="submit" class="main-btn management-btn" value="수정">
 					</div>
 				</form>
+				
+				<div class="remove-container">
+					<p class="store-remove" onclick="store_remove();">스토어 닫기</p>
+				</div>
               </div>
             </div>
           </div>
@@ -74,6 +103,27 @@
     </div>
   </main>
 
+  <script>
+	$(() => {
+	  	
+		//할인정보 슬라이드업다운
+		$('.subscribe-info').hide();		
+			let do_sub = document.getElementsByName('do-subscribe');
+			let do_sub_val = null;
+			
+			$(do_sub).on('change', function() {
+				do_sub_val = $("input[name='do-subscribe']:checked").val();
+				$('.subscribe-info').slideToggle('300');
+			});
+	});
+  
+	function store_remove(){
+		if (confirm("정말 스토어를 닫으시겠습니까?")) {
+			location.replace('profile.do');
+		}
+	}
+	
+  </script>
   <script src="/resources/js/my-store.js"></script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

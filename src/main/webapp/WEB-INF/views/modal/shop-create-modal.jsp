@@ -23,7 +23,7 @@
 			</div>
 			<div class="form-group">		<!-- url주소 재확인 OR 변경 -->
 				<div class="input-group">
-					<input type="text" class="base-url" value="/shop/" disabled>
+					<input type="text" class="base-url" value="/store/" disabled>
 					<input type="text" class="form-control" name="url" value="admin" placeholder="프로필 URL" onkeyup="chk_reset('url')" oninput="remove(3, this);" required>
 					<button type="button" class="btn btn-chk" onclick="url_chk('admin', true, 1, 'user')">Check</button>
 				</div>
