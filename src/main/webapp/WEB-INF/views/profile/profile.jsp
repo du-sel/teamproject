@@ -25,9 +25,15 @@
 				<!-- 팔로우 구독 버튼 -->
 				<div id="buttonright">팔로우</div>
 				<div id="buttonright">구독</div>
-			<!--	<div id="buttonright">팔로우 중</div>
-				<div id="buttonright">구독 중</div>
-		    	<div id="buttonright" href="">마이스튜디오 개설</div>
+				<!-- <div id="buttonright" class="fbutton">팔로우 중</div> -->
+				<button id="buttonright" type="button" class="btn" data-toggle="modal" data-target="#ExampleModalCenter">
+				   팔로우 중
+				</button>
+				<button id="buttonright" type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+				   구독 중
+				</button>
+				<!-- <div id="buttonright" class="sbutton">구독 중</div> -->
+		   <!-- <div id="buttonright" href="">마이스튜디오 개설</div>
 				<div id="buttonright" href="">마이스튜디오 관리</div>   -->
 			</div>
 			
@@ -234,7 +240,7 @@
 	</div>
 	
 	<!-- 이미지 업로드 모달  -->
-		<div class=" modal">
+		<div class="modal" id="modal">
 			
 			<div class="mcontent">
 				<p class="modalclose">&times;</p>
@@ -275,31 +281,48 @@
 		</div>
 		
 		<!-- 구독 취소 모달  -->
-		<div class=" modal">
-			<div class="mcontent">
-				<p class="modalclose">&times;</p>
-					<div>
-						<p>____ 구독을 취소하시겠습니까?</p>
-						<form action="">
-							<input type="button" value="취소">
-							<input type="button" value="구독 취소" color="#055db5">
-						</form>
-					</div>
-			</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		         <!--  <span aria-hidden="true">&times;</span> -->
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        ____ 구독을 취소하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+		        <button type="button" class="btn btn-primary">구독 취소</button>
+		      </div>
+		    </div>
+		  </div>
 		</div>
-		<!-- 팔로우 취소 모달  -->
-		<div class=" modal">
-			<div class="mcontent">
-				<p class="modalclose">&times;</p>
-					<div>
-						<p>____ 팔로우를 취소하시겠습니까?</p>
-						<form action="">
-							<input type="button" value="취소">
-							<input type="button" value="팔로우 취소" color="#055db5">
-						</form>
-					</div>
-			</div>
-		</div>
+
+		<div class="modal fade" id="ExampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <!-- <span aria-hidden="true">&times;</span> -->
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        ____ 팔로우을 취소하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+		        <button type="button" class="btn btn-primary">팔로우 취소</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>		
+		
+		
+
 	
 	
 </div>

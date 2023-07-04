@@ -43,7 +43,7 @@ const modalClose = document.querySelector(".modalclose");
   modalClose.addEventListener('click', function() {
     $(".modal").css("display", "none");
   });
-
+  
 
 
 /* 이미지 미리보기 인데...하
@@ -73,7 +73,7 @@ function showImage() {
 
 function loadFile(input) {
     var file = input.files[0];
-s
+
     var name = document.getElementById('fileName');
     name.textContent = file.name;
 
@@ -91,6 +91,6 @@ s
     container.appendChild(newImage);
 };
 
-// 탭 피드 부분 시작하자마자 보이게
+
 
 
