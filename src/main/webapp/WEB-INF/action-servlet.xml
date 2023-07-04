@@ -46,6 +46,4 @@
 	</bean>
 
 	<bean id="product" class="com.teamproject.trackers.TmpHandler"></bean>
-
-
 </beans>
