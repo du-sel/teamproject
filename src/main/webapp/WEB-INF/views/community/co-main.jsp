@@ -272,7 +272,7 @@
 							</li>
 							
 						</ul>
-					</nav>
+					</nav> 
 				</section>
 	 
 				<!-- Posts List -->
