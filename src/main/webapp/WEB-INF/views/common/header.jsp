@@ -37,7 +37,6 @@
     
     <!-- tab JS -->
     <script src="/resources/js/tab.js"></script>
-      
     <script src="/resources/js/community-toggle.js"></script>
     
     	
