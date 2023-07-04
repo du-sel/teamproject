@@ -20,17 +20,25 @@
 				</div>
 			</div>
 
-			<div class="offset-md-1 col-md-3 ">
+			<div class="offset-md-1 col-md-4 ">
 				<div class="nickname">mybulnet123</div>
 				<!-- 팔로우 구독 버튼 -->
-				<div  id="buttonright">팔로우</div>
-				<div  id="buttonright">구독</div>
-				<!-- <div class="btn" >마이스튜디오 개설</div>
-				<div class="btn" >마이스튜디오 관리</div> -->
+				<div id="buttonright">팔로우</div>
+				<div id="buttonright">구독</div>
+				<!-- <div id="buttonright" class="fbutton">팔로우 중</div> -->
+				<button id="buttonright" type="button" class="btn" data-toggle="modal" data-target="#ExampleModalCenter">
+				   팔로우 중
+				</button>
+				<button id="buttonright" type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+				   구독 중
+				</button>
+				<!-- <div id="buttonright" class="sbutton">구독 중</div> -->
+		   		<div id="buttonright" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">마이스튜디오 개설</a></div>
+				<!-- <div id="buttonright" href="">마이스튜디오 관리</div>   -->
 			</div>
 			
 			<!-- SNS 주소 -->
-			<div class=" offset-md-3 col-md-3 thriddiv">
+			<div class=" offset-md-1 col-md-3 thriddiv">
 				<div class="addressdiv"><a href="https://www.instagram.com/?hl=ko" ><img src="resources/images/twitter.svg">&nbsp;인스타그램주소</a></div>
 				<div class="addressdiv"><a href="https://twitter.com/"><img src="resources/images/instagram.svg">&nbsp;트위터주소</a></div>
 				<div class="addressdiv"><a><img src="resources/images/facebook.svg">&nbsp;패이스북주소</a></div>
@@ -185,23 +193,37 @@
 				<div class="container">
 					<div class="row justify-content-center">
 						<div class="col-xl-10 col-lg-12">
-				            <div class="card">
+				            <div class="card carddiv">
 				              <form class="card-body" action='#' method='post'>
 				                <div class="row notice-box">
 					                <div class="notice col-lg-12">
 					                	<div>
-												안녕하세요,기쁘게도 8월 초에 온라인 상품 판매 서비스를 곧 출시할 예정입니다! <br>
+					                		<p class="card-description">
+												안녕하세요,기쁘게도 8월 초에 새로운 온라인 상품 판매 서비스를  출시할 예정입니다! <br>
 												이를 앞두고 여러분과 소중한 정보를 공유하고자 합니다.<br>
 												새로운 캐릭터 템플릿과 넓은 범위의 다양한 디자인 템플릿 pdf 상품을 공개합니다.<br> 
-												풍부한 제품 선택지를 제공하여 다양한 관심사와 요구에 부응할 수 있도록 노력하였습니다. 
-											
-						                						                	
+												풍부한 제품 선택지를 제공하여 다양한 관심사와 요구에 부응할 수 있도록 노력하겠습니다. <br>
+												안녕하세요,기쁘게도 8월 초에 새로운 온라인 상품 판매 서비스를  출시할 예정입니다! <br>
+												이를 앞두고 여러분과 소중한 정보를 공유하고자 합니다.<br>
+												새로운 캐릭터 템플릿과 넓은 범위의 다양한 디자인 템플릿 pdf 상품을 공개합니다.<br> 
+												풍부한 제품 선택지를 제공하여 다양한 관심사와 요구에 부응할 수 있도록 노력하겠습니다. <br>
+												안녕하세요,기쁘게도 8월 초에 새로운 온라인 상품 판매 서비스를  출시할 예정입니다! <br>
+												이를 앞두고 여러분과 소중한 정보를 공유하고자 합니다.<br>
+												새로운 캐릭터 템플릿과 넓은 범위의 다양한 디자인 템플릿 pdf 상품을 공개합니다.<br> 
+												풍부한 제품 선택지를 제공하여 다양한 관심사와 요구에 부응할 수 있도록 노력하겠습니다. <br>
+												안녕하세요,기쁘게도 8월 초에 새로운 온라인 상품 판매 서비스를  출시할 예정입니다! <br>
+												이를 앞두고 여러분과 소중한 정보를 공유하고자 합니다.<br>
+												새로운 캐릭터 템플릿과 넓은 범위의 다양한 디자인 템플릿 pdf 상품을 공개합니다.<br> 
+												풍부한 제품 선택지를 제공하여 다양한 관심사와 요구에 부응할 수 있도록 노력하겠습니다. <br>
+											</p>
+						                	<input type="checkbox" class="card-content__more-btn">				                	
 					                	</div>
 										<br>
 					                	<div class="d-flex justify-content-start img-box scroll-custom">
-						                	<img id="studioimg" src="/resources/images/men-01.jpg" alt="">
-						                	<img id="studioimg" src="/resources/images/men-01.jpg" alt="">
-						                	<img id="studioimg" src="/resources/images/men-01.jpg" alt="">
+						                	<div class="d-flex studioimgdiv"><img id="studioimg" src="/resources/images/춘식이스프링다이어리.jpg" alt=""></div>
+						                	<div class="d-flex studioimgdiv"><img id="studioimg" src="/resources/images/춘식이스프링다이어리1.jpg" alt=""></div>
+						                	<div class="d-flex studioimgdiv"><img id="studioimg"  src="/resources/images/춘식이스프링다이어리2.jpg" alt=""></div>
+						                	<div class="d-flex studioimgdiv"><img id="studioimg" src="/resources/images/춘식이스프링다이어리2.jpg" alt=""></div>
 					                	</div>
 					                </div>
 					             </div>
@@ -217,8 +239,17 @@
 		</div>
 	</div>
 	
+	<!-- ***** ShopCreate Modal Start ***** -->
+	<div class="modal fade" id="store-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-container" role="document" >
+			<div class="modal-content">
+			</div>
+		</div>
+  	</div>
+	<!-- ***** ShopCreate Modal End ***** -->
+	
 	<!-- 이미지 업로드 모달  -->
-		<div class=" modal">
+		<div class="modal" id="modal">
 			
 			<div class="mcontent">
 				<p class="modalclose">&times;</p>
@@ -257,6 +288,50 @@
 			</div>
 	
 		</div>
+		
+		<!-- 구독 취소 모달  -->
+		
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		         <!--  <span aria-hidden="true">&times;</span> -->
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        ____ 구독을 취소하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+		        <button type="button" class="btn btn-primary">구독 취소</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="modal fade" id="ExampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <!-- <span aria-hidden="true">&times;</span> -->
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        ____ 팔로우을 취소하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+		        <button type="button" class="btn btn-primary">팔로우 취소</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>		
+		
+		
+
 	
 	
 </div>
