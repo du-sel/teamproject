@@ -274,7 +274,7 @@
 						</ul>
 					</nav>
 				</section>
-	
+	 
 				<!-- Posts List -->
 					<section>
 						<ul class="posts">
