@@ -40,7 +40,7 @@
 	             </div>
                	 <div class="col-lg-12 btn-box">
                	 	 <input type="file" accept="image/*">
-               		 <input class="management-btn" type="submit" value="작성">
+               		 <input class="management-btn insert-btn" type="submit" value="작성">
                	 </div>
               </div>
             </div>
