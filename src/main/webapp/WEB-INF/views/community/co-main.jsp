@@ -18,7 +18,7 @@
 					<div class="post col-12">
 						<div class="header"><!-- <header>였던 것을 <div>로 수정했음, <header>일때 background-header의 영향을 받음 -->
 							<div class="meta">
-								<a href="#" class="author">
+								<a href="/profile.do" class="author">
 									<img src="/resources/images/avatar.jpg" alt=""/>
 									<span class="name">Jane Doe</span>
 								</a>
@@ -34,7 +34,7 @@
 					<article class="post col-12" style="border-radius: 10px">
 								<div  class="header"><!-- <header>였던 것을 <div>로 수정했음, <header>일때 background-header의 영향을 받음 -->
 									<div class="meta">
-										<a href="#" class="author">
+										<a href="/profile.do" class="author">
 											<img src="/resources/images/avatar.jpg" alt="" />
 											<span class="name">Jane Doe</span>
 										</a>
