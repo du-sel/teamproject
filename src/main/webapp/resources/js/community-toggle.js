@@ -18,7 +18,6 @@
 		} );
 			
 		
-
 		/* co-main.do, post.do textarea */
 		const DEFAULT_HEIGHT = 31; // textarea 기본 height
 	

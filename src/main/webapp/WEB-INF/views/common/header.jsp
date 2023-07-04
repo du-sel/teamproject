@@ -36,6 +36,12 @@
     <script src="/resources/js/jquery-2.1.0.min.js"></script>
     
     
+    
+    
+    
+    
+    
+    
     <!-- tab JS -->
     <script src="/resources/js/tab.js"></script>
     <script src="/resources/js/community-toggle.js"></script>
