@@ -22,12 +22,12 @@
 									<img src="/resources/images/avatar.jpg" alt=""/>
 									<span class="name">Jane Doe</span>
 								</a>
-							<button class="submitpost submitbutton">등록</button>
 							<button class="insertpost">입력</button>
 							</div>
 						</div>
 						<div class="submitpost"> <!-- class divtextarea -->
-							<textarea id="co-textarea" class="col-12" rows="2"></textarea>
+							<textarea id="co-textarea" class="col-10" rows="2"></textarea>
+							<button class="submitpost">등록</button>
 						</div>
 					</div>
 					
@@ -320,18 +320,7 @@
 						</ul>
 					</section>
 	
-				<!-- About -->
-					<section class="blurb">
-						<h2>About US</h2>
-						<p>
-							Contect&nbsp;:&nbsp;&nbsp;<a>project@forwin.com</a>
-	
-						</p>
-						
-						<ul class="actions">
-							<li><a href="#" class="button">More</a></li>
-						</ul>
-					</section>
+				
 	
 			</section>	
 			
