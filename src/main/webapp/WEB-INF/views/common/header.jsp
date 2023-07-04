@@ -12,6 +12,9 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <title>Trackers</title>
+    
+    <!-- 내가 작성 -->
+	<link rel="stylesheet" href="/resources/css/profile.css" >
 
 	<!-- FONT -->
 	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
@@ -24,6 +27,7 @@
     <link rel="stylesheet" href="/resources/css/custom.css">
 
     <link rel="stylesheet" href="/resources/css/owl-carousel.css">
+    
 
     <!-- <link rel="stylesheet" href="/resources/css/lightbox.css"> -->
     
@@ -34,29 +38,11 @@
 
     <!-- jQuery -->
     <script src="/resources/js/jquery-2.1.0.min.js"></script>
-    
-    
-    
-    
-    
-    
-    
-    
+     
     <!-- tab JS -->
     <script src="/resources/js/tab.js"></script>
-    <script src="/resources/js/community-toggle.js"></script>
-    
-    
-    
-    
-    
 
-    
-    
-    
-    
-    
-    
+    <script src="/resources/js/community-toggle.js"></script>
     
     
     </head>
@@ -78,9 +64,9 @@
 	    
 		<!-- ***** Tab Start ***** -->
 	    <div id="tab">
-			<div id="co-tab" ></div>
+			<div id="co-tab" >커뮤니티</div>
 			<!-- onclick="location.href='co-main.do'" -->
-	        <div id="st-tab" class="active"></div>
+	        <div id="st-tab" class="active">스토어</div>
 	         <!-- onclick="location.href='st-main.do'" -->
 		</div>
 		<!-- ***** Tab End ***** -->
@@ -90,7 +76,7 @@
 	    <!-- ***** Header Area Start ***** -->
 	    <header class="header-area header-sticky">
 	        <div class="container-xl">
-	            <div class="row">
+	            <div class="row header-row">
 	                <div class="col-12">
 	                    <nav class="main-nav">
 	                        <!-- ***** Menu Start ***** -->
@@ -119,24 +105,32 @@
 								<div>
 	                           		<!-- <div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
 	                          		<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div> -->
-	                          		<div class="scroll-to-section submenu">
+	                          		<div id="user-menu" class="scroll-to-section submenu">
 	                          			<img src="/resources/images/baner-right-image-02.jpg" alt="프로필사진" id="profile-image">
 	                          			<ul>
 		                                    <li><a href="cart.do">장바구니</a></li>
+		                                    <li><a href="news.do">내 소식</a></li>
 		                                    <li><a href="purchase-history.do">구매 내역</a></li>
 		                                    <li><a href="inquiry-history.do">문의 내역</a></li>
-		                                    <li><a href="news.do">내 소식</a></li>
 		                                    <li><a href="user-modify.do">회원정보 변경</a></li>
 		                                    <li><a href="user-pwd-modify.do">비밀번호 변경</a></li>
+		                                    <li><a href="logout.do">로그아웃</a></li>
 		                                </ul>
 	                          		</div>
 	                          		<div class="scroll-to-section" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
 	                            </div>
 	                        </div> 	       
-							                  
-							<a class='menu-trigger'>
-	                            <span>Menu</span>
-	                        </a>
+							
+							<div class="nav-mobile">
+								<div class="logo-mobile-container">
+	                                <a href="st-main.do" class="logo">
+	                                    <img src="/resources/images/trackers-mobile.svg">
+	                                </a>
+	                            </div>
+								<a class='menu-trigger'>
+		                            <span>Menu</span>
+		                        </a>
+							</div>                  
 	                        <!-- ***** Menu End ***** -->
 	                	</nav>
 	                </div>

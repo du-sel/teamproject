@@ -16,28 +16,39 @@
 		<form action="#" method="post" onsubmit="return shop_chk();">
 			<div class="form-group">		<!-- 브랜드명 -->
 				<div class="input-group">
-					<input type="text" class="form-control" name="brand_name" placeholder="BrandName" onkeyup="chk_reset('brand')" required oninput="remove(1, this);">
+					<input type="text" class="form-control" name="brand_name" placeholder="스토어 이름" onkeyup="chk_reset('brand')" required oninput="remove(1, this);">
 					<button type="button" class="btn btn-chk" onclick="brand_chk('test')">Check</button>
 				</div>
 				<p></p>
 			</div>
-			<div class="form-group">		<!-- url주소 -->
+			<div class="form-group">		<!-- url주소 재확인 OR 변경 -->
 				<div class="input-group">
 					<input type="text" class="base-url" value="/shop/" disabled>
-					<input type="text" class="form-control" name="url" placeholder="URL" value="admin" onkeyup="chk_reset('url')" oninput="remove(3, this);">
-					<button type="button" class="btn btn-chk" onclick="url_chk('admin', false, 1)">Check</button>
+					<input type="text" class="form-control" name="url" value="admin" placeholder="프로필 URL" onkeyup="chk_reset('url')" oninput="remove(3, this);" required>
+					<button type="button" class="btn btn-chk" onclick="url_chk('admin', true, 1, 'user')">Check</button>
 				</div>
 				<p></p>
 			</div>
 			<div class="form-group">		<!-- 이메일 재확인 -->
 				<div class="input-group">
-					<input type="email" class="form-control" name="email_chk" placeholder="UserEmail" required oninput="remove(2, this);">
+					<input type="email" class="form-control" name="email_chk" placeholder="이메일 재확인" required oninput="remove(2, this);">
 				</div>
 				<p></p>
 			</div>
 			<div class="form-group">		<!-- 폰번호 재확인 -->
 				<div class="input-group">
-					<input type="text" class="form-control" name="tel_chk" placeholder="PhoneNumber" maxlength="13" oninput="tel_hyphen(this);" required>
+					<input type="text" class="form-control" name="tel_chk" placeholder="핸드폰 번호 재확인" maxlength="13" oninput="tel_hyphen(this);" required>
+				</div>
+				<p></p>
+			</div>
+			<div class="form-group">		<!-- 계좌번호 -->
+				<div class="input-group">
+					<select class="form-control bank">
+		           		<option selected>우리은행</option>
+		           		<option>국민은행</option>
+		           		<option>신한은행</option>
+		           	</select>
+					<input type="text" class="form-control" name="account" placeholder="계좌 번호 (- 제외)" oninput="remove(4, this);" required>
 				</div>
 				<p></p>
 			</div>
