@@ -2011,7 +2011,7 @@ cart
 }
 #cart .purchase:hover{
 	color: #fff;
-	background-color: #586579;
+	background-color: #e97d7d;
 }
 
 #cart .form-check div{
@@ -2223,10 +2223,6 @@ news
 	width: 80px;
 	margin-right: 10px;
 }
-#news .news-container .news-img{
-	border-radius: 0;
-	width: 80px;
-}
 #news .news{
 	padding: 0 20px;
 }
@@ -2326,12 +2322,15 @@ user-modify, user-pwd-modify
 	text-align: center;
 }
 
-.user-modify #modify-input-container .user-remove{
+.user-modify #modify-input-container .remove-container .user-remove{
 	font-weight: 600;
 	text-align: center;
 	text-decoration: underline !important;
+	cursor: pointer;
+	width: max-content;
+	margin: 0 auto
 }
-.user-modify #modify-input-container .user-remove:hover{
+.user-modify #modify-input-container .remove-container .user-remove:hover{
 	color: #b8b8c4;
 }
 
@@ -2458,8 +2457,8 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
     margin: 5px 0 0;
 }
 .my-info-form .p-info+form .form-btn:hover{
-	color: #b8b8c4;
-    background-color: #586579;
+	color: #fff;
+    background-color: #e97d7d;
 }
 .my-info-form .p-info+form{
 	clear: both;
@@ -3670,6 +3669,9 @@ my-store common + admin common
 		color: #fff;
 	    background-color: #586579;
 	}
+	.insert-btn:hover{
+	    background-color: #e97d7d !important;
+	}
 
 /* review, inquiry - managemnet + notice-popup, customer-center  */
 	.table-management td{
@@ -4137,6 +4139,75 @@ store-management
 	width: 180px;
 	text-align: center;
 }
+
+#store-management .remove-container .store-remove{
+	font-weight: 600;
+	text-align: center;
+	text-decoration: underline !important;
+	display: inline-block;
+	margin: 0 auto;
+	width: max-content;
+	cursor: pointer;
+}
+#store-management .store-remove:hover{
+	color: #b8b8c4;
+}
+
+#store-management .subscribe-form .subscribe-info .row{
+	width: 100%;
+	margin: 0 auto 35px;
+}
+#store-management .form-control-container span {
+    font-weight: 600;
+    font-size: 110%;
+}
+
+/* 구독 */
+#store-management .subscribe-form  #subscribe-content,
+#store-management .subscribe-form  #subscribe-price {
+	border: none;
+	padding: 0;
+    height: auto;
+}
+#store-management .subscribe-form  #subscribe-price{
+    margin-left: 10px;
+}
+#store-management .subscribe-form  .subscribe-container p {
+	font-size: 18px;
+	min-width: 4rem;
+	text-align: center;
+}
+#store-management .subscribe-form  .do-subscribe{
+	margin-bottom: 35px;
+}
+#store-management .subscribe-form  .do-subscribe label{
+	color: #2a2a2a;
+	font-size: initial;
+	
+}
+#store-management .subscribe-form  .do-subscribe textarea {
+	height: 100px;
+}
+#store-management .subscribe-form  .do-subscribe input {
+	margin-right: 20px;
+}
+
+#store-management .subscribe-form .subscribe-info .subscribe{
+	width: 100%;
+    height: max-content;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e4e4eb;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    align-items: center;
+}
+
 @media (max-width: 576px){
 	#store-management .store-form .store-input:nth-child(2)>div{
 		padding-right:0;
@@ -4287,6 +4358,14 @@ customer-center, notice-popup - form
 	    width: 150px;
 	}
 
+/* 
+---------------------------------------------
+remove common
+--------------------------------------------- 
+*/
+.remove-container{
+	text-align: center;
+}
 
 /* 
 ---------------------------------------------
@@ -5419,9 +5498,6 @@ community-main
 			}
 
 		}
-
-
-
 
 
 
