@@ -35,7 +35,7 @@
 					<div class="form-group">		<!-- 프로필 url -->
 						<div class="input-group">
 							<p>개인 프로필 URL</p>
-							<input type="text" class="base-url" value="/shop/" disabled>
+							<input type="text" class="base-url" value="/store/" disabled>
 							<input type="text" class="form-control" name="url" placeholder="ProfileURL" value="test" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
 							<button type="button" class="btn btn-chk" onclick="url_chk('test', false, 2, 'modify')">Check</button>
 						</div>
@@ -62,14 +62,22 @@
 					</div> 
 				</form>
 				
-				<a href="location.href='#'" class="user-remove">회원탈퇴</a>
+				<div class="remove-container">
+					<p class="user-remove" onclick="user_remove();">회원탈퇴</p>
+				</div>
 			</div>
 		</div>
     </section>
 </main>
 <!-- ***** Page Content Ends ***** -->
 
-
+<script>
+	function user_remove(){
+		 if (confirm("정말 탈퇴하시겠습니까?")) {
+		 	location.replace('st-main.do');
+		 }
+	}
+</script>
  
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
