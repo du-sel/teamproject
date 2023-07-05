@@ -44,7 +44,7 @@
 						</ul>
 						<form id="sidebar-search" class="d-flex justify-content-start" method="get" action="#">
 							<div class="d-flex justify-content-between">
-								<input class="form-control" type="text" name="query" placeholder="Search" />
+								<input class="form-control" type="text" name="co_keyword" placeholder="Search" />
 								<div class="d-flex flex-column justify-content-center">
 									<label for="co-search"><i class="fa fa-search" aria-hidden="true"></i></label>
 									<input id="co-search" type="submit" value="검색">

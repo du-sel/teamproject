@@ -74,7 +74,6 @@
                           	<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
 							</span>
                         </td>
                       </tr>
@@ -95,7 +94,6 @@
                           	<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
 							</span>
                         </td>
                       </tr>
@@ -116,7 +114,6 @@
                           	<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
 							</span>
                         </td>
                       </tr>
@@ -137,7 +134,6 @@
                           	<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
 							</span>
                         </td>
                       </tr>
@@ -158,7 +154,6 @@
                           	<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
 							</span>
                         </td>
                       </tr>
@@ -179,7 +174,6 @@
                           	<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
 							</span>
                         </td>
                       </tr>
@@ -200,7 +194,6 @@
                           	<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
 							</span>
                         </td>
                       </tr>
@@ -221,7 +214,6 @@
                           	<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
 							</span>
                         </td>
                       </tr>
@@ -242,7 +234,6 @@
                           	<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
 							</span>
                         </td>
                       </tr>
@@ -263,7 +254,6 @@
                           	<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
 							</span>
                         </td>
                       </tr>

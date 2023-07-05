@@ -33,7 +33,7 @@
 				   구독 중
 				</button>
 
-		   	<div id="buttonright" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">마이스튜디오 개설</a></div>
+		   	<div id="buttonright" onclick="onStoreModal()"><a href="#" data-toggle="modal" data-target="#store-modal">마이스튜디오 개설</a></div>
 				<!-- <div id="buttonright" href="">마이스튜디오 관리</div>   -->
 
 			</div>
@@ -320,14 +320,14 @@
 		</div>
 	</div>
 	
-	<!-- ***** ShopCreate Modal Start ***** -->
+	<!-- ***** StoreCreate Modal Start ***** -->
 	<div class="modal fade" id="store-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-container" role="document" >
 			<div class="modal-content">
 			</div>
 		</div>
   	</div>
-	<!-- ***** ShopCreate Modal End ***** -->
+	<!-- ***** StoreCreate Modal End ***** -->
 	
 	<!-- 이미지 업로드 모달  -->
 		<div class="modal" id="modal">

@@ -62,7 +62,7 @@
                 		<p>구매하면 영구 다운로드인가요</p>
                 	</div>
                 	<form class="col-lg-12" action="inquiry-management.do">
-                		<textarea maxlength="300" placeholder="답변 내용 작성" required></textarea>
+                		<textarea name="inquiry_answer" maxlength="300" placeholder="답변 내용 작성" required></textarea>
                 		<input class="management-btn insert-btn" type="submit" value="답변">
                 	</form>
                 </div>
