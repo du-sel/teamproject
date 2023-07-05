@@ -14,33 +14,34 @@
 
 		<div class="row  seconddiv">
 			<!--프로필 이미지 -->
-			<div class="col-md-2 profilediv">
+			<div class="col-md-2 col-lg-1 profilediv">
 				<div class="profile">
 					<img class="profileimgmodify" src="/resources/images/images%20(1).svg" >
 				</div>
 			</div>
 
-			<div class="offset-md-1 col-md-4 ">
+			<div class="col-md-5 offset-md-1 col-lg-4">
 				<div class="nickname">mybulnet123</div>
 				<!-- 팔로우 구독 버튼 -->
 				<div id="buttonright">팔로우</div>
 				<div id="buttonright">구독</div>
-				<!-- <div id="buttonright" class="fbutton">팔로우 중</div> -->
+				<!-- 
 				<button id="buttonright" type="button" class="btn" data-toggle="modal" data-target="#ExampleModalCenter">
 				   팔로우 중
 				</button>
 				<button id="buttonright" type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
 				   구독 중
 				</button>
+
 		   	<div id="buttonright" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">마이스튜디오 개설</a></div>
 				<!-- <div id="buttonright" href="">마이스튜디오 관리</div>   -->
+
 			</div>
 			
 			<!-- SNS 주소 -->
-			<div class=" offset-md-1 col-md-3 thriddiv">
-				<div class="addressdiv"><a href="https://www.instagram.com/?hl=ko" ><img src="resources/images/twitter.svg">&nbsp;인스타그램주소</a></div>
-				<div class="addressdiv"><a href="https://twitter.com/"><img src="resources/images/instagram.svg">&nbsp;트위터주소</a></div>
-				<div class="addressdiv"><a><img src="resources/images/facebook.svg">&nbsp;패이스북주소</a></div>
+			<div class=" offset-md-1 col-md-3 offset-lg-4 col-lg-2 thriddiv">
+				<div class="addressdiv"><a href="https://www.instagram.com/?hl=ko" ><img src="resources/images/instagram.svg">&nbsp;인스타그램</a></div>
+				<div class="addressdiv"><a href="https://youtube.com/"><img src="resources/images/youtube.svg">&nbsp;유튜브</a></div>
 	
 			</div>
 		</div>	
@@ -53,29 +54,110 @@
 
 		<div style="margin:10px;">
 			
-			<ul class="nav nav-tabs">
-			 	<li class="nav-item navli">
-			 		<a class="nav-link active" href="#feed" data-toggle="tab">피드</a>
+			<ul class="nav nav-tabs" >
+			 	<li class="nav-item navli"  >
+			 		<a class="nav-link active" href="#feed" data-toggle="tab" id="feedtabbgcolor" >피드</a>
 			 	</li>
-			 	<li class="nav-item navli">
+			 	<li class="nav-item navli" >
 			 		<a class="nav-link" href="#studio" data-toggle="tab">스튜디오</a>
 			 	</li>
-			 	<li class="nav-item navli">
+			 	<li class="nav-item navli" >
 			 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
 			 	</li>
 			</ul>
 
 			<div class="tab-content">
 				<!-- 피드 탭 -->
-				<div class="tab-pane fade show active" id="feed">
+				<div class="tab-pane fade show active" id="feed" style="background-color:#f2f2f6">
 					<br>
 					<div class="writenew">
-						<a href="#">글 작성하기</a>
+						<a href="co-main.do">글 작성하기</a>
 					</div>
 					
 					<div class="container">
 						<div class="offset-md-3 col-md-5">
 							<!-- 피드 부분 -->
+							<article class="post col-12" style="border-radius: 10px">
+								<div style="border-bottom: solid 1px rgba(160, 160, 160, 0.3); height: 75px;"><!-- <header>였던 것을 <div>로 수정했음, <header>일때 background-header의 영향을 받음 -->
+									<div class="meta" style="border-left: 0; padding: 1.5em 0 0 1em;">
+										<a href="#" class="author" style="padding-left:0; font-size:20px">
+											<img src="/resources/images/avatar.jpg" alt="" style="width: 1.5em"/>
+											<span class="name" style="margin-left:10px">Jane Doe</span>
+										</a>
+										<time class="published" datetime="2015-11-01" style="float: right; margin-top:-7px">November 1, 2015</time>
+									</div>
+								</div>
+								<div style="margin:20px">
+									<a href="/post.do" class="image featured"><img src="/resources/images/pic02.jpg" alt="" width="100%" style="margin-bottom:20px"/></a>
+									<br>
+									<p>
+									  Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl.
+									 Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, 
+									 ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam 
+									 corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum,
+									  porta lectus vitae, ultricies congue gravida diam non fringilla.
+								    </p>
+									<p>
+									  Nunc quis dui scelerisque, scelerisque urna ut, dapibus orci. 
+									  Sed vitae condimentum lectus, ut imperdiet quam. Maecenas in justo ut
+									   nulla aliquam sodales vel at ligula. Sed blandit diam odio, sed fringilla
+									  lectus molestie sit amet. Praesent eu tortor viverra lorem mattis pulvinar 
+									  feugiat in turpis. Class aptent taciti sociosqu ad litora torquent per conubia
+									   nostra, per inceptos himenaeos. Fusce ullamcorper tellus sit amet mattis 
+									   dignissim. Phasellus ut metus ligula. Curabitur nec leo turpis. 
+									   Ut gravida purus quis erat pretium, sed pellentesque massa elementum. 
+									   Fusce vestibulum porta augue, at mattis justo. Integer sed sapien fringilla, 
+									   dapibus risus id, faucibus ante. Pellentesque mattis nunc sit amet tortor 
+									   pellentesque, non placerat neque viverra. 
+								   </p>
+								</div>
+		
+								
+								<div style="background-color: #fff; margin:40px 0;">
+									<div class="col-12 row justify-content-between" style="margin-left: 0; margin-bottom:20px">
+										<button class="comment" style="line-height: 0; background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0; height:30px; text-align: center; padding:0">댓글 더보기</button>
+										<button class="" style="float: right; line-height: 0; background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0; width=92px; height:30px; text-align: center; padding:0">♥ 좋아요</button>
+									</div>
+									<div class="actions col-12 m-auto row justify-content-around" style=" flex-direction: column;">
+										<!-- <li><button class="comment "><a class="button large">댓글 입력창 (슬라이드 토글 사용) </a></button></li> -->
+																			
+									
+										<ul>
+											<li>
+												<div class="divcomment" style="display: none; margin:0 10px 20px 10px;">
+													<textarea id="textarea" class="col-10" rows="2" style="display:inline-block; height:59px; resize: none; border: 1px solid #e4e4eb; padding:0;"></textarea>
+													<button class="col-1 ml-auto" style="float: right; line-height: 0; background-color: #e4e4eb; border-radius:5px; font-size:13px; border:0; height:30px; text-align: center; padding:0">등록</button>
+												</div>
+												<div>
+													<div style="width:50px; display: inline-block;">이름</div>
+													<div style="width:200px; display: inline-block;">댓글 내용</div>								
+												</div>
+												<div>
+													<div style="width:50px; display: inline-block;">이름</div>
+													<div style="width:200px; display: inline-block;">댓글 내용</div>								
+												</div>		
+												<div class="divcomment" style="display: none;">										
+													<div>
+														<div style="width:50px; display: inline-block;">이름</div>
+														<div style="width:200px; display: inline-block;">댓글 내용</div>								
+													</div>
+													<div>
+														<div style="width:50px; display: inline-block;">이름</div>
+														<div style="width:200px; display: inline-block;">댓글 내용</div>								
+													</div>
+													<div>
+														<div style="width:50px; display: inline-block;">이름</div>
+														<div style="width:200px; display: inline-block;">댓글 내용</div>								
+													</div>
+												</div>
+												</table>
+											</li>									
+										</ul>
+									</div>
+									
+									
+								</div>
+							</article>
 
 						</div>
 					</div>
@@ -93,7 +175,7 @@
 						</select>
 					
 						<div class="writenew line">
-							<a href="#">관리하기</a>
+							<a href="product-management.do">관리하기</a>
 						</div>					
 					
 					</div>
@@ -185,7 +267,7 @@
 			<div class="tab-pane fade" id="notice">
 				<br>
 				<div class="writenew">
-					<a href="#">공지 관리</a>
+					<a href="notice-management.do">공지 관리</a>
 				</div>
 				
 				
@@ -260,6 +342,7 @@
 			                </div>
 			                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
 			            </form>
+			            
 				<br>
 			            <div class="fileContainer">
 			                <div class="fileInput">
@@ -267,23 +350,15 @@
 			                    <p id="fileName"></p>
 			                </div>
 			                <div class="buttonContainer">
-			                    <div class="submitButton" id="submitButton">SUBMIT</div>
-			                </div>
+			                    <div class="submitButton" id="submitButton">미리보기</div>
+			                </div>  
 			            </div>
+			            
 			        </div>
-			        <!--  
-				<form>
-				<p>
-					<h4>사진 업로드</h4><br>
-					<div class="wrapper">
-						<img src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" class="image-box" />
-						<label for="file2" class="upload-btn">
-						<input id="file2" type="file" accept="image/*"/>
-						<span>업로드</span>
-						</label>
-					</div>
-	
-				</form> -->
+			        <div class="image-show" id="image-show">
+			               
+			        </div>
+		
 			</div>
 	
 		</div>
@@ -328,8 +403,6 @@
 		    </div>
 		  </div>
 		</div>		
-		
-		
 
 	
 	
