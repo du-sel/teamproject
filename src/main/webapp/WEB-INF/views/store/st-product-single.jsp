@@ -20,7 +20,6 @@
         <!-- 상품 썸네일과 가격 -->
         <div class="container">
 	        
-
             <div class="row">
                 <div class="col-lg-8">
                 <div class="left-images">
@@ -96,10 +95,10 @@
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필1.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필1.png" alt="프로필 이미지" class="profile-image">
 				      </div>
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -121,17 +120,17 @@
 				</table>
 			</div>
 			<br><br>
-			<hr>
+			
 			<br><br>
 			<div class="speech-bubble">
 				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필2.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필2.png" alt="프로필 이미지" class="profile-image">
 				      </div>
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -153,17 +152,17 @@
 				</table>
 			</div>
 			<br><br>
-			<hr>
+			
 			<br><br>
 			<div class="speech-bubble">
 				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필3.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필3.png" alt="프로필 이미지" class="profile-image">
 				      </div>
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -185,17 +184,17 @@
 				</table>
 			</div>
 			<br><br>
-			<hr>
+			
 			<br><br>
 			<div class="speech-bubble">
 				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필4.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필4.png" alt="프로필 이미지" class="profile-image">
 				      </div>
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -217,17 +216,17 @@
 				</table>
 			</div>
 			<br><br>
-			<hr>
+			
 			<br><br>
 			<div class="speech-bubble">
 				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필5.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필5.png" alt="프로필 이미지" class="profile-image">
 				      </div>
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -249,17 +248,17 @@
 				</table>
 			</div>
 			<br><br>
-			<hr>
+			
 			<br><br>
 			<div class="speech-bubble">
 				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필6.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필6.png" alt="프로필 이미지" class="profile-image">
 				      </div>
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -281,17 +280,17 @@
 				</table>
 			</div>
 			<br><br>
-			<hr>
+			
 			<br><br>
 			<div class="speech-bubble">
 				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필7.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필7.png" alt="프로필 이미지" class="profile-image">
 				      </div>
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
