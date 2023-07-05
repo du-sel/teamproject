@@ -32,17 +32,17 @@
           <div class="col-xl-10 col-lg-12">
             <div class="card">
               <h2 class="card-title text-center management-title">공지 관리</h2>
-              <div class="card-body">
+              <form class="card-body" action="">
                 <div class="row notice-box">
-	                <form class="notice col-lg-12" action="">
-	                	<textarea maxlength="300" placeholder="공지 작성"></textarea>
-	                </form>
+	                <div class="notice col-lg-12">
+	                	<textarea name="notice" maxlength="300" placeholder="공지 작성" required></textarea>
+	                </div>
 	             </div>
                	 <div class="col-lg-12 btn-box">
-               	 	 <input type="file" accept="image/*">
+               	 	 <input name="notice_img" type="file" accept="image/*">
                		 <input class="management-btn insert-btn" type="submit" value="작성">
                	 </div>
-              </div>
+              </form>
             </div>
 
             <div class="card">
@@ -182,7 +182,7 @@
   		let content = $(event).parent().prev().children().children().eq(0);
   		
   		let btn = "<input class='management-btn' type='submit' value='완료'>";
-  		let form = "<textarea maxlength='300' placeholder='공지 작성'>"+content.html().replace(/\s/gi, '').replace(/(<br>|<br\/>|<br \/>)/gi, '\r\n')+"</textarea>";
+  		let form = "<textarea name='notice_edit' maxlength='300' placeholder='공지 작성' required>"+content.html().replace(/\s/gi, '').replace(/(<br>|<br\/>|<br \/>)/gi, '\r\n')+"</textarea>";
   		
   		$(notice).children('h6').remove();
   		$(notice).prepend(form);

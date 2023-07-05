@@ -26,7 +26,7 @@
 						<h5>크리에이터 인원 수</h5>
 					</div>
 					<form>
-						<select>
+						<select name="c-sort">
 							<option>최근가입순</option>
 							<option>인기순</option>
 							<option>판매량순</option>

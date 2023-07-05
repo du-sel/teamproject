@@ -10,14 +10,14 @@
 </div>
 <div class="modal-body">
 	<div class="form-title text-center">
-		<h4 class="font-weight-bold">Shop Create</h4>
+		<h4 class="font-weight-bold">Store Create</h4>
 	</div>
 	<div class="d-flex flex-column text-center">
-		<form action="#" method="post" onsubmit="return shop_chk();">
-			<div class="form-group">		<!-- 브랜드명 -->
+		<form action="#" method="post" onsubmit="return store_create_chk();">
+			<div class="form-group">		<!-- 스토어 이름 -->
 				<div class="input-group">
-					<input type="text" class="form-control" name="brand_name" placeholder="스토어 이름" onkeyup="chk_reset('brand')" required oninput="remove(1, this);">
-					<button type="button" class="btn btn-chk" onclick="brand_chk('test')">Check</button>
+					<input type="text" class="form-control" name="store_name" placeholder="스토어 이름" onkeyup="chk_reset('store')" required>
+					<button type="button" class="btn btn-chk" onclick="store_chk('', false, 'user')">Check</button>
 				</div>
 				<p></p>
 			</div>
@@ -43,7 +43,7 @@
 			</div>
 			<div class="form-group">		<!-- 계좌번호 -->
 				<div class="input-group">
-					<select class="form-control bank">
+					<select name="bank" class="form-control bank">
 		           		<option selected>우리은행</option>
 		           		<option>국민은행</option>
 		           		<option>신한은행</option>

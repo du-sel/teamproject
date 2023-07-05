@@ -117,7 +117,7 @@
 		                                    <li><a href="logout.do">로그아웃</a></li>
 		                                </ul>
 	                          		</div>
-	                          		<div class="scroll-to-section" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
+	                          		<div class="scroll-to-section" onclick="onStoreModal();"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
 	                            </div>
 	                        </div> 	       
 							

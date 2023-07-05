@@ -1,19 +1,19 @@
 /**
  * signin-modal
  * signup-modal
- * shop-create-modal
+ * store-create-modal
  * user-modify
  * store-management
  */
 
 function onSigninModal() { $('.modal-content').load("signin-modal.do"); }
 function onSignupModal() { $('.modal-content').load("signup-modal.do"); }
-function onShopModal() { $('.modal-content').load("shop-create-modal.do"); }
+function onStoreModal() { $('.modal-content').load("store-create-modal.do"); }
 function changeSignupModal(){ $('.scroll-to-section').eq(1).click(); } 		// signin-modal.jsp에서 사용
 
 let email_flag = -1;
 let pwd_flag = false;
-let brand_flag = -1;
+let store_flag = -1;
 let url_flag = -1;
 let inputs, parents;
 let pwd_chk_str = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
@@ -21,12 +21,12 @@ let pwd_chk_str = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8
 // 중복확인 초기화
 function chk_reset(flag){
 	if(flag == "email"){ email_flag = -1; }
-	else if(flag == "brand"){ brand_flag = -1; }
+	else if(flag == "store"){ store_flag = -1; }
 	else if(flag == "url"){ url_flag = -1; }
 	else if(flag == "pwd"){ pwd_flag = false; }
 	else{
 		email_flag = -1;
-		brand_flag = -1;
+		store_flag = -1;
 		url_flag = -1;
 		pwd_flag = false;
 	}
@@ -206,46 +206,54 @@ function pwd_chk(){
 }
 
 
-/***** shop-create-modal.jsp *****/
-//shop-create-modal.jsp 유효성 검사 판단
-function shop_chk(){
+/***** store-create-modal.jsp *****/
+//store-create-modal.jsp 유효성 검사 판단
+function store_create_chk(){
 	inputs = $('#modal input');
 	parents = $('.form-group');
 	
 	let email = re_chk("admin@naver.com", 2);
 	let tel = re_chk("010-1111-1111", 3);
 	
-	if(brand_flag == -1 || url_flag == -1){
+	if(store_flag == -1 || url_flag == -1){
 		let p;
-		if(brand_flag == -1){ p = $(parents[0]).children().last(); }
+		if(store_flag == -1){ p = $(parents[0]).children().last(); }
 		else if(url_flag == -1){ p = $(parents[1]).children().last(); }
 		
 		p.text("중복 확인이 되지않았습니다.").css('color','#f00');
 		return false;
-	}else if(brand_flag == 0 || url_flag == 0 || !email || !tel){
+	}else if(store_flag == 0 || url_flag == 0 || !email || !tel){
 		return false;
 	}
 	
 	return true;
 }
 
-// 브랜드 이름 체크
-function brand_chk(brand_chk){
-	inputs = $('#modal input');
-	parents = $('.form-group');
+// 스토어 이름 체크
+function store_chk(old_store, store_chk, path){				// 기존 store 이름, store 이름 존재 여부, 페이지 path
+	if(path == 'store'){
+		inputs = $('#store-management input');
+		parents = $('.store-form');
+	}else{
+		inputs = $('#modal input');
+		parents = $('.form-group');
+	}
 	
 	let p = $(parents[0]).children().last();
-	let brand = $(inputs[0]).val();
+	let store = $(inputs[0]).val();
 	
-	if(brand == brand_chk){
-		p.text("중복된 브랜드 이름입니다.").css('color','#f00');
-		brand_flag = 0;
-	}else if(brand != "" && brand != brand_chk){
-		p.text("사용 가능한 브랜드 이름입니다.").css('color','#179b81');
-		brand_flag = 1;
-	}else if(brand == ""){
-		p.text("브랜드 이름이 입력되지 않았습니다.").css('color','#f00');
-		brand_flag = 0;
+	if(store.length > 0 && store == old_store){
+		p.text("기존 스토어 이름을 사용합니다.").css('color','#179b81');
+		store_flag = 1;
+	}else if(store_chk){
+		p.text("중복된 스토어 이름입니다.").css('color','#f00');
+		store_flag = 0;
+	}else if(store != "" && !store_chk){
+		p.text("사용 가능한 스토어 이름입니다.").css('color','#179b81');
+		store_flag = 1;
+	}else if(store == ""){
+		p.text("스토어 이름이 입력되지 않았습니다.").css('color','#f00');
+		store_flag = 0;
 	}
 }
 
@@ -271,16 +279,24 @@ function re_chk(value, idx){
 function modify_chk(path, idx){    		// 함수 사용 페이지, input 위치
 	if(path == 'store'){
 		parents = $('.store-form');
+		
+		if(store_flag == -1){
+			let p = $(parents[idx-1]).children().last();
+	
+			p.text("중복 확인이 되지않았습니다.").css('color','#f00');
+			return false;
+		}
 	}else{
 		parents = $('.form-group');
 	}
+	
 	
 	if(url_flag == -1){
 		let p = $(parents[idx]).children().last();
 
 		p.text("중복 확인이 되지않았습니다.").css('color','#f00');
 		return false;
-	}else if(url_flag == 0){
+	}else if(url_flag == 0 || store_flag == 0){
 		return false;
 	}
 	

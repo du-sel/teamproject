@@ -4154,6 +4154,9 @@ store-management
 	width: 100%;
 	margin: 0;
 }
+#store-management .store-form .store-input+p{
+	    font-size: 0.8rem;
+}
 #store-management .store-form .store-input:nth-child(2)>div{
 	padding-left:0;
 }
