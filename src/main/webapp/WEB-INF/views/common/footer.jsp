@@ -114,17 +114,8 @@
 			대시보드 탬플릿
 	================================================
 	 -->	
-	
-	<!-- Chart JS -->
-	<script src="/resources/js/chartjs.min.js"></script>
-	
 	<script src="/resources/js/black-dashboard.js"></script>
-	<script src="/resources/js/demo.js"></script>
   
-  
-	
-	
-	
     <script>
 
         $(function() {
