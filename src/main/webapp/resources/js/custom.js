@@ -208,7 +208,7 @@
 		});
 	}
 	
-	// Window Resize Mobile Menu - MyMenuW
+	// Window Resize Mobile Menu - MyMenu
 	function myMenu() {
 		var width = $(window).width();
 		
