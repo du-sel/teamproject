@@ -100,6 +100,7 @@
 		$(".menu-trigger").on('click', function() {	
 			$(this).toggleClass('active');
 			$('.header-area .nav').slideToggle(200);
+			$('.header-area .nav').css('display','flex');
 		});
 	}
 
@@ -196,17 +197,18 @@
 	// Window Resize Mobile Menu Fix
 	function mobileNav() {
 		var width = $(window).width();
-		
 		$('.submenu').on('click', function() {
-			if(width < 767) {
-				//$('.submenu ul').removeClass('active');
-				$(this).find('ul').toggleClass('active');
-				console.log("active");
+			if(width < 768) {
+				if($(this).find('ul').attr('class') == 'active'){
+					$(this).find('ul').removeClass('active');
+				}else{
+					$(this).find('ul').addClass('active');
+				}
 			}
 		});
 	}
 	
-	// Window Resize Mobile Menu - MyMenuW
+	// Window Resize Mobile Menu - MyMenu
 	function myMenu() {
 		var width = $(window).width();
 		
@@ -220,5 +222,58 @@
 			menu_flag = false;
 		}
 	}
+	
+	
+	
+	
+	
+	// 커뮤니티 소속 페이지에 있을 때 헤더 상품/크리에이터 메뉴 안보이게 하기
+	/*
+	function modifyHeaderMenu(){
+		let path = $(location).attr('pathname');				
+		let href = $('.sidebar .sidebar-wrapper .nav li a');
+		
+		// 상품등록 페이지 수동으로 current값 주기
+		if(path.includes('insert-product')) {
+			$(href).filter("[href='product-management.do']").parent().addClass('active');
+			return;
+		}
+		
+		for(let i=0; i<href.length; i++){
+			let url = $(href[i]).attr('href');
+			if(path.includes(url.substr(0, url.indexOf('.')))) {
+				console.log(url.substr(0, url.indexOf('.')))
+				$(href[i]).parent().addClass('active');
+				break;
+			}
+		}
+	}
+	*/
+	
+	// 커뮤니티 소속 페이지에 있을 때 헤더 배경색 바꾸기 
+	/*
+	function addHeaderBackground(){
+		let path = $(location).attr('pathname');				
+		let href = $('.sidebar .sidebar-wrapper .nav li a');
+		
+		// 상품등록 페이지 수동으로 current값 주기
+		if(path.includes('insert-product')) {
+			$(href).filter("[href='product-management.do']").parent().addClass('active');
+			return;
+		}
+		
+		for(let i=0; i<href.length; i++){
+			let url = $(href[i]).attr('href');
+			if(path.includes(url.substr(0, url.indexOf('.')))) {
+				console.log(url.substr(0, url.indexOf('.')))
+				$(href[i]).parent().addClass('active');
+				break;
+			}
+		}
+	}
+	*/
+	
+	
+	
 	
 })(window.jQuery);

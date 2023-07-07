@@ -45,18 +45,6 @@ const modalClose = document.querySelector(".modalclose");
   });
   
 
-
-/* 이미지 미리보기 인데...하
-const fileDOM2 = document.querySelector('#file2');
-const previews = document.querySelectorAll('.image-box');
-
-fileDOM2.addEventListener('change', () => {
-  const imageSrc = URL.createObjectURL(fileDOM2.files[0]);
-  previews.src = imageSrc;
-
-});
-*/
-
 //상단이미지 업로드 코드 추가
 var submit = document.getElementById('submitButton');
 submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
@@ -78,7 +66,7 @@ function loadFile(input) {
     name.textContent = file.name;
 
     var newImage = document.createElement("img");
-    newImage.setAttribute("class", 'img');
+    newImage.setAttribute("class", 'Img');
 
     newImage.src = URL.createObjectURL(file);   
 
@@ -86,11 +74,12 @@ function loadFile(input) {
     newImage.style.height = "70%";
     newImage.style.visibility = "hidden";   //버튼을 누르기 전까지는 이미지 숨기기
     newImage.style.objectFit = "contain";
+    newImage.style.position = "relative";
+    newImage.style.zIndex = 800; 
 
     var container = document.getElementById('image-show');
     container.appendChild(newImage);
 };
-
 
 
 

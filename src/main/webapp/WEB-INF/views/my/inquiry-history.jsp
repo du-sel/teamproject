@@ -21,7 +21,7 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-12 table-responsive">
 					<form action="" class="inquiry-type">
-						<select>
+						<select name="inquiry_type">
 							<option value="" selected>상품문의</option>
 							<option value="">고객센터</option>
 						</select>

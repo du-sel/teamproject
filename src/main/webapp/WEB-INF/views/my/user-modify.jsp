@@ -28,7 +28,7 @@
 					</div>
 					<div class="form-group">		<!-- 핸드폰번호 -->
 						<div class="input-group">
-							<p>전화번호</p>
+							<p>핸드폰 번호</p>
 							<input type="text" class="form-control" name="tel" value="010-1234-5678" placeholder="PhoneNumber" maxlength="13" oninput="tel_hyphen(this);" required>
 						</div>
 					</div>
@@ -45,16 +45,16 @@
 						<div class="input-group">
 							<p>SNS</p>
 		              		<span class="input-group-addon"><i class="fa fa-instagram"></i></span>
-							<input type="text" class="form-control" name="sns" placeholder="Instagram URL" oninput="remove(1, this)">
+							<input type="text" class="form-control" name="instagram" placeholder="Instagram URL" oninput="remove(1, this)">
 						</div>
 						<div class="input-group">
 		              		<span class="input-group-addon"><i class="fa fa-youtube-play"></i></span>
-							<input type="text" class="form-control" name="sns" placeholder="YouTube URL" oninput="remove(1, this)">
+							<input type="text" class="form-control" name="youtube" placeholder="YouTube URL" oninput="remove(1, this)">
 						</div>
-						<div class="input-group">
+						<!-- <div class="input-group">
 		              		<span class="input-group-addon"><i class="fa fa-twitter"></i></span>
 							<input type="text" class="form-control" name="sns" placeholder="Twitter URL" oninput="remove(1, this)">
-						</div>
+						</div> -->
 					</div>
 					
 					<div class="form-group">

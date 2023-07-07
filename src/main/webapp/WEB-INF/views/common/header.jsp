@@ -64,9 +64,9 @@
 	    
 		<!-- ***** Tab Start ***** -->
 	    <div id="tab">
-			<div id="co-tab" >커뮤니티</div>
+			<div id="co-tab" onclick="location.href='co-main.do'">커뮤니티</div>
 			<!-- onclick="location.href='co-main.do'" -->
-	        <div id="st-tab" class="active">스토어</div>
+	        <div id="st-tab" class="active" onclick="location.href='st-main.do'">스토어</div>
 	         <!-- onclick="location.href='st-main.do'" -->
 		</div>
 		<!-- ***** Tab End ***** -->
@@ -117,16 +117,16 @@
 		                                    <li><a href="logout.do">로그아웃</a></li>
 		                                </ul>
 	                          		</div>
-	                          		<div class="scroll-to-section" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
+	                          		<div class="scroll-to-section" onclick="onStoreModal();"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
 	                            </div>
 	                        </div> 	       
 							
 							<div class="nav-mobile">
-								<div class="logo-mobile-container">
+								<!-- <div class="logo-mobile-container">
 	                                <a href="st-main.do" class="logo">
 	                                    <img src="/resources/images/trackers-mobile.svg">
 	                                </a>
-	                            </div>
+	                            </div> -->
 								<a class='menu-trigger'>
 		                            <span>Menu</span>
 		                        </a>
