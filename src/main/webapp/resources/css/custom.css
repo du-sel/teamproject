@@ -260,6 +260,29 @@ input:-webkit-autofill:active {
 
 
 
+
+
+/* 
+---------------------------------------------
+공통 커스텀
+--------------------------------------------- 
+*/
+
+p.desc {
+	font-size: 0.8rem;
+	color: #b8b8c4;
+}
+
+.must::after {
+	content: "*";
+	margin-left: 3px;
+	color: #e97d7d;
+}
+
+
+
+
+
 /* 
 ---------------------------------------------
 tab
@@ -3902,9 +3925,12 @@ product-management
 }
 #product-management .listtop button {
 	padding: 5px;
+	background: #e4e4eb;
+	border: none;
 }
 #product-management .listtop button:hover {
-	
+	background: #586579;
+	color: #fff;
 }
 
 #product-management button.signature-btn {
@@ -3941,6 +3967,25 @@ insert-product
 #insert-product .page-title h2 {
 	font-weight: 600;
 }
+#insert-product input[type=file] {
+	display: flex;
+	width: 250px;
+}
+#insert-product .file-container {
+	display: flex;
+	flex-direction: column;
+}
+#insert-product .file-input-container {
+	margin-top: 20px;
+}
+#insert-product .file-size-container {
+	margin-left: 10px;
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
 #insert-product .info #product-sale-final {
 	background: #fff; 
 	cursor: text;
@@ -3978,9 +4023,9 @@ insert-product
 #insert-product .form-control-container:has(.form-control:focus) {
 	color:#495057;
 	background-color:#fff;
-	border-color:#80bdff;
+	border-color: #b8b8c4;
 	outline:0;
-	box-shadow:0 0 0 .2rem rgba(0,123,255,.25)
+	box-shadow: 0 0 0 .2rem rgba(184,184,196,.35);
 }
 #insert-product .form-control-container span {
 	font-weight: 600;
