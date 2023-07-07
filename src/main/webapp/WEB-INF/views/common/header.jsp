@@ -64,9 +64,9 @@
 	    
 		<!-- ***** Tab Start ***** -->
 	    <div id="tab">
-			<div id="co-tab" onclick="location.href='co-main.do'">커뮤니티</div>
+			<div id="co-tab">커뮤니티</div>
 			<!-- onclick="location.href='co-main.do'" -->
-	        <div id="st-tab" onclick="location.href='st-main.do'">스토어</div>
+	        <div id="st-tab">스토어</div>
 	         <!-- onclick="location.href='st-main.do'" -->
 		</div>
 		<!-- ***** Tab End ***** -->
