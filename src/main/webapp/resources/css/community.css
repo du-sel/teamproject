@@ -221,6 +221,9 @@ sidebar
 .co #co-main #sidebar .sidebar-wrapper .sidebar-post-list .menu{
 	margin:10px 0;
 } 
+.co #co-main #sidebar .sidebar-wrapper .sidebar-post-list .menu:nth-child(3){
+	margin-bottom:23px;
+} 
 .co #co-main #sidebar .sidebar-wrapper .sidebar-post-list .menu.active{
 	font-weight: 600;
 } 
@@ -272,7 +275,7 @@ sidebar
 	cursor: pointer;
 }
 .co #co-main #sidebar .sidebar-wrapper #sidebar-search .fa:hover{
-	color:#b8b8c4;
+	color:#b2bfc2;
 }
 .co #co-main #sidebar .sidebar-wrapper .posts {
 	list-style: none;

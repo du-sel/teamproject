@@ -27,19 +27,19 @@
 					<nav class="sidebar_nav">
 						<ul>
 							<li class="menu active">
-								<a href="#menu">전체 포스트</a>
+								<a href="#menu">통합 피드</a>
 							</li>
 							<li class="menu">
-								<a href="#menu">팔로잉 포스트</a>
+								<a href="#menu">팔로잉 피드</a>
 							</li>
 							<li class="menu">
-								<a  href="#menu">판매자 포스트</a>
+								<a  href="#menu">크리에이터 피드</a>
 							</li>
 							<li class="menu">
-								<a href="#menu">댓글 포스트</a>
+								<a href="#menu">내가 댓글 남긴 포스트</a>
 							</li>
 							<li class="menu">
-								<a href="#menu">좋아요 포스트</a>
+								<a href="#menu">내가 좋아요한 포스트</a>
 							</li>
 						</ul>
 						<form id="sidebar-search" class="d-flex justify-content-start" method="get" action="#">

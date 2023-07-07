@@ -73,16 +73,16 @@ function url_chk(url, url_chk, idx, path){			// 기존 url(수정 시 사용), �
 	let p = $(parents[idx]).children().last();
 	
 	if(url.length > 0 && $(inputs[idx+1]).val() == url){
-		p.text("기존 URL을 사용합니다.").css('color','#179b81');
+		p.text("기존 URL을 사용합니다.").css('color','#586579');
 		url_flag = 1;
 	}else if(url_chk){
-		p.text("중복된 URL입니다.").css('color','#f00');
+		p.text("중복된 URL입니다.").css('color','#e97d7d');
 		url_flag = 0;
 	}else if($(inputs[idx+1]).val() != "" && !url_chk){
-		p.text("사용 가능한 URL입니다.").css('color','#179b81');
+		p.text("사용 가능한 URL입니다.").css('color','#586579');
 		url_flag = 1;
 	}else if($(inputs[idx+1]).val() == ""){
-		p.text("URL이 입력되지 않았습니다.").css('color','#f00');
+		p.text("URL이 입력되지 않았습니다.").css('color','#e97d7d');
 		url_flag = 0;
 	}
 }
@@ -98,7 +98,7 @@ function pwd_validation(id, target){
 	target.value = target.value.replace(/[ ]/gim, '');
 	
 	if(!pwd_chk_str.test(pwd)){
-		p.text("비밀번호는 8~15자리이고 문자/숫자/특수문자를 포함해야 합니다.").css('color','#f00');
+		p.text("비밀번호는 8~15자리이고 문자/숫자/특수문자를 포함해야 합니다.").css('color','#e97d7d');
 	}else{
 		p.text("");		
 	}
@@ -114,16 +114,16 @@ function email_chk(email_chk){
 	let email_chk_str = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	
 	if(!email_chk_str.test(email)){
-		p.text("이메일 형식에 맞지 않습니다.").css('color','#f00');
+		p.text("이메일 형식에 맞지 않습니다.").css('color','#e97d7d');
 		email_flag = 0;
 	}else if(email == ""){
-		p.text("이메일이 입력되지 않았습니다.").css('color','#f00');
+		p.text("이메일이 입력되지 않았습니다.").css('color','#e97d7d');
 		email_flag = 0;
 	}else if(!email_chk){
-		p.text("중복된 이메일입니다.").css('color','#f00');
+		p.text("중복된 이메일입니다.").css('color','#e97d7d');
 		email_flag = 0;
 	}else if(email != "" && email_chk){
-		p.text("사용 가능한 이메일입니다.").css('color','#179b81');
+		p.text("사용 가능한 이메일입니다.").css('color','#586579');
 		email_flag = 1;
 	}
 }
@@ -139,7 +139,7 @@ function change_pwd_chk(pwd){
 	if($(inputs[0]).val() == pwd){
 		$(inputs[0]).parent().next().text("");
 	}else{
-		$(inputs[0]).parent().next().text("비밀번호가 틀렸습니다.").css('color','#f00');
+		$(inputs[0]).parent().next().text("비밀번호가 틀렸습니다.").css('color','#e97d7d');
 		res = false;
 	}
 	
@@ -148,7 +148,7 @@ function change_pwd_chk(pwd){
 		if($(inputs[1]).val() == $(inputs[2]).val()){
 			$(inputs[2]).parent().next().text("");
 		}else{
-			$(inputs[2]).parent().next().text("비밀번호가 일치하지않습니다.").css('color','#f00');
+			$(inputs[2]).parent().next().text("비밀번호가 일치하지않습니다.").css('color','#e97d7d');
 			res = false;
 		}
 	}else{
@@ -169,7 +169,7 @@ function sign_chk(){
 		if(email_flag == -1){ p = $(parents[0]).children().last(); }
 		else if(url_flag == -1){ p = $(parents[5]).children().last(); }
 
-		p.text("중복 확인이 되지않았습니다.").css('color','#f00');
+		p.text("중복 확인이 되지않았습니다.").css('color','#e97d7d');
 		return false;
 	}else if(email_flag == 0 || !pwd_flag || url_flag == 0){
 		return false;
@@ -192,14 +192,14 @@ function pwd_chk(){
 		pwd_flag = false;
 	}
 	else if(!pwd_chk_str.test(pwd)){
-		p.text("비밀번호 형식에 맞지 않습니다.").css('color','#f00');
+		p.text("비밀번호 형식에 맞지 않습니다.").css('color','#e97d7d');
 		pwd_flag = false;
 	}else{
 		if(pwd != pwd_chk){
-			p.text("비밀번호가 일치하지 않습니다.").css('color','#f00');
+			p.text("비밀번호가 일치하지 않습니다.").css('color','#e97d7d');
 			pwd_flag = false;
 		}else if(pwd == pwd_chk){
-			p.text("비밀번호가 일치합니다.").css('color','#179b81');
+			p.text("비밀번호가 일치합니다.").css('color','#586579');
 			pwd_flag = true;
 		}
 	}
@@ -220,7 +220,7 @@ function store_create_chk(){
 		if(store_flag == -1){ p = $(parents[0]).children().last(); }
 		else if(url_flag == -1){ p = $(parents[1]).children().last(); }
 		
-		p.text("중복 확인이 되지않았습니다.").css('color','#f00');
+		p.text("중복 확인이 되지않았습니다.").css('color','#e97d7d');
 		return false;
 	}else if(store_flag == 0 || url_flag == 0 || !email || !tel){
 		return false;
@@ -243,16 +243,16 @@ function store_chk(old_store, store_chk, path){				// 기존 store 이름, store
 	let store = $(inputs[0]).val();
 	
 	if(store.length > 0 && store == old_store){
-		p.text("기존 스토어 이름을 사용합니다.").css('color','#179b81');
+		p.text("기존 스토어 이름을 사용합니다.").css('color','#586579');
 		store_flag = 1;
 	}else if(store_chk){
-		p.text("중복된 스토어 이름입니다.").css('color','#f00');
+		p.text("중복된 스토어 이름입니다.").css('color','#e97d7d');
 		store_flag = 0;
 	}else if(store != "" && !store_chk){
-		p.text("사용 가능한 스토어 이름입니다.").css('color','#179b81');
+		p.text("사용 가능한 스토어 이름입니다.").css('color','#586579');
 		store_flag = 1;
 	}else if(store == ""){
-		p.text("스토어 이름이 입력되지 않았습니다.").css('color','#f00');
+		p.text("스토어 이름이 입력되지 않았습니다.").css('color','#e97d7d');
 		store_flag = 0;
 	}
 }
@@ -265,7 +265,7 @@ function re_chk(value, idx){
 	let p = $(parents[idx]).children().last();
 	
 	if($(inputs[idx+1]).val() != value){
-		p.text("사용자 정보와 일치하지않습니다.").css('color','#f00');
+		p.text("사용자 정보와 일치하지않습니다.").css('color','#e97d7d');
 		return false;
 	}else if($(inputs[idx+1]).val() == value){
 		p.text("");
@@ -283,7 +283,7 @@ function modify_chk(path, idx){    		// 함수 사용 페이지, input 위치
 		if(store_flag == -1){
 			let p = $(parents[idx-1]).children().last();
 	
-			p.text("중복 확인이 되지않았습니다.").css('color','#f00');
+			p.text("중복 확인이 되지않았습니다.").css('color','#e97d7d');
 			return false;
 		}
 	}else{
@@ -294,7 +294,7 @@ function modify_chk(path, idx){    		// 함수 사용 페이지, input 위치
 	if(url_flag == -1){
 		let p = $(parents[idx]).children().last();
 
-		p.text("중복 확인이 되지않았습니다.").css('color','#f00');
+		p.text("중복 확인이 되지않았습니다.").css('color','#e97d7d');
 		return false;
 	}else if(url_flag == 0 || store_flag == 0){
 		return false;
