@@ -1,4 +1,47 @@
 @charset "UTF-8";
+
+/* 
+---------------------------------------------
+scroll custom
+--------------------------------------------- 
+*/
+
+/* 가로 스크롤 */
+.co .scroll-custom::-webkit-scrollbar {
+    height: 5px;  /* scrollbar 너비 */
+}
+.co .scroll-custom::-webkit-scrollbar-thumb {
+    /* width: 10%; */ /* scrollbar 길이 */
+    background: #b2bfc2; /* scrollbar 색상 */
+    border-radius: 10px;
+}
+.co .scroll-custom::-webkit-scrollbar-track {
+    background: #e4e4eb;  /*scrollbar 뒷 배경 색상*/
+    border-radius: 10px;
+}
+
+/* 세로 스크롤 */
+.co .scroll-y-custom::-webkit-scrollbar {
+    width: 8px;  /* scrollbar 너비 */
+}
+.co .scroll-y-custom::-webkit-scrollbar-thumb {
+    height: 10%;  /* scrollbar 길이 */
+    background: #b2bfc2; /* scrollbar 색상 */
+    border-radius: 10px;
+}
+.co .scroll-y-custom::-webkit-scrollbar-track {
+    background: #e4e4eb;  /*scrollbar 뒷 배경 색상*/
+    border-radius: 10px;
+}
+
+
+
+/* 
+---------------------------------------------
+
+--------------------------------------------- 
+*/
+
 .co #co-main .post {
 	padding: 1em 3em;
 	border-radius: 10px;
@@ -136,7 +179,16 @@
 
 
 
-/* sidebar */
+
+
+
+/* 
+---------------------------------------------
+sidebar
+--------------------------------------------- 
+*/
+
+
 .co #co-main #sidebar *{
 	color: #2a2a2a;
 }
@@ -179,7 +231,7 @@
 	margin-left: 10px;
 }
 .co #co-main #sidebar .sidebar-wrapper .sidebar-post-list .menu:hover a{
-	color: #b8b8c4 !important;
+	color: #b2bfc2 !important;
 	font-weight: 600;
 } 
 .co #co-main #sidebar .sidebar-wrapper .sidebar-post-list .menu .fa{
@@ -236,7 +288,7 @@
 	border: none !important;
 }
 .co #co-main #sidebar .sidebar-wrapper .posts li:hover{
-	background-color: #b8b8c4;
+	background-color: #dce0e3;
 }
 .co #co-main #sidebar .sidebar-wrapper .divlist{
 	width: 100%;
@@ -268,7 +320,7 @@
     width: max-content;
 }
 .co #co-main #sidebar .navbar .navbar-toggler{
-	background-color: #586579 !important;
+	background-color: #b2bfc2 !important;
     border: none !important;
     border-radius: 10px !important;
 	box-shadow: none !important;
@@ -280,7 +332,7 @@
 	font-size: 24px !important;
 }
 .co #co-main #sidebar .navbar .navbar-toggler:hover i{
-	color: #b8b8c4;
+	color: #dce0e3;
 }
 
 /* 사이드바 왼쪽으로 밀기 위한 전체적인 박스 수정 */
