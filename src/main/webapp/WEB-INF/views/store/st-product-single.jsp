@@ -20,7 +20,6 @@
         <!-- 상품 썸네일과 가격 -->
         <div class="container">
 	        
-
             <div class="row">
                 <div class="col-lg-8">
                 <div class="left-images">
@@ -53,7 +52,7 @@
                     <div class="total">
                         <h4>합계 : 6300원</h4>
                         <br><br><br>
-                        <div class="main-border-button"><a href="#">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="main-border-button"><a href="cart.do">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         								<a href="#">구매하기</a></div>
                         <br><br><br><br><br>
                     </div>
@@ -96,10 +95,10 @@
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필1.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필1.png" alt="프로필 이미지" class="profile-image">
 				      </div>
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -121,17 +120,17 @@
 				</table>
 			</div>
 			<br><br>
-			<hr>
+			
 			<br><br>
 			<div class="speech-bubble">
 				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필2.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필2.png" alt="프로필 이미지" class="profile-image">
 				      </div>
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -153,18 +152,17 @@
 				</table>
 			</div>
 			<br><br>
-			<hr>
+			
 			<br><br>
 			<div class="speech-bubble">
 				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필3.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필3.png" alt="프로필 이미지" class="profile-image">
 				      </div>
-				    
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -176,7 +174,6 @@
 				      </div>
 				    </td>
 				  </tr>
-				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -187,18 +184,17 @@
 				</table>
 			</div>
 			<br><br>
-			<hr>
+			
 			<br><br>
 			<div class="speech-bubble">
 				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필4.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필4.png" alt="프로필 이미지" class="profile-image">
 				      </div>
-				    
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -210,7 +206,6 @@
 				      </div>
 				    </td>
 				  </tr>
-				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -221,18 +216,17 @@
 				</table>
 			</div>
 			<br><br>
-			<hr>
+			
 			<br><br>
 			<div class="speech-bubble">
 				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필5.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필5.png" alt="프로필 이미지" class="profile-image">
 				      </div>
-				    
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -244,7 +238,6 @@
 				      </div>
 				    </td>
 				  </tr>
-				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -255,18 +248,17 @@
 				</table>
 			</div>
 			<br><br>
-			<hr>
+			
 			<br><br>
 			<div class="speech-bubble">
 				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필6.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필6.png" alt="프로필 이미지" class="profile-image">
 				      </div>
-				    
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -278,7 +270,6 @@
 				      </div>
 				    </td>
 				  </tr>
-				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -289,18 +280,17 @@
 				</table>
 			</div>
 			<br><br>
-			<hr>
+			
 			<br><br>
 			<div class="speech-bubble">
 				<table>
 				  <tr>
 				    <td>
 				      <div class="profile">
-				        <img src="/resources/images/프로필7.png" alt="프로필 이미지" width="70px" height="70px">
+				        <img src="/resources/images/프로필7.png" alt="프로필 이미지" class="profile-image">
 				      </div>
-				    
 				      <div class="user-info">
-				        <div class="rating" style="color: red;">
+				        <div class="rating">
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
 				          <i class="fa fa-star"></i>
@@ -312,7 +302,6 @@
 				      </div>
 				    </td>
 				  </tr>
-				  
 				  <tr>
 				    <td colspan="2">
 				      <div class="review-content" style="text-align: left;">
@@ -331,29 +320,23 @@
 			<!-- 행 숨겼다 나타내기 -->
             <table id="myTable" class="my-custom-table">
 			  <tr>
-			    <th>답변상태</th>
+			    <th>답변 여부</th>
 			    <th>제목</th>
 			    <th>작성자</th>
 			    <th>작성일</th>
 			  </tr>
 			  <tr onclick="toggleRow(1)">
-			    <td>미답변</td>
+			    <td>답변 대기</td>
 			    <td>비밀글입니다. 🔒</td>
 			    <td>pinkl***</td>
 			    <td>23.01.10</td>
 			  </tr>
 			  <tr onclick="toggleRow(2)">
-			    <td>답변완료</td>
+			    <td>답변 완료</td>
 			    <td>춘식이 다이어리 언제 재입고 되나요ㅜㅜ</td>
 			    <td>dms77***</td>
 			    <td>23.01.06</td>
 			  </tr>
-			  <!-- <tr id="hiddenRow1" class="hidden-row" style="display: none;">
-			    <td></td>
-			    <td></td>
-			    <td></td>
-			    <td></td>
-			  </tr> -->
 			  <tr id="hiddenRow2" class="hidden-row" style="display: none;">
 			    <td></td>
 			    <td>2023 춘식이 다이어리는 단종되었습니다</td>
@@ -361,7 +344,7 @@
 			    <td>23.01.07</td>
 			  </tr>
 			  <tr onclick="toggleRow(3)">
-			    <td>답변완료</td>
+			    <td>답변 완료</td>
 			    <td>펜도 같이 들어있나요?</td>
 			    <td>ghfds***</td>
 			    <td>22.12.26</td>
@@ -373,7 +356,7 @@
 			    <td>22.12.27</td>
 			  </tr>
 			  <tr onclick="toggleRow(4)">
-			    <td>답변완료</td>
+			    <td>답변 완료</td>
 			    <td>다이어리 속지를 다른 걸로 변경 가능한가요?</td>
 			    <td>asdcf***</td>
 			    <td>22.10.03</td>
@@ -385,7 +368,7 @@
 			    <td>22.10.04</td>
 			  </tr>
 			  <tr onclick="toggleRow(5)">
-			    <td>답변완료</td>
+			    <td>답변 완료</td>
 			    <td>춘식이 스티커도 들어있나요?</td>
 			    <td>stick***</td>
 			    <td>22.09.15</td>
@@ -398,6 +381,7 @@
 			  </tr>  
 			</table>
 			<br><br><br>
+			<!-- 행 숨겼다 나타내기 -->
 			<script>
 			  function toggleRow(rowNumber) {
 			    var hiddenRow = document.getElementById("hiddenRow" + rowNumber);
@@ -408,10 +392,10 @@
 			    }
 			  }
 			</script>
-            
             <br><br>
             <hr>
             <br><br>
+            <!-- 문의하기 입력폼 -->
             <form id="inquiryForm" style="display: none;">
                <label for="user_id_inquiry">아이디 &nbsp; </label>
                <!-- 구매자 아이디를 입력받을 input태그. --> 
@@ -426,14 +410,14 @@
              	</div>
             </form>
             <br><br><br>
+            <!-- 문의하기 입력 버튼 -->
             <div class="total">
             	<div class="main-border-button">
             	<a href="#" onclick="toggleForm()">문의하기</a></div>
             </div>
             <br><br><br>
           </div>
-          
-          
+          <!-- 문의하기 입력폼 숨겼다 나타내기 -->
           <script>
 		  function toggleForm() {
 		    var form = document.getElementById("inquiryForm");
@@ -452,13 +436,7 @@
             Top▲
         </a> -->
         
-        
-        
     </section>
-
-
-
-
 
     <!-- sticky -->
    	<div class="sticky">
@@ -469,14 +447,21 @@
 	        <img src ="/resources/images/최근본상품1.jpg" alt="">
 	        <img src ="/resources/images/최근본상품2.jpg" alt="">
 	    </div>
-		
 	    <!-- 장바구니 버튼 -->
-    	<button type="button" id="cart-btn">장바구니</button>
+    	<button type="button" id="cart-btn" onclick="redirectToPage()">장바구니</button>
+    	<!-- 장바구니 버튼 누르면 장바구니 페이지로 이동하기 -->
+    	<script type="text/javascript">
+    	function redirectToPage() {
+    		  window.location.href = "cart.do";
+    		}
+    	</script>
 	</div>
 
-
-
 </main>  
+
+
+
+
 <!-- ***** Product Area Ends ***** -->
     
     
