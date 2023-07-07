@@ -3734,7 +3734,33 @@ my-store common + admin common
 	.insert-btn:hover{
 	    background-color: #e97d7d !important;
 	}
-
+	
+/* notice-management, notice-popup-form */
+	#notice-management input[type=file]::file-selector-button,
+	#notice-popup-form input[type=file]::file-selector-button {
+		background: #e4e4eb;
+		border: none;
+		padding: 5px 10px;
+	}
+	#notice-management input[type=file]::file-selector-button:hover,
+	#notice-popup-form input[type=file]::file-selector-button:hover {
+		background: #586579;
+		color: #fff;
+	}
+	
+/* notice-management, notice-popup-form */
+	#notice-management input[type=file]::file-selector-button,
+	#notice-popup-form input[type=file]::file-selector-button {
+		background: #e4e4eb;
+		border: none;
+		padding: 5px 10px;
+	}
+	#notice-management input[type=file]::file-selector-button:hover,
+	#notice-popup-form input[type=file]::file-selector-button:hover {
+		background: #586579;
+		color: #fff;
+	}
+	
 /* review, inquiry - managemnet + notice-popup, customer-center  */
 	.table-management td{
 		cursor: pointer;
@@ -4171,7 +4197,6 @@ notice-management
 #notice-management .btn-box .management-btn{
 	margin-left: 5px;
 }
-
 
 /* 
 ---------------------------------------------

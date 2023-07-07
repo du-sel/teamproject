@@ -99,7 +99,7 @@ public class TmpHandler implements Controller {
 			mav.setViewName("./WEB-INF/views/my-store/store-management.jsp");			
 		}
 		else if(path.equals("/post.do")) {			
-			mav.setViewName("./WEB-INF/views/community/post.jsp");			
+			mav.setViewName("./WEB-INF/views/community/co-post.jsp");			
 		}
 		else if(path.equals("/insert-product.do")) {		
 			mav.setViewName("./WEB-INF/views/my-store/insert-product.jsp");			
