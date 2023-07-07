@@ -46,9 +46,11 @@ function tabActive(){
 	let path_name = path.substr(1, path.indexOf('.')-1);
 	if(path_name == 'co-main' || path_name == 'post'){
 		$('#co-tab').addClass("active");
+		$('#co-tab.active').css('background-color', '#f2f2f6');
 	}
 	else{
 		$('#st-tab').addClass("active");
+		$('#st-tab.active').css('background-color', '#fff');
 	}
 	console.log(path_name);
 }
