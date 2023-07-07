@@ -39,7 +39,7 @@
 	                </div>
 	             </div>
                	 <div class="col-lg-12 btn-box">
-               	 	 <input name="notice_img" type="file" accept="image/*">
+               	 	 <input name="notice_img" type="file" accept="image/*" multiple>
                		 <input class="management-btn insert-btn" type="submit" value="작성">
                	 </div>
               </form>
