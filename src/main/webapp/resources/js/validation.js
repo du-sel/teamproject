@@ -302,3 +302,46 @@ function modify_chk(path, idx){    		// 함수 사용 페이지, input 위치
 	
 	return true;
 }
+
+
+
+/***** insert-product 상품등록 필수값 체크 *****/
+function insert_p_chk(frm) {
+
+	if($('#product-name').val() == '' || $('#product-name').val() == null){ 
+		alert("상품명을 입력해주세요.");
+		$('#product-name').focus();
+		return false;
+	} 
+	else if($('#file').val() == '' || $('#file').val() == null){ 
+		alert("상품 파일을 등록해주세요.");
+		$('#file').focus();
+		return false;
+	} 
+	else if($('#product-price').val() == '' || $('#product-price').val() == null){ 
+		alert("금액을 입력해주세요.");
+		$('#product-price').focus();
+		return false;
+	} 
+	else if($("input[name='do-sale']:checked").val() == 'yes' && ($('#product-sale').val() == '' || $('#product-sale').val() == null)){ 
+		alert("할인 금액을 입력해주세요.");
+		$('#product-sale').focus();
+		return false;
+	} 
+	else if($('#thumbnail').val() == '' || $('#thumbnail').val() == null){ 
+		alert("썸네일을 등록해주세요.");
+		$('#thumbnail').focus();
+		return false;
+	} 
+	/*
+	else if($('#content').val() == '' || $('#content').val() == null){ 
+		alert("상세 정보를 등록해주세요.");
+		$('#content').focus();
+		return false;
+	} 
+	*/
+	
+	
+	frm.submit();
+	
+}
