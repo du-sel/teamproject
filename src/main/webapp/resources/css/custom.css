@@ -754,8 +754,11 @@ header
     margin-left: 0px;
   }
   
-  .header-area .main-nav .nav>div:nth-of-type(1) {
-  	order: 2;
+  .header-area .main-nav .nav>div:nth-of-type(2) {
+  	order: 1;
+  }
+  .header-area .main-nav .nav>div:nth-of-type(3) {
+  	order: 3;
   }
   
   .header-area .main-nav .nav div:first-child {
@@ -784,8 +787,8 @@ header
     color: #191a20 !important;
   }
   .header-area .main-nav .nav div a:hover {
-    background: #eee !important;
-    color: #aaa!important;
+    background: #f2f2f6 !important;
+    color: #b8b8c4!important;
   }
   .header-area .main-nav .nav div#logo_container {
   	/* display: none; */
