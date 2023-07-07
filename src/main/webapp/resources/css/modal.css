@@ -64,8 +64,8 @@
 .modal-container .form-control:focus+.btn-chk{
 	border-left: 1px dotted #b8b8c4;
 	border-bottom: 1px solid #b8b8c4;
-	background: #586579;
-	color: #fff;
+	/* background: #586579; */
+	/* color: #fff; */
 }
 .modal-container .btn:hover, .modal-login .btn:focus {
 	background: #586579;
@@ -110,6 +110,18 @@
 
 .form-title {
   margin: -2rem 0rem 2rem;
+}
+
+.necessary::before {
+    content: "*";
+    color: #e97d7d;
+    margin-right: 3px;
+    font-weight: 600;
+}
+.un-necessary::before {
+    content: "\00a0";
+    margin-right: 3px;
+    width: 7.41px;
 }
 
 
