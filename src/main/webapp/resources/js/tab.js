@@ -15,6 +15,8 @@ importPage('st-main');
 
 //애니메이션
 $(()=>{
+	tabActive();
+	
     $('#tab div').bind('click',function(e){
 
         let tab = e.target.getAttribute('id');
@@ -38,4 +40,16 @@ $(()=>{
     });
 });
 
+
+function tabActive(){
+	let path = $(location).attr('pathname');
+	let path_name = path.substr(1, path.indexOf('.')-1);
+	if(path_name == 'co-main' || path_name == 'post'){
+		$('#co-tab').addClass("active");
+	}
+	else{
+		$('#st-tab').addClass("active");
+	}
+	console.log(path_name);
+}
 
