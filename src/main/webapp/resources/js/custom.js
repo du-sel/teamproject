@@ -100,6 +100,7 @@
 		$(".menu-trigger").on('click', function() {	
 			$(this).toggleClass('active');
 			$('.header-area .nav').slideToggle(200);
+			$('.header-area .nav').css('display','flex');
 		});
 	}
 
@@ -196,7 +197,6 @@
 	// Window Resize Mobile Menu Fix
 	function mobileNav() {
 		var width = $(window).width();
-		console.log($(this).find('ul'));
 		$('.submenu').on('click', function() {
 			if(width < 768) {
 				if($(this).find('ul').attr('class') == 'active'){
