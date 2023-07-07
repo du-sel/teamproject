@@ -62,7 +62,7 @@
         </div>
         <br><br><br>
         <!-- 탭 메뉴 -->
-        <ul class="nav nav-tabs justify-content-center" role="tablist">
+        <ul id="tab-tab" class="nav nav-tabs justify-content-center" role="tablist">
         <br><br>
   			<li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">상세정보</a></li>
   			<li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab">구매후기</a></li>
@@ -413,7 +413,7 @@
             <!-- 문의하기 입력 버튼 -->
             <div class="total">
             	<div class="main-border-button">
-            	<a href="#" onclick="toggleForm()">문의하기</a></div>
+            	<a href="st-inquiry.do" onclick="toggleForm()">문의하기</a></div>
             </div>
             <br><br><br>
           </div>
