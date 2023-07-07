@@ -3940,6 +3940,7 @@ product-management
 #product-management .info .signature-btn {
     padding: 5px;
     width: 7rem;
+    border-radius: 0.2rem;
 }
 #product-management .info .signature-btn:hover {
 	
@@ -3960,6 +3961,7 @@ product-management
 	padding: 5px;
 	background: #e4e4eb;
 	border: none;
+	border-radius: 0.2rem;
 }
 #product-management .listtop button:hover {
 	background: #586579;
@@ -4110,6 +4112,7 @@ insert-product
 	background: #e4e4eb;
 	border: none;
 	padding: 5px 10px;
+	border-radius: 0.2rem;
 }
 #insert-product input[type=file]::file-selector-button:hover {
 	background: #586579;
