@@ -44,7 +44,7 @@ $(()=>{
 function tabActive(){
 	let path = $(location).attr('pathname');
 	let path_name = path.substr(1, path.indexOf('.')-1);
-	if(path_name == 'co-main' || path_name == 'post'){
+	if(path_name == 'co-main' || path_name == 'post' || path_name == 'profile' || path_name.includes('user-')){
 		$('#co-tab').addClass("active");
 		$('#co-tab.active').css('background-color', '#f2f2f6');
 	}
