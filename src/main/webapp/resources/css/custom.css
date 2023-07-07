@@ -106,7 +106,7 @@ html, body, input, select, textarea {
 		@media screen and (max-width: 1680px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				/* font-size: 16pt; */
 			}
 
 		}
@@ -114,7 +114,7 @@ html, body, input, select, textarea {
 		@media screen and (max-width: 1280px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				/* font-size: 16pt; */
 			}
 			
 
@@ -1512,13 +1512,13 @@ Single Product Page
 }
 
 #product .nav-tabs a{
-    color:black;
-    font-weight:bold;
+    color: #2a2a2a;
+    font-weight: bold;
 }
 
 #product .nav-tabs a:hover {
-    color:black !important;
-    border-bottom:3px solid grey;
+    color: #2a2a2a !important;
+    border-bottom: 3px solid #b8b8c4;
 }
 
 #product .tab-content div{
@@ -1529,20 +1529,20 @@ Single Product Page
 	position: fixed;
 	top: 220px;
 	right: 10px;
-	display:flex;
+	display: flex;
 	flex-direction: column;
-    align-items:center;
-    background-color:#fff;
-    padding:20px;
-	width:140px;
-	height:340px;
-    border-radius:10px;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+	width: 140px;
+	height: 340px;
+    border-radius: 10px;
     box-shadow: 10px 10px 5px -5px #888888;
     z-index: 100;
 }
 
 #product #recent-view {
-	display:flex;
+	display: flex;
 	flex-direction: column;
 }
 #product #recent-view img {
@@ -1553,24 +1553,20 @@ Single Product Page
 	margin-bottom: 10px;
 }
 #product .sticky #cart-btn {
-	border:none;
-   	background-color:#fff;
-   	color:#333;
+	border: none;
+   	background-color: #e4e4eb;
+   	color: #2a2a2a;
    	font-size:.8rem;
    	padding:.4rem .8rem;
    	border-radius:.25em;
 	margin-top:1rem; 
 	margin-bottom:.7rem;
-	text-align:center;
-	width:max-content;
+	text-align: center;
+	width: max-content;
 }
 #product .sticky #cart-btn:hover {
-	background: #000; 
+	background: #586579; 
 	color: #fff;
-}
-#product .sticky #backToList {
-	 color: black;
-	 font-size: 11px;
 }
 
 /* -----------------말풍선 효과-------------------- */
@@ -1578,7 +1574,7 @@ Single Product Page
 #product .speech-bubble {
   width: 1100px;
   position: relative;
-  background-color: #F6F6F6;
+  background-color: #f2f2f6;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 20px;
@@ -1596,7 +1592,6 @@ Single Product Page
   top: 100%;
   left: 50%;
   border: 10px solid transparent;
-  border-top-color: #F6F6F6;
   transform: translateX(-50%);
 }
 
@@ -1620,6 +1615,10 @@ td .user-info {
   float: left;
 }
 
+.profile-image {
+  width: 70px;
+  height: 70px;
+}
 
 
 #product #myTable {
@@ -1631,7 +1630,7 @@ td .user-info {
 }
 
 #product th {
-  background-color: #f2f2f2; /* 헤더 배경색 */
+  background-color: #f2f2f6; /* 헤더 배경색 */
 }
 
 #product tr:nth-child(odd) {
@@ -1639,14 +1638,14 @@ td .user-info {
 }
 
 #product tr:hover {
-  background-color: #e6e6e6; /* 행에 마우스 호버 시 배경색 */
+  background-color: #dce0e3; /* 행에 마우스 호버 시 배경색 */
 }
 
 #product .hidden-row {
   height: 60px; /* 두 번째 숨겨진 행의 높이 */
 }
 
-/* ---------상품문의 표----------- */
+/* -----------상품문의 표----------- */
 
 #product .my-custom-table {
   margin: 0 auto; /* 표를 가운데로 정렬 */
@@ -1664,7 +1663,7 @@ td .user-info {
 }
 
 #product .my-custom-table th {
-  background-color: #f2f2f2; /* 헤더 배경색 */
+  background-color: #f2f2f6; /* 헤더 배경색 */
 }
 
 #product .my-custom-table tr:nth-child(odd) {
@@ -1672,7 +1671,7 @@ td .user-info {
 }
 
 #product .my-custom-table tr:hover {
-  background-color: #e6e6e6; /* 행에 마우스 호버 시 배경색 */
+  background-color: #dce0e3; /* 행에 마우스 호버 시 배경색 */
 }
 
 #product .back {
