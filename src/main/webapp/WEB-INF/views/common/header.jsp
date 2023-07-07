@@ -81,7 +81,7 @@
 	                    <nav class="main-nav">
 	                        <!-- ***** Menu Start ***** -->
 	                        <div class="nav">
-	                            <div>
+	                            <div class="store-menu">
 		                            <div class="submenu">
 		                                <a href="products.do">상품</a>
 		                                <ul>
