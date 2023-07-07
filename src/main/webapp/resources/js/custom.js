@@ -228,50 +228,64 @@
 	
 	
 	// 커뮤니티 소속 페이지에 있을 때 헤더 상품/크리에이터 메뉴 안보이게 하기
-	/*
 	function modifyHeaderMenu(){
 		let path = $(location).attr('pathname');				
-		let href = $('.sidebar .sidebar-wrapper .nav li a');
+		let st_menu = $('.header-area .store-menu');
 		
-		// 상품등록 페이지 수동으로 current값 주기
-		if(path.includes('insert-product')) {
-			$(href).filter("[href='product-management.do']").parent().addClass('active');
+		// 일단 임시 URI로 시험 적용
+		if(path.includes('co-')) {
+			$(st_menu).css('visibility', 'hidden');
+			return;
+		} else {
+			$(st_menu).css('visibility', 'visible');
 			return;
 		}
-		
-		for(let i=0; i<href.length; i++){
-			let url = $(href[i]).attr('href');
-			if(path.includes(url.substr(0, url.indexOf('.')))) {
-				console.log(url.substr(0, url.indexOf('.')))
-				$(href[i]).parent().addClass('active');
-				break;
-			}
-		}
 	}
-	*/
+
+	modifyHeaderMenu();
+
 	
-	// 커뮤니티 소속 페이지에 있을 때 헤더 배경색 바꾸기 
-	/*
+	// 커뮤니티 소속 페이지에 있을 때 헤더 / active탭 배경색 바꾸기 
 	function addHeaderBackground(){
 		let path = $(location).attr('pathname');				
-		let href = $('.sidebar .sidebar-wrapper .nav li a');
+		let header = $('.header-area');
+		let co_tab = $('#co_tab');
 		
-		// 상품등록 페이지 수동으로 current값 주기
-		if(path.includes('insert-product')) {
-			$(href).filter("[href='product-management.do']").parent().addClass('active');
+		// 일단 임시 URI로 시험 적용
+		if(path.includes('co-')) {
+			$(header).css('background-color', '#f2f2f6');
+			// 탭 active 구현되고 나서 탭 배경색도 추가
+			return;
+		} else {
+			$(header).css('background-color', '#fff');
+			return;
+		}
+	}
+	
+	addHeaderBackground();
+	/* 나중에 여기 애니메이션도 넣어야되나 */
+	
+	
+	
+	// 좁은헤더 페이지일때 헤더 클래스값 변경 (마이스토어, 프로필)
+	function modifyHeaderType(){
+		let path = $(location).attr('pathname');				
+		let header = $('.header-area');
+		
+		// 일단 프로필에만 적용
+		// 마이스토어는 공통 URI 정한 뒤 적용 예정
+		if(path.includes('profile')) {
+			$(header).addClass('narrow-header');
+			return;
+		} else {
+			$(header).removeClass('narrow-header');
 			return;
 		}
 		
-		for(let i=0; i<href.length; i++){
-			let url = $(href[i]).attr('href');
-			if(path.includes(url.substr(0, url.indexOf('.')))) {
-				console.log(url.substr(0, url.indexOf('.')))
-				$(href[i]).parent().addClass('active');
-				break;
-			}
-		}
 	}
-	*/
+	
+	modifyHeaderType();
+	
 	
 	
 	
