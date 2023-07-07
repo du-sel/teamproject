@@ -260,6 +260,29 @@ input:-webkit-autofill:active {
 
 
 
+
+
+/* 
+---------------------------------------------
+공통 커스텀
+--------------------------------------------- 
+*/
+
+p.desc {
+	font-size: 0.8rem;
+	color: #b8b8c4;
+}
+
+.must::after {
+	content: "*";
+	margin-left: 3px;
+	color: #e97d7d;
+}
+
+
+
+
+
 /* 
 ---------------------------------------------
 tab
@@ -703,8 +726,8 @@ header
     max-width: 100%;
   	margin: 0;
   }
-  .header-area .logo {
-    margin-left: 30px;
+  .header-area .logo img {
+    transform: scale(0.7);
   }
   .header-area .main-nav .nav-mobile {
 	  display: flex !important;
@@ -729,9 +752,15 @@ header
     -o-transition: all 0s ease 0s;
     transition: all 0s ease 0s;
     margin-left: 0px;
-   /*  display: flex!important; */
-    
   }
+  
+  .header-area .main-nav .nav>div:nth-of-type(2) {
+  	order: 1;
+  }
+  .header-area .main-nav .nav>div:nth-of-type(3) {
+  	order: 3;
+  }
+  
   .header-area .main-nav .nav div:first-child {
   	display: block;
     	/* border-top: 1px solid #eee; */
@@ -758,11 +787,12 @@ header
     color: #191a20 !important;
   }
   .header-area .main-nav .nav div a:hover {
-    background: #eee !important;
-    color: #aaa!important;
+    background: #f2f2f6 !important;
+    color: #b8b8c4!important;
   }
   .header-area .main-nav .nav div#logo_container {
-  	display: none;
+  	/* display: none; */
+  	padding: 5px 0;
   }
   .header-area .main-nav .nav div.submenu ul {
     position: relative;
@@ -1511,6 +1541,11 @@ Single Product Page
   margin-right: 50px;
 }
 
+#tab-tab{
+	font-size: 16pt;
+	
+}
+
 #product .nav-tabs a{
     color: #2a2a2a;
     font-weight: bold;
@@ -1819,7 +1854,7 @@ responsive
 
 #preloader {
   overflow: hidden;
-  background-color: #81a6ea;
+  background-color: #586579;
   left: 0;
   right: 0;
   top: 0;
@@ -3902,9 +3937,12 @@ product-management
 }
 #product-management .listtop button {
 	padding: 5px;
+	background: #e4e4eb;
+	border: none;
 }
 #product-management .listtop button:hover {
-	
+	background: #586579;
+	color: #fff;
 }
 
 #product-management button.signature-btn {
@@ -3941,6 +3979,25 @@ insert-product
 #insert-product .page-title h2 {
 	font-weight: 600;
 }
+#insert-product input[type=file] {
+	display: flex;
+	width: 250px;
+}
+#insert-product .file-container {
+	display: flex;
+	flex-direction: column;
+}
+#insert-product .file-input-container {
+	margin-top: 20px;
+}
+#insert-product .file-size-container {
+	margin-left: 10px;
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
 #insert-product .info #product-sale-final {
 	background: #fff; 
 	cursor: text;
@@ -3978,9 +4035,9 @@ insert-product
 #insert-product .form-control-container:has(.form-control:focus) {
 	color:#495057;
 	background-color:#fff;
-	border-color:#80bdff;
+	border-color: #b8b8c4;
 	outline:0;
-	box-shadow:0 0 0 .2rem rgba(0,123,255,.25)
+	box-shadow: 0 0 0 .2rem rgba(184,184,196,.35);
 }
 #insert-product .form-control-container span {
 	font-weight: 600;
@@ -5054,6 +5111,7 @@ community-main
 			-webkit-align-items: center;
 			-ms-align-items: center;
 			align-items: center;
+			position: relative;
 		}
 
 
@@ -5075,7 +5133,7 @@ community-main
 				list-style: none;
 				padding: 0;
 				position: absolute;
-				left: 37em;
+				right: 30px;
 			}
 
 			#co-main .post > footer .stats li {
@@ -5523,7 +5581,6 @@ community-main
 			}
 
 		} */
-
 
 
 
