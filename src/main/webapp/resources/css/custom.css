@@ -1541,6 +1541,11 @@ Single Product Page
   margin-right: 50px;
 }
 
+#tab-tab{
+	font-size: 16pt;
+	
+}
+
 #product .nav-tabs a{
     color: #2a2a2a;
     font-weight: bold;
@@ -5106,6 +5111,7 @@ community-main
 			-webkit-align-items: center;
 			-ms-align-items: center;
 			align-items: center;
+			position: relative;
 		}
 
 
@@ -5127,7 +5133,7 @@ community-main
 				list-style: none;
 				padding: 0;
 				position: absolute;
-				left: 37em;
+				right: 30px;
 			}
 
 			#co-main .post > footer .stats li {
@@ -5575,7 +5581,6 @@ community-main
 			}
 
 		} */
-
 
 
 

@@ -23,6 +23,9 @@ public class TmpHandler implements Controller {
 		else if(path.equals("/product-single.do")) {			
 			mav.setViewName("./WEB-INF/views/store/st-product-single.jsp");			
 		}
+		else if(path.equals("/st-inquiry.do")) {			
+			mav.setViewName("./WEB-INF/views/store/st-inquiry.jsp");			
+		}
 		else if(path.equals("/creators.do")) {			
 			mav.setViewName("./WEB-INF/views/store/st-creators.jsp");			
 		}

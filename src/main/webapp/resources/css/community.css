@@ -45,9 +45,13 @@ scroll custom
 .co #co-main .post {
 	padding: 1em 3em;
 	border-radius: 10px;
+	width: 100%;
 }
-.co #main{
+.co #co-main{
 	margin: 250px auto;
+}
+.co #co-main .title{
+	position: static !important;
 }
 .co .header {
 	border-bottom: solid 1px rgba(160, 160, 160, 0.3);
@@ -59,6 +63,7 @@ scroll custom
 	padding: 1.5em 0 0 1em;
 }
 .co .author{
+	float: left;
 	padding-left:0;
 	font-size:20px;
 }
@@ -67,6 +72,11 @@ scroll custom
 }
 .co .name{
 	margin-left:10px;
+}
+.co #co-main .published {
+    float: right;
+    margin-top: 0 !important;
+    /* margin-top: -7px; */
 }
 .co #co-main button{
 	background-color: #e4e4eb;
@@ -86,6 +96,7 @@ scroll custom
 	height:30px;
 	text-align: center;
 	padding:10px;
+	margin-left: 30px;
 }
 .co #main .like{
 	float: right;
@@ -421,4 +432,50 @@ sidebar
 }
 
 
+/* 
+---------------------------------------------
+co-main post
+--------------------------------------------- 
+*/
+/* ---------------------정희 수정--------------------------- */
+
+	.collapsed {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* 최대 줄 수 설정 */
+    -webkit-box-orient: vertical;
+     }
+
+	.post_img-outer {
+	    text-align: center;
+	 }
+	
+	.post_img {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+  	}
+
+  	.post_img:hover {
+    transform: scale(1.05);
+  	}
+	
+	.post_img img {
+	    max-width: 100%;
+	    height: auto;
+	 }
+	 
+	 .post_img-outer {
+	 	padding: 12px;
+	 	clear: both;
+	 }
+
+	#post-content {
+		text-align: left;
+	}
+
+/* ---------------------정희 수정--------------------------- */
 
