@@ -84,6 +84,11 @@
 
 	// Window Resize Mobile Menu Fix
 	mobileNav();
+	
+		console.log("out");	
+	// Window Resize Mobile Menu MyMenu
+	let menu_flag = false;		// myMenu flag
+	myMenu();
 
 
 	// Scroll animation init
@@ -176,11 +181,12 @@
 			}, 300);
 		});
 	});
-
-
+	
 	// Window Resize Mobile Menu Fix
 	$(window).on('resize', function() {
+		myMenu();
 		mobileNav();
+		console.log("resize");	
 		setTimeout(function() {
 			$('main.broad').css("margin-top", $('header').height());
 		}, 300);
@@ -190,11 +196,31 @@
 	// Window Resize Mobile Menu Fix
 	function mobileNav() {
 		var width = $(window).width();
+		console.log($(this).find('ul'));
 		$('.submenu').on('click', function() {
-			if(width < 767) {
-				//$('.submenu ul').removeClass('active');
-				$(this).find('ul').toggleClass('active');
+			if(width < 768) {
+				if($(this).find('ul').attr('class') == 'active'){
+					$(this).find('ul').removeClass('active');
+				}else{
+					$(this).find('ul').addClass('active');
+				}
 			}
 		});
 	}
+	
+	// Window Resize Mobile Menu - MyMenu
+	function myMenu() {
+		var width = $(window).width();
+		
+		if(width < 768 && !menu_flag) {
+			$('#user-menu').children('img').remove();
+			$('#user-menu').prepend("<a>마이 메뉴</a>");
+			menu_flag = true;
+		}else if(width >= 768 && menu_flag){
+			$('#user-menu').children('a').remove();
+			$('#user-menu').prepend("<img src='/resources/images/baner-right-image-02.jpg' alt='프로필사진' id='profile-image'>");
+			menu_flag = false;
+		}
+	}
+	
 })(window.jQuery);

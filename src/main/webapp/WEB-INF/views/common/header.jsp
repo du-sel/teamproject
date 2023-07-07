@@ -34,31 +34,16 @@
     <link rel="stylesheet" href="/resources/css/modal.css"><!-- modal -->
 
     <link rel="stylesheet" href="/resources/css/animations.css"><!-- tab animation -->
+    	<link rel="stylesheet" href="/resources/css/community.css" />
 
     <!-- jQuery -->
     <script src="/resources/js/jquery-2.1.0.min.js"></script>
-    
+     
     <!-- tab JS -->
     <script src="/resources/js/tab.js"></script>
 
-<!--탭 부분 -->
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-       
-    <script>
-		$( document ).ready( function() {
-			$( 'button.comment' ).click( function() {
-			$( '.divcomment' ).slideToggle();
-			} );
-		} );
-	</script>
+    <script src="/resources/js/community-toggle.js"></script>
     
-    
-    
-    
-
     
     </head>
     
@@ -79,9 +64,9 @@
 	    
 		<!-- ***** Tab Start ***** -->
 	    <div id="tab">
-			<div id="co-tab" ></div>
+			<div id="co-tab" >커뮤니티</div>
 			<!-- onclick="location.href='co-main.do'" -->
-	        <div id="st-tab" class="active"></div>
+	        <div id="st-tab" class="active">스토어</div>
 	         <!-- onclick="location.href='st-main.do'" -->
 		</div>
 		<!-- ***** Tab End ***** -->
@@ -120,7 +105,7 @@
 								<div>
 	                           		<!-- <div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
 	                          		<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div> -->
-	                          		<div class="scroll-to-section submenu">
+	                          		<div id="user-menu" class="scroll-to-section submenu">
 	                          			<img src="/resources/images/baner-right-image-02.jpg" alt="프로필사진" id="profile-image">
 	                          			<ul>
 		                                    <li><a href="cart.do">장바구니</a></li>
@@ -132,7 +117,7 @@
 		                                    <li><a href="logout.do">로그아웃</a></li>
 		                                </ul>
 	                          		</div>
-	                          		<div class="scroll-to-section" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
+	                          		<div class="scroll-to-section" onclick="onStoreModal();"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
 	                            </div>
 	                        </div> 	       
 							

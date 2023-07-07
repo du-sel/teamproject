@@ -29,10 +29,10 @@
     <div class="main-panel">     
       <div class="content">
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-xl-10 col-lg-12">
             <div class="col-lg-12 card">
               <div class="card-header">
-                <h2 class="card-title text-center">후기 답변</h2>
+                <h2 class="card-title text-center management-title">후기 답변</h2>
               </div>
               <div class="card-body">
                 <div class="row">
@@ -59,20 +59,17 @@
 	                		<span class="star">
 								★★★★★
 								<span style="width: 50%;">★★★★★</span>
-								<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+								<input type="range" value="1" step="1" min="0" max="10">
 							</span>
 	                	</div>
                 		<h6>후기</h6>
                 		<p>잘 쓰고 있습니다!</p>
                 	</div>
                 	<form class="col-lg-12" action="inquiry-management.do">
-                		<textarea maxlength="300" placeholder="답변 내용 작성"></textarea>
-                		<button>답변</button>
+                		<textarea name="review_answer" maxlength="300" placeholder="답변 내용 작성" required></textarea>
+                		<input class="management-btn insert-btn" type="submit" value="답변">
                 	</form>
                 </div>
-                <form>
-                
-                </form>
               </div>
             </div>
           </div>

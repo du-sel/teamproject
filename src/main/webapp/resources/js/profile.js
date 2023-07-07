@@ -1,5 +1,4 @@
 // 상단 수정이미지 보이게 하기
-
 const topimgContainer = document.querySelector('.topimg');
 
 topimgContainer.addEventListener('mouseenter', function() {
@@ -44,19 +43,7 @@ const modalClose = document.querySelector(".modalclose");
   modalClose.addEventListener('click', function() {
     $(".modal").css("display", "none");
   });
-
-
-
-/*
-const fileDOM2 = document.querySelector('#file2');
-const previews = document.querySelectorAll('.image-box');
-
-fileDOM2.addEventListener('change', () => {
-  const imageSrc = URL.createObjectURL(fileDOM2.files[0]);
-  previews.src = imageSrc;
-
-});
-*/
+  
 
 //상단이미지 업로드 코드 추가
 var submit = document.getElementById('submitButton');
@@ -79,7 +66,7 @@ function loadFile(input) {
     name.textContent = file.name;
 
     var newImage = document.createElement("img");
-    newImage.setAttribute("class", 'img');
+    newImage.setAttribute("class", 'Img');
 
     newImage.src = URL.createObjectURL(file);   
 
@@ -87,6 +74,8 @@ function loadFile(input) {
     newImage.style.height = "70%";
     newImage.style.visibility = "hidden";   //버튼을 누르기 전까지는 이미지 숨기기
     newImage.style.objectFit = "contain";
+    newImage.style.position = "relative";
+    newImage.style.zIndex = 800; 
 
     var container = document.getElementById('image-show');
     container.appendChild(newImage);

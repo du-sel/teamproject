@@ -19,14 +19,14 @@
             </div>
         </div>
 		<div class="container">
-			<div class="row justify-content-center">
+			<form action="" method="post" class="row justify-content-center">
             <!-- Product Start -->
 				<div class="col-lg-12 info">
 					<div class="row justify-content-center">
 						<div class="form-check d-flex flex-column justify-content-center">
 							<div>
 								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" value="상품 id값" checked>
+									<input class="form-check-input" type="checkbox" value="상품 id값" name="pick" checked>
 									<span class="form-check-sign">
 										<span class="check"></span>
 									</span>
@@ -204,7 +204,7 @@
 	                     </ul>
 	                 </div>
                 </div> -->
-			</div>
+			</form>
 		</div>
     </section>
 </main>

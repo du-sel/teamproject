@@ -36,7 +36,7 @@
                 <h5 class="card-title">Total. ￦<span id="t-revenue">0</span></h5>
                 
               	<form class="sort">
-              		<select>
+              		<select name="year">
               			<option selected>2023년</option>
               			<option>2022년</option>
               			<option>2021년</option>

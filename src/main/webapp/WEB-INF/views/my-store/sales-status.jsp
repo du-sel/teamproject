@@ -189,6 +189,11 @@
   
 
   <script src="/resources/js/my-store.js"></script>
+  
+  
+  <!-- Chart JS -->
+  <script src="/resources/js/chartjs.min.js"></script>
+  <script src="/resources/js/demo.js"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {

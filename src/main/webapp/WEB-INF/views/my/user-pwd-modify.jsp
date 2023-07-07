@@ -26,7 +26,7 @@
 					<div class="form-group">		<!-- 기존 비밀번호 -->
 						<div class="input-group">
 							<p>기존 비밀번호</p>
-							<input type="password" class="form-control" name="password" placeholder="8자리 이상" required oninput="remove(1, this);">
+							<input type="password" class="form-control" name="old_password" placeholder="8자리 이상" required oninput="remove(1, this);">
 						</div>
 						<p></p>
 					</div>
@@ -34,7 +34,7 @@
 					<div class="form-group">		<!-- 신규 비밀번호 -->
 						<div class="input-group">
 							<p>신규 비밀번호</p>
-							<input type="password" class="form-control" name="password" placeholder="8자리 이상" required oninput="pwd_validation('modify-input-container', this);">
+							<input type="password" class="form-control" name="new_password" placeholder="8자리 이상" required oninput="pwd_validation('modify-input-container', this);">
 						</div>
 						<p></p>
 					</div>
@@ -42,7 +42,7 @@
 					<div class="form-group">		<!-- 신규 비밀번호 확인 -->
 						<div class="input-group">
 							<p>신규 비밀번호 확인</p>
-							<input type="password" class="form-control" name="password_chk" placeholder="8자리 이상" oninput="remove(1, this);">
+							<input type="password" class="form-control" name="new_password_chk" placeholder="8자리 이상" oninput="remove(1, this);" required>
 						</div>
 						<p></p>
 					</div>

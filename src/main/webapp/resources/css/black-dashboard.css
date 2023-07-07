@@ -5204,7 +5204,7 @@ input[type="button"].btn-block {
 }
 
 .row .card-content{
-	color: #000 !important;
+	color: #2a2a2a !important;
 	font-size: 3rem;
 	font-weight: 300;
 	width: 100%;
@@ -15831,7 +15831,10 @@ img {
 
 .navbar.navbar-absolute {
   position: absolute;
-  z-index: 1050;
+  z-index: 1;
+  top: 120px;
+  left: 15px;
+  width: max-content;
 }
 
 .navbar.navbar-transparent {
@@ -17363,7 +17366,7 @@ table.tablesorter thead tr .headerSortDown {
 
 .sidebar,
 .off-canvas-sidebar {
-  background: #000;
+  background: #586579;
   /* background: -webkit-linear-gradient(0deg, #ba54f5 0%, #e14eca 100%);
   background: -o-linear-gradient(0deg, #ba54f5 0%, #e14eca 100%);
   background: -moz-linear-gradient(0deg, #ba54f5 0%, #e14eca 100%);
@@ -17379,7 +17382,7 @@ table.tablesorter thead tr .headerSortDown {
   background-size: cover;
   background-position: center center;
   display: block;
-  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 #b8b8c4;
   margin-top: 80px;
   margin-left: 20px;
   border-radius: 5px;
@@ -17532,7 +17535,7 @@ table.tablesorter thead tr .headerSortDown {
   position: relative;
   text-transform: uppercase;
   cursor: pointer;
-  font-size: 0.62475rem;
+  /* font-size: 0.62475rem; */
   padding: 10px 8px;
   line-height: 1.625rem;
 }
@@ -19988,7 +19991,7 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .card .card-header .card-title {
-  color: #000;
+  color: #2a2a2a;
   font-weight: 100;
 }
 
@@ -20451,204 +20454,4 @@ Copyright (c) 2015 Daniel Eden
   padding-right: 0;
 }
 
-/* 추가 */
-.table td, .table th{
-	text-align: center;
-}
-.bar-chart{
-	padding-bottom: 21.22px;
-}
-.table-custom{
-	table-layout: fixed;
-}
-.table-custom td{
-	text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-/* 별점 */
-.star {
-  position: relative;
-  font-size: 20px;
-  color: #ddd;
-}
-
-.star input {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  opacity: 0;
-}
-
-.star span {
-  width: 0;
-  position: absolute;
-  left: 0;
-  color: #e97d7d;
-  overflow: hidden;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-/* 스크롤 커스텀 */
-.scroll-custom::-webkit-scrollbar {
-    height: 5px;  /* 스크롤바의 너비 */
-}
-.scroll-custom::-webkit-scrollbar-thumb {
-    /* width: 10%; */ /* 스크롤바의 길이 */
-    background: #000; /* 스크롤바의 색상 */
-    border-radius: 10px;
-}
-.scroll-custom::-webkit-scrollbar-track {
-    background: #ccce;  /*스크롤바 뒷 배경 색상*/
-    border-radius: 10px;
-}
-
-/* 정산 내역 */
-.m-revenue .cal-history{
-	position: absolute;
-    border: none;
-    background: #fff;
-    bottom: 30px;
-    right: 10px;
-    font-size: 12px;
-}
-.m-revenue .cal-history:hover{
-	font-weight: 600;
-}
-.sort{
-	position: absolute;
-	top: 15px;
-	right: 30px;
-}
-
-/* 판매 현황, 후기 관리, 문의 관리 */
-.table-custom thead th:nth-child(1),
-.table-custom tbody tr td:nth-child(1){
-	width: 70px;
-	min-width: 70px;
-}
-
-/* 후기 관리, 문의 관리 */
-.table-management td{
-	cursor: pointer;
-}
-.table-management+div .pagination{
-	min-width: 345px;
-}
-.table-management thead th:nth-child(3),
-.table-management tbody tr td:nth-child(3),
-.table-management thead th:nth-child(4),
-.table-management tbody tr td:nth-child(4),
-.table-management thead th:nth-child(5),
-.table-management tbody tr td:nth-child(5){
-	width: 18%;
-	min-width: 110px;
-}
-
-@media (min-width:769px) and (max-width:991px){
-	.table-management{
-		width: initial !important;
-	}
-	.table-management thead th:nth-child(2),
-	.table-management tbody tr td:nth-child(2){
-		max-width: 185px;
-	}
-}
-@media (max-width:637px){
-	.table-management{
-		width: initial !important;
-	}
-	.table-management thead th:nth-child(2),
-	.table-management tbody tr td:nth-child(2){
-		max-width: 185px;
-	}
-} 
-/* 문의 관리 */
-.answer{
-	background-color: #f2f2f6;
-}
-/* 후기 관리 폼, 문의관리 폼 */
-.management-form h6{
-	font-size: 18px;
-}
-.management-form .p-info{
-	overflow-x: auto; 
-}
-.management-form .p-info img{
-	width: auto;
-	height: 150px;
-	margin-right: 10px;
-}
-.management-form .p-info h6{
-	line-height: 25px;
-	border-right: 1px solid #e4e4eb;
-	text-align: center;
-	display: inline-block;
-	width: 100px;
-	padding: 3px 10px;
-	margin: 10px;
-}
-.management-form .p-info p{
-	display: inline-block;
-}
-.management-form .p-info .p-text-info{
-	width: 100%;
-}
-.management-form .p-info .p-text-info .row{
-	margin: 10px 0;
-    width: 100%;
-}
-.management-form .p-info .p-text-info>div{
-	width: 200px;
-}
-.management-form .p-info+div{
-	margin-bottom: 15px;
-	padding: 15px;
-	border-bottom: 1px solid #e4e4eb;
-	word-break: keep-all;
-}
-.management-form .p-info+div p{
-	padding: 10px 0 0 10px;
-}
-.management-form .management-data{
-	margin-bottom: 10px;
-}
-.management-form .management-data h6{
-	border-right: 1px solid #e4e4eb;
-	padding-right: 10px;
-}
-.management-form .management-data h6,
-.management-form .management-data p{
-	display: inline-block;
-}
-.management-form .p-info+div+form textarea{
-	resize: none;
-	width: 100%;
-	height: 250px;
-	border:1px solid #e4e4eb;
-	padding: 10px;	
-}
-.management-form .p-info+div+form button{
-	height: 32px;
-    width: 112px;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #e4e4eb;
-   	border: none;
-    margin: 15px 0 0;
-    float: right;
-	line-height: 0;
-	font-weight: 600;
-}
-.management-form .p-info+div+form button:hover{
-	color: #b8b8c4;
-    background-color: #586579;
-}
-.management-form .p-info+div+form{
-	clear: both;
-}
 /*# sourceMappingURL=dashboard-free.css.map */
