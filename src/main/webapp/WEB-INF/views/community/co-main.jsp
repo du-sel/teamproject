@@ -7,7 +7,7 @@
 
  
 		<!-- Wrapper -->
-		<div id="wrapper" class="co">
+		<div id="wrapper" class="co col-12">
 		<main id="co-main" class="broad" style="margin-top: 200px">
 
 			
@@ -25,9 +25,9 @@
 							<button class="insertpost">입력</button>
 							</div>
 						</div>
-						<div class="submitpost"> <!-- class divtextarea -->
-							<textarea id="co-textarea" class="col-10" rows="2"></textarea>
-							<button class="submitpost">등록</button>
+						<div class="submitpost col-12"> <!-- class divtextarea -->
+							<textarea id="co-textarea" class="col-9" rows="2"></textarea>
+							<button class="col-2">등록</button>
 						</div>
 					</div>
 					
@@ -61,8 +61,8 @@
 										<ul>
 											<li>
 												<div class="divcomment divtext">
-													<textarea class="col-10" rows="2"></textarea>
-													<button class="col-1 ml-auto">등록</button>
+													<textarea class="col-9" rows="2"></textarea>
+													<button class="col-2 ml-auto">등록</button>
 												</div>
 												<div>
 													<div class="divname">이름</div>
@@ -126,8 +126,8 @@
 										<ul>
 											<li>
 												<div class="divcomment divtext">
-													<textarea class="col-10" rows="2"></textarea>
-													<button class="col-1 ml-auto">등록</button>
+													<textarea class="col-9" rows="2"></textarea>
+													<button class="col-2 ml-auto button1">등록</button>
 												</div>
 												<div>
 													<div class="divname">이름</div>
@@ -191,8 +191,8 @@
 										<ul>
 											<li>
 												<div class="divcomment divtext">
-													<textarea class="col-10" rows="2"></textarea>
-													<button class="col-1 ml-auto">등록</button>
+													<textarea class="col-9" rows="2"></textarea>
+													<button class="col-2 ml-auto">등록</button>
 												</div>
 												<div>
 													<div class="divname">이름</div>

@@ -4365,7 +4365,7 @@ community-main
 	#co-main input[type="submit"],
 	#co-main input[type="reset"],
 	#co-main input[type="button"],
-	#co-main button,
+	/* #co-main button, */
 	#co-main .button {
 		-moz-appearance: none;
 		-webkit-appearance: none;
@@ -4823,14 +4823,15 @@ community-main
 
 /* Post */
 
-	#co-main .post {
+	.co .post {
 		width: 50em;
 		padding: 3em 3em 1em 3em ;
 		background: #ffffff;
 		border: solid 1px rgba(160, 160, 160, 0.3);
 		margin: 0 0 3em 0;
 		position: relative;
-		box-shadow: 5px 7px 5px 5px;
+		box-shadow: 5px 7px 5px 5px #b8b8c4;
+		border-radius: 10px;
 	}
 
 		#co-main .post > header {
