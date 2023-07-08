@@ -3,12 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
- 
 <!-- Wrapper -->
-<div id="wrapper container" class="co">
-	<main id="co-main" class="row" style="margin-top: 200px">
+<div id="co-change">
+<main id="wrapper container" class="co">
+	<div id="co-main" class="row" style="margin-top: 200px">
 	
 		<!-- Sidebar -->
 		<section id="sidebar" class="col-lg-3">
@@ -588,14 +587,11 @@
 				<li><a href="#" class="button">More</a></li>
 			</ul>
 		</section> -->
-	</main>
-</div>
+	</div>
+	
 
 <script>
 	$(() => {
-    	// body 컬러 임시
- 		$('body').css('background-color', '#f2f2f6');
-    	
     	// 모바일 화면 사이드 바
     	$("#sidebar .navbar button").on('click', function(){
     		let clazz = $('.sidebar-wrapper').attr('class');
@@ -610,5 +606,5 @@
     	});
 	});
 </script>
-
-<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+</main>
+</div>

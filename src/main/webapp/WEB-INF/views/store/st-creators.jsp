@@ -5,7 +5,9 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
       
 		
-	
+
+
+<div id="store-main" class="root">
 <!-- ***** Page Content Starts ***** -->
 <main id="creators" class="broad">
 	<section class="section">
@@ -179,11 +181,13 @@
 		</div>
 	</section>
 </main>
+</div>
+
+<div id="community-main" class="root">
+	
+</div>
 <!-- ***** Page Content Ends ***** -->
 
-
-
-  
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 

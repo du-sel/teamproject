@@ -45,6 +45,20 @@
     <script src="/resources/js/community-toggle.js"></script>
     
     
+    <style>
+    	header{
+    		position: relative;
+    	}
+    	#test{
+    		position: absolute;
+    		top:0;
+    		left:0;
+    		background-color: #fff;
+    		height: 100%;
+    		width: 0;
+			transition: all .5s ease 0s;
+    	}
+    </style>
     </head>
     
     
@@ -64,9 +78,9 @@
 	    
 		<!-- ***** Tab Start ***** -->
 	    <div id="tab">
-			<div id="co-tab">커뮤니티</div>
+			<div id="co-tab" onclick="f(this);">커뮤니티</div>
 			<!-- onclick="location.href='co-main.do'" -->
-	        <div id="st-tab">스토어</div>
+	        <div id="st-tab" onclick="f(this);">스토어</div>
 	         <!-- onclick="location.href='st-main.do'" -->
 		</div>
 		<!-- ***** Tab End ***** -->
@@ -75,6 +89,7 @@
 	    
 	    <!-- ***** Header Area Start ***** -->
 	    <header class="header-area header-sticky">
+	    	<div id="test"></div>
 	        <div class="container-xl">
 	            <div class="row header-row">
 	                <div class="col-12">

@@ -244,7 +244,6 @@
 
 	modifyHeaderMenu();
 
-	
 	// 커뮤니티 소속 페이지에 있을 때 헤더 / active탭 배경색 바꾸기 
 	function addHeaderBackground(){
 		let path = $(location).attr('pathname');				

@@ -5619,4 +5619,38 @@ community-main
 
 
 
+.root{
+	-webkit-transition: all .5s ease 0s;
+	-moz-transition: all .5s ease 0s;
+	-o-transition: all .5s ease 0s;
+	transition: all .5s ease 0s;
+	/* position: absolute; */
+	top: 0px;
+	width:100%;
+	display: inline-block;
+	height: 100%;
+}
 
+.root#community-main{
+	left: -100%;
+	position: absolute;
+	height: 100vh;
+	visibility: hidden;
+}
+.root#store-main{
+	right: 0%;
+	position: relative;
+	visibility: visible;
+}
+.root+footer{
+	margin-top:0;
+}
+
+#tab{
+	
+	background-color: #dce0e3;
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+}
