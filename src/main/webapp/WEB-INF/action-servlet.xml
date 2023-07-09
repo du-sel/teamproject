@@ -8,6 +8,7 @@
 		<property name="mappings">
 			<props>
 				<prop key="/products.do">product</prop>
+				<prop key="/st-inquiry.do">product</prop>
 				<prop key="/product-single.do">product</prop>
 				<prop key="/creators.do">product</prop>
 				<prop key="/signin-modal.do">product</prop>

@@ -52,20 +52,25 @@ time,mark,audio,video{
 	
 } */
 
-
+/* 팔로워 구독 수 */
+.count{
+	font-size: 13px;
+	font-weight: 600;
+}
 /* 상단 이미지 업로드 글씨 */
 #myprofile #img-topimgmodify{
 	display: none;
-	padding-top: 80px;
+	padding-top: 70px;
 	text-align: center;
 	font-size: 30px;
+	color:#2a2a2a;
 	
 }
 
 #myprofile .seconddiv{
 	min-height: 160px;
 	height:flex;
-	padding-top: 20px;
+	padding-top: 10px;
 	
 }
 #myprofile .thriddiv{
@@ -77,15 +82,24 @@ time,mark,audio,video{
 #myprofile .profile{
 	width: 120px;
 	height: 120px;
-	background-color: #edeff0;
+	/* background-color: #edeff0; */
 	border: 4px solid #edeff0;
 	border-radius: 50%;
 	position: relative;
 	left: 28px;
 	top: -40px;
 	justify-content: center;
-	overflow: hidden;
+	overflow: hidden;	
+}
+#myprofile #profile{
+	background-image: url("../imags/사람실루엣")
+}
 
+#myprofile #Img{
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	
 }
 
 #myprofile .nickname{
@@ -93,29 +107,39 @@ time,mark,audio,video{
 	height: 40px;
 	padding-top: 3px;
 	min-width: 80px;
-	
+	color: #2a2a2a;
 	font-size: 24px;
     font-weight: 700;
     
     
 }
-
+#myprofile a{
+	color:inherit;
+}
 #myprofile #buttonright{
 	display: inline-block;
 	border: 1px solid lightgray;
+	border-radius: 32px;
 	min-width: 120px;
 	width: auto;
     height: 44px;
-	padding-top: 10px;
+	padding-top: 9px;
 	text-align: center;
 	padding-right: 4px;
 	padding-left: 4px;
 	
+	
+}
+
+#myprofile #buttonright:hover{
+	color: white;
+	background-color: #586579;
 }
 .fakerow{
 	height:15px;
 }
 .addressdiv{
+	color: #2a2a2a;
 	height: 30px;
 	font-size: 17px;
 	padding-top: 3px;
@@ -124,14 +148,18 @@ time,mark,audio,video{
 	text-decoration: none;
 }
 
+#myprofile #feed{
+	background-color: #f2f2f6;
+	min-height: 600px;
+}
 
 /* 프로필 수정 이미지 */
 #myprofile .profileimgmodify{
 	width: 40px;
 	height: 40px;
 	position: absolute;
-	left: 35px;
-	top: 35px;
+	left: 37px;
+	top: 36px;
 	display: none;	
 }
 
@@ -257,10 +285,11 @@ time,mark,audio,video{
   -webkit-box-orient: vertical; 
   overflow: hidden;
 }
+
 /* 카드 더보기 추가 */
 #myprofile .card-content__more-btn {
   appearance: none;
-  border: 1px solid #3d3f40;
+  border: 1px solid #e0e0e0;
   padding-top:3px;
   border-radius: 0.25em;
   cursor: pointer;
@@ -268,17 +297,15 @@ time,mark,audio,video{
   height: 30px;
   width: 80px;
   text-align: center;
-  color: #3d3f40;
+  color: #b3b4b5;
   
 }
 
 #myprofile .card-content__more-btn::before {
-
   content: '더보기';
 }
 
 #myprofile .card-content__more-btn:checked::before {
-
   content: '닫기';
 }
 
@@ -365,10 +392,12 @@ time,mark,audio,video{
 	text-align: center;
 	padding-top: 12px;
 	float: right;
-	
 }
 
-
+#myprofile .writenew:hover {
+	background-color: #586579;
+	color: white;
+}
 
 #myprofile .fcontent{
   text-align:center;
@@ -385,3 +414,79 @@ time,mark,audio,video{
 	
 }
 
+/* 구독취소 모달 */
+#myprofile .modal-header, #myprofile .modal-footer{
+	border: none;
+}
+
+#myprofile .cancel{
+	color: white;
+	background-color: #e97d7d;
+}
+
+/* 멤버십 모달 */
+#myprofile .modal-dialog .modal-content{
+	padding: 0;
+}
+
+#myprofile .membershipSub{
+	text-align: center;
+}
+#myprofile .Subdiv{
+	text-align: center;
+	height: flex;
+	border: 1px solid #586579;
+	margin: 4px;
+	margin-bottom: 100px;
+	padding: 13px;
+	border-radius: 8px;
+}
+#myprofile .Subjoin{
+	
+	height: 46px;
+	margin: 4px;
+	background-color: #586579;
+	border: 1px solid #586579;
+	border-radius: 50px;
+	padding-top:12px;
+}
+
+#myprofile .Membershipdiv{
+/* 	border-top-left-radius: 24px;
+    border-top-right-radius: 24px; */
+    border-radius: 24px;
+}
+#myprofile .subjoin{
+	border:0;
+	background-color: #586579;
+	color: white;
+	font-weight: 600;
+}
+#myprofile .s{
+	text-align: left;
+}
+
+#myprofile .s1 {
+	margin-bottom: 5px;
+}
+
+#myprofile .s2 {
+	font-size: 30px;
+}
+
+#myprofile .s3{
+	border-top: 1px solid #f2f2f6;
+	margin-top: 15px;
+	padding-top: 15px;
+}
+
+
+/* 포스트부분 */
+#myprofile #co-main .post{
+	width: inherit;
+	box-shadow: 2px 2px 5px;
+}
+#myprofile .author{
+	padding: 6px;
+	font-size: 20px;
+}
