@@ -44,6 +44,24 @@
 
     <script src="/resources/js/community-toggle.js"></script>
     
+    <script>
+ // 헤더 검색버튼 클릭 시 검색창 토글
+	function showSearchInput() {
+		let icon = $('.header-area .fa-search');
+		let input = $('.header-area .search-input-container');
+		let color = $('.header-area').css('background-color');
+		
+		if(!$(icon).hasClass('active')) {
+			$(input).css({'background-color':color});
+			$(input).animate({'padding':'10px', 'width': '100%'});
+			icon.addClass('active');
+		} else {
+			$(input).animate({'padding':'0', 'width': '0'});
+			icon.removeClass('active');
+		}
+		
+	}
+    </script>
     
     </head>
     
@@ -103,6 +121,13 @@
 	                            </div>
 	                            <!-- ***** Logo End ***** -->
 								<div>
+									<div class="search-icon-container d-flex align-items-center">
+										<i class="fa fa-search" aria-hidden="true" onclick="showSearchInput()"></i>
+									</div>
+									<form name="search" action="" class="search-input-container">
+										<input type="text" name="search">
+										<button class="search-btn">검색</button>
+									</form>
 	                           		<!-- <div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
 	                          		<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div> -->
 	                          		<div id="user-menu" class="scroll-to-section submenu">
