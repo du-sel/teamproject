@@ -218,7 +218,7 @@
 												<div class="divcontent">댓글 내용</div>								
 											</div>
 										</div>
-										</table>
+									
 									</li>									
 								</ul>
 							</div>
@@ -283,7 +283,7 @@
 												<div class="divcontent">댓글 내용</div>								
 											</div>
 										</div>
-										</table>
+									
 									</li>									
 								</ul>
 							</div>
@@ -346,7 +346,7 @@
 												<div class="divcontent">댓글 내용</div>								
 											</div>
 										</div>
-										</table>
+									
 									</li>									
 								</ul>
 							</div>
