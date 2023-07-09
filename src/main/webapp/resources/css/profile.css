@@ -52,20 +52,25 @@ time,mark,audio,video{
 	
 } */
 
-
+/* 팔로워 구독 수 */
+.count{
+	font-size: 13px;
+	font-weight: 600;
+}
 /* 상단 이미지 업로드 글씨 */
 #myprofile #img-topimgmodify{
 	display: none;
-	padding-top: 80px;
+	padding-top: 70px;
 	text-align: center;
 	font-size: 30px;
+	color:#2a2a2a;
 	
 }
 
 #myprofile .seconddiv{
 	min-height: 160px;
 	height:flex;
-	padding-top: 20px;
+	padding-top: 10px;
 	
 }
 #myprofile .thriddiv{
@@ -77,15 +82,24 @@ time,mark,audio,video{
 #myprofile .profile{
 	width: 120px;
 	height: 120px;
-	background-color: #edeff0;
+	/* background-color: #edeff0; */
 	border: 4px solid #edeff0;
 	border-radius: 50%;
 	position: relative;
 	left: 28px;
 	top: -40px;
 	justify-content: center;
-	overflow: hidden;
+	overflow: hidden;	
+}
+#myprofile #profile{
+	background-image: url("../imags/사람실루엣")
+}
 
+#myprofile #Img{
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	
 }
 
 #myprofile .nickname{
@@ -93,7 +107,7 @@ time,mark,audio,video{
 	height: 40px;
 	padding-top: 3px;
 	min-width: 80px;
-	
+	color: #2a2a2a;
 	font-size: 24px;
     font-weight: 700;
     
@@ -109,7 +123,7 @@ time,mark,audio,video{
 	min-width: 120px;
 	width: auto;
     height: 44px;
-	padding-top: 10px;
+	padding-top: 9px;
 	text-align: center;
 	padding-right: 4px;
 	padding-left: 4px;
@@ -125,6 +139,7 @@ time,mark,audio,video{
 	height:15px;
 }
 .addressdiv{
+	color: #2a2a2a;
 	height: 30px;
 	font-size: 17px;
 	padding-top: 3px;
@@ -143,8 +158,8 @@ time,mark,audio,video{
 	width: 40px;
 	height: 40px;
 	position: absolute;
-	left: 35px;
-	top: 35px;
+	left: 37px;
+	top: 36px;
 	display: none;	
 }
 
@@ -463,4 +478,15 @@ time,mark,audio,video{
 	border-top: 1px solid #f2f2f6;
 	margin-top: 15px;
 	padding-top: 15px;
+}
+
+
+/* 포스트부분 */
+#myprofile #co-main .post{
+	width: inherit;
+	box-shadow: 2px 2px 5px;
+}
+#myprofile .author{
+	padding: 6px;
+	font-size: 20px;
 }
