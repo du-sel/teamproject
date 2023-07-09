@@ -44,12 +44,12 @@
                 		<span class="star">
 							★★★★★
 							<span>★★★★★</span>
-							<input type="range" oninput="score(this);" value="1" step="1" min="0" max="10">
+							<input type="range" name="score" oninput="score(this);" value="1" step="1" min="0" max="10">
 						</span>
                 	</div>
                 	<div>
                			<h6>후기</h6>
-               			<textarea maxlength="300" placeholder="후기 내용을 입력하세요." required></textarea>
+               			<textarea name="review" maxlength="300" placeholder="후기 내용을 입력하세요." required></textarea>
 	               		<input class="form-btn" type="submit" value="작성">
                		</div>
                	</form>

@@ -43,19 +43,7 @@ const modalClose = document.querySelector(".modalclose");
   modalClose.addEventListener('click', function() {
     $(".modal").css("display", "none");
   });
-
-
-
-/* 이미지 미리보기 인데...하
-const fileDOM2 = document.querySelector('#file2');
-const previews = document.querySelectorAll('.image-box');
-
-fileDOM2.addEventListener('change', () => {
-  const imageSrc = URL.createObjectURL(fileDOM2.files[0]);
-  previews.src = imageSrc;
-
-});
-*/
+  
 
 //상단이미지 업로드 코드 추가
 var submit = document.getElementById('submitButton');
@@ -73,12 +61,12 @@ function showImage() {
 
 function loadFile(input) {
     var file = input.files[0];
-s
+
     var name = document.getElementById('fileName');
     name.textContent = file.name;
 
     var newImage = document.createElement("img");
-    newImage.setAttribute("class", 'img');
+    newImage.setAttribute("class", 'Img');
 
     newImage.src = URL.createObjectURL(file);   
 
@@ -86,11 +74,12 @@ s
     newImage.style.height = "70%";
     newImage.style.visibility = "hidden";   //버튼을 누르기 전까지는 이미지 숨기기
     newImage.style.objectFit = "contain";
+    newImage.style.position = "relative";
+    newImage.style.zIndex = 800; 
 
     var container = document.getElementById('image-show');
     container.appendChild(newImage);
 };
 
-// 탭 피드 부분 시작하자마자 보이게
 
 

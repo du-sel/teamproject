@@ -34,63 +34,34 @@
     <link rel="stylesheet" href="/resources/css/modal.css"><!-- modal -->
 
     <link rel="stylesheet" href="/resources/css/animations.css"><!-- tab animation -->
+    	<link rel="stylesheet" href="/resources/css/community.css" />
 
     <!-- jQuery -->
     <script src="/resources/js/jquery-2.1.0.min.js"></script>
-    
+     
     <!-- tab JS -->
     <script src="/resources/js/tab.js"></script>
 
-<!--탭 부분 -->
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-
-       
+    <script src="/resources/js/community-toggle.js"></script>
+    
     <script>
-		$( document ).ready( function() {
-			$( 'button.comment' ).click( function() {
-			$( '.divcomment' ).slideToggle();
-			} );
-		} );
+ // 헤더 검색버튼 클릭 시 검색창 토글
+	function showSearchInput() {
+		let icon = $('.header-area .fa-search');
+		let input = $('.header-area .search-input-container');
+		let color = $('.header-area').css('background-color');
 		
-		$( document ).ready( function() {
-			$( 'button.commentList' ).click( function() {
-			$( '.ulcommentList' ).slideToggle();
-			} );
-		} );
+		if(!$(icon).hasClass('active')) {
+			$(input).css({'background-color':color});
+			$(input).animate({'padding':'10px', 'width': '100%'});
+			icon.addClass('active');
+		} else {
+			$(input).animate({'padding':'0', 'width': '0'});
+			icon.removeClass('active');
+		}
 		
-		$( document ).ready( function() {
-			$( 'button.insertcomment' ).click( function() {
-			$( '.submitcomment' ).slideToggle();
-			} );
-		} );
-			
-		
-	</script>
-	<script type="text/javascript">
-		/* co-main.do, post.do textarea */
-		const DEFAULT_HEIGHT = 31; // textarea 기본 height
-	
-	    let textarea = document.getElementById('co-textarea');
-	    
-	 	// Textarea 자동 높이 조절
-	    textarea.oninput = (event) => {
-	      let target = event.target;
-	
-	      target.style.height = 0;
-	      if(target.scrollHeight >51){ //2줄일 때 높이
-		      target.style.height = 7 + target.scrollHeight + 'px';  // 마지막 줄 아래 여백생기지 않음  	  
-	      }else{
-		      target.style.height = DEFAULT_HEIGHT + target.scrollHeight + 'px';  //2줄일 때 높이 유지  	      	  
-	      }
-	    };
-	</script>
-    	
-    
-    
-    
-
+	}
+    </script>
     
     </head>
     
@@ -111,9 +82,9 @@
 	    
 		<!-- ***** Tab Start ***** -->
 	    <div id="tab">
-			<div id="co-tab" >커뮤니티</div>
+			<div id="co-tab">커뮤니티</div>
 			<!-- onclick="location.href='co-main.do'" -->
-	        <div id="st-tab" class="active">스토어</div>
+	        <div id="st-tab">스토어</div>
 	         <!-- onclick="location.href='st-main.do'" -->
 		</div>
 		<!-- ***** Tab End ***** -->
@@ -128,7 +99,7 @@
 	                    <nav class="main-nav">
 	                        <!-- ***** Menu Start ***** -->
 	                        <div class="nav">
-	                            <div>
+	                            <div class="store-menu">
 		                            <div class="submenu">
 		                                <a href="products.do">상품</a>
 		                                <ul>
@@ -150,6 +121,13 @@
 	                            </div>
 	                            <!-- ***** Logo End ***** -->
 								<div>
+									<div class="search-icon-container d-flex align-items-center">
+										<i class="fa fa-search" aria-hidden="true" onclick="showSearchInput()"></i>
+									</div>
+									<form name="search" action="" class="search-input-container">
+										<input type="text" name="search">
+										<button class="search-btn">검색</button>
+									</form>
 	                           		<!-- <div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
 	                          		<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div> -->
 	                          		<div id="user-menu" class="scroll-to-section submenu">
@@ -164,16 +142,16 @@
 		                                    <li><a href="logout.do">로그아웃</a></li>
 		                                </ul>
 	                          		</div>
-	                          		<div class="scroll-to-section" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
+	                          		<div class="scroll-to-section" onclick="onStoreModal();"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
 	                            </div>
 	                        </div> 	       
 							
 							<div class="nav-mobile">
-								<div class="logo-mobile-container">
+								<!-- <div class="logo-mobile-container">
 	                                <a href="st-main.do" class="logo">
 	                                    <img src="/resources/images/trackers-mobile.svg">
 	                                </a>
-	                            </div>
+	                            </div> -->
 								<a class='menu-trigger'>
 		                            <span>Menu</span>
 		                        </a>

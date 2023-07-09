@@ -23,6 +23,9 @@ public class TmpHandler implements Controller {
 		else if(path.equals("/product-single.do")) {			
 			mav.setViewName("./WEB-INF/views/store/st-product-single.jsp");			
 		}
+		else if(path.equals("/st-inquiry.do")) {			
+			mav.setViewName("./WEB-INF/views/store/st-inquiry.jsp");			
+		}
 		else if(path.equals("/creators.do")) {			
 			mav.setViewName("./WEB-INF/views/store/st-creators.jsp");			
 		}
@@ -32,8 +35,8 @@ public class TmpHandler implements Controller {
 		else if(path.equals("/signup-modal.do")) {			
 			mav.setViewName("./WEB-INF/views/modal/signup-modal.jsp");			
 		}
-		else if(path.equals("/shop-create-modal.do")) {			
-			mav.setViewName("./WEB-INF/views/modal/shop-create-modal.jsp");			
+		else if(path.equals("/store-create-modal.do")) {			
+			mav.setViewName("./WEB-INF/views/modal/store-create-modal.jsp");			
 		}
 		else if(path.equals("/co-main.do")) {			
 			mav.setViewName("./WEB-INF/views/community/co-main.jsp");			
@@ -96,10 +99,7 @@ public class TmpHandler implements Controller {
 			mav.setViewName("./WEB-INF/views/my-store/store-management.jsp");			
 		}
 		else if(path.equals("/post.do")) {			
-			mav.setViewName("./WEB-INF/views/community/post.jsp");			
-		} 
-		else if(path.equals("/profile.do")) {		
-			mav.setViewName("./WEB-INF/views/profile/profile.jsp");			
+			mav.setViewName("./WEB-INF/views/community/co-post.jsp");			
 		}
 		else if(path.equals("/insert-product.do")) {		
 			mav.setViewName("./WEB-INF/views/my-store/insert-product.jsp");			
@@ -115,12 +115,14 @@ public class TmpHandler implements Controller {
 		}
 		else if(path.equals("/customer-center-form.do")) {		
 			mav.setViewName("./WEB-INF/views/admin/customer-center-form.jsp");			
-    }
+		}
 		else if(path.equals("/insert-test.do")) {
 			System.out.println("name: "+request.getParameter("name"));
 			System.out.println("thumbnail: "+request.getParameter("thumbnail"));
 			System.out.println("content: "+request.getParameter("content"));
 			mav.setViewName("./WEB-INF/views/my-store/st-main.jsp");			
+		}else if(path.equals("/profile.do")) {		
+			mav.setViewName("./WEB-INF/views/profile/profile.jsp");			
 		}
 
 		
