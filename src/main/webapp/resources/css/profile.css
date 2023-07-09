@@ -99,10 +99,13 @@ time,mark,audio,video{
     
     
 }
-
+#myprofile a{
+	color:inherit;
+}
 #myprofile #buttonright{
 	display: inline-block;
 	border: 1px solid lightgray;
+	border-radius: 32px;
 	min-width: 120px;
 	width: auto;
     height: 44px;
@@ -111,6 +114,12 @@ time,mark,audio,video{
 	padding-right: 4px;
 	padding-left: 4px;
 	
+	
+}
+
+#myprofile #buttonright:hover{
+	color: white;
+	background-color: #586579;
 }
 .fakerow{
 	height:15px;
@@ -124,6 +133,10 @@ time,mark,audio,video{
 	text-decoration: none;
 }
 
+#myprofile #feed{
+	background-color: #f2f2f6;
+	min-height: 600px;
+}
 
 /* 프로필 수정 이미지 */
 #myprofile .profileimgmodify{
@@ -257,10 +270,11 @@ time,mark,audio,video{
   -webkit-box-orient: vertical; 
   overflow: hidden;
 }
+
 /* 카드 더보기 추가 */
 #myprofile .card-content__more-btn {
   appearance: none;
-  border: 1px solid #3d3f40;
+  border: 1px solid #e0e0e0;
   padding-top:3px;
   border-radius: 0.25em;
   cursor: pointer;
@@ -268,17 +282,15 @@ time,mark,audio,video{
   height: 30px;
   width: 80px;
   text-align: center;
-  color: #3d3f40;
+  color: #b3b4b5;
   
 }
 
 #myprofile .card-content__more-btn::before {
-
   content: '더보기';
 }
 
 #myprofile .card-content__more-btn:checked::before {
-
   content: '닫기';
 }
 
@@ -365,10 +377,12 @@ time,mark,audio,video{
 	text-align: center;
 	padding-top: 12px;
 	float: right;
-	
 }
 
-
+#myprofile .writenew:hover {
+	background-color: #586579;
+	color: white;
+}
 
 #myprofile .fcontent{
   text-align:center;
@@ -385,3 +399,68 @@ time,mark,audio,video{
 	
 }
 
+/* 구독취소 모달 */
+#myprofile .modal-header, #myprofile .modal-footer{
+	border: none;
+}
+
+#myprofile .cancel{
+	color: white;
+	background-color: #e97d7d;
+}
+
+/* 멤버십 모달 */
+#myprofile .modal-dialog .modal-content{
+	padding: 0;
+}
+
+#myprofile .membershipSub{
+	text-align: center;
+}
+#myprofile .Subdiv{
+	text-align: center;
+	height: flex;
+	border: 1px solid #586579;
+	margin: 4px;
+	margin-bottom: 100px;
+	padding: 13px;
+	border-radius: 8px;
+}
+#myprofile .Subjoin{
+	
+	height: 46px;
+	margin: 4px;
+	background-color: #586579;
+	border: 1px solid #586579;
+	border-radius: 50px;
+	padding-top:12px;
+}
+
+#myprofile .Membershipdiv{
+/* 	border-top-left-radius: 24px;
+    border-top-right-radius: 24px; */
+    border-radius: 24px;
+}
+#myprofile .subjoin{
+	border:0;
+	background-color: #586579;
+	color: white;
+	font-weight: 600;
+}
+#myprofile .s{
+	text-align: left;
+}
+
+#myprofile .s1 {
+	margin-bottom: 5px;
+}
+
+#myprofile .s2 {
+	font-size: 30px;
+}
+
+#myprofile .s3{
+	border-top: 1px solid #f2f2f6;
+	margin-top: 15px;
+	padding-top: 15px;
+}

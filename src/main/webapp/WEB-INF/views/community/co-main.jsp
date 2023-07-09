@@ -182,6 +182,7 @@
 			
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
   
 			<script>
 			  $(document).ready(function() {
@@ -202,6 +203,7 @@
 			    }
 			  });
 			</script>
+
 			
 			<footer>
 				<ul class="stats commment_stats">
@@ -269,6 +271,8 @@
 		<!-- Post -->
 		<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
 
+
+
 			<div>
 				<div class="title">
 					<p>
@@ -289,7 +293,7 @@
 					<img src="/resources/images/춘식이웹툰1.png" alt="" />
 				</div>
 			</div>
-			
+
 			
 			<div id="post-content" class="collapse-content">
 			  <div class="post-content-inner collapsed">
