@@ -85,7 +85,7 @@
 	// Window Resize Mobile Menu Fix
 	mobileNav();
 	
-		console.log("out");	
+
 	// Window Resize Mobile Menu MyMenu
 	let menu_flag = false;		// myMenu flag
 	myMenu();
@@ -210,13 +210,13 @@
 	
 	// Window Resize Mobile Menu - MyMenu
 	function myMenu() {
-		var width = $(window).width();
+		var width = $(window).innerWidth();
 		
-		if(width < 768 && !menu_flag) {
+		if(width <= 767 && !menu_flag) {
 			$('#user-menu').children('img').remove();
 			$('#user-menu').prepend("<a>마이 메뉴</a>");
 			menu_flag = true;
-		}else if(width >= 768 && menu_flag){
+		}else if(width > 767 && menu_flag){
 			$('#user-menu').children('a').remove();
 			$('#user-menu').prepend("<img src='/resources/images/baner-right-image-02.jpg' alt='프로필사진' id='profile-image'>");
 			menu_flag = false;
@@ -235,9 +235,11 @@
 		// 일단 임시 URI로 시험 적용
 		if(path.includes('co-')) {
 			$(st_menu).css('visibility', 'hidden');
+			$(st_menu).addClass('hidden');
 			return;
 		} else {
 			$(st_menu).css('visibility', 'visible');
+			$(st_menu).removeClass('hidden');
 			return;
 		}
 	}
@@ -286,6 +288,8 @@
 	
 	modifyHeaderType();
 	
+	
+
 	
 	
 	
