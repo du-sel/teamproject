@@ -33,12 +33,13 @@
 			    <c:otherwise> <!-- 아닐 때 -->
 					<div class="col-md-2 col-lg-1 profilediv">
 						<div class="profile">
-							<img class="profileimgmodify" id="Img" src="/resources/images/사람실루엣.jpg" >
+							<!-- <img  id="Img" src="/resources/images/사람실루엣.jpg" > -->
+							<img class="profileimgmodify"  src="/resources/images/사람실루엣.jpg" >
 						</div>
 					</div>
 			    </c:otherwise>
 			</c:choose>
-			
+			<!-- id="Img"  class="profileimgmodify" -->
 			
 			
 			

@@ -91,9 +91,11 @@ time,mark,audio,video{
 	justify-content: center;
 	overflow: hidden;	
 }
+/*
 #myprofile #profile{
 	background-image: url("../imags/사람실루엣")
 }
+*/
 
 #myprofile #Img{
 	width: 120px;
@@ -155,12 +157,13 @@ time,mark,audio,video{
 
 /* 프로필 수정 이미지 */
 #myprofile .profileimgmodify{
-	width: 40px;
-	height: 40px;
+	width: 120px;
+	height: 120px;
+
+	border-radius: 50%;
 	position: absolute;
-	left: 37px;
-	top: 36px;
-	display: none;	
+
+	
 }
 
 #myprofile .navli{
