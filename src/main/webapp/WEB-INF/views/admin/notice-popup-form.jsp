@@ -52,7 +52,7 @@
 		                	</div>
 		                	<div>
 		                		<h6>팝업 이미지</h6>
-		                		<input type="file" accept="image/*"  name="popup_img"  onchange="imgPreview(this);">
+		                		<input type="file" accept="image/*"  name="popup_img"  onchange="imgPreview(this);" required>
 		                		<div id="popup-preview" class="popup-preview">
 									<img id="img-modify-white" src="/resources/images/img-modify-white.svg" alt="썸네일 업로드 버튼">
 								</div>

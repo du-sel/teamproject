@@ -44,6 +44,24 @@
 
     <script src="/resources/js/community-toggle.js"></script>
     
+    <script>
+ // 헤더 검색버튼 클릭 시 검색창 토글
+	function showSearchInput() {
+		let icon = $('.header-area .fa-search');
+		let input = $('.header-area .search-input-container');
+		let color = $('.header-area').css('background-color');
+		
+		if(!$(icon).hasClass('active')) {
+			$(input).css({'background-color':color});
+			$(input).animate({'padding':'10px', 'width': '100%'});
+			icon.addClass('active');
+		} else {
+			$(input).animate({'padding':'0', 'width': '0'});
+			icon.removeClass('active');
+		}
+		
+	}
+    </script>
     
     </head>
     
@@ -64,9 +82,9 @@
 	    
 		<!-- ***** Tab Start ***** -->
 	    <div id="tab">
-			<div id="co-tab" >커뮤니티</div>
+			<div id="co-tab">커뮤니티</div>
 			<!-- onclick="location.href='co-main.do'" -->
-	        <div id="st-tab" class="active">스토어</div>
+	        <div id="st-tab">스토어</div>
 	         <!-- onclick="location.href='st-main.do'" -->
 		</div>
 		<!-- ***** Tab End ***** -->
@@ -81,7 +99,7 @@
 	                    <nav class="main-nav">
 	                        <!-- ***** Menu Start ***** -->
 	                        <div class="nav">
-	                            <div>
+	                            <div class="store-menu">
 		                            <div class="submenu">
 		                                <a href="products.do">상품</a>
 		                                <ul>
@@ -103,6 +121,13 @@
 	                            </div>
 	                            <!-- ***** Logo End ***** -->
 								<div>
+									<div class="search-icon-container d-flex align-items-center">
+										<i class="fa fa-search" aria-hidden="true" onclick="showSearchInput()"></i>
+									</div>
+									<form name="search" action="" class="search-input-container">
+										<input type="text" name="search">
+										<button class="search-btn">검색</button>
+									</form>
 	                           		<!-- <div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
 	                          		<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div> -->
 	                          		<div id="user-menu" class="scroll-to-section submenu">
@@ -117,16 +142,16 @@
 		                                    <li><a href="logout.do">로그아웃</a></li>
 		                                </ul>
 	                          		</div>
-	                          		<div class="scroll-to-section" onclick="onShopModal()"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
+	                          		<div class="scroll-to-section" onclick="onStoreModal();"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
 	                            </div>
 	                        </div> 	       
 							
 							<div class="nav-mobile">
-								<div class="logo-mobile-container">
+								<!-- <div class="logo-mobile-container">
 	                                <a href="st-main.do" class="logo">
 	                                    <img src="/resources/images/trackers-mobile.svg">
 	                                </a>
-	                            </div>
+	                            </div> -->
 								<a class='menu-trigger'>
 		                            <span>Menu</span>
 		                        </a>

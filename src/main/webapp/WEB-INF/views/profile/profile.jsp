@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
-<div id="myprofile">
+<body id="myprofile">
 	<div  class="container firstcontainer">
 		<!--상단 이미지-->
 		<div class="row topimg">
@@ -13,35 +13,62 @@
 		</div>
 
 		<div class="row  seconddiv">
-			<!--프로필 이미지 -->
-			<div class="col-md-2 profilediv">
-				<div class="profile">
-					<img class="profileimgmodify" src="/resources/images/images%20(1).svg" >
+		
+			<!--프로필 이미지 
+			<div class="col-md-2 col-lg-1 profilediv">
+				<div class="profile" id="profile">
+					<img class="profileimgmodify" src="/resources/images/사람실루엣.jpg" >
 				</div>
 			</div>
+			-->
+			
+			<c:choose>
+			    <c:when test="" >  <!-- 자신의 프로필 일 때와  -->
+					<div class="col-md-2 col-lg-1 profilediv">
+						<div class="profile" id="profile">
+							<img class="profileimgmodify" src="/resources/images/사람실루엣.jpg" >
+						</div>
+					</div>			      
+			    </c:when>
+			    <c:otherwise> <!-- 아닐 때 -->
+					<div class="col-md-2 col-lg-1 profilediv">
+						<div class="profile">
+							<img class="profileimgmodify" id="Img" src="/resources/images/사람실루엣.jpg" >
+						</div>
+					</div>
+			    </c:otherwise>
+			</c:choose>
+			
+			
+			
+			
+			
 
-			<div class="offset-md-1 col-md-4 ">
+			<div class="col-md-4 offset-md-1 col-lg-4">
 				<div class="nickname">mybulnet123</div>
-				<!-- 팔로우 구독 버튼 -->
-				<div id="buttonright">팔로우</div>
-				<div id="buttonright">구독</div>
-				<!-- <div id="buttonright" class="fbutton">팔로우 중</div> -->
-				<button id="buttonright" type="button" class="btn" data-toggle="modal" data-target="#ExampleModalCenter">
-				   팔로우 중
-				</button>
-				<button id="buttonright" type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
-				   구독 중
-				</button>
-				<!-- <div id="buttonright" class="sbutton">구독 중</div> -->
-		   <!-- <div id="buttonright" href="">마이스튜디오 개설</div>
-				<div id="buttonright" href="">마이스튜디오 관리</div>   -->
+				<div class="count">
+					팔로워  &nbsp;123명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;23명
+				</div>
+				<br>
+			<!-- SNS 주소 -->
+				<div class="addressdiv"><a href="https://www.instagram.com/?hl=ko" ><img src="resources/images/instagram.svg">&nbsp;인스타그램</a></div>
+				<div class="addressdiv"><a href="https://youtube.com/"><img src="resources/images/youtube.svg">&nbsp;유튜브</a></div>
+
 			</div>
 			
-			<!-- SNS 주소 -->
-			<div class=" offset-md-1 col-md-3 thriddiv">
-				<div class="addressdiv"><a href="https://www.instagram.com/?hl=ko" ><img src="resources/images/twitter.svg">&nbsp;인스타그램주소</a></div>
-				<div class="addressdiv"><a href="https://twitter.com/"><img src="resources/images/instagram.svg">&nbsp;트위터주소</a></div>
-				<div class="addressdiv"><a><img src="resources/images/facebook.svg">&nbsp;패이스북주소</a></div>
+
+			<div class=" offset-md-1 col-md-4 offset-lg-3 col-lg-3 thriddiv">
+				<!-- 팔로우 구독 버튼  -->
+				<!-- 
+				<button id="buttonright" class="btn">팔로우</button>
+				<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>
+				 -->
+				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
+				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
+				<!--
+		   		<div id="buttonright" onclick="onStoreModal()"><a href="#" data-toggle="modal" data-target="#store-modal">마이스튜디오 개설</a></div>
+				<div id="buttonright"><a href="sales-status.do">마이스튜디오 관리</a></div>
+				-->
 	
 			</div>
 		</div>	
@@ -54,31 +81,155 @@
 
 		<div style="margin:10px;">
 			
-			<ul class="nav nav-tabs">
-			 	<li class="nav-item navli">
-			 		<a class="nav-link active" href="#feed" data-toggle="tab">피드</a>
+			<ul class="nav nav-tabs" >
+			 	<li class="nav-item navli"  >
+			 		<a class="nav-link active" href="#feed" data-toggle="tab" id="feedtabbgcolor" >피드</a>
 			 	</li>
-			 	<li class="nav-item navli">
+			 	<li class="nav-item navli" >
 			 		<a class="nav-link" href="#studio" data-toggle="tab">스튜디오</a>
 			 	</li>
-			 	<li class="nav-item navli">
+			 	<li class="nav-item navli" >
 			 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
 			 	</li>
 			</ul>
 
 			<div class="tab-content">
 				<!-- 피드 탭 -->
+				
 				<div class="tab-pane fade show active" id="feed">
 					<br>
-					<div class="writenew">
-						<a href="#">글 작성하기</a>
+					<div class="writenew  col-sm-2 col-md-2 col-lg-2">
+						<a href="co-main.do">글 작성하기</a>
 					</div>
 					
 					<div class="container">
-						<div class="offset-md-3 col-md-5">
-							<!-- 피드 부분 -->
 
+						<main id="co-main">
+							<div id="main" class="col-sm-10 col-md-10 col-lg-10">
+							<!-- 피드 부분 -->
+							
+									<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
+										<div>
+											<div class="title">
+												<p>
+													<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
+												</p>
+												<p>
+													<time class="published" datetime="2023-07-07">July 7, 2023</time>
+												</p>
+											</div>
+										</div>
+							
+							
+										<div class="post_img-outer" onclick="location.href='post.do'">
+											<div class="post_img">
+												<img src="/resources/images/춘식이웹툰1.png" alt="" />
+											</div>
+										</div>
+										
+										
+										<div id="post-content" class="collapse-content">
+										  <div class="post-content-inner collapsed">
+										    안녕하세요 춘식이폼미쳤다 입니다.<br>
+										    이번에 새로운 다이어리를 출시했는데요.<br>
+										    춘식이와 함께 게으른 나 자신을 다잡을 수 있도록 아주 빡세게 귀여운 다이어리를 제작해 보았습니다ㅋㅋㅋ<br>
+										    관심 있으신 분들은 제 스토어에 방문하셔서 구매하실 수 있도록 상품을 등록 해놓았으니 많은 사랑 부탁드립니다.<br>
+										    날이 많이 덥습니다. 우리 밥은 맛나게 먹더라도 배부르게 더위까지는 먹지 않도록 온열질환 주의하자구요!<br>
+										    저는 요즘 더위를 먹었는지 몹시 피곤하고 몸이 축축 처지네요ㅠㅠㅠ 그래서 당분간 휴식을 좀 취할까 고민 중입니다.<br>
+										    오래 걸리진 않을 테니까 너무 섭섭해하지 마시고 저 기다리는 동안 도도도 춘식이 보면서 행복한 춘식이 생활해요 우리♥<br>
+										    아! 구독과 좋아요는 사랑입니다~ 힛 >.~
+										  </div>
+										</div>
+										
+										<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+							
+							
+							  
+										<script>
+										  $(document).ready(function() {
+										    var contentHeight = $('.post-content-inner').height();
+										    var lineHeight = parseFloat($('.post-content-inner').css('line-height'));
+										    var maxHeight = 5 * lineHeight;
+										    
+										    if (contentHeight > maxHeight) {
+										      $('.post-content-inner').addClass('collapsed');
+										      $('.post-content-inner').css('max-height', maxHeight + 'px');
+										      $('.post-content-inner').after('<span class="expand-button">더보기</span>');
+										      
+										      $('.expand-button').click(function() {
+										        $('.post-content-inner').removeClass('collapsed');
+										        $('.post-content-inner').css('max-height', 'none');
+										        $(this).hide();
+										      });
+										    }
+										  });
+										</script>
+							
+										
+										<footer>
+											<ul class="stats commment_stats">
+												<li><a class="comment-count" href="#" onclick="showCommentInput(this)">📝<span class="comment-count-number">2</span></a></li> <!-- 댓글 개수 -->
+												<li><a class="like-button"   href="#"><span class="like-icon">❤️</span><span class="like-count">2</span></a></li> <!-- 좋아요 개수 -->
+												<!-- <li><a href="#" class="icon solid fa-heart"><i class="fa fa-heart"></i></a> 2</li> -->
+											</ul>
+											<!-- <ul class="actions">
+												<li id="comment_li"><button class="comment ">댓글 쓰기</button></li>
+												<li id="comment_li"><div class="divcomment"><input type="text" name="comment"></div></li>
+											</ul> -->
+											<div class="comment-section">
+											<ul id="comment-list" class="comment-list" style="display: none;">
+											    <li>춘식이 다이어리 너무 기대됩니당!!</li>
+											    <li>춘식이폼미쳤다님 항상 제품 잘 보고 있습니다. 건강하세요</li>
+											</ul>
+											<div class="button-row">
+										        <button class="comment-button" onclick="showCommentInput(this)">댓글쓰기</button> <!-- 댓글쓰기 버튼 -->
+										        <div class="comment-input" style="display: none;">
+										            <!-- 댓글 입력 부분 -->
+										            <input type="text" id="comment-text" name="comment" placeholder="댓글을 입력하세요">
+										            <button class="submit-button" onclick="addComment()">입력</button>
+										        </div>
+										    </div>
+										    </div>
+										</footer>
+										
+										<script>
+										  $(document).ready(function() {
+										    // 댓글 개수 이모티콘 클릭 이벤트
+										    $(".comment-count").click(function() {
+										      $(this).parent().siblings(".button-row").find(".comment-input").toggle();
+										    });
+										    // 좋아요 버튼 클릭 이벤트
+										    $(".like-button").click(function() {
+										      var likeCount = parseInt($(this).find(".like-count").text().trim());
+										      likeCount++;
+										      $(this).find(".like-count").text(likeCount);
+										    });
+										  });
+										  /* 댓글 input창 보여주기 */
+										  function showCommentInput(elem) {
+										    const commentInput = $(elem).closest("footer").find(".comment-input");
+										    commentInput.toggle();
+										  }
+										  /* 댓글 추가 */
+										  function addComment() {
+										    const commentText = $("#comment-text").val();
+										    if (commentText.trim() !== "") {
+										      const commentItem = $("<li>").text(commentText);
+										      $("#comment-list").append(commentItem);
+										      $("#comment-text").val("");
+										    // 댓글 개수 증가
+										    const commentCount = $(".comment-count-number");
+										    let count = parseInt(commentCount.text().trim());
+										    count++;
+										    commentCount.text(count);
+											}
+										  }
+										</script>
+									</article>
+								</div>
+							</main>
 						</div>
+						
 					</div>
 				</div>
 				
@@ -94,7 +245,7 @@
 						</select>
 					
 						<div class="writenew line">
-							<a href="#">관리하기</a>
+							<a href="product-management.do">관리하기</a>
 						</div>					
 					
 					</div>
@@ -186,7 +337,7 @@
 			<div class="tab-pane fade" id="notice">
 				<br>
 				<div class="writenew">
-					<a href="#">공지 관리</a>
+					<a href="notice-management.do">공지 관리</a>
 				</div>
 				
 				
@@ -239,6 +390,39 @@
 		</div>
 	</div>
 	
+	<!-- ***** StoreCreate Modal Start ***** -->
+	<div class="modal fade" id="store-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-container" role="document" >
+			<div class="modal-content">
+			</div>
+		</div>
+  	</div>
+	<!-- ***** StoreCreate Modal End ***** -->
+	
+	<!-- 멤버십 모달 -->
+	<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
+	<div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg fixed-bottom">
+	    <div class="modal-content Membershipdiv" >
+	      <form action="">
+		      <br>
+		      	<h5 class="membershipSub">멤버십 구독</h5>
+		      <br>
+		      <div class="Subdiv">
+				<div class="s s1">춘식이 폼 미쳤다</div>
+				<div class="s "><strong class="s2">9,000원</strong>/월</div>
+				<div class="s s3">특별 아트웍 제공 및 선공개 템플릿</div>
+		      </div>
+		      <br>
+		      <div class="Subjoin">
+		      	<h6><input type="submit" value="멤버십 가입하기" class="subjoin"></h6>
+		      </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+
+	
 	<!-- 이미지 업로드 모달  -->
 		<div class="modal" id="modal">
 			
@@ -252,6 +436,7 @@
 			                </div>
 			                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
 			            </form>
+			            
 				<br>
 			            <div class="fileContainer">
 			                <div class="fileInput">
@@ -259,30 +444,20 @@
 			                    <p id="fileName"></p>
 			                </div>
 			                <div class="buttonContainer">
-			                    <div class="submitButton" id="submitButton">SUBMIT</div>
-			                </div>
+			                    <div class="submitButton" id="submitButton">미리보기</div>
+			                </div>  
 			            </div>
+			            
 			        </div>
-			        <!--  
-				<form>
-				<p>
-					<h4>사진 업로드</h4><br>
-					<div class="wrapper">
-						<img src="https://i0.wp.com/adventure.co.kr/wp-content/uploads/2020/09/no-image.jpg" class="image-box" />
-						<label for="file2" class="upload-btn">
-						<input id="file2" type="file" accept="image/*"/>
-						<span>업로드</span>
-						</label>
-					</div>
-	
-				</form> -->
+			        <div class="image-show" id="image-show">
+			               
+			        </div>
+		
 			</div>
 	
 		</div>
 		
 		<!-- 구독 취소 모달  -->
-		
-		<!-- Modal -->
 		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered" role="document">
 		    <div class="modal-content">
@@ -296,7 +471,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-		        <button type="button" class="btn btn-primary">구독 취소</button>
+		        <button type="button" class="btn cancel">구독 취소</button>
 		      </div>
 		    </div>
 		  </div>
@@ -315,16 +490,14 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-		        <button type="button" class="btn btn-primary">팔로우 취소</button>
+		        <button type="button" class="btn cancel">팔로우 취소</button>
 		      </div>
 		    </div>
 		  </div>
 		</div>		
-		
-		
 
 	
 	
-</div>
+</body>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

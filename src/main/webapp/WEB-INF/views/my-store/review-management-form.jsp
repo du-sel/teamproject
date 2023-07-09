@@ -66,8 +66,8 @@
                 		<p>잘 쓰고 있습니다!</p>
                 	</div>
                 	<form class="col-lg-12" action="inquiry-management.do">
-                		<textarea maxlength="300" placeholder="답변 내용 작성" required></textarea>
-                		<input class="management-btn" type="submit" value="답변">
+                		<textarea name="review_answer" maxlength="300" placeholder="답변 내용 작성" required></textarea>
+                		<input class="management-btn insert-btn" type="submit" value="답변">
                 	</form>
                 </div>
               </div>
