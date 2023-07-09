@@ -20,7 +20,6 @@ $(()=>{
     $('#tab div').bind('click',function(e){
 
         let tab = e.target.getAttribute('id');
-          
         if(tab=='co-tab'){
             e.preventDefault();
             //$(this).removeClass('stretchRight');
@@ -30,6 +29,8 @@ $(()=>{
             $('#st-main').hide();
             $('#tab .active').css('background', '#f2f2f6'); 
 			$('#st-tab').css('background', '#dce0e3');
+        
+          	tabActive();
         }
         else if(tab=='st-tab'){
             e.preventDefault();
