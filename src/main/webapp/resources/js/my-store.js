@@ -173,9 +173,16 @@ function addActive(){
 	let path = $(location).attr('pathname');				
 	let href = $('.sidebar .sidebar-wrapper .nav li a');
 	
+	// 상품등록 페이지 수동으로 current값 주기
+	if(path.includes('insert-product')) {
+		$(href).filter("[href='product-management.do']").parent().addClass('active');
+		return;
+	}
+	
 	for(let i=0; i<href.length; i++){
 		let url = $(href[i]).attr('href');
-		if(path.includes(url.substr(0, url.indexOf('.')))){
+		if(path.includes(url.substr(0, url.indexOf('.')))) {
+			console.log(url.substr(0, url.indexOf('.')))
 			$(href[i]).parent().addClass('active');
 			break;
 		}

@@ -96,15 +96,15 @@
 							<div class="category-card d-flex flex-row">
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-design-minimal">미니멀</label>
-									<input type="checkbox" id="cate-design-minimal" name="category-design" value="미니멀">
+									<input type="checkbox" id="cate-design-minimal" name="category_design" value="미니멀">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-design-illust">일러스트</label>
-									<input type="checkbox" id="cate-design-illust" name="category-design" value="일러스트">
+									<input type="checkbox" id="cate-design-illust" name="category_design" value="일러스트">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-design-photo">포토</label>
-									<input type="checkbox" id="cate-design-photo" name="category-design" value="포토">
+									<input type="checkbox" id="cate-design-photo" name="category_design" value="포토">
 								</div>
 							</div>
 						</div>
@@ -113,43 +113,43 @@
 							<div class="category-card d-flex flex-row">
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-whole">한달 세트</label>
-									<input type="checkbox" id="cate-page-whole" name="category-page" value="한달 세트">
+									<input type="checkbox" id="cate-page-whole" name="category_page" value="한달 세트">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-monthly">먼슬리</label>
-									<input type="checkbox" id="cate-page-monthly" name="category-design" value="먼슬리">
+									<input type="checkbox" id="cate-page-monthly" name="category_page" value="먼슬리">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-weekly">위클리</label>
-									<input type="checkbox" id="cate-page-weekly" name="category-design" value="위클리">
+									<input type="checkbox" id="cate-page-weekly" name="category_page" value="위클리">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-habit">해빗트래커</label>
-									<input type="checkbox" id="cate-page-habit" name="category-design" value="해빗트래커">
+									<input type="checkbox" id="cate-page-habit" name="category_page" value="해빗트래커">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-mood">무드트래커</label>
-									<input type="checkbox" id="cate-page-mood" name="category-design" value="무드트래커">
+									<input type="checkbox" id="cate-page-mood" name="category_page" value="무드트래커">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-reading">독서트래커</label>
-									<input type="checkbox" id="cate-page-reading" name="category-design" value="독서트래커">
+									<input type="checkbox" id="cate-page-reading" name="category_page" value="독서트래커">
 								</div>		
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-expense">가계부</label>
-									<input type="checkbox" id="cate-page-expense" name="category-design" value="가계부">
+									<input type="checkbox" id="cate-page-expense" name="category_page" value="가계부">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-study">스터디</label>
-									<input type="checkbox" id="cate-page-study" name="category-design" value="스터디">
+									<input type="checkbox" id="cate-page-study" name="category_page" value="스터디">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-sticker">스티커</label>
-									<input type="checkbox" id="cate-page-sticker" name="category-design" value="스티커">
+									<input type="checkbox" id="cate-page-sticker" name="category_page" value="스티커">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-etc">그 외</label>
-									<input type="checkbox" id="cate-page-etc" name="category-design" value="그 외">
+									<input type="checkbox" id="cate-page-etc" name="category_page" value="그 외">
 								</div>
 							</div>
 						</div>

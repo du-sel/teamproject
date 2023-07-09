@@ -317,7 +317,6 @@ tab
 }
 
 #tab .active {
-	background-color: #fff;
 	width: 70%;
 	z-index: 50;
 	font-size: 20px;
@@ -342,7 +341,7 @@ header
   top: 0px;
   left: 0px;
   right: 0px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.15)!important;
+  box-shadow: 0px 0px 10px rgba(88,101,121,.25) !important;
 }
 
 .background-header .logo,
@@ -526,8 +525,8 @@ header
 }
 
 .header-area .main-nav .nav div.submenu ul li a:hover {
-  background: #f7f7f7;
-  color: #aaa!important;
+  background: #f2f2f6;
+  color: #b8b8c4!important;
   padding-left: 25px;
 }
 
@@ -726,8 +725,8 @@ header
     max-width: 100%;
   	margin: 0;
   }
-  .header-area .logo {
-    margin-left: 30px;
+  .header-area .logo img {
+    transform: scale(0.7);
   }
   .header-area .main-nav .nav-mobile {
 	  display: flex !important;
@@ -752,9 +751,18 @@ header
     -o-transition: all 0s ease 0s;
     transition: all 0s ease 0s;
     margin-left: 0px;
-   /*  display: flex!important; */
-    
   }
+  
+  .header-area .main-nav .nav>div:nth-of-type(2) {
+  	order: 1;
+  }
+  .header-area .main-nav .nav>div:nth-of-type(3) {
+  	order: 3;
+  }
+  .header-area .main-nav .nav>div:nth-of-type(1) {
+  	order: 2;
+  }
+  
   .header-area .main-nav .nav div:first-child {
   	display: block;
     	/* border-top: 1px solid #eee; */
@@ -781,11 +789,12 @@ header
     color: #191a20 !important;
   }
   .header-area .main-nav .nav div a:hover {
-    background: #eee !important;
-    color: #aaa!important;
+    background: #f2f2f6 !important;
+    color: #b8b8c4!important;
   }
   .header-area .main-nav .nav div#logo_container {
-  	display: none;
+  	/* display: none; */
+  	padding: 5px 0;
   }
   .header-area .main-nav .nav div.submenu ul {
     position: relative;
@@ -830,6 +839,24 @@ header
   }
 }
 
+
+.narrow-header {
+  border-bottom: none !important;
+  background-color: #fff;
+  height: 80px!important;
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  right: 0px;
+  /* box-shadow: 0px 0px 10px rgba(88,101,121,.25) !important; */
+  z-index: 100;
+  -webkit-transition: all .1s ease 0s;
+  -moz-transition: all .1s ease 0s;
+  -o-transition: all .1s ease 0s;
+  transition: all .1s ease 0s;
+  display: flex;
+  align-items: center;
+}
 
 
 
@@ -1534,6 +1561,11 @@ Single Product Page
   margin-right: 50px;
 }
 
+#tab-tab{
+	font-size: 16pt;
+	
+}
+
 #product .nav-tabs a{
     color: #2a2a2a;
     font-weight: bold;
@@ -1842,7 +1874,7 @@ responsive
 
 #preloader {
   overflow: hidden;
-  background-color: #81a6ea;
+  background-color: #586579;
   left: 0;
   right: 0;
   top: 0;
@@ -3722,7 +3754,20 @@ my-store common + admin common
 	.insert-btn:hover{
 	    background-color: #e97d7d !important;
 	}
-
+	
+/* notice-management, notice-popup-form */
+	#notice-management input[type=file]::file-selector-button,
+	#notice-popup-form input[type=file]::file-selector-button {
+		background: #e4e4eb;
+		border: none;
+		padding: 5px 10px;
+	}
+	#notice-management input[type=file]::file-selector-button:hover,
+	#notice-popup-form input[type=file]::file-selector-button:hover {
+		background: #586579;
+		color: #fff;
+	}
+	
 /* review, inquiry - managemnet + notice-popup, customer-center  */
 	.table-management td{
 		cursor: pointer;
@@ -3907,6 +3952,7 @@ product-management
 #product-management .info .signature-btn {
     padding: 5px;
     width: 7rem;
+    border-radius: 0.2rem;
 }
 #product-management .info .signature-btn:hover {
 	
@@ -3927,6 +3973,7 @@ product-management
 	padding: 5px;
 	background: #e4e4eb;
 	border: none;
+	border-radius: 0.2rem;
 }
 #product-management .listtop button:hover {
 	background: #586579;
@@ -4077,6 +4124,7 @@ insert-product
 	background: #e4e4eb;
 	border: none;
 	padding: 5px 10px;
+	border-radius: 0.2rem;
 }
 #insert-product input[type=file]::file-selector-button:hover {
 	background: #586579;
@@ -4159,7 +4207,6 @@ notice-management
 #notice-management .btn-box .management-btn{
 	margin-left: 5px;
 }
-
 
 /* 
 ---------------------------------------------
@@ -5099,6 +5146,7 @@ community-main
 			-webkit-align-items: center;
 			-ms-align-items: center;
 			align-items: center;
+			position: relative;
 		}
 
 
@@ -5120,7 +5168,7 @@ community-main
 				list-style: none;
 				padding: 0;
 				position: absolute;
-				left: 37em;
+				right: 30px;
 			}
 
 			#co-main .post > footer .stats li {
@@ -5568,7 +5616,6 @@ community-main
 			}
 
 		} */
-
 
 
 

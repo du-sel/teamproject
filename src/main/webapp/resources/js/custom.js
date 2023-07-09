@@ -100,6 +100,7 @@
 		$(".menu-trigger").on('click', function() {	
 			$(this).toggleClass('active');
 			$('.header-area .nav').slideToggle(200);
+			$('.header-area .nav').css('display','flex');
 		});
 	}
 
@@ -196,7 +197,6 @@
 	// Window Resize Mobile Menu Fix
 	function mobileNav() {
 		var width = $(window).width();
-		console.log($(this).find('ul'));
 		$('.submenu').on('click', function() {
 			if(width < 768) {
 				if($(this).find('ul').attr('class') == 'active'){
@@ -222,5 +222,72 @@
 			menu_flag = false;
 		}
 	}
+	
+	
+	
+	
+	
+	// 커뮤니티 소속 페이지에 있을 때 헤더 상품/크리에이터 메뉴 안보이게 하기
+	function modifyHeaderMenu(){
+		let path = $(location).attr('pathname');				
+		let st_menu = $('.header-area .store-menu');
+		
+		// 일단 임시 URI로 시험 적용
+		if(path.includes('co-')) {
+			$(st_menu).css('visibility', 'hidden');
+			return;
+		} else {
+			$(st_menu).css('visibility', 'visible');
+			return;
+		}
+	}
+
+	modifyHeaderMenu();
+
+	
+	// 커뮤니티 소속 페이지에 있을 때 헤더 / active탭 배경색 바꾸기 
+	function addHeaderBackground(){
+		let path = $(location).attr('pathname');				
+		let header = $('.header-area');
+		let co_tab = $('#co_tab');
+		
+		// 일단 임시 URI로 시험 적용
+		if(path.includes('co-')) {
+			$(header).css('background-color', '#f2f2f6');
+			// 탭 active 구현되고 나서 탭 배경색도 추가
+			return;
+		} else {
+			$(header).css('background-color', '#fff');
+			return;
+		}
+	}
+	
+	addHeaderBackground();
+	/* 나중에 여기 애니메이션도 넣어야되나 */
+	
+	
+	
+	// 좁은헤더 페이지일때 헤더 클래스값 변경 (마이스토어, 프로필)
+	function modifyHeaderType(){
+		let path = $(location).attr('pathname');				
+		let header = $('.header-area');
+		
+		// 일단 프로필에만 적용
+		// 마이스토어는 공통 URI 정한 뒤 적용 예정
+		if(path.includes('profile')) {
+			$(header).addClass('narrow-header');
+			return;
+		} else {
+			$(header).removeClass('narrow-header');
+			return;
+		}
+		
+	}
+	
+	modifyHeaderType();
+	
+	
+	
+	
 	
 })(window.jQuery);
