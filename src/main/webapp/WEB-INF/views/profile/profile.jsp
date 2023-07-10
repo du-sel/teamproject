@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
-<body id="myprofile">
+<main id="myprofile">
 	<div  class="container firstcontainer">
 		<!--상단 이미지-->
 		<div class="row topimg">
@@ -33,16 +33,12 @@
 			    <c:otherwise> <!-- 아닐 때 -->
 					<div class="col-md-2 col-lg-1 profilediv">
 						<div class="profile">
-							<img class="profileimgmodify" id="Img" src="/resources/images/사람실루엣.jpg" >
+							<img class="profileimgmodify"  src="/resources/images/사람실루엣.jpg" >
 						</div>
 					</div>
 			    </c:otherwise>
 			</c:choose>
-			
-			
-			
-			
-			
+			<!-- id="Img" -->
 
 			<div class="col-md-4 offset-md-1 col-lg-4">
 				<div class="nickname">mybulnet123</div>
@@ -60,9 +56,9 @@
 			<div class=" offset-md-1 col-md-4 offset-lg-3 col-lg-3 thriddiv">
 				<!-- 팔로우 구독 버튼  -->
 				<!-- 
-				<button id="buttonright" class="btn">팔로우</button>
+				<button id="buttonright" class="btn">팔로우</button> -->
 				<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>
-				 -->
+				
 				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
 				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
 				<!--
@@ -496,8 +492,6 @@
 		  </div>
 		</div>		
 
-	
-	
-</body>
+</main>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
