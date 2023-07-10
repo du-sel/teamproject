@@ -5722,5 +5722,23 @@ community-main
 		} */
 
 
-
-
+#header-back-color{
+	-webkit-transition: all .5s ease 0s;
+	-moz-transition: all .5s ease 0s;
+	-o-transition: all .5s ease 0s;
+	transition: all .5s ease 0s;
+	position: absolute;
+    top: 0px;
+    height: 100%;
+    background: #f2f2f6;
+}
+#body-back-color{
+	-webkit-transition: all .5s ease 0s;
+	-moz-transition: all .5s ease 0s;
+	-o-transition: all .5s ease 0s;
+	transition: all .5s ease 0s;
+	position: absolute;
+    top: 0px;
+    height: 100%;
+    background: #f2f2f6;
+}
