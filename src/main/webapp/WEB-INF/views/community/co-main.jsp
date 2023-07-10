@@ -152,7 +152,7 @@
 				<div class="header">
 					<div class="meta">
 						<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
-						<button class="insertpost inserticon"><img alt="" src="/resources/images/icon-insertpost.png"></button>
+						<button class="insertpost inserticon"><img alt="" src="/resources/images/icon-insertPost.png"></button>
 					</div>
 				</div>
 			</div>
