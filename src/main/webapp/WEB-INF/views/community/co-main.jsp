@@ -24,7 +24,7 @@
 		
 			<div class="sidebar-wrapper scroll-y-custom">
 				<section class="sidebar-post-list">
-					<nav class="sidebar_nav">
+					<nav class="sidebar-nav">
 						<ul>
 							<li class="menu active">
 								<a href="#menu">통합 피드</a>
