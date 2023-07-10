@@ -171,9 +171,9 @@
 								</div>
 								<div id="thumb-preview" class="thumb-preview"></div>
 								<input type="file" accept="image/*" name="thumbnail" id="thumbnail" 
-										onchange="imgPreview(event);" multiple="multiple">
+										onchange="imgPreview(event);" multiple="multiple" maxlength="4">
 							</div>
-							<button class="submiticon" type="submit"><img alt="" src="/resources/images/icon-submit.png"></button>
+							<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
 						</div>
 					</form>
 				</div>
@@ -657,25 +657,6 @@
 	
 	
 	
-	/* 사진 미리보기 */	
-	function imgPreview(event) {
-		
-		// 미리보기 초기화
-	    	document.querySelector("div#thumb-preview").replaceChildren();
-	    for (var image of event.target.files) {
-	    		var reader = new FileReader();
-	    		
-	  	      reader.onload = function(event) {
-	  	        var img = document.createElement("img");
-	  	        img.style.width='200px';
-	  	        img.setAttribute("src", event.target.result);
-	  	        document.querySelector("div#thumb-preview").appendChild(img);
-	  	      };
-	  	
-	  	      reader.readAsDataURL(image);
-	      
-	    }
-	  }
     
 </script>
 
