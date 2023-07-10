@@ -5,7 +5,7 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
- 
+
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
 	<main id="co-main" class="row" style="margin-top: 200px">
@@ -145,6 +145,47 @@
 		<!-- Main -->
 		<div id="main" class="col-lg-7 m-auto" > <!-- style="float: right;" -->
 			
+		
+		<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
+
+			<div>
+				<div class="header">
+					<div class="meta">
+						<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
+						<button class="insertpost inserticon"><img alt="" src="/resources/images/icon-insertpost.png"></button>
+					</div>
+				</div>
+			</div>
+
+			
+			<div>
+			  <div>
+			   <div class="col-12">
+			   		<form action="posts" method="post">
+						<div class="submitpost col-12">
+							<textarea id="co-textarea" name="" class="col-11" rows="2"></textarea>
+							<div class="row flex-column">
+								<div class="d-flex align-items-center thumb-title">
+									<h6>사진</h6>
+									<p class="must"></p>
+								</div>
+								<div id="thumb-preview" class="thumb-preview"></div>
+								<input type="file" accept="image/*" name="thumbnail" id="thumbnail" onchange="imgPreview(event);">
+							</div>
+							<button class="submiticon" type="submit"><img alt="" src="/resources/images/icon-submit.png"></button>
+						</div>
+					</form>
+				</div>
+			  </div>
+			</div>
+		</article>
+			
+			
+			
+			
+			
+			
+			
 		<!-- Post -->
 		<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
 
@@ -182,7 +223,6 @@
 			
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
   
 			<script>
 			  $(document).ready(function() {
@@ -203,7 +243,6 @@
 			    }
 			  });
 			</script>
-
 			
 			<footer>
 				<ul class="stats commment_stats">
@@ -271,8 +310,6 @@
 		<!-- Post -->
 		<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
 
-
-
 			<div>
 				<div class="title">
 					<p>
@@ -293,7 +330,7 @@
 					<img src="/resources/images/춘식이웹툰1.png" alt="" />
 				</div>
 			</div>
-
+			
 			
 			<div id="post-content" class="collapse-content">
 			  <div class="post-content-inner collapsed">
@@ -594,8 +631,11 @@
 		</section> -->
 	</main>
 </div>
-
+<script src="/resources/js/community-toggle.js"></script>
 <script>
+
+	
+
 	$(() => {
     	// body 컬러 임시
  		$('body').css('background-color', '#f2f2f6');
@@ -613,6 +653,40 @@
     		}
     	});
 	});
+	
+	/* 사진 미리보기 */
+   /*  function imgPreview(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('thumb-preview-img').style.width = '300px';
+	      document.getElementById('thumb-preview-img').src = e.target.result;
+	      document.getElementById('img-modify-white').style.display = "none";
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+		  document.getElementById('thumb-preview').style.backgroundImage = "none";
+	      document.getElementById('thumb-preview').style.backgroundColor = "#e4e4eb";
+	      document.getElementById('img-modify-white').style.display = "block";
+	  }
+	} */
+	
+	function imgPreview(event) {
+	    for (var image of event.target.files) {
+	      var reader = new FileReader();
+	
+	      reader.onload = function(event) {
+	        var img = document.createElement("img");
+	        img.style.width='200px';
+	        img.setAttribute("src", event.target.result);
+	        document.querySelector("div#thumb-preview").appendChild(img);
+	      };
+	
+	      console.log(image);
+	      reader.readAsDataURL(image);
+	    }
+	  }
+    
 </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
