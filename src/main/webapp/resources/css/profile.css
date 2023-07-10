@@ -155,12 +155,17 @@ time,mark,audio,video{
 
 /* 프로필 수정 이미지 */
 #myprofile .profileimgmodify{
-	width: 40px;
+	width: 120px;
+	height: 120px;
+ 	display: flex;
+    justify-content: center;
+    align-items: center;
+/* 	width: 40px;
 	height: 40px;
 	position: absolute;
 	left: 37px;
 	top: 36px;
-	display: none;	
+	display: none;	 */
 }
 
 #myprofile .navli{
@@ -194,7 +199,7 @@ time,mark,audio,video{
     justify-content: center;
     
 }
-#myprofile 
+
 
 #myprofile label {
     cursor: pointer;
