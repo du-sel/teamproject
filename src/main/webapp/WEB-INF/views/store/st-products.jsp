@@ -19,7 +19,27 @@
             </div>
         </div>
         <div class="container">
+        <main id="creators">
+        	<div class="row justify-content-center">
+        	    <!-- 상품정렬 버튼 추가 -->
+            	<div class="col-lg-12 d-flex justify-content-between sort">
+					<div>
+						<h5>상품정렬</h5>
+					</div>
+					<form>
+						<select name="c-sort">
+							<option>최신순</option>
+							<option>인기순</option>
+							<option>높은가격순</option>
+							<option>낮은가격순</option>
+						</select>
+					</form>
+				</div>
+        	</div>
+         </main>        	
             <div class="row">
+ 
+			
                 <div class="col-lg-4">
                     <div class="item">
 	                    <a href="product-single.do">

@@ -12,7 +12,7 @@ topimgContainer.addEventListener('mouseleave', function() {
 });
 
 
-
+/*
 // 프로필 수정이미지 보이게 하
 const profileimgContainer = document.querySelector('.profilediv');
 
@@ -25,7 +25,7 @@ profileimgContainer.addEventListener('mouseleave', function() {
   const profileimgModify = profileimgContainer.querySelector('.profileimgmodify');
   profileimgModify.style.display = 'none';
 });
-
+*/
 
 //모달창 띄우기
 const topimgModify = document.querySelector("#img-topimgmodify");
