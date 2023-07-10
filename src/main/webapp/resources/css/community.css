@@ -55,7 +55,7 @@ scroll custom
 }
 .co .header {
 	border-bottom: solid 1px rgba(160, 160, 160, 0.3);
-	height: 75px;
+	height: 65px;
 	position: relative;
 }
 .co .meta{
@@ -88,6 +88,7 @@ scroll custom
 	line-height: 0;
 	padding: 0 1.2em;
 }
+
 .co #main button{
 	background-color: #e4e4eb;
 	border-radius:5px;
@@ -103,6 +104,7 @@ scroll custom
 }
 .co #co-main .submitpost{
 	display:none;	
+	margin-bottom:10px;
 }
 .co #co-main .submitbutton{
 	display:none;
@@ -110,10 +112,19 @@ scroll custom
 	right: 77px;
 	bottom: 10px;
 }
-.co #co-main .insertpost{
+.co #co-main .inserticon{
 	position: absolute;
-	right: 0;
-	bottom: 10px;
+	right:14px;
+	bottom: 17px;
+	box-shadow:none;
+	background:none;
+}
+.co .submiticon{
+	position: absolute;
+	right:0;
+	bottom: 17px;
+	box-shadow:none !important;
+	background:none !important;
 }
 .co #co-main .divtextarea{
 	margin:20px 5px 15px 5px; 
@@ -121,6 +132,7 @@ scroll custom
 }
 .co #co-main #co-textarea{
 	display:block; 
+	margin-left:-12px;
 	margin-top: 20px;
 }
 .co .published{
@@ -147,8 +159,7 @@ scroll custom
 	clear: both;
 }
 .co #co-main .row{
-	margin-left: 0; 
-	margin-bottom:20px;
+	margin: 20px 0;
 }
 .co #co-main .comments{
 	 flex-direction: column;
@@ -173,8 +184,7 @@ scroll custom
 
 .co #co-main textarea+button{
 	float: right;
-	padding:0;
-	margin : 15px 0;
+	bottom:30px;
 }
 .co .divname{
 	width:50px; 
@@ -187,7 +197,9 @@ scroll custom
 .co #co-main .divtext{
 	margin:0 10px 20px 10px;
 }
-
+.co .inputphoto{
+	margin-bottom:10px;
+}
 
 
 

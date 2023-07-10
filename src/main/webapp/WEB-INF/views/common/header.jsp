@@ -36,14 +36,18 @@
     <link rel="stylesheet" href="/resources/css/animations.css"><!-- tab animation -->
     	<link rel="stylesheet" href="/resources/css/community.css" />
 
+	<!-- 검색창 JS -->
+    <script src="/resources/js/search.js"></script>
+
     <!-- jQuery -->
     <script src="/resources/js/jquery-2.1.0.min.js"></script>
      
+
     <!-- tab JS -->
     <script src="/resources/js/tab.js"></script>
 
-    <script src="/resources/js/community-toggle.js"></script>
     
+
     
     </head>
     
@@ -103,6 +107,17 @@
 	                            </div>
 	                            <!-- ***** Logo End ***** -->
 								<div>
+
+									<div class="search-container">
+										<div class="search-icon-container d-flex align-items-center" onclick="showSearchInput();">
+											<i class="fa fa-search" aria-hidden="true"></i>
+										</div>
+										<form name="search" action="" class="search-input-container">
+											<input type="text" name="search">
+											<button class="search-btn">검색</button>
+										</form>
+									</div>
+
 	                           		<!-- <div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
 	                          		<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div> -->
 	                          		<div id="user-menu" class="scroll-to-section submenu">

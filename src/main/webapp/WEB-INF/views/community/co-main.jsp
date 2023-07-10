@@ -5,7 +5,7 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
- 
+
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
 	<main id="co-main" class="row" style="margin-top: 200px">
@@ -144,6 +144,48 @@
 		
 		<!-- Main -->
 		<div id="main" class="col-lg-7 m-auto" > <!-- style="float: right;" -->
+			
+		
+		<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
+
+			<div>
+				<div class="header">
+					<div class="meta">
+						<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
+						<button class="insertpost inserticon"><img alt="" src="/resources/images/icon-insertpost.png"></button>
+					</div>
+				</div>
+			</div>
+
+			
+			<div>
+			  <div>
+			   <div class="col-12">
+			   		<form action="posts" method="post">
+						<div class="submitpost col-12">
+							<textarea id="co-textarea" name="" class="col-11" rows="2"></textarea>
+							<div class="row flex-column">
+								<div class="d-flex align-items-center thumb-title inputphoto">
+									<h6>사진</h6>
+									<p></p>
+								</div>
+								<div id="thumb-preview" class="thumb-preview"></div>
+								<input type="file" accept="image/*" name="thumbnail" id="thumbnail" 
+										onchange="imgPreview(event);" multiple="multiple">
+							</div>
+							<button class="submiticon" type="submit"><img alt="" src="/resources/images/icon-submit.png"></button>
+						</div>
+					</form>
+				</div>
+			  </div>
+			</div>
+		</article>
+			
+			
+			
+			
+			
+			
 			
 		<!-- Post -->
 		<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
@@ -590,8 +632,11 @@
 		</section> -->
 	</main>
 </div>
-
+<script src="/resources/js/community-toggle.js"></script>
 <script>
+
+	
+
 	$(() => {
     	// body 컬러 임시
  		$('body').css('background-color', '#f2f2f6');
@@ -609,6 +654,29 @@
     		}
     	});
 	});
+	
+	
+	
+	/* 사진 미리보기 */	
+	function imgPreview(event) {
+		
+		// 미리보기 초기화
+	    	document.querySelector("div#thumb-preview").replaceChildren();
+	    for (var image of event.target.files) {
+	    		var reader = new FileReader();
+	    		
+	  	      reader.onload = function(event) {
+	  	        var img = document.createElement("img");
+	  	        img.style.width='200px';
+	  	        img.setAttribute("src", event.target.result);
+	  	        document.querySelector("div#thumb-preview").appendChild(img);
+	  	      };
+	  	
+	  	      reader.readAsDataURL(image);
+	      
+	    }
+	  }
+    
 </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
