@@ -697,6 +697,13 @@ header
 
 
 /* 검색 버튼 */
+
+.header-area .search-container {
+	position: relative;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+}	 
 .header-area .search-icon-container {
 	margin-right: 20px;
 }
@@ -738,7 +745,7 @@ header
 .header-area .search-input-container .search-btn {
 	background: transparent;
 	position: absolute;
-	right: 40px;
+	right: 30px;
 	border: none;
 	outline: none;
 	color: #b8b8c4;
@@ -772,9 +779,6 @@ header
   .header-area.header-sticky .nav div a.active {
     color: #aaa!important;
     opacity: 1;
-  }
-  .header-area.header-sticky .nav div.search-icon a {
-    width: 100%;
   }
   .header-area {
  	/* border-bottom: 3px dotted #eee; */
@@ -830,16 +834,18 @@ header
   	order: 2;
   }
   
-  .header-area .main-nav .nav div:first-child {
+  .header-area .main-nav .nav>div:first-child {
   	display: block;
     	/* border-top: 1px solid #eee; */
   }
-  .header-area .main-nav .nav div.hidden {
+  .header-area .main-nav .nav>div.hidden {
   	display: none;
     	/* border-top: 1px solid #eee; */
   }
-  .header-area .main-nav .nav div:last-of-type {  
-  	display: block;
+  .header-area .main-nav .nav>div:last-of-type {  
+  	/* display: block; */
+  	display: flex;
+  	flex-direction: column;
   }
   .header-area.header-sticky .nav {
     margin-top: 80px !important;
@@ -847,7 +853,6 @@ header
   .header-area .main-nav .nav div {
     width: 100%;
     background: #fff;
-    	/* border-bottom: 1px solid #eee; */
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
@@ -906,6 +911,30 @@ header
 /*   .header-area .store-menu.hidden {
   	display: none;
   } */
+  
+  
+  /* 모바일 검색창 */
+  .header-area .search-container {
+    width: 100%;
+  	display: flex;
+  	justify-content: center;
+  }  
+  .header-area .search-icon-container {
+  	width: fit-content !important;
+  	margin: 0;
+  }
+  .header-area .search-input-container {
+	position: relative;
+	width: 220px;
+	left: 20px;
+	padding: 10px;
+  }
+  .header-area .nav>div:last-of-type>div:nth-of-type(1) {
+	order: 3;
+  }
+  
+  
+  
 }
 
 @media (min-width: 767px) {

@@ -94,6 +94,11 @@
 	// Scroll animation init
 	window.sr = new scrollReveal();
 	
+	
+	// 검색창
+	//showSearchInput();
+	//mobileSearch();
+	
 
 	// Menu Dropdown Toggle
 	if($('.menu-trigger').length){
@@ -187,9 +192,9 @@
 	$(window).on('resize', function() {
 		myMenu();
 		mobileNav();
-		console.log("resize");	
+		//mobileSearch();
 		setTimeout(function() {
-			$('main.broad').css("margin-top", $('header').height());
+			$('main').css("margin-top", $('header').height());
 		}, 300);
 	});
 
@@ -210,7 +215,7 @@
 	
 	// Window Resize Mobile Menu - MyMenu
 	function myMenu() {
-		var width = $(window).innerWidth();
+		let width = window.innerWidth;
 		
 		if(width <= 767 && !menu_flag) {
 			$('#user-menu').children('img').remove();
@@ -224,6 +229,9 @@
 	}
 	
 	
+
+	
+
 	
 	
 	
