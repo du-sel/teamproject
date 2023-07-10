@@ -34,3 +34,39 @@ console.log(textarea);
 		      target.style.height = DEFAULT_HEIGHT + target.scrollHeight + 'px';  //2줄일 때 높이 유지  	      	  
 	      }
 	    };
+	    
+	    
+	    function checkPhotoCount(){
+	    	var preview = document.querySelector("#thumbnail").length;
+console.log(preview);	    	
+	    }
+	    
+	    
+	    /* 사진 미리보기 */	
+	function imgPreview(event) {
+		
+		// 미리보기 초기화
+	    	document.querySelector("div#thumb-preview").replaceChildren();
+	    	var maxlength =4;
+console.log(event.target.files.length);	    	
+	    for (var image of event.target.files) {
+	    	if(event.target.files.length>maxlength){
+	    		document.querySelector("div#thumb-preview").insertAdjacentHTML("afterend", "<p>파일 개수가 4개를 초과했습니다.</p>");
+	    	}else{
+	    		var image = event.target.files[i];
+    	
+	    		var reader = new FileReader();
+	    		
+	  	      reader.onload = function(event) {
+	  	        var img = document.createElement("img");
+	  	        img.style.width='200px';
+	  	        img.setAttribute("src", event.target.result);
+	  	        document.querySelector("div#thumb-preview").appendChild(img);
+	  	      };
+	  	
+	  	      reader.readAsDataURL(image);
+	    	}
+	    	
+	      
+	    }
+	  }
