@@ -22,7 +22,7 @@
 		const DEFAULT_HEIGHT = 31; // textarea 기본 height
 	
 	    let textarea = document.getElementById('co-textarea');
-	    
+console.log(textarea);	    
 	 	// Textarea 자동 높이 조절
 	    textarea.oninput = (event) => {
 	      let target = event.target;
