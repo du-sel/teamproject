@@ -165,12 +165,13 @@
 						<div class="submitpost col-12">
 							<textarea id="co-textarea" name="" class="col-11" rows="2"></textarea>
 							<div class="row flex-column">
-								<div class="d-flex align-items-center thumb-title">
+								<div class="d-flex align-items-center thumb-title inputphoto">
 									<h6>사진</h6>
-									<p class="must"></p>
+									<p></p>
 								</div>
 								<div id="thumb-preview" class="thumb-preview"></div>
-								<input type="file" accept="image/*" name="thumbnail" id="thumbnail" onchange="imgPreview(event);">
+								<input type="file" accept="image/*" name="thumbnail" id="thumbnail" 
+										onchange="imgPreview(event);" multiple="multiple">
 							</div>
 							<button class="submiticon" type="submit"><img alt="" src="/resources/images/icon-submit.png"></button>
 						</div>
@@ -654,36 +655,25 @@
     	});
 	});
 	
-	/* 사진 미리보기 */
-   /*  function imgPreview(input) {
-	  if (input.files && input.files[0]) {
-	    var reader = new FileReader();
-	    reader.onload = function(e) {
-	      document.getElementById('thumb-preview-img').style.width = '300px';
-	      document.getElementById('thumb-preview-img').src = e.target.result;
-	      document.getElementById('img-modify-white').style.display = "none";
-	    };
-	    reader.readAsDataURL(input.files[0]);
-	  } else {
-		  document.getElementById('thumb-preview').style.backgroundImage = "none";
-	      document.getElementById('thumb-preview').style.backgroundColor = "#e4e4eb";
-	      document.getElementById('img-modify-white').style.display = "block";
-	  }
-	} */
 	
+	
+	/* 사진 미리보기 */	
 	function imgPreview(event) {
+		
+		// 미리보기 초기화
+	    	document.querySelector("div#thumb-preview").replaceChildren();
 	    for (var image of event.target.files) {
-	      var reader = new FileReader();
-	
-	      reader.onload = function(event) {
-	        var img = document.createElement("img");
-	        img.style.width='200px';
-	        img.setAttribute("src", event.target.result);
-	        document.querySelector("div#thumb-preview").appendChild(img);
-	      };
-	
-	      console.log(image);
-	      reader.readAsDataURL(image);
+	    		var reader = new FileReader();
+	    		
+	  	      reader.onload = function(event) {
+	  	        var img = document.createElement("img");
+	  	        img.style.width='200px';
+	  	        img.setAttribute("src", event.target.result);
+	  	        document.querySelector("div#thumb-preview").appendChild(img);
+	  	      };
+	  	
+	  	      reader.readAsDataURL(image);
+	      
 	    }
 	  }
     
