@@ -256,7 +256,7 @@
 
 	
 	// 커뮤니티 소속 페이지에 있을 때 헤더 / active탭 배경색 바꾸기 
-	function addHeaderBackground(){
+	/*function addHeaderBackground(){
 		let path = $(location).attr('pathname');				
 		let header = $('.header-area');
 		let co_tab = $('#co_tab');
@@ -273,6 +273,7 @@
 	}
 	
 	addHeaderBackground();
+	*/
 	/* 나중에 여기 애니메이션도 넣어야되나 */
 	
 	
