@@ -21,7 +21,7 @@
                 <div class="col-lg-3">
                     <h4>커뮤니티</h4>
                     <ul>
-                        <li><a href="#">커뮤니티</a></li>
+                        <li><a href="co-main.do">커뮤니티</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
