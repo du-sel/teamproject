@@ -18,7 +18,7 @@ $(()=>{
 	tabActive();
 	
     $('#tab div').bind('click',function(e){
-
+		
         let tab = e.target.getAttribute('id');
         if(tab=='co-tab'){
             e.preventDefault();
@@ -29,8 +29,12 @@ $(()=>{
             $('#st-main').hide();
             $('#tab .active').css('background', '#f2f2f6'); 
 			$('#st-tab').css('background', '#dce0e3');
-        
-          	tabActive();
+			
+			let path = $(location).attr('pathname');
+			let path_name = path.substr(1, path.indexOf('.')-1);
+        	if(path_name == 'profile' || path_name.includes('user-')){
+				$('#tab .active').css('background', '#fff');
+			} 	
         }
         else if(tab=='st-tab'){
             e.preventDefault();
