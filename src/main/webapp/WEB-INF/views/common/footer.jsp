@@ -117,7 +117,7 @@
 	<script src="/resources/js/black-dashboard.js"></script>
   
     <script>
-
+ 
         $(function() {
             var selectedClass = "";
             $("p").click(function(){
