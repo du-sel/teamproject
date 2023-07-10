@@ -53,7 +53,6 @@
     
     
     <body class="is-preload">
-    
 		<!-- ***** Preloader Start ***** -->
  		<div id="preloader">
 	        <div class="jumper">
@@ -64,6 +63,8 @@
 	    </div>
 	    <!-- ***** Preloader End ***** -->
 	    
+	    
+	    <div id="body-back-color"></div>
 	    
 	    
 		<!-- ***** Tab Start ***** -->
@@ -79,6 +80,7 @@
 	    
 	    <!-- ***** Header Area Start ***** -->
 	    <header class="header-area header-sticky">
+    		<div id="header-back-color"></div>
 	        <div class="container-xl">
 	            <div class="row header-row">
 	                <div class="col-12">
