@@ -91,9 +91,11 @@ time,mark,audio,video{
 	justify-content: center;
 	overflow: hidden;	
 }
+/*
 #myprofile #profile{
 	background-image: url("../imags/사람실루엣")
 }
+*/
 
 #myprofile #Img{
 	width: 120px;
@@ -157,15 +159,14 @@ time,mark,audio,video{
 #myprofile .profileimgmodify{
 	width: 120px;
 	height: 120px;
+
+	border-radius: 50%;
+
  	display: flex;
     justify-content: center;
     align-items: center;
-/* 	width: 40px;
-	height: 40px;
-	position: absolute;
-	left: 37px;
-	top: 36px;
-	display: none;	 */
+
+
 }
 
 #myprofile .navli{
@@ -261,7 +262,7 @@ time,mark,audio,video{
     position: absolute;
 }
 
-#myprofile li {
+#myprofile #li {
 	margin-bottom: 13px;
 }
 
@@ -419,24 +420,24 @@ time,mark,audio,video{
 	
 }
 
-<<<<<<< HEAD
+
 /* 팔로우 구독 취소 모달창*/
 #myprofile .minimodal{
 	width: 400px;
 	height: 300px;
-=======
+}
 /* 구독취소 모달 */
 #myprofile .modal-header, #myprofile .modal-footer{
 	border: none;
->>>>>>> refs/heads/main
+
 }
 
-<<<<<<< HEAD
+
 #myprofile .minicontent{
 	text-align: center;
 	width: 300px;
 	height: 250px;
-=======
+}
 #myprofile .cancel{
 	color: white;
 	background-color: #e97d7d;
@@ -500,6 +501,9 @@ time,mark,audio,video{
 
 
 /* 포스트부분 */
+#myprofile #co-main{
+	padding-bottom: 6px;
+}
 #myprofile #co-main .post{
 	width: inherit;
 	box-shadow: 2px 2px 5px;
@@ -507,5 +511,9 @@ time,mark,audio,video{
 #myprofile .author{
 	padding: 6px;
 	font-size: 20px;
->>>>>>> refs/heads/main
 }
+#myprofile .fade:not(.show){
+	display: none;
+	opacity: 0;
+}
+
