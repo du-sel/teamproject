@@ -147,8 +147,8 @@
 			
 		
 		<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
-			<form action="posts" method="post" name="post">
-				<input type="hidden" name="">
+			<form action="/community/posts" method="post">
+				<input type="hidden" name="_method" value="post">
 				<input type="hidden" name="post_id">
 				<div>
 					<div class="header">
@@ -195,9 +195,7 @@
 			<div>
 				<div class="title">
 					<p>
-						<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;
-							<span class="name"><input type="text" name="id" value="춘식이폼미쳤다" class="author"></span>
-						</a>
+						<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
 					</p>
 					<p>
 						<time class="published" datetime="2023-07-07">July 7, 2023</time>
@@ -319,7 +317,6 @@
 				<div class="title">
 					<p>
 						<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
-
 					</p>
 					<p>
 						<time class="published" datetime="2023-07-07">July 7, 2023</time>
@@ -442,7 +439,6 @@
 				<div class="title">
 					<p>
 						<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
-
 					</p>
 					<p>
 						<time class="published" datetime="2023-07-07">July 7, 2023</time>
