@@ -442,6 +442,9 @@
 			        <div class="image-show" id="image-show">
 			               
 			        </div>
+			        <div class="uploadbtn">
+			        	<input type="button" value="전송하기" id="uploadbtn">
+			        </div>
 		
 			</div>
 	

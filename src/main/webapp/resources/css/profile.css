@@ -499,6 +499,10 @@ time,mark,audio,video{
 	padding-top: 15px;
 }
 
+#myprofile #uploadbtn{
+	width:400px;
+	border-radius: 5px;
+}
 
 /* 포스트부분 */
 #myprofile #co-main{
