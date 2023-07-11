@@ -1,4 +1,4 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.news;
 
 public class NewsVO {
 	private int news_id;

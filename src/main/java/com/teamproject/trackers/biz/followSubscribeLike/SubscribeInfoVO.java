@@ -1,4 +1,4 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.followSubscribeLike;
 
 import java.sql.Date;
 
