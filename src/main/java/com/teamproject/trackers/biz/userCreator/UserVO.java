@@ -1,4 +1,4 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.userCreator;
 
 public class UserVO {
 	private int id;
