@@ -5,7 +5,7 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
- 
+
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
 	<main id="co-main" class="row" style="margin-top: 200px">
@@ -24,7 +24,7 @@
 		
 			<div class="sidebar-wrapper scroll-y-custom">
 				<section class="sidebar-post-list">
-					<nav class="sidebar_nav">
+					<nav class="sidebar-nav">
 						<ul>
 							<li class="menu active">
 								<a href="#menu">통합 피드</a>
@@ -145,6 +145,48 @@
 		<!-- Main -->
 		<div id="main" class="col-lg-7 m-auto" > <!-- style="float: right;" -->
 			
+		
+		<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
+
+			<div>
+				<div class="header">
+					<div class="meta">
+						<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
+						<button class="insertpost inserticon"><img alt="" src="/resources/images/icon-insertpost.png"></button>
+					</div>
+				</div>
+			</div>
+
+			
+			<div>
+			  <div>
+			   <div class="col-12">
+			   		<form action="posts" method="post" name="post">
+						<div class="submitpost col-12">
+							<textarea id="co-textarea" name="" class="col-11" rows="2"></textarea>
+							<div class="row flex-column">
+								<div class="d-flex align-items-center thumb-title inputphoto">
+									<h6>사진&nbsp;<small>최대 4개까지 업로드 가능</small></h6>
+									<p></p>
+								</div>
+								<div id="thumb-preview" class="thumb-preview"></div>
+								<input type="file" accept="image/*" name="thumbnail" id="thumbnail" 
+										onchange="imgPreview(event);" multiple="multiple">
+							</div>
+							<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
+						</div>
+					</form>
+				</div>
+			  </div>
+			</div>
+		</article>
+			
+			
+			
+			
+			
+			
+			
 		<!-- Post -->
 		<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
 
@@ -182,7 +224,6 @@
 			
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
   
 			<script>
 			  $(document).ready(function() {
@@ -203,7 +244,6 @@
 			    }
 			  });
 			</script>
-
 			
 			<footer>
 				<ul class="stats commment_stats">
@@ -271,8 +311,6 @@
 		<!-- Post -->
 		<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
 
-
-
 			<div>
 				<div class="title">
 					<p>
@@ -293,7 +331,7 @@
 					<img src="/resources/images/춘식이웹툰1.png" alt="" />
 				</div>
 			</div>
-
+			
 			
 			<div id="post-content" class="collapse-content">
 			  <div class="post-content-inner collapsed">
@@ -594,8 +632,11 @@
 		</section> -->
 	</main>
 </div>
-
+<script src="/resources/js/community-toggle.js"></script>
 <script>
+	
+	
+
 	$(() => {
     	// body 컬러 임시
  		$('body').css('background-color', '#f2f2f6');
@@ -613,6 +654,10 @@
     		}
     	});
 	});
+	
+	
+	
+    
 </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
