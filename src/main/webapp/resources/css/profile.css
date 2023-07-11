@@ -259,7 +259,7 @@ time,mark,audio,video{
     position: absolute;
 }
 
-#myprofile li {
+#myprofile #li {
 	margin-bottom: 13px;
 }
 
@@ -485,6 +485,9 @@ time,mark,audio,video{
 
 
 /* 포스트부분 */
+#myprofile #co-main{
+	padding-bottom: 6px;
+}
 #myprofile #co-main .post{
 	width: inherit;
 	box-shadow: 2px 2px 5px;
@@ -493,3 +496,8 @@ time,mark,audio,video{
 	padding: 6px;
 	font-size: 20px;
 }
+#myprofile .fade:not(.show){
+	display: none;
+	opacity: 0;
+}
+
