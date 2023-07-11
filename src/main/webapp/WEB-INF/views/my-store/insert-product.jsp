@@ -34,7 +34,8 @@
 			<h2>신규 상품 등록</h2>
       	</div>
       
-      	<form name="frm" id="frm" action="" method="post" enctype="multipart/form-data" onsubmit="insert_p_chk(this); return false;">      	
+      	<form name="frm" id="frm" action="insert-test.do" method="post" enctype="multipart/form-data" onsubmit="insert_p_chk(this); return false;">    
+
 	        <div class="row justify-content-center page-content">
 	          <div class="col-xxl-8 col-xl-10 col-lg-12 info">
 	            <div class="row name-container">
@@ -218,11 +219,11 @@
   	
   	
 	<!-- CKEditor Youtube -->
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_yt/ckeditor.js"></script>
+  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_y/ckeditor.js"></script>
 	<script>
 		$(function () {
 			CKEDITOR.replace('content', {
-				filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do',
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/product-img.do',
 				contentsCss: '/resources/css/custom.css'
 			});
 		});

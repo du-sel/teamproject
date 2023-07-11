@@ -1,17 +1,17 @@
 package com.teamproject.trackers.biz.userCreator;
 
 public class CreatorVO {
-	private int id;
+	private long id;
 	private String store_name;
 	private String bank;
 	private String account;
 	private boolean subscribe;
 	
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getStore_name() {

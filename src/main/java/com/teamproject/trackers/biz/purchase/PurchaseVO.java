@@ -3,22 +3,22 @@ package com.teamproject.trackers.biz.purchase;
 import java.sql.Date;
 
 public class PurchaseVO {
-	private int id;
-	private int bak_p_id;
+	private long id;
+	private long bak_p_id;
 	private Date cre_date;
 	private int price;
 	
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
-	public int getBak_p_id() {
+	public long getBak_p_id() {
 		return bak_p_id;
 	}
-	public void setBak_p_id(int bak_p_id) {
+	public void setBak_p_id(long bak_p_id) {
 		this.bak_p_id = bak_p_id;
 	}
 	public Date getCre_date() {

@@ -1,20 +1,20 @@
 package com.teamproject.trackers.biz.cart;
 
 public class CartVO {
-	private int id;
-	private int p_id;
+	private long id;
+	private long p_id;
 	
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
-	public int getP_id() {
+	public long getP_id() {
 		return p_id;
 	}
-	public void setP_id(int p_id) {
+	public void setP_id(long p_id) {
 		this.p_id = p_id;
 	}
 	
