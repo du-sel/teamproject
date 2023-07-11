@@ -43,7 +43,7 @@ scroll custom
 */
 
 .co #co-main .post {
-	padding: 1em 3em;
+	/* padding: 1em 3em; */
 	border-radius: 10px;
 	width: 100%;
 }
@@ -54,7 +54,7 @@ scroll custom
 	position: static !important;
 }
 .co .header {
-	height: 65px;
+	height: 55px;
 	position: relative;
 }
 .co .meta{
@@ -175,6 +175,9 @@ scroll custom
 	border: 1px solid #e4e4eb; 
 	height:59px; 
 }
+.co textarea:hover{
+	border: 1px bold #586579;
+}
 
 .co #co-main .divtextarea{
 	display:inline-block; 
@@ -199,8 +202,13 @@ scroll custom
 .co .inputphoto{
 	margin-bottom:10px;
 }
-
-
+.co input[type=file]{
+	font-size:14px;
+	/*border: 1px solid #586579;*/
+}
+.co .thumb-preview{
+	margin:15px 0;
+}
 
 
 
