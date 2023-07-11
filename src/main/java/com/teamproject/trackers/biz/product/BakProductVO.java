@@ -2,7 +2,7 @@ package com.teamproject.trackers.biz.product;
 
 import java.sql.Date;
 
-public class BakPurchaseVO {
+public class BakProductVO {
 	private int bak_p_id;
 	private String store_name;
 	private String p_name;
