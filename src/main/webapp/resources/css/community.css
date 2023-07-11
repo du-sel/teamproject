@@ -43,7 +43,7 @@ scroll custom
 */
 
 .co #co-main .post {
-	padding: 1em 3em;
+	/* padding: 1em 3em; */
 	border-radius: 10px;
 	width: 100%;
 }
@@ -54,13 +54,12 @@ scroll custom
 	position: static !important;
 }
 .co .header {
-	border-bottom: solid 1px rgba(160, 160, 160, 0.3);
-	height: 65px;
+	height: 55px;
 	position: relative;
 }
 .co .meta{
 	border-left: 0;
-	padding: 1.5em 0 0 1em;
+	/* padding: 1.5em 0 0 1em; */
 }
 .co .author{
 	float: left;
@@ -176,6 +175,9 @@ scroll custom
 	border: 1px solid #e4e4eb; 
 	height:59px; 
 }
+.co textarea:hover{
+	border: 1px bold #586579;
+}
 
 .co #co-main .divtextarea{
 	display:inline-block; 
@@ -200,8 +202,13 @@ scroll custom
 .co .inputphoto{
 	margin-bottom:10px;
 }
-
-
+.co input[type=file]{
+	font-size:14px;
+	/*border: 1px solid #586579;*/
+}
+.co .thumb-preview{
+	margin:15px 0;
+}
 
 
 

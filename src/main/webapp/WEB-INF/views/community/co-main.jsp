@@ -161,19 +161,19 @@
 			<div>
 			  <div>
 			   <div class="col-12">
-			   		<form action="posts" method="post">
+			   		<form action="posts" method="post" name="post">
 						<div class="submitpost col-12">
-							<textarea id="co-textarea" name="" class="col-11" rows="2"></textarea>
+							<textarea id="co-textarea" name="post_content" class="col-11" rows="2"></textarea>
 							<div class="row flex-column">
 								<div class="d-flex align-items-center thumb-title inputphoto">
-									<h6>사진</h6>
+									<h6>사진&nbsp;<small>최대 4개까지 업로드 가능</small></h6>
 									<p></p>
 								</div>
 								<div id="thumb-preview" class="thumb-preview"></div>
-								<input type="file" accept="image/*" name="thumbnail" id="thumbnail" 
+								<input type="file" accept="image/*" name="post_img" id="thumbnail" 
 										onchange="imgPreview(event);" multiple="multiple">
 							</div>
-							<button class="submiticon" type="submit"><img alt="" src="/resources/images/icon-submit.png"></button>
+							<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
 						</div>
 					</form>
 				</div>
@@ -634,7 +634,7 @@
 </div>
 <script src="/resources/js/community-toggle.js"></script>
 <script>
-
+	
 	
 
 	$(() => {
@@ -657,25 +657,6 @@
 	
 	
 	
-	/* 사진 미리보기 */	
-	function imgPreview(event) {
-		
-		// 미리보기 초기화
-	    	document.querySelector("div#thumb-preview").replaceChildren();
-	    for (var image of event.target.files) {
-	    		var reader = new FileReader();
-	    		
-	  	      reader.onload = function(event) {
-	  	        var img = document.createElement("img");
-	  	        img.style.width='200px';
-	  	        img.setAttribute("src", event.target.result);
-	  	        document.querySelector("div#thumb-preview").appendChild(img);
-	  	      };
-	  	
-	  	      reader.readAsDataURL(image);
-	      
-	    }
-	  }
     
 </script>
 

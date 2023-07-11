@@ -21,7 +21,6 @@
 				</div>
 			</div>
 			-->
-			
 			<c:choose>
 			    <c:when test="" >  <!-- 자신의 프로필 일 때와  -->
 					<div class="col-md-2 col-lg-1 profilediv">
@@ -32,13 +31,15 @@
 			    </c:when>
 			    <c:otherwise> <!-- 아닐 때 -->
 					<div class="col-md-2 col-lg-1 profilediv">
-						<div class="profile">
+						<div class="profile" id="profile">
+							<!-- <img  id="Img" src="/resources/images/사람실루엣.jpg" > -->
+
 							<img class="profileimgmodify"  src="/resources/images/사람실루엣.jpg" >
 						</div>
 					</div>
 			    </c:otherwise>
 			</c:choose>
-			<!-- id="Img" -->
+
 
 			<div class="col-md-4 offset-md-1 col-lg-4">
 				<div class="nickname">mybulnet123</div>
@@ -60,36 +61,34 @@
 				<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>
 				
 				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
-				<!--
+			<!--<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
+				
 		   		<div id="buttonright" onclick="onStoreModal()"><a href="#" data-toggle="modal" data-target="#store-modal">마이스튜디오 개설</a></div>
 				<div id="buttonright"><a href="sales-status.do">마이스튜디오 관리</a></div>
 				-->
 	
 			</div>
 		</div>	
-
-	</div>
-	<br>
 	
+	<br>
+
 	<!-- 탭 -->
 	<div  class="container tabcontainer shadow-sm p-3 mb-5 ">
 
 		<div style="margin:10px;">
 			
 			<ul class="nav nav-tabs" >
-			 	<li class="nav-item navli"  >
+			 	<li class="nav-item navli" id="li" >
 			 		<a class="nav-link active" href="#feed" data-toggle="tab" id="feedtabbgcolor" >피드</a>
 			 	</li>
-			 	<li class="nav-item navli" >
+			 	<li class="nav-item navli" id="li">
 			 		<a class="nav-link" href="#studio" data-toggle="tab">스튜디오</a>
 			 	</li>
-			 	<li class="nav-item navli" >
+			 	<li class="nav-item navli" id="li">
 			 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
 			 	</li>
 			</ul>
 
-			<div class="tab-content">
 				<!-- 피드 탭 -->
 				
 				<div class="tab-pane fade show active" id="feed">
@@ -97,10 +96,7 @@
 					<div class="writenew  col-sm-2 col-md-2 col-lg-2">
 						<a href="co-main.do">글 작성하기</a>
 					</div>
-					
-					<div class="container">
-
-						<main id="co-main">
+					<div id="co-main" >
 							<div id="main" class="col-sm-10 col-md-10 col-lg-10">
 							<!-- 피드 부분 -->
 							
@@ -223,11 +219,9 @@
 										</script>
 									</article>
 								</div>
-							</main>
-						</div>
+							</div>
 						
 					</div>
-				</div>
 				
 				
 				<!-- 스튜디오 탭 -->

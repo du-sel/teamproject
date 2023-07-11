@@ -34,3 +34,44 @@ console.log(textarea);
 		      target.style.height = DEFAULT_HEIGHT + target.scrollHeight + 'px';  //2줄일 때 높이 유지  	      	  
 	      }
 	    };
+	    
+	    
+	    function checkPhotoCount(){
+	    	
+console.log(length);
+			if(length> maxlength){
+				alert("파일 개수가 4개를 초과했습니다.");
+			}else{
+				if(confirm('포스트를 등록하시겠습니까?')){
+					document.post.submit();				
+				}
+			}   	
+	    }
+	    
+	    var maxlength =4;
+	    var length=0;
+	    /* 사진 미리보기 */	
+	function imgPreview(event) {
+		length=event.target.files.length;
+		// 미리보기 초기화
+	    	document.querySelector("div#thumb-preview").replaceChildren();
+	    	
+console.log(event.target.files.length);	    	
+	    for (var image of event.target.files) {    	
+	    		var reader = new FileReader();
+	    		
+	  	      reader.onload = function(event) {
+	  	        var img = document.createElement("img");
+	  	        img.style.width='200px';
+	  	        img.setAttribute("src", event.target.result);
+	  	        document.querySelector("div#thumb-preview").appendChild(img);
+	  	      };
+	  	
+	  	      reader.readAsDataURL(image); 
+	    	
+	    	
+	      
+	    }
+	    
+	
+	  }
