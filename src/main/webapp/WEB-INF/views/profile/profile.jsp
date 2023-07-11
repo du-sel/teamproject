@@ -427,7 +427,7 @@
 			                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
 			            </form>
 			            
-				<br>
+						<br>
 			            <div class="fileContainer">
 			                <div class="fileInput">
 			                    <p>FILE NAME: </p>
@@ -442,7 +442,9 @@
 			        <div class="image-show" id="image-show">
 			               
 			        </div>
-		
+					<div class="uploadbtn">
+						<input type="button" value="업로드" name="" id="uploadbtn">
+					</div>
 			</div>
 	
 		</div>

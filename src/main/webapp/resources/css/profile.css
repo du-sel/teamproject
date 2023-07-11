@@ -498,7 +498,14 @@ time,mark,audio,video{
 	margin-top: 15px;
 	padding-top: 15px;
 }
-
+#myprofile .uploadbtn{
+	position: relative;
+	top: 280px;	
+}
+#myprofile #uploadbtn{
+	width:400px;
+	border-radius: 5px;
+}
 
 /* 포스트부분 */
 #myprofile #co-main{
@@ -516,4 +523,5 @@ time,mark,audio,video{
 	display: none;
 	opacity: 0;
 }
+
 
