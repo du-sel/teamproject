@@ -500,6 +500,9 @@ time,mark,audio,video{
 }
 
 #myprofile #uploadbtn{
+	position:relative;
+	top: 270px;
+
 	width:400px;
 	border-radius: 5px;
 }
