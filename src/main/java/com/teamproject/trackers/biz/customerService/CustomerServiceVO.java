@@ -3,24 +3,24 @@ package com.teamproject.trackers.biz.customerService;
 import java.sql.Date;
 
 public class CustomerServiceVO {
-	private int csc_id;
-	private int id;
+	private long csc_id;
+	private long id;
 	private Date cre_date;
 	private String title;
 	private String content;
 	private String answer;
 	
 	
-	public int getCsc_id() {
+	public long getCsc_id() {
 		return csc_id;
 	}
-	public void setCsc_id(int csc_id) {
+	public void setCsc_id(long csc_id) {
 		this.csc_id = csc_id;
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public Date getCre_date() {

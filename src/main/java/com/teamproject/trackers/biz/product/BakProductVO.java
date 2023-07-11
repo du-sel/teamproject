@@ -3,17 +3,17 @@ package com.teamproject.trackers.biz.product;
 import java.sql.Date;
 
 public class BakProductVO {
-	private int bak_p_id;
+	private long bak_p_id;
 	private String store_name;
 	private String p_name;
 	private String thumbnail;
 	private String file;
 	
 	
-	public int getBak_p_id() {
+	public long getBak_p_id() {
 		return bak_p_id;
 	}
-	public void setBak_p_id(int bak_p_id) {
+	public void setBak_p_id(long bak_p_id) {
 		this.bak_p_id = bak_p_id;
 	}
 	public String getStore_name() {

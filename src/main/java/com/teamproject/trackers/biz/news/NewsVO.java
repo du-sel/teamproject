@@ -1,20 +1,20 @@
 package com.teamproject.trackers.biz.news;
 
 public class NewsVO {
-	private int news_id;
-	private int id;
+	private long news_id;
+	private long id;
 	
 	
-	public int getNews_id() {
+	public long getNews_id() {
 		return news_id;
 	}
-	public void setNews_id(int news_id) {
+	public void setNews_id(long news_id) {
 		this.news_id = news_id;
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 }
