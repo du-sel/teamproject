@@ -1,4 +1,4 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.popup;
 
 public class PopUpCheckVO {
 	private int pop_id;

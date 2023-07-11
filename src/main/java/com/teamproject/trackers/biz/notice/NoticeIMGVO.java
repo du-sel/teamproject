@@ -1,4 +1,4 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.notice;
 
 public class NoticeIMGVO {
 	private int n_id;

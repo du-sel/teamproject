@@ -1,4 +1,4 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.followSubscribeLike;
 
 public class FollowVO {
 	private int from_id;

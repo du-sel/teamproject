@@ -1,4 +1,4 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.notice;
 
 import java.sql.Date;
 
