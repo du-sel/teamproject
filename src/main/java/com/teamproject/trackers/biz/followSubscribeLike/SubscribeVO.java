@@ -5,7 +5,6 @@ import java.sql.Date;
 public class SubscribeVO {
 	private int subscibe_id;
 	private int id;
-	private int cid;
 	private Date subscibe_date;
 	
 	
@@ -20,12 +19,6 @@ public class SubscribeVO {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getCid() {
-		return cid;
-	}
-	public void setCid(int cid) {
-		this.cid = cid;
 	}
 	public Date getSubscibe_date() {
 		return subscibe_date;
