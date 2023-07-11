@@ -1,6 +1,6 @@
 package com.teamproject.trackers.biz.notice;
 
-public class NoticeIMGVO {
+public class NoticeImgVO {
 	private int n_id;
 	private String img;
 	
