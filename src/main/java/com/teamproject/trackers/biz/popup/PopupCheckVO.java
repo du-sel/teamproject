@@ -1,6 +1,6 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.popup;
 
-public class PopUpCheckVO {
+public class PopupCheckVO {
 	private int pop_id;
 	private int id;
 	private boolean checked;
