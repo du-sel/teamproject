@@ -1,6 +1,6 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.post;
 
-public class PostIMGVO {
+public class PostImgVO {
 	private int post_id;
 	private int id;
 	
