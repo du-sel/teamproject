@@ -21,7 +21,6 @@
 				</div>
 			</div>
 			-->
-			
 			<c:choose>
 			    <c:when test="" >  <!-- 자신의 프로필 일 때와  -->
 					<div class="col-md-2 col-lg-1 profilediv">
@@ -32,7 +31,7 @@
 			    </c:when>
 			    <c:otherwise> <!-- 아닐 때 -->
 					<div class="col-md-2 col-lg-1 profilediv">
-
+						<div class="profile" id="profile">
 							<!-- <img  id="Img" src="/resources/images/사람실루엣.jpg" > -->
 
 							<img class="profileimgmodify"  src="/resources/images/사람실루엣.jpg" >
@@ -62,18 +61,17 @@
 				<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>
 				
 				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
-				<!--
+			<!--<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
+				
 		   		<div id="buttonright" onclick="onStoreModal()"><a href="#" data-toggle="modal" data-target="#store-modal">마이스튜디오 개설</a></div>
 				<div id="buttonright"><a href="sales-status.do">마이스튜디오 관리</a></div>
 				-->
 	
 			</div>
 		</div>	
-
-	</div>
-	<br>
 	
+	<br>
+
 	<!-- 탭 -->
 	<div  class="container tabcontainer shadow-sm p-3 mb-5 ">
 

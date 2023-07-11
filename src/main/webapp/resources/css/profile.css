@@ -159,25 +159,14 @@ time,mark,audio,video{
 #myprofile .profileimgmodify{
 	width: 120px;
 	height: 120px;
-<<<<<<< HEAD
 
 	border-radius: 50%;
-=======
+
  	display: flex;
     justify-content: center;
     align-items: center;
-/* 	width: 40px;
-	height: 40px;
->>>>>>> refs/heads/main
-	position: absolute;
-<<<<<<< HEAD
 
-	
-=======
-	left: 37px;
-	top: 36px;
-	display: none;	 */
->>>>>>> refs/heads/main
+
 }
 
 #myprofile .navli{
@@ -431,24 +420,24 @@ time,mark,audio,video{
 	
 }
 
-<<<<<<< HEAD
+
 /* 팔로우 구독 취소 모달창*/
 #myprofile .minimodal{
 	width: 400px;
 	height: 300px;
-=======
+}
 /* 구독취소 모달 */
 #myprofile .modal-header, #myprofile .modal-footer{
 	border: none;
->>>>>>> refs/heads/main
+
 }
 
-<<<<<<< HEAD
+
 #myprofile .minicontent{
 	text-align: center;
 	width: 300px;
 	height: 250px;
-=======
+}
 #myprofile .cancel{
 	color: white;
 	background-color: #e97d7d;
@@ -522,7 +511,6 @@ time,mark,audio,video{
 #myprofile .author{
 	padding: 6px;
 	font-size: 20px;
->>>>>>> refs/heads/main
 }
 #myprofile .fade:not(.show){
 	display: none;
