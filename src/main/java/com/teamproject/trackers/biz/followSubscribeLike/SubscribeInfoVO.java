@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class SubscribeInfoVO {
 	private int subscibe_id;
+	private int id;
 	private String content;
 	private int price;
 	
@@ -13,6 +14,12 @@ public class SubscribeInfoVO {
 	}
 	public void setSubscibe_id(int subscibe_id) {
 		this.subscibe_id = subscibe_id;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getContent() {
 		return content;
