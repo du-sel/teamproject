@@ -1,10 +1,10 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.purchase;
 
 import java.sql.Date;
 
 public class PurchaseVO {
 	private int id;
-	private int p_id;
+	private int bak_p_id;
 	private Date cre_date;
 	private int price;
 	
@@ -15,11 +15,11 @@ public class PurchaseVO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getP_id() {
-		return p_id;
+	public int getBak_p_id() {
+		return bak_p_id;
 	}
-	public void setP_id(int p_id) {
-		this.p_id = p_id;
+	public void setBak_p_id(int bak_p_id) {
+		this.bak_p_id = bak_p_id;
 	}
 	public Date getCre_date() {
 		return cre_date;
