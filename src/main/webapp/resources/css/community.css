@@ -59,7 +59,7 @@ scroll custom
 }
 .co .meta{
 	border-left: 0;
-	padding: 1.5em 0 0 1em;
+	/* padding: 1.5em 0 0 1em; */
 }
 .co .author{
 	float: left;
