@@ -8,7 +8,7 @@
 
 function onSigninModal() { $('.modal-content').load("signin-modal.do"); }
 function onSignupModal() { $('.modal-content').load("signup-modal.do"); }
-function onStoreModal() { $('.modal-content').load("store-create-modal.do"); }
+function onStoreModal() { $('#store-modal .modal-content').load("store-create-modal.do"); }
 function changeSignupModal(){ $('.scroll-to-section').eq(1).click(); } 		// signin-modal.jsp에서 사용
 
 let email_flag = -1;
