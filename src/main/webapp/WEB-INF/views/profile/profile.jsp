@@ -32,25 +32,15 @@
 			    </c:when>
 			    <c:otherwise> <!-- 아닐 때 -->
 					<div class="col-md-2 col-lg-1 profilediv">
-						<div class="profile">
-<<<<<<< HEAD
+
 							<!-- <img  id="Img" src="/resources/images/사람실루엣.jpg" > -->
-=======
->>>>>>> refs/heads/main
+
 							<img class="profileimgmodify"  src="/resources/images/사람실루엣.jpg" >
 						</div>
 					</div>
 			    </c:otherwise>
 			</c:choose>
-<<<<<<< HEAD
-			<!-- id="Img"  class="profileimgmodify" -->
-			
-			
-			
-			
-=======
-			<!-- id="Img" -->
->>>>>>> refs/heads/main
+
 
 			<div class="col-md-4 offset-md-1 col-lg-4">
 				<div class="nickname">mybulnet123</div>
