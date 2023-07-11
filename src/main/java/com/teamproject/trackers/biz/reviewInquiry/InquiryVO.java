@@ -3,31 +3,31 @@ package com.teamproject.trackers.biz.reviewInquiry;
 import java.sql.Date;
 
 public class InquiryVO {
-	private int inquiry_id;
-	private int p_id;
-	private int id;
+	private long inquiry_id;
+	private long p_id;
+	private long id;
 	private Date cre_date;
 	private String title;
 	private String content;
 	private String answer;
 	
 	
-	public int getInquiry_id() {
+	public long getInquiry_id() {
 		return inquiry_id;
 	}
-	public void setInquiry_id(int inquiry_id) {
+	public void setInquiry_id(long inquiry_id) {
 		this.inquiry_id = inquiry_id;
 	}
-	public int getP_id() {
+	public long getP_id() {
 		return p_id;
 	}
-	public void setP_id(int p_id) {
+	public void setP_id(long p_id) {
 		this.p_id = p_id;
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public Date getCre_date() {

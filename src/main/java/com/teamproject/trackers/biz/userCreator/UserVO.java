@@ -1,7 +1,7 @@
 package com.teamproject.trackers.biz.userCreator;
 
 public class UserVO {
-	private int id;
+	private long id;
 	private String email;
 	private String password;
 	private String name;
@@ -12,10 +12,10 @@ public class UserVO {
 	private String bg_img;
 	
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getEmail() {

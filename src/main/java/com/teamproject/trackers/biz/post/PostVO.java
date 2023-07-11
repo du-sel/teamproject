@@ -3,29 +3,29 @@ package com.teamproject.trackers.biz.post;
 import java.sql.Date;
 
 public class PostVO {
-	private int post_id;
-	private int id;
-	private int p_id;
+	private long post_id;
+	private long id;
+	private long p_id;
 	private Date cre_date;
 	private String content;
 	
 	
-	public int getPost_id() {
+	public long getPost_id() {
 		return post_id;
 	}
-	public void setPost_id(int post_id) {
+	public void setPost_id(long post_id) {
 		this.post_id = post_id;
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
-	public int getP_id() {
+	public long getP_id() {
 		return p_id;
 	}
-	public void setP_id(int p_id) {
+	public void setP_id(long p_id) {
 		this.p_id = p_id;
 	}
 	public Date getCre_date() {
