@@ -152,7 +152,7 @@
 				<div class="header">
 					<div class="meta">
 						<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
-						<button class="insertpost inserticon"><img alt="" src="/resources/images/icon-insertPost.png"></button>
+						<button class="insertpost inserticon"><img alt="" src="/resources/images/icon-insertpost.png"></button>
 					</div>
 				</div>
 			</div>
@@ -161,17 +161,17 @@
 			<div>
 			  <div>
 			   <div class="col-12">
-			   		<form action="posts" method="post">
+			   		<form action="posts" method="post" name="post">
 						<div class="submitpost col-12">
 							<textarea id="co-textarea" name="" class="col-11" rows="2"></textarea>
 							<div class="row flex-column">
 								<div class="d-flex align-items-center thumb-title inputphoto">
-									<h6>사진</h6>
+									<h6>사진&nbsp;<small>최대 4개까지 업로드 가능</small></h6>
 									<p></p>
 								</div>
 								<div id="thumb-preview" class="thumb-preview"></div>
 								<input type="file" accept="image/*" name="thumbnail" id="thumbnail" 
-										onchange="imgPreview(event);" multiple="multiple" maxlength="4">
+										onchange="imgPreview(event);" multiple="multiple">
 							</div>
 							<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
 						</div>
@@ -634,7 +634,7 @@
 </div>
 <script src="/resources/js/community-toggle.js"></script>
 <script>
-
+	
 	
 
 	$(() => {

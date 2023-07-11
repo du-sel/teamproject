@@ -37,24 +37,27 @@ console.log(textarea);
 	    
 	    
 	    function checkPhotoCount(){
-	    	var preview = document.querySelector("#thumbnail").length;
-console.log(preview);	    	
+	    	
+console.log(length);
+			if(length> maxlength){
+				alert("파일 개수가 4개를 초과했습니다.");
+			}else{
+				if(confirm('포스트를 등록하시겠습니까?')){
+					document.post.submit();				
+				}
+			}   	
 	    }
 	    
-	    
+	    var maxlength =4;
+	    var length=0;
 	    /* 사진 미리보기 */	
 	function imgPreview(event) {
-		
+		length=event.target.files.length;
 		// 미리보기 초기화
 	    	document.querySelector("div#thumb-preview").replaceChildren();
-	    	var maxlength =4;
+	    	
 console.log(event.target.files.length);	    	
-	    for (var image of event.target.files) {
-	    	if(event.target.files.length>maxlength){
-	    		document.querySelector("div#thumb-preview").insertAdjacentHTML("afterend", "<p>파일 개수가 4개를 초과했습니다.</p>");
-	    	}else{
-	    		var image = event.target.files[i];
-    	
+	    for (var image of event.target.files) {    	
 	    		var reader = new FileReader();
 	    		
 	  	      reader.onload = function(event) {
@@ -64,9 +67,11 @@ console.log(event.target.files.length);
 	  	        document.querySelector("div#thumb-preview").appendChild(img);
 	  	      };
 	  	
-	  	      reader.readAsDataURL(image);
-	    	}
+	  	      reader.readAsDataURL(image); 
+	    	
 	    	
 	      
 	    }
+	    
+	
 	  }
