@@ -1,9 +1,8 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.followSubscribeLike;
 
 public class FollowVO {
 	private int from_id;
 	private int to_id;
-	private boolean subscribe;
 	
 	
 	public int getFrom_id() {
@@ -17,11 +16,5 @@ public class FollowVO {
 	}
 	public void setTo_id(int to_id) {
 		this.to_id = to_id;
-	}
-	public boolean isSubscribe() {
-		return subscribe;
-	}
-	public void setSubscribe(boolean subscribe) {
-		this.subscribe = subscribe;
 	}
 }
