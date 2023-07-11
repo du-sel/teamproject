@@ -1,4 +1,4 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.product;
 
 public class DesignCatetoryVO {
 	private int p_id;
