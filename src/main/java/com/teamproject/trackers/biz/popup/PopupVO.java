@@ -1,8 +1,8 @@
-package com.teamproject.trackers.vo;
+package com.teamproject.trackers.biz.popup;
 
 import java.sql.Date;
 
-public class PopUpVO {
+public class PopupVO {
 	private int pop_id;
 	private Date start_date;
 	private Date end_date;
