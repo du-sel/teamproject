@@ -48,7 +48,7 @@ scroll custom
 	width: 100%;
 }
 .co #co-main{
-	margin: 250px auto;
+	margin: 250px auto; !import
 }
 .co #co-main .title{
 	position: static !important;
@@ -75,8 +75,13 @@ scroll custom
 }
 .co #co-main .published {
     float: right;
+    text-align:right;
+    border:none;
     margin-top: 0 !important;
     /* margin-top: -7px; */
+}
+.published:focus-visible, .author:focus-visible{
+	outline:none;
 }
 .co #co-main button{
 	background-color: #e4e4eb;
@@ -147,7 +152,7 @@ scroll custom
 	width:100%;
 }
 
-.co #co-main .footer{
+.co footer{
 	background-color: #fff; 
 	margin:40px 0;
 }
@@ -212,7 +217,9 @@ scroll custom
 	border:1px solid #e4e4eb;
 	margin:10px 0 0 -12px;
 }
-
+.co .co-post-margin{
+	margin:0 auto;
+}
 
 
 /* 
