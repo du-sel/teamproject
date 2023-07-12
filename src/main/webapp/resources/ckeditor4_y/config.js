@@ -7,7 +7,6 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 		config.language = 'ko';
 		config.height = '400px';  //Editor 높이 
-		config.filebrowserUploadMethod = 'form'; 
 	
 		config.toolbarGroups = [
 		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
