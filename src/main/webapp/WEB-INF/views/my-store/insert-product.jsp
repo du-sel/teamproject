@@ -195,22 +195,24 @@
 	
 	
 	<!-- CKEditor standard -->
-<%--  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4/ckeditor.js"></script>
+<%--   	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor_re/ckeditor.js"></script>
 	<script>
 		$(function () {
 			CKEDITOR.replace('content', {
-				filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do',
+				//filebrowserUploadMethod : 'form',
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/product-img.do',
 				contentsCss: '/resources/css/custom.css'
 			});
 		});
 	</script> --%>
 	
 	<!-- CKEditor Custom -->
-<%--   	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_custom/ckeditor.js"></script>
+<%--    	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_custom/ckeditor.js"></script>
 	<script>
 		$(function () {
 			CKEDITOR.replace('content', {
-				filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do',
+				filebrowserUploadMethod : 'form',
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/product-img.do',
 				contentsCss: '/resources/css/custom.css'
 			});
 		});
@@ -219,10 +221,11 @@
   	
   	
 	<!-- CKEditor Youtube -->
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_y/ckeditor.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_y/ckeditor.js"></script>
 	<script>
 		$(function () {
 			CKEDITOR.replace('content', {
+				//filebrowserUploadMethod : 'form',
 				filebrowserUploadUrl : '${pageContext.request.contextPath}/product-img.do',
 				contentsCss: '/resources/css/custom.css'
 			});
