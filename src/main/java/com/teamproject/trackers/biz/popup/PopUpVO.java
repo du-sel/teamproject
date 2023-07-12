@@ -3,17 +3,17 @@ package com.teamproject.trackers.biz.popup;
 import java.sql.Date;
 
 public class PopUpVO {
-	private int pop_id;
+	private long pop_id;
 	private Date start_date;
 	private Date end_date;
 	private String title;
 	private String img;
 	
 	
-	public int getPop_id() {
+	public long getPop_id() {
 		return pop_id;
 	}
-	public void setPop_id(int pop_id) {
+	public void setPop_id(long pop_id) {
 		this.pop_id = pop_id;
 	}
 	public Date getStart_date() {

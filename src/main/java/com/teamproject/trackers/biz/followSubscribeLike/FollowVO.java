@@ -1,27 +1,19 @@
 package com.teamproject.trackers.biz.followSubscribeLike;
 
 public class FollowVO {
-	private int from_id;
-	private int to_id;
-	private boolean subscribe;
+	private long from_id;
+	private long to_id;
 	
-	
-	public int getFrom_id() {
+	public long getFrom_id() {
 		return from_id;
 	}
-	public void setFrom_id(int from_id) {
+	public void setFrom_id(long from_id) {
 		this.from_id = from_id;
 	}
-	public int getTo_id() {
+	public long getTo_id() {
 		return to_id;
 	}
-	public void setTo_id(int to_id) {
+	public void setTo_id(long to_id) {
 		this.to_id = to_id;
-	}
-	public boolean isSubscribe() {
-		return subscribe;
-	}
-	public void setSubscribe(boolean subscribe) {
-		this.subscribe = subscribe;
 	}
 }

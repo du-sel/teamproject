@@ -1,8 +1,8 @@
 package com.teamproject.trackers.biz.product;
 
 public class ProductVO {
-	private int p_id;
-	private int id;
+	private long p_id;
+	private long id;
 	private String p_name;
 	private int price;
 	private int sale;
@@ -11,16 +11,16 @@ public class ProductVO {
 	private boolean signature;
 	
 	
-	public int getP_id() {
+	public long getP_id() {
 		return p_id;
 	}
-	public void setP_id(int p_id) {
+	public void setP_id(long p_id) {
 		this.p_id = p_id;
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getP_name() {

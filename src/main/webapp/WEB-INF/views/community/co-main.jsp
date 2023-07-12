@@ -147,38 +147,40 @@
 			
 		
 		<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
-
-			<div>
-				<div class="header">
-					<div class="meta">
-						<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
-						<button class="insertpost inserticon"><img alt="" src="/resources/images/icon-insertpost.png"></button>
+			<form action="/community/posts" method="post">
+				<input type="hidden" name="_method" value="post">
+				<input type="hidden" name="post_id">
+				<div>
+					<div class="header">
+						<div class="meta">
+							<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;
+								<span class="name"><input type="text" name="id" value="춘식이폼미쳤다" class="author"></span>
+							</a>
+							<button class="insertpost inserticon" type="button"><img alt="" src="/resources/images/icon-insertpost.png"></button>
+						</div>
 					</div>
 				</div>
-			</div>
 
 			
-			<div>
-			  <div>
 			   <div class="col-12">
-			   		<form action="posts" method="post" name="post">
+			   		
 						<div class="submitpost col-12">
-							<textarea id="co-textarea" name="post_content" class="col-11" rows="2"></textarea>
+							<textarea id="co-textarea" name="content" class="col-11" rows="2"></textarea>
+							<input type="text" name="p_id" id="p_id" placeholder="태그 입력">
 							<div class="row flex-column">
 								<div class="d-flex align-items-center thumb-title inputphoto">
 									<h6>사진&nbsp;<small>최대 4개까지 업로드 가능</small></h6>
 									<p></p>
 								</div>
 								<div id="thumb-preview" class="thumb-preview"></div>
-								<input type="file" accept="image/*" name="post_img" id="thumbnail" 
+								<input type="file" accept="image/*" name="post-img" id="thumbnail" 
 										onchange="imgPreview(event);" multiple="multiple">
 							</div>
 							<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
 						</div>
-					</form>
-				</div>
-			  </div>
-			</div>
+					</div>
+				</form>
+			
 		</article>
 			
 			
@@ -315,7 +317,6 @@
 				<div class="title">
 					<p>
 						<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
-
 					</p>
 					<p>
 						<time class="published" datetime="2023-07-07">July 7, 2023</time>
@@ -438,7 +439,6 @@
 				<div class="title">
 					<p>
 						<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
-
 					</p>
 					<p>
 						<time class="published" datetime="2023-07-07">July 7, 2023</time>
