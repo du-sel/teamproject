@@ -54,7 +54,7 @@
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter"></property>
-		<property name="packagesToScan" value="com.mycompany.biz.board"></property>
+		<property name="packagesToScan" value="com.teamproject.trackers.biz.userCreator"></property>
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -66,16 +66,14 @@
 			</props>
 		</property>
 	</bean>
-	
-	
-	
+	<jpa:repositories base-package="com.teamproject.trackers.biz.userCreator"></jpa:repositories>
 		
 	<!-- 트랜잭션 부분에서 추가 -->
-	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory"/>
 	</bean>
 	
-	<tx:advice id="txAdvice" transaction-manager="txManager">
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="get*" read-only="true"/>
 			<tx:method name="*"/>
@@ -84,8 +82,9 @@
 	
 	<!-- 트랜잭션 적용 -->
 	<aop:config>
-		<aop:pointcut id="txPointcut" expression="execution(* com.mycompany.biz..*.*(..))"/>
+		<aop:pointcut id="txPointcut" expression="execution(* com.teamproject.trackers.biz..*.*(..))"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
 	</aop:config>
+
 
 </beans>

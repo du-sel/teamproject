@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="/resources/css/modal.css"><!-- modal -->
 
     <link rel="stylesheet" href="/resources/css/animations.css"><!-- tab animation -->
-    	<link rel="stylesheet" href="/resources/css/community.css" />
+    <link rel="stylesheet" href="/resources/css/community.css" />
 
 	<!-- 검색창 JS -->
     <script src="/resources/js/search.js"></script>
@@ -134,7 +134,6 @@
 		                                    <li><a href="logout.do">로그아웃</a></li>
 		                                </ul>
 	                          		</div>
-	                          		<div class="scroll-to-section" onclick="onStoreModal();"><a href="#" data-toggle="modal" data-target="#modal">마이프로필</a></div>
 	                            </div>
 	                        </div> 	       
 							

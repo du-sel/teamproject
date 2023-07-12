@@ -11,12 +11,28 @@ function onSignupModal() { $('.modal-content').load("signup-modal.do"); }
 function onStoreModal() { $('#store-modal .modal-content').load("store-create-modal.do"); }
 function changeSignupModal(){ $('.scroll-to-section').eq(1).click(); } 		// signin-modal.jsp에서 사용
 
+
 let email_flag = -1;
 let pwd_flag = false;
 let store_flag = -1;
 let url_flag = -1;
 let inputs, parents;
 let pwd_chk_str = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
+
+// 로그인
+function login(){
+	if($('email').val() == '') {
+		alert("아이디를 작성입력해주세요.");
+		$('email').focus();
+		return false;
+	}else if($('password').val() == '') {
+		alert("비밀번호를 작성입력해주세요.");
+		$('password').focus()
+		return false;
+	}
+	$('path').val($(location).attr('pathname').substr(1));	
+	return true;
+}
 
 // 중복확인 초기화
 function chk_reset(flag){
@@ -60,28 +76,28 @@ function tel_hyphen(target){
 function url_chk(url, url_chk, idx, path){			// 기존 url(수정 시 사용), 중복된 url인지(후에 db로, true가 중복), input 위치, 함수 사용 페이지
 	
 	if(path == 'store'){
-		inputs = $('#store-management input');
+		inputs = $('#store-management .form-control');
 		parents = $('.store-form');
 	}else if(path == 'modify'){
-		inputs = $('#modify-input-container input');
+		inputs = $('#modify-input-container .form-control');
 		parents = $('.form-group');
 	}else{
-		inputs = $('#modal input');
+		inputs = $('#modal .form-control');
 		parents = $('.form-group');
 	}
 	
 	let p = $(parents[idx]).children().last();
 	
-	if(url.length > 0 && $(inputs[idx+1]).val() == url){
+	if(url.length > 0 && $(inputs[idx]).val() == url){
 		p.text("기존 URL을 사용합니다.").css('color','#586579');
 		url_flag = 1;
 	}else if(url_chk){
 		p.text("중복된 URL입니다.").css('color','#e97d7d');
 		url_flag = 0;
-	}else if($(inputs[idx+1]).val() != "" && !url_chk){
+	}else if($(inputs[idx]).val() != "" && !url_chk){
 		p.text("사용 가능한 URL입니다.").css('color','#586579');
 		url_flag = 1;
-	}else if($(inputs[idx+1]).val() == ""){
+	}else if($(inputs[idx]).val() == ""){
 		p.text("URL이 입력되지 않았습니다.").css('color','#e97d7d');
 		url_flag = 0;
 	}
@@ -89,7 +105,7 @@ function url_chk(url, url_chk, idx, path){			// 기존 url(수정 시 사용), �
 
 //비밀번호 유효성 검사
 function pwd_validation(id, target){
-	inputs = $('#'+id+' input');
+	inputs = $('#'+id+' .form-control');
 	parents = $('.form-group');
 	
 	let p = $(parents[1]).children().last();
@@ -106,7 +122,7 @@ function pwd_validation(id, target){
 
 //이메일 중복 체크(?)
 function email_chk(email_chk){
-	inputs = $('#modal input');
+	inputs = $('#modal .form-control');
 	parents = $('.form-group');
 	
 	let p = $(parents[0]).children().last();
@@ -114,6 +130,7 @@ function email_chk(email_chk){
 	let email_chk_str = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	
 	if(!email_chk_str.test(email)){
+		console.log($(inputs[1]));
 		p.text("이메일 형식에 맞지 않습니다.").css('color','#e97d7d');
 		email_flag = 0;
 	}else if(email == ""){
@@ -161,7 +178,7 @@ function change_pwd_chk(pwd){
 /***** singup-modal.jsp *****/
 // singup-modal.jsp 유효성 검사 판단
 function sign_chk(){    	
-	inputs = $('#modal input');
+	inputs = $('#modal .form-control');
 	parents = $('.form-group');
 	
 	if(email_flag == -1 || url_flag == -1){
@@ -175,12 +192,13 @@ function sign_chk(){
 		return false;
 	}
 	
+	$('path').val($(location).attr('pathname').substr(1));
 	return true;
 }
 
 // 비밀번호 체크 실시간 확인
 function pwd_chk(){
-	inputs = $('#modal input');
+	inputs = $('#modal .form-control');
 	parents = $('.form-group');
 	
 	let p = $(parents[2]).children().last();
@@ -209,7 +227,7 @@ function pwd_chk(){
 /***** store-create-modal.jsp *****/
 //store-create-modal.jsp 유효성 검사 판단
 function store_create_chk(){
-	inputs = $('#modal input');
+	inputs = $('#modal .form-control');
 	parents = $('.form-group');
 	
 	let email = re_chk("admin@naver.com", 2);
@@ -232,10 +250,10 @@ function store_create_chk(){
 // 스토어 이름 체크
 function store_chk(old_store, store_chk, path){				// 기존 store 이름, store 이름 존재 여부, 페이지 path
 	if(path == 'store'){
-		inputs = $('#store-management input');
+		inputs = $('#store-management .form-control');
 		parents = $('.store-form');
 	}else{
-		inputs = $('#modal input');
+		inputs = $('#modal .form-control');
 		parents = $('.form-group');
 	}
 	
@@ -259,7 +277,7 @@ function store_chk(old_store, store_chk, path){				// 기존 store 이름, store
 
 
 function re_chk(value, idx){
-	inputs = $('#modal input');
+	inputs = $('#modal .form-control');
 	parents = $('.form-group');
 	
 	let p = $(parents[idx]).children().last();

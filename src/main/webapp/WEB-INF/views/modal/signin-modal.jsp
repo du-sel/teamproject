@@ -15,7 +15,8 @@
 		<h4 class="font-weight-bold">Sign In</h4>
 	</div>
 	<div class="d-flex flex-column text-center">
- 		<form action="" method="post">
+ 		<form action="login.do" method="post" onsubmit="return login();">
+ 			<input type="hidden" name="path" value="">
 			<div class="form-group">		<!-- 아이디(이메일) -->
 				<div class="input-group">		
 					<span class="input-group-addon"><i class="fa fa-user"></i></span>
