@@ -44,12 +44,10 @@
 	</servlet>
 
 
-	<!-- Map all requests to the DispatcherServlet for handling -->
 	<servlet-mapping>
 		<servlet-name>action</servlet-name>
-		<url-pattern>*.do</url-pattern>
-		<!-- <url-pattern>/*</url-pattern> -->
-		<!-- url 패턴 변경 예정 -->
+		<url-pattern>/</url-pattern>
+		<!-- url 패턴 변경 -->
 	</servlet-mapping>
 
 	<!-- HTTP Method Filter -->
