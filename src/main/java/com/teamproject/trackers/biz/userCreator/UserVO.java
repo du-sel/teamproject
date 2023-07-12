@@ -1,11 +1,26 @@
 package com.teamproject.trackers.biz.userCreator;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user")
 public class UserVO {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	@Column(name="email")
 	private String email;
+	@Column(name="password")
 	private String password;
 	private String name;
 	private String tel;
+	private String url;
 	private String instagram;
 	private String youtube;
 	private String profile_img;
@@ -41,6 +56,12 @@ public class UserVO {
 	}
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public String getInstagram() {
 		return instagram;
