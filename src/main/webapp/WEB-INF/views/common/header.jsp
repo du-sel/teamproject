@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -103,7 +104,7 @@
 								</div>
 	                            <!-- ***** Logo Start ***** -->
 		                        <div id="logo_container">
-	                                <a href="st-main.do" class="logo">
+	                                <a href="/store/main" class="logo">
 	                                    <img src="/resources/images/trackers-navy.svg">
 	                                </a>
 	                            </div>
@@ -119,21 +120,26 @@
 											<button class="search-btn">검색</button>
 										</form>
 									</div>
-
-	                           		<div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
-	                          		<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div>
-	                          		<div id="user-menu" class="scroll-to-section submenu">
-	                          			<img src="/resources/images/baner-right-image-02.jpg" alt="프로필사진" id="profile-image">
-	                          			<ul>
-		                                    <li><a href="cart.do">장바구니</a></li>
-		                                    <li><a href="news.do">내 소식</a></li>
-		                                    <li><a href="purchase-history.do">구매 내역</a></li>
-		                                    <li><a href="inquiry-history.do">문의 내역</a></li>
-		                                    <li><a href="user-modify.do">회원정보 변경</a></li>
-		                                    <li><a href="user-pwd-modify.do">비밀번호 변경</a></li>
-		                                    <li><a href="logout.do">로그아웃</a></li>
-		                                </ul>
-	                          		</div>
+									<c:choose>
+										<c:when test="${!empty sessionScope.id}"> <!-- if와 동일 -->
+											<div id="user-menu" class="scroll-to-section submenu">
+			                          			<img src="/resources/images/baner-right-image-02.jpg" alt="프로필사진" id="profile-image">
+			                          			<ul>
+				                                    <li><a href="cart.do">장바구니</a></li>
+				                                    <li><a href="news.do">내 소식</a></li>
+				                                    <li><a href="purchase-history.do">구매 내역</a></li>
+				                                    <li><a href="inquiry-history.do">문의 내역</a></li>
+				                                    <li><a href="/users?path=info">회원정보 변경</a></li>
+				                                    <li><a href="/users?path=pwd">비밀번호 변경</a></li>
+				                                    <li><a href="/users/logout">로그아웃</a></li>
+				                                </ul>
+			                          		</div>
+										</c:when>
+										<c:otherwise> 
+											<div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
+	                          				<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div>
+	                          			</c:otherwise>
+									</c:choose>
 	                            </div>
 	                        </div> 	       
 							

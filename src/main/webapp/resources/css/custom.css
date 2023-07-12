@@ -2497,7 +2497,8 @@ user-modify, user-pwd-modify
 	text-decoration: underline !important;
 	cursor: pointer;
 	width: max-content;
-	margin: 0 auto
+	margin: 0 auto;
+	border: none;
 }
 .user-modify #modify-input-container .remove-container .user-remove:hover{
 	color: #b8b8c4;
@@ -4375,6 +4376,7 @@ store-management
 	margin: 0 auto;
 	width: max-content;
 	cursor: pointer;
+	border: none;
 }
 #store-management .store-remove:hover{
 	color: #b8b8c4;

@@ -13,8 +13,8 @@
 		<h4 class="font-weight-bold">Sign Up</h4>
 	</div>
 	<div class="d-flex flex-column text-center">
-		<form action="insertUser.do" method="post" onsubmit="return sign_chk();">
-			<input type="hidden" name="path" value="">
+		<form action="/users" method="post" onsubmit="return sign_chk();">
+			<input id="path" type="hidden" name="path" value="">
 			<div class="form-group">		<!-- 아이디(이메일) -->
 				<div class="input-group necessary">
 					<input type="email" class="form-control" name="email" placeholder="이메일" onkeyup="chk_reset('email')" oninput="remove(2, this)" required>

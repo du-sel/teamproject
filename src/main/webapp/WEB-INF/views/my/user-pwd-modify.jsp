@@ -21,7 +21,8 @@
         </div>
 		<div class="container">
 			<div id="modify-input-container" class="d-flex flex-column">
-				<form action="#" method="post" onsubmit="return change_pwd_chk('1234');">
+				<form action="/users/pwd" method="post" onsubmit="return change_pwd_chk('${user.password}');">
+					<input type="hidden" name="_method" value="put">
 					<!-- 비밀번호 변경 -->
 					<div class="form-group">		<!-- 기존 비밀번호 -->
 						<div class="input-group">
@@ -34,7 +35,7 @@
 					<div class="form-group">		<!-- 신규 비밀번호 -->
 						<div class="input-group">
 							<p>신규 비밀번호</p>
-							<input type="password" class="form-control" name="new_password" placeholder="8자리 이상" required oninput="pwd_validation('modify-input-container', this);">
+							<input type="password" class="form-control" name="password" placeholder="8자리 이상" required oninput="pwd_validation('modify-input-container', this);">
 						</div>
 						<p></p>
 					</div>
@@ -42,7 +43,7 @@
 					<div class="form-group">		<!-- 신규 비밀번호 확인 -->
 						<div class="input-group">
 							<p>신규 비밀번호 확인</p>
-							<input type="password" class="form-control" name="new_password_chk" placeholder="8자리 이상" oninput="remove(1, this);" required>
+							<input type="password" class="form-control" placeholder="8자리 이상" oninput="remove(1, this);" required>
 						</div>
 						<p></p>
 					</div>

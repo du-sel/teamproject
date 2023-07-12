@@ -6,8 +6,8 @@
  * store-management
  */
 
-function onSigninModal() { $('.modal-content').load("signin-modal.do"); }
-function onSignupModal() { $('.modal-content').load("signup-modal.do"); }
+function onSigninModal() { $('.modal-content').load("/signin-modal"); }
+function onSignupModal() { $('.modal-content').load("/signup-modal"); }
 function onStoreModal() { $('#store-modal .modal-content').load("store-create-modal.do"); }
 function changeSignupModal(){ $('.scroll-to-section').eq(1).click(); } 		// signin-modal.jsp에서 사용
 
@@ -30,7 +30,8 @@ function login(){
 		$('password').focus()
 		return false;
 	}
-	$('path').val($(location).attr('pathname').substr(1));	
+	
+	$('#path').val($(location).attr('pathname'));	
 	return true;
 }
 
@@ -192,7 +193,7 @@ function sign_chk(){
 		return false;
 	}
 	
-	$('path').val($(location).attr('pathname').substr(1));
+	$('#path').val($(location).attr('pathname'));
 	return true;
 }
 
