@@ -7,8 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.teamproject.trackers.biz.userCreator.UserService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
@@ -99,4 +102,16 @@ public class UserController {
 		else return "/my/user-pwd-modify";
 	}
 	
+	
+	// 유효성 검사
+	// 회원 조회
+	@RequestMapping(value = "/validation/pwd", method=RequestMethod.GET)
+	@ResponseBody
+	public boolean validateUserPwd(@RequestParam("old_password") String password, UserVO vo) {
+		vo.setId((long)session.getAttribute("id"));
+		System.out.println(password);
+		System.out.println("기존: "+userService.getUser(vo).get().getPassword());
+		
+		return (password.equals(userService.getUser(vo).get().getPassword()));
+	}
 }

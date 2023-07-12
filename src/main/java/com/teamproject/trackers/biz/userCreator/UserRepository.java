@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface UserRepository extends JpaRepository<UserVO, Long> {
 	
 	
-	// 회원 정보 조회(이메일, 비밀번호 이용)
+	// 로그인
 	UserVO findByEmailAndPassword(String email, String password);
 	/*
 	// 이메일 중복 확인
