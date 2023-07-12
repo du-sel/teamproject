@@ -119,6 +119,10 @@ function pwd_validation(id, target){
 	}else{
 		p.text("");		
 	}
+	
+	
+	
+	
 }
 
 //이메일 중복 체크(?)
@@ -148,32 +152,55 @@ function email_chk(email_chk){
 
 /***** user-pwd-modify.jsp *****/
 //비밀번호 변경 전 확인
-function change_pwd_chk(pwd){
-	res = true;
+function change_pwd_chk(){
+	old_res = false;
+	new_res = false;
 	
 	inputs = $('#modify-input-container input:password');
-	
-	// 기존 비밀번호 체크
-	if($(inputs[0]).val() == pwd){
-		$(inputs[0]).parent().next().text("");
-	}else{
-		$(inputs[0]).parent().next().text("비밀번호가 틀렸습니다.").css('color','#e97d7d');
-		res = false;
-	}
 	
 	// 신규 비밀번호 체크
 	if(pwd_chk_str.test($(inputs[1]).val())){	// 비밀번호 형식에 맞아야함
 		if($(inputs[1]).val() == $(inputs[2]).val()){
 			$(inputs[2]).parent().next().text("");
+			new_res = true;
 		}else{
 			$(inputs[2]).parent().next().text("비밀번호가 일치하지않습니다.").css('color','#e97d7d');
-			res = false;
 		}
-	}else{
-		res = false;
 	}
 	
-	return res;
+	// 기존 비밀번호 체크
+	var password = $(inputs[0]).val();
+	console.log("입력:"+password);
+	$.ajax({
+		
+		url: "/validation/pwd", //통신할 url
+		type: "GET",	//통신할 메서드 타입
+		data: {old_password : password}, //전송할 데이타
+		dataType: "json",
+		success : function(result) { // 매개변수에 통신성공시 데이터가 저장된다.
+			//서버와 통신성공시 실행할 내용 작성.
+			console.log('통신 성공!' + result);
+		 	if(result){
+		 		$(inputs[0]).parent().next().text("");
+		 		console.log("1: "+result);
+		 		old_res = true;
+		 		console.log("2: "+old_res);
+		 		
+		 	}else{
+		 		$(inputs[0]).parent().next().text("비밀번호가 틀렸습니다.").css('color','#e97d7d');
+		 	}
+		},
+		error : function (status, error) { //통신에 실패했을때
+			console.log('통신실패');
+			console.log(status, error);
+		}
+	});	 
+	
+	console.log("old: "+old_res);
+	console.log("new: "+new_res);
+	console.log("on: "+(old_res && new_res));
+	
+	return (old_res && new_res);	//비동기가 늦어서 그냥 넘어가버림
 }
 
 /***** singup-modal.jsp *****/

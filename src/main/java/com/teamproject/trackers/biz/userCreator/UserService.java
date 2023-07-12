@@ -55,11 +55,5 @@ public class UserService {
 		return userRepository.findByUrl(vo.getUrl());
 	}
 	
-	// 비밀번호(기존 비밀번호 체크)
-	public boolean validateUserPwd(UserVO vo) {
-		return false;
-		
-		//session 에 정보 어디까지 저장? 
-	}
 	*/
 }

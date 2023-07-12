@@ -21,7 +21,7 @@
         </div>
 		<div class="container">
 			<div id="modify-input-container" class="d-flex flex-column">
-				<form action="/users/pwd" method="post" onsubmit="return change_pwd_chk('${user.password}');">
+				<form action="/users/pwd" method="post" onsubmit="return change_pwd_chk();">
 					<input type="hidden" name="_method" value="put">
 					<!-- 비밀번호 변경 -->
 					<div class="form-group">		<!-- 기존 비밀번호 -->
@@ -57,7 +57,6 @@
     </section>
 </main>
 <!-- ***** Page Content Ends ***** -->
-
 
 
  
