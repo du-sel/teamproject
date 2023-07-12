@@ -1,4 +1,4 @@
-package com.teamproject.trackers.biz.product;
+package com.teamproject.trackers.view.product;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -35,7 +35,7 @@ public class ProductDetailController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value="product-img.do")
+	//@RequestMapping(value="product-img.do")
 	public void productImgUpload(HttpServletRequest req, HttpServletResponse resp, MultipartHttpServletRequest multiFile) throws Exception {
 		
         resp.setCharacterEncoding("utf-8");
