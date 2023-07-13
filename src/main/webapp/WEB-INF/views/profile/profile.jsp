@@ -54,18 +54,18 @@
 			</div>
 			
 
-			<div class=" offset-md-1 col-md-4 offset-lg-3 col-lg-3 thriddiv">
+			<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">
 				<!-- 팔로우 구독 버튼  -->
 				<!-- 
-				<button id="buttonright" class="btn">팔로우</button> -->
+				<button id="buttonright" class="btn">팔로우</button> 
 				<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>
 				
 				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-			<!--<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
+				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
 				
-		   		<div id="buttonright" onclick="onStoreModal()"><a href="#" data-toggle="modal" data-target="#store-modal">마이스튜디오 개설</a></div>
-				<div id="buttonright"><a href="sales-status.do">마이스튜디오 관리</a></div>
-				-->
+		   		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스튜디오 개설</a></div> -->
+				<div id="buttonright" class="longtext"><a href="sales-status.do">마이스튜디오 관리</a></div>
+				
 	
 			</div>
 		</div>	
@@ -89,16 +89,18 @@
 			 	</li>
 			</ul>
 
-				<!-- 피드 탭 -->
-				
+				<!-- post 탭 -->
 				<div class="tab-pane fade show active" id="feed">
 					<br>
-					<div class="writenew  col-sm-2 col-md-2 col-lg-2">
-						<a href="co-main.do">글 작성하기</a>
-					</div>
+					<div class="col-md-12">
+						<div class="writenew1">
+							<a href="co-main.do">글 작성하기</a>
+						</div>
+					</div>				
+					<br><br><br>
 					<div id="co-main" >
-							<div id="main" class="col-sm-10 col-md-10 col-lg-10">
-							<!-- 피드 부분 -->
+							<div id="main" class="col-sm-12 col-md-12 col-lg-12">
+							<!-- post 부분 -->
 							
 									<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
 										<div>
@@ -218,11 +220,131 @@
 										  }
 										</script>
 									</article>
-								</div>
-							</div>
+									<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
+										<div>
+											<div class="title">
+												<p>
+													<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
+												</p>
+												<p>
+													<time class="published" datetime="2023-07-07">July 7, 2023</time>
+												</p>
+											</div>
+										</div>
+							
+							
+										<div class="post_img-outer" onclick="location.href='post.do'">
+											<div class="post_img">
+												<img src="/resources/images/춘식이웹툰1.png" alt="" />
+											</div>
+										</div>
+										
+										
+										<div id="post-content" class="collapse-content">
+										  <div class="post-content-inner collapsed">
+										    안녕하세요 춘식이폼미쳤다 입니다.<br>
+										    이번에 새로운 다이어리를 출시했는데요.<br>
+										    춘식이와 함께 게으른 나 자신을 다잡을 수 있도록 아주 빡세게 귀여운 다이어리를 제작해 보았습니다ㅋㅋㅋ<br>
+										    관심 있으신 분들은 제 스토어에 방문하셔서 구매하실 수 있도록 상품을 등록 해놓았으니 많은 사랑 부탁드립니다.<br>
+										    날이 많이 덥습니다. 우리 밥은 맛나게 먹더라도 배부르게 더위까지는 먹지 않도록 온열질환 주의하자구요!<br>
+										    저는 요즘 더위를 먹었는지 몹시 피곤하고 몸이 축축 처지네요ㅠㅠㅠ 그래서 당분간 휴식을 좀 취할까 고민 중입니다.<br>
+										    오래 걸리진 않을 테니까 너무 섭섭해하지 마시고 저 기다리는 동안 도도도 춘식이 보면서 행복한 춘식이 생활해요 우리♥<br>
+										    아! 구독과 좋아요는 사랑입니다~ 힛 >.~
+										  </div>
+										</div>
+										
+										<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+							
+							
+							  
+										<script>
+										  $(document).ready(function() {
+										    var contentHeight = $('.post-content-inner').height();
+										    var lineHeight = parseFloat($('.post-content-inner').css('line-height'));
+										    var maxHeight = 5 * lineHeight;
+										    
+										    if (contentHeight > maxHeight) {
+										      $('.post-content-inner').addClass('collapsed');
+										      $('.post-content-inner').css('max-height', maxHeight + 'px');
+										      $('.post-content-inner').after('<span class="expand-button">더보기</span>');
+										      
+										      $('.expand-button').click(function() {
+										        $('.post-content-inner').removeClass('collapsed');
+										        $('.post-content-inner').css('max-height', 'none');
+										        $(this).hide();
+										      });
+										    }
+										  });
+										</script>
+							
+										
+										<footer>
+											<ul class="stats commment_stats">
+												<li><a class="comment-count" href="#" onclick="showCommentInput(this)">📝<span class="comment-count-number">2</span></a></li> <!-- 댓글 개수 -->
+												<li><a class="like-button"   href="#"><span class="like-icon">❤️</span><span class="like-count">2</span></a></li> <!-- 좋아요 개수 -->
+												<!-- <li><a href="#" class="icon solid fa-heart"><i class="fa fa-heart"></i></a> 2</li> -->
+											</ul>
+											<!-- <ul class="actions">
+												<li id="comment_li"><button class="comment ">댓글 쓰기</button></li>
+												<li id="comment_li"><div class="divcomment"><input type="text" name="comment"></div></li>
+											</ul> -->
+											<div class="comment-section">
+											<ul id="comment-list" class="comment-list" style="display: none;">
+											    <li>춘식이 다이어리 너무 기대됩니당!!</li>
+											    <li>춘식이폼미쳤다님 항상 제품 잘 보고 있습니다. 건강하세요</li>
+											</ul>
+											<div class="button-row">
+										        <button class="comment-button" onclick="showCommentInput(this)">댓글쓰기</button> <!-- 댓글쓰기 버튼 -->
+										        <div class="comment-input" style="display: none;">
+										            <!-- 댓글 입력 부분 -->
+										            <input type="text" id="comment-text" name="comment" placeholder="댓글을 입력하세요">
+										            <button class="submit-button" onclick="addComment()">입력</button>
+										        </div>
+										    </div>
+										    </div>
+										</footer>
+										
+										<script>
+										  $(document).ready(function() {
+										    // 댓글 개수 이모티콘 클릭 이벤트
+										    $(".comment-count").click(function() {
+										      $(this).parent().siblings(".button-row").find(".comment-input").toggle();
+										    });
+										    // 좋아요 버튼 클릭 이벤트
+										    $(".like-button").click(function() {
+										      var likeCount = parseInt($(this).find(".like-count").text().trim());
+										      likeCount++;
+										      $(this).find(".like-count").text(likeCount);
+										    });
+										  });
+										  /* 댓글 input창 보여주기 */
+										  function showCommentInput(elem) {
+										    const commentInput = $(elem).closest("footer").find(".comment-input");
+										    commentInput.toggle();
+										  }
+										  /* 댓글 추가 */
+										  function addComment() {
+										    const commentText = $("#comment-text").val();
+										    if (commentText.trim() !== "") {
+										      const commentItem = $("<li>").text(commentText);
+										      $("#comment-list").append(commentItem);
+										      $("#comment-text").val("");
+										    // 댓글 개수 증가
+										    const commentCount = $(".comment-count-number");
+										    let count = parseInt(commentCount.text().trim());
+										    count++;
+										    commentCount.text(count);
+											}
+										  }
+										</script>
+									</article>
+								
+								</div> <!-- div col -->
+							</div> <!-- co-main 끝 -->
+							
 						
 					</div>
-				
+					
 				
 				<!-- 스튜디오 탭 -->
 				<div class="tab-pane fade" id="studio"><br>
@@ -235,7 +357,7 @@
 						</select>
 					
 						<div class="writenew line">
-							<a href="product-management.do">관리하기</a>
+							<a href="product-management.do">상품 관리</a>
 						</div>					
 					
 					</div>
@@ -325,15 +447,21 @@
 		
 			<!-- 공지 탭 -->
 			<div class="tab-pane fade" id="notice">
-				<br>
-				<div class="writenew">
-					<a href="notice-management.do">공지 관리</a>
-				</div>
-				
-				
+
 				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-xl-10 col-lg-12">
+								<br>
+
+				<!-- 	<div class="row">
+						<div class="col-offset-sm-9 col-sm-3 col-offset-md-10 col-md-2 col-offset-lg-10 col-lg-2" id="noticemanage"><a href="notice-management.do">공지 관리</a></div>
+					</div>	 -->
+					<div class="row">
+						<div class="col-12" style="margin-bottom:15px;">
+							<div class="writenew1">
+								<a href="co-main.do">공지관리</a>
+							</div>
+						</div>	
+						<br>
+						<div class="col-sm-12 col-md-12 col-xl-12 col-lg-12">
 				            <div class="card carddiv">
 				              <form class="card-body" action='#' method='post'>
 				                <div class="row notice-box">
