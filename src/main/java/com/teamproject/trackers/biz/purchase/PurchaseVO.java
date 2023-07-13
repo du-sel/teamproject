@@ -2,9 +2,33 @@ package com.teamproject.trackers.biz.purchase;
 
 import java.sql.Date;
 
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name="purchase")
+@IdClass(PurchaseId.class)
 public class PurchaseVO {
+	
+	@Id
 	private long id;
+	@Id
 	private long bak_p_id;
+	
+	@Temporal(TemporalType.DATE)
 	private Date cre_date;
 	private int price;
 	
@@ -21,6 +45,9 @@ public class PurchaseVO {
 	public void setBak_p_id(long bak_p_id) {
 		this.bak_p_id = bak_p_id;
 	}
+	
+	
+
 	public Date getCre_date() {
 		return cre_date;
 	}
@@ -33,4 +60,5 @@ public class PurchaseVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
 }

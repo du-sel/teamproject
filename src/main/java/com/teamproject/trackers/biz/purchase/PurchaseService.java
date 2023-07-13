@@ -6,10 +6,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class PurchaseService {
 	
-	//@Autowired
-	//private PurchaseRepository purchaseRepository; 
+	private PurchaseRepository purchaseRepository; 
+	
+	public PurchaseService(PurchaseRepository purchaseRepository) {
+		this.purchaseRepository = purchaseRepository;
+	}
 	
 	
+	
+	// 상품 구매 - purchase 테이블에 INSERT
+	public void insertPurchase(PurchaseVO vo) {
+		purchaseRepository.save(vo);
+	}
 	
 	
 
