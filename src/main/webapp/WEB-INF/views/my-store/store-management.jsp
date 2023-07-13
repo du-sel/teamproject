@@ -40,7 +40,7 @@
 			           	<label for="store-name"><h5>스토어 이름</h5></label>
 						<div class="store-input d-flex justify-content-center row">
 			           		<div class="col-sm-9 d-flex">
-				           		<input type="text" name="store_name" id="store-name" class="form-control store-input" value="test" placeholder="스토어 이름을 입력하세요." onkeyup="chk_reset('store')" required>
+				           		<input type="text" name="store_name" id="store-name" class="form-control validation-input store-input" value="test" placeholder="스토어 이름을 입력하세요." onkeyup="chk_reset('store')" required>
 							</div>
 							<button type="button" class="management-btn sub-btn col-sm-3" onclick="store_chk('test', true,'store')">Check</button>
 						</div>
@@ -51,9 +51,9 @@
 		           		<div class="store-input d-flex justify-content-center row">
 			           		<div class="col-sm-9 d-flex">
 				           		<input type="text" class="form-control text-center store-base-url" value="/store/" disabled>
-								<input type="text" id="url" class="form-control" name="url" placeholder="프로필 URL을 입력하세요." value="test" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
+								<input type="text" id="url" class="form-control validation-input" name="url" placeholder="프로필 URL을 입력하세요." value="" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
 							</div>
-							<button type="button" class="management-btn sub-btn col-sm-3" onclick="url_chk('test', false, 1, 'store')">Check</button>
+							<button type="button" class="management-btn sub-btn col-sm-3" onclick="url_chk('test', 1, 'store')">Check</button>
 						</div>
 						<p></p>
 		            </div>
