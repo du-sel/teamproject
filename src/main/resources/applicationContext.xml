@@ -54,7 +54,7 @@
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter"></property>
-		<property name="packagesToScan" value="com.teamproject.trackers.biz.userCreator"></property>
+		<property name="packagesToScan" value="com.teamproject.trackers.biz"></property>
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -66,7 +66,7 @@
 			</props>
 		</property>
 	</bean>
-	<jpa:repositories base-package="com.teamproject.trackers.biz.userCreator"></jpa:repositories>
+	<jpa:repositories base-package="com.teamproject.trackers.biz"></jpa:repositories>
 		
 	<!-- 트랜잭션 부분에서 추가 -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
