@@ -1,5 +1,6 @@
 package com.teamproject.trackers.biz.userCreator;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -43,17 +44,15 @@ public class UserService {
 		userRepository.deleteById(vo.getId());
 	}
 	
-	/*
+	
 	// 유효성
 	// 이메일(중복 체크)
 	public boolean validateEmail(UserVO vo) {
-		return userRepository.findByEmail(vo.getEmail());
+		return userRepository.existsByEmail(vo.getEmail());
 	}
 	
 	// url(중복 체크)
-	public boolean validateURL(UserVO vo) {
-		return userRepository.findByUrl(vo.getUrl());
+	public boolean validateURL(UserVO vo) {		
+		return userRepository.existsByUrl(vo.getUrl());
 	}
-	
-	*/
 }

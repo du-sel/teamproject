@@ -11,13 +11,6 @@ public interface UserRepository extends JpaRepository<UserVO, Long> {
 	
 	// 로그인
 	UserVO findByEmailAndPassword(String email, String password);
-	/*
-	// 이메일 중복 확인
-	boolean findByEmail(String email);
-	
-	// url 중복 확인
-	boolean findByUrl(String url);
-	*/
 	
 	// 이름, 전화번호, url, sns url 수정
 	@Modifying(clearAutomatically = true)
@@ -32,4 +25,11 @@ public interface UserRepository extends JpaRepository<UserVO, Long> {
 	@Query(value = "UPDATE USER u SET u.password = :password WHERE u.id = :id", nativeQuery = true)
 	void updateUserPwd(@Param("id")long id, @Param("password")String pwd);
 
+	
+	// 유효성 검사
+	// 이메일 중복 확인
+	boolean existsByEmail(String email);
+	
+	// url 중복 확인
+	boolean existsByUrl(String url);
 }
