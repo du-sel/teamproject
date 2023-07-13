@@ -1,6 +1,7 @@
 package com.teamproject.trackers.biz.purchase;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

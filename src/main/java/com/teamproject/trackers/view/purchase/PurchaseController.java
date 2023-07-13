@@ -38,12 +38,14 @@ public class PurchaseController {
 		// INSERT 할 VO 객체 준비
 		PurchaseVO vo = new PurchaseVO();
 		vo.setBak_p_id(Long.parseLong(p_id));
-		//vo.setId((long)session.getAttribute("id"));
+		vo.setId((long)session.getAttribute("id"));
 		
 		// 일단 테스트로 아무값이나 넣어보겠음
-		vo.setId(110);
+		//vo.setId(1);
 		vo.setPrice(1000);
 		vo.setCre_date(new Date(2023, 3, 3));
+		
+		// 나중에는 상품테이블 조회해서 데이터 가져와서 INSERT 해야함
 		
 		purchaseService.insertPurchase(vo);
 		

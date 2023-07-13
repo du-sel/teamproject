@@ -8,6 +8,7 @@ public class PurchaseService {
 	
 	private PurchaseRepository purchaseRepository; 
 	
+	@Autowired
 	public PurchaseService(PurchaseRepository purchaseRepository) {
 		this.purchaseRepository = purchaseRepository;
 	}
