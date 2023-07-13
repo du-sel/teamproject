@@ -16,48 +16,6 @@
   	<mvc:default-servlet-handler />
 
 
-	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<props>
-				<prop key="/products.do">product</prop>
-				<prop key="/st-inquiry.do">product</prop>
-				<prop key="/product-single.do">product</prop>
-				<prop key="/creators.do">product</prop>
-				<prop key="/signin-modal.do">product</prop>
-				<prop key="/signup-modal.do">product</prop>
-				<prop key="/store-create-modal.do">product</prop>
-				<prop key="/co-main.do">product</prop>
-				<prop key="/st-main.do">product</prop>
-				<prop key="/cart.do">product</prop>
-				<prop key="/purchase-history.do">product</prop>
-				<prop key="/insert-review.do">product</prop>
-				<prop key="/inquiry-history.do">product</prop>
-				<prop key="/product-inquiry.do">product</prop>
-				<prop key="/customer-inquiry.do">product</prop>
-				<prop key="/user-modify.do">product</prop>
-				<prop key="/user-pwd-modify.do">product</prop>
-				<prop key="/news.do">product</prop>
-				<prop key="/sales-status.do">product</prop>
-				<prop key="/product-management.do">product</prop>
-				<prop key="/calculate-history.do">product</prop>
-				<prop key="/review-management.do">product</prop>
-				<prop key="/review-management-form.do">product</prop>
-				<prop key="/inquiry-management.do">product</prop>
-				<prop key="/inquiry-management-form.do">product</prop>
-				<prop key="/notice-management.do">product</prop>
-				<prop key="/store-management.do">product</prop>
-				<prop key="/post.do">product</prop> 
-				<prop key="/insert-product.do">product</prop> 
-				<prop key="/notice-popup.do">product</prop> 
-				<prop key="/customer-center.do">product</prop> 
-				<prop key="/notice-popup-form.do">product</prop> 
-				<prop key="/customer-center-form.do">product</prop> 
-				<prop key="/insert-test.do">product</prop> 
-				<prop key="/profile.do">product</prop> 
-				<prop key="/intro.do">product</prop> 
-			</props>
-		</property>
-	</bean>
 	
 	<!-- 파일 업로드 추가 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

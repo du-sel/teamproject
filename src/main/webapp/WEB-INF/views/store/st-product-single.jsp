@@ -4,6 +4,40 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
+<!-- 아임포트 (결제 API) -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script>
+
+	var IMP = window.IMP;
+	IMP.init("imp41250534");
+
+</script>
+<script>
+function requestPay() {
+  IMP.init('imp41250534'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
+  IMP.request_pay({
+    pg: "html5_inicis.INIpayTest",
+    pay_method: "card",
+    merchant_uid : 'merchant_'+new Date().getTime(),
+    name : '결제테스트',
+    amount : 100,
+/*     buyer_email : 'seljvdrive@gmail.com',
+    buyer_name : '구매자',
+    buyer_tel : '010-1234-5678',
+    buyer_addr : '서울특별시 강남구 삼성동',
+    buyer_postcode : '123-456' */
+  }, function (rsp) { // callback
+      if (rsp.success) {
+        alert("결제 성공!");
+      } else {
+        alert("결제 실패...  "+rsp.error_msg);
+      }
+  });
+}
+</script>
+
+
+
 
 <!-- ***** Product Area Starts ***** -->
 <main id="product" class="broad">
@@ -53,10 +87,12 @@
                         <h4>합계 : 6300원</h4>
                         <br><br><br>
                         <div class="main-border-button"><a href="cart.do">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        								<form action="/store/purchases/3" method="post">
+                        								<form action="/store/purchases/2" method="post">
                         									<button>구매하기</button>
                         								</form>
                         								<!-- 나중에 onclick으로 action값 수정 필요 -->
+                        								<button onclick="requestPay()">결제하기</button>
+                        								<!-- 결제 API 테스트용 임시 버튼 추가 -->
       					</div>
                         <br><br><br><br><br>
                     </div>
