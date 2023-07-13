@@ -69,9 +69,66 @@ console.log(event.target.files.length);
 	  	
 	  	      reader.readAsDataURL(image); 
 	    	
-	    	
-	      
 	    }
 	    
-	
 	  }
+	  
+	  
+	  /* co-main.jsp에 있던 script 옮김 */    
+	  
+	  
+	  /* <footer> 위에 있던 script 코드 */
+	  $(document).ready(function() {
+				    var contentHeight = $('.post-content-inner').height();
+				    var lineHeight = parseFloat($('.post-content-inner').css('line-height'));
+				    var maxHeight = 5 * lineHeight;
+				    
+				    if (contentHeight > maxHeight) {
+				      $('.post-content-inner').addClass('collapsed');
+				      $('.post-content-inner').css('max-height', maxHeight + 'px');
+				      $('.post-content-inner').after('<span class="expand-button">더보기</span>');
+				      
+				      $('.expand-button').click(function() {
+				        $('.post-content-inner').removeClass('collapsed');
+				        $('.post-content-inner').css('max-height', 'none');
+				        $(this).hide();
+				      });
+				    }
+				  });
+	  
+	  
+	   /* <footer> 아래에 있던 script 코드 */
+	   $(document).ready(function() {
+				    // 댓글 개수 이모티콘 클릭 이벤트
+				    $(".comment-count").click(function() {
+				      $(this).parent().siblings(".button-row").find(".comment-input").toggle();
+				    });
+				    // 좋아요 버튼 클릭 이벤트
+				    $(".like-button").click(function() {
+				      var likeCount = parseInt($(this).find(".like-count").text().trim());
+				      likeCount++;
+				      $(this).find(".like-count").text(likeCount);
+				    });
+				  });
+				  /* 댓글 input창 보여주기 */
+				  function showCommentInput(elem) {
+				    const commentInput = $(elem).closest("footer").find(".comment-input");
+				    commentInput.toggle();
+				  }
+				  /* 댓글 추가 */
+				  function addComment() {
+				    const commentText = $("#comment-text").val();
+				    if (commentText.trim() !== "") {
+				      const commentItem = $("<li>").text(commentText);
+				      $("#comment-list").append(commentItem);
+				      $("#comment-text").val("");
+				    // 댓글 개수 증가
+				    const commentCount = $(".comment-count-number");
+				    let count = parseInt(commentCount.text().trim());
+				    count++;
+				    commentCount.text(count);
+					}
+				  }
+	  
+	  
+	  

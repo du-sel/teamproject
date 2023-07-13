@@ -34,7 +34,8 @@
 			<h2>신규 상품 등록</h2>
       	</div>
       
-      	<form name="frm" id="frm" action="" method="post" enctype="multipart/form-data" onsubmit="insert_p_chk(this); return false;">      	
+      	<form name="frm" id="frm" action="insert-test.do" method="post" enctype="multipart/form-data" onsubmit="insert_p_chk(this); return false;">    
+
 	        <div class="row justify-content-center page-content">
 	          <div class="col-xxl-8 col-xl-10 col-lg-12 info">
 	            <div class="row name-container">
@@ -194,22 +195,24 @@
 	
 	
 	<!-- CKEditor standard -->
-<%--  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4/ckeditor.js"></script>
+<%--   	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor_re/ckeditor.js"></script>
 	<script>
 		$(function () {
 			CKEDITOR.replace('content', {
-				filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do',
+				//filebrowserUploadMethod : 'form',
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/product-img.do',
 				contentsCss: '/resources/css/custom.css'
 			});
 		});
 	</script> --%>
 	
 	<!-- CKEditor Custom -->
-<%--   	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_custom/ckeditor.js"></script>
+<%--    	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_custom/ckeditor.js"></script>
 	<script>
 		$(function () {
 			CKEDITOR.replace('content', {
-				filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do',
+				filebrowserUploadMethod : 'form',
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/product-img.do',
 				contentsCss: '/resources/css/custom.css'
 			});
 		});
@@ -218,11 +221,12 @@
   	
   	
 	<!-- CKEditor Youtube -->
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_yt/ckeditor.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_y/ckeditor.js"></script>
 	<script>
 		$(function () {
 			CKEDITOR.replace('content', {
-				filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload.do',
+				//filebrowserUploadMethod : 'form',
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/product-img.do',
 				contentsCss: '/resources/css/custom.css'
 			});
 		});

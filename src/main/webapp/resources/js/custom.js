@@ -241,7 +241,7 @@
 		let st_menu = $('.header-area .store-menu');
 		
 		// 일단 임시 URI로 시험 적용
-		if(path.includes('co-')) {
+		if(path.includes('community')) {
 			$(st_menu).css('visibility', 'hidden');
 			$(st_menu).addClass('hidden');
 			return;
@@ -300,6 +300,8 @@
 	
 
 	
+	// 탭 active / 헤더 배경색 적용
+	tabActive();
 	
 	
 	
