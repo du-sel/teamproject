@@ -42,6 +42,7 @@
 				<prop key="/customer-center-form.do">product</prop> 
 				<prop key="/insert-test.do">product</prop> 
 				<prop key="/profile.do">product</prop> 
+				<prop key="/intro.do">product</prop> 
 			</props>
 		</property>
 	</bean>
