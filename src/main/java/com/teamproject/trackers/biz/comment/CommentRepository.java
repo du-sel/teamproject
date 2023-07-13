@@ -2,6 +2,6 @@ package com.teamproject.trackers.biz.comment;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CommentRepository extends JpaRepository<CommentVO, Long>{
+public interface CommentRepository {
 
 }
