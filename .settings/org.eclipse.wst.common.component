@@ -34,18 +34,12 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
-                                                		
+
         
-        
-        
-        
-        
+
         <property name="java-output-path" value="target/classes"/>
-                                
-        
-        
-        <property name="context-root" value="trackers"/>
+        <property name="context-root" value="/"/>
+
                                                 	
     
     
