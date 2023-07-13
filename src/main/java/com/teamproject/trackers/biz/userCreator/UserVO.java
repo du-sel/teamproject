@@ -1,6 +1,5 @@
 package com.teamproject.trackers.biz.userCreator;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,9 +13,7 @@ public class UserVO {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	@Column(name="email")
 	private String email;
-	@Column(name="password")
 	private String password;
 	private String name;
 	private String tel;
