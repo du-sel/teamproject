@@ -63,8 +63,8 @@
 				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
 				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
 				
-		   		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스튜디오 개설</a></div> -->
-				<div id="buttonright" class="longtext"><a href="sales-status.do">마이스튜디오 관리</a></div>
+		   		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div> -->
+				<div id="buttonright" class="longtext"><a href="sales-status.do">마이스토어 관리</a></div>
 				
 	
 			</div>
