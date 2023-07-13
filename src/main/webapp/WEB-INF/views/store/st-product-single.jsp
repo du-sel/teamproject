@@ -53,7 +53,11 @@
                         <h4>합계 : 6300원</h4>
                         <br><br><br>
                         <div class="main-border-button"><a href="cart.do">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        								<a href="#">구매하기</a></div>
+                        								<form action="/store/purchases/3" method="post">
+                        									<button>구매하기</button>
+                        								</form>
+                        								<!-- 나중에 onclick으로 action값 수정 필요 -->
+      					</div>
                         <br><br><br><br><br>
                     </div>
                 </div>

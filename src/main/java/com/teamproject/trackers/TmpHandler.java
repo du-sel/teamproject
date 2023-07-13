@@ -3,6 +3,8 @@ package com.teamproject.trackers;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
@@ -117,12 +119,17 @@ public class TmpHandler implements Controller {
 			mav.setViewName("./WEB-INF/views/admin/customer-center-form.jsp");			
 		}
 		else if(path.equals("/insert-test.do")) {
-			System.out.println("name: "+request.getParameter("name"));
+			System.out.println("p_name: "+request.getParameter("p_name"));
 			System.out.println("thumbnail: "+request.getParameter("thumbnail"));
 			System.out.println("content: "+request.getParameter("content"));
 			mav.setViewName("./WEB-INF/views/my-store/st-main.jsp");			
-		}else if(path.equals("/profile.do")) {		
+		}
+		else if(path.equals("/profile.do")) {		
+
 			mav.setViewName("./WEB-INF/views/profile/profile.jsp");			
+		}
+		else if(path.equals("/intro.do")) {
+			mav.setViewName("./WEB-INF/views/common/Intro.jsp");
 		}
 
 		
