@@ -8,7 +8,7 @@
 
 function onSigninModal() { $('.modal-content').load("/signin-modal"); }
 function onSignupModal() { $('.modal-content').load("/signup-modal"); }
-function onStoreModal() { $('#store-modal .modal-content').load("store-create-modal.do"); }
+function onStoreModal() { $('#store-modal .modal-content').load("/store-create-modal"); }
 function changeSignupModal(){ $('.scroll-to-section').eq(1).click(); } 		// signin-modal.jsp에서 사용
 
 
@@ -19,22 +19,7 @@ let url_flag = -1;
 let inputs, parents;
 let pwd_chk_str = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
 
-// 로그인
-function login(){
-	if($('email').val() == '') {
-		alert("아이디를 작성입력해주세요.");
-		$('email').focus();
-		return false;
-	}else if($('password').val() == '') {
-		alert("비밀번호를 작성입력해주세요.");
-		$('password').focus()
-		return false;
-	}
-	
-	$('#path').val($(location).attr('pathname'));	
-	return true;
-}
-
+/*****common*****/
 // 중복확인 초기화
 function chk_reset(flag){
 	if(flag == "email"){ email_flag = -1; }
@@ -47,7 +32,6 @@ function chk_reset(flag){
 		url_flag = -1;
 		pwd_flag = false;
 	}
-	
 }
 
 //공백, 특수문자 제거 + 숫자입력
@@ -73,81 +57,21 @@ function tel_hyphen(target){
 						.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, '');
 }
 
-//url 체크
-function url_chk(old_url, idx, path){			// 기존 url(수정 시 사용), 중복된 url인지(후에 db로, true가 중복), input 위치, 함수 사용 페이지
-	
-	// 함수 부른 페이지 구별해 요소 가져옴
-	if(path == 'store'){
-		inputs = $('#store-management .validation-input');
-		parents = $('.store-form');
-	}else if(path == 'modify'){
-		inputs = $('#modify-input-container .form-control');
-		parents = $('.form-group');
-	}else{
-		inputs = $('#modal .form-control');
-		parents = $('.form-group');
+/*****signin-modal*****/
+// 로그인
+function login(){
+	if($('email').val() == '') {
+		alert("아이디를 작성입력해주세요.");
+		$('email').focus();
+		return false;
+	}else if($('password').val() == '') {
+		alert("비밀번호를 작성입력해주세요.");
+		$('password').focus()
+		return false;
 	}
 	
-	let url = $(inputs[idx]).val();
-	let url_chk;
-	let p = $(parents[idx]).children().last();
-	console.log(url);
-	console.log($(inputs[idx]));
-	if(url == ""){
-		p.text("URL이 입력되지 않았습니다.").css('color','#e97d7d');
-		url_flag = 0;
-		return;
-	}else if((old_url.length > 0) && (url == old_url)){
-		console.log("뭐야");
-		p.text("기존 URL을 사용합니다.").css('color','#586579');
-		url_flag = 1;
-		return;
-	}
-	
-	$.ajax({
-		url: "/validation/url", 			//통신할 url
-		type: "GET",						//통신할 메소드 타입
-		data: {url : url},	//전송할 데이터
-		dataType: "json",
-		async: false,						// 실행 결과 기다리지 않고 다음 코드 읽을 것인지
-		success : function(result) { 		// 매개변수에 통신성공시 데이터 저장
-			if(result) url_chk = true;		// url 존재
-			else url_chk = false;			// url 존재 x (사용 가능)
-		},
-		error : function (status, error) {	//통신 실패
-			console.log('통신실패');
-			console.log(status, error);
-		}
-	});	
-	console.log("??");
-	if(url_chk){
-		p.text("중복된 URL입니다.").css('color','#e97d7d');
-		url_flag = 0;
-	}else if(url != "" && !url_chk){
-		p.text("사용 가능한 URL입니다.").css('color','#586579');
-		url_flag = 1;
-	} 
-}
-
-//비밀번호 유효성 검사
-function pwd_validation(id, target){
-	inputs = $('#'+id+' .form-control');
-	parents = $('.form-group');
-	
-	let p = $(parents[1]).children().last();
-	let pwd = $(inputs[1]).val();
-	
-	target.value = target.value.replace(/[ ]/gim, '');
-	
-	if(!pwd_chk_str.test(pwd)){
-		p.text("비밀번호는 8~15자리이고 문자/숫자/특수문자를 포함해야 합니다.").css('color','#e97d7d');
-	}else{
-		p.text("");		
-	}
-	
-	
-	
-	
+	$('#path').val($(location).attr('pathname'));	
+	return true;
 }
 
 //이메일 중복 체크
@@ -196,7 +120,83 @@ function email_chk(){
 	}
 }
 
-/***** user-pwd-modify.jsp *****/
+
+/*****signup-modal, store-create-modal, user-modify, store-management*****/
+//url 체크
+function url_chk(old_url, idx, path){			// 기존 url(수정 시 사용), 중복된 url인지(후에 db로, true가 중복), input 위치, 함수 사용 페이지
+	
+	// 함수 부른 페이지 구별해 요소 가져옴
+	if(path == 'store'){
+		inputs = $('#store-management .validation-input');
+		parents = $('.store-form');
+	}else if(path == 'modify'){
+		inputs = $('#modify-input-container .form-control');
+		parents = $('.form-group');
+	}else{
+		inputs = $('.modal .form-control');
+		parents = $('.form-group');
+	}
+	
+	let url = $(inputs[idx]).val();
+	let url_chk;
+	let p = $(parents[idx]).children().last();
+	
+	if(url == ""){
+		p.text("URL이 입력되지 않았습니다.").css('color','#e97d7d');
+		url_flag = 0;
+		return;
+	}else if((old_url.length > 0) && (url == old_url)){
+		p.text("기존 URL을 사용합니다.").css('color','#586579');
+		url_flag = 1;
+		return;
+	}
+	
+	$.ajax({
+		url: "/validation/url", 			//통신할 url
+		type: "GET",						//통신할 메소드 타입
+		data: {url : url},	//전송할 데이터
+		dataType: "json",
+		async: false,						// 실행 결과 기다리지 않고 다음 코드 읽을 것인지
+		success : function(result) { 		// 매개변수에 통신성공시 데이터 저장
+			if(result) url_chk = true;		// url 존재
+			else url_chk = false;			// url 존재 x (사용 가능)
+		},
+		error : function (status, error) {	//통신 실패
+			console.log('통신실패');
+			console.log(status, error);
+		}
+	});	
+
+	if(url_chk){
+		p.text("중복된 URL입니다.").css('color','#e97d7d');
+		url_flag = 0;
+	}else if(url != "" && !url_chk){
+		p.text("사용 가능한 URL입니다.").css('color','#586579');
+		url_flag = 1;
+	} 
+}
+
+
+/*****signup-modal, user-pwd-modify*****/
+//비밀번호 유효성 검사
+function pwd_validation(id, target){
+	inputs = $('#'+id+' .form-control');
+	parents = $('.form-group');
+	
+	let p = $(parents[1]).children().last();
+	let pwd = $(inputs[1]).val();
+	
+	target.value = target.value.replace(/[ ]/gim, '');
+	
+	if(!pwd_chk_str.test(pwd)){
+		p.text("비밀번호는 8~15자리이고 문자/숫자/특수문자를 포함해야 합니다.").css('color','#e97d7d');
+	}else{
+		p.text("");		
+	}	
+}
+
+
+/*****user-pwd-modify*****/
 //비밀번호 변경 전 확인
 function change_pwd_chk(){
 	old_res = false;
@@ -238,15 +238,11 @@ function change_pwd_chk(){
 		}
 	}
 	
-	console.log("old: "+old_res);
-	console.log("new: "+new_res);
-	console.log("on: "+(old_res && new_res));
-	
-	return (old_res && new_res);	//비동기가 늦어서 그냥 넘어가버림
+	return (old_res && new_res);
 }
 
-/***** singup-modal.jsp *****/
-// singup-modal.jsp 유효성 검사 판단
+
+/*****signup-modal*****/
 function sign_chk(){    	
 	inputs = $('#modal .form-control');
 	parents = $('.form-group');
@@ -294,14 +290,9 @@ function pwd_chk(){
 }
 
 
-/***** store-create-modal.jsp *****/
-//store-create-modal.jsp 유효성 검사 판단
+/*****store-create-modal*****/
 function store_create_chk(){
-	inputs = $('#modal .form-control');
 	parents = $('.form-group');
-	
-	let email = re_chk("admin@naver.com", 2);
-	let tel = re_chk("010-1111-1111", 3);
 	
 	if(store_flag == -1 || url_flag == -1){
 		let p;
@@ -310,7 +301,7 @@ function store_create_chk(){
 		
 		p.text("중복 확인이 되지않았습니다.").css('color','#e97d7d');
 		return false;
-	}else if(store_flag == 0 || url_flag == 0 || !email || !tel){
+	}else if(store_flag == 0 || url_flag == 0){
 		return false;
 	}
 	
@@ -318,52 +309,56 @@ function store_create_chk(){
 }
 
 // 스토어 이름 체크
-function store_chk(old_store, store_chk, path){				// 기존 store 이름, store 이름 존재 여부, 페이지 path
+function store_chk(old_store, path){				// 기존 store 이름, 페이지 path
 	if(path == 'store'){
 		inputs = $('#store-management .form-control');
 		parents = $('.store-form');
 	}else{
-		inputs = $('#modal .form-control');
+		inputs = $('#store-modal .form-control');
 		parents = $('.form-group');
 	}
 	
 	let p = $(parents[0]).children().last();
 	let store = $(inputs[0]).val();
+	let store_chk;
 	
-	if(store.length > 0 && store == old_store){
+	if(store == ""){
+		p.text("스토어 이름이 입력되지 않았습니다.").css('color','#e97d7d');
+		store_flag = 0;
+		return;
+	}else if(store.length > 0 && store == old_store){
 		p.text("기존 스토어 이름을 사용합니다.").css('color','#586579');
 		store_flag = 1;
-	}else if(store_chk){
+		return;
+	}
+	
+	$.ajax({
+		url: "/validation/creator", 			//통신할 url
+		type: "GET",						//통신할 메소드 타입
+		data: {storeName : store},	//전송할 데이터
+		dataType: "json",
+		async: false,						// 실행 결과 기다리지 않고 다음 코드 읽을 것인지
+		success : function(result) { 		// 매개변수에 통신성공시 데이터 저장
+			if(result) store_chk = true;		// url 존재
+			else store_chk = false;			// url 존재 x (사용 가능)
+		},
+		error : function (status, error) {	//통신 실패
+			console.log('통신실패');
+			console.log(status, error);
+		}
+	});	
+	
+	if(store_chk){
 		p.text("중복된 스토어 이름입니다.").css('color','#e97d7d');
 		store_flag = 0;
 	}else if(store != "" && !store_chk){
 		p.text("사용 가능한 스토어 이름입니다.").css('color','#586579');
 		store_flag = 1;
-	}else if(store == ""){
-		p.text("스토어 이름이 입력되지 않았습니다.").css('color','#e97d7d');
-		store_flag = 0;
 	}
 }
 
 
-function re_chk(value, idx){
-	inputs = $('#modal .form-control');
-	parents = $('.form-group');
-	
-	let p = $(parents[idx]).children().last();
-	
-	if($(inputs[idx+1]).val() != value){
-		p.text("사용자 정보와 일치하지않습니다.").css('color','#e97d7d');
-		return false;
-	}else if($(inputs[idx+1]).val() == value){
-		p.text("");
-		return true;
-	}
-}
-
-
-/***** user-modify.jsp, store-management.jsp *****/
-//user-modify.jsp, store-management.jsp 유효성 검사 판단
+/*****user-modify, store-management*****/
 function modify_chk(path, idx){    		// 함수 사용 페이지, input 위치
 	if(path == 'store'){
 		parents = $('.store-form');
@@ -393,7 +388,7 @@ function modify_chk(path, idx){    		// 함수 사용 페이지, input 위치
 
 
 
-/***** insert-product 상품등록 필수값 체크 *****/
+/*****insert-product 상품등록 필수값 체크*****/
 function insert_p_chk(frm) {
 
 	if($('#product-name').val() == '' || $('#product-name').val() == null){ 
