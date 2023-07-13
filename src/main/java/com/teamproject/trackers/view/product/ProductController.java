@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/store")
 public class ProductController {
 
-	// 메인
+	// 스토어 메인
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public String stMain() {
 		return "store/st-main";
