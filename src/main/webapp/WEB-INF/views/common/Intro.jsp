@@ -58,24 +58,19 @@
 	</div>
 	<!--  Tab End  -->
 	
-	<!--  -->
+	<!-- 로고 이미지 -->
 	<div class="container">
 	<br><br>
-	<div class="row">
-		<div class="col-5" id="introlog1">
-			<img src="../../resources/images/recoding.png">
+		<div class="row">
+			<div class="col-10">
+				<img src="../../resources/images/R.png" id="introlog2">
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-6">
-			<img src="../../resources/images/the.png" id="introlog2">
+		<div class="row">
+			<div class="col-12">
+				<img src="../../resources/images/Trackers.svg" id="introlog">
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-12">
-			<img src="../../resources/images/Trackers.svg" id="introlog">
-		</div>
-	</div>
 
 	
 	</div>
