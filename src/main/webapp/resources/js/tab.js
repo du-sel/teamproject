@@ -27,7 +27,6 @@ $(()=>{
 	   
 	   		// URI 변경 - 임시
 	   		//history.pushState('', '', '/community/posts');
-
 	   
 		    // 탭+헤더 애니메이션 디자인
 	        // 프로필, 회원정보 수정인 경우
@@ -108,5 +107,4 @@ function tabActive(){
 
 	}
 }
-
 
