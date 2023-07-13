@@ -1496,8 +1496,6 @@ Single Product Page
   font-weight: 500;
   display: block;
   margin-top: 5px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 20px;
 }
 
 #product .right-content ul.stars {
@@ -1544,122 +1542,59 @@ Single Product Page
   margin-top: 25px;
 }
 
-#product .quantity-content {
-  margin-top: 30px;
-  padding-top: 30px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  width: 100%;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
+#product .info-content {
+	padding: 20px 0;
+	border-bottom: 1px solid #f2f2f6;
+}
+#product .notice-content {
+	padding: 20px 0;
+	border-bottom: 1px solid #f2f2f6;
+}
+#product .notice-content .notice {
+	margin: 0;
+}
+#product .price-content {
+	padding: 20px 0;
+	border-bottom: 1px solid #f2f2f6;
 }
 
-#product .quantity-content .left-content {
-  float: left;
-  margin-right: 30px;
+#product .price-content .discount h4 {
+	text-decoration: line-through;
+	font-size: 20px;
+}
+#product .price-content .sale-price {
+	margin-left: 15px;
+}
+#product .price-content .final-price {
+	margin-top: 10px;
 }
 
-#product .quantity-content .right-content {
-  text-align: right;
+#product .buy-content {
+	padding: 20px 0;
 }
-
-#product .quantity-content .left-content h6 {
-  /* padding-top: 7px; */
-  text-decoration: line-through;
-  font-size: 20px;
-  font-weight: 700;
-  color: #aaa;
-  position: relative;
-  z-index: 11;
-}
-
-#product .total h4 {
-  float: left;
-  font-size: 20px;
-  margin-top: 10px;
-  color: #aaa!important;
-}
-
-#product .total .main-border-button {
-  text-align: center;
-}
-
-#product .total .main-border-button a {
-  color: #2a2a2a;
-  font-size: 13px;
-  border: 1px solid #2a2a2a;
-  padding: 12px 25px;
-  display: inline-block;
+#product .buy-content button {
+  background: #e4e4eb;
+  border: none;
+  padding: 10px;
   font-weight: 500;
   transition: all .3s;
+  border-radius: 0.25rem;
+  width: 7rem;
+}
+#product .buy-content button:first-child {
+	margin-right: 20px;
 }
 
-#product .total .main-border-button a:hover {
+#product .buy-content button:hover {
   color: #fff;
-  background-color: #2a2a2a;
+  background-color: #586579;
+}
+#product .buy-content button:focus {
+  border: none;
+  outline: none;
 }
 
-/* #product .quantity {
-  display: inline-block; 
- }
- 
- #product .quantity .input-text.qty {
-  width: 35px;
-  height: 39px;
-  padding: 0 5px;
-  text-align: center;
-  background-color: transparent;
-  border: 1px solid #efefef;
- }
- 
- #product .quantity.buttons_added {
-  text-align: left;
-  position: relative;
-  white-space: nowrap;
-  vertical-align: top;
- }
- 
- #product .quantity.buttons_added input {
-  display: inline-block;
-  margin: 0;
-  vertical-align: top;
-  box-shadow: none;
- }
- 
- #product .quantity.buttons_added .minus,
- #product .quantity.buttons_added .plus {
-  padding: 7px 10px 8px;
-  height: 39px;
-  background-color: #ffffff;
-  border: 1px solid #efefef;
-  cursor:pointer;}
- 
- #product .quantity.buttons_added .minus {
-  border-right: 0; 
- }
- 
- #product .quantity.buttons_added .plus {
-  border-left: 0; 
- }
- 
- #product .quantity.buttons_added .minus:hover,
- #product .quantity.buttons_added .plus:hover {
-  background: #eeeeee; 
- }
- 
- #product .quantity input::-webkit-outer-spin-button,
- #product .quantity input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  margin: 0; 
- }
-  
- #product .quantity.buttons_added .minus:focus,
- #product .quantity.buttons_added .plus:focus {
-  outline: none; 
- } */
 
-/* ------------------chocomaster--------------------- */
 
 /* tab메뉴 */
 #product .nav-tabs li {
