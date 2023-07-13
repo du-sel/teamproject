@@ -1,18 +1,17 @@
 package com.teamproject.trackers.biz.userCreator;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 	
+	@Autowired
 	private UserRepository userRepository;
-
-	public UserService(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
-
+	
 	// 로그인
 	public UserVO isUser(UserVO vo) {		
 		return userRepository.findByEmailAndPassword(vo.getEmail(), vo.getPassword());
@@ -43,17 +42,15 @@ public class UserService {
 		userRepository.deleteById(vo.getId());
 	}
 	
-	/*
+	
 	// 유효성
 	// 이메일(중복 체크)
 	public boolean validateEmail(UserVO vo) {
-		return userRepository.findByEmail(vo.getEmail());
+		return userRepository.existsByEmail(vo.getEmail());
 	}
 	
 	// url(중복 체크)
-	public boolean validateURL(UserVO vo) {
-		return userRepository.findByUrl(vo.getUrl());
+	public boolean validateURL(UserVO vo) {		
+		return userRepository.existsByUrl(vo.getUrl());
 	}
-	
-	*/
 }

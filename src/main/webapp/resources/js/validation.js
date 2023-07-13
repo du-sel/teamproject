@@ -74,10 +74,11 @@ function tel_hyphen(target){
 }
 
 //url 체크
-function url_chk(url, url_chk, idx, path){			// 기존 url(수정 시 사용), 중복된 url인지(후에 db로, true가 중복), input 위치, 함수 사용 페이지
+function url_chk(old_url, idx, path){			// 기존 url(수정 시 사용), 중복된 url인지(후에 db로, true가 중복), input 위치, 함수 사용 페이지
 	
+	// 함수 부른 페이지 구별해 요소 가져옴
 	if(path == 'store'){
-		inputs = $('#store-management .form-control');
+		inputs = $('#store-management .validation-input');
 		parents = $('.store-form');
 	}else if(path == 'modify'){
 		inputs = $('#modify-input-container .form-control');
@@ -87,21 +88,45 @@ function url_chk(url, url_chk, idx, path){			// 기존 url(수정 시 사용), �
 		parents = $('.form-group');
 	}
 	
+	let url = $(inputs[idx]).val();
+	let url_chk;
 	let p = $(parents[idx]).children().last();
-	
-	if(url.length > 0 && $(inputs[idx]).val() == url){
-		p.text("기존 URL을 사용합니다.").css('color','#586579');
-		url_flag = 1;
-	}else if(url_chk){
-		p.text("중복된 URL입니다.").css('color','#e97d7d');
-		url_flag = 0;
-	}else if($(inputs[idx]).val() != "" && !url_chk){
-		p.text("사용 가능한 URL입니다.").css('color','#586579');
-		url_flag = 1;
-	}else if($(inputs[idx]).val() == ""){
+	console.log(url);
+	console.log($(inputs[idx]));
+	if(url == ""){
 		p.text("URL이 입력되지 않았습니다.").css('color','#e97d7d');
 		url_flag = 0;
+		return;
+	}else if((old_url.length > 0) && (url == old_url)){
+		console.log("뭐야");
+		p.text("기존 URL을 사용합니다.").css('color','#586579');
+		url_flag = 1;
+		return;
 	}
+	
+	$.ajax({
+		url: "/validation/url", 			//통신할 url
+		type: "GET",						//통신할 메소드 타입
+		data: {url : url},	//전송할 데이터
+		dataType: "json",
+		async: false,						// 실행 결과 기다리지 않고 다음 코드 읽을 것인지
+		success : function(result) { 		// 매개변수에 통신성공시 데이터 저장
+			if(result) url_chk = true;		// url 존재
+			else url_chk = false;			// url 존재 x (사용 가능)
+		},
+		error : function (status, error) {	//통신 실패
+			console.log('통신실패');
+			console.log(status, error);
+		}
+	});	
+	console.log("??");
+	if(url_chk){
+		p.text("중복된 URL입니다.").css('color','#e97d7d');
+		url_flag = 0;
+	}else if(url != "" && !url_chk){
+		p.text("사용 가능한 URL입니다.").css('color','#586579');
+		url_flag = 1;
+	} 
 }
 
 //비밀번호 유효성 검사
@@ -125,26 +150,47 @@ function pwd_validation(id, target){
 	
 }
 
-//이메일 중복 체크(?)
-function email_chk(email_chk){
+//이메일 중복 체크
+function email_chk(){
 	inputs = $('#modal .form-control');
 	parents = $('.form-group');
 	
 	let p = $(parents[0]).children().last();
 	let email = $(inputs[0]).val();
+	let email_chk;
 	let email_chk_str = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-	
-	if(!email_chk_str.test(email)){
+
+	if(email == ""){
+		p.text("이메일이 입력되지 않았습니다.").css('color','#e97d7d');
+		email_flag = 0;
+		return;
+	}else if(!email_chk_str.test(email)){
 		console.log($(inputs[1]));
 		p.text("이메일 형식에 맞지 않습니다.").css('color','#e97d7d');
 		email_flag = 0;
-	}else if(email == ""){
-		p.text("이메일이 입력되지 않았습니다.").css('color','#e97d7d');
-		email_flag = 0;
-	}else if(!email_chk){
+		return;
+	}
+	
+	$.ajax({
+		url: "/validation/email", 			//통신할 url
+		type: "GET",						//통신할 메소드 타입
+		data: {email : email},	//전송할 데이터
+		dataType: "json",
+		async: false,						// 실행 결과 기다리지 않고 다음 코드 읽을 것인지
+		success : function(result) { 		// 매개변수에 통신성공시 데이터 저장
+			if(result) email_chk = true;	// 이메일 존재
+			else email_chk = false;			// 이메일 존재 x (사용 가능)
+		},
+		error : function (status, error) {	//통신 실패
+			console.log('통신실패');
+			console.log(status, error);
+		}
+	});	 
+	
+ 	if(email_chk){
 		p.text("중복된 이메일입니다.").css('color','#e97d7d');
 		email_flag = 0;
-	}else if(email != "" && email_chk){
+	}else if(email != "" && !email_chk){
 		p.text("사용 가능한 이메일입니다.").css('color','#586579');
 		email_flag = 1;
 	}
@@ -158,6 +204,30 @@ function change_pwd_chk(){
 	
 	inputs = $('#modify-input-container input:password');
 	
+	
+	// 기존 비밀번호 체크
+	var password = $(inputs[0]).val();
+	console.log("입력:"+password);
+	$.ajax({
+		url: "/validation/pwd", 			//통신할 url
+		type: "GET",						//통신할 메소드 타입
+		data: {old_password : password},	//전송할 데이터
+		dataType: "json",
+		async: false,						// 실행 결과 기다리지 않고 다음 코드 읽을 것인지
+		success : function(result) { 		// 매개변수에 통신성공시 데이터 저장
+		 	if(result){
+		 		$(inputs[0]).parent().next().text("");
+		 		old_res = true;		 		
+		 	}else{
+		 		$(inputs[0]).parent().next().text("비밀번호가 틀렸습니다.").css('color','#e97d7d');
+		 	}
+		},
+		error : function (status, error) {	//통신 실패
+			console.log('통신실패');
+			console.log(status, error);
+		}
+	});	 
+	
 	// 신규 비밀번호 체크
 	if(pwd_chk_str.test($(inputs[1]).val())){	// 비밀번호 형식에 맞아야함
 		if($(inputs[1]).val() == $(inputs[2]).val()){
@@ -167,34 +237,6 @@ function change_pwd_chk(){
 			$(inputs[2]).parent().next().text("비밀번호가 일치하지않습니다.").css('color','#e97d7d');
 		}
 	}
-	
-	// 기존 비밀번호 체크
-	var password = $(inputs[0]).val();
-	console.log("입력:"+password);
-	$.ajax({
-		
-		url: "/validation/pwd", //통신할 url
-		type: "GET",	//통신할 메서드 타입
-		data: {old_password : password}, //전송할 데이타
-		dataType: "json",
-		success : function(result) { // 매개변수에 통신성공시 데이터가 저장된다.
-			//서버와 통신성공시 실행할 내용 작성.
-			console.log('통신 성공!' + result);
-		 	if(result){
-		 		$(inputs[0]).parent().next().text("");
-		 		console.log("1: "+result);
-		 		old_res = true;
-		 		console.log("2: "+old_res);
-		 		
-		 	}else{
-		 		$(inputs[0]).parent().next().text("비밀번호가 틀렸습니다.").css('color','#e97d7d');
-		 	}
-		},
-		error : function (status, error) { //통신에 실패했을때
-			console.log('통신실패');
-			console.log(status, error);
-		}
-	});	 
 	
 	console.log("old: "+old_res);
 	console.log("new: "+new_res);

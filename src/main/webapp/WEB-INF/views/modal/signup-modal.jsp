@@ -18,7 +18,7 @@
 			<div class="form-group">		<!-- 아이디(이메일) -->
 				<div class="input-group necessary">
 					<input type="email" class="form-control" name="email" placeholder="이메일" onkeyup="chk_reset('email')" oninput="remove(2, this)" required>
-					<button type="button" class="btn btn-chk" onclick="email_chk(true)">Check</button>
+					<button type="button" class="btn btn-chk" onclick="email_chk()">Check</button>
 				</div>
 				<p></p>
 			</div>
@@ -48,7 +48,7 @@
 				<div class="input-group necessary">
 					<input type="text" class="base-url" value="/store/" disabled>
 					<input type="text" class="form-control" name="url" placeholder="프로필 URL" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
-					<button type="button" class="btn btn-chk" onclick="url_chk('', false, 5, 'user')">Check</button>
+					<button type="button" class="btn btn-chk" onclick="url_chk('', 5, 'user');">Check</button>
 				</div>
 				<p></p>
 			</div>

@@ -26,7 +26,8 @@ $(()=>{
 	        $(this).addClass('active').addClass('stretchRight');
 	   
 	   		// URI 변경 - 임시
-	   		history.pushState('', '', '/community/posts');
+	   		//history.pushState('', '', '/community/posts');
+
 	   
 		    // 탭+헤더 애니메이션 디자인
 	        // 프로필, 회원정보 수정인 경우
@@ -57,7 +58,7 @@ $(()=>{
 	        $(this).addClass('active').addClass('stretchLeft');
 	         
 	        // URI 변경 - 임시
-	   		history.pushState('', '', '/st-main.do');
+	   		//history.pushState('', '', '/store/main');
 	   		
 	        // 탭+헤더 애니메이션 디자인
 	        $('#tab .active').css('background', '#fff'); 

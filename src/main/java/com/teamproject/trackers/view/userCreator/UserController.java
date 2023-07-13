@@ -85,9 +85,10 @@ public class UserController {
 	// 회원 탈퇴
 	@RequestMapping(value="/users", method=RequestMethod.DELETE)
 	public String deleteUser(UserVO vo) {
-		
 		vo.setId((long)session.getAttribute("id"));
+		
 		userService.deleteUser(vo);
+		session.invalidate();
 		
 		return "redirect:/store/main";
 	}
@@ -104,14 +105,26 @@ public class UserController {
 	
 	
 	// 유효성 검사
-	// 회원 조회
+	// 이메일 중복 검사(signup-modal.jsp)
+	@RequestMapping(value = "/validation/email", method=RequestMethod.GET)
+	@ResponseBody
+	public boolean validateEmail(UserVO vo) {
+		return userService.validateEmail(vo);
+	}
+	
+	// url 중복 검사(signup-modal.jsp, user-modify.jsp, store-management.jsp)
+	@RequestMapping(value = "/validation/url", method=RequestMethod.GET)
+	@ResponseBody
+	public boolean validateURL(UserVO vo) {
+		return userService.validateURL(vo);
+	}
+	
+	// 기존 비밀번호 체크(user-pwd-modify.jsp)
 	@RequestMapping(value = "/validation/pwd", method=RequestMethod.GET)
 	@ResponseBody
 	public boolean validateUserPwd(@RequestParam("old_password") String password, UserVO vo) {
 		vo.setId((long)session.getAttribute("id"));
-		System.out.println(password);
-		System.out.println("기존: "+userService.getUser(vo).get().getPassword());
-		
+
 		return (password.equals(userService.getUser(vo).get().getPassword()));
 	}
 }
