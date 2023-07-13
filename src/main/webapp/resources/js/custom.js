@@ -300,6 +300,8 @@
 	
 
 	
+	// 탭 active / 헤더 배경색 적용
+	tabActive();
 	
 	
 	

@@ -26,7 +26,7 @@ $(()=>{
 	        $(this).addClass('active').addClass('stretchRight');
 	   
 	   		// URI 변경 - 임시
-	   		history.pushState('', '', '/co-main.do');
+	   		history.pushState('', '', '/community/posts');
 	   
 		    // 탭+헤더 애니메이션 디자인
 	        // 프로필, 회원정보 수정인 경우
@@ -73,10 +73,10 @@ $(()=>{
     	
         setTimeout(function(){
         	if(tab == 'co-tab'){
-        		location.href="/co-main.do";
+        		location.href="/community/posts";
 	        }
 	        else if(tab=='st-tab'){
-	        	location.href="/st-main.do";        
+	        	location.href="/store/main";        
 	        }
 	    }, 500);
         
@@ -88,8 +88,9 @@ $(()=>{
 function tabActive(){
 	let path = $(location).attr('pathname');
 	let path_name = path.substr(1, path.indexOf('.')-1);
+	console.log(path_name);
 	
-	if(path_name == 'co-main' || path_name == 'post'){
+	if(path.includes('community')){
 		$('#co-tab').addClass("active").css('background', '#f2f2f6');
 		$('#header-back-color').css('width', '100%').css('right', '0');
 		$('#body-back-color').css('width', '100%').css('right', '0');
@@ -106,4 +107,5 @@ function tabActive(){
 
 	}
 }
+
 
