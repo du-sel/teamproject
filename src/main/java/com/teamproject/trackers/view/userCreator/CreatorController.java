@@ -34,8 +34,7 @@ public class CreatorController {
 	@RequestMapping(value="/profiles")
 	public String getProfile() {
 		return "/profile/profile";
-	}
-	
+	}	
 	
 	// 스토어 열기(크리에이터 등록)
 	@RequestMapping(value="/store/creators", method=RequestMethod.POST)
