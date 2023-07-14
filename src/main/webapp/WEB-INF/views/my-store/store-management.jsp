@@ -35,12 +35,13 @@
                 <h2 class="card-title text-center management-title">스토어 관리</h2>
               </div>
               <div class="card-body">
-				<form action="#" method="post" onsubmit="return modify_chk('store', 1);">
+				<form action="/store/creators" method="post" onsubmit="return modify_chk('store', 1);">
+					<input type="hidden" name="_method" value="put">
 					<div class="store-form">
 			           	<label for="store-name"><h5>스토어 이름</h5></label>
 						<div class="store-input d-flex justify-content-center row">
 			           		<div class="col-sm-9 d-flex">
-				           		<input type="text" name="store_name" id="store-name" class="form-control validation-input store-input" value="${creator.storeName}" placeholder="스토어 이름을 입력하세요." onkeyup="chk_reset('store')" required>
+				           		<input type="text" name="storeName" id="store-name" class="form-control validation-input store-input" value="${creator.storeName}" placeholder="스토어 이름을 입력하세요." onkeyup="chk_reset('store')" required>
 							</div>
 							<button type="button" class="management-btn sub-btn col-sm-3" onclick="store_chk('${creator.storeName}' ,'store')">Check</button>
 						</div>
@@ -75,22 +76,22 @@
 			           	<label for="subscribe"><h5>구독 활성화 여부</h5></label>
 			           	<div class="do-subscribe">
 			           		<label for="yes-subscribe">활성화</label>
-			           		<input type="radio" name="do_subscribe" id="yes-subscribe" value="yes" <c:if test="${creator.subscribe}">checked</c:if>>
+			           		<input type="radio" name="subscribe" id="yes-subscribe" value="true" <c:if test="${creator.subscribe}">checked</c:if>>
 			           		<label for="no-subscribe">비활성화</label>
-			           		<input type="radio" name="do_subscribe" id="no-subscribe" value="no" <c:if test="${!creator.subscribe}">checked</c:if>>
+			           		<input type="radio" name="subscribe" id="no-subscribe" value="false" <c:if test="${!creator.subscribe}">checked</c:if>>
 			           	</div>	 
 			           	<div class="subscribe-info">
 			           		<div class="row flex-column">
 				           		<label for="subscribe-content"><h5>구독 내용</h5></label>
 				           		<div class="form-control-container d-flex subscribe">
-				           			<textarea name="subscribe" id="subscribe-content" class="form-control store-input" maxlength="300" placeholder="구독 내용 작성"></textarea>
+				           			<textarea name="content" id="subscribe-content" class="form-control store-input" maxlength="300" placeholder="구독 내용 작성"></textarea>
 					           	</div>
 				           	</div>
 				           	<div class="row flex-column">
 				           		<label for="subscribe-price"><h5>구독 가격</h5></label>
 				           		<div class="form-control-container d-flex subscribe">
 					           		<span>&#8361;</span>
-					           		<input type="text" name="subscribe_price" id="subscribe-price" class="form-control store-input" value="" placeholder="구독 가격을 입력하세요." oninput="remove(4, this); comma(this);">
+					           		<input type="text" name="price" id="subscribe-price" class="form-control store-input" value="" placeholder="구독 가격을 입력하세요." oninput="remove(4, this); comma(this);">
 					           	</div>
 				           	</div>
 			            </div>
