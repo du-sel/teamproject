@@ -34,6 +34,13 @@ public class UserController {
 	public String signupModal() {
 		return "modal/signup-modal";
 	}
+	@RequestMapping(value="/store-create-modal")
+	public String storeCreateModal(UserVO vo, Model model) {
+		vo.setId((long)session.getAttribute("id"));
+		model.addAttribute("user", userService.getUser(vo).get());
+		
+		return "modal/store-create-modal";
+	}
 	
 	// 로그아웃
 	@RequestMapping(value="/users/logout")

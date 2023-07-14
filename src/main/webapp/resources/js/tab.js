@@ -1,6 +1,7 @@
 
 
 //contact.html 불러오기 
+/*
 async function fetchHtmlAsText(url) {
     return await (await fetch(url)).text();
 };
@@ -9,7 +10,7 @@ async function importPage(target) {
     document.querySelector('#' + target).innerHTML = await fetchHtmlAsText(target + '.do');
 };
 importPage('st-main');
-
+*/
 
 
 
@@ -27,7 +28,6 @@ $(()=>{
 	   
 	   		// URI 변경 - 임시
 	   		//history.pushState('', '', '/community/posts');
-
 	   
 		    // 탭+헤더 애니메이션 디자인
 	        // 프로필, 회원정보 수정인 경우
@@ -108,5 +108,4 @@ function tabActive(){
 
 	}
 }
-
 

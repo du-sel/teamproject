@@ -35,14 +35,15 @@
                 <h2 class="card-title text-center management-title">스토어 관리</h2>
               </div>
               <div class="card-body">
-				<form action="#" method="post" onsubmit="return modify_chk('store', 1);">
+				<form action="/store/creators" method="post" onsubmit="return modify_chk('store', 1);">
+					<input type="hidden" name="_method" value="put">
 					<div class="store-form">
 			           	<label for="store-name"><h5>스토어 이름</h5></label>
 						<div class="store-input d-flex justify-content-center row">
 			           		<div class="col-sm-9 d-flex">
-				           		<input type="text" name="store_name" id="store-name" class="form-control validation-input store-input" value="test" placeholder="스토어 이름을 입력하세요." onkeyup="chk_reset('store')" required>
+				           		<input type="text" name="storeName" id="store-name" class="form-control validation-input store-input" value="${creator.storeName}" placeholder="스토어 이름을 입력하세요." onkeyup="chk_reset('store')" required>
 							</div>
-							<button type="button" class="management-btn sub-btn col-sm-3" onclick="store_chk('test', true,'store')">Check</button>
+							<button type="button" class="management-btn sub-btn col-sm-3" onclick="store_chk('${creator.storeName}' ,'store')">Check</button>
 						</div>
 						<p></p>
 		            </div>
@@ -51,21 +52,22 @@
 		           		<div class="store-input d-flex justify-content-center row">
 			           		<div class="col-sm-9 d-flex">
 				           		<input type="text" class="form-control text-center store-base-url" value="/store/" disabled>
-								<input type="text" id="url" class="form-control validation-input" name="url" placeholder="프로필 URL을 입력하세요." value="" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
+								<input type="text" id="url" class="form-control validation-input" name="url" placeholder="프로필 URL을 입력하세요." value="${creator.url}" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
 							</div>
-							<button type="button" class="management-btn sub-btn col-sm-3" onclick="url_chk('test', 1, 'store')">Check</button>
+							<button type="button" class="management-btn sub-btn col-sm-3" onclick="url_chk('${creator.url}', 1, 'store')">Check</button>
 						</div>
 						<p></p>
 		            </div>
 					<div class="store-form">
 			           	<label for="account"><h5>정산 계좌</h5></label>
 			           	<div class="store-input d-flex justify-content-center">
+			           		<c:set var="bank" value="${creator.bank}" />
 				           	<select class="form-control" name="bank">
-				           		<option selected>우리은행</option>
-				           		<option>국민은행</option>
-				           		<option>신한은행</option>
+				           		<option <c:if test="${bank eq '우리은행'}">selected</c:if>>우리은행</option>
+				           		<option <c:if test="${bank eq '국민은행'}">selected</c:if>>국민은행</option>
+				           		<option <c:if test="${bank eq '신한은행'}">selected</c:if>>신한은행</option>
 				           	</select>
-				           	<input type="text" name="account" id="account" class="form-control" value="1002000000000" placeholder="계좌 번호를 입력하세요.(- 제외)" oninput="remove(4, this)" required>
+				           	<input type="text" name="account" id="account" class="form-control" value="${creator.account}" placeholder="계좌 번호를 입력하세요.(- 제외)" oninput="remove(4, this)" required>
 		            	</div>
 		            </div>
 		            
@@ -74,22 +76,22 @@
 			           	<label for="subscribe"><h5>구독 활성화 여부</h5></label>
 			           	<div class="do-subscribe">
 			           		<label for="yes-subscribe">활성화</label>
-			           		<input type="radio" name="do_subscribe" id="yes-subscribe" value="yes">
+			           		<input type="radio" name="subscribe" id="yes-subscribe" value="true" <c:if test="${creator.subscribe}">checked</c:if>>
 			           		<label for="no-subscribe">비활성화</label>
-			           		<input type="radio" name="do_subscribe" id="no-subscribe" value="no" checked>
+			           		<input type="radio" name="subscribe" id="no-subscribe" value="false" <c:if test="${!creator.subscribe}">checked</c:if>>
 			           	</div>	 
 			           	<div class="subscribe-info">
 			           		<div class="row flex-column">
 				           		<label for="subscribe-content"><h5>구독 내용</h5></label>
 				           		<div class="form-control-container d-flex subscribe">
-				           			<textarea name="subscribe" id="subscribe-content" class="form-control store-input" maxlength="300" placeholder="구독 내용 작성"></textarea>
+				           			<textarea name="content" id="subscribe-content" class="form-control store-input" maxlength="300" placeholder="구독 내용 작성"></textarea>
 					           	</div>
 				           	</div>
 				           	<div class="row flex-column">
 				           		<label for="subscribe-price"><h5>구독 가격</h5></label>
 				           		<div class="form-control-container d-flex subscribe">
 					           		<span>&#8361;</span>
-					           		<input type="text" name="subscribe_price" id="subscribe-price" class="form-control store-input" value="" placeholder="구독 가격을 입력하세요." oninput="remove(4, this); comma(this);">
+					           		<input type="text" name="price" id="subscribe-price" class="form-control store-input" value="" placeholder="구독 가격을 입력하세요." oninput="remove(4, this); comma(this);">
 					           	</div>
 				           	</div>
 			            </div>
@@ -100,9 +102,10 @@
 					</div>
 				</form>
 				
-				<div class="remove-container">
-					<p class="store-remove" onclick="store_remove();">스토어 닫기</p>
-				</div>
+				<form class="remove-container" action="/store/creators" method="post" onsubmit="return store_remove();">
+					<input type="hidden" name="_method" value="delete">
+					<input type="submit" value="스토어 닫기" class="store-remove">
+				</form>
               </div>
             </div>
           </div>
@@ -113,22 +116,24 @@
 
   <script>
 	$(() => {
-	  	
-		//할인정보 슬라이드업다운
-		$('.subscribe-info').hide();		
-			let do_sub = document.getElementsByName('do_subscribe');
-			let do_sub_val = null;
-			
-			$(do_sub).on('change', function() {
-				do_sub_val = $("input[name='do_subscribe']:checked").val();
-				$('.subscribe-info').slideToggle('300');
-			});
+
+		//구독정보 슬라이드업다운		
+		if($('#yes-subscribe').attr('checked') == 'checked'){
+			$('.subscribe-info').show();
+		}else{
+			$('.subscribe-info').hide();
+		}
+		
+		$('#no-subscribe').on('click', function() {
+			$('.subscribe-info').slideUp('300');
+		});
+		$('#yes-subscribe').on('click', function() {
+			$('.subscribe-info').slideDown('300');
+		});
 	});
   
 	function store_remove(){
-		if (confirm("정말 스토어를 닫으시겠습니까?")) {
-			location.replace('profile.do');
-		}
+		return confirm("삭제 시 복구가 불가능합니다.\n정말 스토어를 닫으시겠습니까?");
 	}
 	
 	function comma(event){
