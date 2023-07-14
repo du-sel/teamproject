@@ -47,7 +47,7 @@ function requestPay() {
         <br><br><br>
         <!-- 화면 왼쪽 위에 목록으로 돌아가기 -->
 	    <div class="back">
-	    <a href="products.do">목록으로 돌아가기</a>
+	    <a href="products.do"><span class="fa fa-angle-double-left"></span>목록으로 돌아가기</a>
 	    </div>
 	    <br><br><br>
         
@@ -55,49 +55,56 @@ function requestPay() {
         <div class="container">
 	        
             <div class="row">
-                <div class="col-lg-8">
-                <div class="left-images">
-                    <img src="/resources/images/썸네일.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="right-content">
-                    <h4>춘식이 다이어리</h4>
-                    <span class="creator">'춘식이폼미쳤다' 님의 작품</span>
-                    <ul class="stars">
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                    </ul>
-                    <span>'춘식이폼미쳤다' 님의 한마디,</span>
-                    <div class="quote">
-                        <i class="fa fa-quote-left"></i><p>세상에 하나뿐인 나만의 춘식이 다이어리를 작성해 보세요!</p>
-                    </div>
-                    <div class="quantity-content">
-                        <div class="left-content">
-                            <h6>가격 : 7000원</h6>
-                        </div>
-                        <div class="right-content">  
-                        	<h5>→ 10% 할인</h5>
-                        </div>
-                    </div>
-                    <div class="total">
-                        <h4>합계 : 6300원</h4>
-                        <br><br><br>
-                        <div class="main-border-button"><a href="cart.do">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        								<form action="/store/purchases/2" method="post">
-                        									<button>구매하기</button>
-                        								</form>
-                        								<!-- 나중에 onclick으로 action값 수정 필요 -->
-                        								<button onclick="requestPay()">결제하기</button>
-                        								<!-- 결제 API 테스트용 임시 버튼 추가 -->
-      					</div>
-                        <br><br><br><br><br>
-                    </div>
-                </div>
-            </div> 
+                <div class="col-lg-7">
+	                <div class="left-images">
+	                    <img src="/resources/images/썸네일.jpg" alt="상품 썸네일">
+	                </div>
+	            </div>
+	            <div class="col-lg-5">
+	                <div class="right-content">
+	                	<div class="info-content">                	
+		                    <h4>춘식이 다이어리</h4>
+		                    <span class="creator">'춘식이폼미쳤다' 님의 작품</span>
+		                    <ul class="stars">
+		                        <li><i class="fa fa-star"></i></li>
+		                        <li><i class="fa fa-star"></i></li>
+		                        <li><i class="fa fa-star"></i></li>
+		                        <li><i class="fa fa-star"></i></li>
+		                        <li><i class="fa fa-star"></i></li>
+		                    </ul>
+	                	</div>
+	                	<div class="notice-content">
+	                		<p class="notice">본 상품은 디지털 어쩌구 바로 다운로드 어쩌구 환불 어쩌구</p>
+	                	</div>
+	                    <div class="price-content">
+	                    	<div class="d-flex">
+		                        <div class="price discount">
+		                            <h4>가격 : 7000원</h4>
+		                        </div>
+		                        <div class="sale-price">  
+		                        	<h5>→ 700원 할인</h5>
+		                        </div>
+	                    	</div>
+	                    	<div class="final-price">
+		                        <h4>구매가 : 6300원</h4>
+	                    	</div>
+	                    </div>
+	                    <div class="buy-content">                        
+	                        <div class="d-flex justify-content-center">
+	                        	<form action="/store/carts/2" method="post">
+   									<button>장바구니</button>
+   								</form>
+   								<!-- <form action="/store/purchases/2" method="post">
+   									<button>바로 구매</button>
+   								</form> -->
+   								<!-- 잠깐 css 손보느라 주석처리해둠 -->
+   								<!-- 나중에 onclick으로 action값 수정 필요 -->
+   								<button onclick="requestPay()">바로 결제</button>
+   								<!-- 결제 API 테스트용 임시 버튼 추가 -->
+	      					</div>
+	                    </div>
+	                </div>
+	            </div> 
             </div>
         </div>
         <br><br><br>
@@ -479,23 +486,23 @@ function requestPay() {
     </section>
 
     <!-- sticky -->
-   	<div class="sticky">
+   	<!-- <div class="sticky">
     	<h6>최근 본 상품</h6>
     	<br>
-	    <!-- 최근 본 상품 이미지-->
+	    최근 본 상품 이미지
 	    <div id="recent-view">
 	        <img src ="/resources/images/최근본상품1.jpg" alt="">
 	        <img src ="/resources/images/최근본상품2.jpg" alt="">
 	    </div>
-	    <!-- 장바구니 버튼 -->
+	    장바구니 버튼
     	<button type="button" id="cart-btn" onclick="redirectToPage()">장바구니</button>
-    	<!-- 장바구니 버튼 누르면 장바구니 페이지로 이동하기 -->
+    	장바구니 버튼 누르면 장바구니 페이지로 이동하기
     	<script type="text/javascript">
     	function redirectToPage() {
     		  window.location.href = "cart.do";
     		}
     	</script>
-	</div>
+	</div> -->
 
 </main>  
 
