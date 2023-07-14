@@ -19,25 +19,26 @@
         </div>
 		<div class="container">
 			<div id="modify-input-container" class="d-flex flex-column">
-				<form action="#" method="post" onsubmit="return modify_chk('user', 2);">
+				<form action="/users" method="post" onsubmit="return modify_chk('user', 2);">
+					<input type="hidden" name="_method" value="put">
 					<div class="form-group">		<!-- 이름 -->
 						<div class="input-group">
 							<p>이름</p>
-							<input type="text" class="form-control" name="name" value="김회원" placeholder="Name" required oninput="remove(3 ,this);">
+							<input type="text" class="form-control" name="name" value="${user.name}" placeholder="Name" required oninput="remove(3 ,this);">
 						</div>
 					</div>
 					<div class="form-group">		<!-- 핸드폰번호 -->
 						<div class="input-group">
 							<p>핸드폰 번호</p>
-							<input type="text" class="form-control" name="tel" value="010-1234-5678" placeholder="PhoneNumber" maxlength="13" oninput="tel_hyphen(this);" required>
+							<input type="text" class="form-control" name="tel" value="${user.tel}" placeholder="PhoneNumber" maxlength="13" oninput="tel_hyphen(this);" required>
 						</div>
 					</div>
 					<div class="form-group">		<!-- 프로필 url -->
 						<div class="input-group">
 							<p>개인 프로필 URL</p>
 							<input type="text" class="base-url" value="/store/" disabled>
-							<input type="text" class="form-control" name="url" placeholder="ProfileURL" value="test" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
-							<button type="button" class="btn btn-chk" onclick="url_chk('test', false, 2, 'modify')">Check</button>
+							<input type="text" class="form-control" name="url" placeholder="ProfileURL" value="${user.url}" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
+							<button type="button" class="btn btn-chk" onclick="url_chk('${user.url}', 2, 'modify')">Check</button>
 						</div>
 						<p></p>
 					</div>
@@ -45,11 +46,11 @@
 						<div class="input-group">
 							<p>SNS</p>
 		              		<span class="input-group-addon"><i class="fa fa-instagram"></i></span>
-							<input type="text" class="form-control" name="instagram" placeholder="Instagram URL" oninput="remove(1, this)">
+							<input type="text" class="form-control" name="instagram" value="${user.instagram}" placeholder="Instagram URL" oninput="remove(1, this)">
 						</div>
 						<div class="input-group">
 		              		<span class="input-group-addon"><i class="fa fa-youtube-play"></i></span>
-							<input type="text" class="form-control" name="youtube" placeholder="YouTube URL" oninput="remove(1, this)">
+							<input type="text" class="form-control" name="youtube" value="${user.youtube}" placeholder="YouTube URL" oninput="remove(1, this)">
 						</div>
 						<!-- <div class="input-group">
 		              		<span class="input-group-addon"><i class="fa fa-twitter"></i></span>
@@ -62,9 +63,10 @@
 					</div> 
 				</form>
 				
-				<div class="remove-container">
-					<p class="user-remove" onclick="user_remove();">회원탈퇴</p>
-				</div>
+				<form action="/users" method="post" class="remove-container" onsubmit="return user_remove();">
+					<input type="hidden" name="_method" value="delete">
+					<input type="submit" class="user-remove" value="회원탈퇴">
+				</form>
 			</div>
 		</div>
     </section>
@@ -73,9 +75,7 @@
 
 <script>
 	function user_remove(){
-		 if (confirm("정말 탈퇴하시겠습니까?")) {
-		 	location.replace('st-main.do');
-		 }
+		return confirm("정말 탈퇴하시겠습니까?")
 	}
 </script>
  

@@ -6,10 +6,11 @@
  * store-management
  */
 
-function onSigninModal() { $('.modal-content').load("signin-modal.do"); }
-function onSignupModal() { $('.modal-content').load("signup-modal.do"); }
+function onSigninModal() { $('.modal-content').load("/signin-modal"); }
+function onSignupModal() { $('.modal-content').load("/signup-modal"); }
 function onStoreModal() { $('#store-modal .modal-content').load("store-create-modal.do"); }
 function changeSignupModal(){ $('.scroll-to-section').eq(1).click(); } 		// signin-modal.jsp에서 사용
+
 
 let email_flag = -1;
 let pwd_flag = false;
@@ -17,6 +18,22 @@ let store_flag = -1;
 let url_flag = -1;
 let inputs, parents;
 let pwd_chk_str = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
+
+// 로그인
+function login(){
+	if($('email').val() == '') {
+		alert("아이디를 작성입력해주세요.");
+		$('email').focus();
+		return false;
+	}else if($('password').val() == '') {
+		alert("비밀번호를 작성입력해주세요.");
+		$('password').focus()
+		return false;
+	}
+	
+	$('#path').val($(location).attr('pathname'));	
+	return true;
+}
 
 // 중복확인 초기화
 function chk_reset(flag){
@@ -57,39 +74,64 @@ function tel_hyphen(target){
 }
 
 //url 체크
-function url_chk(url, url_chk, idx, path){			// 기존 url(수정 시 사용), 중복된 url인지(후에 db로, true가 중복), input 위치, 함수 사용 페이지
+function url_chk(old_url, idx, path){			// 기존 url(수정 시 사용), 중복된 url인지(후에 db로, true가 중복), input 위치, 함수 사용 페이지
 	
+	// 함수 부른 페이지 구별해 요소 가져옴
 	if(path == 'store'){
-		inputs = $('#store-management input');
+		inputs = $('#store-management .validation-input');
 		parents = $('.store-form');
 	}else if(path == 'modify'){
-		inputs = $('#modify-input-container input');
+		inputs = $('#modify-input-container .form-control');
 		parents = $('.form-group');
 	}else{
-		inputs = $('#modal input');
+		inputs = $('#modal .form-control');
 		parents = $('.form-group');
 	}
 	
+	let url = $(inputs[idx]).val();
+	let url_chk;
 	let p = $(parents[idx]).children().last();
-	
-	if(url.length > 0 && $(inputs[idx+1]).val() == url){
-		p.text("기존 URL을 사용합니다.").css('color','#586579');
-		url_flag = 1;
-	}else if(url_chk){
-		p.text("중복된 URL입니다.").css('color','#e97d7d');
-		url_flag = 0;
-	}else if($(inputs[idx+1]).val() != "" && !url_chk){
-		p.text("사용 가능한 URL입니다.").css('color','#586579');
-		url_flag = 1;
-	}else if($(inputs[idx+1]).val() == ""){
+	console.log(url);
+	console.log($(inputs[idx]));
+	if(url == ""){
 		p.text("URL이 입력되지 않았습니다.").css('color','#e97d7d');
 		url_flag = 0;
+		return;
+	}else if((old_url.length > 0) && (url == old_url)){
+		console.log("뭐야");
+		p.text("기존 URL을 사용합니다.").css('color','#586579');
+		url_flag = 1;
+		return;
 	}
+	
+	$.ajax({
+		url: "/validation/url", 			//통신할 url
+		type: "GET",						//통신할 메소드 타입
+		data: {url : url},	//전송할 데이터
+		dataType: "json",
+		async: false,						// 실행 결과 기다리지 않고 다음 코드 읽을 것인지
+		success : function(result) { 		// 매개변수에 통신성공시 데이터 저장
+			if(result) url_chk = true;		// url 존재
+			else url_chk = false;			// url 존재 x (사용 가능)
+		},
+		error : function (status, error) {	//통신 실패
+			console.log('통신실패');
+			console.log(status, error);
+		}
+	});	
+	console.log("??");
+	if(url_chk){
+		p.text("중복된 URL입니다.").css('color','#e97d7d');
+		url_flag = 0;
+	}else if(url != "" && !url_chk){
+		p.text("사용 가능한 URL입니다.").css('color','#586579');
+		url_flag = 1;
+	} 
 }
 
 //비밀번호 유효성 검사
 function pwd_validation(id, target){
-	inputs = $('#'+id+' input');
+	inputs = $('#'+id+' .form-control');
 	parents = $('.form-group');
 	
 	let p = $(parents[1]).children().last();
@@ -102,27 +144,53 @@ function pwd_validation(id, target){
 	}else{
 		p.text("");		
 	}
+	
+	
+	
+	
 }
 
-//이메일 중복 체크(?)
-function email_chk(email_chk){
-	inputs = $('#modal input');
+//이메일 중복 체크
+function email_chk(){
+	inputs = $('#modal .form-control');
 	parents = $('.form-group');
 	
 	let p = $(parents[0]).children().last();
 	let email = $(inputs[0]).val();
+	let email_chk;
 	let email_chk_str = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-	
-	if(!email_chk_str.test(email)){
-		p.text("이메일 형식에 맞지 않습니다.").css('color','#e97d7d');
-		email_flag = 0;
-	}else if(email == ""){
+
+	if(email == ""){
 		p.text("이메일이 입력되지 않았습니다.").css('color','#e97d7d');
 		email_flag = 0;
-	}else if(!email_chk){
+		return;
+	}else if(!email_chk_str.test(email)){
+		console.log($(inputs[1]));
+		p.text("이메일 형식에 맞지 않습니다.").css('color','#e97d7d');
+		email_flag = 0;
+		return;
+	}
+	
+	$.ajax({
+		url: "/validation/email", 			//통신할 url
+		type: "GET",						//통신할 메소드 타입
+		data: {email : email},	//전송할 데이터
+		dataType: "json",
+		async: false,						// 실행 결과 기다리지 않고 다음 코드 읽을 것인지
+		success : function(result) { 		// 매개변수에 통신성공시 데이터 저장
+			if(result) email_chk = true;	// 이메일 존재
+			else email_chk = false;			// 이메일 존재 x (사용 가능)
+		},
+		error : function (status, error) {	//통신 실패
+			console.log('통신실패');
+			console.log(status, error);
+		}
+	});	 
+	
+ 	if(email_chk){
 		p.text("중복된 이메일입니다.").css('color','#e97d7d');
 		email_flag = 0;
-	}else if(email != "" && email_chk){
+	}else if(email != "" && !email_chk){
 		p.text("사용 가능한 이메일입니다.").css('color','#586579');
 		email_flag = 1;
 	}
@@ -130,38 +198,57 @@ function email_chk(email_chk){
 
 /***** user-pwd-modify.jsp *****/
 //비밀번호 변경 전 확인
-function change_pwd_chk(pwd){
-	res = true;
+function change_pwd_chk(){
+	old_res = false;
+	new_res = false;
 	
 	inputs = $('#modify-input-container input:password');
 	
+	
 	// 기존 비밀번호 체크
-	if($(inputs[0]).val() == pwd){
-		$(inputs[0]).parent().next().text("");
-	}else{
-		$(inputs[0]).parent().next().text("비밀번호가 틀렸습니다.").css('color','#e97d7d');
-		res = false;
-	}
+	var password = $(inputs[0]).val();
+	console.log("입력:"+password);
+	$.ajax({
+		url: "/validation/pwd", 			//통신할 url
+		type: "GET",						//통신할 메소드 타입
+		data: {old_password : password},	//전송할 데이터
+		dataType: "json",
+		async: false,						// 실행 결과 기다리지 않고 다음 코드 읽을 것인지
+		success : function(result) { 		// 매개변수에 통신성공시 데이터 저장
+		 	if(result){
+		 		$(inputs[0]).parent().next().text("");
+		 		old_res = true;		 		
+		 	}else{
+		 		$(inputs[0]).parent().next().text("비밀번호가 틀렸습니다.").css('color','#e97d7d');
+		 	}
+		},
+		error : function (status, error) {	//통신 실패
+			console.log('통신실패');
+			console.log(status, error);
+		}
+	});	 
 	
 	// 신규 비밀번호 체크
 	if(pwd_chk_str.test($(inputs[1]).val())){	// 비밀번호 형식에 맞아야함
 		if($(inputs[1]).val() == $(inputs[2]).val()){
 			$(inputs[2]).parent().next().text("");
+			new_res = true;
 		}else{
 			$(inputs[2]).parent().next().text("비밀번호가 일치하지않습니다.").css('color','#e97d7d');
-			res = false;
 		}
-	}else{
-		res = false;
 	}
 	
-	return res;
+	console.log("old: "+old_res);
+	console.log("new: "+new_res);
+	console.log("on: "+(old_res && new_res));
+	
+	return (old_res && new_res);	//비동기가 늦어서 그냥 넘어가버림
 }
 
 /***** singup-modal.jsp *****/
 // singup-modal.jsp 유효성 검사 판단
 function sign_chk(){    	
-	inputs = $('#modal input');
+	inputs = $('#modal .form-control');
 	parents = $('.form-group');
 	
 	if(email_flag == -1 || url_flag == -1){
@@ -175,12 +262,13 @@ function sign_chk(){
 		return false;
 	}
 	
+	$('#path').val($(location).attr('pathname'));
 	return true;
 }
 
 // 비밀번호 체크 실시간 확인
 function pwd_chk(){
-	inputs = $('#modal input');
+	inputs = $('#modal .form-control');
 	parents = $('.form-group');
 	
 	let p = $(parents[2]).children().last();
@@ -209,7 +297,7 @@ function pwd_chk(){
 /***** store-create-modal.jsp *****/
 //store-create-modal.jsp 유효성 검사 판단
 function store_create_chk(){
-	inputs = $('#modal input');
+	inputs = $('#modal .form-control');
 	parents = $('.form-group');
 	
 	let email = re_chk("admin@naver.com", 2);
@@ -232,10 +320,10 @@ function store_create_chk(){
 // 스토어 이름 체크
 function store_chk(old_store, store_chk, path){				// 기존 store 이름, store 이름 존재 여부, 페이지 path
 	if(path == 'store'){
-		inputs = $('#store-management input');
+		inputs = $('#store-management .form-control');
 		parents = $('.store-form');
 	}else{
-		inputs = $('#modal input');
+		inputs = $('#modal .form-control');
 		parents = $('.form-group');
 	}
 	
@@ -259,7 +347,7 @@ function store_chk(old_store, store_chk, path){				// 기존 store 이름, store
 
 
 function re_chk(value, idx){
-	inputs = $('#modal input');
+	inputs = $('#modal .form-control');
 	parents = $('.form-group');
 	
 	let p = $(parents[idx]).children().last();
