@@ -18,7 +18,6 @@ public class CreatorViewVO {
 	private String storeName;
 	private String bank;
 	private String account;
-	private boolean subscribe;
 	private String url;
 	private String tel;
 	
@@ -46,12 +45,6 @@ public class CreatorViewVO {
 	}
 	public void setAccount(String account) {
 		this.account = account;
-	}
-	public boolean isSubscribe() {
-		return subscribe;
-	}
-	public void setSubscribe(boolean subscribe) {
-		this.subscribe = subscribe;
 	}
 	public String getUrl() {
 		return url;

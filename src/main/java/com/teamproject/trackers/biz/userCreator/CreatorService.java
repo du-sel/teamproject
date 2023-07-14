@@ -23,12 +23,21 @@ public class CreatorService {
 		return creatorViewRepository.findById(vo.getId());
 	}
 	
-	// url, 전화번호 수정
+	// url, 전화번호 수정 - user 테이블
 	public void updateUrlTel(CreatorViewVO vo) {
-		System.out.println(vo.getUrl());
 		creatorViewRepository.updateUrlTel(vo.getId(), vo.getTel(), vo.getUrl());
 	}
-		
+	
+	// url 수정 - user 테이블
+	public void updateUrl(CreatorViewVO vo) {
+		creatorViewRepository.updateUrl(vo.getId(), vo.getUrl());
+	}
+	
+	// 스토어 수정 - creator 테이블
+	public void updateCreator(CreatorViewVO vo) {
+		creatorViewRepository.updateCreator(vo.getId(), vo.getStoreName(), vo.getBank(), vo.getAccount());
+	}
+	
 	// 스토어 닫기
 	public void deleteCreator(CreatorVO vo) {
 		creatorRepository.deleteById(vo.getId());
