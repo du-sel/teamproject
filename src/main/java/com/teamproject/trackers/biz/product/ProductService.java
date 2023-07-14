@@ -19,7 +19,7 @@ public class ProductService {
     }
     
     // 상품 삭제
-    public void deleteProduct(String productId) {
+    public void deleteProduct(long productId) {
         // 상품 삭제 로직을 구현합니다.
         // 데이터베이스와 상호 작용하여 상품을 삭제합니다.
     }
