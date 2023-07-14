@@ -2,16 +2,15 @@ package com.teamproject.trackers.biz.userCreator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Immutable;
+import org.springframework.data.annotation.Immutable;
 
 @Entity
-@Table(name="creator")
-public class CreatorVO {
+@Immutable 
+@Table(name="creatorview")
+public class CreatorViewVO {
 	
 	@Id
 	private long id;
@@ -20,6 +19,8 @@ public class CreatorVO {
 	private String bank;
 	private String account;
 	private boolean subscribe;
+	private String url;
+	private String tel;
 	
 	
 	public long getId() {
@@ -51,5 +52,17 @@ public class CreatorVO {
 	}
 	public void setSubscribe(boolean subscribe) {
 		this.subscribe = subscribe;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 }
