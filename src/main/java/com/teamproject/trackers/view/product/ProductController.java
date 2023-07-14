@@ -107,7 +107,7 @@ public class ProductController {
 
     // 상품 삭제
     @PostMapping("/products/{p_id}/delete")
-    public String deleteProduct(@PathVariable("p_id") String p_id) {
+    public String deleteProduct(@PathVariable("p_id") long p_id) {
         // 상품 삭제 로직
         productService.deleteProduct(p_id);
 
