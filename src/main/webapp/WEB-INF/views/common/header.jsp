@@ -134,6 +134,7 @@
 				                                    <li><a href="/users/logout">로그아웃</a></li>
 				                                </ul>
 			                          		</div>
+			                          		<div class="scroll-to-section"><a href="/profiles">마이프로필</a></div>
 										</c:when>
 										<c:otherwise> 
 											<div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
