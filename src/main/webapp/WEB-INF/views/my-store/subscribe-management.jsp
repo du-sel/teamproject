@@ -62,8 +62,12 @@
 					           	</div>
 					           	<div class="row flex-column">
 					           		<label><h5>구독 상품</h5></label>
-					           		<p>.zip파일로 올려라 안내</p>
-									<input type="file" accept=".zip" name="mfile" required>
+						           	<p class="desc">∙ 구독한 구매자들이 다운로드 받을 <b>압축 파일(.zip)</b>을 등록해주세요</p>
+						           	<p class="desc">∙ 파일 용량이 너무 크면 구매자가 다운로드를 하기 어려울 수 있으니 유의해주세요</p>
+						           	<p class="desc">∙ 등록하는 콘텐츠가 타인의 저작권 또는 초상권을 침해하지 않도록 유의해주세요</p>
+		           					<div class="d-flex align-content-center file-input-container">
+										<input type="file" accept=".zip" name="mfile" required>
+					           		</div>
 					           	</div>
 								<input type="submit" class="main-btn management-btn" value="등록">
 							</form>

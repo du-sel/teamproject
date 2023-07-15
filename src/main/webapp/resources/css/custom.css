@@ -4411,7 +4411,9 @@ subscribe-management
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     align-items: center;
 }
-
+#subscribe-management .file-input-container{
+	margin-top: 10px;
+}
 #subscribe-management input[type=file]::file-selector-button {
 	background: #e4e4eb;
 	border: none;
