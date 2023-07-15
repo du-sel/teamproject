@@ -46,7 +46,7 @@
 			           	</div>	 
 			           	
 			           	<div class="subscribe-info">
-			           		<form action="/store/subscribes" method="post" enctype="multipart/form-data">
+			           		<form action="/store/subscribes" method="post" enctype="multipart/form-data" onsubmit="remove_comma();">
 				           		<div class="row flex-column">
 					           		<label for="subscribe-content"><h5>구독 내용</h5></label>
 					           		<div class="form-control-container d-flex subscribe">
@@ -57,13 +57,13 @@
 					           		<label for="subscribe-price"><h5>구독 가격</h5></label>
 					           		<div class="form-control-container d-flex subscribe">
 						           		<span>&#8361;</span>
-						           		<input type="text" name="price" id="subscribe-price" class="form-control store-input" value="${subscribe.price}" placeholder="구독 가격을 입력하세요." oninput="remove(4, this); " required>
+						           		<input type="text" name="price" id="subscribe-price" class="form-control store-input" value="${price}" placeholder="구독 가격을 입력하세요." oninput="remove(4, this); comma(this);" required>
 						           	</div>
 					           	</div>
 					           	<div class="row flex-column">
 					           		<label><h5>구독 상품</h5></label>
 					           		<p>.zip파일로 올려라 안내</p>
-									<input type="file" accept=".zip" name="mfile">
+									<input type="file" accept=".zip" name="mfile" required>
 					           	</div>
 								<input type="submit" class="main-btn management-btn" value="등록">
 							</form>
@@ -102,6 +102,14 @@
 	
 	function comma(event){
 		$('#subscribe-price').val(numberWithCommas($(event).val()));
+	}
+	
+	function remove_comma(){
+		let price = $('#subscribe-price').val();
+		$('#subscribe-price').val(price.replaceAll(',', ''));
+		
+		console.log($('#subscribe-price').val());
+		return false;
 	}
 	
 	function subscribe_remove(){
