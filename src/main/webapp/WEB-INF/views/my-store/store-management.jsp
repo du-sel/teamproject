@@ -35,7 +35,7 @@
                 <h2 class="card-title text-center management-title">스토어 관리</h2>
               </div>
               <div class="card-body">
-				<form action="/store/creators" method="post" onsubmit="return modify_chk('store', 1);">
+				<form action="/profiles/creators" method="post" onsubmit="return modify_chk('store', 1);">
 					<input type="hidden" name="_method" value="put">
 					<div class="store-form">
 			           	<label for="store-name"><h5>스토어 이름</h5></label>

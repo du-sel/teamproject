@@ -26,6 +26,12 @@ public class CreatorController {
 	public String getProfile() {
 		return "/profile/profile";
 	}	
+	// 프로필 임시 연결
+		@RequestMapping(value="/store/creators", method=RequestMethod.GET)
+		public String getcre() {
+			return "/store/st-creators";
+		}	
+	//-------------크리에이터 생성/수정/삭제/조회-------------------
 	
 	// 스토어 열기(크리에이터 등록)
 	@RequestMapping(value="/store/creators", method=RequestMethod.POST)
@@ -41,7 +47,7 @@ public class CreatorController {
 	}
 	
 	// 스토어 조회
-	@RequestMapping(value="/store/creators", method=RequestMethod.GET)
+	@RequestMapping(value="/profiles/creators", method=RequestMethod.GET)
 	public String getCreator(CreatorViewVO vo, Model model) {
 		vo.setId((long)session.getAttribute("id"));
 		model.addAttribute("creator", creatorService.getCreator(vo).get());
@@ -50,13 +56,13 @@ public class CreatorController {
 	}
 	
 	// 스토어 수정
-	@RequestMapping(value="/store/creators", method=RequestMethod.PUT)
+	@RequestMapping(value="/profiles/creators", method=RequestMethod.PUT)
 	public String updateCreator(CreatorViewVO vo) {
 		vo.setId((long)session.getAttribute("id"));
 		creatorService.updateCreator(vo);
 		creatorService.updateUrl(vo);
 		
-		return "redirect:/store/creators";
+		return "redirect:/profiles/creators";
 	}
 	
 		
@@ -67,6 +73,10 @@ public class CreatorController {
 		creatorService.deleteCreator(vo);
 		return "redirect:/store/main";
 	}
+	
+	//---------------------------------------------------
+	
+	// 크리에이터 리스트 조회
 	
 	
 	// 유효성
