@@ -46,7 +46,7 @@
 			           	</div>	 
 			           	
 			           	<div class="subscribe-info">
-			           		<form action="/store/subscribes" method="post">
+			           		<form action="/store/subscribes" method="post" enctype="multipart/form-data">
 				           		<div class="row flex-column">
 					           		<label for="subscribe-content"><h5>구독 내용</h5></label>
 					           		<div class="form-control-container d-flex subscribe">
@@ -62,7 +62,8 @@
 					           	</div>
 					           	<div class="row flex-column">
 					           		<label><h5>구독 상품</h5></label>
-									<!-- <input type="file" accept="image/*" name="file" required> -->
+					           		<p>.zip파일로 올려라 안내</p>
+									<input type="file" accept=".zip" name="mfile">
 					           	</div>
 								<input type="submit" class="main-btn management-btn" value="등록">
 							</form>

@@ -21,7 +21,7 @@ public class SubscribeInfoService {
 	
 	// 구독 수정
 	public void updateSubscribeInfo(SubscribeInfoVO vo) {
-		subscribeInfoRepository.updateSubscribeInfo(vo.getId(), vo.getContent(), vo.getPrice());
+		subscribeInfoRepository.updateSubscribeInfo(vo.getId(), vo.getFile(), vo.getContent(), vo.getPrice());
 	}
 	// 구독 비활성화(삭제)
 	public void deleteSubscribeInfo(SubscribeInfoVO vo) {

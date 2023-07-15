@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.Transient;
+import org.springframework.web.multipart.MultipartFile;
+
 @Entity
 @Table(name="subscribeinfo")
 public class SubscribeInfoVO {
@@ -19,7 +22,6 @@ public class SubscribeInfoVO {
 	private String file;
 	private String content;
 	private int price;
-	
 	
 	public long getSubscribeId() {
 		return subscribeId;
@@ -51,6 +53,5 @@ public class SubscribeInfoVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
 	
 }

@@ -15,8 +15,8 @@ public interface SubscribeInfoRepository extends JpaRepository<SubscribeInfoVO, 
 	// 구독 정보 수정
 	@Modifying(clearAutomatically = true)
 	@Transactional
-	@Query(value = "UPDATE subscribeinfo si SET si.content = :content, si.price = :price WHERE si.id = :id", nativeQuery = true)
-	void updateSubscribeInfo(@Param("id")long id, @Param("content")String content, @Param("price")int price);	
+	@Query(value = "UPDATE subscribeinfo si SET si.file = :file, si.content = :content, si.price = :price WHERE si.id = :id", nativeQuery = true)
+	void updateSubscribeInfo(@Param("id")long id, @Param("file")String file, @Param("content")String content, @Param("price")int price);	
 
 	// 구독 비활성화
 	@Modifying

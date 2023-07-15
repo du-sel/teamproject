@@ -1,32 +1,30 @@
 package com.teamproject.trackers.view.followSubscribeLike;
 
-import java.util.Optional;
-
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.teamproject.trackers.biz.drive.DriveController;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoService;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoVO;
-import com.teamproject.trackers.biz.userCreator.CreatorService;
-import com.teamproject.trackers.biz.userCreator.CreatorVO;
-import com.teamproject.trackers.biz.userCreator.CreatorViewVO;
-import com.teamproject.trackers.biz.userCreator.UserService;
-import com.teamproject.trackers.biz.userCreator.UserVO;
 
 
 @Controller
 public class SubscribeController {
 
+	@Autowired
+	private DriveController drive;
 	@Autowired
 	private SubscribeInfoService subscribeInfoService;
 	@Autowired
@@ -38,18 +36,22 @@ public class SubscribeController {
 		vo.setId((long)session.getAttribute("id"));
 		
 		model.addAttribute("subscribe", subscribeInfoService.getSubscribeInfo(vo));
-		System.out.println("조회:"+model);
+
 		return "/my-store/subscribe-management";	// 스토어 관리 임시연결
 	}
 	
 	// 구독 활성화(등록 및 수정)
 	@RequestMapping(value="/store/subscribes", method=RequestMethod.POST)
-	public String updateSubscribeInfo(SubscribeInfoVO vo) {
+	public String updateSubscribeInfo(SubscribeInfoVO vo, @RequestParam("mfile") MultipartFile mfile) throws Exception {
 		vo.setId((long)session.getAttribute("id"));
+		SubscribeInfoVO infoVO = subscribeInfoService.getSubscribeInfo(vo);
 		
-		if(subscribeInfoService.getSubscribeInfo(vo) == null) {		// 등록
+		if(infoVO == null) {		// 등록
+			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장
 			subscribeInfoService.insertSubscribeInfo(vo);
 		}else {
+			//drive.SubscribeDelete(infoVO);						// 저번 달 파일 삭제
+			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장
 			subscribeInfoService.updateSubscribeInfo(vo);			// 수정
 		}
 		
@@ -58,10 +60,13 @@ public class SubscribeController {
 	
 	// 구독 비활성화(삭제)
 	@RequestMapping(value="/store/subscribes", method=RequestMethod.DELETE)
-	public String deleteSubscribeInfo(SubscribeInfoVO vo) {
+	public String deleteSubscribeInfo(SubscribeInfoVO vo) throws Exception {
 		vo.setId((long)session.getAttribute("id"));
 		
+		//drive.SubscribeDelete(subscribeInfoService.getSubscribeInfo(vo));
+		
 		subscribeInfoService.deleteSubscribeInfo(vo);
+		
 		return "redirect:/store/subscribes";
 	}
 }
