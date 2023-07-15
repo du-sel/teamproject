@@ -1,5 +1,7 @@
 package com.teamproject.trackers.view.followSubscribeLike;
 
+import java.text.DecimalFormat;
+
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.annotations.Parameter;
@@ -35,7 +37,13 @@ public class SubscribeController {
 	public String getCreator(SubscribeInfoVO vo, Model model) {
 		vo.setId((long)session.getAttribute("id"));
 		
-		model.addAttribute("subscribe", subscribeInfoService.getSubscribeInfo(vo));
+		SubscribeInfoVO subscribe = subscribeInfoService.getSubscribeInfo(vo);
+		model.addAttribute("subscribe", subscribe);
+
+		// 세자리 마다 , 붙이기
+		DecimalFormat decFormat = new DecimalFormat("###,###");
+		String price = decFormat.format(subscribe.getPrice());
+		model.addAttribute("price", price);
 
 		return "/my-store/subscribe-management";	// 스토어 관리 임시연결
 	}
