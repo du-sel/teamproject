@@ -99,7 +99,7 @@
 		                                </ul>
 	                            	</div>
 		    	                    <div>
-		                                <a href="/store/creators">크리에이터</a>
+		                                <a href="/store/creators?sort=newest">크리에이터</a>
 		                            </div>
 								</div>
 	                            <!-- ***** Logo Start ***** -->

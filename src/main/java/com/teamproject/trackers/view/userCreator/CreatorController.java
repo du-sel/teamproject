@@ -26,12 +26,7 @@ public class CreatorController {
 	public String getProfile() {
 		return "/profile/profile";
 	}	
-	// 프로필 임시 연결
-		@RequestMapping(value="/store/creators", method=RequestMethod.GET)
-		public String getcre() {
-			return "/store/st-creators";
-		}	
-	//-------------크리에이터 생성/수정/삭제/조회-------------------
+
 	
 	// 스토어 열기(크리에이터 등록)
 	@RequestMapping(value="/store/creators", method=RequestMethod.POST)
@@ -73,10 +68,6 @@ public class CreatorController {
 		creatorService.deleteCreator(vo);
 		return "redirect:/store/main";
 	}
-	
-	//---------------------------------------------------
-	
-	// 크리에이터 리스트 조회
 	
 	
 	// 유효성
