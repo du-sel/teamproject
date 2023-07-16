@@ -1820,19 +1820,24 @@ st-creator
 	margin-bottom: 15px;
 	border-bottom: 2px solid #e4e4eb99;
 }
-
-#creators .product a {
-	width: 20%;
+#creators .product{
+	min-height: 200px;
 }
-
+#creators .product a {
+	width: auto;
+    height: 100%;
+}
 #creators .product a img {
 	padding: 10px;
 	width: 100%;
 	height: auto;
 	border-radius: 15px;
+	object-fit: cover;
+	width: 245px;
+    height: 245px;
 }
-#creators .product a img:hover {
-	opacity: 0.6;
+#creators .product .empty-item{
+	width: 100%;	
 }
 
 #creators .creator-card {
@@ -4316,47 +4321,87 @@ store-management
 #store-management .store-remove:hover{
 	color: #b8b8c4;
 }
+@media (max-width: 576px){
+	#store-management .store-form .store-input:nth-child(2)>div{
+		padding-right:0;
+	}
+	#store-management .store-form .store-input .sub-btn{
+		margin: 10px 0 0;
+	}
+}
 
-#store-management .subscribe-form .subscribe-info .row{
+
+/* 
+---------------------------------------------
+subscribe-management
+--------------------------------------------- 
+*/
+#subscribe-management .col-xl-10{
+	margin: 0 auto;
+}
+#subscribe-management .card-body{
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+#subscribe-management .card{
+	margin: 0 auto;
+}
+#subscribe-management .store-form {
+	padding: 0 10px;
+	margin: 0 auto 35px;
+}
+#subscribe-management .store-form h5 {
+	color: #2a2a2a;
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+#subscribe-management .store-form .main-btn{
+	width: 100%;
+	margin: 10px 0;
+}
+#subscribe-management .store-form .store-input{
+	width: 100%;
+	margin: 0;
+}
+#subscribe-management .subscribe-form .subscribe-info .row{
 	width: 100%;
 	margin: 0 auto 35px;
 }
-#store-management .form-control-container span {
+#subscribe-management .form-control-container span {
     font-weight: 600;
     font-size: 110%;
 }
-
-/* 구독 */
-#store-management .subscribe-form  #subscribe-content,
-#store-management .subscribe-form  #subscribe-price {
+#subscribe-management .subscribe-form  #subscribe-content,
+#subscribe-management .subscribe-form  #subscribe-price {
 	border: none;
 	padding: 0;
     height: auto;
 }
-#store-management .subscribe-form  #subscribe-price{
+#subscribe-management .subscribe-form  #subscribe-price{
     margin-left: 10px;
 }
-#store-management .subscribe-form  .subscribe-container p {
+#subscribe-management .subscribe-form  .subscribe-container p {
 	font-size: 18px;
 	min-width: 4rem;
 	text-align: center;
 }
-#store-management .subscribe-form  .do-subscribe{
+#subscribe-management .subscribe-form  .do-subscribe{
 	margin-bottom: 35px;
 }
-#store-management .subscribe-form  .do-subscribe label{
+#subscribe-management .subscribe-form  .do-subscribe label{
 	color: #2a2a2a;
 	font-size: initial;
 	
 }
-#store-management .subscribe-form  .do-subscribe textarea {
-	height: 100px;
-}
-#store-management .subscribe-form  .do-subscribe input {
+#subscribe-management .subscribe-form  .do-subscribe input {
 	margin-right: 20px;
 }
-
-#store-management .subscribe-form .subscribe-info .subscribe{
+#subscribe-management .subscribe-form .subscribe-info textarea {
+	height: 200px !important;
+	max-height: inherit;
+}
+#subscribe-management .subscribe-form .subscribe-info .subscribe{
 	width: 100%;
     height: max-content;
     padding: 0.375rem 0.75rem;
@@ -4371,16 +4416,19 @@ store-management
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     align-items: center;
 }
-
-@media (max-width: 576px){
-	#store-management .store-form .store-input:nth-child(2)>div{
-		padding-right:0;
-	}
-	#store-management .store-form .store-input .sub-btn{
-		margin: 10px 0 0;
-	}
+#subscribe-management .file-input-container{
+	margin-top: 10px;
 }
-
+#subscribe-management input[type=file]::file-selector-button {
+	background: #e4e4eb;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 0.2rem;
+}
+#subscribe-management input[type=file]::file-selector-button:hover {
+	background: #586579;
+	color: #fff;
+}
 
 /* 
 ---------------------------------------------

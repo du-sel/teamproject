@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,6 +32,13 @@ public class UserController {
 	public String signupModal() {
 		return "modal/signup-modal";
 	}
+	@RequestMapping(value="/store-create-modal")
+	public String storeCreateModal(UserVO vo, Model model) {
+		vo.setId((long)session.getAttribute("id"));
+		model.addAttribute("user", userService.getUser(vo).get());
+		
+		return "modal/store-create-modal";
+	}
 	
 	// 로그아웃
 	@RequestMapping(value="/users/logout")
@@ -49,6 +54,7 @@ public class UserController {
 	public String signin(String path, UserVO vo) throws IllegalAccessException{
 		if(userService.isUser(vo) != null) {
 			session.setAttribute("id", userService.isUser(vo).getId());
+			session.setAttribute("user", userService.isUser(vo));
 			System.out.println("성공");
 		}
 		return "redirect:"+path;

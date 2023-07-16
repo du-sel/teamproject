@@ -1,6 +1,15 @@
 package com.teamproject.trackers.biz.product;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Embedded;
+
+@Entity
+@Table(name = "products")
 public class ProductVO {
+	
+	@Id
 	private long p_id;
 	private long id;
 	private String p_name;
@@ -9,7 +18,6 @@ public class ProductVO {
 	private String thumbnail;
 	private String file;
 	private boolean signature;
-	
 	
 	public long getP_id() {
 		return p_id;

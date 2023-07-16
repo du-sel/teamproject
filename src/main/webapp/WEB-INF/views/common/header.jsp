@@ -13,8 +13,9 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <title>Trackers</title>
+    <link rel="stylesheet" href="/resources/css/Intro.css">
     
-    <!-- 내가 작성 -->
+    <!-- profile page -->
 	<link rel="stylesheet" href="/resources/css/profile.css" >
 
 	<!-- FONT -->
@@ -47,7 +48,8 @@
     <!-- tab JS -->
     <script src="/resources/js/tab.js"></script>
 
-    
+    <!-- intro -->
+    <script src="/resources/js/intro.js"></script>
 
     
     </head>
@@ -99,7 +101,7 @@
 		                                </ul>
 	                            	</div>
 		    	                    <div>
-		                                <a href="creators.do">크리에이터</a>
+		                                <a href="/store/creators?sort=newest">크리에이터</a>
 		                            </div>
 								</div>
 	                            <!-- ***** Logo Start ***** -->
@@ -134,6 +136,7 @@
 				                                    <li><a href="/users/logout">로그아웃</a></li>
 				                                </ul>
 			                          		</div>
+			                          		<div class="scroll-to-section"><a href="/profiles">마이프로필</a></div>
 										</c:when>
 										<c:otherwise> 
 											<div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>

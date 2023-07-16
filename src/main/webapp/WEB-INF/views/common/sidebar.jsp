@@ -36,8 +36,14 @@
 	      </li>
 	      <li>
 	        <a href="product-management.do">
-	          <i class="tim-icons icon-gift-2"></i>
+	          <i class="tim-icons icon-basket-simple"></i>
 	          <p>상품 관리</p>
+	        </a>
+	      </li>
+	      <li>
+	        <a href="/store/subscribes">
+	          <i class="tim-icons icon-gift-2"></i>
+	          <p>구독 상품 관리</p>
 	        </a>
 	      </li>
 	      <li>
@@ -53,14 +59,14 @@
 	        </a>
 	      </li>
 	      <li>
-	        <a href="notice-management.do">
+	        <a href="#">
 	          <i class="tim-icons icon-volume-98"></i>
 	          <p>공지 관리</p>
 	        </a>
 	      </li>
 	      <li>
-	        <a href="store-management.do">
-	          <i class="tim-icons icon-basket-simple"></i>
+	        <a href="/profiles/creators">
+	          <i class="tim-icons icon-settings"></i>
 	          <p>스토어 관리</p>
 	        </a>
 	      </li>

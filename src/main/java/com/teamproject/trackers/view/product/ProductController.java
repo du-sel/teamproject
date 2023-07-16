@@ -1,37 +1,47 @@
+
 package com.teamproject.trackers.view.product;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-/*----------------정희 추가-----------------*/
+//----------------정희 추가-----------------
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
+import com.teamproject.trackers.biz.userCreator.CreatorService;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-/*----------------정희 추가-----------------*/
+//----------------정희 추가-----------------
 
 
 @Controller
 @RequestMapping("/store")
 public class ProductController {
 
-	/*---------정희 추가---------*/
+	//---------정희 추가---------
 	@Autowired
     private ProductService productService;
-	/*---------정희 추가---------*/
+	//---------정희 추가---------
 	
 	// 스토어 메인
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public String stMain() {
 		return "store/st-main";
 	}
-	
+
 	// 상품 상세 조회
 	@RequestMapping(value="/products/{p_id}", method=RequestMethod.GET)
 	public String getProduct(@PathVariable("p_id") String p_id) {
@@ -42,7 +52,7 @@ public class ProductController {
 	}
 	
 /*----------------정희 추가-----------------*/
-    
+    /*
 	// 상품 등록 페이지
     @GetMapping("/products/new")
     public String showProductForm() {
@@ -57,7 +67,7 @@ public class ProductController {
             @RequestParam("file") MultipartFile file) {
 
         // 상품 등록 로직
-        ProductVO product = new ProductVO();
+        /*ProductVO product = new ProductVO();
         product.setP_name(name);
         product.setPrice(price);
         productService.insertProduct(product);
@@ -87,7 +97,8 @@ public class ProductController {
             @RequestParam("name") String name,
             @RequestParam("price") int price,
             @RequestParam(value = "file", required = false) MultipartFile file) {
-
+    	*/
+/*
         // 상품 수정 로직
         ProductVO product = productService.getProductById(p_id);
         if (product != null) {
@@ -107,13 +118,39 @@ public class ProductController {
 
     // 상품 삭제
     @PostMapping("/products/{p_id}/delete")
-    public String deleteProduct(@PathVariable("p_id") String p_id) {
+    public String deleteProduct(@PathVariable("p_id") long p_id) {
         // 상품 삭제 로직
-        productService.deleteProduct(p_id);
+        //productService.deleteProduct(p_id);
 
         return "redirect:/store/st-products";
     }
     
     /*----------------정희 추가-----------------*/
 	
+	
+	// 크리에이터 리스트 조회
+	
+	// 크리에이터 리스트 정렬
+	@RequestMapping(value="/creators", method=RequestMethod.GET)
+	public String getCreatorList(String sort, Model model) {
+		
+		List<ProductVO> p = productService.getCreatorSignatureList();
+		HashMap<Long, List<ProductVO>> signature = new HashMap<>();
+		for(ProductVO item : p) {
+			if(signature.get(item.getId()) != null) {
+				signature.get(item.getId()).add(item);
+			}else {
+				ArrayList<ProductVO> list = new ArrayList<>();
+				list.add(item);
+				signature.put(item.getId(), list);
+			}
+		}
+		
+
+		model.addAttribute("creators", productService.getCreatorList(sort));
+		model.addAttribute("signature", signature);
+		model.addAttribute("sort", sort);
+		
+		return "/store/st-creators";
+	}	
 }
