@@ -39,7 +39,7 @@ public class DriveController {
 	
 	public String SubscribeUpload(SubscribeInfoVO vo, MultipartFile mfile) throws Exception {
 	
-		tmpPath = req.getServletContext().getRealPath("/resources/file/");		// 위치 생각해 볼 것
+		tmpPath = req.getServletContext().getRealPath("/resources/tmpfile/");		// 위치 생각해 볼 것
         
 		if (!mfile.isEmpty()) {
 			int month = Calendar.getInstance().get(Calendar.MONTH)+1;

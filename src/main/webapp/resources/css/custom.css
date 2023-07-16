@@ -1820,19 +1820,24 @@ st-creator
 	margin-bottom: 15px;
 	border-bottom: 2px solid #e4e4eb99;
 }
-
-#creators .product a {
-	width: 20%;
+#creators .product{
+	min-height: 200px;
 }
-
+#creators .product a {
+	width: auto;
+    height: 100%;
+}
 #creators .product a img {
 	padding: 10px;
 	width: 100%;
 	height: auto;
 	border-radius: 15px;
+	object-fit: cover;
+	width: 245px;
+    height: 245px;
 }
-#creators .product a img:hover {
-	opacity: 0.6;
+#creators .product .empty-item{
+	width: 100%;	
 }
 
 #creators .creator-card {

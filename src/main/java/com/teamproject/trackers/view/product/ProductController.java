@@ -18,8 +18,10 @@ import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
 import com.teamproject.trackers.biz.userCreator.CreatorService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 //----------------정희 추가-----------------
@@ -134,14 +136,23 @@ public class ProductController {
 	// 크리에이터 리스트 정렬
 	@RequestMapping(value="/creators", method=RequestMethod.GET)
 	public String getCreatorList(String sort, Model model) {
-		model.addAttribute("creators", productService.getCreatorList(sort));
-		model.addAttribute("signatureList", productService.getCreatorSignatureList());
-		model.addAttribute("sort", sort);
 		
-		//List<ProductVO> p = productService.getCreatorSignatureList();
-		//for(ProductVO item : p) {
-		//	System.out.println(item.getId()+":"+item.getP_name());
-		//}
+		List<ProductVO> p = productService.getCreatorSignatureList();
+		HashMap<Long, List<ProductVO>> signature = new HashMap<>();
+		for(ProductVO item : p) {
+			if(signature.get(item.getId()) != null) {
+				signature.get(item.getId()).add(item);
+			}else {
+				ArrayList<ProductVO> list = new ArrayList<>();
+				list.add(item);
+				signature.put(item.getId(), list);
+			}
+		}
+		
+
+		model.addAttribute("creators", productService.getCreatorList(sort));
+		model.addAttribute("signature", signature);
+		model.addAttribute("sort", sort);
 		
 		return "/store/st-creators";
 	}	
