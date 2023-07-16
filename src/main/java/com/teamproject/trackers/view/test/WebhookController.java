@@ -11,16 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.JsonObject;
+import com.teamproject.trackers.biz.purchase.WebhookVO;
 
 @RestController
 public class WebhookController {
 	
-	/*
+	
 	@RequestMapping(value="/purchase/webhook", method=RequestMethod.POST)
-	public void getWebhook(@RequestBody JsonObject jsonObj, HttpServletResponse resp) {
+	public void getWebhook(@RequestBody WebhookVO webhook, HttpServletResponse resp) {
 		System.out.println("WebhookController 도착");
-		System.out.println(jsonObj);
+		System.out.println(webhook.toString());
 	}
-	*/
+	
 
 }
