@@ -16,7 +16,7 @@ public class PostIMGVO {
 	private long post_id;
 	
 	@Column(name = "id")
-	private Long post_img;
+	private Long postimg;
 	
 	@Transient
 	private MultipartFile uploadFile;
@@ -35,10 +35,10 @@ public class PostIMGVO {
 	public void setPost_id(long post_id) {
 		this.post_id = post_id;
 	}
-	public Long getPost_img() {
-		return post_img;
+	public Long getPostimg() {
+		return postimg;
 	}
-	public void setPost_img(Long post_img) {
-		this.post_img = post_img;
+	public void setPostimg(Long postimg) {
+		this.postimg = postimg;
 	}	
 }
