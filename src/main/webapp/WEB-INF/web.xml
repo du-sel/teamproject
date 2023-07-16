@@ -41,15 +41,23 @@
 		<servlet-name>action</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>	
 		<load-on-startup>1</load-on-startup>
+		
+		<!-- 파일 업로드 설정 -->
+		<multipart-config>
+			<location>/resources/file/</location>		<!-- 어디로 할지 정하기 -->
+			<max-file-size>20971520</max-file-size> 
+			<max-request-size>41943040</max-request-size> 
+			<file-size-threshold>20971520</file-size-threshold> 
+		</multipart-config> 
 	</servlet>
 
 
 	<servlet-mapping>
 		<servlet-name>action</servlet-name>
 		<url-pattern>/</url-pattern>
-		<!-- url 패턴 변경 -->
 	</servlet-mapping>
-	   <servlet-mapping> 
+	
+	<servlet-mapping> 
        <servlet-name>default</servlet-name>
        <url-pattern>*.js</url-pattern>
        <url-pattern>*.css</url-pattern>

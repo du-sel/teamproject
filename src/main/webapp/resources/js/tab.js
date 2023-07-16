@@ -88,15 +88,14 @@ $(()=>{
 
 function tabActive(){
 	let path = $(location).attr('pathname');
-	let path_name = path.substr(1, path.indexOf('.')-1);
-	console.log(path_name);
+	let search = $(location).attr('search');
 	
 	if(path.includes('community')){
 		$('#co-tab').addClass("active").css('background', '#f2f2f6');
 		$('#header-back-color').css('width', '100%').css('right', '0');
 		$('#body-back-color').css('width', '100%').css('right', '0');
 	}
-	else if(path_name == 'profile' || path_name.includes('user-')){
+	else if(path.includes('/profiles') || (path.includes('users')&&search.includes('?path'))){
 		$('#co-tab').addClass("active").css('background', '#fff');
 	}
 	else{
