@@ -13,8 +13,9 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <title>Trackers</title>
+    <link rel="stylesheet" href="/resources/css/Intro.css">
     
-    <!-- 내가 작성 -->
+    <!-- profile page -->
 	<link rel="stylesheet" href="/resources/css/profile.css" >
 
 	<!-- FONT -->
@@ -47,7 +48,8 @@
     <!-- tab JS -->
     <script src="/resources/js/tab.js"></script>
 
-    
+    <!-- intro -->
+    <script src="/resources/js/intro.js"></script>
 
     
     </head>
