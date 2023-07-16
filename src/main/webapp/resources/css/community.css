@@ -220,6 +220,9 @@ scroll custom
 .co .co-post-margin{
 	margin:0 auto;
 }
+.co #user_id{
+	display: none;
+}
 
 
 /* 
@@ -401,6 +404,7 @@ sidebar
 .co #co-main,
 .co #co-main #main{
 	width: 100%;
+	margin:0 auto;
 }
 .co #co-main #main>div{
 	width: 100%;
