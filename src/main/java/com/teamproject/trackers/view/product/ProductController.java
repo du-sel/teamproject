@@ -30,7 +30,7 @@ public class ProductController {
 	public String stMain() {
 		return "store/st-main";
 	}
-	/*
+	
 	// 상품 상세 조회
 	@RequestMapping(value="/products/{p_id}", method=RequestMethod.GET)
 	public String getProduct(@PathVariable("p_id") String p_id) {
@@ -39,7 +39,7 @@ public class ProductController {
 	
 		return "store/st-product-single";
 	}
-	*/
+	
 /*----------------정희 추가-----------------*/
     /*
 	// 상품 등록 페이지
