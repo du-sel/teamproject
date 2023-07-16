@@ -3,6 +3,7 @@ package com.teamproject.trackers.view.product;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.teamproject.trackers.biz.product.ProductService;
+import com.teamproject.trackers.biz.product.ProductVO;
+import com.teamproject.trackers.biz.userCreator.CreatorService;
+
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 //----------------정희 추가-----------------
 
@@ -22,7 +31,7 @@ public class ProductController {
 
 	//---------정희 추가---------
 	@Autowired
-    //private ProductService productService;
+    private ProductService productService;
 	//---------정희 추가---------
 	
 	// 스토어 메인
@@ -30,6 +39,9 @@ public class ProductController {
 	public String stMain() {
 		return "store/st-main";
 	}
+
+	
+	
 	/*
 	// 상품 상세 조회
 	@RequestMapping(value="/products/{p_id}", method=RequestMethod.GET)
@@ -116,4 +128,21 @@ public class ProductController {
     
     /*----------------정희 추가-----------------*/
 	
+	
+	// 크리에이터 리스트 조회
+	
+	// 크리에이터 리스트 정렬
+	@RequestMapping(value="/creators", method=RequestMethod.GET)
+	public String getCreatorList(String sort, Model model) {
+		model.addAttribute("creators", productService.getCreatorList(sort));
+		model.addAttribute("signatureList", productService.getCreatorSignatureList());
+		model.addAttribute("sort", sort);
+		
+		//List<ProductVO> p = productService.getCreatorSignatureList();
+		//for(ProductVO item : p) {
+		//	System.out.println(item.getId()+":"+item.getP_name());
+		//}
+		
+		return "/store/st-creators";
+	}	
 }
