@@ -34,6 +34,30 @@ function requestPay() {
       }
   });
 }
+
+
+function monthlyPay() {
+	
+	IMP.request_pay({
+		pay_method : 'card', // 기능 없음.
+		merchant_uid: "order_monthly_0001", // 상점에서 관리하는 주문 번호
+		name : '최초인증결제',
+		amount : 100, // 빌링키 발급과 함께 1,004원 결제승인을 시도합니다.
+		customer_uid : '1', // 필수 입력
+/* 		buyer_email : 'iamport@siot.do',
+		buyer_name : '아임포트',
+		buyer_tel : '02-1234-1234' */
+	}, function(rsp) {
+		if ( rsp.success ) {
+			alert('빌링키 발급 성공');
+		} else {
+			alert('빌링키 발급 실패');
+		}
+	});
+
+}
+
+
 </script>
 
 
@@ -91,15 +115,18 @@ function requestPay() {
 	                    </div>
 	                    <div class="buy-content">                        
 	                        <div class="d-flex justify-content-center">
-	                        	<form action="/store/carts/2" method="post">
+	                        	<!-- <form action="/store/carts/2" method="post">
    									<button>장바구니</button>
-   								</form>
+   								</form> -->
    								<!-- <form action="/store/purchases/2" method="post">
    									<button>바로 구매</button>
    								</form> -->
    								<!-- 잠깐 css 손보느라 주석처리해둠 -->
    								<!-- 나중에 onclick으로 action값 수정 필요 -->
+   								
    								<button onclick="requestPay()">바로 결제</button>
+   								<!-- 결제 API 테스트용 임시 버튼 추가 -->
+   								<button onclick="monthlyPay()">정기결제</button>
    								<!-- 결제 API 테스트용 임시 버튼 추가 -->
 	      					</div>
 	                    </div>

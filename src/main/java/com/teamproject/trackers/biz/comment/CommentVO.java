@@ -1,12 +1,26 @@
 package com.teamproject.trackers.biz.comment;
 
-import java.sql.Date;
+import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "comment")
 public class CommentVO {
+	
+	@Id
+	private long comment_id;
+	
 	private long post_id;
 	private long id;
 	private String content;
-	private Date cre_date;
+	
+	@Temporal(TemporalType.DATE)
+	private Date cre_date = new Date();
 	
 	
 	public long getPost_id() {

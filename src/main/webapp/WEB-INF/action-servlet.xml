@@ -17,12 +17,13 @@
 
 
 	
-	<!-- 파일 업로드 추가 -->
+	<!-- 파일 업로드 추가
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="-1"/>
+	</bean> -->
 
-	</bean>
-
+	<!-- 파일 업로드 빈 변경 _ 이전버전은 구독 파일 인식 불가 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />

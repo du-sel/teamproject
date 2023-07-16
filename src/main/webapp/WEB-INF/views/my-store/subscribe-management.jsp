@@ -24,43 +24,60 @@
 
 
 
-  <main id="notice-popup-form" class="admin wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
-    <jsp:include page="/WEB-INF/views/common/admin-sidebar.jsp" />  
+  <main id="subscribe-management" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+    <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />  
     <div class="main-panel">     
       <div class="content">
         <div class="row">
           <div class="col-xl-10 col-lg-12">
             <div class="col-lg-12 card">
               <div class="card-header">
-                <h2 class="card-title text-center a-title">팝업 등록</h2>
+                <h2 class="card-title text-center management-title">구독 상품 관리</h2>
               </div>
               <div class="card-body">
-                <form class="row"  action="notice-popup.do" method="post">
-                	<div class="col-lg-12">
-                		<div class="d-flex flex-column justify-content-center popup-info">
-		                	<div>
-		                		<h6>제목</h6>
-		                		<input class="form-control" type="text" name="popup_title" placeholder="팝업 제목을 입력하세요." required>
-		                	</div>
-		                	<div>
-		                		<h6>시작 일자</h6>
-		                		<input id="start-date" class="form-control" type="date" name="popup_start_date" >
-		                	</div>
-		                	<div>
-		                		<h6>종료 일자</h6>
-		                		<input id="end-date" class="form-control" type="date" name="popup_end_date">
-		                	</div>
-		                	<div>
-		                		<h6>팝업 이미지</h6>
-		                		<input type="file" accept="image/*"  name="popup_img"  onchange="imgPreview(this);" required>
-		                		<div id="popup-preview" class="popup-preview">
-									<img id="img-modify-white" src="/resources/images/img-modify-white.svg" alt="썸네일 업로드 버튼">
-								</div>
-		                	</div>
-                		</div>
-                	</div>
-                	<input class="a-btn" type="submit" value="등록">
-                </form>
+				<div>
+					<div class="store-form subscribe-form">
+			           	<label for="subscribe"><h5>구독 활성화 여부</h5></label>
+			           	<div class="do-subscribe">
+			           		<label for="yes-subscribe">활성화</label>
+			           		<input type="radio" name="subscribe" id="yes-subscribe" value="true" <c:if test="${!empty subscribe}">checked</c:if>>
+			           		<label for="no-subscribe">비활성화</label>
+			           		<input type="radio" name="subscribe" id="no-subscribe" value="false" <c:if test="${empty subscribe}">checked</c:if> <c:if test="${!empty subscribe}">disabled</c:if>>
+			           	</div>	 
+			           	
+			           	<div class="subscribe-info">
+			           		<form action="/store/subscribes" method="post" enctype="multipart/form-data" onsubmit="remove_comma();">
+				           		<div class="row flex-column">
+					           		<label for="subscribe-content"><h5>구독 내용</h5></label>
+					           		<div class="form-control-container d-flex subscribe">
+					           			<textarea name="content" id="subscribe-content" class="form-control store-input" maxlength="300" placeholder="구독 내용 작성" required>${subscribe.content}</textarea>
+						           	</div>
+					           	</div>
+					           	<div class="row flex-column">
+					           		<label for="subscribe-price"><h5>구독 가격</h5></label>
+					           		<div class="form-control-container d-flex subscribe">
+						           		<span>&#8361;</span>
+						           		<input type="text" name="price" id="subscribe-price" class="form-control store-input" value="${price}" placeholder="구독 가격을 입력하세요." oninput="remove(4, this); comma(this);" required>
+						           	</div>
+					           	</div>
+					           	<div class="row flex-column">
+					           		<label><h5>구독 상품</h5></label>
+						           	<p class="desc">∙ 구독한 구매자들이 다운로드 받을 <b>압축 파일(.zip)</b>을 등록해주세요</p>
+						           	<p class="desc">∙ 파일 용량이 너무 크면 구매자가 다운로드를 하기 어려울 수 있으니 유의해주세요</p>
+						           	<p class="desc">∙ 등록하는 콘텐츠가 타인의 저작권 또는 초상권을 침해하지 않도록 유의해주세요</p>
+		           					<div class="d-flex align-content-center file-input-container">
+										<input type="file" accept=".zip" name="mfile" required>
+					           		</div>
+					           	</div>
+								<input type="submit" class="main-btn management-btn" value="등록">
+							</form>
+							<form action="/store/subscribes" method="post" onsubmit="return subscribe_remove();">
+								<input type="hidden" name="_method" value="delete">
+								<input type="submit" class="main-btn management-btn" value="구독 상품 삭제">
+							</form>
+			            </div>
+					</div>
+				</div>
               </div>
             </div>
           </div>
@@ -68,34 +85,41 @@
       </div>
     </div>
   </main>
+
   <script>
-	  $(() => {
-		  // 시작, 종료 일자 현재로 디폴트 값
-		  let date = new Date();
-		  let now = date.getFullYear() + "-" +
-		  			(date.getMonth() + 1).toString().padStart(2, '0') + "-" +
-		  			date.getDate().toString().padStart(2, '0');
-		  $('#start-date').val(now);
-		  $('#end-date').val(now);
-	  });
-  
-	  /* 썸네일 미리보기 */
-	  function imgPreview(input) {
-		  if (input.files && input.files[0]) {
-		    var reader = new FileReader();
-		    reader.onload = function(e) {
-		      document.getElementById('popup-preview').style.backgroundImage = "url("+e.target.result+")";
-		      document.getElementById('popup-preview').style.backgroundSize = "cover";
-		      document.getElementById('popup-preview').style.backgroundColor = "transparent";
-		      document.getElementById('img-modify-white').style.display = "none";
-		    };
-		    reader.readAsDataURL(input.files[0]);
-		  } else {
-			  document.getElementById('popup-preview').style.backgroundImage = "none";
-		      document.getElementById('popup-preview').style.backgroundColor = "#e4e4eb";
-		      document.getElementById('img-modify-white').style.display = "block";
-		  }
+	$(() => {
+
+		//구독정보 슬라이드업다운		
+		if($('#yes-subscribe').attr('checked') == 'checked'){
+			$('.subscribe-info').show();
+		}else{
+			$('.subscribe-info').hide();
 		}
+		
+		$('#no-subscribe').on('click', function() {
+			$('.subscribe-info').slideUp('300');
+		});
+		$('#yes-subscribe').on('click', function() {
+			$('.subscribe-info').slideDown('300');
+		});
+	});
+	
+	function comma(event){
+		$('#subscribe-price').val(numberWithCommas($(event).val()));
+	}
+	
+	function remove_comma(){
+		let price = $('#subscribe-price').val();
+		$('#subscribe-price').val(price.replaceAll(',', ''));
+		
+		console.log($('#subscribe-price').val());
+		return false;
+	}
+	
+	function subscribe_remove(){
+		return confirm('정말 구독 상품을 삭제 하시겠습니까?');
+	}
+	
   </script>
   <script src="/resources/js/my-store.js"></script>
 
