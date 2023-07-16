@@ -38,12 +38,12 @@
 			
 		        <!-- Creator Box Start -->
 		        <c:forEach var="c" items="${creators}">
-					<div class="col-lg-12 creator-card" onclick="location.href='/profiles'">
+					<div class="col-lg-12 creator-card" onclick="location.href='/profiles/${c.url}'">
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="profile">
 									<div class="d-flex">
-										<img src="/resources/images/men-01.jpg" alt="">
+										<img src="${c.profile_img}" alt="프로필 이미지">
 										<h5 class="d-flex flex-column justify-content-center">${c.storeName}</h5>
 									</div>
 								</div>
@@ -53,12 +53,18 @@
 									<h4>대표 상품</h4>
 								</div>
 							    <div class="down-content d-flex justify-content-start product">
-							       
-							   	   <a href="product-single.do"><img src="/resources/images/men-01.jpg" alt=""></a>
-							   	   <a href="product-single.do"><img src="/resources/images/men-01.jpg" alt=""></a>
-							   	   <a href="product-single.do"><img src="/resources/images/men-01.jpg" alt=""></a>
-							   	   <a href="product-single.do"><img src="/resources/images/men-01.jpg" alt=""></a>
-							   	   <a href="product-single.do"><img src="/resources/images/men-01.jpg" alt=""></a>
+							    	<c:choose>
+								    	<c:when test="${!empty signature[c.id]}">	<!-- 대표 상품 있는 경우 --> 
+								    		<c:forEach var="item" items="${signature[c.id]}">
+								   	   			<a href="/store/products/${item.p_id}"><img src="${item.thumbnail}" alt="대표상품 이미지"></a>
+							   	   			</c:forEach>
+								    	</c:when>		
+								    	<c:otherwise>		<!-- 대표 상품 없는 경우 -->
+								    		<div class="d-flex justify-content-center align-items-center empty-item">
+								    			<p>크리에이터가 지정한 대표 상품이 없습니다.</p>
+								    		</div>
+								    	</c:otherwise>
+							    	</c:choose>
 							    </div>
 							</div>
 						</div>

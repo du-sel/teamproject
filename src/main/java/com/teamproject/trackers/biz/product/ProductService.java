@@ -23,6 +23,5 @@ public class ProductService {
 	// 스토어 대표 상품 리스트
 	public List<ProductVO> getCreatorSignatureList(){
 		return productRepository.getCreatorSignatureList();
-		//return null;
 	}
 }
