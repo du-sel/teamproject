@@ -6,8 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductCreatorRepository extends JpaRepository<ProductCreatorVO, Long> {
 	
-	Page<ProductCreatorVO> findAllByOrderBySaleDesc(Pageable pageable);
-	
-	
+	Page<ProductCreatorVO> findBystoreNameContaining(String keyword, Pageable pageable);
 	
 }
