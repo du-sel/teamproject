@@ -7,11 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
-<<<<<<< HEAD
-     
-=======
-  
->>>>>>> refs/heads/main
+
 @Entity
 @Table(name = "postimg")
 public class PostIMGVO { 	
@@ -39,11 +35,8 @@ public class PostIMGVO {
 	public long getPostId() {
 		return postId;
 	}
-<<<<<<< HEAD
-	public void setPost_id(long postId) {
-=======
 	public void setPostId(long postId) {
->>>>>>> refs/heads/main
+
 		this.postId = postId;
 	}
 	public String getPostimg() {
