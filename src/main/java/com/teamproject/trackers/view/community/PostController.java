@@ -33,6 +33,7 @@ public class PostController {
 		
 	// 작성
 	@RequestMapping(value = "/posts", method = RequestMethod.POST)
+<<<<<<< HEAD
 	public String insertPost(PostVO vo, PostIMGVO imgvo,@RequestParam("img") List<MultipartFile> files, MultipartFile uploadFile) throws Exception {	
 		postService.insertPost(vo);
 		imgvo.setPost_id(vo.getPostId());
@@ -51,6 +52,35 @@ public class PostController {
 			imgvo.setPostimg(fileName);
 			
 			for(MultipartFile f : files) {
+=======
+	public String insertPost(PostVO vo, PostIMGVO imgvo,@RequestParam("post-img")List<MultipartFile> files, MultipartFile uploadFile) throws Exception {	
+		PostVO p = postService.insertPost(vo);
+		
+System.out.println("p.getpostid "+p.getPostId());		
+		imgvo.setPostId(p.getPostId());
+		
+	
+		if(!files.isEmpty()) { //uploadFile !=null
+System.out.println("files "+files);			
+			for(MultipartFile f : files) {
+System.out.println("f "+f);				
+
+				imgvo.getUploadFile().getOriginalFilename();
+				//원래파일이름
+				String fileName = uploadFile.getOriginalFilename();
+				imgvo.setPostimg(fileName);
+				imgvo.setPostimg(fileName);
+System.out.println("fileName "+fileName);				   
+				//확장자 추출
+				//String extension = fileName.substring(fileName.lastIndexOf("."));
+				
+				// 로컬에 파일 저장
+				MultipartFile postIMG = imgvo.getUploadFile();
+				//File file = new File(uploadFile.getOriginalFilename());
+			
+				postIMG.transferTo(new File("C:\\Users\\sooyi\\git\\p\\teamproject\\src\\main\\webapp\\resources\\file\\"+fileName));
+				
+>>>>>>> refs/heads/main
 				postIMGService.insertPostIMG(imgvo);				
 			}
 		}

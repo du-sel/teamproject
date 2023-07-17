@@ -30,6 +30,7 @@ public class PostVO {
 
 	@Id
 	@Column(name = "post_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long postId;
 
 	@JoinColumn(name = "id")

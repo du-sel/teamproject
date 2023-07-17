@@ -1,40 +1,55 @@
 
 package com.teamproject.trackers.view.product;
 
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-//----------------정희 추가-----------------
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.annotation.RequestScope;
+//----------------정희 추가-----------------
 import org.springframework.web.multipart.MultipartFile;
 
+import com.teamproject.trackers.biz.product.CreatorListVO;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
-import com.teamproject.trackers.biz.userCreator.CreatorService;
+
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 //----------------정희 추가-----------------
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/store")
 public class ProductController {
 
-	//---------정희 추가---------
-	@Autowired
+	
     private ProductService productService;
-	//---------정희 추가---------
+    private HttpSession session;
+		
+    @Autowired
+	public ProductController(ProductService productService, HttpSession session) {
+		this.productService = productService;
+		this.session = session;
+	}
+	
+	
+	
 	
 	// 스토어 메인
 	@RequestMapping(value="/main", method=RequestMethod.GET)
@@ -51,28 +66,88 @@ public class ProductController {
 		return "store/st-product-single";
 	}
 	
-/*----------------정희 추가-----------------*/
-    /*
+	// 상품 리스트 조회
+	@RequestMapping(value="/products", method=RequestMethod.GET)
+	public String getProductList(int page, String keyword, String sort, Model model) {
+		/*
+		// 정렬 및 페이징 , 검색 처리
+		Page<CreatorListVO> list = null;
+		Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+		if(keyword != null) 	// 검색 한 경우
+			list = productService.getSearchCreatorList(keyword, pageable);
+		else 					// 검색 안 한 경우
+			list = productService.getCreatorList(pageable);		
+
+		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
+		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
+		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
+		
+		//int startPage = Math.max(nowPage-1, 1);
+		//int endPage = Math.min(nowPage+2, list.getTotalPages());
+		
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		
+		model.addAttribute("creators", list);
+		model.addAttribute("signature", signature);
+		model.addAttribute("sort", sort);
+		*/
+		return "/store/st-products";
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	// 상품 관리 페이지 (판매자별 상품 목록)
+	// 임시 URI
+	@RequestMapping(value="/products/management", method=RequestMethod.GET)
+	public String showProductManagement() {
+		return "my-store/product-management";
+	}
+	
+	
+
+
+
+
 	// 상품 등록 페이지
-    @GetMapping("/products/new")
+	@RequestMapping(value="/products/new", method=RequestMethod.GET)
     public String showProductForm() {
-        return "store/st-products";
+        return "my-store/insert-product";
     }
+	
+	
+	
 
+    
+    
     // 상품 등록 처리
-    @PostMapping("/products")
-    public String insertProduct(
-            @RequestParam("name") String name,
-            @RequestParam("price") int price,
-            @RequestParam("file") MultipartFile file) {
+	@RequestMapping(value="/products", method=RequestMethod.POST)
+	public String insertProduct(ProductVO vo, @RequestParam MultipartFile thumbnail_f, @RequestParam MultipartFile file_f, @RequestParam String content) {
 
+		System.out.println("insertProduct() 실행");
+		// 파일 저장
+
+		
+		// ProductVO 저장
+		long id = (long)session.getAttribute("id");
+		vo.setId(id);
+		vo.setThumbnail("tmp");
+		
+		System.out.println("content: "+content);
+		
+		// ProductDetails 저장
+		
+		
         // 상품 등록 로직
-        /*ProductVO product = new ProductVO();
-        product.setP_name(name);
-        product.setPrice(price);
-        productService.insertProduct(product);
+        productService.insertProduct(vo);
 
-        return "redirect:/my-store/product-management";
+        return "redirect:/store/products/management";
     }
 
     // 파일 저장 로직
@@ -82,6 +157,11 @@ public class ProductController {
         // 예를 들어, 파일을 저장하고 저장된 파일명을 반환한다.
         return fileName;
     }
+
+
+    
+    /*----------------정희 추가-----------------*/
+    /*
 
     // 상품 수정 페이지
     @GetMapping("/products/{p_id}/edit")
@@ -132,7 +212,7 @@ public class ProductController {
 	
 	// 크리에이터 리스트 정렬
 	@RequestMapping(value="/creators", method=RequestMethod.GET)
-	public String getCreatorList(String sort, Model model) {
+	public String getCreatorList(int page, String sort, Model model, String keyword) {
 		
 		List<ProductVO> p = productService.getCreatorSignatureList();
 		HashMap<Long, List<ProductVO>> signature = new HashMap<>();
@@ -146,11 +226,31 @@ public class ProductController {
 			}
 		}
 		
+		// 정렬 및 페이징 , 검색 처리
+		Page<CreatorListVO> list = null;
+		Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+		if(keyword != null) 	// 검색 한 경우
+			list = productService.getSearchCreatorList(keyword, pageable);
+		else 					// 검색 안 한 경우
+			list = productService.getCreatorList(pageable);		
 
-		model.addAttribute("creators", productService.getCreatorList(sort));
+		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
+		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
+		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
+		
+		//int startPage = Math.max(nowPage-1, 1);
+		//int endPage = Math.min(nowPage+2, list.getTotalPages());
+		
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		
+		model.addAttribute("creators", list);
 		model.addAttribute("signature", signature);
 		model.addAttribute("sort", sort);
-		
+				
 		return "/store/st-creators";
 	}	
 }
+
+

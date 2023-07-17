@@ -41,9 +41,11 @@ public class SubscribeController {
 		model.addAttribute("subscribe", subscribe);
 
 		// 세자리 마다 , 붙이기
-		DecimalFormat decFormat = new DecimalFormat("###,###");
-		String price = decFormat.format(subscribe.getPrice());
-		model.addAttribute("price", price);
+		if(subscribe != null) {
+			DecimalFormat decFormat = new DecimalFormat("###,###");
+			String price = decFormat.format(subscribe.getPrice());
+			model.addAttribute("price", price);
+		}
 
 		return "/my-store/subscribe-management";	// 스토어 관리 임시연결
 	}

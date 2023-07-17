@@ -154,7 +154,7 @@
 						<div class="header">
 							<div class="meta">
 								<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;
-									<span class="name"><div class="author">${sessionScope.name }</div></span>
+									<span class="name"><div class="author">${sessionScope.user.getName() }</div></span>
 								</a>
 								<button class="insertpost inserticon" type="button"><img alt="" src="/resources/images/icon-insertpost.png"></button>
 							</div>   
