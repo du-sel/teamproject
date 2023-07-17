@@ -25,7 +25,7 @@ import org.springframework.data.annotation.CreatedDate;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
 @Entity
-@Table(name = "post") 
+@Table(name = "post")  
 public class PostVO {
 
 	@Id

@@ -157,7 +157,7 @@
 									<span class="name"><div class="author">${sessionScope.name }</div></span>
 								</a>
 								<button class="insertpost inserticon" type="button"><img alt="" src="/resources/images/icon-insertpost.png"></button>
-							</div> 
+							</div>  
 						</div>
 					</div>
 	
