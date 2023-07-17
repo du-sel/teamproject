@@ -15,20 +15,20 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 	@Autowired
-	private ProductCreatorRepository productcreatorRepository;
+	private CreatorListRepository creatorlistRepository;
 	
 	public ProductVO getProduct(long pId) {
 		return productRepository.findByPid(pId);
 	} 
 	
 	// 스토어 조회(검색 x)
-	public Page<ProductCreatorVO> getCreatorList(Pageable pageable) {
-		return productcreatorRepository.findAll(pageable);
+	public Page<CreatorListVO> getCreatorList(Pageable pageable) {
+		return creatorlistRepository.findAll(pageable);
 	}
 	
 	// 스토어 조회(검색 o)
-	public Page<ProductCreatorVO> getSearchCreatorList(String keyword, Pageable pageable) {
-		return productcreatorRepository.findBystoreNameContaining(keyword, pageable);
+	public Page<CreatorListVO> getSearchCreatorList(String keyword, Pageable pageable) {
+		return creatorlistRepository.findBystoreNameContaining(keyword, pageable);
 	}
 	
 	// 스토어 대표 상품 리스트

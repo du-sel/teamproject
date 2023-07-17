@@ -75,7 +75,7 @@
 			<div id="co-tab">커뮤니티</div>
 			<!-- onclick="location.href='co-main.do'" -->
 	        <div id="st-tab">스토어</div>
-	         <!-- onclick="location.href='st-main.do'" -->
+	        <!-- onclick="location.href='st-main.do'" -->
 		</div>
 		<!-- ***** Tab End ***** -->
 	    
@@ -89,15 +89,26 @@
 	                <div class="col-12">
 	                    <nav class="main-nav">
 	                        <!-- ***** Menu Start ***** -->
-	                        <div class="nav">
+	                        <div class="nav  scroll-y-custom">
 	                            <div class="store-menu">
 		                            <div class="submenu">
-		                                <a href="/store/products">상품</a>
+		                                <a>상품</a>
 		                                <ul>
-		                                    <li><a href="about.html">About Us</a></li>
-		                                    <li><a href="products.html">Products</a></li>
-		                                    <li><a href="single-product.html">Single Product</a></li>
-		                                    <li><a href="contact.html">Contact Us</a></li>
+		                                	<li class="category">페이지 별</li>
+		                                    <li><a href="/store/products">한달 세트</a></li>
+		                                    <li><a href="products.html">먼슬리</a></li>
+		                                    <li><a href="single-product.html">위클리</a></li>
+		                                    <li><a href="contact.html">해빗트래커</a></li>
+		                                    <li><a href="contact.html">무드트래커</a></li>
+		                                    <li><a href="contact.html">독서트래커</a></li>
+		                                    <li><a href="contact.html">가계부</a></li>
+		                                    <li><a href="contact.html">스터디</a></li>
+		                                    <li><a href="contact.html">스티커</a></li>
+		                                    <li><a href="contact.html">그 외</a></li>
+		                                    <li class="category">디자인 별</li>
+		                                    <li><a href="about.html">미니멀</a></li>
+		                                    <li><a href="products.html">일러스트</a></li>
+		                                    <li><a href="single-product.html">포토</a></li>
 		                                </ul>
 	                            	</div>
 		    	                    <div>

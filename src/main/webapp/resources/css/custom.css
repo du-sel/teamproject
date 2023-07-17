@@ -513,7 +513,7 @@ header
   padding-left: 0px;
   padding-right: 0px;
 }
-
+.header-area .main-nav .nav div.submenu ul li.category,
 .header-area .main-nav .nav div.submenu ul li a {
   opacity: 1;
   display: block;
@@ -530,6 +530,11 @@ header
   font-size: 13px;
   font-weight: 400;
   border-bottom: 1px solid #eee;
+}
+.header-area .main-nav .nav div.submenu ul li.category{
+	font-size: 14px;
+  	font-weight: 600;
+  	cursor: default;
 }
 
 .header-area .main-nav .nav div.submenu ul li a:hover {
@@ -849,6 +854,8 @@ header
   }
   .header-area.header-sticky .nav {
     margin-top: 80px !important;
+    max-height: 500px;
+    overflow-y: auto;
   }
   .header-area .main-nav .nav div {
     width: 100%;
@@ -888,6 +895,11 @@ header
     box-shadow: none;
     height: 0px;
   } 
+  .header-area .main-nav .nav div.submenu ul li.category{
+  	padding: 0;
+  	border-bottom:none;
+  	border-top: 1px solid #eee;
+  }  
   .header-area .main-nav .nav div.submenu ul li a {
     font-size: 12px;
     font-weight: 400;
