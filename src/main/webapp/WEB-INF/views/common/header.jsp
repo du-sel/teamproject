@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <title>Trackers</title>
-    <link rel="stylesheet" href="/resources/css/Intro.css">
+    <!-- <link rel="stylesheet" href="/resources/css/Intro.css"> -->
     
     <!-- profile page -->
 	<link rel="stylesheet" href="/resources/css/profile.css" >
@@ -75,7 +75,7 @@
 			<div id="co-tab">커뮤니티</div>
 			<!-- onclick="location.href='co-main.do'" -->
 	        <div id="st-tab">스토어</div>
-	         <!-- onclick="location.href='st-main.do'" -->
+	        <!-- onclick="location.href='st-main.do'" -->
 		</div>
 		<!-- ***** Tab End ***** -->
 	    
@@ -89,19 +89,30 @@
 	                <div class="col-12">
 	                    <nav class="main-nav">
 	                        <!-- ***** Menu Start ***** -->
-	                        <div class="nav">
+	                        <div class="nav  scroll-y-custom">
 	                            <div class="store-menu">
 		                            <div class="submenu">
-		                                <a href="products.do">상품</a>
+		                                <a>상품</a>
 		                                <ul>
-		                                    <li><a href="about.html">About Us</a></li>
-		                                    <li><a href="products.html">Products</a></li>
-		                                    <li><a href="single-product.html">Single Product</a></li>
-		                                    <li><a href="contact.html">Contact Us</a></li>
+		                                	<li class="category">페이지 별</li>
+		                                    <li><a href="/store/products">한달 세트</a></li>
+		                                    <li><a href="products.html">먼슬리</a></li>
+		                                    <li><a href="single-product.html">위클리</a></li>
+		                                    <li><a href="contact.html">해빗트래커</a></li>
+		                                    <li><a href="contact.html">무드트래커</a></li>
+		                                    <li><a href="contact.html">독서트래커</a></li>
+		                                    <li><a href="contact.html">가계부</a></li>
+		                                    <li><a href="contact.html">스터디</a></li>
+		                                    <li><a href="contact.html">스티커</a></li>
+		                                    <li><a href="contact.html">그 외</a></li>
+		                                    <li class="category">디자인 별</li>
+		                                    <li><a href="about.html">미니멀</a></li>
+		                                    <li><a href="products.html">일러스트</a></li>
+		                                    <li><a href="single-product.html">포토</a></li>
 		                                </ul>
 	                            	</div>
 		    	                    <div>
-		                                <a href="/store/creators?sort=newest">크리에이터</a>
+		                                <a href="/store/creators?page=0&sort=creDate">크리에이터</a>
 		                            </div>
 								</div>
 	                            <!-- ***** Logo Start ***** -->
@@ -117,8 +128,15 @@
 										<div class="search-icon-container d-flex align-items-center" onclick="showSearchInput();">
 											<i class="fa fa-search" aria-hidden="true"></i>
 										</div>
-										<form name="search" action="" class="search-input-container">
-											<input type="text" name="search">
+										<c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />		<!-- 현재 위치 uri -->
+										<form name="search" action="
+											<c:if test="${path ne '/store/creators'}">
+												<c:set var="path" value="/store/products"/>
+											</c:if>
+											${path}" class="search-input-container">
+											<input type="hidden" name="page" value="0">
+											<input type="hidden" name="sort" value="${sort}">
+											<input type="text" name="keyword">
 											<button class="search-btn">검색</button>
 										</form>
 									</div>
@@ -129,7 +147,7 @@
 			                          			<ul>
 				                                    <li><a href="cart.do">장바구니</a></li>
 				                                    <li><a href="news.do">내 소식</a></li>
-				                                    <li><a href="purchase-history.do">구매 내역</a></li>
+				                                    <li><a href="/store/purchases">구매 내역</a></li>
 				                                    <li><a href="inquiry-history.do">문의 내역</a></li>
 				                                    <li><a href="/users?path=info">회원정보 변경</a></li>
 				                                    <li><a href="/users?path=pwd">비밀번호 변경</a></li>

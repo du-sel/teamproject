@@ -33,7 +33,7 @@
 				<div>
 					<h5>총 상품 개수</h5>
 				</div>
-				<button type="button" onclick="location.href='insert-product.do'">신규 상품 등록</button>
+				<button type="button" onclick="location.href='/store/products/new'">신규 상품 등록</button>
 			</div>
       	</div>
       
