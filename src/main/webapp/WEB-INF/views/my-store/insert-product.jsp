@@ -34,7 +34,7 @@
 			<h2>신규 상품 등록</h2>
       	</div>
       
-      	<form name="frm" id="frm" action="insert-test.do" method="post" enctype="multipart/form-data" onsubmit="insert_p_chk(this); return false;">    
+      	<form name="frm" id="frm" action="/store/products" method="post" enctype="multipart/form-data" onsubmit="insert_p_chk(this); return false;">    
 
 	        <div class="row justify-content-center page-content">
 	          <div class="col-xxl-8 col-xl-10 col-lg-12 info">
@@ -48,7 +48,7 @@
 		           	<p class="desc">∙ 파일 용량이 너무 크면 구매자가 다운로드를 하기 어려울 수 있으니 유의해주세요</p>
 		           	<p class="desc">∙ 등록하는 콘텐츠가 타인의 저작권 또는 초상권을 침해하지 않도록 유의해주세요</p>
 		           	<div class="d-flex align-content-center file-input-container">
-			           	<input type="file" name="file" id="file" onchange="getFileSize(this)">
+			           	<input type="file" name="file_f" id="file" onchange="getFileSize(this)">
 			           	<p class="file-size-container desc"></p>
 		           	</div>
 	            </div>
@@ -165,7 +165,7 @@
 					<div id="thumb-preview" class="thumb-preview">
 						<img id="img-modify-white" src="/resources/images/img-modify-white.svg" alt="썸네일 업로드 버튼">
 					</div>
-					<input type="file" accept="image/*" name="thumbnail" id="thumbnail" onchange="imgPreview(this);">
+					<input type="file" accept="image/*" name="thumbnail_f" id="thumbnail" onchange="imgPreview(this);">
 				</div>     	
 	
 				<div class="row flex-column">
@@ -190,7 +190,17 @@
 
   <script src="/resources/js/my-store.js"></script>
   
- 
+ <script>
+ /*
+ $(document).on("change", "#combo_value3", function(){
+     let comboVal = $('#combo_value3').val();
+     console.log("[prop]" + " select value : " + comboVal);
+     $("input:radio[name='rad_fruit3'][value='" + comboVal + "']").prop('checked', true);
+     console.log("[prop]" + " radio value : " + $("input:radio[name='rad_fruit3']:checked").val());
+   });
+ }
+ */
+ </script>
 	
 	
 	

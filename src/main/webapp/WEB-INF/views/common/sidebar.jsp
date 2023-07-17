@@ -35,7 +35,8 @@
 	        </a>
 	      </li>
 	      <li>
-	        <a href="product-management.do">
+	        <a href="/store/products/management">
+	        <!-- 임시 URI -->
 	          <i class="tim-icons icon-basket-simple"></i>
 	          <p>상품 관리</p>
 	        </a>
