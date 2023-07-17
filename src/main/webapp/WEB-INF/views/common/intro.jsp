@@ -38,20 +38,14 @@
     </div>
     
     
-    <div class="section" id="section2">
-
-    
+<!--     <div class="section" id="section2">
     </div>
     
-    
-    
+   
     <div class="section" id="section3">
-
-    	
- 
     </div>
 
-
+ -->
 
 	<script src="/resources/js/Intro.js"></script>
 <!-- 	<script src="/resources/js/bootstrap.min.js"></script>  -->
