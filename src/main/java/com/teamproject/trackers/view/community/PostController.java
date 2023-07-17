@@ -2,6 +2,7 @@ package com.teamproject.trackers.view.community;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.teamproject.trackers.biz.comment.CommentService;
@@ -31,16 +33,37 @@ public class PostController {
 		
 	// 작성
 	@RequestMapping(value = "/posts", method = RequestMethod.POST)
-	public String insertPost(PostVO vo, PostIMGVO imgvo) throws Exception {	
-System.out.println("imgvo "+imgvo);		
-System.out.println("imgvo.getimg "+imgvo.getPostimg());		
-		if(imgvo.getPostimg()!=null) {
-			MultipartFile postIMG = imgvo.getUploadFile();
-			String fileName = postIMG.getOriginalFilename();
-			postIMG.transferTo(new File("C://trackers//"+fileName));
-			postIMGService.insertPostIMG(imgvo);
+	public String insertPost(PostVO vo, PostIMGVO imgvo,@RequestParam("post-img")List<MultipartFile> files, MultipartFile uploadFile) throws Exception {	
+		PostVO p = postService.insertPost(vo);
+		
+System.out.println("p.getpostid "+p.getPostId());		
+		imgvo.setPostId(p.getPostId());
+		
+	
+		if(!files.isEmpty()) { //uploadFile !=null
+System.out.println("files "+files);			
+			for(MultipartFile f : files) {
+System.out.println("f "+f);				
+
+				imgvo.getUploadFile().getOriginalFilename();
+				//원래파일이름
+				String fileName = uploadFile.getOriginalFilename();
+				imgvo.setPostimg(fileName);
+				imgvo.setPostimg(fileName);
+System.out.println("fileName "+fileName);				   
+				//확장자 추출
+				//String extension = fileName.substring(fileName.lastIndexOf("."));
+				
+				// 로컬에 파일 저장
+				MultipartFile postIMG = imgvo.getUploadFile();
+				//File file = new File(uploadFile.getOriginalFilename());
+			
+				postIMG.transferTo(new File("C:\\Users\\sooyi\\git\\p\\teamproject\\src\\main\\webapp\\resources\\file\\"+fileName));
+				
+				postIMGService.insertPostIMG(imgvo);				
+			}
 		}
-		postService.insertPost(vo);
+		
 		return "redirect:/community/posts";
 		
 	}

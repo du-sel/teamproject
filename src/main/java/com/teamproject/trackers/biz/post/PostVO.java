@@ -25,15 +25,16 @@ import org.springframework.data.annotation.CreatedDate;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
 @Entity
-@Table(name = "post")
+@Table(name = "post")  
 public class PostVO {
 
 	@Id
 	@Column(name = "post_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long postId;
 
 	@JoinColumn(name = "id")
-	private long id;
+	private long id; 
 	
 	//@JoinColumn(name="id")
 	@Transient
