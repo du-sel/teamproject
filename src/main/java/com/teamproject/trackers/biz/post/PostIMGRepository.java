@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface PostIMGRepository extends JpaRepository<PostIMGVO, Long>{
 	
 	// 작성
-		public PostIMGVO save(PostIMGVO vo);
+		public PostIMGVO save(PostIMGVO vo); 
 	// 삭제
 		public void deleteByPostimg(Long postId);
 	// 상세 조회

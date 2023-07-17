@@ -10,8 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "postimg")
-public class PostIMGVO {
-	
+public class PostIMGVO { 	
 	@Id
 	@Column(name = "post_id")
 	private long postId;

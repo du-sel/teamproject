@@ -18,7 +18,7 @@ public class PostIMGService {
 	@Qualifier("postIMGRepository")
 	private PostIMGRepository postIMGRepository;
 	
-	
+	 
 	//작성
 		public void insertPostIMG(PostIMGVO vo) throws IllegalStateException, IOException {
 			postIMGRepository.save(vo);
