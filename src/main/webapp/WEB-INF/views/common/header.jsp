@@ -92,7 +92,7 @@
 	                        <div class="nav">
 	                            <div class="store-menu">
 		                            <div class="submenu">
-		                                <a href="products.do">상품</a>
+		                                <a href="/store/products">상품</a>
 		                                <ul>
 		                                    <li><a href="about.html">About Us</a></li>
 		                                    <li><a href="products.html">Products</a></li>
@@ -117,8 +117,15 @@
 										<div class="search-icon-container d-flex align-items-center" onclick="showSearchInput();">
 											<i class="fa fa-search" aria-hidden="true"></i>
 										</div>
-										<form name="search" action="" class="search-input-container">
-											<input type="text" name="search">
+										<c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />		<!-- 현재 위치 uri -->
+										<form name="search" action="
+											<c:if test="${path ne '/store/creators'}">
+												<c:set var="path" value="/store/products"/>
+											</c:if>
+											${path}" class="search-input-container">
+											<input type="hidden" name="page" value="0">
+											<input type="hidden" name="sort" value="${sort}">
+											<input type="text" name="keyword">
 											<button class="search-btn">검색</button>
 										</form>
 									</div>
@@ -129,7 +136,7 @@
 			                          			<ul>
 				                                    <li><a href="cart.do">장바구니</a></li>
 				                                    <li><a href="news.do">내 소식</a></li>
-				                                    <li><a href="purchase-history.do">구매 내역</a></li>
+				                                    <li><a href="/store/purchases">구매 내역</a></li>
 				                                    <li><a href="inquiry-history.do">문의 내역</a></li>
 				                                    <li><a href="/users?path=info">회원정보 변경</a></li>
 				                                    <li><a href="/users?path=pwd">비밀번호 변경</a></li>
