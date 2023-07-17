@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,15 +32,17 @@ public class PostController {
 	// 작성
 	@RequestMapping(value = "/posts", method = RequestMethod.POST)
 	public String insertPost(PostVO vo, PostIMGVO imgvo) throws Exception {	
-		
-		if(imgvo!=null) {
+System.out.println("imgvo "+imgvo);		
+System.out.println("imgvo.getimg "+imgvo.getPostimg());		
+		if(imgvo.getPostimg()!=null) {
 			MultipartFile postIMG = imgvo.getUploadFile();
 			String fileName = postIMG.getOriginalFilename();
 			postIMG.transferTo(new File("C://trackers//"+fileName));
 			postIMGService.insertPostIMG(imgvo);
 		}
 		postService.insertPost(vo);
-		return "community/co-main";
+		return "redirect:/community/posts";
+		
 	}
 	
 	
@@ -47,25 +50,27 @@ public class PostController {
 	
 	// 삭제
 	@RequestMapping(value = "/posts", method = RequestMethod.DELETE)
-	public String deletePost(Long post_id) {
-		postService.deletePost(post_id);
+	public String deletePost(Long postId) {
+		postService.deletePost(postId);
 		//프로필에서 삭제?
 		return "";
 	}	
 	
 	
 	// 상세 조회
-	@RequestMapping(value="/posts/{post_id}", method=RequestMethod.GET)
-	public String getPost(Long post_id, Model model) {
-		model.addAttribute("post", postService.getPost(post_id));
-		model.addAttribute("postIMG", postIMGService.getPostIMG(post_id));
+	@RequestMapping(value="/posts/{postId}", method=RequestMethod.GET)
+	public String getPost(@PathVariable("postId")Long postId, Model model) {
+		//model.addAttribute("userinfo",postService.getUsers(postId));
+		model.addAttribute("post", postService.getPost(postId));
+		model.addAttribute("postIMG", postIMGService.getPostIMG(postId));
 		return "community/co-post";
 	}
 	
 	// 리스트 조회
 	@RequestMapping(value="/posts", method=RequestMethod.GET)
 	public String getPostList(Model model) {
-		
+		//model.addAttribute("users",postService);
+System.out.println("postlist.size "+postService.getPostList().size());		
 		model.addAttribute("postList", postService.getPostList());
 		model.addAttribute("postIMGList", postIMGService.getPostIMGList());
 		return "community/co-main";

@@ -1,8 +1,11 @@
 package com.teamproject.trackers.biz.product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +18,16 @@ public class ProductService {
 	private ProductCreatorRepository productcreatorRepository;
 	
 	
-	// 스토어 조회(정렬)
-	public List<ProductCreatorVO> getCreatorList(String sort) {		
-		if(sort.equals("newest")) sort="creDate";
-		return productcreatorRepository.findAll(Sort.by(Sort.Direction.DESC, sort));
+  // 스토어 조회(검색 x)
+	public Page<ProductCreatorVO> getCreatorList(Pageable pageable) {
+		return productcreatorRepository.findAll(pageable);
 	}
+	
+	// 스토어 조회(검색 o)
+	public Page<ProductCreatorVO> getSearchCreatorList(String keyword, Pageable pageable) {
+		return productcreatorRepository.findBystoreNameContaining(keyword, pageable);
+	}
+	
 	// 스토어 대표 상품 리스트
 	public List<ProductVO> getCreatorSignatureList(){
 		return productRepository.getCreatorSignatureList();
