@@ -19,11 +19,20 @@ public class ProductService {
 	
 	public ProductVO getProduct(long pId) {
 		return productRepository.findByPid(pId);
-	} 
+	}
+	
+	
+	public void insertProduct(ProductVO vo) {
+		productRepository.save(vo);
+	}
+	
+	
+
 	
 	// 스토어 조회(검색 x)
 	public Page<CreatorListVO> getCreatorList(Pageable pageable) {
 		return creatorlistRepository.findAll(pageable);
+
 	}
 	
 	// 스토어 조회(검색 o)

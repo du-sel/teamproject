@@ -3,10 +3,14 @@ package com.teamproject.trackers.view.product;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.annotation.RequestScope;
 //----------------정희 추가-----------------
+import org.springframework.web.multipart.MultipartFile;
 
 import com.teamproject.trackers.biz.product.CreatorListVO;
 import com.teamproject.trackers.biz.product.ProductService;
@@ -17,6 +21,8 @@ import lombok.RequiredArgsConstructor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,10 +38,17 @@ import org.springframework.data.web.PageableDefault;
 @RequestMapping("/store")
 public class ProductController {
 
-	//---------정희 추가---------
-	@Autowired
+	
     private ProductService productService;
-	//---------정희 추가---------
+    private HttpSession session;
+		
+    @Autowired
+	public ProductController(ProductService productService, HttpSession session) {
+		this.productService = productService;
+		this.session = session;
+	}
+	
+	
 	
 	
 	// 스토어 메인
@@ -83,28 +96,58 @@ public class ProductController {
 		return "/store/st-products";
 	}
 
-/*----------------정희 추가-----------------*/
-    /*
+	
+	
+	
+	
+	
+	
+	
+	// 상품 관리 페이지 (판매자별 상품 목록)
+	// 임시 URI
+	@RequestMapping(value="/products/management", method=RequestMethod.GET)
+	public String showProductManagement() {
+		return "my-store/product-management";
+	}
+	
+	
+
+
+
+
 	// 상품 등록 페이지
-    @GetMapping("/products/new")
+	@RequestMapping(value="/products/new", method=RequestMethod.GET)
     public String showProductForm() {
-        return "store/st-products";
+        return "my-store/insert-product";
     }
+	
+	
+	
 
+    
+    
     // 상품 등록 처리
-    @PostMapping("/products")
-    public String insertProduct(
-            @RequestParam("name") String name,
-            @RequestParam("price") int price,
-            @RequestParam("file") MultipartFile file) {
+	@RequestMapping(value="/products", method=RequestMethod.POST)
+	public String insertProduct(ProductVO vo, @RequestParam MultipartFile thumbnail_f, @RequestParam MultipartFile file_f, @RequestParam String content) {
 
+		System.out.println("insertProduct() 실행");
+		// 파일 저장
+
+		
+		// ProductVO 저장
+		long id = (long)session.getAttribute("id");
+		vo.setId(id);
+		vo.setThumbnail("tmp");
+		
+		System.out.println("content: "+content);
+		
+		// ProductDetails 저장
+		
+		
         // 상품 등록 로직
-        /*ProductVO product = new ProductVO();
-        product.setP_name(name);
-        product.setPrice(price);
-        productService.insertProduct(product);
+        productService.insertProduct(vo);
 
-        return "redirect:/my-store/product-management";
+        return "redirect:/store/products/management";
     }
 
     // 파일 저장 로직
@@ -114,6 +157,11 @@ public class ProductController {
         // 예를 들어, 파일을 저장하고 저장된 파일명을 반환한다.
         return fileName;
     }
+
+
+    
+    /*----------------정희 추가-----------------*/
+    /*
 
     // 상품 수정 페이지
     @GetMapping("/products/{p_id}/edit")
