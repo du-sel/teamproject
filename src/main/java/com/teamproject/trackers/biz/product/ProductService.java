@@ -18,7 +18,7 @@ public class ProductService {
 	private ProductCreatorRepository productcreatorRepository;
 	
 	
-	// 스토어 조회(검색 x)
+  // 스토어 조회(검색 x)
 	public Page<ProductCreatorVO> getCreatorList(Pageable pageable) {
 		return productcreatorRepository.findAll(pageable);
 	}
