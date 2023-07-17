@@ -2,7 +2,7 @@ package com.teamproject.trackers.biz.post;
 
 import java.sql.Date;
 
-public class PostVO {
+public class PostVO2 {
 	private long post_id;
 	private long id;
 	private long p_id;
