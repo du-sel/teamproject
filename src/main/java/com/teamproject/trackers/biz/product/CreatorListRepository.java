@@ -4,8 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductCreatorRepository extends JpaRepository<ProductCreatorVO, Long> {
+public interface CreatorListRepository extends JpaRepository<CreatorListVO, Long> {
 	
-	Page<ProductCreatorVO> findBystoreNameContaining(String keyword, Pageable pageable);
+	Page<CreatorListVO> findBystoreNameContaining(String keyword, Pageable pageable);
 	
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //----------------정희 추가-----------------
 
-import com.teamproject.trackers.biz.product.ProductCreatorVO;
+import com.teamproject.trackers.biz.product.CreatorListVO;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
 
@@ -55,11 +55,34 @@ public class ProductController {
 	
 	// 상품 리스트 조회
 	@RequestMapping(value="/products", method=RequestMethod.GET)
-	public String getProductList() {
+	public String getProductList(int page, String keyword, String sort, Model model) {
+		/*
+		// 정렬 및 페이징 , 검색 처리
+		Page<CreatorListVO> list = null;
+		Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+		if(keyword != null) 	// 검색 한 경우
+			list = productService.getSearchCreatorList(keyword, pageable);
+		else 					// 검색 안 한 경우
+			list = productService.getCreatorList(pageable);		
+
+		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
+		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
+		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
 		
+		//int startPage = Math.max(nowPage-1, 1);
+		//int endPage = Math.min(nowPage+2, list.getTotalPages());
 		
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		
+		model.addAttribute("creators", list);
+		model.addAttribute("signature", signature);
+		model.addAttribute("sort", sort);
+		*/
 		return "/store/st-products";
 	}
+
 /*----------------정희 추가-----------------*/
     /*
 	// 상품 등록 페이지
@@ -155,24 +178,21 @@ public class ProductController {
 			}
 		}
 		
-		Page<ProductCreatorVO> list = null;
-		Pageable pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
-		if(keyword != null) {
+		// 정렬 및 페이징 , 검색 처리
+		Page<CreatorListVO> list = null;
+		Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+		if(keyword != null) 	// 검색 한 경우
 			list = productService.getSearchCreatorList(keyword, pageable);
-		}
-		else {
-			list = productService.getCreatorList(pageable);
-		}
-		
+		else 					// 검색 안 한 경우
+			list = productService.getCreatorList(pageable);		
 
-		int nowPage = list.getPageable().getPageNumber()+1;		// 0부터 시작하므로 +1
-		int startPage = Math.max(nowPage-1, 1);
-		int endPage = Math.min(nowPage+2, list.getTotalPages());
+		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
+		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
+		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
 		
-		//int startPage = Math.max(nowPage-4, 1);
-		//int endPage = Math.min(nowPage+5, list.getTotalPages());
+		//int startPage = Math.max(nowPage-1, 1);
+		//int endPage = Math.min(nowPage+2, list.getTotalPages());
 		
-
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
@@ -180,8 +200,7 @@ public class ProductController {
 		model.addAttribute("creators", list);
 		model.addAttribute("signature", signature);
 		model.addAttribute("sort", sort);
-		
-		
+				
 		return "/store/st-creators";
 	}	
 }
