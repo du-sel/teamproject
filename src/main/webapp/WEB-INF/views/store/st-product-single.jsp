@@ -6,14 +6,15 @@
 
 <!-- 아임포트 (결제 API) -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
 <script>
 
-	var IMP = window.IMP;
-	IMP.init("imp41250534");
+	
+	//IMP.init('imp41250534');
 
-</script>
-<script>
+
 function requestPay() {
+	var IMP = window.IMP;
   IMP.init('imp41250534'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
   IMP.request_pay({
     pg: "html5_inicis.INIpayTest",
@@ -30,10 +31,103 @@ function requestPay() {
       if (rsp.success) {
         alert("결제 성공!");
       } else {
-        alert("결제 실패...  "+rsp.error_msg);
+        alert(rsp.error_msg);
       }
   });
 }
+
+/*
+function monthlyPay() {
+	
+	var IMP = window.IMP;
+	  IMP.init('imp41250534');
+	  
+	IMP.request_pay({
+		pg: 'kakaopay',
+		pay_method : 'card', // 기능 없음.
+		merchant_uid: new Date().getTime(), // 상점에서 관리하는 주문 번호
+		name : '정기결제1',
+		amount : 0, // 빌링키 발급과 함께 1,004원 결제승인을 시도합니다.
+		customer_uid : '4', // 필수 입력
+ 		buyer_email : 'iamport@siot.do',
+		buyer_name : '아임포트',
+		buyer_tel : '02-1234-1234' 
+	}, function(rsp) {
+		if ( rsp.success ) {
+			alert('빌링키 발급 성공');
+			
+			$.ajax({
+				url:'/purchaseAgain', //결제 상태를 확인하고 스케줄러를 호출하는 부분
+				type : 'POST',
+				data:{
+					"customer_uid" : '3',
+					"price" : 120, 
+					"merchant_uid" : new Date().getTime()
+				},
+				success:function(result) {
+					alert('다음 결제 예약');
+				}
+			});
+			
+		} else {
+			alert('빌링키 발급 실패');
+		}
+	});
+
+}
+*/
+
+
+
+function kakaopay(){
+	var IMP = window.IMP; // 생략가능
+	let customer_uid = '3';
+	IMP.init('imp41751598'); 
+	IMP.request_pay({
+		pay_method : 'card', // 결제창 호출단계에서의 pay_method는 아무런 역할을 하지 못하며, 구매자가 카카오페이 앱 내에서 신용카드 vs 카카오머니 중 실제 선택한 값으로 추후 정정됩니다.
+		merchant_uid : new Date().getTime(),
+		name : '구독1',
+		amount : 200, 
+		customer_uid :customer_uid, //customer_uid 파라메터가 있어야 빌링키 발급이 정상적으로 이뤄집니다.
+		buyer_email : 'first@mail.com',
+		buyer_name : '첫번째',
+		buyer_tel : '010-1111-2222'
+	}, function(rsp) {
+		if ( rsp.success ) {
+			
+			$.ajax({
+				url:'/subscribe/1', //DB에 구독정보 등록하는 부분..
+				type: 'POST',
+				data:{
+					//package_id : $('#package_id').val(),
+					//customer_id : $('#customer_id').val()
+				},
+				success:function(result) {
+					alert('정기결제 등록'+result);
+				}
+			});
+			
+			/*
+		    //alert($('#customer_id').val());
+			$.ajax({
+				url:'/payment1', //결제 상태를 확인하고 스케줄러를 호출하는 부분
+				type : 'POST',
+				data:{
+					"customer_uid" : customer_uid,
+					"price" :120, 
+					"merchant_uid" : new Date().getTime()
+				},
+				success:function(result) {
+					alert('다음 결제 예약');
+				}
+			});
+			*/
+		} else {
+			alert('빌링키 발급 실패');
+			}
+		});
+}	
+
 </script>
 
 
@@ -91,15 +185,22 @@ function requestPay() {
 	                    </div>
 	                    <div class="buy-content">                        
 	                        <div class="d-flex justify-content-center">
-	                        	<form action="/store/carts/2" method="post">
+	                        	<!-- <form action="/store/carts/2" method="post">
    									<button>장바구니</button>
-   								</form>
+   								</form> -->
    								<!-- <form action="/store/purchases/2" method="post">
    									<button>바로 구매</button>
    								</form> -->
    								<!-- 잠깐 css 손보느라 주석처리해둠 -->
    								<!-- 나중에 onclick으로 action값 수정 필요 -->
-   								<button onclick="requestPay()">바로 결제</button>
+   								
+   								<button onclick="requestPay()">바로 구매</button>
+   								<!-- 결제 API 테스트용 임시 버튼 추가 -->
+   								<button onclick="kakaopay()">(구독)</button>
+   								<!-- 결제 API 테스트용 임시 버튼 추가 -->
+   								<!-- <form action="/purchaseAgain" method="post">
+   									<button>재결제</button>
+   								</form> -->
    								<!-- 결제 API 테스트용 임시 버튼 추가 -->
 	      					</div>
 	                    </div>
