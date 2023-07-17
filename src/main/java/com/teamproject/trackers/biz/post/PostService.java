@@ -20,10 +20,10 @@ public class PostService {
 	@Qualifier("postRepository")
 	private PostRepository postRepository;
 
-	
+	   
 	//작성
-		public void insertPost(PostVO vo) {
-			postRepository.save(vo);
+		public PostVO insertPost(PostVO vo) {
+			return postRepository.save(vo);
 		}
 	//삭제
 		public void deletePost(Long postId) {
