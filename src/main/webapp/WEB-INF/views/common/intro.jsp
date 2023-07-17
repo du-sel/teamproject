@@ -7,7 +7,6 @@
 <title>Insert title here</title>
    <link rel="stylesheet" type="text/css" href="/resources/css/Intro.css"> 
    <script src="http://code.jquery.com/jquery-latest.js"></script>
-
 </head>
 <body>
     <div class="section" id="section1">
