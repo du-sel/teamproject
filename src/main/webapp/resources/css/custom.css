@@ -1836,6 +1836,9 @@ st-creator
 	width: 245px;
     height: 245px;
 }
+#creators .product a img:hover {
+	opacity: 0.6;
+}
 #creators .product .empty-item{
 	width: 100%;	
 }
