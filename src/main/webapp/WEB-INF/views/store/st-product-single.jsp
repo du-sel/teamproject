@@ -6,57 +6,133 @@
 
 <!-- 아임포트 (결제 API) -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
 <script>
 
+	
+	//IMP.init('imp41250534');
+
+
+function requestPay(fin_price) {
+
+	let pathname = window.location.pathname;
+	let p_id = pathname.substring(pathname.indexOf("products")+9)
+	//console.log(p_id);
+	
+	let merchant_uid = p_id+"-"+'${user.id}'+"-"+new Date().getTime()+Math.random().toString(36).substring(2, 12);
+	console.log(merchant_uid);
+	
 	var IMP = window.IMP;
-	IMP.init("imp41250534");
-
-</script>
-<script>
-function requestPay() {
-  IMP.init('imp41250534'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
-  IMP.request_pay({
+    IMP.init('imp41250534'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
+    IMP.request_pay({
     pg: "html5_inicis.INIpayTest",
     pay_method: "card",
-    merchant_uid : 'merchant_'+new Date().getTime(),
-    name : '결제테스트',
-    amount : 100,
-/*     buyer_email : 'seljvdrive@gmail.com',
-    buyer_name : '구매자',
-    buyer_tel : '010-1234-5678',
-    buyer_addr : '서울특별시 강남구 삼성동',
-    buyer_postcode : '123-456' */
+    merchant_uid : merchant_uid,
+    name : '결제검증테스트',	// 나중에는 상품정보 불러와서 사용
+    amount : fin_price,
+    buyer_email : '${user.email}',
+    buyer_name : '${user.name}',
+    buyer_tel : '${user.tel}',
   }, function (rsp) { // callback
       if (rsp.success) {
-        alert("결제 성공!");
+        alert("상품을 구매하셨습니다!");
       } else {
-        alert("결제 실패...  "+rsp.error_msg);
+        alert(rsp.error_msg);
       }
   });
 }
 
-
+/*
 function monthlyPay() {
 	
+	var IMP = window.IMP;
+	  IMP.init('imp41250534');
+	  
 	IMP.request_pay({
+		pg: 'kakaopay',
 		pay_method : 'card', // 기능 없음.
-		merchant_uid: "order_monthly_0001", // 상점에서 관리하는 주문 번호
-		name : '최초인증결제',
-		amount : 100, // 빌링키 발급과 함께 1,004원 결제승인을 시도합니다.
-		customer_uid : '1', // 필수 입력
-/* 		buyer_email : 'iamport@siot.do',
+		merchant_uid: new Date().getTime(), // 상점에서 관리하는 주문 번호
+		name : '정기결제1',
+		amount : 0, // 빌링키 발급과 함께 1,004원 결제승인을 시도합니다.
+		customer_uid : '4', // 필수 입력
+ 		buyer_email : 'iamport@siot.do',
 		buyer_name : '아임포트',
-		buyer_tel : '02-1234-1234' */
+		buyer_tel : '02-1234-1234' 
 	}, function(rsp) {
 		if ( rsp.success ) {
 			alert('빌링키 발급 성공');
+			
+			$.ajax({
+				url:'/purchaseAgain', //결제 상태를 확인하고 스케줄러를 호출하는 부분
+				type : 'POST',
+				data:{
+					"customer_uid" : '3',
+					"price" : 120, 
+					"merchant_uid" : new Date().getTime()
+				},
+				success:function(result) {
+					alert('다음 결제 예약');
+				}
+			});
+			
 		} else {
 			alert('빌링키 발급 실패');
 		}
 	});
 
 }
+*/
 
+
+
+function kakaopay(){
+	var IMP = window.IMP; // 생략가능
+	let customer_uid = '3';
+	IMP.init('imp41751598'); 
+	IMP.request_pay({
+		pay_method : 'card', // 결제창 호출단계에서의 pay_method는 아무런 역할을 하지 못하며, 구매자가 카카오페이 앱 내에서 신용카드 vs 카카오머니 중 실제 선택한 값으로 추후 정정됩니다.
+		merchant_uid : new Date().getTime(),
+		name : '구독1',
+		amount : 200, 
+		customer_uid :customer_uid, //customer_uid 파라메터가 있어야 빌링키 발급이 정상적으로 이뤄집니다.
+		buyer_email : 'first@mail.com',
+		buyer_name : '첫번째',
+		buyer_tel : '010-1111-2222'
+	}, function(rsp) {
+		if ( rsp.success ) {
+			
+			$.ajax({
+				url:'/subscribe/1', //DB에 구독정보 등록하는 부분..
+				type: 'POST',
+				data:{
+					//package_id : $('#package_id').val(),
+					//customer_id : $('#customer_id').val()
+				},
+				success:function(result) {
+					alert('정기결제 등록'+result);
+				}
+			});
+			
+			/*
+		    //alert($('#customer_id').val());
+			$.ajax({
+				url:'/payment1', //결제 상태를 확인하고 스케줄러를 호출하는 부분
+				type : 'POST',
+				data:{
+					"customer_uid" : customer_uid,
+					"price" :120, 
+					"merchant_uid" : new Date().getTime()
+				},
+				success:function(result) {
+					alert('다음 결제 예약');
+				}
+			});
+			*/
+		} else {
+			alert('빌링키 발급 실패');
+			}
+		});
+}	
 
 </script>
 
@@ -115,18 +191,19 @@ function monthlyPay() {
 	                    </div>
 	                    <div class="buy-content">                        
 	                        <div class="d-flex justify-content-center">
-	                        	<!-- <form action="/store/carts/2" method="post">
+	                        	<form action="/store/carts/2" method="post">
    									<button>장바구니</button>
-   								</form> -->
-   								<!-- <form action="/store/purchases/2" method="post">
-   									<button>바로 구매</button>
-   								</form> -->
-   								<!-- 잠깐 css 손보느라 주석처리해둠 -->
+   								</form>
    								<!-- 나중에 onclick으로 action값 수정 필요 -->
    								
-   								<button onclick="requestPay()">바로 결제</button>
+   								<button onclick="requestPay(200)">바로 구매</button>
+   								<!-- 나중에는 상품정보 불러와서 사용할것이므로 매개변수 필요없음 -->
+   								
+   								<!-- <button onclick="kakaopay()">(구독)</button> -->
    								<!-- 결제 API 테스트용 임시 버튼 추가 -->
-   								<button onclick="monthlyPay()">정기결제</button>
+   								<!-- <form action="/purchaseAgain" method="post">
+   									<button>재결제</button>
+   								</form> -->
    								<!-- 결제 API 테스트용 임시 버튼 추가 -->
 	      					</div>
 	                    </div>
@@ -389,9 +466,11 @@ function monthlyPay() {
 
          <!-- 세번째 탭 (상품문의) -->
           <div id = "inquiry" class ="tab-pane">
-            <br><br><br>
+           	<div class="inquiry-btn-container">
+           		<button type="button" class="inquiry-btn">문의하기</button>
+           	</div>
              
-			<!-- 행 숨겼다 나타내기 -->
+			
             <table id="myTable" class="my-custom-table">
 			  <tr>
 			    <th>답변 여부</th>
@@ -405,7 +484,7 @@ function monthlyPay() {
 			    <td>pinkl***</td>
 			    <td>23.01.10</td>
 			  </tr>
-			  <tr onclick="toggleRow(2)">
+			  <tr onclick="toggleRow(2)" class="has-answer">
 			    <td>답변 완료</td>
 			    <td>춘식이 다이어리 언제 재입고 되나요ㅜㅜ</td>
 			    <td>dms77***</td>
@@ -417,7 +496,7 @@ function monthlyPay() {
 			    <td>판매자</td>
 			    <td>23.01.07</td>
 			  </tr>
-			  <tr onclick="toggleRow(3)">
+			  <tr onclick="toggleRow(3)" class="has-answer">
 			    <td>답변 완료</td>
 			    <td>펜도 같이 들어있나요?</td>
 			    <td>ghfds***</td>
@@ -429,7 +508,7 @@ function monthlyPay() {
 			    <td>판매자</td>
 			    <td>22.12.27</td>
 			  </tr>
-			  <tr onclick="toggleRow(4)">
+			  <tr onclick="toggleRow(4)" class="has-answer">
 			    <td>답변 완료</td>
 			    <td>다이어리 속지를 다른 걸로 변경 가능한가요?</td>
 			    <td>asdcf***</td>
@@ -441,7 +520,7 @@ function monthlyPay() {
 			    <td>판매자</td>
 			    <td>22.10.04</td>
 			  </tr>
-			  <tr onclick="toggleRow(5)">
+			  <tr onclick="toggleRow(5)" class="has-answer">
 			    <td>답변 완료</td>
 			    <td>춘식이 스티커도 들어있나요?</td>
 			    <td>stick***</td>
@@ -455,54 +534,11 @@ function monthlyPay() {
 			  </tr>  
 			</table>
 			<br><br><br>
-			<!-- 행 숨겼다 나타내기 -->
-			<script>
-			  function toggleRow(rowNumber) {
-			    var hiddenRow = document.getElementById("hiddenRow" + rowNumber);
-			    if (hiddenRow.style.display === "none") {
-			      hiddenRow.style.display = "table-row";
-			    } else {
-			      hiddenRow.style.display = "none";
-			    }
-			  }
-			</script>
-            <br><br>
-            <hr>
-            <br><br>
-            <!-- 문의하기 입력폼 -->
-            <form id="inquiryForm" style="display: none;">
-               <label for="user_id_inquiry">아이디 &nbsp; </label>
-               <!-- 구매자 아이디를 입력받을 input태그. --> 
-               <input type="text" id="user_id_inquiry" name="user_id"><br><br>
-               <!-- 상품명을 입력받을 input태그. -->
-               <label for="product_name_inquiry"> 상품명 &nbsp; </label>
-               <input type ="text" id= "product_name_inquiry" name="product_name" ><br><br>
-               <!-- 문의사항을 입력받기 위해 textarea태그 사용. -->
-             	<div style="display: flex; align-items: center; justify-content: center;">
-  				<p>문의사항 &nbsp;</p>
-             	<textarea rows ="5" cols = "50"></textarea>
-             	</div>
-            </form>
-            <br><br><br>
-            <!-- 문의하기 입력 버튼 -->
-            <div class="total">
-            	<div class="main-border-button">
-            	<a href="st-inquiry.do" onclick="toggleForm()">문의하기</a></div>
-            </div>
-            <br><br><br>
-          </div>
-          <!-- 문의하기 입력폼 숨겼다 나타내기 -->
-          <script>
-		  function toggleForm() {
-		    var form = document.getElementById("inquiryForm");
-		    if (form.style.display === "none") {
-		      form.style.display = "block";
-		    } else {
-		      form.style.display = "none";
-		    }
-		  }
-		  </script>
-          
+			
+
+
+           
+          </div>          
         </div>
         
         <!-- 화면 오른쪽 아래에 top▲ 버튼 추가-->
@@ -538,7 +574,21 @@ function monthlyPay() {
 
 <!-- ***** Product Area Ends ***** -->
     
-    
+
+
+
+
+			<!-- 문의 테이블 행 숨겼다 나타내기 -->
+			<script>
+			  function toggleRow(rowNumber) {
+			    var hiddenRow = document.getElementById("hiddenRow" + rowNumber);
+			    if (hiddenRow.style.display === "none") {
+			      hiddenRow.style.display = "table-row";
+			    } else {
+			      hiddenRow.style.display = "none";
+			    }
+			  }
+			</script> 
     
     
 <jsp:include page="/WEB-INF/views/common/footer.jsp" /> 

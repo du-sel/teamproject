@@ -1,5 +1,6 @@
 package com.teamproject.trackers.biz.post;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,17 +26,25 @@ public class PostService {
 			postRepository.save(vo);
 		}
 	//삭제
-		public void deletePost(Long post_id) {
-			postRepository.deleteById(post_id);
+		public void deletePost(Long postId) {
+			postRepository.deleteById(postId);
 		}
 	//상세 조회
-		public Optional<PostVO> getPost(Long post_id) {
-			return postRepository.findById(post_id);
-		}	
-
+		public Optional<PostVO> getPost(Long postId) {
+			return postRepository.findById(postId);
+		}
+		/*
+		public Optional<UserVO> getUser(Long post_id){
+			return postRepository.findByUserVO(post_id);
+		}
+		*/
+		//public List<UserVO> getUsers(Long postId){
+		//	return postRepository.findByUsers(postId);
+		//}
 		
 	//리스트 조회
-		public List<PostVO> getPostList(){
-			return postRepository.findAll();
+		public ArrayList<PostVO> getPostList(){
+			return (ArrayList)postRepository.findAll();
 		}
 }
+
