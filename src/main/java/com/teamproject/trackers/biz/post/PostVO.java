@@ -2,7 +2,9 @@ package com.teamproject.trackers.biz.post;
 
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,12 +29,25 @@ import com.teamproject.trackers.biz.userCreator.UserVO;
 public class PostVO {
 
 	@Id
-	private long post_id;
+	@Column(name = "post_id")
+	private long postId;
 
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "id")
 	private long id;
-
-	@JoinColumn(columnDefinition="integer", name = "products_p_id") //외래키
+	
+	//@JoinColumn(name="id")
+	@Transient
+    private List<UserVO> users = new ArrayList();
+	
+	
+	public List<UserVO> getUsers() {
+		return users;
+	}
+	public void setUsers(List<UserVO> users) {
+		this.users = users;
+	}
+	
+	@JoinColumn(columnDefinition="integer", name = "p_id") //외래키
 	@Column(nullable = true) //null허용
 	private Long p_id; // wrapper타입일 때 null로 insert됨
 
@@ -41,13 +56,24 @@ public class PostVO {
 	private Date cre_date = new Date();	
 
 	private String content;
+	
+	@Transient
+	private UserVO userVO;
 
 	
-	public long getPost_id() {
-		return post_id;
+	public UserVO getUserVO() {
+		return userVO;
 	}
-	public void setPost_id(long post_id) {
-		this.post_id = post_id;
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
+	
+	
+	public long getPostId() {
+		return postId;
+	}
+	public void setPostId(long postId) {
+		this.postId = postId;
 	}
 	public long getId() {
 		return id;
