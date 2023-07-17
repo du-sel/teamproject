@@ -53,6 +53,13 @@ public class ProductController {
 		return "store/st-product-single";
 	}
 	
+	// 상품 리스트 조회
+	@RequestMapping(value="/products", method=RequestMethod.GET)
+	public String getProductList() {
+		
+		
+		return "/store/st-products";
+	}
 /*----------------정희 추가-----------------*/
     /*
 	// 상품 등록 페이지
@@ -134,7 +141,7 @@ public class ProductController {
 	
 	// 크리에이터 리스트 정렬
 	@RequestMapping(value="/creators", method=RequestMethod.GET)
-	public String getCreatorList(int page, String sort, Model model) {
+	public String getCreatorList(int page, String sort, Model model, String keyword) {
 		
 		List<ProductVO> p = productService.getCreatorSignatureList();
 		HashMap<Long, List<ProductVO>> signature = new HashMap<>();
@@ -148,8 +155,15 @@ public class ProductController {
 			}
 		}
 		
+		Page<ProductCreatorVO> list = null;
 		Pageable pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
-		Page<ProductCreatorVO> list = productService.getCreatorList(pageable);
+		if(keyword != null) {
+			list = productService.getSearchCreatorList(keyword, pageable);
+		}
+		else {
+			list = productService.getCreatorList(pageable);
+		}
+		
 
 		int nowPage = list.getPageable().getPageNumber()+1;		// 0부터 시작하므로 +1
 		int startPage = Math.max(nowPage-1, 1);

@@ -48,7 +48,12 @@ public class PurchaseController {
 		this.session = session;
 	}
 	
-
+    @RequestMapping(value="/purchases", method=RequestMethod.GET)
+	public String getPurchaseList(PurchaseVO vo) {
+    	//purchaseService
+    	return "/my/purchase-history";
+    }
+    
 	@RequestMapping(value="/purchases/{p_id}", method=RequestMethod.POST)
 	public String insertPurchase(@PathVariable("p_id") String p_id) {
 		System.out.println("insertPurchase() 실행");
