@@ -1,4 +1,4 @@
-package com.teamproject.trackers.view.test;
+package com.teamproject.trackers.view.purchase;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -31,6 +31,7 @@ import com.teamproject.trackers.biz.purchase.PurchaseService;
 import com.teamproject.trackers.biz.purchase.PurchaseVO;
 import com.teamproject.trackers.biz.purchase.WebhookVO;
 import com.teamproject.trackers.biz.regularPurchase.VerifyService;
+import com.teamproject.trackers.view.test.GetTokenVO;
 
 @RestController
 public class WebhookController {
@@ -75,7 +76,7 @@ public class WebhookController {
 	
 	
 	@RequestMapping(value="/purchase/webhook", method=RequestMethod.POST)
-	public String verifyPurchase(@RequestBody WebhookVO webhook, HttpServletRequest request, HttpServletResponse resp) throws IOException {
+	public void verifyPurchase(@RequestBody WebhookVO webhook, HttpServletRequest request, HttpServletResponse resp) throws IOException {
 		//System.out.println("WebhookController 도착");
 		//System.out.println(webhook.toString());
 		
@@ -83,8 +84,7 @@ public class WebhookController {
 		String imp_uid = webhook.getImp_uid();
 		
 		
-		// 토큰 발급
-		
+		// 토큰 발급		
 		String token = verifyService.getToken();
 		Gson str = new Gson();
 		token = token.substring(token.indexOf("response") + 10);
@@ -152,9 +152,10 @@ public class WebhookController {
         } else {
         	// 잘못된 결제건 
         	System.out.println("일치하지 않습니다!");
+        	
+        	// 이 경우엔 어떻게 처리할 것인지...
         }
 		
-		return "";
 	}
 	
 
