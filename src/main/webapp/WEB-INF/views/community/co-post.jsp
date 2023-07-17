@@ -18,7 +18,7 @@
 						<button type="button" class="navbar-toggler">
 							<i class="fa fa-quote-left"></i>
 						</button>
-					</div>  
+					</div>   
 				</div>
 			</nav>
 		

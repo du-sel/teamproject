@@ -20,7 +20,7 @@ public class PostService {
 	@Qualifier("postRepository")
 	private PostRepository postRepository;
 
-	  
+	   
 	//작성
 		public void insertPost(PostVO vo) {
 			postRepository.save(vo);

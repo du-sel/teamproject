@@ -40,7 +40,7 @@ public class PostController {
 		if(!files.isEmpty()) {
 			//원래파일이름
 			String fileName = uploadFile.getOriginalFilename();
-			  
+			   
 			//확장자 추출
 			String extension = fileName.substring(fileName.lastIndexOf("."));
 			

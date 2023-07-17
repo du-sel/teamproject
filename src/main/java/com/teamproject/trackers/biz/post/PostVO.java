@@ -33,7 +33,7 @@ public class PostVO {
 	private long postId;
 
 	@JoinColumn(name = "id")
-	private long id;
+	private long id; 
 	
 	//@JoinColumn(name="id")
 	@Transient
