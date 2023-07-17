@@ -147,7 +147,7 @@
 			
 		<c:if test="${!empty sessionScope.id}">
 			<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
-				<form action="/community/posts" method="post" name="post">
+				<form action="/community/posts" method="post" name="post" enctype="multipart/form-data">
 					<!-- <input type="hidden" name="_method" value="post"> -->
 					<input type="hidden" name="id" value="${sessionScope.id}">
 					<div>
@@ -173,7 +173,7 @@
 										<p></p>
 									</div>
 									<div id="thumb-preview" class="thumb-preview"></div>
-									<input type="file" accept="image/*" name="post-img" id="thumbnail" 
+									<input type="file" accept="image/*" name="img" id="thumbnail" 
 											onchange="imgPreview(event);" multiple="multiple">
 								</div>
 								<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>

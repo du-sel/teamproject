@@ -2,6 +2,7 @@ package com.teamproject.trackers.view.community;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.teamproject.trackers.biz.comment.CommentService;
@@ -31,16 +33,28 @@ public class PostController {
 		
 	// 작성
 	@RequestMapping(value = "/posts", method = RequestMethod.POST)
-	public String insertPost(PostVO vo, PostIMGVO imgvo) throws Exception {	
-System.out.println("imgvo "+imgvo);		
-System.out.println("imgvo.getimg "+imgvo.getPostimg());		
-		if(imgvo.getPostimg()!=null) {
-			MultipartFile postIMG = imgvo.getUploadFile();
-			String fileName = postIMG.getOriginalFilename();
-			postIMG.transferTo(new File("C://trackers//"+fileName));
-			postIMGService.insertPostIMG(imgvo);
-		}
+	public String insertPost(PostVO vo, PostIMGVO imgvo,@RequestParam("img") List<MultipartFile> files, MultipartFile uploadFile) throws Exception {	
 		postService.insertPost(vo);
+		imgvo.setPost_id(vo.getPostId());
+	
+		if(!files.isEmpty()) {
+			//원래파일이름
+			String fileName = uploadFile.getOriginalFilename();
+			
+			//확장자 추출
+			String extension = fileName.substring(fileName.lastIndexOf("."));
+			
+			// 로컬에 파일 저장
+			MultipartFile postIMG = imgvo.getUploadFile();
+			File file = new File(uploadFile.getOriginalFilename());
+			postIMG.transferTo(file);
+			imgvo.setPostimg(fileName);
+			
+			for(MultipartFile f : files) {
+				postIMGService.insertPostIMG(imgvo);				
+			}
+		}
+		
 		return "redirect:/community/posts";
 		
 	}
