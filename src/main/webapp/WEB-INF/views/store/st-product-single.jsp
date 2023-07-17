@@ -13,26 +13,26 @@
 	//IMP.init('imp41250534');
 
 
-function requestPay(id, fin_price) {
-	console.log(id);
+function requestPay(fin_price) {
+
 	let pathname = window.location.pathname;
 	let p_id = pathname.substring(pathname.indexOf("products")+9)
-	console.log(p_id);
-	let merchant_uid = p_id+"-"+id+"-"+new Date().getTime()+Math.random().toString(36).substring(2, 12);
+	//console.log(p_id);
+	
+	let merchant_uid = p_id+"-"+'${user.id}'+"-"+new Date().getTime()+Math.random().toString(36).substring(2, 12);
 	console.log(merchant_uid);
+	
 	var IMP = window.IMP;
-  IMP.init('imp41250534'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
-  IMP.request_pay({
+    IMP.init('imp41250534'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
+    IMP.request_pay({
     pg: "html5_inicis.INIpayTest",
     pay_method: "card",
     merchant_uid : merchant_uid,
-    name : '결제검증테스트',
+    name : '결제검증테스트',	// 나중에는 상품정보 불러와서 사용
     amount : fin_price,
-    buyer_email : 'seljvdrive@gmail.com',
-    buyer_name : id,
-    buyer_tel : '010-1234-5678',
-    buyer_addr : '서울특별시 강남구 삼성동',
-    buyer_postcode : '123-456'
+    buyer_email : '${user.email}',
+    buyer_name : '${user.name}',
+    buyer_tel : '${user.tel}',
   }, function (rsp) { // callback
       if (rsp.success) {
         alert("상품을 구매하셨습니다!");
@@ -191,18 +191,15 @@ function kakaopay(){
 	                    </div>
 	                    <div class="buy-content">                        
 	                        <div class="d-flex justify-content-center">
-	                        	<!-- <form action="/store/carts/2" method="post">
+	                        	<form action="/store/carts/2" method="post">
    									<button>장바구니</button>
-   								</form> -->
-   								<!-- <form action="/store/purchases/2" method="post">
-   									<button>바로 구매</button>
-   								</form> -->
-   								<!-- 잠깐 css 손보느라 주석처리해둠 -->
+   								</form>
    								<!-- 나중에 onclick으로 action값 수정 필요 -->
    								
-   								<button onclick="requestPay(${user.id}, 130)">바로 구매</button>
-   								<!-- 결제 API 테스트용 임시 버튼 추가 -->
-   								<button onclick="kakaopay()">(구독)</button>
+   								<button onclick="requestPay(200)">바로 구매</button>
+   								<!-- 나중에는 상품정보 불러와서 사용할것이므로 매개변수 필요없음 -->
+   								
+   								<!-- <button onclick="kakaopay()">(구독)</button> -->
    								<!-- 결제 API 테스트용 임시 버튼 추가 -->
    								<!-- <form action="/purchaseAgain" method="post">
    									<button>재결제</button>
@@ -469,9 +466,11 @@ function kakaopay(){
 
          <!-- 세번째 탭 (상품문의) -->
           <div id = "inquiry" class ="tab-pane">
-            <br><br><br>
+           	<div class="inquiry-btn-container">
+           		<button type="button" class="inquiry-btn">문의하기</button>
+           	</div>
              
-			<!-- 행 숨겼다 나타내기 -->
+			
             <table id="myTable" class="my-custom-table">
 			  <tr>
 			    <th>답변 여부</th>
@@ -485,7 +484,7 @@ function kakaopay(){
 			    <td>pinkl***</td>
 			    <td>23.01.10</td>
 			  </tr>
-			  <tr onclick="toggleRow(2)">
+			  <tr onclick="toggleRow(2)" class="has-answer">
 			    <td>답변 완료</td>
 			    <td>춘식이 다이어리 언제 재입고 되나요ㅜㅜ</td>
 			    <td>dms77***</td>
@@ -497,7 +496,7 @@ function kakaopay(){
 			    <td>판매자</td>
 			    <td>23.01.07</td>
 			  </tr>
-			  <tr onclick="toggleRow(3)">
+			  <tr onclick="toggleRow(3)" class="has-answer">
 			    <td>답변 완료</td>
 			    <td>펜도 같이 들어있나요?</td>
 			    <td>ghfds***</td>
@@ -509,7 +508,7 @@ function kakaopay(){
 			    <td>판매자</td>
 			    <td>22.12.27</td>
 			  </tr>
-			  <tr onclick="toggleRow(4)">
+			  <tr onclick="toggleRow(4)" class="has-answer">
 			    <td>답변 완료</td>
 			    <td>다이어리 속지를 다른 걸로 변경 가능한가요?</td>
 			    <td>asdcf***</td>
@@ -521,7 +520,7 @@ function kakaopay(){
 			    <td>판매자</td>
 			    <td>22.10.04</td>
 			  </tr>
-			  <tr onclick="toggleRow(5)">
+			  <tr onclick="toggleRow(5)" class="has-answer">
 			    <td>답변 완료</td>
 			    <td>춘식이 스티커도 들어있나요?</td>
 			    <td>stick***</td>
@@ -535,54 +534,11 @@ function kakaopay(){
 			  </tr>  
 			</table>
 			<br><br><br>
-			<!-- 행 숨겼다 나타내기 -->
-			<script>
-			  function toggleRow(rowNumber) {
-			    var hiddenRow = document.getElementById("hiddenRow" + rowNumber);
-			    if (hiddenRow.style.display === "none") {
-			      hiddenRow.style.display = "table-row";
-			    } else {
-			      hiddenRow.style.display = "none";
-			    }
-			  }
-			</script>
-            <br><br>
-            <hr>
-            <br><br>
-            <!-- 문의하기 입력폼 -->
-            <form id="inquiryForm" style="display: none;">
-               <label for="user_id_inquiry">아이디 &nbsp; </label>
-               <!-- 구매자 아이디를 입력받을 input태그. --> 
-               <input type="text" id="user_id_inquiry" name="user_id"><br><br>
-               <!-- 상품명을 입력받을 input태그. -->
-               <label for="product_name_inquiry"> 상품명 &nbsp; </label>
-               <input type ="text" id= "product_name_inquiry" name="product_name" ><br><br>
-               <!-- 문의사항을 입력받기 위해 textarea태그 사용. -->
-             	<div style="display: flex; align-items: center; justify-content: center;">
-  				<p>문의사항 &nbsp;</p>
-             	<textarea rows ="5" cols = "50"></textarea>
-             	</div>
-            </form>
-            <br><br><br>
-            <!-- 문의하기 입력 버튼 -->
-            <div class="total">
-            	<div class="main-border-button">
-            	<a href="st-inquiry.do" onclick="toggleForm()">문의하기</a></div>
-            </div>
-            <br><br><br>
-          </div>
-          <!-- 문의하기 입력폼 숨겼다 나타내기 -->
-          <script>
-		  function toggleForm() {
-		    var form = document.getElementById("inquiryForm");
-		    if (form.style.display === "none") {
-		      form.style.display = "block";
-		    } else {
-		      form.style.display = "none";
-		    }
-		  }
-		  </script>
-          
+			
+
+
+           
+          </div>          
         </div>
         
         <!-- 화면 오른쪽 아래에 top▲ 버튼 추가-->
@@ -618,7 +574,21 @@ function kakaopay(){
 
 <!-- ***** Product Area Ends ***** -->
     
-    
+
+
+
+
+			<!-- 문의 테이블 행 숨겼다 나타내기 -->
+			<script>
+			  function toggleRow(rowNumber) {
+			    var hiddenRow = document.getElementById("hiddenRow" + rowNumber);
+			    if (hiddenRow.style.display === "none") {
+			      hiddenRow.style.display = "table-row";
+			    } else {
+			      hiddenRow.style.display = "none";
+			    }
+			  }
+			</script> 
     
     
 <jsp:include page="/WEB-INF/views/common/footer.jsp" /> 
