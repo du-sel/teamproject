@@ -1,25 +1,45 @@
 package com.teamproject.trackers.biz.followSubscribeLike;
 
-import java.sql.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.springframework.data.annotation.Transient;
+import org.springframework.web.multipart.MultipartFile;
+
+@Entity
+@Table(name="subscribeinfo")
 public class SubscribeInfoVO {
-	private long subscibe_id;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "subscribe_id")
+	private long subscribeId;
 	private long id;
+	private String file;
 	private String content;
 	private int price;
 	
-	
-	public long getSubscibe_id() {
-		return subscibe_id;
+	public long getSubscribeId() {
+		return subscribeId;
 	}
-	public void setSubscibe_id(long subscibe_id) {
-		this.subscibe_id = subscibe_id;
+	public void setSubscribeId(long subscribeId) {
+		this.subscribeId = subscribeId;
 	}
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
+	}
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
 	}
 	public String getContent() {
 		return content;
@@ -33,6 +53,5 @@ public class SubscribeInfoVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
 	
 }

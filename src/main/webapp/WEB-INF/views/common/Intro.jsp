@@ -20,7 +20,7 @@
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/font-awesome.css">
-    <link rel="stylesheet" href="/resources/css/custom.css">
+ 	<!-- <link rel="stylesheet" href="/resources/css/custom.css">  -->  
     <link rel="stylesheet" href="/resources/css/owl-carousel.css">
 
     <link rel="stylesheet" href="/resources/css/animations.css"><!-- tab animation -->
@@ -30,7 +30,7 @@
     <script src="/resources/js/jquery-2.1.0.min.js"></script>
 
     <!-- tab JS -->
-    <script src="/resources/js/tab.js"></script>
+ <!--    <script src="/resources/js/tab.js"></script> -->
 
 </head>
     
@@ -45,39 +45,38 @@
             <div></div>
         </div>
     </div>
+ 
 
     
     
     <div id="body-back-color"></div>
-    
+    <!-- 
+    클릭을 했을 때 이동
+    hover을 하면 상단이 이동하고 배경색이 바뀌는거 
+     -->
     
 	<!--  Tab Start  -->
-    <div id="tab">
-		<div id="co-tab">커뮤니티</div>
-        <div id="st-tab">스토어</div>
+    <div id="tab" class="head">
+		<div id="co-tab" class="cotab">커뮤니티</div>
+        <div id="st-tab" class="sttab">스토어</div>
 	</div>
 	<!--  Tab End  -->
-	
-	<!--  -->
-	<div class="container">
+	   <div class="hidden"></div>
+	   
+	<!-- 로고 이미지 -->
+	<div class="container" >
 	<br><br>
-	<div class="row">
-		<div class="col-5" id="introlog1">
-			<img src="../../resources/images/recoding.png">
+		<div class="row">
+			<div class="col-10">
+				<img src="../../resources/images/R.png" id="introlog2">
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-6">
-			<img src="../../resources/images/the.png" id="introlog2">
+		<div class="row">
+			<div class="col-12">
+				<img src="../../resources/images/Trackers.svg" id="introlog">
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-12">
-			<img src="../../resources/images/Trackers.svg" id="introlog">
-		</div>
-	</div>
 
-	
 	</div>
 	
 	    

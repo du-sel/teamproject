@@ -1,13 +1,15 @@
 package com.teamproject.trackers.biz.userCreator;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Immutable;
+import org.hibernate.annotations.DynamicInsert;
 
 @Entity
 @Table(name="creator")
@@ -19,7 +21,6 @@ public class CreatorVO {
 	private String storeName;
 	private String bank;
 	private String account;
-	private boolean subscribe;
 	
 	
 	public long getId() {
@@ -45,11 +46,5 @@ public class CreatorVO {
 	}
 	public void setAccount(String account) {
 		this.account = account;
-	}
-	public boolean isSubscribe() {
-		return subscribe;
-	}
-	public void setSubscribe(boolean subscribe) {
-		this.subscribe = subscribe;
 	}
 }
