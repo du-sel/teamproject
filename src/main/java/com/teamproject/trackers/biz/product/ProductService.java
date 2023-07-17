@@ -21,7 +21,7 @@ public class ProductService {
 	
 	public ProductVO getProduct(long pId) {
 		return productRepository.findByPid(pId);
-	}
+	} 
 	
 	
 	// 스토어 조회(정렬)
