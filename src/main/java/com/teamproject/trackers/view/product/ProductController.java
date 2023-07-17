@@ -1,33 +1,33 @@
 
 package com.teamproject.trackers.view.product;
 
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //----------------정희 추가-----------------
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
+import com.teamproject.trackers.biz.product.ProductCreatorVO;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
-import com.teamproject.trackers.biz.userCreator.CreatorService;
+
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 //----------------정희 추가-----------------
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/store")
 public class ProductController {
 
@@ -35,6 +35,7 @@ public class ProductController {
 	@Autowired
     private ProductService productService;
 	//---------정희 추가---------
+	
 	
 	// 스토어 메인
 	@RequestMapping(value="/main", method=RequestMethod.GET)
@@ -135,7 +136,7 @@ public class ProductController {
 	
 	// 크리에이터 리스트 정렬
 	@RequestMapping(value="/creators", method=RequestMethod.GET)
-	public String getCreatorList(String sort, Model model) {
+	public String getCreatorList(int page, String sort, Model model) {
 		
 		List<ProductVO> p = productService.getCreatorSignatureList();
 		HashMap<Long, List<ProductVO>> signature = new HashMap<>();
@@ -149,11 +150,28 @@ public class ProductController {
 			}
 		}
 		
+		Pageable pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+		Page<ProductCreatorVO> list = productService.getCreatorList(pageable);
 
-		model.addAttribute("creators", productService.getCreatorList(sort));
+		int nowPage = list.getPageable().getPageNumber()+1;		// 0부터 시작하므로 +1
+		int startPage = Math.max(nowPage-1, 1);
+		int endPage = Math.min(nowPage+2, list.getTotalPages());
+		
+		//int startPage = Math.max(nowPage-4, 1);
+		//int endPage = Math.min(nowPage+5, list.getTotalPages());
+		
+
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		
+		model.addAttribute("creators", list);
 		model.addAttribute("signature", signature);
 		model.addAttribute("sort", sort);
+		
 		
 		return "/store/st-creators";
 	}	
 }
+
+
