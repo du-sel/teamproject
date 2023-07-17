@@ -13,23 +13,29 @@
 	//IMP.init('imp41250534');
 
 
-function requestPay() {
+function requestPay(id, fin_price) {
+	console.log(id);
+	let pathname = window.location.pathname;
+	let p_id = pathname.substring(pathname.indexOf("products")+9)
+	console.log(p_id);
+	let merchant_uid = p_id+"-"+id+"-"+new Date().getTime()+Math.random().toString(36).substring(2, 12);
+	console.log(merchant_uid);
 	var IMP = window.IMP;
   IMP.init('imp41250534'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
   IMP.request_pay({
     pg: "html5_inicis.INIpayTest",
     pay_method: "card",
-    merchant_uid : 'merchant_'+new Date().getTime(),
-    name : '결제테스트',
-    amount : 100,
-/*     buyer_email : 'seljvdrive@gmail.com',
-    buyer_name : '구매자',
+    merchant_uid : merchant_uid,
+    name : '결제검증테스트',
+    amount : fin_price,
+    buyer_email : 'seljvdrive@gmail.com',
+    buyer_name : id,
     buyer_tel : '010-1234-5678',
     buyer_addr : '서울특별시 강남구 삼성동',
-    buyer_postcode : '123-456' */
+    buyer_postcode : '123-456'
   }, function (rsp) { // callback
       if (rsp.success) {
-        alert("결제 성공!");
+        alert("상품을 구매하셨습니다!");
       } else {
         alert(rsp.error_msg);
       }
@@ -194,7 +200,7 @@ function kakaopay(){
    								<!-- 잠깐 css 손보느라 주석처리해둠 -->
    								<!-- 나중에 onclick으로 action값 수정 필요 -->
    								
-   								<button onclick="requestPay()">바로 구매</button>
+   								<button onclick="requestPay(${user.id}, 130)">바로 구매</button>
    								<!-- 결제 API 테스트용 임시 버튼 추가 -->
    								<button onclick="kakaopay()">(구독)</button>
    								<!-- 결제 API 테스트용 임시 버튼 추가 -->
