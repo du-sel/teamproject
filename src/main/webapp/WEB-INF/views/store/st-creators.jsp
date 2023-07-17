@@ -56,7 +56,7 @@
 							    	<c:choose>
 								    	<c:when test="${!empty signature[c.id]}">	<!-- 대표 상품 있는 경우 --> 
 								    		<c:forEach var="item" items="${signature[c.id]}">
-								   	   			<a href="/store/products/${item.p_id}"><img src="${item.thumbnail}" alt="대표상품 이미지"></a>
+								   	   			<a href="/store/products/${item.pid}"><img src="${item.thumbnail}" alt="대표상품 이미지"></a>
 							   	   			</c:forEach>
 								    	</c:when>		
 								    	<c:otherwise>		<!-- 대표 상품 없는 경우 -->

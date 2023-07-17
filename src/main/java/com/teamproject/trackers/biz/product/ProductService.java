@@ -17,17 +17,11 @@ public class ProductService {
 	@Autowired
 	private ProductCreatorRepository productcreatorRepository;
 	
-	
-	
 	public ProductVO getProduct(long pId) {
 		return productRepository.findByPid(pId);
 	} 
-	
-	
-	// 스토어 조회(정렬)
 
   // 스토어 조회(검색 x)
-
 	public Page<ProductCreatorVO> getCreatorList(Pageable pageable) {
 		return productcreatorRepository.findAll(pageable);
 	}

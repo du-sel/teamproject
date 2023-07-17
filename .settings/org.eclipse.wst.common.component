@@ -1,48 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-<<<<<<< HEAD
-                                        	
-=======
-
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
+                                   
     
     
     
     
     
     
-<<<<<<< HEAD
     
-    
-    
-=======
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
     <wb-module deploy-name="trackers-1.0.0-BUILD-SNAPSHOT">
-<<<<<<< HEAD
-                                                                                        
-=======
-
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
+                                                                        
         
         
         
         
-<<<<<<< HEAD
         
-        
-        
-=======
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-<<<<<<< HEAD
-                                                                                		
+                                                                      
         
-        
-        
-=======
-
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
         
         
         
@@ -50,14 +26,8 @@
         
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-<<<<<<< HEAD
-                                                                                		
+                                                                      
         
-        
-        
-=======
-
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
         
         
         
@@ -65,14 +35,8 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-<<<<<<< HEAD
-                                                                                		
+                                                                      
         
-        
-        
-=======
-
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
         
         
         
@@ -80,55 +44,24 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-<<<<<<< HEAD
-                                        
-=======
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
-
-<<<<<<< HEAD
-        
-        
-=======
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
                         
 
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
         
         
         <property name="java-output-path" value="target/classes"/>
-<<<<<<< HEAD
-                                
-        
-        
-=======
                 
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
         <property name="context-root" value="trackers"/>
-<<<<<<< HEAD
-                                                                                	
-=======
                                                                    
-
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
     
     
     
     
-<<<<<<< HEAD
     
-    
-    
-=======
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
     
     
     </wb-module>
-<<<<<<< HEAD
-                                        
-
-
-=======
->>>>>>> branch 'test-profile' of https://github.com/du-sel/teamproject.git
+                                
 
 
 
