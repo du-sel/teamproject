@@ -15,6 +15,12 @@ public class ProductService {
 	private ProductCreatorRepository productcreatorRepository;
 	
 	
+	
+	public ProductVO getProduct(long pId) {
+		return productRepository.findByPid(pId);
+	}
+	
+	
 	// 스토어 조회(정렬)
 	public List<ProductCreatorVO> getCreatorList(String sort) {		
 		if(sort.equals("newest")) sort="creDate";

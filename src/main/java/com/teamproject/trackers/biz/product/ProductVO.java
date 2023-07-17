@@ -3,6 +3,7 @@ package com.teamproject.trackers.biz.product;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 
 @Entity
@@ -10,7 +11,8 @@ import javax.persistence.Embedded;
 public class ProductVO {
 	
 	@Id
-	private long p_id;
+	@Column(name="p_id")
+	private long pid;
 	private long id;
 	private String p_name;
 	private int price;
@@ -19,11 +21,11 @@ public class ProductVO {
 	private String file;
 	private boolean signature;
 	
-	public long getP_id() {
-		return p_id;
+	public long getPid() {
+		return pid;
 	}
-	public void setP_id(long p_id) {
-		this.p_id = p_id;
+	public void setPid(long pid) {
+		this.pid = pid;
 	}
 	public long getId() {
 		return id;
