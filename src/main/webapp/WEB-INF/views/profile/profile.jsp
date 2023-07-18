@@ -5,6 +5,9 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 <main id="myprofile">
 	<div  class="container firstcontainer">
+	<c:if test="${!empty sessionScope.id}">
+	
+	</c:if>
 		<!--상단 이미지-->
 		<div class="row topimg">
 			<div class="col-md-12 topimgdiv" >
@@ -13,14 +16,6 @@
 		</div>
 
 		<div class="row  seconddiv">
-		
-			<!--프로필 이미지 
-			<div class="col-md-2 col-lg-1 profilediv">
-				<div class="profile" id="profile">
-					<img class="profileimgmodify" src="/resources/images/사람실루엣.jpg" >
-				</div>
-			</div>
-			-->
 			<c:choose>
 			    <c:when test="" >  <!-- 자신의 프로필 일 때와  -->
 					<div class="col-md-2 col-lg-1 profilediv">
@@ -53,21 +48,28 @@
 
 			</div>
 			
+			
+			<c:choose>
+				<c:when test="${!empty sessionScope.id && !empty sessionScope.url} ">
+					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">
 
-			<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">
-				<!-- 팔로우 구독 버튼  -->
-				<!-- 
-				<button id="buttonright" class="btn">팔로우</button> 
-				<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>
-				
-				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-				<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
-				-->
-		   		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
-				<!-- <div id="buttonright" class="longtext"><a href="sales-status.do">마이스토어 관리</a></div> -->
-				
-	
-			</div>
+				   		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
+						<div id="buttonright" class="longtext"><a href="sales-status.do">마이스토어 관리</a></div>
+								
+					</div>				
+				</c:when>
+				<c:otherwise>
+					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">						 
+						<button id="buttonright" class="btn">팔로우</button> 
+						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>
+						<c:when test="">
+							<button id="buttonright"  class="btn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
+							<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
+						</c:when>		
+					</div>				
+				</c:otherwise>
+			</c:choose>
+
 		</div>	
 	
 	<br>

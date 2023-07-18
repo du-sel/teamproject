@@ -7,16 +7,16 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
-
+  
 @Entity
 @Table(name = "postimg")
-public class PostIMGVO {
-	
+public class PostIMGVO { 	
 	@Id
-	private long post_id;
+	@Column(name = "post_id")
+	private long postId;
 	
 	@Column(name = "img")
-	private Long postimg;
+	private String postimg;
 	
 	@Column(name = "id")
 	private Long id;
@@ -32,16 +32,16 @@ public class PostIMGVO {
 	}
 	
 	
-	public long getPost_id() {
-		return post_id;
+	public long getPostId() {
+		return postId;
 	}
-	public void setPost_id(long post_id) {
-		this.post_id = post_id;
+	public void setPostId(long postId) {
+		this.postId = postId;
 	}
-	public Long getPostimg() {
+	public String getPostimg() {
 		return postimg;
 	}
-	public void setPostimg(Long postimg) {
+	public void setPostimg(String postimg) {
 		this.postimg = postimg;
 	}
 	public Long getId() {
