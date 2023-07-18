@@ -5,7 +5,7 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-
+  
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
 	<main id="co-main" class="row" style="margin-top: 200px">
@@ -147,14 +147,14 @@
 			
 		<c:if test="${!empty sessionScope.id}">
 			<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
-				<form action="/community/posts" method="post" name="post">
+				<form action="/community/posts" method="post" name="post" enctype="multipart/form-data">
 					<!-- <input type="hidden" name="_method" value="post"> -->
 					<input type="hidden" name="id" value="${sessionScope.id}">
 					<div>
 						<div class="header">
 							<div class="meta">
 								<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;
-									<span class="name"><div class="author">${sessionScope.name }</div></span>
+									<span class="name"><div class="author">${sessionScope.user.getName() }</div></span>
 								</a>
 								<button class="insertpost inserticon" type="button"><img alt="" src="/resources/images/icon-insertpost.png"></button>
 							</div>

@@ -513,7 +513,7 @@ header
   padding-left: 0px;
   padding-right: 0px;
 }
-
+.header-area .main-nav .nav div.submenu ul li.category,
 .header-area .main-nav .nav div.submenu ul li a {
   opacity: 1;
   display: block;
@@ -530,6 +530,11 @@ header
   font-size: 13px;
   font-weight: 400;
   border-bottom: 1px solid #eee;
+}
+.header-area .main-nav .nav div.submenu ul li.category{
+	font-size: 14px;
+  	font-weight: 600;
+  	cursor: default;
 }
 
 .header-area .main-nav .nav div.submenu ul li a:hover {
@@ -849,6 +854,8 @@ header
   }
   .header-area.header-sticky .nav {
     margin-top: 80px !important;
+    max-height: 500px;
+    overflow-y: auto;
   }
   .header-area .main-nav .nav div {
     width: 100%;
@@ -888,6 +895,11 @@ header
     box-shadow: none;
     height: 0px;
   } 
+  .header-area .main-nav .nav div.submenu ul li.category{
+  	padding: 0;
+  	border-bottom:none;
+  	border-top: 1px solid #eee;
+  }  
   .header-area .main-nav .nav div.submenu ul li a {
     font-size: 12px;
     font-weight: 400;
@@ -1394,6 +1406,7 @@ Products Page
 
 #products .item .thumb img {
   width: 100%;
+  height: 350px;
   overflow: hidden;
 }
 
@@ -1411,11 +1424,18 @@ Products Page
   margin-bottom: 8px;
 }
 
-#products .item .down-content span {
+#products .item .down-content span.price {
   font-size: 18px;
   color: #a1a1a1;
   font-weight: 500;
   display: block;
+}
+
+#products .item .down-content span.cost {
+  font-size: 14px;
+  color: #e97d7d;
+  text-decoration: line-through;
+  display: inline-block;
 }
 
 #products .item .down-content ul.stars {
@@ -1462,6 +1482,26 @@ Products Page
   background-color: #fff;
 }
 
+@media (max-width:1199px){
+	#products .item .thumb img {
+	  height: 289.98px;
+	}
+}
+@media (max-width:991px){
+	#products .item .thumb img {
+	  height: 690px;
+	}
+}
+@media (max-width:767px){
+	#products .item .thumb img {
+	  height: 510px;
+	}
+}
+@media (max-width:575px){
+	#products .item .thumb img {
+	  height: auto;
+	}
+}
 
 
 /* 
@@ -1829,6 +1869,7 @@ st-creator
 }
 #creators .product{
 	min-height: 200px;
+	overflow-x: auto; 
 }
 #creators .product a {
 	width: auto;

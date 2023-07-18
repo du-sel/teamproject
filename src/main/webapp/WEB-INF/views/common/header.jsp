@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <title>Trackers</title>
-    <link rel="stylesheet" href="/resources/css/Intro.css">
+    <!-- <link rel="stylesheet" href="/resources/css/Intro.css"> -->
     
     <!-- profile page -->
 	<link rel="stylesheet" href="/resources/css/profile.css" >
@@ -75,7 +75,7 @@
 			<div id="co-tab">커뮤니티</div>
 			<!-- onclick="location.href='co-main.do'" -->
 	        <div id="st-tab">스토어</div>
-	         <!-- onclick="location.href='st-main.do'" -->
+	        <!-- onclick="location.href='st-main.do'" -->
 		</div>
 		<!-- ***** Tab End ***** -->
 	    
@@ -89,19 +89,31 @@
 	                <div class="col-12">
 	                    <nav class="main-nav">
 	                        <!-- ***** Menu Start ***** -->
-	                        <div class="nav">
+	                        <div class="nav  scroll-y-custom">
 	                            <div class="store-menu">
 		                            <div class="submenu">
-		                                <a href="/store/products">상품</a>
+		                                <a>상품</a>
+		                                <c:set var="ps" value="page=0&sort=creDate"/>
 		                                <ul>
-		                                    <li><a href="about.html">About Us</a></li>
-		                                    <li><a href="products.html">Products</a></li>
-		                                    <li><a href="single-product.html">Single Product</a></li>
-		                                    <li><a href="contact.html">Contact Us</a></li>
+		                                	<li class="category" onclick="location.href='/store/products?${ps}&category=all'">페이지 별</li>
+		                                    <li><a href="/store/products?${ps}&category=whole">한달 세트</a></li>
+		                                    <li><a href="/store/products?${ps}&category=monthly">먼슬리</a></li>
+		                                    <li><a href="/store/products?${ps}&category=weekly">위클리</a></li>
+		                                    <li><a href="/store/products?${ps}&category=habit">해빗트래커</a></li>
+		                                    <li><a href="/store/products?${ps}&category=mood">무드트래커</a></li>
+		                                    <li><a href="/store/products?${ps}&category=reading">독서트래커</a></li>
+		                                    <li><a href="/store/products?${ps}&category=expense">가계부</a></li>
+		                                    <li><a href="/store/products?${ps}&category=study">스터디</a></li>
+		                                    <li><a href="/store/products?${ps}&category=sticker">스티커</a></li>
+		                                    <li><a href="/store/products?${ps}&category=etc">그 외</a></li>
+		                                    <li class="category" onclick="location.href='/store/products?${ps}&category=all'">디자인 별</li>
+		                                    <li><a href="/store/products?${ps}&category=minimal">미니멀</a></li>
+		                                    <li><a href="/store/products?${ps}&category=illustration">일러스트</a></li>
+		                                    <li><a href="/store/products?${ps}&category=photo">포토</a></li>
 		                                </ul>
 	                            	</div>
 		    	                    <div>
-		                                <a href="/store/creators?page=0&sort=creDate">크리에이터</a>
+		                                <a href="/store/creators?${ps}">크리에이터</a>
 		                            </div>
 								</div>
 	                            <!-- ***** Logo Start ***** -->
@@ -118,13 +130,15 @@
 											<i class="fa fa-search" aria-hidden="true"></i>
 										</div>
 										<c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />		<!-- 현재 위치 uri -->
-										<form name="search" action="
-											<c:if test="${path ne '/store/creators'}">
-												<c:set var="path" value="/store/products"/>
-											</c:if>
-											${path}" class="search-input-container">
+										<c:if test="${path ne '/store/creators'}">
+											<c:set var="path" value="/store/products"/>
+										</c:if>
+										<form name="search" action="${path}" class="search-input-container">
 											<input type="hidden" name="page" value="0">
-											<input type="hidden" name="sort" value="${sort}">
+											<input type="hidden" name="sort" value="creDate">
+											<c:if test="${path ne '/store/creators'}">
+												<input type="hidden" name="category" value="${category}">
+											</c:if>
 											<input type="text" name="keyword">
 											<button class="search-btn">검색</button>
 										</form>

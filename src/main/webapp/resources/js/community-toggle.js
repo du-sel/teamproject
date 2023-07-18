@@ -48,9 +48,11 @@ console.log(length);
 			}   	
 	    }
 	    
+	    /*
 	    var maxlength =4;
-	    var length=0;
+	    var length=0;*/
 	    /* 사진 미리보기 */	
+	    /*
 	function imgPreview(event) {
 		length=event.target.files.length;
 		// 미리보기 초기화
@@ -72,6 +74,39 @@ console.log(event.target.files.length);
 	    }
 	    
 	  }
+	  */
+	  	var maxlength = 4;
+		var length = 0;
+		
+		function imgPreview(event) {
+		  
+		 
+		var uploadFile = event.target.files[0]; // Get the first selected file
+		
+		  
+		
+		if (uploadFile) {
+		    length = event.target.files.length;
+		
+		    // Clear the preview area
+		    document.querySelector("div#thumb-preview").replaceChildren();
+		
+		    
+		
+		for (var image of event.target.files) {
+		      var reader = new FileReader();
+		
+		      reader.onload = function (event) {
+		        var img = document.createElement("img");
+		        img.style.width = '200px';
+		        img.setAttribute("src", event.target.result);
+		        document.querySelector("div#thumb-preview").appendChild(img);
+		      };
+		
+		      reader.readAsDataURL(image);
+		    }
+		  }
+		}
 	  
 	  
 	  /* co-main.jsp에 있던 script 옮김 */    

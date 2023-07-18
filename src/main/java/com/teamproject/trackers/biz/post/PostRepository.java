@@ -19,7 +19,7 @@ public interface PostRepository extends JpaRepository<PostVO, Long>{
 	// 작성
 		public PostVO save(PostVO vo);
 				
-		
+		  
 	// 삭제
 		public void deleteByPostId(Long postId);
 	// 상세 조회

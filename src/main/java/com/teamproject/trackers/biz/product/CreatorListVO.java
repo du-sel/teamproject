@@ -13,8 +13,8 @@ import org.springframework.data.annotation.Immutable;
 
 @Entity
 @Immutable 
-@Table(name="productcreator")
-public class ProductCreatorVO {
+@Table(name="creatorlist")
+public class CreatorListVO {
 	
 	@Id
 	private long id;
