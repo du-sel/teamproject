@@ -75,12 +75,22 @@ public class ProductController {
 	}
 
 	/* 상품 상세 조회 */
-	// 정보 받아오는 로직 추가해야함 
 	@RequestMapping(value="/products/{p_id}", method=RequestMethod.GET)
-	public String getProduct(@PathVariable("p_id") String p_id) {
-		System.out.println("getProduct() 실행");
+	public String getProduct(@PathVariable("p_id") String p_id, Model model) throws Exception {
+		System.out.println("컨트롤러 getProduct() 실행");
 		System.out.println("p_id: "+p_id);
-	
+		
+		ProductVO product = productService.getProduct(Long.parseLong(p_id));
+		
+		if(product == null) {
+			// 해당 id의 상품이 존재하지 않는 경우
+			throw new Exception("존재하지 않는 상품입니다");
+		}
+		
+		model.addAttribute("product", product);	
+		
+		// detail 추가
+		
 		return "store/st-product-single";
 	}
 	
