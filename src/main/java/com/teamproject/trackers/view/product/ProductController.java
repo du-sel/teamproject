@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 //----------------정희 추가-----------------
 
 import com.teamproject.trackers.biz.product.CreatorListVO;
+import com.teamproject.trackers.biz.product.ProductListVO;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
 
@@ -55,31 +56,60 @@ public class ProductController {
 	
 	// 상품 리스트 조회
 	@RequestMapping(value="/products", method=RequestMethod.GET)
-	public String getProductList(int page, String keyword, String sort, Model model) {
-		/*
+	public String getProductList(String category, int page, String keyword, String sort, Model model) {
+		
 		// 정렬 및 페이징 , 검색 처리
-		Page<CreatorListVO> list = null;
-		Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
-		if(keyword != null) 	// 검색 한 경우
-			list = productService.getSearchCreatorList(keyword, pageable);
-		else 					// 검색 안 한 경우
-			list = productService.getCreatorList(pageable);		
-
+		Page<ProductListVO> list = null;
+		Pageable pageable = null;
+		
+		if(!category.equals("all")) {
+			// 정렬
+			if(sort.equals("creDate")) {
+				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, "cre_date"));
+			}else if(sort.equals("highprice")) {
+				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, "sale_price"));
+			}else if(sort.equals("lowprice")) {
+				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.ASC, "sale_price"));
+			}else {
+				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+			}
+			
+			// 검색 x 경우
+			if(keyword == null) keyword="";
+			
+			list = productService.getCategorList(category, keyword, pageable);
+		}else {
+			// 정렬
+			if(sort.equals("highprice")) {
+				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, "salePrice"));
+			}else if(sort.equals("lowprice")) {
+				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.ASC, "salePrice"));
+			}else {
+				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, sort));
+			}
+			
+			// 검색
+			if(keyword != null) {			// 검색 o
+				list = productService.getSearchProductList(keyword, pageable);
+			}else {							// 검색 x
+				keyword = "";
+				list = productService.getProductList(pageable);	
+			}
+		}
+		
 		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
 		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
 		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
-		
-		//int startPage = Math.max(nowPage-1, 1);
-		//int endPage = Math.min(nowPage+2, list.getTotalPages());
 		
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		
-		model.addAttribute("creators", list);
-		model.addAttribute("signature", signature);
+		model.addAttribute("products", list);
 		model.addAttribute("sort", sort);
-		*/
+		model.addAttribute("category", category);
+		model.addAttribute("keyword", keyword);
+		
 		return "/store/st-products";
 	}
 
@@ -160,12 +190,11 @@ public class ProductController {
     /*----------------정희 추가-----------------*/
 	
 	
-	// 크리에이터 리스트 조회
-	
-	// 크리에이터 리스트 정렬
+	// 크리에이터 리스트 조회 & 정렬 & 검색
 	@RequestMapping(value="/creators", method=RequestMethod.GET)
 	public String getCreatorList(int page, String sort, Model model, String keyword) {
 		
+		// 대표 상품 리스트 조회
 		List<ProductVO> p = productService.getCreatorSignatureList();
 		HashMap<Long, List<ProductVO>> signature = new HashMap<>();
 		for(ProductVO item : p) {
@@ -180,11 +209,15 @@ public class ProductController {
 		
 		// 정렬 및 페이징 , 검색 처리
 		Page<CreatorListVO> list = null;
-		Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
-		if(keyword != null) 	// 검색 한 경우
+		Pageable pageable = PageRequest.of(page, 1, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+		
+		// 검색
+		if(keyword != null) { 		// 검색 한 경우
 			list = productService.getSearchCreatorList(keyword, pageable);
-		else 					// 검색 안 한 경우
+		}else { 					// 검색 안 한 경우
+			keyword = "";
 			list = productService.getCreatorList(pageable);		
+		}
 
 		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
 		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
@@ -200,7 +233,8 @@ public class ProductController {
 		model.addAttribute("creators", list);
 		model.addAttribute("signature", signature);
 		model.addAttribute("sort", sort);
-				
+		model.addAttribute("keyword", keyword);
+		
 		return "/store/st-creators";
 	}	
 }
