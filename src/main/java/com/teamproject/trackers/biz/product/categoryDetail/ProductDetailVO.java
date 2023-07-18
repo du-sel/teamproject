@@ -1,4 +1,4 @@
-package com.teamproject.trackers.biz.product;
+package com.teamproject.trackers.biz.product.categoryDetail;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

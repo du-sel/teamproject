@@ -1,4 +1,4 @@
-package com.teamproject.trackers.biz.product;
+package com.teamproject.trackers.biz.product.categoryDetail;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,9 +13,9 @@ public class DesignCategoryVO {
 	@Column(name="p_id")
 	private long pid;
 	
-	private boolean minimal;
-	private boolean illustration;
-	private boolean photo;
+	private boolean minimal = false;
+	private boolean illustration = false;
+	private boolean photo = false;
 	
 	
 	public long getPid() {

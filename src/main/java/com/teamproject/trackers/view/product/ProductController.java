@@ -16,12 +16,16 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.google.gson.JsonObject;
 import com.teamproject.trackers.biz.drive.DriveController;
 import com.teamproject.trackers.biz.product.CreatorListVO;
+import com.teamproject.trackers.biz.product.ProductPageVO;
 import com.teamproject.trackers.biz.product.ProductListVO;
 import com.teamproject.trackers.biz.product.DesignCategoryVO;
 import com.teamproject.trackers.biz.product.PageCategoryVO;
 import com.teamproject.trackers.biz.product.ProductDetailVO;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
+import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryVO;
+import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryVO;
+import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,6 +34,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -75,14 +81,19 @@ public class ProductController {
 		return "store/st-main";
 	}
 
-	
-	
 	////* 상품 상세 조회 *////
 	@RequestMapping(value="/products/{p_id}", method=RequestMethod.GET)
-	public String getProduct(@PathVariable("p_id") String p_id) {
-		System.out.println("getProduct() 실행");
-		System.out.println("p_id: "+p_id);
-	
+	public String getProduct(@PathVariable("p_id") String p_id, Model model) throws Exception {
+		
+		ProductPageVO product = productService.getProductPage(Long.parseLong(p_id));
+		
+		if(product == null) {
+			// 해당 id의 상품이 존재하지 않는 경우
+			throw new Exception("존재하지 않는 상품입니다");
+		}
+		
+		model.addAttribute("product", product);	
+		
 		return "store/st-product-single";
 	}
 	
@@ -213,6 +224,10 @@ public class ProductController {
 		vo.setThumbnail(thumbnail);
 		vo.setFile(file);
 		
+		// 현재 날짜 저장
+		LocalDate now = LocalDate.now();
+		vo.setCre_date(Date.valueOf(now));
+		
 		// 상품 등록 로직
 		productService.insertProduct(vo);
 		
@@ -272,6 +287,8 @@ public class ProductController {
 					break;
 				}
 	    	}   	
+    	} else {
+    		
     	}
     	return vo;
     }
