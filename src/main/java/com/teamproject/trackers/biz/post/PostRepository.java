@@ -19,15 +19,14 @@ public interface PostRepository extends JpaRepository<PostVO, Long>{
 	// 작성
 		public PostVO save(PostVO vo);
 				
-		  
+		
 	// 삭제
 		public void deleteByPostId(Long postId);
 	// 상세 조회
 		public Optional<PostVO> findByPostId(Long postId);
 
-		//외래키 user찾기
-		@Query("SELECT u FROM UserVO u WHERE u.id = :id")
-	    public Optional<UserVO> findUserByUserId(@Param("id") Long id);
+		//@Query(value = "SELECT * FROM user u JOIN post p ON u.id = p.id WHERE p.post_id=:postId", nativeQuery = true)
+		//public List<UserVO> findByUsers(@Param("postId")Long postId);
 		
 	// 리스트 조회
 		public List<PostVO> findAll();

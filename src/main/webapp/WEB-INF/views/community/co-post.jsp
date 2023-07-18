@@ -145,21 +145,21 @@
 		<!-- Main -->
 		<div id="main" class="col-lg-7 co-post-margin" > <!-- style="float: right;" -->
 
-			 
+			
 		<!-- Post -->
 		<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
 
 			<div>
 				<div class="title">
 					<p>
-						<c:if test="${!empty users.getUsers(post.getPostId()).getProfile_img()}">
+						<c:if test="${!empty users.getUsers(post.getPostId()).getProfile_img() }">
 							<a href="#" class="author"><img src="/resources/images/${users.getUsers(post.getPostId()).getProfile_img()}" alt="" />&nbsp;&nbsp;
-								<span class="name"><input type="text" name="id" value="${userinfo}" readonly="readonly" class="author"></span>
+								<span class="name"><input type="text" name="id" value="${users.getUsers(post.getPostId()).getName() }" readonly="readonly" class="author"></span>
 							</a>
 						</c:if>
-						<c:if test="${empty users.getUsers(post.getPostId()).getProfile_img()}">
+						<c:if test="${empty users.getUsers(post.getPostId()).getProfile_img() }">
 							<a href="#" class="author"><img src="" alt="" style="background-color: gray;" />&nbsp;&nbsp;
-								<span class="name"><input type="text" name="id" value="${userinfo}" readonly="readonly" class="author"></span>
+								<span class="name"><input type="text" name="id" value="${users.getUsers(post.getPostId()).getName() }" readonly="readonly" class="author"></span>
 							</a>
 						</c:if>
 					</p>
@@ -179,7 +179,7 @@
 			
 			<div id="post-content" class="collapse-content">
 			  <div class="post-content-inner collapsed">
-			   ${post.getContent()}
+			   ${post.getContent() }
 			  </div>
 			</div>
 			

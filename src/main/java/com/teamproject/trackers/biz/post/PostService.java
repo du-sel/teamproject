@@ -21,7 +21,7 @@ public class PostService {
 	private PostRepository postRepository;
 
 	   
-	//작성  
+	//작성
 		public PostVO insertPost(PostVO vo) {
 			return postRepository.save(vo);
 		}
@@ -33,15 +33,14 @@ public class PostService {
 		public Optional<PostVO> getPost(Long postId) {
 			return postRepository.findById(postId);
 		}
-		
-		public Optional<UserVO> getUser(Long postId) {
-	        Optional<PostVO> postOptional = postRepository.findById(postId);
-	        if (postOptional.isPresent()) {
-	            PostVO postVO = postOptional.get();
-	            return postRepository.findUserByUserId(postVO.getId());
-	        }
-	        return Optional.empty();
-	    }
+		/*
+		public Optional<UserVO> getUser(Long post_id){
+			return postRepository.findByUserVO(post_id);
+		}
+		*/
+		//public List<UserVO> getUsers(Long postId){
+		//	return postRepository.findByUsers(postId);
+		//}
 		
 	//리스트 조회
 		public ArrayList<PostVO> getPostList(){

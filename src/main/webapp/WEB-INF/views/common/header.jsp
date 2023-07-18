@@ -103,7 +103,8 @@
 		                                <a>상품</a>
 		                                <c:set var="ps" value="page=0&sort=creDate"/>
 		                                <ul>
-		                                	<li class="category" onclick="location.href='/store/products?${ps}&category=all'">페이지 별</li>
+		                                	<li><a href="/store/products?${ps}&category=all">전체</a></li>
+		                                	<li class="category">페이지 별</li>
 		                                    <li><a href="/store/products?${ps}&category=whole">한달 세트</a></li>
 		                                    <li><a href="/store/products?${ps}&category=monthly">먼슬리</a></li>
 		                                    <li><a href="/store/products?${ps}&category=weekly">위클리</a></li>
@@ -114,7 +115,7 @@
 		                                    <li><a href="/store/products?${ps}&category=study">스터디</a></li>
 		                                    <li><a href="/store/products?${ps}&category=sticker">스티커</a></li>
 		                                    <li><a href="/store/products?${ps}&category=etc">그 외</a></li>
-		                                    <li class="category" onclick="location.href='/store/products?${ps}&category=all'">디자인 별</li>
+		                                    <li class="category">디자인 별</li>
 		                                    <li><a href="/store/products?${ps}&category=minimal">미니멀</a></li>
 		                                    <li><a href="/store/products?${ps}&category=illustration">일러스트</a></li>
 		                                    <li><a href="/store/products?${ps}&category=photo">포토</a></li>
