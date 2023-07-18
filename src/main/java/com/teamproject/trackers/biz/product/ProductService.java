@@ -9,6 +9,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryRepository;
+import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryVO;
+import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryRepository;
+import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryVO;
+import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailRepository;
+import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
+
 @Service
 public class ProductService {
 	
@@ -20,19 +27,22 @@ public class ProductService {
 	private PageCategoryRepository pageCategoryRepository;	
 	private ProductDetailRepository productDetailRepository;
 	private CreatorListRepository creatorlistRepository;
+	private ProductPageRepository productPageRepository;
 	
 	@Autowired
 	public ProductService(ProductRepository productRepository,
 			DesignCategoryRepository designCategoryRepository,
 			PageCategoryRepository pageCategoryRepository,
 			ProductDetailRepository productDetailRepository,
-			CreatorListRepository creatorlistRepository) {
+			CreatorListRepository creatorlistRepository,
+			ProductPageRepository productPageRepository) {
 		
 		this.productRepository= productRepository;
 		this.designCategoryRepository = designCategoryRepository;
 		this.pageCategoryRepository = pageCategoryRepository;
 		this.productDetailRepository = productDetailRepository;
 		this.creatorlistRepository = creatorlistRepository;
+		this.productPageRepository = productPageRepository;
 	}
 	
 	
@@ -47,7 +57,19 @@ public class ProductService {
 		return productRepository.findByFile(file);
 	}
 	
+	/* p_id 로 상품 디테일 조회 */
+	public ProductDetailVO getProductDetail(long pid) {
+		return productDetailRepository.findByPid(pid);
+	}
 	
+	/* p_id 로 상품 상세정보 모두 조회 */
+	public ProductPageVO getProductPage(long pid) {
+		return productPageRepository.findByPid(pid);
+	}
+	
+	
+	
+	/* 상품 등록 */
 	public void insertProduct(ProductVO vo) {
 		productRepository.save(vo);
 	}

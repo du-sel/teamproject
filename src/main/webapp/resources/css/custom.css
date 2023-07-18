@@ -1549,13 +1549,13 @@ Single Product Page
   font-size: 13px;
 }
 
-#product .right-content span {
+/* #product .right-content span {
   font-size: 14px;
   color: #aaaaaa;
   font-weight: 500;
   display: block;
   margin-top: 25px;
-}
+} */
 
 #product .right-content .quote {
   margin-top: 25px;
