@@ -195,7 +195,8 @@ function kakaopay(){
 	                    </div>
 	                    <div class="buy-content">                        
 	                        <div class="d-flex justify-content-center">
-	                        	<form action="/store/carts/${product.pid }" method="post">
+	                        	<form name="cart" action="/store/carts/${product.pid }" method="post">
+   									<input name="blank" type="hidden" value="">
    									<button>장바구니</button>
    								</form>
    								<!-- 나중에 onclick으로 action값 수정 필요 -->
