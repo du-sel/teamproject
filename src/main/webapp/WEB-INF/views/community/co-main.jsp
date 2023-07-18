@@ -5,7 +5,7 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-
+  
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
 	<main id="co-main" class="row" style="margin-top: 200px">
@@ -243,6 +243,25 @@
 						</div>
 					
 					<!-- <script>있던 자리 -->
+					
+					
+					<footer>
+						<ul class="stats commment_stats">
+							<li><a class="comment-count" href="#" onclick="showCommentInput(this)">📝<span class="comment-count-number">2</span></a></li> <!-- 댓글 개수 -->
+							<li><a class="like-button"   href="#"><span class="like-icon">❤️</span><span class="like-count">2</span></a></li> <!-- 좋아요 개수 -->
+							<!-- <li><a href="#" class="icon solid fa-heart"><i class="fa fa-heart"></i></a> 2</li> -->
+						</ul>
+						<div class="comment-section">
+							<ul id="comment-list" class="comment-list" style="display: none;">
+								<c:forEach var="comment" items="${comments }">
+									<li><div>${comment.get }</div>${comment.getContent()}</li>
+								</c:forEach>
+							</ul>
+						</div>
+					</footer>
+					
+					
+					
 					
 					<footer>
 						<ul class="stats commment_stats">

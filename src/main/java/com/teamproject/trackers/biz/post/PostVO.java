@@ -23,11 +23,11 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import com.teamproject.trackers.biz.userCreator.UserVO;
-
+ 
 @Entity
 @Table(name = "post")  
 public class PostVO {
-
+ 
 	@Id
 	@Column(name = "post_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
