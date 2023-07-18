@@ -30,7 +30,7 @@ public class PostController {
 	@Autowired
 	private PostIMGService postIMGService;
 	
-		
+		  
 	// 작성
 	@RequestMapping(value = "/posts", method = RequestMethod.POST)
 	public String insertPost(PostVO vo, PostIMGVO imgvo,@RequestParam("post-img")List<MultipartFile> files, MultipartFile uploadFile) throws Exception {	

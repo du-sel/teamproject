@@ -21,7 +21,7 @@ public class PostService {
 	private PostRepository postRepository;
 
 	   
-	//작성
+	//작성  
 		public PostVO insertPost(PostVO vo) {
 			return postRepository.save(vo);
 		}
