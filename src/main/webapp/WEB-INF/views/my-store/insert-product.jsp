@@ -222,7 +222,7 @@
 	</script> --%>
 	
 	<!-- CKEditor Custom -->
-<%--    	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_custom/ckeditor.js"></script>
+<%--     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_custom/ckeditor.js"></script>
 	<script>
 		$(function () {
 			CKEDITOR.replace('content', {

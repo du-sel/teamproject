@@ -1,4 +1,4 @@
-package com.teamproject.trackers.biz.product;
+package com.teamproject.trackers.biz.product.categoryDetail;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,16 +13,16 @@ public class PageCategoryVO {
 	@Column(name="p_id")
 	private long pid;
 	
-	private boolean whole;
-	private boolean monthly;
-	private boolean weekly;
-	private boolean habit;
-	private boolean mood;
-	private boolean reading;
-	private boolean expense;
-	private boolean study;
-	private boolean sticker;
-	private boolean etc;
+	private boolean whole = false;
+	private boolean monthly = false;
+	private boolean weekly = false;
+	private boolean habit = false;
+	private boolean mood = false;
+	private boolean reading = false;
+	private boolean expense = false;
+	private boolean study = false;
+	private boolean sticker = false;
+	private boolean etc = false;
 	
 	
 	public long getPid() {

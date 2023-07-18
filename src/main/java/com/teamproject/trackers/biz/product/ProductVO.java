@@ -32,12 +32,6 @@ public class ProductVO {
 	private Date cre_date;
 	private boolean signature;
 
-	/*
-	@Transient
-	private MultipartFile thumbnail_f;
-	@Transient
-	private MultipartFile file_f;
-	*/
 	
 	public long getPid() {
 		return pid;
