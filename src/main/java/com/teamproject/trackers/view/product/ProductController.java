@@ -68,14 +68,15 @@ public class ProductController {
 	
 	
 	
-	/* 스토어 메인 띄우기 */
+	////* 스토어 메인 띄우기 *////
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public String stMain() {
 		return "store/st-main";
 	}
 
-	/* 상품 상세 조회 */
-	// 정보 받아오는 로직 추가해야함 
+	
+	
+	////* 상품 상세 조회 *////
 	@RequestMapping(value="/products/{p_id}", method=RequestMethod.GET)
 	public String getProduct(@PathVariable("p_id") String p_id) {
 		System.out.println("getProduct() 실행");
@@ -86,7 +87,7 @@ public class ProductController {
 	
 	
 	
-	/* 상품 리스트 조회 */
+	////* 상품 리스트 조회 *////
 	@RequestMapping(value="/products", method=RequestMethod.GET)
 	public String getProductList(int page, String keyword, String sort, Model model) {
 		/*
@@ -123,7 +124,7 @@ public class ProductController {
 	
 	
 	
-	/* 상품 관리 페이지 띄우기 (판매자별 상품 목록) */
+	////* 상품 관리 페이지 띄우기 (판매자별 상품 목록) *////
 	// 임시 URI
 	@RequestMapping(value="/products/management", method=RequestMethod.GET)
 	public String showProductManagement() {
@@ -135,7 +136,7 @@ public class ProductController {
 
 
 
-	/* 상품 등록 페이지 띄우기 */
+	////* 상품 등록 페이지 띄우기 *////
 	@RequestMapping(value="/products/new", method=RequestMethod.GET)
     public String showProductForm() {
         return "my-store/insert-product";
@@ -146,7 +147,7 @@ public class ProductController {
 
     
     
-	/* 상품 등록 처리 */
+	////* 상품 등록 처리 *////
 	@RequestMapping(value="/products", method=RequestMethod.POST)
 	@Transactional
 	public String insertProduct(ProductVO vo, HttpServletRequest req, 
@@ -204,7 +205,7 @@ public class ProductController {
     }
 
 	
-	/* 썸네일 저장 로직  */
+	////* 썸네일 저장 로직  *////
 	// 임시로 파일도 일단 여기에 저장함
     private String saveFile(MultipartFile file, String type, HttpServletRequest req) throws IllegalStateException, IOException {
     	
@@ -218,11 +219,11 @@ public class ProductController {
 		file.transferTo(uploadFile);
 		
         // 파일 저장하고 파일명 반환
-        return fileName;
+        return "/resources/productfile/"+type+fileName;
     }
     
     
-    /* 상품 카테고리 객체준비 - 디자인 */
+    ////* 상품 카테고리 객체준비 - 디자인 *////
     private DesignCategoryVO prepareDesignCategory(long p_id, List<String> design) {
     	DesignCategoryVO vo = new DesignCategoryVO();   
     	vo.setPid(p_id);
@@ -245,7 +246,7 @@ public class ProductController {
     	return vo;
     }
     
-    /* 상품 카테고리 객체준비 - 페이지 */
+    ////* 상품 카테고리 객체준비 - 페이지 *////
     private PageCategoryVO preparePageCategory(long p_id, List<String> page) {
     	PageCategoryVO vo = new PageCategoryVO();    	
 		vo.setPid(p_id);
@@ -291,19 +292,19 @@ public class ProductController {
     
     
     
-    /* 상품 카테고리 등록 - 디자인 */
+    ////* 상품 카테고리 등록 - 디자인 *////
     private void insertDesignCategory(DesignCategoryVO vo) {
     	productService.insertDesignCategory(vo);
     }
     
-    /* 상품 카테고리 등록 - 페이지 */
+    ////* 상품 카테고리 등록 - 페이지 *////
     private void insertPageCategory(PageCategoryVO vo) {
     	productService.insertPageCategory(vo);    	
     }
     
     
     
-    /* 상품 detail 등록 */
+    ////* 상품 detail 등록 */////
     private void insertProductDetail(long p_id, String content) {
     	ProductDetailVO detail = new ProductDetailVO();
     	detail.setPid(p_id);
@@ -315,7 +316,7 @@ public class ProductController {
     
     
     
-    /* 상품 detail 이미지파일 저장 */
+    ////* 상품 detail 이미지파일 저장 *////
     @RequestMapping(value="/products/detail", method=RequestMethod.POST)
     public void saveDetailFile(HttpServletRequest req, HttpServletResponse resp, MultipartHttpServletRequest multiFile) throws Exception{
 		
