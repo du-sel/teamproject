@@ -33,6 +33,9 @@
 							<option value="popularity" <c:if test="${sort eq 'popularity'}">selected</c:if>>인기순</option>
 							<option value="sale" <c:if test="${sort eq 'sale'}">selected</c:if>>판매량순</option>
 						</select>
+						<c:if test="${!empty keyword || keyword ne '' }">
+							<input type="hidden" name="keyword" value="${keyword}">
+						</c:if>
 					</form>
 				</div>
 			
@@ -52,7 +55,7 @@
 								<div class="rep">
 									<h4>대표 상품</h4>
 								</div>
-							    <div class="down-content d-flex justify-content-start product">
+							    <div class="down-content d-flex justify-content-start product scroll-custom">
 							    	<c:choose>
 								    	<c:when test="${!empty signature[c.id]}">	<!-- 대표 상품 있는 경우 --> 
 								    		<c:forEach var="item" items="${signature[c.id]}">
@@ -76,21 +79,42 @@
 				<div class="col-lg-12">
 					<div class="pagination">
 					    <ul>
-					    	<c:if test="${creators.number-1 >= 0}" >
-					    		<li>
-						            <a href="/store/creators?page=${creators.number-1}&sort=${sort}" >&lt;</a>
-						        </li>
-					    	</c:if>
-					    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
-				    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
-						            <a href="/store/creators?page=${p-1}&sort=${sort}">${p}</a>
-						        </li>	
-							</c:forEach>
-							<c:if test="${creators.number+1 < creators.totalPages }" >
-					    		<li>
-					           		<a href="/store/creators?page=${creators.number+1}&sort=${sort}">&gt;</a>
-					        	</li>
-					    	</c:if>
+					    <c:choose>
+								<c:when test="${!empty keyword || keyword ne '' }"> <!-- 검색 o -->
+							    	<c:if test="${creators.number-1 >= 0}" >
+							    		<li>
+								            <a href="/store/creators?page=${creators.number-1}&sort=${sort}&keyword=${keyword}" >&lt;</a>
+								        </li>
+							    	</c:if>
+							    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
+						    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
+								            <a href="/store/creators?page=${p-1}&sort=${sort}&keyword=${keyword}">${p}</a>
+								        </li>	
+									</c:forEach>
+									<c:if test="${creators.number+1 < creators.totalPages }" >
+							    		<li>
+							           		<a href="/store/creators?page=${creators.number+1}&sort=${sort}&keyword=${keyword}">&gt;</a>
+							        	</li>
+							    	</c:if>
+							    </c:when>
+								<c:otherwise> <!-- 검색 x -->
+									<c:if test="${creators.number-1 >= 0}" >
+							    		<li>
+								            <a href="/store/creators?page=${creators.number-1}&sort=${sort}" >&lt;</a>
+								        </li>
+							    	</c:if>
+							    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
+						    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
+								            <a href="/store/creators?page=${p-1}&sort=${sort}">${p}</a>
+								        </li>	
+									</c:forEach>
+									<c:if test="${creators.number+1 < creators.totalPages }" >
+							    		<li>
+							           		<a href="/store/creators?page=${creators.number+1}&sort=${sort}">&gt;</a>
+							        	</li>
+							    	</c:if>
+							    </c:otherwise> 
+							</c:choose>
 					    </ul>
 					</div>
 				</div>

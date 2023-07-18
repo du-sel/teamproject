@@ -20,10 +20,10 @@ public class PostService {
 	@Qualifier("postRepository")
 	private PostRepository postRepository;
 
-	
-	//작성
-		public void insertPost(PostVO vo) {
-			postRepository.save(vo);
+	   
+	//작성  
+		public PostVO insertPost(PostVO vo) {
+			return postRepository.save(vo);
 		}
 	//삭제
 		public void deletePost(Long postId) {
@@ -33,14 +33,15 @@ public class PostService {
 		public Optional<PostVO> getPost(Long postId) {
 			return postRepository.findById(postId);
 		}
-		/*
-		public Optional<UserVO> getUser(Long post_id){
-			return postRepository.findByUserVO(post_id);
-		}
-		*/
-		//public List<UserVO> getUsers(Long postId){
-		//	return postRepository.findByUsers(postId);
-		//}
+		
+		public Optional<UserVO> getUser(Long postId) {
+	        Optional<PostVO> postOptional = postRepository.findById(postId);
+	        if (postOptional.isPresent()) {
+	            PostVO postVO = postOptional.get();
+	            return postRepository.findUserByUserId(postVO.getId());
+	        }
+	        return Optional.empty();
+	    }
 		
 	//리스트 조회
 		public ArrayList<PostVO> getPostList(){

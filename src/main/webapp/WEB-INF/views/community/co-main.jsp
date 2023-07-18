@@ -5,7 +5,7 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-
+  
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
 	<main id="co-main" class="row" style="margin-top: 200px">
@@ -147,14 +147,14 @@
 			
 		<c:if test="${!empty sessionScope.id}">
 			<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
-				<form action="/community/posts" method="post" name="post">
+				<form action="/community/posts" method="post" name="post" enctype="multipart/form-data">
 					<!-- <input type="hidden" name="_method" value="post"> -->
 					<input type="hidden" name="id" value="${sessionScope.id}">
 					<div>
 						<div class="header">
 							<div class="meta">
 								<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;
-									<span class="name"><div class="author">${sessionScope.name }</div></span>
+									<span class="name"><div class="author">${sessionScope.user.getName() }</div></span>
 								</a>
 								<button class="insertpost inserticon" type="button"><img alt="" src="/resources/images/icon-insertpost.png"></button>
 							</div>
@@ -243,6 +243,25 @@
 						</div>
 					
 					<!-- <script>있던 자리 -->
+					
+					
+					<footer>
+						<ul class="stats commment_stats">
+							<li><a class="comment-count" href="#" onclick="showCommentInput(this)">📝<span class="comment-count-number">2</span></a></li> <!-- 댓글 개수 -->
+							<li><a class="like-button"   href="#"><span class="like-icon">❤️</span><span class="like-count">2</span></a></li> <!-- 좋아요 개수 -->
+							<!-- <li><a href="#" class="icon solid fa-heart"><i class="fa fa-heart"></i></a> 2</li> -->
+						</ul>
+						<div class="comment-section">
+							<ul id="comment-list" class="comment-list" style="display: none;">
+								<c:forEach var="comment" items="${comments }">
+									<li><div>${comment.get }</div>${comment.getContent()}</li>
+								</c:forEach>
+							</ul>
+						</div>
+					</footer>
+					
+					
+					
 					
 					<footer>
 						<ul class="stats commment_stats">

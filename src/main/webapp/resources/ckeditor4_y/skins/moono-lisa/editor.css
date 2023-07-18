@@ -2080,3 +2080,8 @@ legend.cke_voice_label {
 .cke_hidpi .cke_button__fastimage_icon {
     background: url(icons_hidpi.png?t=4a1fb11f44) no-repeat 0 -4416px !important;
 }
+
+
+img {
+	max-width: 900px !important;
+}

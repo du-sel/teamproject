@@ -3,6 +3,14 @@ package com.teamproject.trackers.biz.product;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 
@@ -19,7 +27,11 @@ public class ProductVO {
 	private int sale;
 	private String thumbnail;
 	private String file;
+	private int rating;
+	@Temporal(TemporalType.DATE)
+	private Date cre_date;
 	private boolean signature;
+
 	
 	public long getPid() {
 		return pid;
@@ -62,6 +74,18 @@ public class ProductVO {
 	}
 	public void setFile(String file) {
 		this.file = file;
+	}
+	public int getRating() {
+		return rating;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+	public Date getCre_date() {
+		return cre_date;
+	}
+	public void setCre_date(Date cre_date) {
+		this.cre_date = cre_date;
 	}
 	public boolean isSignature() {
 		return signature;

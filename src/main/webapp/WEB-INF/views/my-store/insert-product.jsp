@@ -94,63 +94,65 @@
 					<div class="category">
 						<div class="row flex-column">
 							<h5>디자인 카테고리</h5>
+							<input type="hidden" name="category_design" id="category_design">
 							<div class="category-card d-flex flex-row">
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-design-minimal">미니멀</label>
-									<input type="checkbox" id="cate-design-minimal" name="category_design" value="미니멀">
+									<input type="checkbox" id="cate-design-minimal" name="category_design_c" value="minimal">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
-									<label for="cate-design-illust">일러스트</label>
-									<input type="checkbox" id="cate-design-illust" name="category_design" value="일러스트">
+									<label for="cate-design-illustration">일러스트</label>
+									<input type="checkbox" id="cate-design-illustration" name="category_design_c" value="illustration">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-design-photo">포토</label>
-									<input type="checkbox" id="cate-design-photo" name="category_design" value="포토">
+									<input type="checkbox" id="cate-design-photo" name="category_design_c" value="photo">
 								</div>
 							</div>
 						</div>
 						<div class="row flex-column">
 							<h5>페이지 카테고리</h5>
+							<input type="hidden" name="category_page" id="category_page">
 							<div class="category-card d-flex flex-row">
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-whole">한달 세트</label>
-									<input type="checkbox" id="cate-page-whole" name="category_page" value="한달 세트">
+									<input type="checkbox" id="cate-page-whole" name="category_page_c" value="whole">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-monthly">먼슬리</label>
-									<input type="checkbox" id="cate-page-monthly" name="category_page" value="먼슬리">
+									<input type="checkbox" id="cate-page-monthly" name="category_page_c" value="monthly">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-weekly">위클리</label>
-									<input type="checkbox" id="cate-page-weekly" name="category_page" value="위클리">
+									<input type="checkbox" id="cate-page-weekly" name="category_page_c" value="weekly">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-habit">해빗트래커</label>
-									<input type="checkbox" id="cate-page-habit" name="category_page" value="해빗트래커">
+									<input type="checkbox" id="cate-page-habit" name="category_page_c" value="habit">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-mood">무드트래커</label>
-									<input type="checkbox" id="cate-page-mood" name="category_page" value="무드트래커">
+									<input type="checkbox" id="cate-page-mood" name="category_page_c" value="mood">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-reading">독서트래커</label>
-									<input type="checkbox" id="cate-page-reading" name="category_page" value="독서트래커">
+									<input type="checkbox" id="cate-page-reading" name="category_page_c" value="reading">
 								</div>		
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-expense">가계부</label>
-									<input type="checkbox" id="cate-page-expense" name="category_page" value="가계부">
+									<input type="checkbox" id="cate-page-expense" name="category_page_c" value="expense">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-study">스터디</label>
-									<input type="checkbox" id="cate-page-study" name="category_page" value="스터디">
+									<input type="checkbox" id="cate-page-study" name="category_page_c" value="study">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-sticker">스티커</label>
-									<input type="checkbox" id="cate-page-sticker" name="category_page" value="스티커">
+									<input type="checkbox" id="cate-page-sticker" name="category_page_c" value="sticker">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-etc">그 외</label>
-									<input type="checkbox" id="cate-page-etc" name="category_page" value="그 외">
+									<input type="checkbox" id="cate-page-etc" name="category_page_c" value="etc">
 								</div>
 							</div>
 						</div>
@@ -184,6 +186,9 @@
 
       </div>
     </div>
+    
+
+
   </main>
 
   
@@ -217,12 +222,12 @@
 	</script> --%>
 	
 	<!-- CKEditor Custom -->
-<%--    	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_custom/ckeditor.js"></script>
+<%--     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_custom/ckeditor.js"></script>
 	<script>
 		$(function () {
 			CKEDITOR.replace('content', {
 				filebrowserUploadMethod : 'form',
-				filebrowserUploadUrl : '${pageContext.request.contextPath}/product-img.do',
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/store/products/detail',
 				contentsCss: '/resources/css/custom.css'
 			});
 		});
@@ -236,7 +241,7 @@
 		$(function () {
 			CKEDITOR.replace('content', {
 				//filebrowserUploadMethod : 'form',
-				filebrowserUploadUrl : '${pageContext.request.contextPath}/product-img.do',
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/store/products/detail',
 				contentsCss: '/resources/css/custom.css'
 			});
 		});

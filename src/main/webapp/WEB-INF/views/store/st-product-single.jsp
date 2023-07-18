@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
         
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 <!-- 아임포트 (결제 API) -->
@@ -13,11 +14,12 @@
 	//IMP.init('imp41250534');
 
 
-function requestPay(fin_price) {
+function requestPay() {
 
-	let pathname = window.location.pathname;
-	let p_id = pathname.substring(pathname.indexOf("products")+9)
+	//let pathname = window.location.pathname;
+	//let p_id = pathname.substring(pathname.indexOf("products")+9)
 	//console.log(p_id);
+	let p_id = '${product.pid}';
 	
 	let merchant_uid = p_id+"-"+'${user.id}'+"-"+new Date().getTime()+Math.random().toString(36).substring(2, 12);
 	console.log(merchant_uid);
@@ -28,8 +30,8 @@ function requestPay(fin_price) {
     pg: "html5_inicis.INIpayTest",
     pay_method: "card",
     merchant_uid : merchant_uid,
-    name : '결제검증테스트',	// 나중에는 상품정보 불러와서 사용
-    amount : fin_price,
+    name : '${product.p_name}',	// 나중에는 상품정보 불러와서 사용
+    amount : ${product.price-product.sale},
     buyer_email : '${user.email}',
     buyer_name : '${user.name}',
     buyer_tel : '${user.tel}',
@@ -147,7 +149,7 @@ function kakaopay(){
         <br><br><br>
         <!-- 화면 왼쪽 위에 목록으로 돌아가기 -->
 	    <div class="back">
-	    <a href="products.do"><span class="fa fa-angle-double-left"></span>목록으로 돌아가기</a>
+	    <a href="products.do"><span class="fa fa-angle-double-left"></span> 목록으로 돌아가기</a>
 	    </div>
 	    <br><br><br>
         
@@ -157,14 +159,14 @@ function kakaopay(){
             <div class="row">
                 <div class="col-lg-7">
 	                <div class="left-images">
-	                    <img src="/resources/images/썸네일.jpg" alt="상품 썸네일">
+	                    <img src="${product.thumbnail }" alt="상품 썸네일">
 	                </div>
 	            </div>
 	            <div class="col-lg-5">
 	                <div class="right-content">
 	                	<div class="info-content">                	
-		                    <h4>춘식이 다이어리</h4>
-		                    <span class="creator">'춘식이폼미쳤다' 님의 작품</span>
+		                    <h4>${product.p_name }</h4>
+		                    <span class="creator">${product.store_name }</span>
 		                    <ul class="stars">
 		                        <li><i class="fa fa-star"></i></li>
 		                        <li><i class="fa fa-star"></i></li>
@@ -174,29 +176,36 @@ function kakaopay(){
 		                    </ul>
 	                	</div>
 	                	<div class="notice-content">
-	                		<p class="notice">본 상품은 디지털 어쩌구 바로 다운로드 어쩌구 환불 어쩌구</p>
+	                		<p class="notice">본 상품은 실물 상품이 아닌 디지털 상품으로, 주문 및 결제 후 즉시 다운로드가 가능한 콘텐츠입니다.</p>
 	                	</div>
 	                    <div class="price-content">
 	                    	<div class="d-flex">
-		                        <div class="price discount">
-		                            <h4>가격 : 7000원</h4>
+		                        <div class="price">
+		                            <h4>가격 : <span>${product.price }</span>원</h4>
 		                        </div>
-		                        <div class="sale-price">  
-		                        	<h5>→ 700원 할인</h5>
-		                        </div>
+		                        <c:if test="${product.sale > 0 }">
+			                        <div class="sale-price">  
+			                        	<h5>→ <span>${product.sale}</span>원 할인</h5>
+			                        </div>
+		                        </c:if>
 	                    	</div>
 	                    	<div class="final-price">
-		                        <h4>구매가 : 6300원</h4>
+		                        <h4>구매가 : <span>${product.price-product.sale}</span>원</h4>
 	                    	</div>
 	                    </div>
 	                    <div class="buy-content">                        
 	                        <div class="d-flex justify-content-center">
-	                        	<form action="/store/carts/2" method="post">
+	                        	<form name="cart" action="/store/carts/${product.pid }" method="post">
+   									<input name="blank" type="hidden" value="">
    									<button>장바구니</button>
    								</form>
    								<!-- 나중에 onclick으로 action값 수정 필요 -->
    								
+<<<<<<< HEAD
    								<button onclick="requestPay(130)">바로 구매</button>
+=======
+   								<button onclick="requestPay()">바로 구매</button>
+>>>>>>> branch 'main' of https://github.com/du-sel/teamproject.git
    								<!-- 나중에는 상품정보 불러와서 사용할것이므로 매개변수 필요없음 -->
    								
    								<!-- <button onclick="kakaopay()">(구독)</button> -->
@@ -228,14 +237,17 @@ function kakaopay(){
          <div class = "tab-content">
            <!-- 상세정보 페이지 이미지 크게 들어갈 공간만 있으면 되므로 img태그만 사용합니다.-->
            <div id = "description" class ="tab-pane active">
-	            <br>
-	            <img src ="/resources/images/상세1.jpg" alt=""><br><br>
-	            <img src ="/resources/images/상세2.jpg" alt=""><br><br>
-	            <img src ="/resources/images/상세3.jpg" alt=""><br><br>
-	            <img src ="/resources/images/상세4.jpg" alt=""><br><br>
-	            <img src ="/resources/images/상세5.jpg" alt=""><br><br>
-	            <img src ="/resources/images/상세6.jpg" alt=""><br><br>
-	            <img src ="/resources/images/상세7.jpg" alt=""><br><br>
+            
+	            <c:choose>
+					<c:when test="${fn:length(product.content) > 0}">
+							${product.content}
+					</c:when>
+			
+					<c:otherwise>
+							<h5>등록된 상세 정보가 없습니다</h5>
+					</c:otherwise>			
+				</c:choose>
+	            
            </div>
 
           <!-- 두번째 탭 (구매후기) -->
@@ -575,6 +587,30 @@ function kakaopay(){
 <!-- ***** Product Area Ends ***** -->
     
 
+
+	<script>
+	
+	
+		$(() => {
+			/* 가격 세자리마다 콤마 넣어주기 */
+			let price = $('.price span').text();
+			let sale_price = $('.sale-price span').text();
+			let final_price = $('.final-price span').text();
+			
+			$('.price span').text(numberWithCommas(price));
+			$('.sale-price span').text(numberWithCommas(sale_price));
+			$('.final-price span').text(numberWithCommas(final_price));			
+			
+		
+			/* 할인이 있을 경우 원래 가격에 취소선 처리 */
+			if(${product.sale} > 0) {
+				let price = $('.price').addClass('discount');
+			}
+		
+	
+		});
+	
+	</script>
 
 
 
