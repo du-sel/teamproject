@@ -1,12 +1,15 @@
 package com.teamproject.trackers.view.community;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +22,8 @@ import com.teamproject.trackers.biz.post.PostIMGVO;
 import com.teamproject.trackers.biz.post.PostService;
 import com.teamproject.trackers.biz.post.PostVO;
 import com.teamproject.trackers.biz.userCreator.UserService;
+import com.teamproject.trackers.biz.userCreator.UserVO;
+import com.teamproject.trackers.view.userCreator.UserController;
 
 @Controller
 @RequestMapping("/community")
@@ -29,36 +34,43 @@ public class PostController {
 	
 	@Autowired
 	private PostIMGService postIMGService;
+
 	
-		  
+	
+			
+		
 	// 작성
 	@RequestMapping(value = "/posts", method = RequestMethod.POST)
-	public String insertPost(PostVO vo, PostIMGVO imgvo,@RequestParam("post-img")List<MultipartFile> files, MultipartFile uploadFile) throws Exception {	
-		PostVO p = postService.insertPost(vo);
-		
-System.out.println("p.getpostid "+p.getPostId());		
-		imgvo.setPostId(p.getPostId());
-		
-	
-		if(!files.isEmpty()) { //uploadFile !=null
-System.out.println("files "+files);			
-			for(MultipartFile f : files) {
-System.out.println("f "+f);				
+	public String insertPost(PostVO vo, PostIMGVO imgvo , @RequestParam("post-img")List<MultipartFile> files) throws Exception {	
 
-				imgvo.getUploadFile().getOriginalFilename();
-				//원래파일이름
-				String fileName = uploadFile.getOriginalFilename();
+System.out.println("vo.getpostid "+vo.getPostId());
+System.out.println("vo.getid "+vo.getId());
+		PostVO p = postService.insertPost(vo);	
+		imgvo.setPostId(p.getPostId());
+System.out.println("imgvo.postid "+imgvo.getPostId());		
+System.out.println("p.postid "+p.getPostId());
+		if(!files.isEmpty()) { //uploadFile !=null
+		
+			for(MultipartFile file : files) {
+				
+				//파일 이름 가져오기
+				String fileName = file.getOriginalFilename();
+
+				
+				imgvo = new PostIMGVO();
+				
+System.out.println("imgvo.postid "+imgvo.getPostId());				
 				imgvo.setPostimg(fileName);
-				imgvo.setPostimg(fileName);
-System.out.println("fileName "+fileName);				   
+	
+			   
 				//확장자 추출
 				//String extension = fileName.substring(fileName.lastIndexOf("."));
 				
 				// 로컬에 파일 저장
-				MultipartFile postIMG = imgvo.getUploadFile();
+
 				//File file = new File(uploadFile.getOriginalFilename());
 			
-				postIMG.transferTo(new File("C:\\Users\\sooyi\\git\\p\\teamproject\\src\\main\\webapp\\resources\\file\\"+fileName));
+				file.transferTo(new File("C:\\Users\\1\\git\\"+fileName));
 				
 				postIMGService.insertPostIMG(imgvo);				
 			}
@@ -83,16 +95,18 @@ System.out.println("fileName "+fileName);
 	// 상세 조회
 	@RequestMapping(value="/posts/{postId}", method=RequestMethod.GET)
 	public String getPost(@PathVariable("postId")Long postId, Model model) {
-		//model.addAttribute("userinfo",postService.getUsers(postId));
+ 
+		model.addAttribute("userinfo",postService.getUser(postId).get().getName());
 		model.addAttribute("post", postService.getPost(postId));
 		model.addAttribute("postIMG", postIMGService.getPostIMG(postId));
 		return "community/co-post";
 	}
 	
+	
 	// 리스트 조회
 	@RequestMapping(value="/posts", method=RequestMethod.GET)
 	public String getPostList(Model model) {
-		//model.addAttribute("users",postService);
+		model.addAttribute("postService",postService);
 System.out.println("postlist.size "+postService.getPostList().size());		
 		model.addAttribute("postList", postService.getPostList());
 		model.addAttribute("postIMGList", postIMGService.getPostIMGList());
