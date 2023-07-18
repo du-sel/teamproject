@@ -112,7 +112,7 @@ console.log(event.target.files.length);
 				  });
 				  /* 댓글 input창 보여주기 */
 				  function showCommentInput(elem) {
-				    const commentInput = $(elem).closest("footer").find(".comment-input");
+				    const commentInput = $(elem).closest(".footer").find(".comment-input");
 				    commentInput.toggle();
 				  }
 				  /* 댓글 추가 */

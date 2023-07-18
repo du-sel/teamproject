@@ -119,8 +119,9 @@ scroll custom
 }
 .co #co-main .inserticon{
 	position: absolute;
-	right:14px;
-	bottom: 17px;
+	/* 정희 수정 right:14px; */
+	/* 정희 수정 bottom: 17px; */
+	bottom: 36px;
 	box-shadow:none;
 	background:none;
 }
@@ -154,7 +155,8 @@ scroll custom
 
 .co footer{
 	background-color: #fff; 
-	margin:40px 0;
+	/* 정희 수정 margin:40px 0; */
+	margin:30px 0;
 }
 .co #main .footer{
 	background-color: #fff; 
@@ -470,45 +472,128 @@ sidebar
 co-main post
 --------------------------------------------- 
 */
-/* ---------------------정희 수정--------------------------- */
+/* ---------정희 수정---------- */
 
 	.collapsed {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 5; /* 최대 줄 수 설정 */
-    -webkit-box-orient: vertical;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-line-clamp: 5; /* 최대 줄 수 설정 */
+	    -webkit-box-orient: vertical;
      }
 
 	.post_img-outer {
 	    text-align: center;
+	    padding: 12px;
+    	clear: both;
 	 }
 	
 	.post_img {
-    display: inline-block;
-    position: relative;
-    max-width: 100%;
-    height: auto;
-    transition: transform 0.2s ease-in-out;
+	    display: inline-block;
+	    position: relative;
+	    max-width: 100%;
+	    height: auto;
+	    transition: transform 0.2s ease-in-out;
   	}
 
   	.post_img:hover {
-    transform: scale(1.05);
+    	transform: scale(1.05);
   	}
 	
 	.post_img img {
 	    max-width: 100%;
 	    height: auto;
 	 }
-	 
-	 .post_img-outer {
-	 	padding: 12px;
-	 	clear: both;
-	 }
 
 	#post-content {
 		text-align: left;
-	} 
+	}
 
-/* ---------------------정희 수정--------------------------- */
+	.post {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  margin-bottom: 20px;
+	  /* 기타 스타일링 */
+	}
+	
+	.post-content-container {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  /* 기타 스타일링 */
+	}
+	
+	.author-section {
+	  display: flex;
+	  /* flex-direction: column; */
+	  align-items: center;
+	  margin-bottom: 10px;
+	  width: 100%;
+	  /* 기타 스타일링 */
+	}
+	
+	.author img {
+	  width: 30px;
+	  height: 30px;
+	  border-radius: 50%;
+	  margin-bottom: 10px;
+	  /* 기타 스타일링 */
+	}
+	
+	.published {
+	  /* 기타 스타일링 */
+	  justify-content: flex-end;
+	}
+	
+	.post-img-section {
+	  display: flex;
+	  justify-content: center;
+	  margin-bottom: 10px;
+	  /* 기타 스타일링 */
+	}
+	
+	.post-img {
+	  max-width: 100%;
+	  height: auto;
+	  /* 기타 스타일링 */
+	}
+	
+	.post-content-section {
+	  margin-bottom: 10px;
+	  /* 기타 스타일링 */
+	}
+	
+	.stats {
+	  display: flex;
+	  justify-content: space-between;
+	  /* 기타 스타일링 */
+	}
+	
+	.comment-section {
+	  /* 댓글 관련 스타일링 */
+	}
+	
+	div.footer {
+  	  margin-bottom: 35px; /* 하단 간격 조정 */
+	}
+	
+	div.post-content-container {
+	  margin-bottom: 55px; /* 하단 간격 조정 */
+	}
+	
+	.comment-input input[type="text"] {
+	  width: 350px; /* input 요소의 가로 길이를 100%로 설정 */
+	}
+	
+	.button-row {
+        display: flex;
+        align-items: center;
+        margin-top: 10px; /* 원하는 간격 조정 */
+    }
+    
+    .comment-button {
+        margin-right: 20px; /* 댓글쓰기 버튼과 입력 버튼 간의 간격 조정 */
+    }
+/* ------------------------- */
 

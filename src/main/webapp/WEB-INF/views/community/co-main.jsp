@@ -203,46 +203,34 @@
 			
 			
 			<c:forEach var="post" items="${postList}">
-		
 			<!-- Post -->
-			<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
-					<div>
-						<div class="title">
-							<p>
-								
-									<a href="#" class="author"><img src="" alt="프로필사진" />&nbsp;&nbsp;
-										<span class="name"><input type="text" name="id" value="글쓴이 이름" readonly="readonly" class="author"></span>
-									</a>
-								
-								
-							</p>
-							<p>
-								<div class="published">${post.getCre_date()}</div>
-							</p>
-						</div>
+			<article class="post">
+				<%-- <a href="/community/posts/${post.getPost_id()}"> --%>
+					<div class="author-section d-flex justify-content-between">
+						<a href="javascript:void(0);" class="author">
+							<img src="/resources/images/춘식이프로필.png" alt="프로필사진" />&nbsp;&nbsp;
+							<span class="name"><input type="text" name="id" value="글쓴이 이름" readonly="readonly" class="author"></span>
+						</a>
+						<div class="published">${post.getCre_date()}</div>
 					</div>
-		
-		
-					<a class="post_img-outer" href="/community/posts/${post.getPost_id()}">
-						<div class="post_img">
-							<img src="" alt="프로필사진" />
+					<div class="post-content-container" onclick="goToPostDetail('${post.getPost_id()}')">
+						<div class="post-img-section">
+							<div class="post_img"> <!-- style="overflow: hidden;" -->
+								<img src="/resources/images/춘식이웹툰1.png" alt="프로필사진" />
+							</div>
 						</div>
-					</a>
-					
-				
 						<div id="post-content" class="collapse-content">
 							<img alt="" src="${postIMG.getPost_img()}">
-						  <div class="post-content-inner collapsed">
-						    ${post.getContent() }
-						  </div>
+							<div class="post-content-inner collapsed">
+								${post.getContent()}
+							</div>
 						</div>
-					
+					</div>	
 					<!-- <script>있던 자리 -->
-					
-					<footer>
+					<div class="footer">
 						<ul class="stats commment_stats">
-							<li><a class="comment-count" href="#" onclick="showCommentInput(this)">📝<span class="comment-count-number">2</span></a></li> <!-- 댓글 개수 -->
-							<li><a class="like-button"   href="#"><span class="like-icon">❤️</span><span class="like-count">2</span></a></li> <!-- 좋아요 개수 -->
+							<li><a class="comment-count" href="javascript:void(0);">📝<span class="comment-count-number">2</span></a></li> <!-- 댓글 개수 -->
+							<li><a class="like-button"   href="javascript:void(0);"><span class="like-icon">❤️</span><span class="like-count">2</span></a></li> <!-- 좋아요 개수 -->
 							<!-- <li><a href="#" class="icon solid fa-heart"><i class="fa fa-heart"></i></a> 2</li> -->
 						</ul>
 						<!-- <ul class="actions">
@@ -250,27 +238,24 @@
 							<li id="comment_li"><div class="divcomment"><input type="text" name="comment"></div></li>
 						</ul> -->
 						<div class="comment-section">
-						<ul id="comment-list" class="comment-list" style="display: none;">
-							<c:forEach var="comment" items="${commentList}">
-							    <li>${comment.getContent() }</li>
-							</c:forEach>
-						</ul>
-						<div class="button-row">
-					        <button class="comment-button" type="button" onclick="showCommentInput(this)">댓글쓰기</button> <!-- 댓글쓰기 버튼 -->
-					        <div class="comment-input" style="display: none;">
-					            <!-- 댓글 입력 부분 -->
-					            <form action="/community/posts/${post.getPost_id()}/comments" method="post">
-						            <input type="text" id="comment-text" name="content" placeholder="댓글을 입력하세요">
-						            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
-						        </form>
-					        </div>
+							<ul id="comment-list" class="comment-list" style="display: none;">
+								<c:forEach var="comment" items="${commentList}">
+								    <li>${comment.getContent() }</li>
+								</c:forEach>
+							</ul>
+							<div class="button-row">
+						        <button class="comment-button" type="button" onclick="showCommentInput(this)">댓글쓰기</button> <!-- 댓글쓰기 버튼 -->
+						        <div class="comment-input" style="display: none; max-width: 800px;">
+						            <!-- 댓글 입력 부분 -->
+						            <form action="/community/posts/${post.getPost_id()}/comments" method="post">
+							            <input type="text" id="comment-text" name="content" placeholder="댓글을 입력하세요">
+							            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
+							        </form>
+						        </div>
+						    </div>
 					    </div>
-					    </div>
-					</footer>
-					
+					</div>
 					<!-- <script>있던 자리 -->
-	
-				
 			</article>
 		</c:forEach>
 			
@@ -305,5 +290,25 @@
 	
     
 </script>
+<script>
+function goToPostDetail(postId) {
+	  if (postId) {
+	    window.location.href = "/community/posts/" + postId;
+	  } else {
+	    console.error("Invalid postId: " + postId);
+	  }
+	}
+
+</script>
+<script>
+  $(document).ready(function() {
+    $('.comment-count').on('click', function(event) {
+      event.preventDefault();
+      // 여기에 댓글 버튼을 클릭했을 때의 동작을 추가.
+      // 예: 댓글 목록을 펼치거나 숨기는 등의 동작
+    });
+  });
+</script>
+
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
