@@ -9,7 +9,7 @@
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
 	<main id="co-main" class="row" style="margin-top: 200px">
-	
+	 
 		<!-- Sidebar -->
 		<section id="sidebar" class="col-lg-3">
 			<nav class="navbar navbar-expand-md navbar-absolute navbar-transparent">
