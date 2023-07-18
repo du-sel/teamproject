@@ -3,6 +3,7 @@
         
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 <!-- 아임포트 (결제 API) -->
@@ -195,19 +196,11 @@ function kakaopay(){
 	                    </div>
 	                    <div class="buy-content">                        
 	                        <div class="d-flex justify-content-center">
-	                        	<form name="cart" action="/store/carts/${product.pid }" method="post">
-   									<input name="blank" type="hidden" value="">
+	                        	<form:form name="cart" id="cart" action="/store/carts/${product.pid }" method="post">
    									<button>장바구니</button>
-   								</form>
-   								<!-- 나중에 onclick으로 action값 수정 필요 -->
+   								</form:form>
    								
-<<<<<<< HEAD
-   								<button onclick="requestPay(130)">바로 구매</button>
-=======
-   								<button onclick="requestPay()">바로 구매</button>
->>>>>>> branch 'main' of https://github.com/du-sel/teamproject.git
-   								<!-- 나중에는 상품정보 불러와서 사용할것이므로 매개변수 필요없음 -->
-   								
+   								<button onclick="requestPay()">바로 구매</button> 								
    								<!-- <button onclick="kakaopay()">(구독)</button> -->
    								<!-- 결제 API 테스트용 임시 버튼 추가 -->
    								<!-- <form action="/purchaseAgain" method="post">
