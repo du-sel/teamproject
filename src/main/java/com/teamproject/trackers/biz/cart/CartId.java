@@ -1,6 +1,12 @@
 package com.teamproject.trackers.biz.cart;
 
+import java.io.Serializable;
 
-public class CartId {
+import javax.persistence.Id;
+
+public class CartId implements Serializable {
+
+	private long id;
+	private long p_id;
 
 }
