@@ -51,7 +51,7 @@
 		           		<label for="url"><h5>개인 프로필 URL</h5></label>
 		           		<div class="store-input d-flex justify-content-center row">
 			           		<div class="col-sm-9 d-flex">
-				           		<input type="text" class="form-control text-center store-base-url" value="/profiles/" disabled>
+				           		<input type="text" class="form-control text-center store-base-url" value="/store/" disabled>
 								<input type="text" id="url" class="form-control validation-input" name="url" placeholder="프로필 URL을 입력하세요." value="${creator.url}" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
 							</div>
 							<button type="button" class="management-btn sub-btn col-sm-3" onclick="url_chk('${creator.url}', 1, 'store')">Check</button>
