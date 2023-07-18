@@ -1,6 +1,17 @@
 package com.teamproject.trackers.biz.product;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "productDetails")
 public class ProductDetailVO {
+	
+	
+	@Id
+	@Column(name="p_id")
 	private long pid;
 	private String img;
 	

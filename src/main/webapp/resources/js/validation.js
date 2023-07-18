@@ -435,6 +435,36 @@ function insert_p_chk(frm) {
 	}
 	
 	
+
+	// 금액에서 콤마 제거
+	let pp = $('#product-price').val();
+	$('#product-price').val(pp.replaceAll(',', ''));
+		
+	let ps = $('#product-sale').val();
+	$('#product-sale').val(ps.replaceAll(',', ''));
+	
+	
+	
+	// 카테고리 체크박스 체크된 항목만 배열로 넘기기 - 디자인
+	let category_design = new Array();
+
+    $('input:checkbox[name=category_design_c]:checked').each(function() {
+        category_design.push(this.value);
+    });
+    
+	$('input#category_design').val(category_design);
+	
+	
+	// 카테고리 체크박스 체크된 항목만 배열로 넘기기 - 페이지
+	let category_page = new Array();
+
+    $('input:checkbox[name=category_page_c]:checked').each(function() {
+   		console.log("page");
+        category_page.push(this.value);
+    });
+    
+	$('input#category_page').val(category_page);
+	
 	
 	frm.submit();
 	
