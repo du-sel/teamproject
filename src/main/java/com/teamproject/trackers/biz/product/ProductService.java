@@ -20,9 +20,7 @@ import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
 public class ProductService {
 	
 	private ProductRepository productRepository;
-	@Autowired
 	private ProductListRepository productlistRepository;
-	@Autowired
 	private DesignCategoryRepository designCategoryRepository;
 	private PageCategoryRepository pageCategoryRepository;	
 	private ProductDetailRepository productDetailRepository;
@@ -31,6 +29,7 @@ public class ProductService {
 	
 	@Autowired
 	public ProductService(ProductRepository productRepository,
+			ProductListRepository productlistRepository,
 			DesignCategoryRepository designCategoryRepository,
 			PageCategoryRepository pageCategoryRepository,
 			ProductDetailRepository productDetailRepository,
@@ -38,6 +37,7 @@ public class ProductService {
 			ProductPageRepository productPageRepository) {
 		
 		this.productRepository= productRepository;
+		this.productlistRepository = productlistRepository;
 		this.designCategoryRepository = designCategoryRepository;
 		this.pageCategoryRepository = pageCategoryRepository;
 		this.productDetailRepository = productDetailRepository;
