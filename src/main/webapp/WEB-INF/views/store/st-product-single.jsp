@@ -93,7 +93,7 @@ function kakaopay(){
 		pay_method : 'card', // 결제창 호출단계에서의 pay_method는 아무런 역할을 하지 못하며, 구매자가 카카오페이 앱 내에서 신용카드 vs 카카오머니 중 실제 선택한 값으로 추후 정정됩니다.
 		merchant_uid : new Date().getTime(),
 		name : '구독1',
-		amount : 200, 
+		amount : 130, 
 		customer_uid :customer_uid, //customer_uid 파라메터가 있어야 빌링키 발급이 정상적으로 이뤄집니다.
 		buyer_email : 'first@mail.com',
 		buyer_name : '첫번째',
@@ -196,7 +196,7 @@ function kakaopay(){
    								</form>
    								<!-- 나중에 onclick으로 action값 수정 필요 -->
    								
-   								<button onclick="requestPay(200)">바로 구매</button>
+   								<button onclick="requestPay(130)">바로 구매</button>
    								<!-- 나중에는 상품정보 불러와서 사용할것이므로 매개변수 필요없음 -->
    								
    								<!-- <button onclick="kakaopay()">(구독)</button> -->

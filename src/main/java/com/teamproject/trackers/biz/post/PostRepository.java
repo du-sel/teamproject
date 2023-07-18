@@ -21,9 +21,9 @@ public interface PostRepository extends JpaRepository<PostVO, Long>{
 				
 		
 	// 삭제
-		public void deleteByPostId(Long postId);
+//		public void deleteByPostId(Long postId);
 	// 상세 조회
-		public Optional<PostVO> findByPostId(Long postId);
+//		public Optional<PostVO> findByPostId(Long postId);
 
 		//@Query(value = "SELECT * FROM user u JOIN post p ON u.id = p.id WHERE p.post_id=:postId", nativeQuery = true)
 		//public List<UserVO> findByUsers(@Param("postId")Long postId);
