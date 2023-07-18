@@ -1,7 +1,18 @@
 package com.teamproject.trackers.biz.cart;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cart")
+@IdClass(CartId.class)
 public class CartVO {
+	
+	@Id
 	private long id;
+	@Id
 	private long p_id;
 	
 	
