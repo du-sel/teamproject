@@ -5,7 +5,7 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-
+ 
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
 	<main id="co-main" class="row" style="margin-top: 200px">
