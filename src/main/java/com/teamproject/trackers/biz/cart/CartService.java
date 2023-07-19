@@ -24,6 +24,12 @@ public class CartService {
 	}
 	
 	
+	/* 장바구니 삭제 */
+	public void deleteCart(long pid) {
+		cartRepository.deleteByPid(pid);
+	}
+	
+	
 	/* 장바구니 목록 조회 */
 	public List<CartInfoVO> getCartList(long id) {
 		return cartInfoRepository.findAllById(id);
