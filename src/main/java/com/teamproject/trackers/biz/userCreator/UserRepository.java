@@ -25,6 +25,9 @@ public interface UserRepository extends JpaRepository<UserVO, Long> {
 	void updateUserPwd(@Param("id")long id, @Param("password")String pwd);
 
 	// 유효성 검사
+	// 로그인 성공 유무
+	boolean existsByEmailAndPassword(String email, String password);
+	
 	// 이메일 중복 확인
 	boolean existsByEmail(String email);
 	

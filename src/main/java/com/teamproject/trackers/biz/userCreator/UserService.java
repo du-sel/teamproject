@@ -44,6 +44,11 @@ public class UserService {
 	
 	
 	// 유효성
+	// 로그인 성공 유무
+	public boolean validateSignin(UserVO vo) {
+		return userRepository.existsByEmailAndPassword(vo.getEmail(), vo.getPassword());
+	}
+	
 	// 이메일(중복 체크)
 	public boolean validateEmail(UserVO vo) {
 		return userRepository.existsByEmail(vo.getEmail());
