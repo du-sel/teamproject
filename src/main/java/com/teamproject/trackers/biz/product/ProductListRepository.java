@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 public interface ProductListRepository extends JpaRepository<ProductListVO, Long> {
 	
 	// 베스트 상품 5
-	List<ProductListVO> findTop5ByOrderByPopularityDesc();
+	List<ProductListVO> findTop5ByOrderByPopularityDescCreDateDesc();
 	
 	// 최신 상품 5
 	List<ProductListVO> findTop5ByOrderByCreDateDesc();
