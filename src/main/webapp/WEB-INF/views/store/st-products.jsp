@@ -122,6 +122,32 @@
     <!-- ***** Products Area Ends ***** -->
     
 </main>  
+
+<script>
+	$(() =>{
+		imgHeight();		
+	});
+
+	$(window).on('resize', function() {
+		imgHeight();
+	});
+	
+	function imgHeight(){
+		let img = $('#products .item .thumb img');
+		let w = $(window).width();
+		if(w < 576) { 		
+			img.css('height', w-30+"px");
+		}else if(w < 768){
+			img.css('height', "510px");
+		}else if(w < 992){
+			img.css('height', "690px");
+		}else if(w < 1200){
+			img.css('height', "289.98px");
+		}else{
+			img.css('height', "350px");
+		}
+	}
+</script>
     
 <jsp:include page="/WEB-INF/views/common/footer.jsp" /> 
     
