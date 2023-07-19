@@ -213,7 +213,7 @@
 						</a>
 						<div class="published">${post.getCre_date()}</div>
 					</div>
-					<div class="post-content-container" onclick="goToPostDetail('${post.getPost_id()}')">
+					<div class="post-content-container" onclick="goToPostDetail('${post.getPostId()}')">
 						<div class="post-img-section">
 							<div class="post_img"> <!-- style="overflow: hidden;" -->
 								<img src="/resources/images/춘식이웹툰1.png" alt="프로필사진" />
@@ -247,7 +247,7 @@
 						        <button class="comment-button" type="button" onclick="showCommentInput(this)">댓글쓰기</button> <!-- 댓글쓰기 버튼 -->
 						        <div class="comment-input" style="display: none; max-width: 800px;">
 						            <!-- 댓글 입력 부분 -->
-						            <form action="/community/posts/${post.getPost_id()}/comments" method="post">
+						            <form action="/community/posts/${post.getPostId()}/comments" method="post">
 							            <input type="text" id="comment-text" name="content" placeholder="댓글을 입력하세요">
 							            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
 							        </form>
