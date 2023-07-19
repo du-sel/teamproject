@@ -2220,6 +2220,10 @@ cart
 	line-height: 0;
 }
 
+#cart .cart-empty {
+	margin: 50px 0 150px;
+}
+
 
 
 
@@ -2336,6 +2340,68 @@ cart
 		right: 45px;
 		top: 10px;
 	}
+}
+
+
+/* 
+---------------------------------------------
+purchase 구매하기
+--------------------------------------------- 
+*/
+
+#purchase .thumb img {
+	width: 100%;
+}
+
+#purchase .info .row {
+	margin: 0 10px;
+}
+
+#purchase .product-info {
+	height: 100%;
+}
+
+#purchase .info .up-del-btn-container {
+    margin-bottom: 10px;
+}
+#purchase .info .signature-btn {
+    padding: 5px;
+    width: 7rem;
+    border-radius: 0.2rem;
+}
+#purchase .info .signature-btn:hover {
+	
+}
+
+#purchase .info .up-del-btn-container button {
+    padding: 5px 10px;
+    width: 3.4rem;
+    border: none;
+    background: transparent;
+}
+
+
+#purchase .listtop {
+	padding: 30px 10px;
+}
+#purchase .listtop button {
+	padding: 5px;
+	background: #e4e4eb;
+	border: none;
+	border-radius: 0.2rem;
+}
+#purchase .listtop button:hover {
+	background: #586579;
+	color: #fff;
+}
+
+#purchase button.signature-btn {
+	background: #e4e4eb;
+	border: none;
+}
+#purchase button.signature-btn:hover {
+	background: #586579;
+	color: #fff;
 }
 
 
