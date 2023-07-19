@@ -1511,11 +1511,39 @@ Single Product Page
 */
 
 
-#product .left-images img {
+#product .left-images {
   width: 100%;
+  height: 635px;
   overflow: hidden;
   margin-bottom: 30px;
 }
+@media (max-width:1199px){
+	#product .left-images {
+	  height: 530px;
+	}
+}
+@media (max-width:991px){
+	#product .left-images {
+	  height: 690px;
+	}
+}
+@media (max-width:767px){
+	#product .left-images {
+	  height: 510px;
+	}
+}
+@media (max-width:575px){
+	#product .left-images {
+	  height: auto;
+	  /* 수정 ? */
+	}
+}
+
+
+
+#product .left-images img {
+  width: 100%;
+} 
 
 #product .right-content {
   position: relative;
