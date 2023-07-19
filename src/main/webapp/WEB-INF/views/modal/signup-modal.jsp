@@ -34,9 +34,9 @@
 				</div>
 				<p></p>
 			</div>
-			<div class="form-group">		<!-- 이름-->
+			<div class="form-group">		<!-- 이름(닉네임) -->
 				<div class="input-group necessary">
-					<input type="text" class="form-control" name="name" placeholder="이름" required oninput="remove(3, this)">
+					<input type="text" class="form-control" name="name" placeholder="닉네임" required oninput="remove(3, this)">
 				</div>
 			</div>
 			<div class="form-group">		<!-- 핸드폰번호 -->
