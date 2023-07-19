@@ -17,7 +17,9 @@ public class CartInfoVO {
 	private long p_id;
 	
 	private String p_name;
+	private String thumbnail;
 	private String store_name;
+	private String url;
 	private int price;
 	private int sale;
 	
@@ -40,11 +42,23 @@ public class CartInfoVO {
 	public void setP_name(String p_name) {
 		this.p_name = p_name;
 	}
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
 	public String getStore_name() {
 		return store_name;
 	}
 	public void setStore_name(String store_name) {
 		this.store_name = store_name;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public int getPrice() {
 		return price;
