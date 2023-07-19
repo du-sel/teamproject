@@ -1107,7 +1107,7 @@ banner
 --------------------------------------------- 
 */
 .main-banner {
-  border-bottom: 3px dotted #eee;
+  /* border-bottom: 3px dotted #eee; */
   padding-bottom: 30px;
   -webkit-transition: all .3s ease 0s;
   -moz-transition: all .3s ease 0s;
@@ -1230,7 +1230,7 @@ st-main 상품 section
 #st-main .section {
   padding-top: 90px;
   padding-bottom: 90px;
-  border-bottom: 3px dotted #eee;
+  border-top: 3px dotted #eee;
 }
 
 #st-main .section .section-heading {
@@ -1251,11 +1251,18 @@ st-main 상품 section
   margin-bottom: 8px;
 }
 
-#st-main .section .item .down-content span {
+#st-main .section .item .down-content span.price {
   font-size: 18px;
   color: #a1a1a1;
   font-weight: 500;
   display: block;
+}
+
+#st-main .section .item .down-content span.cost {
+  font-size: 14px;
+  color: #e97d7d;
+  text-decoration: line-through;
+  display: inline-block;
 }
 
 #st-main .section .item .down-content ul.stars {
@@ -1376,6 +1383,11 @@ st-main 상품 section
   background-color: transparent;
   line-height: 48px;
   border :1px solid #2a2a2a;
+}
+
+/* owl custom */
+.owl-carousel .owl-item img{
+	object-fit: cover;
 }
 
 
