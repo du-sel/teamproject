@@ -23,6 +23,7 @@ import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoVO;
 
 
 @Controller
+@RequestMapping("/store")
 public class SubscribeController {
 
 	@Autowired
@@ -33,7 +34,7 @@ public class SubscribeController {
     private HttpSession session;
 	
 	// 구독 정보 조회
-	@RequestMapping(value="/store/subscribes", method=RequestMethod.GET)
+	@RequestMapping(value="/subscribes", method=RequestMethod.GET)
 	public String getCreator(SubscribeInfoVO vo, Model model) {
 		vo.setId((long)session.getAttribute("id"));
 		
@@ -51,7 +52,7 @@ public class SubscribeController {
 	}
 	
 	// 구독 활성화(등록 및 수정)
-	@RequestMapping(value="/store/subscribes", method=RequestMethod.POST)
+	@RequestMapping(value="/subscribes", method=RequestMethod.POST)
 	public String updateSubscribeInfo(SubscribeInfoVO vo, @RequestParam("mfile") MultipartFile mfile) throws Exception {
 		vo.setId((long)session.getAttribute("id"));
 		SubscribeInfoVO infoVO = subscribeInfoService.getSubscribeInfo(vo);
@@ -69,7 +70,7 @@ public class SubscribeController {
 	}
 	
 	// 구독 비활성화(삭제)
-	@RequestMapping(value="/store/subscribes", method=RequestMethod.DELETE)
+	@RequestMapping(value="/subscribes", method=RequestMethod.DELETE)
 	public String deleteSubscribeInfo(SubscribeInfoVO vo) throws Exception {
 		vo.setId((long)session.getAttribute("id"));
 		
