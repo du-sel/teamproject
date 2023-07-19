@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
       
@@ -25,19 +24,23 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-12 d-flex justify-content-between sort">
 					<div>
-						<h5>총 ${fn:length(creators)} 명</h5>
+						<h5>총  ${creators.totalElements} 명</h5>
 					</div>
 					<form action="/store/creators" method="get">
+						<input type="hidden" name="page" value="0">
 						<select name="sort" onchange="this.form.submit();">
-							<option value="newest" <c:if test="${sort eq 'newest'}">selected</c:if>>최근가입순</option>
+							<option value="creDate" <c:if test="${sort eq 'creDate'}">selected</c:if>>최근가입순</option>
 							<option value="popularity" <c:if test="${sort eq 'popularity'}">selected</c:if>>인기순</option>
 							<option value="sale" <c:if test="${sort eq 'sale'}">selected</c:if>>판매량순</option>
 						</select>
+						<c:if test="${!empty keyword || keyword ne '' }">
+							<input type="hidden" name="keyword" value="${keyword}">
+						</c:if>
 					</form>
 				</div>
 			
 		        <!-- Creator Box Start -->
-		        <c:forEach var="c" items="${creators}">
+ 		        <c:forEach var="c" items="${creators.content}">
 					<div class="col-lg-12 creator-card" onclick="location.href='/profiles/${c.url}'">
 						<div class="row">
 							<div class="col-lg-12">
@@ -52,11 +55,11 @@
 								<div class="rep">
 									<h4>대표 상품</h4>
 								</div>
-							    <div class="down-content d-flex justify-content-start product">
+							    <div class="down-content d-flex justify-content-start product scroll-custom">
 							    	<c:choose>
 								    	<c:when test="${!empty signature[c.id]}">	<!-- 대표 상품 있는 경우 --> 
 								    		<c:forEach var="item" items="${signature[c.id]}">
-								   	   			<a href="/store/products/${item.p_id}"><img src="${item.thumbnail}" alt="대표상품 이미지"></a>
+								   	   			<a href="/store/products/${item.pid}"><img src="${item.thumbnail}" alt="대표상품 이미지"></a>
 							   	   			</c:forEach>
 								    	</c:when>		
 								    	<c:otherwise>		<!-- 대표 상품 없는 경우 -->
@@ -76,24 +79,42 @@
 				<div class="col-lg-12">
 					<div class="pagination">
 					    <ul>
-					        <li>
-					            <a href="#"><</a>
-					        </li>
-					        <li>
-					            <a href="#">1</a>
-					        </li>
-					        <li class="active">
-					            <a href="#">2</a>
-					        </li>
-					        <li>
-					            <a href="#">3</a>
-					        </li>
-					        <li>
-					            <a href="#">4</a>
-					        </li>
-					        <li>
-					            <a href="#">></a>
-					        </li>
+					    <c:choose>
+								<c:when test="${!empty keyword || keyword ne '' }"> <!-- 검색 o -->
+							    	<c:if test="${creators.number-1 >= 0}" >
+							    		<li>
+								            <a href="/store/creators?page=${creators.number-1}&sort=${sort}&keyword=${keyword}" >&lt;</a>
+								        </li>
+							    	</c:if>
+							    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
+						    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
+								            <a href="/store/creators?page=${p-1}&sort=${sort}&keyword=${keyword}">${p}</a>
+								        </li>	
+									</c:forEach>
+									<c:if test="${creators.number+1 < creators.totalPages }" >
+							    		<li>
+							           		<a href="/store/creators?page=${creators.number+1}&sort=${sort}&keyword=${keyword}">&gt;</a>
+							        	</li>
+							    	</c:if>
+							    </c:when>
+								<c:otherwise> <!-- 검색 x -->
+									<c:if test="${creators.number-1 >= 0}" >
+							    		<li>
+								            <a href="/store/creators?page=${creators.number-1}&sort=${sort}" >&lt;</a>
+								        </li>
+							    	</c:if>
+							    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
+						    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
+								            <a href="/store/creators?page=${p-1}&sort=${sort}">${p}</a>
+								        </li>	
+									</c:forEach>
+									<c:if test="${creators.number+1 < creators.totalPages }" >
+							    		<li>
+							           		<a href="/store/creators?page=${creators.number+1}&sort=${sort}">&gt;</a>
+							        	</li>
+							    	</c:if>
+							    </c:otherwise> 
+							</c:choose>
 					    </ul>
 					</div>
 				</div>

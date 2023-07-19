@@ -391,6 +391,8 @@ function modify_chk(path, idx){    		// 함수 사용 페이지, input 위치
 /*****insert-product 상품등록 필수값 체크*****/
 function insert_p_chk(frm) {
 
+	console.log("체크체크");
+
 	if($('#product-name').val() == '' || $('#product-name').val() == null){ 
 		alert("상품명을 입력해주세요.");
 		$('#product-name').focus();
@@ -423,6 +425,45 @@ function insert_p_chk(frm) {
 		return false;
 	} 
 	*/
+	
+	
+	
+	// 할인 미적용일 경우 sale 을 0으로 넘기기	
+	if($("input:radio[name='do-sale'][value='no']").prop('checked')) {
+		//console.log("할인 미적용");
+		$("input#product-sale").attr("value","0");
+	}
+	
+	
+
+	// 금액에서 콤마 제거
+	let pp = $('#product-price').val();
+	$('#product-price').val(pp.replaceAll(',', ''));
+		
+	let ps = $('#product-sale').val();
+	$('#product-sale').val(ps.replaceAll(',', ''));
+	
+	
+	
+	// 카테고리 체크박스 체크된 항목만 배열로 넘기기 - 디자인
+	let category_design = new Array();
+
+    $('input:checkbox[name=category_design_c]:checked').each(function() {
+        category_design.push(this.value);
+    });
+    
+	$('input#category_design').val(category_design);
+	
+	
+	// 카테고리 체크박스 체크된 항목만 배열로 넘기기 - 페이지
+	let category_page = new Array();
+
+    $('input:checkbox[name=category_page_c]:checked').each(function() {
+   		console.log("page");
+        category_page.push(this.value);
+    });
+    
+	$('input#category_page').val(category_page);
 	
 	
 	frm.submit();

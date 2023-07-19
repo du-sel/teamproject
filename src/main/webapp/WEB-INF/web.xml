@@ -4,9 +4,13 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
 
-
+	<!-- 
 	<welcome-file-list>
 		<welcome-file>/WEB-INF/views/store/st-main.jsp</welcome-file>
+	</welcome-file-list>
+	 -->
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/views/common/Intro.jsp</welcome-file>
 	</welcome-file-list>
 	
 	
@@ -44,7 +48,7 @@
 		
 		<!-- 파일 업로드 설정 -->
 		<multipart-config>
-			<location>/resources/file/</location>		<!-- 어디로 할지 정하기 -->
+			<location>C:\Users\files</location>		<!-- 어디로 할지 정하기 -->
 			<max-file-size>20971520</max-file-size> 
 			<max-request-size>41943040</max-request-size> 
 			<file-size-threshold>20971520</file-size-threshold> 

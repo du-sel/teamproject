@@ -34,7 +34,7 @@
 			<h2>신규 상품 등록</h2>
       	</div>
       
-      	<form name="frm" id="frm" action="insert-test.do" method="post" enctype="multipart/form-data" onsubmit="insert_p_chk(this); return false;">    
+      	<form name="frm" id="frm" action="/store/products" method="post" enctype="multipart/form-data" onsubmit="insert_p_chk(this); return false;">    
 
 	        <div class="row justify-content-center page-content">
 	          <div class="col-xxl-8 col-xl-10 col-lg-12 info">
@@ -48,7 +48,7 @@
 		           	<p class="desc">∙ 파일 용량이 너무 크면 구매자가 다운로드를 하기 어려울 수 있으니 유의해주세요</p>
 		           	<p class="desc">∙ 등록하는 콘텐츠가 타인의 저작권 또는 초상권을 침해하지 않도록 유의해주세요</p>
 		           	<div class="d-flex align-content-center file-input-container">
-			           	<input type="file" name="file" id="file" onchange="getFileSize(this)">
+			           	<input type="file" name="file_f" id="file" onchange="getFileSize(this)">
 			           	<p class="file-size-container desc"></p>
 		           	</div>
 	            </div>
@@ -94,63 +94,65 @@
 					<div class="category">
 						<div class="row flex-column">
 							<h5>디자인 카테고리</h5>
+							<input type="hidden" name="category_design" id="category_design">
 							<div class="category-card d-flex flex-row">
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-design-minimal">미니멀</label>
-									<input type="checkbox" id="cate-design-minimal" name="category_design" value="미니멀">
+									<input type="checkbox" id="cate-design-minimal" name="category_design_c" value="minimal">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
-									<label for="cate-design-illust">일러스트</label>
-									<input type="checkbox" id="cate-design-illust" name="category_design" value="일러스트">
+									<label for="cate-design-illustration">일러스트</label>
+									<input type="checkbox" id="cate-design-illustration" name="category_design_c" value="illustration">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-design-photo">포토</label>
-									<input type="checkbox" id="cate-design-photo" name="category_design" value="포토">
+									<input type="checkbox" id="cate-design-photo" name="category_design_c" value="photo">
 								</div>
 							</div>
 						</div>
 						<div class="row flex-column">
 							<h5>페이지 카테고리</h5>
+							<input type="hidden" name="category_page" id="category_page">
 							<div class="category-card d-flex flex-row">
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-whole">한달 세트</label>
-									<input type="checkbox" id="cate-page-whole" name="category_page" value="한달 세트">
+									<input type="checkbox" id="cate-page-whole" name="category_page_c" value="whole">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-monthly">먼슬리</label>
-									<input type="checkbox" id="cate-page-monthly" name="category_page" value="먼슬리">
+									<input type="checkbox" id="cate-page-monthly" name="category_page_c" value="monthly">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-weekly">위클리</label>
-									<input type="checkbox" id="cate-page-weekly" name="category_page" value="위클리">
+									<input type="checkbox" id="cate-page-weekly" name="category_page_c" value="weekly">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-habit">해빗트래커</label>
-									<input type="checkbox" id="cate-page-habit" name="category_page" value="해빗트래커">
+									<input type="checkbox" id="cate-page-habit" name="category_page_c" value="habit">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-mood">무드트래커</label>
-									<input type="checkbox" id="cate-page-mood" name="category_page" value="무드트래커">
+									<input type="checkbox" id="cate-page-mood" name="category_page_c" value="mood">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-reading">독서트래커</label>
-									<input type="checkbox" id="cate-page-reading" name="category_page" value="독서트래커">
+									<input type="checkbox" id="cate-page-reading" name="category_page_c" value="reading">
 								</div>		
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-expense">가계부</label>
-									<input type="checkbox" id="cate-page-expense" name="category_page" value="가계부">
+									<input type="checkbox" id="cate-page-expense" name="category_page_c" value="expense">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-study">스터디</label>
-									<input type="checkbox" id="cate-page-study" name="category_page" value="스터디">
+									<input type="checkbox" id="cate-page-study" name="category_page_c" value="study">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-sticker">스티커</label>
-									<input type="checkbox" id="cate-page-sticker" name="category_page" value="스티커">
+									<input type="checkbox" id="cate-page-sticker" name="category_page_c" value="sticker">
 								</div>
 								<div class="d-flex flex-row category-checkbox">
 									<label for="cate-page-etc">그 외</label>
-									<input type="checkbox" id="cate-page-etc" name="category_page" value="그 외">
+									<input type="checkbox" id="cate-page-etc" name="category_page_c" value="etc">
 								</div>
 							</div>
 						</div>
@@ -165,7 +167,7 @@
 					<div id="thumb-preview" class="thumb-preview">
 						<img id="img-modify-white" src="/resources/images/img-modify-white.svg" alt="썸네일 업로드 버튼">
 					</div>
-					<input type="file" accept="image/*" name="thumbnail" id="thumbnail" onchange="imgPreview(this);">
+					<input type="file" accept="image/*" name="thumbnail_f" id="thumbnail" onchange="imgPreview(this);">
 				</div>     	
 	
 				<div class="row flex-column">
@@ -184,13 +186,26 @@
 
       </div>
     </div>
+    
+
+
   </main>
 
   
 
   <script src="/resources/js/my-store.js"></script>
   
- 
+ <script>
+ /*
+ $(document).on("change", "#combo_value3", function(){
+     let comboVal = $('#combo_value3').val();
+     console.log("[prop]" + " select value : " + comboVal);
+     $("input:radio[name='rad_fruit3'][value='" + comboVal + "']").prop('checked', true);
+     console.log("[prop]" + " radio value : " + $("input:radio[name='rad_fruit3']:checked").val());
+   });
+ }
+ */
+ </script>
 	
 	
 	
@@ -207,12 +222,12 @@
 	</script> --%>
 	
 	<!-- CKEditor Custom -->
-<%--    	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_custom/ckeditor.js"></script>
+<%--     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_custom/ckeditor.js"></script>
 	<script>
 		$(function () {
 			CKEDITOR.replace('content', {
 				filebrowserUploadMethod : 'form',
-				filebrowserUploadUrl : '${pageContext.request.contextPath}/product-img.do',
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/store/products/detail',
 				contentsCss: '/resources/css/custom.css'
 			});
 		});
@@ -226,7 +241,7 @@
 		$(function () {
 			CKEDITOR.replace('content', {
 				//filebrowserUploadMethod : 'form',
-				filebrowserUploadUrl : '${pageContext.request.contextPath}/product-img.do',
+				filebrowserUploadUrl : '${pageContext.request.contextPath}/store/products/detail',
 				contentsCss: '/resources/css/custom.css'
 			});
 		});

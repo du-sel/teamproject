@@ -21,14 +21,14 @@
                 <div class="col-lg-3">
                     <h4>커뮤니티</h4>
                     <ul>
-                        <li><a href="co-main.do">커뮤니티</a></li>
+                        <li><a href="/community/posts">커뮤니티</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
                     <h4>스토어</h4>
                     <ul>
-                        <li><a href="products.do">상품</a></li>
-                        <li><a href="creators.do">크리에이터</a></li>
+                        <li><a href="/store/products?page=0&sort=creDate&category=all">상품</a></li>
+                        <li><a href="/store/creators?page=0&sort=creDate">크리에이터</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
@@ -37,7 +37,6 @@
                         <li><a href="#">고객센터</a></li>
                         <!-- 마이스토어,프로필,관리자 링크 넣어둘 곳이 없어서 임시로 연결해둠 -->
                         <li><a href="sales-status.do">마이스토어</a></li>
-                        <li><a href="profile.do">프로필</a></li>
                         <li><a href="notice-popup.do">관리자</a></li>
                     </ul>
                 </div>

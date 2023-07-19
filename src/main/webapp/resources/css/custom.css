@@ -513,7 +513,7 @@ header
   padding-left: 0px;
   padding-right: 0px;
 }
-
+.header-area .main-nav .nav div.submenu ul li.category,
 .header-area .main-nav .nav div.submenu ul li a {
   opacity: 1;
   display: block;
@@ -530,6 +530,11 @@ header
   font-size: 13px;
   font-weight: 400;
   border-bottom: 1px solid #eee;
+}
+.header-area .main-nav .nav div.submenu ul li.category{
+	font-size: 14px;
+  	font-weight: 600;
+  	cursor: default;
 }
 
 .header-area .main-nav .nav div.submenu ul li a:hover {
@@ -849,6 +854,8 @@ header
   }
   .header-area.header-sticky .nav {
     margin-top: 80px !important;
+    max-height: 500px;
+    overflow-y: auto;
   }
   .header-area .main-nav .nav div {
     width: 100%;
@@ -888,6 +895,11 @@ header
     box-shadow: none;
     height: 0px;
   } 
+  .header-area .main-nav .nav div.submenu ul li.category{
+  	padding: 0;
+  	border-bottom:none;
+  	border-top: 1px solid #eee;
+  }  
   .header-area .main-nav .nav div.submenu ul li a {
     font-size: 12px;
     font-weight: 400;
@@ -1394,6 +1406,7 @@ Products Page
 
 #products .item .thumb img {
   width: 100%;
+  height: 350px;
   overflow: hidden;
 }
 
@@ -1411,11 +1424,18 @@ Products Page
   margin-bottom: 8px;
 }
 
-#products .item .down-content span {
+#products .item .down-content span.price {
   font-size: 18px;
   color: #a1a1a1;
   font-weight: 500;
   display: block;
+}
+
+#products .item .down-content span.cost {
+  font-size: 14px;
+  color: #e97d7d;
+  text-decoration: line-through;
+  display: inline-block;
 }
 
 #products .item .down-content ul.stars {
@@ -1462,6 +1482,26 @@ Products Page
   background-color: #fff;
 }
 
+@media (max-width:1199px){
+	#products .item .thumb img {
+	  height: 289.98px;
+	}
+}
+@media (max-width:991px){
+	#products .item .thumb img {
+	  height: 690px;
+	}
+}
+@media (max-width:767px){
+	#products .item .thumb img {
+	  height: 510px;
+	}
+}
+@media (max-width:575px){
+	#products .item .thumb img {
+	  height: auto;
+	}
+}
 
 
 /* 
@@ -1471,11 +1511,39 @@ Single Product Page
 */
 
 
-#product .left-images img {
+#product .left-images {
   width: 100%;
+  height: 635px;
   overflow: hidden;
   margin-bottom: 30px;
 }
+@media (max-width:1199px){
+	#product .left-images {
+	  height: 530px;
+	}
+}
+@media (max-width:991px){
+	#product .left-images {
+	  height: 690px;
+	}
+}
+@media (max-width:767px){
+	#product .left-images {
+	  height: 510px;
+	}
+}
+@media (max-width:575px){
+	#product .left-images {
+	  height: auto;
+	  /* 수정 ? */
+	}
+}
+
+
+
+#product .left-images img {
+  width: 100%;
+} 
 
 #product .right-content {
   position: relative;
@@ -1509,13 +1577,13 @@ Single Product Page
   font-size: 13px;
 }
 
-#product .right-content span {
+/* #product .right-content span {
   font-size: 14px;
   color: #aaaaaa;
   font-weight: 500;
   display: block;
   margin-top: 25px;
-}
+} */
 
 #product .right-content .quote {
   margin-top: 25px;
@@ -1612,8 +1680,7 @@ Single Product Page
 }
 
 #product .nav-tabs a:hover {
-    color: #2a2a2a !important;
-    border-bottom: 3px solid #b8b8c4;
+    color: #b8b8c4 !important;
 }
 
 #product .tab-content div{
@@ -1680,6 +1747,12 @@ Single Product Page
 	width: 900px;
 	margin: 0 auto;
 }
+#product .speech-bubble td {
+	background: #f2f2f6;
+}
+#product .speech-bubble tr:hover {
+	background: #f2f2f6;
+}
 
 #product .speech-bubble::before {
   content: "";
@@ -1692,53 +1765,29 @@ Single Product Page
 
 /* ------------------표 꾸미기------------------ */
 
-.profile, .user-info {
+#product .profile, .user-info {
   display: inline-block; /* div를 가로로 나열하기 위해 inline-block 속성 추가 */
   vertical-align: middle; /* 가운데 정렬을 위해 vertical-align: middle 속성 추가 */
 }
 
-.user-info {
+#product .user-info {
   margin-left: 10px; /* profile과 user-info 사이의 간격을 조정하기 위해 margin-left 속성 추가 */
 }
 
-td .profile {
+#product td .profile {
   float: left;
 }
 
-td .user-info {
+#product td .user-info {
   margin-left: 10px;
   float: left;
 }
 
-.profile-image {
+#product .profile-image {
   width: 70px;
   height: 70px;
 }
 
-
-#product #myTable {
-  margin: 0 auto; /* 표를 가운데로 정렬 */
-}
-
-#product td, th {
-  padding: 10px; /* 셀 내부 여백 */
-}
-
-#product th {
-  background-color: #f2f2f6; /* 헤더 배경색 */
-}
-
-#product tr:nth-child(odd) {
-  background-color: #f9f9f9; /* 홀수 행 배경색 */
-}
-
-#product tr:hover {
-  background-color: #dce0e3; /* 행에 마우스 호버 시 배경색 */
-}
-
-#product .hidden-row {
-  height: 60px; /* 두 번째 숨겨진 행의 높이 */
-}
 
 /* -----------상품문의 표----------- */
 
@@ -1758,21 +1807,47 @@ td .user-info {
 }
 
 #product .my-custom-table th {
-  background-color: #f2f2f6; /* 헤더 배경색 */
+  background-color: #dce0e3; /* 헤더 배경색 */
 }
 
-#product .my-custom-table tr:nth-child(odd) {
-  background-color: #f9f9f9; /* 홀수 행 배경색 */
+#product .my-custom-table tr.has-answer {
+  background-color: #f2f2f6; /* 답변완료인 경우 배경색 */
 }
 
 #product .my-custom-table tr:hover {
-  background-color: #dce0e3; /* 행에 마우스 호버 시 배경색 */
+  background-color: #e4e4eb; /* 행에 마우스 호버 시 배경색 */
+}
+#product .hidden-row {
+  height: 60px; /* 두 번째 숨겨진 행의 높이 */
 }
 
 #product .back {
   padding: 20px;
   margin: 20px;
   font-size: 15px;
+}
+
+#product .inquiry-btn-container {
+	margin: 0 auto;
+	width: 65%;
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 20px;
+}
+#product .inquiry-btn {
+	background: #e4e4eb;
+	border-radius: 0.25rem;
+	border: none;
+	padding: 5px 10px;
+	margin-right: 10px;
+}
+#product .inquiry-btn:hover {
+	background: #586579;
+	color: #fff;
+}
+#product .inquiry-btn:focus {
+	border: none;
+	outline: none;
 }
 
 
@@ -1822,6 +1897,7 @@ st-creator
 }
 #creators .product{
 	min-height: 200px;
+	overflow-x: auto; 
 }
 #creators .product a {
 	width: auto;
@@ -1835,6 +1911,9 @@ st-creator
 	object-fit: cover;
 	width: 245px;
     height: 245px;
+}
+#creators .product a img:hover {
+	opacity: 0.6;
 }
 #creators .product .empty-item{
 	width: 100%;	

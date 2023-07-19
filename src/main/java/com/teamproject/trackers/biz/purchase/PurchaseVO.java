@@ -31,6 +31,7 @@ public class PurchaseVO {
 	
 	@Temporal(TemporalType.DATE)
 	private Date cre_date;
+	private long c_id;
 	private int price;
 	
 	
@@ -54,6 +55,12 @@ public class PurchaseVO {
 	}
 	public void setCre_date(Date cre_date) {
 		this.cre_date = cre_date;
+	}
+	public long getC_id() {
+		return c_id;
+	}
+	public void setC_id(long c_id) {
+		this.c_id = c_id;
 	}
 	public int getPrice() {
 		return price;
