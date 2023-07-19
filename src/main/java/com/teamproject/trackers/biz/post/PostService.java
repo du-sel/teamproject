@@ -27,15 +27,22 @@ public class PostService {
 		}
 	//삭제
 		public void deletePost(Long postId) {
-			postRepository.deleteById(postId);
+			postRepository.deleteByPostId(postId);
 		}
+		
+		
 	//상세 조회
-		public Optional<PostVO> getPost(Long postId) {
-			return postRepository.findById(postId);
+		public PostVO getPost(Long postId) {
+			Optional<PostVO> postOptional = postRepository.findById(postId);
+			if (postOptional.isPresent()) {
+	            return postOptional.get();
+	        }
+	        return new PostVO(); //?
+
 		}
 		
 		public Optional<UserVO> getUser(Long postId) {
-	        Optional<PostVO> postOptional = postRepository.findById(postId);
+			Optional<PostVO> postOptional = postRepository.findById(postId);
 	        if (postOptional.isPresent()) {
 	            PostVO postVO = postOptional.get();
 	            return postRepository.findUserByUserId(postVO.getId());

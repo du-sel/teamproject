@@ -34,6 +34,9 @@ public class PostController {
 	
 	@Autowired
 	private PostIMGService postIMGService;
+	
+	@Autowired
+	private CommentService commentService;
 
 	
 	
@@ -84,11 +87,11 @@ System.out.println("imgvo.postid "+imgvo.getPostId());
 	
 	
 	// 삭제
-	@RequestMapping(value = "/posts", method = RequestMethod.DELETE)
-	public String deletePost(Long postId) {
+	@RequestMapping(value = "/posts/{postId}", method = RequestMethod.DELETE)
+	public String deletePost(@PathVariable("postId")Long postId) {
 		postService.deletePost(postId);
-		//프로필에서 삭제?
-		return "";
+		// comment도 삭제
+		return "redirect:/community/posts";
 	}	
 	
 	
@@ -96,7 +99,9 @@ System.out.println("imgvo.postid "+imgvo.getPostId());
 	@RequestMapping(value="/posts/{postId}", method=RequestMethod.GET)
 	public String getPost(@PathVariable("postId")Long postId, Model model) {
  
-		model.addAttribute("userinfo",postService.getUser(postId).get().getName());
+		CommentController cc = new CommentController();
+		//cc.getCommentList(postId, model);
+		model.addAttribute("userinfo",postService.getUser(postId).get());	
 		model.addAttribute("post", postService.getPost(postId));
 		model.addAttribute("postIMG", postIMGService.getPostIMG(postId));
 		return "community/co-post";
@@ -106,6 +111,10 @@ System.out.println("imgvo.postid "+imgvo.getPostId());
 	// 리스트 조회
 	@RequestMapping(value="/posts", method=RequestMethod.GET)
 	public String getPostList(Model model) {
+		
+		//this.getPost(postId, model);
+		
+		model.addAttribute("commentService",commentService);
 		model.addAttribute("postService",postService);
 System.out.println("postlist.size "+postService.getPostList().size());		
 		model.addAttribute("postList", postService.getPostList());

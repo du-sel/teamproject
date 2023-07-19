@@ -223,7 +223,7 @@ scroll custom
 .co #user_id{
 	display: none;
 }
-
+.co .comment-input{display: none;}
 
 /* 
 ---------------------------------------------
