@@ -46,6 +46,17 @@ public class ProductService {
 	}
 	
 	
+	/* st-main 베스트 상품 조회 */
+	public List<ProductListVO> getBestProduct() {
+		return productlistRepository.findTop5ByOrderByPopularityDesc();
+	}
+	
+	/* st-main 최신 상품 조회 */
+	public List<ProductListVO> getRecentProduct() {
+		return productlistRepository.findTop5ByOrderByCreDateDesc();
+	}
+	
+	
 	
 	/* p_id 로 특정 상품 조회 */
 	public ProductVO getProduct(long pId) {

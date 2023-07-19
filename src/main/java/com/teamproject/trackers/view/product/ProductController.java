@@ -78,7 +78,15 @@ public class ProductController {
 	
     ////* 스토어 메인 띄우기 *////
     @RequestMapping(value="/main", method=RequestMethod.GET)
-    public String stMain() {
+    public String stMain(Model model) {
+    	
+    	model.addAttribute("b_products", productService.getBestProduct());
+    	model.addAttribute("r_products", productService.getRecentProduct());
+    	
+    	for(ProductListVO v : productService.getRecentProduct()) {
+    		System.out.println(v.getPid());
+    	}
+    	
     	return "store/st-main";
     }
     
