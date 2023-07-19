@@ -146,7 +146,7 @@ function confirmDelete(obj) {
                         <h4><span class="total-price-span">총 <span id="total-price" class="number">35000</span>원</span> (<span id="total-amount">5</span>개 상품)</h4>
                     </div>
                     <div class="col-lg-4 d-flex flex-column justify-content-center">
-                    	<button class="purchase" type="button" onclick="location.href='/store/purchases/new'">결제하기</button>
+                    	<button class="purchase" type="button" onclick="location.href='/store/purchases/new'">구매하기</button>
                     	<!-- 임시로 링크 걸어둠 (나중에는 체크박스 데이터 넘겨서 가야함) -->
                     </div>
                 </div>
