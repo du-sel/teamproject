@@ -34,6 +34,9 @@ public class PostController {
 	
 	@Autowired
 	private PostIMGService postIMGService;
+	
+	@Autowired
+	private CommentService commentService;
 
 	
 	
@@ -43,6 +46,7 @@ public class PostController {
 	@RequestMapping(value = "/posts", method = RequestMethod.POST)
 	public String insertPost(PostVO vo, PostIMGVO imgvo , @RequestParam("post-img")List<MultipartFile> files) throws Exception {	
 
+		/*
 System.out.println("vo.getpostid "+vo.getPostId());
 System.out.println("vo.getid "+vo.getId());
 		PostVO p = postService.insertPost(vo);	
@@ -77,18 +81,21 @@ System.out.println("imgvo.postid "+imgvo.getPostId());
 		}
 		
 		return "redirect:/community/posts";
-		
+		*/
+		postService.insertPost(vo);
+		postIMGService.insertPostIMG(imgvo);
+		return "redirect:/community/posts";
 	}
 	
 	
 	
 	
 	// 삭제
-	@RequestMapping(value = "/posts", method = RequestMethod.DELETE)
-	public String deletePost(Long postId) {
+	@RequestMapping(value = "/posts/{postId}", method = RequestMethod.DELETE)
+	public String deletePost(@PathVariable("postId")Long postId) {
 		postService.deletePost(postId);
-		//프로필에서 삭제?
-		return "";
+		// comment도 삭제
+		return "redirect:/community/posts";
 	}	
 	
 	
@@ -96,9 +103,14 @@ System.out.println("imgvo.postid "+imgvo.getPostId());
 	@RequestMapping(value="/posts/{postId}", method=RequestMethod.GET)
 	public String getPost(@PathVariable("postId")Long postId, Model model) {
  
-		model.addAttribute("userinfo",postService.getUser(postId).get().getName());
-		model.addAttribute("post", postService.getPost(postId));
-		model.addAttribute("postIMG", postIMGService.getPostIMG(postId));
+		CommentController cc = new CommentController();
+		//cc.getCommentList(postId, model);
+		model.addAttribute("comments",commentService.getCommentList(postId));
+System.out.println("com "+commentService.getCommentList(postId).size());		
+		model.addAttribute("commentService",commentService);
+		model.addAttribute("userinfo",postService.getUser(postId).get());	
+		model.addAttribute("post", postService.getPost(postId).get());
+		//model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
 		return "community/co-post";
 	}
 	
@@ -106,6 +118,10 @@ System.out.println("imgvo.postid "+imgvo.getPostId());
 	// 리스트 조회
 	@RequestMapping(value="/posts", method=RequestMethod.GET)
 	public String getPostList(Model model) {
+		
+		//this.getPost(postId, model);
+		
+		model.addAttribute("commentService",commentService);		
 		model.addAttribute("postService",postService);
 System.out.println("postlist.size "+postService.getPostList().size());		
 		model.addAttribute("postList", postService.getPostList());

@@ -46,6 +46,26 @@ public class ProductService {
 	}
 	
 	
+	/* st-main 베스트 상품 조회 */
+	public List<ProductListVO> getBestProduct() {
+		return productlistRepository.findTop5ByOrderByPopularityDescCreDateDesc();
+	}
+	
+	/* st-main 최신 상품 조회 */
+	public List<ProductListVO> getRecentProduct() {
+		return productlistRepository.findTop5ByOrderByCreDateDesc();
+	}
+	
+	/* st-main 인기 크리에이터 조회 */
+	public List<CreatorListVO> getBestCreator() {
+		return creatorlistRepository.findTop5ByOrderByPopularityDescSaleDesc();
+	}
+	
+	/* st-main 인기 크리에이터 대표 상품 조회 */
+	public ProductVO getBestSignature(long id) {
+		return productRepository.findTopByIdAndSignatureOrderByRatingDescCreDateDesc(id, true);
+	}
+	
 	
 	/* p_id 로 특정 상품 조회 */
 	public ProductVO getProduct(long pId) {

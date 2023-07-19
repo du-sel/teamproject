@@ -11,6 +11,34 @@
 
 <script>
 
+// p_id 컨트롤러로 넘겨주기
+function goPurchase() {
+
+	let pidList = new Array();
+	let path = window.location.pathname;
+	p_id = path.substring(path.indexOf("/products")+10);
+	console.log(path)
+	
+	pidList.push(p_id);
+    
+    
+    let newFrm = document.createElement('form');
+    newFrm.setAttribute('action', '/store/purchases/new');
+    
+    let hidden = document.createElement('input');
+    hidden.setAttribute('type', 'hidden');
+    hidden.setAttribute('name', 'pidList');
+    hidden.setAttribute('value', pidList);
+    newFrm.appendChild(hidden);
+    
+    let main = document.getElementsByTagName('main')[0];
+    main.appendChild(newFrm);
+
+    newFrm.submit();
+	
+}
+
+
 	
 	//IMP.init('imp41250534');
 
@@ -167,7 +195,7 @@ function kakaopay(){
 	                <div class="right-content">
 	                	<div class="info-content">                	
 		                    <h4>${product.p_name }</h4>
-		                    <span class="creator">${product.store_name }</span>
+		                    <span class="creator"><a href="/profiles/${product.url }">${product.store_name }</a></span>
 		                    <ul class="stars">
 		                        <li><i class="fa fa-star"></i></li>
 		                        <li><i class="fa fa-star"></i></li>
@@ -177,7 +205,7 @@ function kakaopay(){
 		                    </ul>
 	                	</div>
 	                	<div class="notice-content">
-	                		<p class="notice">본 상품은 실물 상품이 아닌 디지털 상품으로, 주문 및 결제 후 즉시 다운로드가 가능한 콘텐츠입니다.</p>
+	                		<p class="notice"><i class="fa fa-exclamation-circle"></i>본 상품은 실물 상품이 아닌 디지털 상품으로, 주문 및 결제 후 즉시 다운로드가 가능한 콘텐츠입니다.</p>
 	                	</div>
 	                    <div class="price-content">
 	                    	<div class="d-flex">
@@ -200,13 +228,7 @@ function kakaopay(){
    									<button>장바구니</button>
    								</form:form>
    								
-   								<button onclick="requestPay()">바로 구매</button> 								
-   								<!-- <button onclick="kakaopay()">(구독)</button> -->
-   								<!-- 결제 API 테스트용 임시 버튼 추가 -->
-   								<!-- <form action="/purchaseAgain" method="post">
-   									<button>재결제</button>
-   								</form> -->
-   								<!-- 결제 API 테스트용 임시 버튼 추가 -->
+   								<button onclick="goPurchase()">바로 구매</button> 								
 	      					</div>
 	                    </div>
 	                </div>

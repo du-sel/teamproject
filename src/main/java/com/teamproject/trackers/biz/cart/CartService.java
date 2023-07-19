@@ -34,5 +34,14 @@ public class CartService {
 	public List<CartInfoVO> getCartList(long id) {
 		return cartInfoRepository.findAllById(id);
 	}
+	
+	
+	/* p_id로 특정상품 조회 */
+	public CartInfoVO getCartItem(long pid) {
+		return cartInfoRepository.findByPid(pid);
+	}
 
+	
+	
+	
 }

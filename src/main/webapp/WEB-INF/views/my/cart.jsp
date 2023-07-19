@@ -25,21 +25,16 @@ function confirmDelete(obj) {
 
 
 
-	/* 체크박스에 따라 가격, 개수 합산 */			
-				
+	/* 체크박스에 따라 가격, 개수 합산 */							
 	function getTotal(){
 		let total_price = 0;
 		let total_amount = 0;
 		
-		console.log('print');
 		$('input:checkbox[name=pick]:checked').each(function() {
-			console.log('chk');
 
 	        total_amount += 1;
 	        
 	        let p_id = $(this).val();
-	        console.log('PID');
-	        console.log(p_id);
 	        
 				$.ajax({
 					type: "get",
@@ -49,14 +44,9 @@ function confirmDelete(obj) {
 						let price = Number(data.price)-Number(data.sale);;						
 				        total_price += price;
 				        
-				        console.log('TOTAL');
-				        console.log(total_price);
 						$('#total-price').text(numberWithCommas(total_price));
 					},
-					error: function(message) {
-						console.log(message);
-						console.log('error...');
-					}
+					error: function(message) { }
 				})
 					
 	        
@@ -69,6 +59,32 @@ function confirmDelete(obj) {
 	$(()=> {		
 		getTotal();
 	})
+	
+	
+	// 체크박스 p_id 모아서 컨트롤러로 넘겨주기
+	function goPurchase() {
+
+		let pidList = new Array();
+
+	    $('input:checkbox[name=pick]:checked').each(function() {
+	    	pidList.push(this.value);
+	    });
+	    
+	    let newFrm = document.createElement('form');
+	    newFrm.setAttribute('action', '/store/purchases/new');
+	    
+	    let hidden = document.createElement('input');
+	    hidden.setAttribute('type', 'hidden');
+	    hidden.setAttribute('name', 'pidList');
+	    hidden.setAttribute('value', pidList);
+	    newFrm.appendChild(hidden);
+	    
+	    let main = document.getElementsByTagName('main')[0];
+	    main.appendChild(newFrm);
+
+	    newFrm.submit();
+		
+	}
 
 </script>
 
@@ -143,38 +159,13 @@ function confirmDelete(obj) {
                 <!-- 구매창 -->
                 <div class="row col-lg-12 payment">
                 	<div class="col-lg-8 down-content d-flex flex-column justify-content-center">
-                        <h4><span class="total-price-span">총 <span id="total-price" class="number">35000</span>원</span> (<span id="total-amount">5</span>개 상품)</h4>
+                        <h4><span class="total-price-span">총 <span id="total-price" class="number"></span>원</span> (<span id="total-amount"></span>개 상품)</h4>
                     </div>
                     <div class="col-lg-4 d-flex flex-column justify-content-center">
-                    	<button class="purchase">결제하기</button>
+                    	<button class="purchase" type="button" onclick="goPurchase()">구매하기</button>
                     </div>
                 </div>
                 
-                <!-- 페이지 번호 -->
-                <!-- <div class="col-lg-12">
-	                 <div class="pagination">
-	                     <ul>
-	                         <li>
-	                             <a href="#"><</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">1</a>
-	                         </li>
-	                         <li class="active">
-	                             <a href="#">2</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">3</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">4</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">></a>
-	                         </li>
-	                     </ul>
-	                 </div>
-                </div> -->
 			</div>
 		</div>
     </section>

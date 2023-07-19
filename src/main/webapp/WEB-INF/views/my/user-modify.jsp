@@ -21,23 +21,23 @@
 			<div id="modify-input-container" class="d-flex flex-column">
 				<form action="/users" method="post" onsubmit="return modify_chk('user', 2);">
 					<input type="hidden" name="_method" value="put">
-					<div class="form-group">		<!-- 이름 -->
+					<div class="form-group">		<!-- 이름(닉네임) -->
 						<div class="input-group">
 							<p>이름</p>
-							<input type="text" class="form-control" name="name" value="${user.name}" placeholder="Name" required oninput="remove(3 ,this);">
+							<input type="text" class="form-control" name="name" value="${user.name}" placeholder="닉네임" required oninput="remove(3 ,this);">
 						</div>
 					</div>
 					<div class="form-group">		<!-- 핸드폰번호 -->
 						<div class="input-group">
 							<p>핸드폰 번호</p>
-							<input type="text" class="form-control" name="tel" value="${user.tel}" placeholder="PhoneNumber" maxlength="13" oninput="tel_hyphen(this);" required>
+							<input type="text" class="form-control" name="tel" value="${user.tel}" placeholder="핸드폰 번호" maxlength="13" oninput="tel_hyphen(this);" required>
 						</div>
 					</div>
 					<div class="form-group">		<!-- 프로필 url -->
 						<div class="input-group">
 							<p>개인 프로필 URL</p>
 							<input type="text" class="base-url" value="/profiles/" disabled>
-							<input type="text" class="form-control" name="url" placeholder="ProfileURL" value="${user.url}" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
+							<input type="text" class="form-control" name="url" placeholder="프로필 URL" value="${user.url}" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
 							<button type="button" class="btn btn-chk" onclick="url_chk('${user.url}', 2, 'modify')">Check</button>
 						</div>
 						<p></p>

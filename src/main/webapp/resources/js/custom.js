@@ -1,7 +1,7 @@
 (function ($) {
 	
 	"use strict";
-	$('.owl-men-item').owlCarousel({
+	$('.owl-best-item').owlCarousel({
 		items:5,
 		loop:true,
 		dots: true,
@@ -20,7 +20,7 @@
 		 }
 	})
 
-	$('.owl-women-item').owlCarousel({
+	$('.owl-recent-item').owlCarousel({
 		items:5,
 		loop:true,
 		dots: true,
@@ -39,7 +39,7 @@
 		 }
 	 })
 
-	$('.owl-kid-item').owlCarousel({
+	$('.owl-creator-item').owlCarousel({
 		items:5,
 		loop:true,
 		dots: true,

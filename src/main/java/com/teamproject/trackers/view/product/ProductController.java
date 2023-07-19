@@ -78,7 +78,19 @@ public class ProductController {
 	
     ////* 스토어 메인 띄우기 *////
     @RequestMapping(value="/main", method=RequestMethod.GET)
-    public String stMain() {
+    public String stMain(Model model) {
+    	
+    	List<CreatorListVO> b_creators = productService.getBestCreator();
+    	List<ProductVO> b_signatures = new ArrayList<ProductVO>();
+    	for(CreatorListVO c : b_creators) {			// 대표상품 저장
+    		b_signatures.add(productService.getBestSignature(c.getId()));
+    	}
+    	
+    	model.addAttribute("b_products", productService.getBestProduct());		// 베스트 상품 최대 5개
+    	model.addAttribute("r_products", productService.getRecentProduct());	// 최신 상품 최대 5개
+    	model.addAttribute("b_creators", b_creators);							// 인기 크리에이터 최대 5명
+    	model.addAttribute("b_signatures", b_signatures);						// 인기 크리에이터 대표상품
+    	
     	return "store/st-main";
     }
     
@@ -108,7 +120,6 @@ public class ProductController {
 	@RequestMapping(value="/products/price/{p_id}", method=RequestMethod.GET)
 	@ResponseBody
 	public ProductPageVO getProductPrice(@PathVariable("p_id") String p_id, Model model) throws Exception {
-		System.out.println("AJAX");
 		ProductPageVO product = productService.getProductPage(Long.parseLong(p_id));
 		
 		if(product == null) {
@@ -116,9 +127,7 @@ public class ProductController {
 			throw new Exception("존재하지 않는 상품입니다");
 		}
 		
-		int final_price = product.getPrice()-product.getSale();
-		System.out.println(final_price);
-		
+		int final_price = product.getPrice()-product.getSale();		
 		return product;
 	}
 	
@@ -135,13 +144,13 @@ public class ProductController {
 		if(!category.equals("all")) {
 			// 정렬
 			if(sort.equals("creDate")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, "cre_date"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, "cre_date"));
 			}else if(sort.equals("highprice")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, "sale_price"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, "sale_price"));
 			}else if(sort.equals("lowprice")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.ASC, "sale_price"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.ASC, "sale_price"));
 			}else {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
 			}
 			
 			// 검색 x 경우
@@ -151,11 +160,11 @@ public class ProductController {
 		}else {
 			// 정렬
 			if(sort.equals("highprice")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, "salePrice"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, "salePrice"));
 			}else if(sort.equals("lowprice")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.ASC, "salePrice"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.ASC, "salePrice"));
 			}else {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, sort));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, sort));
 			}
 			
 			// 검색
@@ -251,7 +260,7 @@ public class ProductController {
 		
 		// 현재 날짜 저장
 		LocalDate now = LocalDate.now();
-		vo.setCre_date(Date.valueOf(now));
+		vo.setCreDate(Date.valueOf(now));
 		
 		// 상품 등록 로직
 		productService.insertProduct(vo);
@@ -561,7 +570,7 @@ public class ProductController {
 		
 		// 정렬 및 페이징 , 검색 처리
 		Page<CreatorListVO> list = null;
-		Pageable pageable = PageRequest.of(page, 1, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+		Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
 		
 		// 검색
 		if(keyword != null) { 		// 검색 한 경우
