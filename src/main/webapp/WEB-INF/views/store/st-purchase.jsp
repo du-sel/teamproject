@@ -3,8 +3,51 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
+
+
+<script>
+
+/* 체크박스에 따라 가격, 개수 합산 */							
+function getTotal(){
+	let total_price = 0;
+	let total_amount = -1;
+	
+	$('span.number').each(function() {
+
+        total_amount += 1;
+        
+        let price = $(this).text();
+        total_price += Number(price);
+				
+    });
+	$('#total-price').text(numberWithCommas(total_price));
+	$('#total-amount').text(total_amount);
+}
+
+
+
+$(()=> {		
+	getTotal();
+	
+	
+	
+	/* 가격 세자리마다 콤마 넣어주기 */
+	let numbers = document.getElementsByClassName('number');	
+	for(num of numbers) {
+		let text = num.innerText;
+		num.innerText = numberWithCommas(text);
+	}	
+
+})
+
+
+
+
+</script>
+
 
 <!-- ***** Page Content Starts ***** -->
 <main id="purchase" class="broad">
@@ -30,79 +73,36 @@
 			
 			<div class="row justify-content-center total-items">
 				<div class="col-lg-10 col-md-12">
-					<h5> 총 5 개 상품</h5>
+					<h5> 총 ${fn:length(infolist) } 개 상품</h5>
 				</div>
 			</div>
 		
 			<div class="row justify-content-center">
             <!-- Product Start -->
-				<div class="col-lg-10 col-md-12 info item${item.pid }">
-					<div class="row justify-content-center">
-		                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-		                   <div class="thumb">
-		                       <a href="/store/products/${item.pid}">
-		                           <img src="/resources/images/men-01.jpg" alt="${item.p_name } 썸네일">
-		                       </a>
-		                   </div>
+	            <c:forEach var="item" items="${infolist}">
+					<div class="col-lg-10 col-md-12 info item${item.pid }">
+						<div class="row justify-content-center">
+			                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
+			                   <div class="thumb">
+			                       <a href="/store/products/${item.pid}">
+			                           <img src="${item.thumbnail }" alt="${item.p_name } 썸네일">
+			                       </a>
+			                   </div>
+			                </div>
+			                <div class="col-lg-8 col-md-7 col-sm-6 sm_info">
+			                    <div class="down-content d-flex flex-column justify-content-center product-info">
+			                   	    <h6>
+			                   	    	<a href="/profiles/${item.url }">${item.store_name }</a>
+			                   	    </h6>
+			                        <h4>
+			                       		<a href="/store/products/${item.pid}">${item.p_name }</a>
+			                        </h4>
+			                        <h4><span class="number">${item.price-item.sale}</span>원</h4>
+			                    </div>
+			                </div>
 		                </div>
-		                <div class="col-lg-8 col-md-7 col-sm-6 sm_info">
-		                    <div class="down-content d-flex flex-column justify-content-center product-info">
-		                   	    <h6>
-		                   	    	<a href="/profiles/${item.url }">스토어이름</a>
-		                   	    </h6>
-		                        <h4>
-		                       		<a href="/store/products/${item.pid}">상품명</a>
-		                        </h4>
-		                        <h4><span class="number">10000</span>원</h4>
-		                    </div>
-		                </div>
-	                </div>
-				</div>
-				<div class="col-lg-10 col-md-12 info item${item.pid }">
-					<div class="row justify-content-center">
-		                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-		                   <div class="thumb">
-		                       <a href="/store/products/${item.pid}">
-		                           <img src="/resources/images/men-01.jpg" alt="${item.p_name } 썸네일">
-		                       </a>
-		                   </div>
-		                </div>
-		                <div class="col-lg-8 col-md-7 col-sm-6 sm_info">
-		                    <div class="down-content d-flex flex-column justify-content-center product-info">
-		                   	    <h6>
-		                   	    	<a href="/profiles/${item.url }">스토어이름</a>
-		                   	    </h6>
-		                        <h4>
-		                       		<a href="/store/products/${item.pid}">상품명</a>
-		                        </h4>
-		                        <h4><span class="number">10000</span>원</h4>
-		                    </div>
-		                </div>
-	                </div>
-				</div>
-				<div class="col-lg-10 col-md-12 info item${item.pid }">
-					<div class="row justify-content-center">
-		                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-		                   <div class="thumb">
-		                       <a href="/store/products/${item.pid}">
-		                           <img src="/resources/images/men-01.jpg" alt="${item.p_name } 썸네일">
-		                       </a>
-		                   </div>
-		                </div>
-		                <div class="col-lg-8 col-md-7 col-sm-6 sm_info">
-		                    <div class="down-content d-flex flex-column justify-content-center product-info">
-		                   	    <h6>
-		                   	    	<a href="/profiles/${item.url }">스토어이름</a>
-		                   	    </h6>
-		                        <h4>
-		                       		<a href="/store/products/${item.pid}">상품명</a>
-		                        </h4>
-		                        <h4><span class="number">10000</span>원</h4>
-		                    </div>
-		                </div>
-	                </div>
-				</div>
-
+					</div>
+				</c:forEach>
 			<!-- Product End -->
 			
 			
@@ -114,15 +114,15 @@
 				</div>
 				<div class="col-lg-9 col-md-12 buyer-info">
 		           	<label for="buyer-name"><p class="must">이름</p></label>
-		           	<input type="text" name="name" id="buyer-name" class="form-control">
+		           	<input type="text" name="name" id="buyer-name" class="form-control" value="${user.name }">
 	            </div>
 				<div class="col-lg-9 col-md-12 buyer-info">
 		           	<label for="buyer-email"><p class="must">이메일</p></label>
-		           	<input type="text" name="email" id="buyer-email" class="form-control">
+		           	<input type="text" name="email" id="buyer-email" class="form-control" value="${user.email }">
 	           	</div>
 				<div class="col-lg-9 col-md-12 buyer-info">
 		           	<label for="buyer-tel"><p class="must">연락처</p></label>
-		           	<input type="text" name="tel" id="buyer-tel" class="form-control">
+		           	<input type="text" name="tel" id="buyer-tel" class="form-control" value="${user.tel }">
             	</div>
 			
 			<!-- Buyer Info End -->
@@ -150,7 +150,7 @@
                 <!-- 구매창 -->
                 <div class="row col-lg-12 payment">
                 	<div class="col-lg-8 down-content d-flex flex-column justify-content-center">
-                        <h4><span class="total-price-span">총 <span id="total-price" class="number">35000</span>원</span> (<span id="total-amount">5</span>개 상품)</h4>
+                        <h4><span class="total-price-span">총 <span id="total-price" class="number"></span>원</span> (<span id="total-amount"></span>개 상품)</h4>
                     </div>
                     <div class="col-lg-4 d-flex flex-column justify-content-center">
                     	<button class="purchase" type="button" onclick="location.href='/store/purchases/new'">결제하기</button>

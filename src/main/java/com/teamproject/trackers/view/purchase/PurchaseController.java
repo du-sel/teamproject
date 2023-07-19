@@ -2,6 +2,8 @@ package com.teamproject.trackers.view.purchase;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,11 +26,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.teamproject.trackers.biz.cart.CartInfoRepository;
+import com.teamproject.trackers.biz.cart.CartInfoVO;
+import com.teamproject.trackers.biz.cart.CartService;
 import com.teamproject.trackers.biz.product.CreatorListVO;
+import com.teamproject.trackers.biz.product.ProductPageVO;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
 import com.teamproject.trackers.biz.purchase.PurchaseListVO;
@@ -45,13 +52,19 @@ public class PurchaseController {
 
 	private PurchaseService purchaseService;
 	private ProductService productService;
+	private CartService cartService;
     private HttpSession session;
 	
     
     @Autowired
-	public PurchaseController(PurchaseService purchaseService, ProductService productService, HttpSession session) {
+	public PurchaseController(PurchaseService purchaseService, 
+			ProductService productService, 
+			CartService cartService, 
+			HttpSession session) {
+    	
 		this.purchaseService = purchaseService;
 		this.productService = productService;
+		this.cartService = cartService;
 		this.session = session;
 	}
 	
@@ -119,8 +132,18 @@ public class PurchaseController {
 
 	/* 구매하기 페이지 띄워주기 */
 	@RequestMapping(value="/purchases/new", method=RequestMethod.GET)
-	public String showPurchaseForm() {
+	public String showPurchaseForm(@RequestParam List<String> pidList, Model model) {
 		
+		List<ProductPageVO> infolist = new ArrayList<>();
+				
+		// 체크된 p_id 리스트로 받아서 cartInfo 조회
+		for(String pid : pidList) {			
+			ProductPageVO info = productService.getProductPage(Long.parseLong(pid));						
+			infolist.add(info);
+		}
+		
+		// List형태로  model에 담기
+		model.addAttribute("infolist", infolist);
 		
 		return "store/st-purchase";
 	}
