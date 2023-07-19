@@ -205,14 +205,14 @@ public class ProductController {
 		
 		// 썸네일 저장
 		if(!thumbnail_f.isEmpty()) {
-			thumbnail = saveFile(thumbnail_f, "thumbnail\\", req);
+			thumbnail = saveFile(thumbnail_f, "thumbnail/", req);
 			//System.out.println("저장된 thumbnail: "+thumbnail);
 		}
 		
 		// 파일 구글드라이브 저장
 		if(!file_f.isEmpty()) {
 			//file = drive.uploadProductFile(file_f);
-			file = saveFile(file_f, "file\\", req);
+			file = saveFile(file_f, "file/", req);
 			// 일단 일반 폴더에 저장
 			System.out.println("저장된 file: "+file);
 		}
@@ -516,7 +516,8 @@ public class ProductController {
     /*----------------정희 추가-----------------*/
 	
 	
-	// 크리에이터 리스트 조회 & 정렬 & 검색
+
+    ////* 크리에이터 리스트 조회 & 정렬 & 검색 *////
 	@RequestMapping(value="/creators", method=RequestMethod.GET)
 	public String getCreatorList(int page, String sort, Model model, String keyword) {
 		

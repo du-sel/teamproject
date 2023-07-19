@@ -103,7 +103,7 @@
 		                                <a>상품</a>
 		                                <c:set var="ps" value="page=0&sort=creDate"/>
 		                                <ul>
-		                                 	<li><a href="/store/products?${ps}&category=all">전체</a></li>
+		                                 	<li class="all"><a href="/store/products?${ps}&category=all">전체</a></li>
 		                                	<li class="category">페이지 별</li>
 		                                    <li><a href="/store/products?${ps}&category=whole">한달 세트</a></li>
 		                                    <li><a href="/store/products?${ps}&category=monthly">먼슬리</a></li>
@@ -159,7 +159,7 @@
 			                          			<ul>
 				                                    <li><a href="/store/carts">장바구니</a></li>
 				                                    <li><a href="news.do">내 소식</a></li>
-				                                    <li><a href="/store/purchases">구매 내역</a></li>
+				                                    <li><a href="/store/purchases?page=0">구매 내역</a></li>
 				                                    <li><a href="inquiry-history.do">문의 내역</a></li>
 				                                    <li><a href="/users?path=info">회원정보 변경</a></li>
 				                                    <li><a href="/users?path=pwd">비밀번호 변경</a></li>

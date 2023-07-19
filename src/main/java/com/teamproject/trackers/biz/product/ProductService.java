@@ -93,17 +93,17 @@ public class ProductService {
 
 	
 	
-	// 상품 전체 조회(검색 x)
+	/* 상품 전체 조회(검색 x) */
 	public Page<ProductListVO> getProductList(Pageable pageable) {
 		return productlistRepository.findAll(pageable);
 	}
 	
-	// 상품 전체 조회(검색 o)
+	/* 상품 전체 조회(검색 o) */
 	public Page<ProductListVO> getSearchProductList(String keyword, Pageable pageable) {
 		return productlistRepository.findByPnameContaining(keyword, pageable);
 	}
 
-	// 상품 필터링
+	/* 상품 필터링 */
 	public Page<ProductListVO> getCategorList(String category, String keyword, Pageable pageable) {
 		
 		Page<ProductListVO> list = null;
@@ -126,18 +126,18 @@ public class ProductService {
 	}
 	
 	
-	// 스토어(크리에이터) 조회(검색 x)
+	/* 스토어(크리에이터) 조회(검색 x) */
 	public Page<CreatorListVO> getCreatorList(Pageable pageable) {
 		return creatorlistRepository.findAll(pageable);
 
 	}
 	
-	// 스토어(크리에이터) 조회(검색 o)
+	/* 스토어(크리에이터) 조회(검색 o) */
 	public Page<CreatorListVO> getSearchCreatorList(String keyword, Pageable pageable) {
 		return creatorlistRepository.findBystoreNameContaining(keyword, pageable);
 	}
 	
-	// 스토어(크리에이터) 대표 상품 리스트
+	/* 스토어(크리에이터) 대표 상품 리스트 */
 	public List<ProductVO> getCreatorSignatureList(){
 		return productRepository.getCreatorSignatureList();
 	}
