@@ -51,12 +51,25 @@ public class CartController {
 	public String insertCart(@PathVariable("p_id") String p_id, CartVO vo) {
 		
     	CartVO cart = new CartVO();
-    	cart.setP_id(Long.parseLong(p_id));
+    	cart.setPid(Long.parseLong(p_id));
     	cart.setId((long)session.getAttribute("id"));
     	cartService.insertCart(cart);
     	
     	return "redirect:/store/carts";
 	}
 	
+    
+    
+    
+    /* 장바구니에서 상품 삭제 */
+    @RequestMapping(value="/carts/{p_id}", method=RequestMethod.DELETE)
+    public String deleteCart(@PathVariable("p_id") String p_id) {
+    	System.out.println("컨트롤러 pid: "+p_id);
+    	
+    	cartService.deleteCart(Long.parseLong(p_id));
+    	
+    	return "redirect:/store/carts";
+    }
+    
 
 }

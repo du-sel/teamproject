@@ -54,7 +54,6 @@
 	<script>	
 		// 세자리 마다 콤마(,) 넣는 함수
 		function numberWithCommas(x) {
-			console.log(x);
 			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		}
 	</script>

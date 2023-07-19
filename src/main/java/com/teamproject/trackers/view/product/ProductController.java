@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -75,10 +76,16 @@ public class ProductController {
 	
 	
 	
-	////* 스토어 메인 띄우기 *////
-	@RequestMapping(value="/main", method=RequestMethod.GET)
-	public String stMain() {
-		return "store/st-main";
+    ////* 스토어 메인 띄우기 *////
+    @RequestMapping(value="/main", method=RequestMethod.GET)
+    public String stMain() {
+    	return "store/st-main";
+    }
+    
+	////* main 없이 입력할 경우에도 스토어 메인 띄우기 *////
+	@RequestMapping(value="", method=RequestMethod.GET)
+	public String stMain2() {
+		return "redirect:/store/main";
 	}
 
 	////* 상품 상세 조회 *////
@@ -95,6 +102,24 @@ public class ProductController {
 		model.addAttribute("product", product);	
 		
 		return "store/st-product-single";
+	}
+	
+	////* 상품 상세 조회 JSON *////
+	@RequestMapping(value="/products/price/{p_id}", method=RequestMethod.GET)
+	@ResponseBody
+	public ProductPageVO getProductPrice(@PathVariable("p_id") String p_id, Model model) throws Exception {
+		System.out.println("AJAX");
+		ProductPageVO product = productService.getProductPage(Long.parseLong(p_id));
+		
+		if(product == null) {
+			// 해당 id의 상품이 존재하지 않는 경우
+			throw new Exception("존재하지 않는 상품입니다");
+		}
+		
+		int final_price = product.getPrice()-product.getSale();
+		System.out.println(final_price);
+		
+		return product;
 	}
 	
 	
