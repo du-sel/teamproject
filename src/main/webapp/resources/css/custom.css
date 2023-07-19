@@ -2157,6 +2157,14 @@ cart
 --------------------------------------------- 
 */
 
+#cart .total-items {
+	margin: 30px 0;
+}
+#cart .total-items h5 {
+	width: 80%;
+	padding-left: 35px;
+}
+
 #cart *{
 	color: #2a2a2a;
 }
@@ -2185,7 +2193,7 @@ cart
 #cart .payment div{
 	margin: 8px 0;
 }
-#cart .payment span{
+#cart .payment .total-price-span{
 	font-weight: 600;
 }
 #cart .purchase{
