@@ -3,6 +3,7 @@
         
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 <!-- 아임포트 (결제 API) -->
@@ -95,7 +96,7 @@ function kakaopay(){
 		pay_method : 'card', // 결제창 호출단계에서의 pay_method는 아무런 역할을 하지 못하며, 구매자가 카카오페이 앱 내에서 신용카드 vs 카카오머니 중 실제 선택한 값으로 추후 정정됩니다.
 		merchant_uid : new Date().getTime(),
 		name : '구독1',
-		amount : 200, 
+		amount : 130, 
 		customer_uid :customer_uid, //customer_uid 파라메터가 있어야 빌링키 발급이 정상적으로 이뤄집니다.
 		buyer_email : 'first@mail.com',
 		buyer_name : '첫번째',
@@ -195,14 +196,11 @@ function kakaopay(){
 	                    </div>
 	                    <div class="buy-content">                        
 	                        <div class="d-flex justify-content-center">
-	                        	<form action="/store/carts/${product.pid }" method="post">
+	                        	<form:form name="cart" id="cart" action="/store/carts/${product.pid }" method="post">
    									<button>장바구니</button>
-   								</form>
-   								<!-- 나중에 onclick으로 action값 수정 필요 -->
+   								</form:form>
    								
-   								<button onclick="requestPay()">바로 구매</button>
-   								<!-- 나중에는 상품정보 불러와서 사용할것이므로 매개변수 필요없음 -->
-   								
+   								<button onclick="requestPay()">바로 구매</button> 								
    								<!-- <button onclick="kakaopay()">(구독)</button> -->
    								<!-- 결제 API 테스트용 임시 버튼 추가 -->
    								<!-- <form action="/purchaseAgain" method="post">
