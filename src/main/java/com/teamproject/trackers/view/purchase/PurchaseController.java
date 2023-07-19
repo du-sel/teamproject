@@ -117,7 +117,13 @@ public class PurchaseController {
 	
 	
 
-	
+	/* 구매하기 페이지 띄워주기 */
+	@RequestMapping(value="/purchases/new", method=RequestMethod.GET)
+	public String showPurchaseForm() {
+		
+		
+		return "store/st-purchase";
+	}
 	
 	
 	

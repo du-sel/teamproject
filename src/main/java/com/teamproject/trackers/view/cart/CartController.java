@@ -64,7 +64,6 @@ public class CartController {
     /* 장바구니에서 상품 삭제 */
     @RequestMapping(value="/carts/{p_id}", method=RequestMethod.DELETE)
     public String deleteCart(@PathVariable("p_id") String p_id) {
-    	System.out.println("컨트롤러 pid: "+p_id);
     	
     	cartService.deleteCart(Long.parseLong(p_id));
     	
