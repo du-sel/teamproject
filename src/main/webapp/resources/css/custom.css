@@ -531,6 +531,10 @@ header
   font-weight: 400;
   border-bottom: 1px solid #eee;
 }
+.header-area .main-nav .nav div.submenu ul li.all a{
+	font-size: 14px;
+  	font-weight: 600;
+}
 .header-area .main-nav .nav div.submenu ul li.category{
 	font-size: 14px;
   	font-weight: 600;
