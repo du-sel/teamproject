@@ -60,18 +60,54 @@ function tel_hyphen(target){
 /*****signin-modal*****/
 // 로그인
 function login(){
-	if($('email').val() == '') {
+	
+	let email = $('#email').val();
+	let password = $('#password').val();
+	let flag;
+	
+	if(email == '') {
 		alert("아이디를 작성입력해주세요.");
-		$('email').focus();
+		$('#email').focus();
 		return false;
-	}else if($('password').val() == '') {
+	}else if(password == '') {
 		alert("비밀번호를 작성입력해주세요.");
-		$('password').focus()
+		$('#password').focus()
 		return false;
 	}
 	
-	$('#path').val($(location).attr('pathname'));	
-	return true;
+	$.ajax({
+		url: "/validation/signin", 			//통신할 url
+		type: "POST",						//통신할 메소드 타입
+		data: {email : email, password : password},	//전송할 데이터
+		dataType: "json",
+		async: false,						// 실행 결과 기다리지 않고 다음 코드 읽을 것인지
+		success : function(result) { 		// 매개변수에 통신성공시 데이터 저장
+			if(result) {					// 로그인 성공
+				flag = true;
+				console.log("성공");
+				//return true;
+			} else {						// 로그인 실패
+				flag = false;
+				console.log("실패");
+				//return false;
+			}	
+		},
+		error : function (status, error) {	//통신 실패
+			console.log('통신실패');
+			console.log(status, error);
+		}
+	});
+	
+	if(flag){
+		$('#path').val($(location).attr('pathname'));
+		return true;
+	}else{
+		alert('이메일 또는 비밀번호가 일치하지 않습니다. 다시 시도해 주세요.');
+		$('#email').val("");
+		$('#password').val("");
+		$('#email').focus();
+		return false;	
+	} 
 }
 
 //이메일 중복 체크
@@ -210,7 +246,7 @@ function change_pwd_chk(){
 	console.log("입력:"+password);
 	$.ajax({
 		url: "/validation/pwd", 			//통신할 url
-		type: "GET",						//통신할 메소드 타입
+		type: "POST",						//통신할 메소드 타입
 		data: {old_password : password},	//전송할 데이터
 		dataType: "json",
 		async: false,						// 실행 결과 기다리지 않고 다음 코드 읽을 것인지

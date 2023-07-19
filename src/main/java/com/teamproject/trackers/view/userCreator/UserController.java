@@ -46,7 +46,7 @@ public class UserController {
 		if(session.getAttribute("id") != null) {
 			session.invalidate();
 		}
-		return "redirect:/store/main";		// 인덱스로?
+		return "redirect:/";
 	}
 	
 	// 로그인
@@ -111,6 +111,13 @@ public class UserController {
 	
 	
 	// 유효성 검사
+	// 로그인 성공 유무 검사(signin-modal.jsp)
+	@RequestMapping(value = "/validation/signin", method=RequestMethod.POST)
+	@ResponseBody
+	public boolean validateSignin(UserVO vo) {
+		return userService.validateSignin(vo);
+	}
+	
 	// 이메일 중복 검사(signup-modal.jsp)
 	@RequestMapping(value = "/validation/email", method=RequestMethod.GET)
 	@ResponseBody
@@ -126,7 +133,7 @@ public class UserController {
 	}
 	
 	// 기존 비밀번호 체크(user-pwd-modify.jsp)
-	@RequestMapping(value = "/validation/pwd", method=RequestMethod.GET)
+	@RequestMapping(value = "/validation/pwd", method=RequestMethod.POST)
 	@ResponseBody
 	public boolean validateUserPwd(@RequestParam("old_password") String password, UserVO vo) {
 		vo.setId((long)session.getAttribute("id"));
