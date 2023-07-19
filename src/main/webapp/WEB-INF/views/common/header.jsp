@@ -157,7 +157,7 @@
 											<div id="user-menu" class="scroll-to-section submenu">
 			                          			<img src="/resources/images/baner-right-image-02.jpg" alt="프로필사진" id="profile-image">
 			                          			<ul>
-				                                    <li><a href="cart.do">장바구니</a></li>
+				                                    <li><a href="/store/carts">장바구니</a></li>
 				                                    <li><a href="news.do">내 소식</a></li>
 				                                    <li><a href="/store/purchases">구매 내역</a></li>
 				                                    <li><a href="inquiry-history.do">문의 내역</a></li>
