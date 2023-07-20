@@ -45,6 +45,11 @@
          </main>        	
             <div class="row">
        
+       			<c:if test="${(!empty keyword || keyword ne '') && products.totalElements == 0}">
+					<div class="empty-search">
+						<p>'<span>${keyword}</span>' 검색 결과가 없습니다.</p>
+					</div>
+				</c:if>
  				<!-- Product Card Start -->
             	<c:forEach var="i" items="${products.content}">
             		<div class="col-lg-4">

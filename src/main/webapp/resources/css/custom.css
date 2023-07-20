@@ -1405,13 +1405,12 @@ st-main 상품 section
 	border-radius: 50%;
 	height: 80px;
 	width: 80px;
-	border: 1px solid black;
 }
 
 
 /* 
 ---------------------------------------------
-product, creator 리스트 제목 부분 
+product, creator 리스트 제목 부분 + empty-search부분
 --------------------------------------------- 
 */
 
@@ -1420,6 +1419,19 @@ product, creator 리스트 제목 부분
   text-align: center;
   margin-bottom: 60px;
   margin-top: 80px;
+}
+
+.empty-search{
+	width: 100%;
+	text-align: center;
+}
+.empty-search p{
+	font-size: 20px;
+	font-weight: 600;
+	padding:30px;
+}
+.empty-search p span{
+	color: #e97d7d;
 }
 
 
