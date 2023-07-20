@@ -18,12 +18,15 @@ public class CommentService {
 	@Qualifier("commentRepository")
 	private CommentRepository commentRepository;
 	
+	@Autowired
+	private PostCommentListRepository postCommentListRepository;
+	
 	
 	// 작성
 	public void insertComment(CommentVO vo) {
-System.out.println("vopoid "+vo.getPostId());		
-System.out.println("void "+vo.getId());		
-System.out.println("voco "+vo.getContent());		
+		System.out.println("vopoid "+vo.getPostId());		
+		System.out.println("void "+vo.getId());		
+		System.out.println("voco "+vo.getContent());		
 		commentRepository.save(vo.getPostId(), vo.getId(), vo.getContent());
 	}
 	
@@ -33,9 +36,9 @@ System.out.println("voco "+vo.getContent());
 	}
 	
 	// 리스트 조회
-	public List<CommentVO> getCommentList(Long postId){
-System.out.println("colist postid "+postId);	
-		return commentRepository.findAllByPostId(postId);
+	public ArrayList<CommentVO> getCommentList(Long postId){
+		System.out.println("colist postid "+postId);	
+		return (ArrayList)commentRepository.findAllByPostId(postId);
 	}
 	
 	public Optional<UserVO> getUser(Long commentId) {
@@ -46,4 +49,10 @@ System.out.println("colist postid "+postId);
         }
         return Optional.empty();
     }
+	
+	
+	// 포스트 조회 시 포스트별 가장 최신 댓글 3개 출력
+	public List<PostCommentListVO> getPostCommentList(long postId){
+		return postCommentListRepository.findTop3ByPostIdOrderByCreDateDesc(postId);
+	}
 }

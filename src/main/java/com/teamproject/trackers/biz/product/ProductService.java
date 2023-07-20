@@ -158,7 +158,7 @@ public class ProductService {
 	}
 	
 	/* 스토어(크리에이터) 대표 상품 리스트 */
-	public List<ProductVO> getCreatorSignatureList(){
-		return productRepository.getCreatorSignatureList();
+	public List<ProductVO> getCreatorSignatureList(long id){
+		return productRepository.getCreatorSignatureList(id);
 	}
 }

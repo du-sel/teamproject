@@ -12,14 +12,15 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(name = "postimg")
 public class PostIMGVO { 	
 	@Id
+	@Column(name = "img_id")
+	private long id;
+	
 	@Column(name = "post_id")
 	private long postId;
 	
 	@Column(name = "img")
 	private String postimg;
 	
-	@Column(name = "id")
-	private Long id;
 	
 	@Transient
 	private MultipartFile uploadFile;
@@ -31,7 +32,12 @@ public class PostIMGVO {
 		this.uploadFile = uploadFile;
 	}
 	
-	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public long getPostId() {
 		return postId;
 	}
@@ -44,10 +50,6 @@ public class PostIMGVO {
 	public void setPostimg(String postimg) {
 		this.postimg = postimg;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}	
+	
+	
 }

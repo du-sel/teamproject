@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ public class PostService {
 	@Autowired
 	@Qualifier("postRepository")
 	private PostRepository postRepository;
+	@Autowired
+	private PostInfoListRepository postInfoListRepository;
 
 	   
 	//작성  
@@ -44,8 +48,21 @@ public class PostService {
 	    }
 		
 	//리스트 조회
-		public ArrayList<PostVO> getPostList(){
+	/*	public ArrayList<PostVO> getPostList(){
 			return (ArrayList)postRepository.findAll();
-		}
+		}*/
+		
+	//리스트 조회(전체)
+	public Page<PostInfoListVO> getPostList(Pageable pageable){
+		return postInfoListRepository.findAll(pageable);
+	}
+	// 리스트 조회(전체+검색)
+	public Page<PostInfoListVO> getSearchPostList(String keyword, Pageable pageable){
+		return postInfoListRepository.findByContentContaining(keyword, pageable);
+	}
+	// 리스트 조회(메뉴 선택)
+	//public Page<PostVO> getMenuList(String menu, String keyword, Pageable pageable){
+		//return postRepository.findAll();
+	//}
 }
 
