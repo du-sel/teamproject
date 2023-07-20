@@ -168,4 +168,12 @@ public class ProductService {
 		return productlistRepository.findAllById(id, pageable);
 	}
 	
+	//-----------------------------------------------정희
+	
+		/* 상품 삭제 */
+		public void deleteProduct(long p_id) {
+	        // 상품 삭제 로직을 여기에 작성합니다.
+	        // 상품 ID로 상품을 조회하고, 조회된 상품을 삭제합니다.
+	        productRepository.deleteById(p_id);
+	    }
 }

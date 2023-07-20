@@ -23,5 +23,9 @@ public interface ProductRepository extends JpaRepository<ProductVO, Long> {
 	List<ProductVO> getCreatorSignatureList(@Param("id") long id);	
 	
 	// 인기 크리에이터 대표 상품 조회
-	ProductVO findTopByIdAndSignatureOrderByRatingDescCreDateDesc(long id, boolean signature);	
+	ProductVO findTopByIdAndSignatureOrderByRatingDescCreDateDesc(long id, boolean signature);
+	
+	//-------------------------------------정희	
+		// 상품 삭제
+	    void deleteProductById(long pid);
 }
