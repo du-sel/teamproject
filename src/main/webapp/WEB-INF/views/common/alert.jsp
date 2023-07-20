@@ -9,12 +9,17 @@
 <body onload="alert_exe('${alert_str}', '${alert_path}', '${alert_flag} }');">
 	<script>
 		function alert_exe(str, path, flag){
-			console.log(str);
-			console.log(path);
-			
 			alert(str);
+			if(flag){
+				location.href = path;	// 정상 실행
+			}
+			else{
+				history.go(-1);
+			}
 			
-			location.href = path;		// 정상 실행
+			
+			
+					
 		}
 	</script>
 </body>
