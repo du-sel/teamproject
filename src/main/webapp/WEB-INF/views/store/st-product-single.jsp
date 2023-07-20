@@ -7,6 +7,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 
+
 <script>
 
 // p_id 컨트롤러로 넘겨주기
@@ -97,9 +98,9 @@ function goPurchase() {
 	                    </div>
 	                    <div class="buy-content">                        
 	                        <div class="d-flex justify-content-center">
-	                        	<form:form name="cart" id="cart" action="/store/carts/${product.pid }" method="post">
-   									<button>장바구니</button>
-   								</form:form>
+	                        	<%-- <form:form name="cart" id="cart" action="/store/carts/${product.pid }" method="post"> --%>
+   									<button type="button" onclick="goCart(${product.pid })">장바구니</button>
+   								<%-- </form:form> --%>
    								
    								<button onclick="goPurchase()">바로 구매</button> 								
 	      					</div>

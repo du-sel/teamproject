@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
@@ -231,6 +232,7 @@
 					</div>
 				</div>
 					
+
 				<c:if test="${p.id eq user_id}">
 					<form action="/community/posts/${p.postId}" method="post">
 					 	<input type="hidden" name="_method" value="DELETE"/>
@@ -275,7 +277,7 @@
 								    	</c:otherwise>
 							    	</c:choose>
 								</form>
-							</div>
+							</div>	
 						</div>
 					</div>
 				</footer>

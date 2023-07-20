@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -123,6 +124,7 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 		model.addAttribute("userinfo",postService.getUser(postId).get());	
 		model.addAttribute("post", postService.getPost(postId).get());
 		//model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
+
 		return "community/co-post";
 	}
 	
