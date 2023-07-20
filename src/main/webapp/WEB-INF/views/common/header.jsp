@@ -168,8 +168,8 @@
 			                          		<div class="scroll-to-section"><a href="/profiles">마이프로필</a></div>
 										</c:when>
 										<c:otherwise> 
-											<div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
-	                          				<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div>
+											<div class="scroll-to-section sign-in-menu" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
+	                          				<div class="scroll-to-section sign-up-menu" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div>
 	                          			</c:otherwise>
 									</c:choose>
 	                            </div>
