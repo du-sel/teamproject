@@ -48,8 +48,6 @@ function confirmDelete(obj) {
 					},
 					error: function(message) { }
 				})
-					
-	        
 	        
 	    });
 		$('#total-price').text(numberWithCommas(total_price));
