@@ -2239,7 +2239,7 @@ cart
 }
 #cart .purchase:hover{
 	color: #fff;
-	background-color: #e97d7d;
+	background-color: #586579;
 }
 
 #cart .form-check div{
@@ -2247,6 +2247,10 @@ cart
 	width: 17px;
 	height: 17px;
 	line-height: 0;
+}
+
+#cart .cart-empty {
+	margin: 50px 0 150px;
 }
 
 
@@ -2365,6 +2369,161 @@ cart
 		right: 45px;
 		top: 10px;
 	}
+}
+
+
+/* 
+---------------------------------------------
+purchase 구매하기
+--------------------------------------------- 
+*/
+
+#purchase .notice-content {
+	margin: 70px 0 100px;
+}
+#purchase .notice-content p {
+	padding: 15px;
+	background: #f2f2f6;
+	border-radius: 10px;
+}
+#purchase .notice-content .fa-exclamation-circle {
+	color: #b8b8c4;
+	margin: 0 10px;
+}
+
+#purchase .page-title {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	text-align: center;
+	border-bottom: 3px dotted #e4e4eb;
+	-webkit-transition: all .05s ease 0s;
+	-moz-transition: all .05s ease 0s;
+	-o-transition: all .05s ease 0s;
+	transition: all .05s ease 0s;
+}
+#purchase .down-content *{
+	padding: 5px 0;
+	margin: 3px 0;
+}
+#purchase .thumb img{
+	width:100%;
+	height:auto;
+}
+#purchase .total-items {
+	margin-left: 10px;
+	margin-bottom: 15px;
+}
+#purchase .info{
+	padding: 30px 0;
+	border-radius: 10px;
+	border: 1px solid #e4e4eb;
+	margin-bottom: 20px;
+}
+#purchase .info .row{
+	margin: 0 auto;
+}
+#purchase .info .thumb:hover{
+	opacity:0.6;
+}
+#purchase .info a{
+	text-decoration: none;
+}
+#purchase .info a:hover{
+	color: #b8b8c4;
+}
+#purchase .container .row{
+	height: max-content;
+}
+#purchase .product-info{
+	height: 100%;
+}
+
+
+@media (min-width: 577px){
+	#purchase .info .row {
+		margin: 0 10px;
+	}
+}
+@media (max-width: 576px){
+	#purchase .info .row {
+		margin: 0 auto;
+	}
+}
+
+#purchase .product-info {
+	height: 100%;
+}
+
+#purchase .buyer-info-title {
+	padding: 40px 0;
+	border-top: 1px solid #e4e4eb;
+	margin-top: 50px;
+	justify-content: center;
+}
+#purchase .buyer-info-title h5 {
+	text-align: center;
+}
+#purchase .buyer-info {
+	margin: 20px 0;
+}
+
+
+
+#purchase .terms {
+	margin-top: 50px;
+	margin-bottom: 30px;
+	padding-top: 30px;
+	border-top: 1px solid #e4e4eb;
+}
+#purchase .terms h6 {
+	margin-bottom: 20px;
+}
+#purchase .terms li {
+	font-size: 0.8rem;
+}
+#purchase .accept-terms-container {
+	margin-bottom: 60px;
+}
+#purchase #accept-terms {
+	margin-right: 10px;
+}
+
+
+
+
+
+
+/* 결제 박스 */
+#purchase .payment{
+	border: 1px solid #e4e4eb;
+	min-height: 6rem;
+	padding: 1.5rem 1rem;
+	border-radius: 10px;
+}
+#purchase .payment div{
+	margin: 8px 0;
+}
+#purchase .payment .total-price-span{
+	font-weight: 600;
+}
+#purchase .purchase{
+	height: 60px;
+	background-color: #e4e4eb;
+	border: none;
+	font-size: 1.3rem;
+	font-weight: 600;
+	border-radius: 10px;
+}
+#purchase .purchase:hover{
+	color: #fff;
+	background-color: #e97d7d;
+}
+
+#purchase .form-check div{
+	position: relative;
+	width: 17px;
+	height: 17px;
+	line-height: 0;
 }
 
 

@@ -120,7 +120,6 @@ public class ProductController {
 	@RequestMapping(value="/products/price/{p_id}", method=RequestMethod.GET)
 	@ResponseBody
 	public ProductPageVO getProductPrice(@PathVariable("p_id") String p_id, Model model) throws Exception {
-		System.out.println("AJAX");
 		ProductPageVO product = productService.getProductPage(Long.parseLong(p_id));
 		
 		if(product == null) {
@@ -128,9 +127,7 @@ public class ProductController {
 			throw new Exception("존재하지 않는 상품입니다");
 		}
 		
-		int final_price = product.getPrice()-product.getSale();
-		System.out.println(final_price);
-		
+		int final_price = product.getPrice()-product.getSale();		
 		return product;
 	}
 	
