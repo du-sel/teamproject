@@ -143,11 +143,6 @@
                         	<c:forEach var="bc" items="${b_creators}" varStatus="status">
 	                            <div class="item">
 	                                <div class="thumb" onclick="location.href='/store/products/${b_signatures[status.index].pid}'">
-	                                    <div class="hover-content">
-	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
-	                                        </ul>
-	                                    </div>
 	                                    <img src="${b_signatures[status.index].thumbnail}" alt="대표 상품 썸네일">
 	                                </div>
 	                                <div class="down-content d-flex" onclick="location.href='/profiles/${bc.url}'">
