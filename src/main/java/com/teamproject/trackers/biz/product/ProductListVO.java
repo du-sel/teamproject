@@ -49,6 +49,9 @@ public class ProductListVO {
 	private boolean illustration;
 	private boolean photo;
 	
+	// 크리에이터 id
+	private long id;
+	
 	
 	public long getPid() {
 		return pid;
@@ -181,6 +184,18 @@ public class ProductListVO {
 	}
 	public void setPhoto(boolean photo) {
 		this.photo = photo;
+	}
+	public boolean isWhole() {
+		return whole;
+	}
+	public void setWhole(boolean whole) {
+		this.whole = whole;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 }
