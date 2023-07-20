@@ -12,9 +12,12 @@ public class FollowService {
 	private FollowRepository followRepository;
 
 	
-	public FollowVO getFollower(long id, String url) {
-		return followRepository.getFollower(id, url);
-		//return null;
+	public FollowVO getFollow(long id, String url) {
+		return followRepository.getFollow(id, url);
+	}
+
+	public Object getFollower(long id) {
+		return followRepository.countbyId(id);
 	}
 	
 	

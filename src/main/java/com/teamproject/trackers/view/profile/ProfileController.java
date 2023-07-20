@@ -30,14 +30,17 @@ public class ProfileController {
 	
 	@RequestMapping(value ="/{url}", method = RequestMethod.GET)
 	public String getProfile(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo) {
-		/*
-		id = Long.parseLong(session.getId());
-		System.out.println(id);
-		if(id != 0) {
-			model.addAttribute("follow", followService.getFollower(id, url));
+		
+		if(session.getAttribute("id") == null) {
+			model.addAttribute("id", profileService.getUser(url));
+		}else {
+			uvo.setId((long)session.getAttribute("id"));
+			model.addAttribute("follow", followService.getFollow(uvo.getId(), url));
+			model.addAttribute("id", profileService.getUser(url));
+			model.addAttribute("count",followService.getFollower(uvo.getId()));
 		}
-		*/
-		model.addAttribute("id",profileService.getUser(url));
+		
+		//System.out.println(uvo.getId()+"   - getId");
 		
         return "profiles/profile";
 	   
