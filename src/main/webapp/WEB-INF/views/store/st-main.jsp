@@ -47,7 +47,7 @@
 	                                <div class="thumb">
 	                                    <div class="hover-content">
 	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
+	                                            <li onclick="preventDefaultGoCart(event, ${bp.pid})"><i class="fa fa-shopping-cart"></i></li>
 	                                        </ul>
 	                                    </div>
 	                                    <img src="${bp.thumbnail}" alt="상품 썸네일">
@@ -96,7 +96,7 @@
 	                                <div class="thumb">
 	                                    <div class="hover-content">
 	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
+	                                            <li onclick="preventDefaultGoCart(event, ${rp.pid})"><i class="fa fa-shopping-cart"></i></li>
 	                                        </ul>
 	                                    </div>
 	                                    <img src="${rp.thumbnail}" alt="상품 썸네일">
