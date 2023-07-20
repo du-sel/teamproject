@@ -144,6 +144,8 @@ public class PurchaseController {
 		
 		// List형태로  model에 담기
 		model.addAttribute("infolist", infolist);
+		// 회원정보도 model에 한번 더 담아주기...?
+		model.addAttribute("user", session.getAttribute("user"));
 		
 		return "store/st-purchase";
 	}
