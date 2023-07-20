@@ -241,7 +241,7 @@
 		let st_menu = $('.header-area .store-menu');
 		
 		// 일단 임시 URI로 시험 적용
-		if(path.includes('community')) {
+		if(path.includes('community') || path.includes('profiles') || path.includes('users')) {
 			$(st_menu).css('visibility', 'hidden');
 			$(st_menu).addClass('hidden');
 			return;
