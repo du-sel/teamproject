@@ -17,9 +17,13 @@ function goCart(p_id) {
 		}
 
 	})
-
 }
 
+function preventDefaultGoCart(e, p_id) {
+
+	e.stopPropagation();
+	goCart(p_id);
+}
 
 
 

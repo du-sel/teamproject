@@ -149,11 +149,12 @@ console.log(event.target.files.length);
 				  
 				  
 				  
-				  var sessionId = document.getElementById('sessionId').value;
+				  
+				  
 				  /* 댓글 input창 보여주기 */
 				  function showCommentInput(elem) { 
-				  	 
-console.log("sessionId "+sessionId);				  	 
+						var sessionId = document.getElementById('sessionId').value;				  	 
+console.log("sessionId 2"+sessionId);				  	 
 					  	if(sessionId != null){ /* 세션에 id있다면 토글 */
 					  	
 					  		const commentInput = $(elem).closest("footer").find(".comment-input");
@@ -182,5 +183,15 @@ console.log("sessionId "+sessionId);
 					}
 				  }
 	  
-	  
+	  			
+	  			function checkDeletePost() {
+	  				if(confirm('삭제하시겠습니까?')){
+	  					document.getElementById('deletePost').submit();
+	  				}else{
+	  					return false;
+	  				}
+	  			}
+	  			
+	
+
 	  

@@ -502,8 +502,7 @@ public class ProductController {
     
     
     
-    /*----------------정희 추가-----------------*/
-    /*
+    /*---------------------------------------------------정희 추가
 
     // 상품 수정 페이지
     @GetMapping("/products/{p_id}/edit")
@@ -519,8 +518,7 @@ public class ProductController {
             @RequestParam("name") String name,
             @RequestParam("price") int price,
             @RequestParam(value = "file", required = false) MultipartFile file) {
-    	*/
-/*
+   
         // 상품 수정 로직
         ProductVO product = productService.getProductById(p_id);
         if (product != null) {
@@ -537,36 +535,37 @@ public class ProductController {
 
         return "redirect:/store/st-products";
     }
+*/
 
-    // 상품 삭제
-    @PostMapping("/products/{p_id}/delete")
+    // 상품 삭제 처리
+    @RequestMapping(value = "/products/{p_id}", method = RequestMethod.DELETE)
     public String deleteProduct(@PathVariable("p_id") long p_id) {
-        // 상품 삭제 로직
-        //productService.deleteProduct(p_id);
-
-        return "redirect:/store/st-products";
+        System.out.println("1");
+    	// 상품 삭제 로직
+    	productService.deleteProduct(p_id);
+        return "redirect:/";
     }
+
     
-    /*----------------정희 추가-----------------*/
+
+//----------------------------------------------------정희 추가
 	
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
 	
 
     ////* 크리에이터 리스트 조회 & 정렬 & 검색 *////
 	@RequestMapping(value="/creators", method=RequestMethod.GET)
 	public String getCreatorList(int page, String sort, Model model, String keyword) {
 		
-		// 대표 상품 리스트 조회
-		List<ProductVO> p = productService.getCreatorSignatureList();
-		HashMap<Long, List<ProductVO>> signature = new HashMap<>();
-		for(ProductVO item : p) {
-			if(signature.get(item.getId()) != null) {
-				signature.get(item.getId()).add(item);
-			}else {
-				ArrayList<ProductVO> list = new ArrayList<>();
-				list.add(item);
-				signature.put(item.getId(), list);
-			}
-		}
 		
 		// 정렬 및 페이징 , 검색 처리
 		Page<CreatorListVO> list = null;
@@ -579,13 +578,25 @@ public class ProductController {
 			keyword = "";
 			list = productService.getCreatorList(pageable);		
 		}
+		
+		// 대표 상품 리스트 조회
+		HashMap<Long, List<ProductVO>> signature = new HashMap<>();
+		for(CreatorListVO c : list.getContent()) {
+			List<ProductVO> p = productService.getCreatorSignatureList(c.getId());
+			for(ProductVO item : p) {
+				if(signature.get(item.getId()) != null) {
+					signature.get(item.getId()).add(item);
+				}else {
+					ArrayList<ProductVO> s_list = new ArrayList<>();
+					s_list.add(item);
+					signature.put(item.getId(), s_list);
+				}
+			}
+		}
 
 		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
 		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
 		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
-		
-		//int startPage = Math.max(nowPage-1, 1);
-		//int endPage = Math.min(nowPage+2, list.getTotalPages());
 		
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPage", startPage);
