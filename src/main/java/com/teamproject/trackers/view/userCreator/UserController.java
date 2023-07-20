@@ -76,8 +76,10 @@ public class UserController {
 	@RequestMapping(value="/users/signin", method=RequestMethod.POST)
 	public String signin(String path, UserVO vo) throws IllegalAccessException{
 		if(userService.isUser(vo) != null) {
+
 			session.setAttribute("id", userService.isUser(vo).getId());
 			session.setAttribute("user", userService.isUser(vo));
+			
 			System.out.println("성공");
 		}
 		return "redirect:"+path;
