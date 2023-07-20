@@ -29,8 +29,8 @@ public class VerifyService {
 		
 	    
 	    Map<String, Object> map = new HashMap<>();
-	    map.put("imp_key", "");
-	    map.put("imp_secret", "");
+	    map.put("imp_key", "2683684427131538");
+	    map.put("imp_secret", "c8BLGUq15RxOKEEuKkHrpimIuaMK0mL4sJ5tPsaIDLddad9vKWAF9hIEltEjVDoPegGk4IrwCHW9A4cG");
 	    
 	   
 	    Gson var = new Gson();

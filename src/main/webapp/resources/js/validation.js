@@ -427,8 +427,6 @@ function modify_chk(path, idx){    		// 함수 사용 페이지, input 위치
 /*****insert-product 상품등록 필수값 체크*****/
 function insert_p_chk(frm) {
 
-	console.log("체크체크");
-
 	if($('#product-name').val() == '' || $('#product-name').val() == null){ 
 		alert("상품명을 입력해주세요.");
 		$('#product-name').focus();
@@ -505,3 +503,6 @@ function insert_p_chk(frm) {
 	frm.submit();
 	
 }
+
+
+
