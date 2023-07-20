@@ -50,6 +50,10 @@
 
     <!-- intro -->
     <script src="/resources/js/intro.js"></script>
+    
+    <!-- cart JS -->
+	<script src="/resources/js/cart.js"></script>
+	
 
 	<script>	
 		// 세자리 마다 콤마(,) 넣는 함수
