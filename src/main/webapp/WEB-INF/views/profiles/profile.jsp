@@ -135,14 +135,14 @@ function getCreatorProductList() {
 
 			
 			<div class="col-md-4 offset-md-1 col-lg-4">
-				<div class="nickname">${profile.name}</div>
+				<div class="nickname">${id.name}</div>
 				<div class="count">
 					팔로워  &nbsp;${count}명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;명
 				</div>
 				<br>
 			<!-- SNS 주소 -->
-				<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
-				<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+				<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${id.instagram}">&nbsp;${id.instagram}</a></div>
+				<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/${id.youtube}">&nbsp;${id.youtube}</a></div>
 				
 
 			</div>
@@ -593,7 +593,7 @@ function getCreatorProductList() {
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        ${profile.name} 구독을 취소하시겠습니까?
+		        ${id.name} 구독을 취소하시겠습니까?
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -612,7 +612,7 @@ function getCreatorProductList() {
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        ${profile.name} 팔로우을 취소하시겠습니까?
+		        ${id.name} 팔로우을 취소하시겠습니까?
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
