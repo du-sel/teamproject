@@ -21,6 +21,7 @@ public class CreatorController {
 	private CreatorService creatorService;
 	@Autowired
     private HttpSession session;
+	private AlertVO alert = new AlertVO();
 
 	/*
 	 * // 프로필 임시 연결
