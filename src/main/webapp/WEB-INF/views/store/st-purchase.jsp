@@ -120,7 +120,8 @@ function requestPay() {
     buyer_tel : '${user.tel}',
   }, function (rsp) { // callback
       if (rsp.success) {
-        alert("상품을 구매하셨습니다!");
+      	alert("상품을 구매하셨습니다!");
+      	location.href="/store/purchases?page=0";
       } else {
         alert(rsp.error_msg);
       }
