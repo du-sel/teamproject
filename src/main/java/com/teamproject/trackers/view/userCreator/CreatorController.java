@@ -21,13 +21,13 @@ public class CreatorController {
 	private CreatorService creatorService;
 	@Autowired
     private HttpSession session;
-	private AlertVO alert = new AlertVO();
-	
-	// 프로필 임시 연결
-	@RequestMapping(value="/profiles")
-	public String getProfile() {
-		return "/profile/profile";
-	}	
+
+	/*
+	 * // 프로필 임시 연결
+	 * 
+	 * @RequestMapping(value="/profiles") public String getProfile() { return
+	 * "/profiles/profile"; }
+	 */
 
 	
 	// 스토어 열기(크리에이터 등록)
