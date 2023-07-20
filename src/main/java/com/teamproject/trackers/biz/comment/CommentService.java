@@ -33,13 +33,13 @@ System.out.println("voco "+vo.getContent());
 	}
 	
 	// 리스트 조회
-	public ArrayList<CommentVO> getCommentList(Long postId){
+	public List<CommentVO> getCommentList(Long postId){
 System.out.println("colist postid "+postId);	
-		return (ArrayList)commentRepository.findAllByPostId(postId);
+		return commentRepository.findAllByPostId(postId);
 	}
 	
 	public Optional<UserVO> getUser(Long commentId) {
-        Optional<CommentVO> commentOptional = commentRepository.findById(commentId);
+        Optional<CommentVO> commentOptional = commentRepository.findById(commentId); 
         if (commentOptional.isPresent()) {
         	CommentVO commentVO = commentOptional.get();
             return commentRepository.findUserByUserId(commentVO.getId());
