@@ -3,6 +3,8 @@ package com.teamproject.trackers.view.community;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.teamproject.trackers.biz.comment.CommentService;
+import com.teamproject.trackers.biz.comment.CommentVO;
 import com.teamproject.trackers.biz.post.PostIMGService;
 import com.teamproject.trackers.biz.post.PostIMGVO;
 import com.teamproject.trackers.biz.post.PostService;
@@ -111,6 +114,7 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 		model.addAttribute("userinfo",postService.getUser(postId).get());	
 		model.addAttribute("post", postService.getPost(postId).get());
 		//model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
+
 		return "community/co-post";
 	}
 	
