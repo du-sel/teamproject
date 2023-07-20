@@ -244,6 +244,7 @@ scroll custom
 }
 .co .comment-date{
 	display: inline-block;
+	float:right;
 	text-align: right;
 	margin-left: 20px;
 }
@@ -258,7 +259,7 @@ scroll custom
 	margin-right:50px;
 }
 .co .comment-section{
-	padding-top: 40px;
+	padding-top: 50px;
 }
 
 /* 

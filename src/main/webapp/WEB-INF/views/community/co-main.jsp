@@ -281,7 +281,7 @@
 									<form action="/community/posts/${post.getPostId() }" method="post">										
 									 	<input type="hidden" name="_method" value="DELETE"/>
 									 	<%-- <input type="hidden" name="postId" value="${post.getPostId() }"/> --%>
-										<button type="submit" class="delete-post">삭제하기</button>
+										<button type="submit" class="delete-post" onclick="return checkDeletePost()">삭제하기</button>
 									</form>
 								</c:if>
 								<button class="comment-button" type="button" onclick="return showCommentInput(this)">댓글쓰기</button>
