@@ -11,6 +11,7 @@ public interface UserRepository extends JpaRepository<UserVO, Long> {
 	
 	// 로그인
 	UserVO findByEmailAndPassword(String email, String password);
+
 	
 	// 이름, 전화번호, url, sns url 수정
 	@Modifying(clearAutomatically = true)
@@ -33,4 +34,6 @@ public interface UserRepository extends JpaRepository<UserVO, Long> {
 	
 	// url 중복 확인
 	boolean existsByUrl(String url);
+
+
 }
