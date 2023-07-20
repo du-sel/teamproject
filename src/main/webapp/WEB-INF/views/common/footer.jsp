@@ -27,7 +27,7 @@
                 <div class="col-lg-3">
                     <h4>스토어</h4>
                     <ul>
-                        <li><a href="/store/products">상품</a></li>
+                        <li><a href="/store/products?page=0&sort=creDate&category=all">상품</a></li>
                         <li><a href="/store/creators?page=0&sort=creDate">크리에이터</a></li>
                     </ul>
                 </div>

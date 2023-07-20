@@ -2,8 +2,12 @@ package com.teamproject.trackers.biz.comment;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -13,26 +17,37 @@ import javax.persistence.TemporalType;
 public class CommentVO {
 	
 	@Id
-	private long comment_id;
+	@Column(name = "comment_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long commentid;
 	
-	private long post_id;
-	private long id;
+	@Column(name="post_id")
+	private Long postId;
+	
+	@JoinColumn(name = "id")
+	private Long id;
 	private String content;
 	
 	@Temporal(TemporalType.DATE)
-	private Date cre_date = new Date();
+	private Date cre_date;
 	
 	
-	public long getPost_id() {
-		return post_id;
+	public long getCommentid() {
+		return commentid;
 	}
-	public void setPost_id(long post_id) {
-		this.post_id = post_id;
+	public void setCommentid(long commentid) {
+		this.commentid = commentid;
 	}
-	public long getId() {
+	public Long getPostId() {
+		return postId;
+	}
+	public void setPostId(Long postId) {
+		this.postId = postId;
+	}
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getContent() {

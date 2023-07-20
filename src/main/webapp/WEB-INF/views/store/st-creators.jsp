@@ -39,6 +39,11 @@
 					</form>
 				</div>
 			
+				<c:if test="${(!empty keyword || keyword ne '') && creators.totalElements == 0}">
+					<div class="empty-search">
+						<p>'<span>${keyword}</span>' 검색 결과가 없습니다.</p>
+					</div>
+				</c:if>
 		        <!-- Creator Box Start -->
  		        <c:forEach var="c" items="${creators.content}">
 					<div class="col-lg-12 creator-card" onclick="location.href='/profiles/${c.url}'">

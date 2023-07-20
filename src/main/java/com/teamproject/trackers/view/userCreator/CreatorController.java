@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.teamproject.trackers.biz.common.AlertVO;
 import com.teamproject.trackers.biz.userCreator.CreatorService;
 import com.teamproject.trackers.biz.userCreator.CreatorVO;
 import com.teamproject.trackers.biz.userCreator.CreatorViewVO;
@@ -20,12 +21,14 @@ public class CreatorController {
 	private CreatorService creatorService;
 	@Autowired
     private HttpSession session;
+
 	/*
 	 * // 프로필 임시 연결
 	 * 
 	 * @RequestMapping(value="/profiles") public String getProfile() { return
 	 * "/profiles/profile"; }
 	 */
+
 	
 	// 스토어 열기(크리에이터 등록)
 	@RequestMapping(value="/store/creators", method=RequestMethod.POST)
@@ -36,8 +39,12 @@ public class CreatorController {
 		
 		creatorService.insertCreator(vo);
 		creatorService.updateUrlTel(view_vo);
-		
-		return "redirect:/profiles";
+
+		alert.setStr("스토어가 생성되었습니다.");
+		alert.setPath("/profiles");
+		alert.setFlag(true);
+
+		return "redirect:/common";
 	}
 	
 	// 스토어 조회
@@ -56,7 +63,11 @@ public class CreatorController {
 		creatorService.updateCreator(vo);
 		creatorService.updateUrl(vo);
 		
-		return "redirect:/profiles/creators";
+		alert.setStr("스토어 정보가 수정되었습니다.");
+		alert.setPath("/profiles/creators");
+		alert.setFlag(true);
+
+		return "redirect:/common";
 	}
 	
 		
@@ -65,7 +76,12 @@ public class CreatorController {
 	public String deleteCreator(CreatorVO vo) {
 		vo.setId((long)session.getAttribute("id"));
 		creatorService.deleteCreator(vo);
-		return "redirect:/store/main";
+		
+		alert.setStr("스토어 삭제가 완료되었습니다.");
+		alert.setPath("/store/main");
+		alert.setFlag(true);
+
+		return "redirect:/common";
 	}
 	
 	

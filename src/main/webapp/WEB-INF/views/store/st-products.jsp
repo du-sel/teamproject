@@ -45,6 +45,11 @@
          </main>        	
             <div class="row">
        
+       			<c:if test="${(!empty keyword || keyword ne '') && products.totalElements == 0}">
+					<div class="empty-search">
+						<p>'<span>${keyword}</span>' 검색 결과가 없습니다.</p>
+					</div>
+				</c:if>
  				<!-- Product Card Start -->
             	<c:forEach var="i" items="${products.content}">
             		<div class="col-lg-4">
@@ -122,6 +127,32 @@
     <!-- ***** Products Area Ends ***** -->
     
 </main>  
+
+<script>
+	$(() =>{
+		imgHeight();		
+	});
+
+	$(window).on('resize', function() {
+		imgHeight();
+	});
+	
+	function imgHeight(){
+		let img = $('#products .item .thumb img');
+		let w = $(window).width();
+		if(w < 576) { 		
+			img.css('height', w-30+"px");
+		}else if(w < 768){
+			img.css('height', "510px");
+		}else if(w < 992){
+			img.css('height', "690px");
+		}else if(w < 1200){
+			img.css('height', "289.98px");
+		}else{
+			img.css('height', "350px");
+		}
+	}
+</script>
     
 <jsp:include page="/WEB-INF/views/common/footer.jsp" /> 
     

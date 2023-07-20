@@ -50,6 +50,13 @@
 
 
 
+	<script>	
+		// 세자리 마다 콤마(,) 넣는 함수
+		function numberWithCommas(x) {
+			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+	</script>
+
     
     </head>
     
@@ -94,7 +101,8 @@
 		                                <a>상품</a>
 		                                <c:set var="ps" value="page=0&sort=creDate"/>
 		                                <ul>
-		                                	<li class="category" onclick="location.href='/store/products?${ps}&category=all'">페이지 별</li>
+		                                 	<li class="all"><a href="/store/products?${ps}&category=all">전체</a></li>
+		                                	<li class="category">페이지 별</li>
 		                                    <li><a href="/store/products?${ps}&category=whole">한달 세트</a></li>
 		                                    <li><a href="/store/products?${ps}&category=monthly">먼슬리</a></li>
 		                                    <li><a href="/store/products?${ps}&category=weekly">위클리</a></li>
@@ -105,7 +113,7 @@
 		                                    <li><a href="/store/products?${ps}&category=study">스터디</a></li>
 		                                    <li><a href="/store/products?${ps}&category=sticker">스티커</a></li>
 		                                    <li><a href="/store/products?${ps}&category=etc">그 외</a></li>
-		                                    <li class="category" onclick="location.href='/store/products?${ps}&category=all'">디자인 별</li>
+		                                    <li class="category">디자인 별</li>
 		                                    <li><a href="/store/products?${ps}&category=minimal">미니멀</a></li>
 		                                    <li><a href="/store/products?${ps}&category=illustration">일러스트</a></li>
 		                                    <li><a href="/store/products?${ps}&category=photo">포토</a></li>
@@ -147,9 +155,9 @@
 											<div id="user-menu" class="scroll-to-section submenu">
 			                          			<img src="/resources/images/baner-right-image-02.jpg" alt="프로필사진" id="profile-image">
 			                          			<ul>
-				                                    <li><a href="cart.do">장바구니</a></li>
+				                                    <li><a href="/store/carts">장바구니</a></li>
 				                                    <li><a href="news.do">내 소식</a></li>
-				                                    <li><a href="/store/purchases">구매 내역</a></li>
+				                                    <li><a href="/store/purchases?page=0">구매 내역</a></li>
 				                                    <li><a href="inquiry-history.do">문의 내역</a></li>
 				                                    <li><a href="/users?path=info">회원정보 변경</a></li>
 				                                    <li><a href="/users?path=pwd">비밀번호 변경</a></li>
@@ -160,8 +168,8 @@
 			                          		<div class="scroll-to-section"><a href="/profiles/${sessionScope.user.url}">마이프로필</a></div>
 										</c:when>
 										<c:otherwise> 
-											<div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
-	                          				<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div>
+											<div class="scroll-to-section sign-in-menu" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
+	                          				<div class="scroll-to-section sign-up-menu" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div>
 	                          			</c:otherwise>
 									</c:choose>
 	                            </div>

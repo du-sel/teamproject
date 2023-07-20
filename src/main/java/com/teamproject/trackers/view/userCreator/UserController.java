@@ -1,5 +1,8 @@
 package com.teamproject.trackers.view.userCreator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.annotation.SessionScope;
 
+import com.teamproject.trackers.biz.common.AlertVO;
 import com.teamproject.trackers.biz.userCreator.UserService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
@@ -23,6 +27,7 @@ public class UserController {
 	private UserService userService;
 	@Autowired
     private HttpSession session;
+	private AlertVO alert = new AlertVO();
 	
 	// 모달
 	@RequestMapping(value="/signin-modal")
@@ -41,21 +46,41 @@ public class UserController {
 		return "modal/store-create-modal";
 	}
 	
+	// alert창 페이지
+	@RequestMapping(value="/common")
+	public String test(Model model) {		
+		model.addAttribute("alert_str", alert.getStr());
+		model.addAttribute("alert_path", alert.getPath());
+		model.addAttribute("alert_flag", alert.isFlag());
+		
+		return "common/alert";
+	}
+	
+	
 	// 로그아웃
 	@RequestMapping(value="/users/logout")
 	public String logout(){
 		if(session.getAttribute("id") != null) {
 			session.invalidate();
+			
+			alert.setStr("로그아웃 되었습니다.");
+			alert.setPath("/");
+			alert.setFlag(true);
+
+			return "redirect:/common";
 		}
-		return "redirect:/store/main";		// 인덱스로?
+		
+		return "redirect:/";
 	}
 	
 	// 로그인
 	@RequestMapping(value="/users/signin", method=RequestMethod.POST)
 	public String signin(String path, UserVO vo) throws IllegalAccessException{
 		if(userService.isUser(vo) != null) {
+
 			session.setAttribute("id", userService.isUser(vo).getId());
 			session.setAttribute("user", userService.isUser(vo));
+			
 			System.out.println("성공");
 		}
 		return "redirect:"+path;
@@ -66,7 +91,12 @@ public class UserController {
 	public String insertUser(String path, UserVO vo){
 		
 		userService.insertUser(vo);
-		return "redirect:"+path;
+		
+		alert.setStr("회원가입이 완료되었습니다.");
+		alert.setPath(path);
+		alert.setFlag(true);
+		
+		return "redirect:/common";
 	}
 	
 	// 회원 정보 수정
@@ -75,7 +105,11 @@ public class UserController {
 		vo.setId((long)session.getAttribute("id"));
 		userService.updateUser(vo);
 		
-		return "redirect:/users?path=info";
+		alert.setStr("회원정보가 수정되었습니다.");
+		alert.setPath("/users?path=info");
+		alert.setFlag(true);
+		
+		return "redirect:/common";
 	}
 	
 	
@@ -85,7 +119,11 @@ public class UserController {
 		vo.setId((long)session.getAttribute("id"));
 		userService.updateUserPwd(vo);
 	 
-		return "redirect:/users?path=pwd";
+		alert.setStr("비밀번호가 변경되었습니다.");
+		alert.setPath("/users?path=ipwdnfo");
+		alert.setFlag(true);
+		
+		return "redirect:/common";
 	}
 
 	
@@ -96,8 +134,12 @@ public class UserController {
 		
 		userService.deleteUser(vo);
 		session.invalidate();
+
+		alert.setStr("회원탈퇴가 완료되었습니다.");
+		alert.setPath("/store/main");
+		alert.setFlag(true);
 		
-		return "redirect:/store/main";
+		return "redirect:/common";
 	}
 	
 	// 회원 조회
@@ -112,6 +154,13 @@ public class UserController {
 	
 	
 	// 유효성 검사
+	// 로그인 성공 유무 검사(signin-modal.jsp)
+	@RequestMapping(value = "/validation/signin", method=RequestMethod.POST)
+	@ResponseBody
+	public boolean validateSignin(UserVO vo) {
+		return userService.validateSignin(vo);
+	}
+	
 	// 이메일 중복 검사(signup-modal.jsp)
 	@RequestMapping(value = "/validation/email", method=RequestMethod.GET)
 	@ResponseBody
@@ -127,7 +176,7 @@ public class UserController {
 	}
 	
 	// 기존 비밀번호 체크(user-pwd-modify.jsp)
-	@RequestMapping(value = "/validation/pwd", method=RequestMethod.GET)
+	@RequestMapping(value = "/validation/pwd", method=RequestMethod.POST)
 	@ResponseBody
 	public boolean validateUserPwd(@RequestParam("old_password") String password, UserVO vo) {
 		vo.setId((long)session.getAttribute("id"));

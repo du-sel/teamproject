@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.teamproject.trackers.biz.common.AlertVO;
 import com.teamproject.trackers.biz.drive.DriveController;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoService;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoVO;
 
 
 @Controller
+@RequestMapping("/store")
 public class SubscribeController {
 
 	@Autowired
@@ -31,9 +33,10 @@ public class SubscribeController {
 	private SubscribeInfoService subscribeInfoService;
 	@Autowired
     private HttpSession session;
+	private AlertVO alert = new AlertVO();
 	
 	// 구독 정보 조회
-	@RequestMapping(value="/store/subscribes", method=RequestMethod.GET)
+	@RequestMapping(value="/subscribes", method=RequestMethod.GET)
 	public String getCreator(SubscribeInfoVO vo, Model model) {
 		vo.setId((long)session.getAttribute("id"));
 		
@@ -51,7 +54,7 @@ public class SubscribeController {
 	}
 	
 	// 구독 활성화(등록 및 수정)
-	@RequestMapping(value="/store/subscribes", method=RequestMethod.POST)
+	@RequestMapping(value="/subscribes", method=RequestMethod.POST)
 	public String updateSubscribeInfo(SubscribeInfoVO vo, @RequestParam("mfile") MultipartFile mfile) throws Exception {
 		vo.setId((long)session.getAttribute("id"));
 		SubscribeInfoVO infoVO = subscribeInfoService.getSubscribeInfo(vo);
@@ -59,17 +62,22 @@ public class SubscribeController {
 		if(infoVO == null) {		// 등록
 			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장
 			subscribeInfoService.insertSubscribeInfo(vo);
+			alert.setStr("구독이 활성화되었습니다.");
 		}else {
 			//drive.SubscribeDelete(infoVO);						// 저번 달 파일 삭제
 			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장
-			subscribeInfoService.updateSubscribeInfo(vo);			// 수정
+			subscribeInfoService.updateSubscribeInfo(vo);
+			alert.setStr("구독 정보가 업데이트되었습니다.");
 		}
+
+		alert.setPath("store/subscribes");
+		alert.setFlag(true);
 		
-		return "redirect:/store/subscribes";
+		return "redirect:/common";
 	}
 	
 	// 구독 비활성화(삭제)
-	@RequestMapping(value="/store/subscribes", method=RequestMethod.DELETE)
+	@RequestMapping(value="/subscribes", method=RequestMethod.DELETE)
 	public String deleteSubscribeInfo(SubscribeInfoVO vo) throws Exception {
 		vo.setId((long)session.getAttribute("id"));
 		
@@ -77,6 +85,10 @@ public class SubscribeController {
 		
 		subscribeInfoService.deleteSubscribeInfo(vo);
 		
-		return "redirect:/store/subscribes";
+		alert.setStr("구독이 비활성화되었습니다.");
+		alert.setPath("/store/subscribes");
+		alert.setFlag(true);
+
+		return "redirect:/common";
 	}
 }

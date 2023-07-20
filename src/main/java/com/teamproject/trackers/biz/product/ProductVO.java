@@ -29,15 +29,10 @@ public class ProductVO {
 	private String file;
 	private int rating;
 	@Temporal(TemporalType.DATE)
-	private Date cre_date;
+	@Column(name="cre_date")
+	private Date creDate;
 	private boolean signature;
 
-	/*
-	@Transient
-	private MultipartFile thumbnail_f;
-	@Transient
-	private MultipartFile file_f;
-	*/
 	
 	public long getPid() {
 		return pid;
@@ -87,11 +82,11 @@ public class ProductVO {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	public Date getCre_date() {
-		return cre_date;
+	public Date getCreDate() {
+		return creDate;
 	}
-	public void setCre_date(Date cre_date) {
-		this.cre_date = cre_date;
+	public void setCreDate(Date creDate) {
+		this.creDate = creDate;
 	}
 	public boolean isSignature() {
 		return signature;

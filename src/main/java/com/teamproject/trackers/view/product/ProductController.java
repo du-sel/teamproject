@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -16,12 +17,16 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.google.gson.JsonObject;
 import com.teamproject.trackers.biz.drive.DriveController;
 import com.teamproject.trackers.biz.product.CreatorListVO;
+import com.teamproject.trackers.biz.product.ProductPageVO;
 import com.teamproject.trackers.biz.product.ProductListVO;
-import com.teamproject.trackers.biz.product.DesignCategoryVO;
-import com.teamproject.trackers.biz.product.PageCategoryVO;
-import com.teamproject.trackers.biz.product.ProductDetailVO;
+import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryVO;
+import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryVO;
+import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
+import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryVO;
+import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryVO;
+import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,6 +35,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -69,21 +76,59 @@ public class ProductController {
 	
 	
 	
-	////* 스토어 메인 띄우기 *////
-	@RequestMapping(value="/main", method=RequestMethod.GET)
-	public String stMain() {
-		return "store/st-main";
+    ////* 스토어 메인 띄우기 *////
+    @RequestMapping(value="/main", method=RequestMethod.GET)
+    public String stMain(Model model) {
+    	
+    	List<CreatorListVO> b_creators = productService.getBestCreator();
+    	List<ProductVO> b_signatures = new ArrayList<ProductVO>();
+    	for(CreatorListVO c : b_creators) {			// 대표상품 저장
+    		b_signatures.add(productService.getBestSignature(c.getId()));
+    	}
+    	
+    	model.addAttribute("b_products", productService.getBestProduct());		// 베스트 상품 최대 5개
+    	model.addAttribute("r_products", productService.getRecentProduct());	// 최신 상품 최대 5개
+    	model.addAttribute("b_creators", b_creators);							// 인기 크리에이터 최대 5명
+    	model.addAttribute("b_signatures", b_signatures);						// 인기 크리에이터 대표상품
+    	
+    	return "store/st-main";
+    }
+    
+	////* main 없이 입력할 경우에도 스토어 메인 띄우기 *////
+	@RequestMapping(value="", method=RequestMethod.GET)
+	public String stMain2() {
+		return "redirect:/store/main";
 	}
 
-	
-	
 	////* 상품 상세 조회 *////
 	@RequestMapping(value="/products/{p_id}", method=RequestMethod.GET)
-	public String getProduct(@PathVariable("p_id") String p_id) {
-		System.out.println("getProduct() 실행");
-		System.out.println("p_id: "+p_id);
-	
+	public String getProduct(@PathVariable("p_id") String p_id, Model model) throws Exception {
+		
+		ProductPageVO product = productService.getProductPage(Long.parseLong(p_id));
+		
+		if(product == null) {
+			// 해당 id의 상품이 존재하지 않는 경우
+			throw new Exception("존재하지 않는 상품입니다");
+		}
+		
+		model.addAttribute("product", product);	
+		
 		return "store/st-product-single";
+	}
+	
+	////* 상품 상세 조회 JSON *////
+	@RequestMapping(value="/products/price/{p_id}", method=RequestMethod.GET)
+	@ResponseBody
+	public ProductPageVO getProductPrice(@PathVariable("p_id") String p_id, Model model) throws Exception {
+		ProductPageVO product = productService.getProductPage(Long.parseLong(p_id));
+		
+		if(product == null) {
+			// 해당 id의 상품이 존재하지 않는 경우
+			throw new Exception("존재하지 않는 상품입니다");
+		}
+		
+		int final_price = product.getPrice()-product.getSale();		
+		return product;
 	}
 	
 	
@@ -99,13 +144,13 @@ public class ProductController {
 		if(!category.equals("all")) {
 			// 정렬
 			if(sort.equals("creDate")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, "cre_date"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, "cre_date"));
 			}else if(sort.equals("highprice")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, "sale_price"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, "sale_price"));
 			}else if(sort.equals("lowprice")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.ASC, "sale_price"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.ASC, "sale_price"));
 			}else {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
 			}
 			
 			// 검색 x 경우
@@ -115,11 +160,11 @@ public class ProductController {
 		}else {
 			// 정렬
 			if(sort.equals("highprice")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, "salePrice"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, "salePrice"));
 			}else if(sort.equals("lowprice")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.ASC, "salePrice"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.ASC, "salePrice"));
 			}else {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, sort));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, sort));
 			}
 			
 			// 검색
@@ -194,14 +239,14 @@ public class ProductController {
 		
 		// 썸네일 저장
 		if(!thumbnail_f.isEmpty()) {
-			thumbnail = saveFile(thumbnail_f, "thumbnail\\", req);
+			thumbnail = saveFile(thumbnail_f, "thumbnail/", req);
 			//System.out.println("저장된 thumbnail: "+thumbnail);
 		}
 		
 		// 파일 구글드라이브 저장
 		if(!file_f.isEmpty()) {
 			//file = drive.uploadProductFile(file_f);
-			file = saveFile(file_f, "file\\", req);
+			file = saveFile(file_f, "file/", req);
 			// 일단 일반 폴더에 저장
 			System.out.println("저장된 file: "+file);
 		}
@@ -212,6 +257,10 @@ public class ProductController {
 		vo.setId(id);
 		vo.setThumbnail(thumbnail);
 		vo.setFile(file);
+		
+		// 현재 날짜 저장
+		LocalDate now = LocalDate.now();
+		vo.setCreDate(Date.valueOf(now));
 		
 		// 상품 등록 로직
 		productService.insertProduct(vo);
@@ -272,6 +321,8 @@ public class ProductController {
 					break;
 				}
 	    	}   	
+    	} else {
+    		
     	}
     	return vo;
     }
@@ -499,7 +550,8 @@ public class ProductController {
     /*----------------정희 추가-----------------*/
 	
 	
-	// 크리에이터 리스트 조회 & 정렬 & 검색
+
+    ////* 크리에이터 리스트 조회 & 정렬 & 검색 *////
 	@RequestMapping(value="/creators", method=RequestMethod.GET)
 	public String getCreatorList(int page, String sort, Model model, String keyword) {
 		
@@ -518,7 +570,7 @@ public class ProductController {
 		
 		// 정렬 및 페이징 , 검색 처리
 		Page<CreatorListVO> list = null;
-		Pageable pageable = PageRequest.of(page, 1, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+		Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
 		
 		// 검색
 		if(keyword != null) { 		// 검색 한 경우
