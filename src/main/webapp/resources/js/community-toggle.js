@@ -1,4 +1,3 @@
-
 		$( document ).ready( function() {
 			$( 'button.comment' ).click( function() {
 			$( '.divcomment' ).slideToggle();
@@ -145,25 +144,54 @@ console.log(event.target.files.length);
 				      $(this).find(".like-count").text(likeCount);
 				    });
 				  });
+				  
+				  
+				  
+				  
+				  
+				  
+				  
 				  /* 댓글 input창 보여주기 */
-				  function showCommentInput(elem) {
-				    const commentInput = $(elem).closest(".footer").find(".comment-input");
-				    commentInput.toggle();
+				  function showCommentInput(elem) { 
+						var sessionId = document.getElementById('sessionId').value;				  	 
+console.log("sessionId 2"+sessionId);				  	 
+					  	if(sessionId != null){ /* 세션에 id있다면 토글 */
+					  	
+					  		const commentInput = $(elem).closest("footer").find(".comment-input");
+					    	commentInput.toggle();
+					  	}else{ /* 세션에 id없다면 alert 로그인필요함 알림 */
+					  		alert("댓글을 작성하려면 로그인이 필요합니다.");
+					  		return false;
+					  	}
+				     
 				  }
 				  /* 댓글 추가 */
 				  function addComment() {
 				    const commentText = $("#comment-text").val();
 				    if (commentText.trim() !== "") {
-				      const commentItem = $("<li>").text(commentText);
-				      $("#comment-list").append(commentItem);
-				      $("#comment-text").val("");
+				    //  const commentItem = $("<li>").text(commentText);
+				    //  $("#comment-list").append(commentItem);
+				    //  $("#comment-text").val("");
 				    // 댓글 개수 증가
 				    const commentCount = $(".comment-count-number");
 				    let count = parseInt(commentCount.text().trim());
 				    count++;
 				    commentCount.text(count);
+				    $("#insertcomment").submit(); 
+		
+				    
 					}
 				  }
 	  
-	  
+	  			
+	  			function checkDeletePost() {
+	  				if(confirm('삭제하시겠습니까?')){
+	  					document.getElementById('deletePost').submit();
+	  				}else{
+	  					return false;
+	  				}
+	  			}
+	  			
+	
+
 	  

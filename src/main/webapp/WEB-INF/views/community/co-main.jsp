@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-
+  
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
 	<main id="co-main" class="row" style="margin-top: 200px">
@@ -42,7 +42,7 @@
 								<a href="#menu">내가 좋아요한 포스트</a>
 							</li>
 						</ul>
-						<form id="sidebar-search" class="d-flex justify-content-start" method="get" action="#">
+						<!-- <form id="sidebar-search" class="d-flex justify-content-start" method="get" action="#">
 							<div class="d-flex justify-content-between">
 								<input class="form-control" type="text" name="co_keyword" placeholder="Search" />
 								<div class="d-flex flex-column justify-content-center">
@@ -50,7 +50,7 @@
 									<input id="co-search" type="submit" value="검색">
 	                  			</div>
 	                  		</div>
-		           		</form>
+		           		</form> -->
 					</nav> 
 				</section>
 	 
@@ -141,28 +141,29 @@
 				</section>
 			</div>
 		</section>
+		
 		<!-- Main -->
-		<div id="main" class="col-lg-7" > <!-- style="float: right;" -->
-			
-		<c:if test="${!empty sessionScope.id}">
-			<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
-				<form action="/community/posts" method="post" name="post">
+		<div id="main" class="col-lg-7 m-auto" > <!-- style="float: right;" -->
+		
+		<c:set var="user_id" value="${sessionScope.id }"/>	
+		<c:if test="${!empty user_id}">
+			<article class="post">
+				<form action="/community/posts" method="post" name="post" enctype="multipart/form-data">
 					<!-- <input type="hidden" name="_method" value="post"> -->
-					<input type="hidden" name="id" value="${sessionScope.id}">
+					<input type="hidden" id="sessionId" name="id" value="${user_id}">
 					<div>
 						<div class="header">
 							<div class="meta">
-								<a href="#" class="author"><img src="${user.getProfile_img() }" alt="" />&nbsp;&nbsp;
-									<span class="name"><div class="author">${user.getName() }</div></span>
+								<a href="#" class="author"><img src="${sessionScope.user.profile_img}" alt="프로필 사진" />&nbsp;&nbsp;
+									<span class="name"><div class="author">${sessionScope.user.name}</div></span>
 								</a>
 								<button class="insertpost inserticon" type="button"><img alt="" src="/resources/images/icon-insertpost.png"></button>
 							</div>
 						</div>
 					</div>
 	
-				
-				   <div class="col-12">
-				   		
+				 
+				   		<div class="col-12">
 							<div class="submitpost col-12">
 								<textarea id="co-textarea" name="content" class="col-11" rows="2"></textarea>
 								<input type="text" name="p_id" id="p_id" placeholder="태그 입력">
@@ -172,8 +173,8 @@
 										<p></p>
 									</div>
 									<div id="thumb-preview" class="thumb-preview"></div>
-									<input type="file" accept="image/*" name="post_img" id="thumbnail" 
-											onchange="imgPreview(event);" multiple="multiple" enctype="multipart/form-data">
+									<!-- < input type="file" accept="image/*" name="post-img" id="thumbnail" 
+											onchange="imgPreview(event);" multiple="multiple" > -->
 								</div>
 								<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
 							</div>
@@ -181,8 +182,7 @@
 					</form>
 				</article>
 			</c:if>	
-			
-			<c:if test="${empty sessionScope.id}">
+			<c:if test="${empty user_id}">
 				<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
 					<form action="" method="post" name="post">
 						<div>
@@ -202,72 +202,143 @@
 			
 			
 			
-			<c:forEach var="post" items="${postList}">
+		<c:forEach var="p" items="${posts.content }">
 			<!-- Post -->
-			<article class="post">
-				<%-- <a href="/community/posts/${post.getPost_id()}"> --%>
-					<div class="author-section d-flex justify-content-between">
-						<a href="javascript:void(0);" class="author">
-							<img src="/resources/images/춘식이프로필.png" alt="프로필사진" />&nbsp;&nbsp;
-							<span class="name"><input type="text" name="id" value="글쓴이 이름" readonly="readonly" class="author"></span>
+			<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
+				<div onclick="location.href='/community/posts/${p.postId}'">
+					<div class="title d-flex ">
+						<a href="#" class="author">
+						    <img src="${p.profile_img}" alt="프로필 이미지" />&nbsp;&nbsp;
+				    		<span class="name"><input type="text" name="id" value="${p.name}" readonly="readonly" class="author"></span>
 						</a>
-						<div class="published">${post.getCre_date()}</div>
+						<p>${p.creDate}</p>
+						<%-- <input type="text" readonly="readonly" name="cre_date" class="published" value="${p.creDate}"> --%>
 					</div>
-					<div class="post-content-container" onclick="goToPostDetail('${post.getPostId()}')">
-						<div class="post-img-section">
-							<div class="post_img"> <!-- style="overflow: hidden;" -->
-								<img src="/resources/images/춘식이웹툰1.png" alt="프로필사진" />
-							</div>
-						</div>
-						<div id="post-content" class="collapse-content">
-							<img alt="" src="${postIMG.getPost_img()}">
-							<div class="post-content-inner collapsed">
-								${post.getContent()}
-							</div>
-						</div>
-					</div>	
-					<!-- <script>있던 자리 -->
-					<div class="footer">
-						<ul class="stats commment_stats">
-							<li><a class="comment-count" href="javascript:void(0);">📝<span class="comment-count-number">2</span></a></li> <!-- 댓글 개수 -->
-							<li><a class="like-button"   href="javascript:void(0);"><span class="like-icon">❤️</span><span class="like-count">2</span></a></li> <!-- 좋아요 개수 -->
-							<!-- <li><a href="#" class="icon solid fa-heart"><i class="fa fa-heart"></i></a> 2</li> -->
-						</ul>
-						<!-- <ul class="actions">
-							<li id="comment_li"><button class="comment ">댓글 쓰기</button></li>
-							<li id="comment_li"><div class="divcomment"><input type="text" name="comment"></div></li>
-						</ul> -->
-						<div class="comment-section">
-							<ul id="comment-list" class="comment-list" style="display: none;">
-								<c:forEach var="comment" items="${commentList}">
-								    <li>${comment.getContent() }</li>
-								</c:forEach>
-							</ul>
-							<div class="button-row">
-						        <button class="comment-button" type="button" onclick="showCommentInput(this)">댓글쓰기</button> <!-- 댓글쓰기 버튼 -->
-						        <div class="comment-input" style="display: none; max-width: 800px;">
-						            <!-- 댓글 입력 부분 -->
-						            <form action="/community/posts/${post.getPostId()}/comments" method="post">
-							            <input type="text" id="comment-text" name="content" placeholder="댓글을 입력하세요">
-							            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
-							        </form>
-						        </div>
-						    </div>
-					    </div>
+					
+					<div class="post_img-outer">
+						<c:if test="${!empty imgs[p.postId]}">	<!-- 첨부 이미지 있는 경우 --> 
+				    		<c:forEach var="img" items="${imgs[p.postId]}">
+				   	   			<div class="post_img">
+									<img src="${img.postimg}" alt="포스트 첨부 이미지" />
+								</div>
+			   	   			</c:forEach>
+				    	</c:if>	
 					</div>
-					<!-- <script>있던 자리 -->
-			</article>
-		</c:forEach>
+					
+					<div id="post-content" class="collapse-content">
+						<div class="post-content-inner collapsed">
+							${p.content}
+						</div>
+					</div>
+				</div>
+					
+
+				<c:if test="${p.id eq user_id}">
+					<form action="/community/posts/${p.postId}" method="post">
+					 	<input type="hidden" name="_method" value="DELETE"/>
+						<button type="submit">삭제하기</button>
+					</form>
+				</c:if>
 			
+					
+				<footer>
+					<ul class="stats commment_stats">
+						<li><a class="comment-count">📝<span class="comment-count-number">${p.c_count}</span></a></li> <!-- 댓글 개수 -->
+						<li><a class="like-button" ><span class="like-icon">❤️</span><span class="like-count">${p.t_count}</span></a></li> <!-- 좋아요 개수 -->
+					</ul>
+					<div class="comment-section">
+						<ul id="comment-list" class="comment-list">
+							<c:if test="${!empty comments[p.postId]}">	<!-- 첨부 이미지 있는 경우 --> 
+					    		<c:forEach var="c" items="${comments[p.postId]}">
+					   	   			<li>
+										<div class="col-2">이름 ${c.name }</div>
+										<div class="col-7">내용 ${c.content}</div>
+										<div class="col-3">날짜 ${c.creDate }</div>
+									</li>
+				   	   			</c:forEach>
+					    	</c:if>	
+					    	<c:if test="${p.c_count > 3 }">
+	                           <div onclick="location.href='/community/posts/${p.postId}'">댓글 더보기</div>
+	                        </c:if>
+						</ul>
+						<div class="button-row">
+							<button class="comment-button" type="button" onclick="return showCommentInput(this)">댓글쓰기</button>
+							<div class="comment-input">
+								<form action="/community/posts/${p.postId}/comments" method="post" name="comment" id="insertcomment">
+									<input type="hidden" name="postId" value="${p.postId }"/>
+									<c:choose>
+								    	<c:when test="${!empty user_id}">	<!-- 로그인 o --> 
+								    		<input type="hidden" name="id" value="${user_id}">
+											<input type="text" id="comment-text" name="content" placeholder="댓글을 입력하세요">
+								            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
+								    	</c:when>		
+								    	<c:otherwise>		<!-- 로그인 x -->
+								    		<div id="comment-text" >로그인이 필요합니다.</div>
+								    	</c:otherwise>
+							    	</c:choose>
+								</form>
+							</div>	
+						</div>
+					</div>
+				</footer>
+			</article>
+		</c:forEach>	
+		
+		<!-- 페이지 번호 -->
+		<div class="col-lg-12">
+			<div class="pagination">
+			    <ul>
+			   		<c:choose>
+						<c:when test="${!empty keyword || keyword ne '' }"> <!-- 검색 o -->
+					    	<c:if test="${posts.number-1 >= 0}" >
+					    		<li>
+						            <a href="/community/posts?page=${posts.number-1}&keyword=${keyword}" >&lt;</a>
+						        </li>
+					    	</c:if>
+					    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
+				    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
+						            <a href="/community/posts?page=${p-1}&keyword=${keyword}">${p}</a>
+						        </li>	
+							</c:forEach>
+							<c:if test="${posts.number+1 < posts.totalPages }" >
+					    		<li>
+					           		<a href="/community/posts?page=${posts.number+1}&keyword=${keyword}">&gt;</a>
+					        	</li>
+					    	</c:if>
+					    </c:when>
+						<c:otherwise> <!-- 검색 x -->
+							<c:if test="${posts.number-1 >= 0}" >
+					    		<li>
+						            <a href="/community/posts?page=${posts.number-1}" >&lt;</a>
+						        </li>
+					    	</c:if>
+					    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
+				    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
+						            <a href="/community/posts?page=${p-1}">${p}</a>
+						        </li>	
+							</c:forEach>
+							<c:if test="${posts.number+1 < posts.totalPages }" >
+					    		<li>
+					           		<a href="/community/posts?page=${posts.number+1}">&gt;</a>
+					        	</li>
+					    	</c:if>
+					    </c:otherwise> 
+					</c:choose>
+			    </ul>
+			</div>
+		</div>
+
+	</div>
+		
 		
 	</main>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/resources/js/community-toggle.js"></script>
 <script>
 
 	$(() => {
-    	// body 컬러 임시
  		$('body').css('background-color', '#f2f2f6');
     	
     	// 모바일 화면 사이드 바
@@ -283,27 +354,7 @@
     		}
     	});
 	});
-		    
+	
 </script>
-<script>
-function goToPostDetail(postId) {
-	  if (postId) {
-	    window.location.href = "/community/posts/" + postId;
-	  } else {
-	    console.error("Invalid postId: " + postId);
-	  }
-	}
-
-</script>
-<script>
-  $(document).ready(function() {
-    $('.comment-count').on('click', function(event) {
-      event.preventDefault();
-      // 여기에 댓글 버튼을 클릭했을 때의 동작을 추가.
-      // 예: 댓글 목록을 펼치거나 숨기는 등의 동작
-    });
-  });
-</script>
-
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

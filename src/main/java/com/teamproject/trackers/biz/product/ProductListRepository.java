@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 public interface ProductListRepository extends JpaRepository<ProductListVO, Long> {
 	
 	// 베스트 상품 5
-	List<ProductListVO> findTop5ByOrderByPopularityDesc();
+	List<ProductListVO> findTop5ByOrderByPopularityDescCreDateDesc();
 	
 	// 최신 상품 5
 	List<ProductListVO> findTop5ByOrderByCreDateDesc();
@@ -59,5 +59,12 @@ public interface ProductListRepository extends JpaRepository<ProductListVO, Long
 	
 	@Query(value = "SELECT * FROM productlist p WHERE p.photo=1 and p.p_name like %:keyword%", nativeQuery = true)
 	Page<ProductListVO> getCategoryPhoto(@Param("keyword") String keyword, Pageable pageable);
+	
+	
+	
+	
+	// 크리에이터별 상품 전체조회
+	Page<ProductListVO> findAllById(long id, Pageable pageable);
+	
 	
 }

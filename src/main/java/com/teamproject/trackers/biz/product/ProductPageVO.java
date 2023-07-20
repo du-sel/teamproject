@@ -29,6 +29,7 @@ public class ProductPageVO {
 
 	private String content;
 	private String store_name;
+	private String url;
 	private String profile_img;
 	
 	
@@ -103,6 +104,12 @@ public class ProductPageVO {
 	}
 	public void setStore_name(String store_name) {
 		this.store_name = store_name;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public String getProfile_img() {
 		return profile_img;

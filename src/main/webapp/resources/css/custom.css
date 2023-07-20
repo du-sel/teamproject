@@ -25,7 +25,6 @@ Table of contents
 12. community
 
 
-여기좀 수정해봅시다...
 
 --------------------------------------------- */
 /* 
@@ -705,8 +704,21 @@ header
 }
 
 
-/* 검색 버튼 */
 
+
+/* 로그인메뉴 간격조절 */
+.header-area .nav .sign-in-menu {
+	margin-left: 20px;
+	margin-right: 10px;
+}
+.header-area .nav .sign-up-menu {
+	margin-right: 10px;
+}
+
+
+
+
+/* 검색 버튼 */
 .header-area .search-container {
 	position: relative;
 	width: fit-content;
@@ -1242,6 +1254,7 @@ st-main 상품 section
   position: relative;
   z-index: 3;
   background-color: #fff;
+  cursor: pointer;
 }
 
 #st-main .section .item .down-content h4 {
@@ -1295,6 +1308,7 @@ st-main 상품 section
 
 #st-main .section .item .thumb {
   position: relative;
+  cursor: pointer;
 }
 
 #st-main .section .item .thumb .hover-content ul li {
@@ -1390,11 +1404,25 @@ st-main 상품 section
 	object-fit: cover;
 }
 
+/* 크리에이터 목록 */
+#st-main .section .creator-item-carousel .item .down-content {
+	padding: 20px 10px 0;
+	width: max-content;
+}
+#st-main .section .creator-item-carousel .item .down-content h4{
+	margin-left: 15px;
+	margin-bottom: 0px;
+}
+#st-main .section .creator-item-carousel .item .down-content img{
+	border-radius: 50%;
+	height: 80px;
+	width: 80px;
+}
 
 
 /* 
 ---------------------------------------------
-product, creator 리스트 제목 부분 
+product, creator 리스트 제목 부분 + empty-search부분
 --------------------------------------------- 
 */
 
@@ -1403,6 +1431,19 @@ product, creator 리스트 제목 부분
   text-align: center;
   margin-bottom: 60px;
   margin-top: 80px;
+}
+
+.empty-search{
+	width: 100%;
+	text-align: center;
+}
+.empty-search p{
+	font-size: 20px;
+	font-weight: 600;
+	padding:30px;
+}
+.empty-search p span{
+	color: #e97d7d;
 }
 
 
@@ -1422,8 +1463,8 @@ Products Page
 
 #products .item .thumb img {
   width: 100%;
-  height: 350px;
-  overflow: hidden;
+  /* height: 350px; */
+  object-fit: cover;
 }
 
 #products .item .down-content {
@@ -1497,7 +1538,7 @@ Products Page
   color: #2a2a2a;
   background-color: #fff;
 }
-
+/*
 @media (max-width:1199px){
 	#products .item .thumb img {
 	  height: 289.98px;
@@ -1518,7 +1559,7 @@ Products Page
 	  height: auto;
 	}
 }
-
+*/
 
 /* 
 ---------------------------------------------
@@ -1601,7 +1642,7 @@ Single Product Page
   margin-top: 25px;
 } */
 
-#product .right-content .quote {
+/* #product .right-content .quote {
   margin-top: 25px;
 }
 
@@ -1616,6 +1657,15 @@ Single Product Page
   font-style: italic;
   color: #2a2a2a;
   font-weight: 500;
+} */
+#product .right-content .notice {
+	background: #f2f2f6;
+	padding: 10px 25px;
+	border-radius: 0.25rem;
+}
+#product .right-content .fa-exclamation-circle {
+	margin-right: 10px;
+	color: #b8b8c4;
 }
 
 #product .right-content p {

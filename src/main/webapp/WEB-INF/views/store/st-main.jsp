@@ -47,7 +47,7 @@
 	                                <div class="thumb">
 	                                    <div class="hover-content">
 	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
+	                                            <li onclick="preventDefaultGoCart(event, ${bp.pid})"><i class="fa fa-shopping-cart"></i></li>
 	                                        </ul>
 	                                    </div>
 	                                    <img src="${bp.thumbnail}" alt="상품 썸네일">
@@ -96,7 +96,7 @@
 	                                <div class="thumb">
 	                                    <div class="hover-content">
 	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
+	                                            <li onclick="preventDefaultGoCart(event, ${rp.pid})"><i class="fa fa-shopping-cart"></i></li>
 	                                        </ul>
 	                                    </div>
 	                                    <img src="${rp.thumbnail}" alt="상품 썸네일">
@@ -140,25 +140,17 @@
                 <div class="col-lg-12">
                     <div class="creator-item-carousel">
                         <div class="owl-creator-item owl-carousel">
-                            <div class="item">
-	                            <a href="product-single.do">
-	                                <div class="thumb">
-	                                    <div class="hover-content">
-	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
-	                                        </ul>
-	                                    </div>
-	                                    <img src="/resources/images/kid-01.jpg" alt="">
+                        	<c:forEach var="bc" items="${b_creators}" varStatus="status">
+	                            <div class="item">
+	                                <div class="thumb" onclick="location.href='/store/products/${b_signatures[status.index].pid}'">
+	                                    <img src="${b_signatures[status.index].thumbnail}" alt="대표 상품 썸네일">
 	                                </div>
-	                                <div class="down-content d-flex flex-row justify-content-center">
-	                                	<img src="/resources/tmpfile/profile1.png" style="border-radius: 50%;
-    height: 80px;
-    width: 80px;
-    border: 1px solid black;">
-	                                    <h4>School Collection</h4>
+	                                <div class="down-content d-flex" onclick="location.href='/profiles/${bc.url}'">
+	                                	<img src="${bc.profile_img}">
+	                                    <h4 class="d-flex flex-column justify-content-center">${bc.storeName}</h4>
 	                                </div>
-                                </a>
-                            </div>
+	                            </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>

@@ -80,12 +80,16 @@ public class ProductController {
     @RequestMapping(value="/main", method=RequestMethod.GET)
     public String stMain(Model model) {
     	
-    	model.addAttribute("b_products", productService.getBestProduct());
-    	model.addAttribute("r_products", productService.getRecentProduct());
-    	
-    	for(ProductListVO v : productService.getRecentProduct()) {
-    		System.out.println(v.getPid());
+    	List<CreatorListVO> b_creators = productService.getBestCreator();
+    	List<ProductVO> b_signatures = new ArrayList<ProductVO>();
+    	for(CreatorListVO c : b_creators) {			// 대표상품 저장
+    		b_signatures.add(productService.getBestSignature(c.getId()));
     	}
+    	
+    	model.addAttribute("b_products", productService.getBestProduct());		// 베스트 상품 최대 5개
+    	model.addAttribute("r_products", productService.getRecentProduct());	// 최신 상품 최대 5개
+    	model.addAttribute("b_creators", b_creators);							// 인기 크리에이터 최대 5명
+    	model.addAttribute("b_signatures", b_signatures);						// 인기 크리에이터 대표상품
     	
     	return "store/st-main";
     }
@@ -140,13 +144,13 @@ public class ProductController {
 		if(!category.equals("all")) {
 			// 정렬
 			if(sort.equals("creDate")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, "cre_date"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, "cre_date"));
 			}else if(sort.equals("highprice")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, "sale_price"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, "sale_price"));
 			}else if(sort.equals("lowprice")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.ASC, "sale_price"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.ASC, "sale_price"));
 			}else {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
 			}
 			
 			// 검색 x 경우
@@ -156,11 +160,11 @@ public class ProductController {
 		}else {
 			// 정렬
 			if(sort.equals("highprice")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, "salePrice"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, "salePrice"));
 			}else if(sort.equals("lowprice")) {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.ASC, "salePrice"));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.ASC, "salePrice"));
 			}else {
-				pageable = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, sort));
+				pageable = PageRequest.of(page, 9, Sort.by(Sort.Direction.DESC, sort));
 			}
 			
 			// 검색
@@ -256,7 +260,7 @@ public class ProductController {
 		
 		// 현재 날짜 저장
 		LocalDate now = LocalDate.now();
-		vo.setCre_date(Date.valueOf(now));
+		vo.setCreDate(Date.valueOf(now));
 		
 		// 상품 등록 로직
 		productService.insertProduct(vo);
@@ -498,8 +502,7 @@ public class ProductController {
     
     
     
-    /*----------------정희 추가-----------------*/
-    /*
+    /*---------------------------------------------------정희 추가
 
     // 상품 수정 페이지
     @GetMapping("/products/{p_id}/edit")
@@ -515,8 +518,7 @@ public class ProductController {
             @RequestParam("name") String name,
             @RequestParam("price") int price,
             @RequestParam(value = "file", required = false) MultipartFile file) {
-    	*/
-/*
+   
         // 상품 수정 로직
         ProductVO product = productService.getProductById(p_id);
         if (product != null) {
@@ -533,40 +535,41 @@ public class ProductController {
 
         return "redirect:/store/st-products";
     }
+*/
 
-    // 상품 삭제
-    @PostMapping("/products/{p_id}/delete")
+    // 상품 삭제 처리
+    @RequestMapping(value = "/products/{p_id}", method = RequestMethod.DELETE)
     public String deleteProduct(@PathVariable("p_id") long p_id) {
-        // 상품 삭제 로직
-        //productService.deleteProduct(p_id);
-
-        return "redirect:/store/st-products";
+        System.out.println("1");
+    	// 상품 삭제 로직
+    	productService.deleteProduct(p_id);
+        return "redirect:/";
     }
+
     
-    /*----------------정희 추가-----------------*/
+
+//----------------------------------------------------정희 추가
 	
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
 	
 
     ////* 크리에이터 리스트 조회 & 정렬 & 검색 *////
 	@RequestMapping(value="/creators", method=RequestMethod.GET)
 	public String getCreatorList(int page, String sort, Model model, String keyword) {
 		
-		// 대표 상품 리스트 조회
-		List<ProductVO> p = productService.getCreatorSignatureList();
-		HashMap<Long, List<ProductVO>> signature = new HashMap<>();
-		for(ProductVO item : p) {
-			if(signature.get(item.getId()) != null) {
-				signature.get(item.getId()).add(item);
-			}else {
-				ArrayList<ProductVO> list = new ArrayList<>();
-				list.add(item);
-				signature.put(item.getId(), list);
-			}
-		}
 		
 		// 정렬 및 페이징 , 검색 처리
 		Page<CreatorListVO> list = null;
-		Pageable pageable = PageRequest.of(page, 1, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
+		Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, sort));	// 시작 페이지, 데이터 개수, 정렬 기준
 		
 		// 검색
 		if(keyword != null) { 		// 검색 한 경우
@@ -575,13 +578,25 @@ public class ProductController {
 			keyword = "";
 			list = productService.getCreatorList(pageable);		
 		}
+		
+		// 대표 상품 리스트 조회
+		HashMap<Long, List<ProductVO>> signature = new HashMap<>();
+		for(CreatorListVO c : list.getContent()) {
+			List<ProductVO> p = productService.getCreatorSignatureList(c.getId());
+			for(ProductVO item : p) {
+				if(signature.get(item.getId()) != null) {
+					signature.get(item.getId()).add(item);
+				}else {
+					ArrayList<ProductVO> s_list = new ArrayList<>();
+					s_list.add(item);
+					signature.put(item.getId(), s_list);
+				}
+			}
+		}
 
 		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
 		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
 		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
-		
-		//int startPage = Math.max(nowPage-1, 1);
-		//int endPage = Math.min(nowPage+2, list.getTotalPages());
 		
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPage", startPage);

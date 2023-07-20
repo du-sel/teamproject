@@ -3,21 +3,110 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
+
+<script>
+
+
+/* 탭 - 스토어 클릭하면 스토어 정보 가져오기 */
+function getCreatorProductList() {
+
+	let pathname = window.location.pathname;
+	console.log(pathname);
+	let url = pathname.substring(pathname.indexOf("profiles")+9);
+	console.log(url);
+	if(url.indexOf("/") > 0) {	
+		url = url.substring(0, url.indexOf("/"));
+		console.log(url);
+	}
+	
+	$.ajax({
+		type: 'get',
+		url: '/profiles/'+url+'/products',
+		contentType: "application/json",
+		datatype: 'json',
+		data: {
+			page: 0,
+			sort: 'creDate'
+		},
+		success: function(data) {					
+			
+			// JSON 객체별로 쪼개기
+			let productArr = data.content;
+			console.log(productArr.length);
+			
+			let box = document.getElementById("product-box");
+			let parent = box.parentElement;
+
+			if(productArr.length > 1) {
+				console.log('yes');
+				for(let i = 1; i < productArr.length; i++) {
+					let product = productArr[i];
+					
+					let newBox = document.createElement('div');
+					newBox.innerHTML = box.innerHTML;
+					newBox.classList.add('col-lg-4');
+					
+					let p_name = $(newBox).find('.p_name');
+					p_name.text(product.pname);
+					
+					parent.appendChild(newBox);
+				}
+				
+			} else {
+				// 첫번째것만 찍어주기
+				
+				
+			}
+			
+
+			
+			
+			
+			
+			$("#store").addClass("active").addClass("show");
+			$("#feed").removeClass("active").removeClass("show");
+			$("#notice").removeClass("active").removeClass("show");
+			
+		},
+		error: function(message) { }
+		
+	})
+	
+	
+}
+
+
+</script>
+
+
+
 <main id="myprofile">
 	<div  class="container firstcontainer">
+	<!-- 
 	<c:if test="${!empty sessionScope.id}">
-	
 	</c:if>
+	 -->
 		<!--상단 이미지-->
 		<div class="row topimg">
-			<div class="col-md-12 topimgdiv" >
-				<p id="img-topimgmodify"> IMAGE UPLOAD </p>
-			</div> 
+			<c:choose>
+			    <c:when test="${!empty sessionScope.user.id}" > 
+					<div class="col-md-12 topimgdiv">
+						<img id="img-topimgmodify" src="">
+						<!-- <p id="img-topimgmodify"> IMAGE UPLOAD </p> -->
+					</div> 
+				</c:when>
+				<c:otherwise>
+					<div class="col-md-12 topimgdiv">
+						<img src="">
+					</div>
+				
+				</c:otherwise>
+			</c:choose>
 		</div>
 
 		<div class="row  seconddiv">
 			<c:choose>
-			    <c:when test="" >  <!-- 자신의 프로필 일 때와  -->
+			    <c:when test="${!empty sessionScope.user.id}" >  <!-- 자신의 프로필 일 때와  -->
 					<div class="col-md-2 col-lg-1 profilediv">
 						<div class="profile" id="profile">
 							<img class="profileimgmodify" src="/resources/images/사람실루엣.jpg" >
@@ -29,49 +118,68 @@
 						<div class="profile" id="profile">
 							<!-- <img  id="Img" src="/resources/images/사람실루엣.jpg" > -->
 
-							<img class="profileimgmodify"  src="/resources/images/사람실루엣.jpg" >
+							<img id="profileimgmodify" src="/resources/images/사람실루엣.jpg" >
 						</div>
 					</div>
 			    </c:otherwise>
 			</c:choose>
 
-
+			
 			<div class="col-md-4 offset-md-1 col-lg-4">
-				<div class="nickname">mybulnet123</div>
+				<div class="nickname">${profile.name}</div>
 				<div class="count">
-					팔로워  &nbsp;123명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;23명
+					팔로워  &nbsp;명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;명
 				</div>
 				<br>
 			<!-- SNS 주소 -->
-				<div class="addressdiv"><a href="https://www.instagram.com/?hl=ko" ><img src="resources/images/instagram.svg">&nbsp;인스타그램</a></div>
-				<div class="addressdiv"><a href="https://youtube.com/"><img src="resources/images/youtube.svg">&nbsp;유튜브</a></div>
+				<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
+				<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+				
 
 			</div>
 			
-			
+ 			
 			<c:choose>
-				<c:when test="${!empty sessionScope.id && !empty sessionScope.url} ">
+			    <c:when test="${!empty sessionScope.user.id}" > 
 					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">
-
-				   		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
-						<div id="buttonright" class="longtext"><a href="sales-status.do">마이스토어 관리</a></div>
-								
+					<c:choose>
+						<c:when test=" ">
+				   			<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
+				   		</c:when>
+				   		<c:otherwise>
+							<div id="buttonright" class="longtext"><a href="store/sales-status">마이스토어 관리</a></div>
+						</c:otherwise>
+					</c:choose>
 					</div>				
 				</c:when>
-				<c:otherwise>
+				<c:when test="${empty sessionScope.user.id}">
 					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">						 
-						<button id="buttonright" class="btn">팔로우</button> 
+						<button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button> 
+						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>		
+					</div>	
+				</c:when>
+
+				<c:otherwise>
+					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">	
+									 
+						<button id="buttonright" class="btn">팔로우</button>
+				
 						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>
-						<c:when test="">
-							<button id="buttonright"  class="btn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-							<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
-						</c:when>		
+					<c:when test="${follow.getFrom_id() == sessionScope.user.id}">		
+						<button  class="btn offbtn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
+					</c:when> 
+						<button  class="btn offbtn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
 					</div>				
 				</c:otherwise>
 			</c:choose>
 
 		</div>	
-	
+		<script>
+		    function showLoginAlert() {
+		        alert("로그인이 필요합니다");
+		    }
+		    
+		</script>
 	<br>
 
 	<!-- 탭 -->
@@ -84,7 +192,7 @@
 			 		<a class="nav-link active" href="#feed" data-toggle="tab" id="feedtabbgcolor" >피드</a>
 			 	</li>
 			 	<li class="nav-item navli" id="li">
-			 		<a class="nav-link" href="#studio" data-toggle="tab">스튜디오</a>
+			 		<div class="nav-link" onclick="getCreatorProductList()" data-toggle="tab">스토어</div>
 			 	</li>
 			 	<li class="nav-item navli" id="li">
 			 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
@@ -348,15 +456,28 @@
 					</div>
 					
 				
-				<!-- 스튜디오 탭 -->
-				<div class="tab-pane fade" id="studio"><br>
+				<!-- 스토어 탭 -->
+				<div class="tab-pane fade" id="store"><br>
 					<div style="height:50px;">
-						<select class="line" name="shop__selector" id="shop__selector">
+						<!-- <select class="line" name="shop__selector" id="shop__selector">
 							<option selected>기본 정렬</option>
 							<option>가나다순</option>
 							<option>낮은 가격순</option>
 							<option>높은 가격순</option>
-						</select>
+						</select> -->
+						<form action="/store/products" method="get" id="shop__selector">
+							<input type="hidden" name="page" value="0">
+							<select name="sort" onchange="this.form.submit();">
+								<option value="creDate" <c:if test="${sort eq 'creDate'}">selected</c:if>>최신순</option>
+								<option value="popularity" <c:if test="${sort eq 'popularity'}">selected</c:if>>인기순</option>
+								<option value="highprice" <c:if test="${sort eq 'highprice'}">selected</c:if>>높은가격순</option>
+								<option value="lowprice" <c:if test="${sort eq 'lowprice'}">selected</c:if>>낮은가격순</option>
+							</select>
+							<input type="hidden" name="category" value="${category}">
+							<c:if test="${!empty keyword || keyword ne '' }">
+								<input type="hidden" name="keyword" value="${keyword}">
+							</c:if>
+						</form>
 					
 						<div class="writenew line">
 							<a href="product-management.do">상품 관리</a>
@@ -367,82 +488,33 @@
 					
 					<div id="products">
 					
-						<div class="row">
-							<div class="col-lg-4">
-			                    <div class="item">
-				                    <a href="product-single.do">
-				                        <div class="thumb">
-				                            <div class="hover-content">
-				                                <ul>
-				                                    <li><i class="fa fa-shopping-cart"></i></li>
-				                                </ul>
-				                            </div>
-				                            <img src="/resources/images/men-01.jpg" alt="">
-				                        </div>
-				                        <div class="down-content">
-				                            <h4>Classic Spring</h4>
-				                            <span>$120.00</span>
-				                            <ul class="stars">
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                            </ul>
-				                        </div>
-			                        </a>
-			                    </div>								
-							</div>
-							<div class="col-lg-4">
-			                    <div class="item">
-				                    <a href="product-single.do">
-				                        <div class="thumb">
-				                            <div class="hover-content">
-				                                <ul>
-				                                    <li><i class="fa fa-shopping-cart"></i></li>
-				                                </ul>
-				                            </div>
-				                            <img src="/resources/images/men-01.jpg" alt="">
-				                        </div>
-				                        <div class="down-content">
-				                            <h4>Classic Spring</h4>
-				                            <span>$120.00</span>
-				                            <ul class="stars">
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                            </ul>
-				                        </div>
-			                        </a>
-			                    </div>								
-							</div>
-							<div class="col-lg-4">
-			                    <div class="item">
-				                    <a href="product-single.do">
-				                        <div class="thumb">
-				                            <div class="hover-content">
-				                                <ul>
-				                                    <li><i class="fa fa-shopping-cart"></i></li>
-				                                </ul>
-				                            </div>
-				                            <img src="/resources/images/men-01.jpg" alt="">
-				                        </div>
-				                        <div class="down-content">
-				                            <h4>Classic Spring</h4>
-				                            <span>$120.00</span>
-				                            <ul class="stars">
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                            </ul>
-				                        </div>
-			                        </a>
-			                    </div>								
-							</div>
+						<div class="row">	                
+							<!-- Product Card Start -->	
+		            		<div class="col-lg-4" id="product-box">
+			                    <div class="item" onclick="location.href='/store/products/${i.pid}'">
+			                        <div class="thumb">
+			                            <div class="hover-content">
+			                                <ul>
+			                                    <li onclick="preventDefaultGoCart(event, ${i.pid})"><i class="fa fa-shopping-cart"></i></li>
+			                                </ul>
+			                            </div>
+			                            <img alt="상품 썸네일">
+			                        </div>
+			                        <div class="down-content">
+			                            <h4 class="p_name"></h4>
+			                            <c:if test="${i.sale != 0}"><span class="cost"> <fmt:formatNumber value="${i.price}" pattern="#,###" />원</span></c:if>
+			                            <span class="price"> <fmt:formatNumber value="" pattern="#,###" />원</span>
+			                            <ul class="stars">
+			                                <span class="star">
+												★★★★★
+												<span style="width: ${i.rating}%;">★★★★★</span>
+												<input type="range" value="1" step="1" min="0" max="10">
+											</span>
+			                            </ul>
+			                        </div>
+			                    </div>
+			                </div>
+			                <!-- Product Card End -->
 						</div>
 					</div>
 				</div>
@@ -573,7 +645,7 @@
 			               
 			        </div>
 			        <div class="uploadbtn">
-			        	<input type="button" value="전송하기" id="uploadbtn">
+			        	<input type="button" value="사진 업로드" id="uploadbtn">
 			        </div>
 		
 			</div>
@@ -590,7 +662,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        ____ 구독을 취소하시겠습니까?
+		        ${profile.name} 구독을 취소하시겠습니까?
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -609,7 +681,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        ____ 팔로우을 취소하시겠습니까?
+		        ${profile.name} 팔로우을 취소하시겠습니까?
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>

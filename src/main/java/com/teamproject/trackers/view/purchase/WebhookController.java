@@ -1,6 +1,9 @@
 package com.teamproject.trackers.view.purchase;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +28,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.teamproject.trackers.biz.cart.CartService;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
 import com.teamproject.trackers.biz.purchase.PurchaseService;
@@ -40,12 +44,14 @@ public class WebhookController {
 	private VerifyService verifyService;
 	private ProductService productService;
 	private PurchaseService purchaseService;
+	private CartService cartService;
 	
 	@Autowired
-	public WebhookController(VerifyService verifyService, ProductService productService, PurchaseService purchaseService) {
+	public WebhookController(VerifyService verifyService, ProductService productService, PurchaseService purchaseService, CartService cartService) {
 		this.verifyService = verifyService;
 		this.productService = productService;
 		this.purchaseService = purchaseService;
+		this.cartService = cartService;
 	}
 	
 	
@@ -77,8 +83,8 @@ public class WebhookController {
 	
 	@RequestMapping(value="/purchase/webhook", method=RequestMethod.POST)
 	public void verifyPurchase(@RequestBody WebhookVO webhook, HttpServletRequest request, HttpServletResponse resp) throws IOException {
-		//System.out.println("WebhookController 도착");
-		//System.out.println(webhook.toString());
+		System.out.println("WebhookController 도착");
+		System.out.println(webhook.toString());
 		
 		// 웹훅에서 imp_uid 받아놓기
 		String imp_uid = webhook.getImp_uid();
@@ -118,37 +124,59 @@ public class WebhookController {
         // DB에서 상품 금액 조회
         // 결제 정보에서 p_id 구하기
         String p_id = info.substring(info.indexOf("merchant_uid")+15);
-        p_id = p_id.substring(0, p_id.indexOf("-"));
+        p_id = p_id.substring(0, p_id.indexOf("_"));
         System.out.println(p_id);
+
+        // -으로 이어진 형태 끊어주기
+        String[] pidArr = p_id.split("-");
         
-        ProductVO product = productService.getProduct(Long.parseLong(p_id));
-        int price = product.getPrice();
-        System.out.println("price: "+price);
-        int sale = product.getSale();
-        System.out.println("sale: "+sale);
-        int fin_price = price - sale;
-        System.out.println("fin_price: "+fin_price);
+        // 각 상품의 금액 구해서 더한 다음 결제금액과 일치하는지 대조
+        int total_price = 0;
         
         
-        // 두 금액 비교
-        if(fin_price == paid_price) {
+        ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
+        
+        for(String s : pidArr) {
+        	ProductVO product = productService.getProduct(Long.parseLong(s));
+        	// DB에 담을때 또 사용할 것이므로 객체는 배열에 담아두기
+        	productList.add(product);
+        	
+        	System.out.println("p_id: "+product.getPid()+" / fin_price: "+(product.getPrice()-product.getSale()));
+        	total_price += (product.getPrice()-product.getSale());
+        }
+        
+        
+        // 양쪽 총액 비교
+        if(total_price == paid_price) {
         	// 일치할 시 DB에 purchase 저장
         	System.out.println("일치합니다!");
         	
         	// 결제 정보에서 구매자 id 구하기
             String id = info.substring(info.indexOf("merchant_uid")+15);
-            id = id.substring(id.indexOf("-")+1);
+            id = id.substring(id.indexOf("_")+1);
             id = id.substring(0, id.indexOf("-"));
             System.out.println("final id: "+id);
         	
-        	// VO 만들어서 보내주기
-        	PurchaseVO purchase = new PurchaseVO();
-        	purchase.setBak_p_id(Long.parseLong(p_id));
-        	purchase.setId(Long.parseLong(id));
-        	purchase.setC_id(product.getId());
-        	purchase.setPrice(fin_price);
-        	
-        	purchaseService.insertPurchase(purchase);
+            // 이것도 배열로 돌려서 저장
+            for(int i = 0; i<productList.size(); i++) {
+            	// VO 만들어서 보내주기
+            	PurchaseVO purchase = new PurchaseVO();
+            	ProductVO product = productList.get(i);
+            	
+            	purchase.setBak_p_id(product.getPid());
+            	purchase.setId(Long.parseLong(id));
+            	purchase.setC_id(product.getId());
+            	purchase.setPrice(product.getPrice()-product.getSale());  
+            	
+            	LocalDate now = LocalDate.now();
+            	purchase.setCre_date(Date.valueOf(now));
+
+            	purchaseService.insertPurchase(purchase);
+            	
+            	// 구매한 상품은 장바구니에서 삭제
+            	cartService.deleteCart(product.getPid());
+            }
+            
         } else {
         	// 잘못된 결제건 
         	System.out.println("일치하지 않습니다!");

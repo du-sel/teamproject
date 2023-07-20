@@ -35,4 +35,9 @@ public class PostIMGService {
 		public List<PostIMGVO> getPostIMGList(){
 			return postIMGRepository.findAll();
 		}
+		
+	// 페이징에 따른 조회
+		public List<PostIMGVO> getPImgList(long postId){
+			return postIMGRepository.getPImgList(postId);
+		}
 }

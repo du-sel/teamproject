@@ -1,5 +1,8 @@
 package com.teamproject.trackers.view.userCreator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.annotation.SessionScope;
 
+import com.teamproject.trackers.biz.common.AlertVO;
 import com.teamproject.trackers.biz.userCreator.UserService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
@@ -22,6 +27,7 @@ public class UserController {
 	private UserService userService;
 	@Autowired
     private HttpSession session;
+	private AlertVO alert = new AlertVO();
 	
 	// 모달
 	@RequestMapping(value="/signin-modal")
@@ -40,12 +46,30 @@ public class UserController {
 		return "modal/store-create-modal";
 	}
 	
+	// alert창 페이지
+	@RequestMapping(value="/common")
+	public String test(Model model) {		
+		model.addAttribute("alert_str", alert.getStr());
+		model.addAttribute("alert_path", alert.getPath());
+		model.addAttribute("alert_flag", alert.isFlag());
+		
+		return "common/alert";
+	}
+	
+	
 	// 로그아웃
 	@RequestMapping(value="/users/logout")
 	public String logout(){
 		if(session.getAttribute("id") != null) {
 			session.invalidate();
+			
+			alert.setStr("로그아웃 되었습니다.");
+			alert.setPath("/");
+			alert.setFlag(true);
+
+			return "redirect:/common";
 		}
+		
 		return "redirect:/";
 	}
 	
@@ -53,10 +77,16 @@ public class UserController {
 	@RequestMapping(value="/users/signin", method=RequestMethod.POST)
 	public String signin(String path, UserVO vo) throws IllegalAccessException{
 		if(userService.isUser(vo) != null) {
+
 			session.setAttribute("id", userService.isUser(vo).getId());
 			session.setAttribute("user", userService.isUser(vo));
+			
 			System.out.println("성공");
 		}
+		
+		// 커뮤니티에서 로그인 한 경우 page 파라미터 추가
+		if(path.equals("/community/posts")) path += "?page=0";
+		
 		return "redirect:"+path;
 	}
 	
@@ -65,7 +95,12 @@ public class UserController {
 	public String insertUser(String path, UserVO vo){
 		
 		userService.insertUser(vo);
-		return "redirect:"+path;
+		
+		alert.setStr("회원가입이 완료되었습니다.");
+		alert.setPath(path);
+		alert.setFlag(true);
+		
+		return "redirect:/common";
 	}
 	
 	// 회원 정보 수정
@@ -74,7 +109,11 @@ public class UserController {
 		vo.setId((long)session.getAttribute("id"));
 		userService.updateUser(vo);
 		
-		return "redirect:/users?path=info";
+		alert.setStr("회원정보가 수정되었습니다.");
+		alert.setPath("/users?path=info");
+		alert.setFlag(true);
+		
+		return "redirect:/common";
 	}
 	
 	
@@ -84,7 +123,11 @@ public class UserController {
 		vo.setId((long)session.getAttribute("id"));
 		userService.updateUserPwd(vo);
 	 
-		return "redirect:/users?path=pwd";
+		alert.setStr("비밀번호가 변경되었습니다.");
+		alert.setPath("/users?path=ipwdnfo");
+		alert.setFlag(true);
+		
+		return "redirect:/common";
 	}
 
 	
@@ -95,8 +138,12 @@ public class UserController {
 		
 		userService.deleteUser(vo);
 		session.invalidate();
+
+		alert.setStr("회원탈퇴가 완료되었습니다.");
+		alert.setPath("/store/main");
+		alert.setFlag(true);
 		
-		return "redirect:/store/main";
+		return "redirect:/common";
 	}
 	
 	// 회원 조회
