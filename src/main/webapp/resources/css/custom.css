@@ -25,7 +25,6 @@ Table of contents
 12. community
 
 
-여기좀 수정해봅시다...
 
 --------------------------------------------- */
 /* 
@@ -705,8 +704,21 @@ header
 }
 
 
-/* 검색 버튼 */
 
+
+/* 로그인메뉴 간격조절 */
+.header-area .nav .sign-in-menu {
+	margin-left: 20px;
+	margin-right: 10px;
+}
+.header-area .nav .sign-up-menu {
+	margin-right: 10px;
+}
+
+
+
+
+/* 검색 버튼 */
 .header-area .search-container {
 	position: relative;
 	width: fit-content;
