@@ -502,8 +502,7 @@ public class ProductController {
     
     
     
-    /*----------------정희 추가-----------------*/
-    /*
+    /*---------------------------------------------------정희 추가
 
     // 상품 수정 페이지
     @GetMapping("/products/{p_id}/edit")
@@ -519,8 +518,7 @@ public class ProductController {
             @RequestParam("name") String name,
             @RequestParam("price") int price,
             @RequestParam(value = "file", required = false) MultipartFile file) {
-    	*/
-/*
+   
         // 상품 수정 로직
         ProductVO product = productService.getProductById(p_id);
         if (product != null) {
@@ -537,17 +535,20 @@ public class ProductController {
 
         return "redirect:/store/st-products";
     }
+*/
 
-    // 상품 삭제
-    @PostMapping("/products/{p_id}/delete")
+    // 상품 삭제 처리
+    @RequestMapping(value = "/products/{p_id}", method = RequestMethod.DELETE)
     public String deleteProduct(@PathVariable("p_id") long p_id) {
-        // 상품 삭제 로직
-        //productService.deleteProduct(p_id);
-
-        return "redirect:/store/st-products";
+        System.out.println("1");
+    	// 상품 삭제 로직
+    	productService.deleteProduct(p_id);
+        return "redirect:/";
     }
+
     
-    /*----------------정희 추가-----------------*/
+
+//----------------------------------------------------정희 추가
 	
     
     
