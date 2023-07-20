@@ -161,4 +161,11 @@ public class ProductService {
 	public List<ProductVO> getCreatorSignatureList(long id){
 		return productRepository.getCreatorSignatureList(id);
 	}
+	
+	
+	/* 크리에이터 상품 전체조회 */
+	public Page<ProductListVO> getCreatorProductList(long id, Pageable pageable) {
+		return productlistRepository.findAllById(id, pageable);
+	}
+	
 }
