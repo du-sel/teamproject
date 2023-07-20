@@ -22,10 +22,10 @@ public class CommentVO {
 	private long commentid;
 	
 	@Column(name="post_id")
-	private Long postId;
+	private long postId;
 	
 	@JoinColumn(name = "id")
-	private Long id;
+	private long id;
 	private String content;
 	
 	@Temporal(TemporalType.DATE)
@@ -38,16 +38,16 @@ public class CommentVO {
 	public void setCommentid(long commentid) {
 		this.commentid = commentid;
 	}
-	public Long getPostId() {
+	public long getPostId() {
 		return postId;
 	}
-	public void setPostId(Long postId) {
+	public void setPostId(long postId) {
 		this.postId = postId;
 	}
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getContent() {

@@ -60,4 +60,11 @@ public interface ProductListRepository extends JpaRepository<ProductListVO, Long
 	@Query(value = "SELECT * FROM productlist p WHERE p.photo=1 and p.p_name like %:keyword%", nativeQuery = true)
 	Page<ProductListVO> getCategoryPhoto(@Param("keyword") String keyword, Pageable pageable);
 	
+	
+	
+	
+	// 크리에이터별 상품 전체조회
+	Page<ProductListVO> findAllById(long id, Pageable pageable);
+	
+	
 }
