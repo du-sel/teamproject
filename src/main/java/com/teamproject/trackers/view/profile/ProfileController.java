@@ -59,13 +59,13 @@ public class ProfileController {
 		if(session.getAttribute("id") == null) {
 			
 			//System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
-			model.addAttribute("id", profileService.getUser(url));
+			model.addAttribute("profile", profileService.getUser(url));
 			model.addAttribute("follow", followService.getFollow(profileService.getUser(url).getId(), url));
 			model.addAttribute("count",followService.getFollower(profileService.getUser(url).getId()));
 			model.addAttribute("subcount", profileService.getUser(url).getId());
 		}else {
 			uvo.setId((long)session.getAttribute("id"));
-			model.addAttribute("id", profileService.getUser(url));
+			model.addAttribute("profile", profileService.getUser(url));
 			model.addAttribute("follow", followService.getFollow(profileService.getUser(url).getId(), url));
 			//System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
 			
