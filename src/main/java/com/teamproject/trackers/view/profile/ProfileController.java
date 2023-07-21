@@ -1,7 +1,7 @@
+
 package com.teamproject.trackers.view.profile;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -53,30 +53,35 @@ public class ProfileController {
 		this.productService = productService;
 	}
 	
-	
-	
-	
-	
 	@RequestMapping(value ="/{url}", method = RequestMethod.GET)
 	public String getProfile(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo) {
 		
 		if(session.getAttribute("id") == null) {
+			
+			//System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
 			model.addAttribute("id", profileService.getUser(url));
+			model.addAttribute("follow", followService.getFollow(profileService.getUser(url).getId(), url));
+			model.addAttribute("count",followService.getFollower(profileService.getUser(url).getId()));
+			model.addAttribute("subcount", profileService.getUser(url).getId());
 		}else {
 			uvo.setId((long)session.getAttribute("id"));
-			model.addAttribute("follow", followService.getFollow(uvo.getId(), url));
 			model.addAttribute("id", profileService.getUser(url));
-			model.addAttribute("count",followService.getFollower(uvo.getId()));
+			model.addAttribute("follow", followService.getFollow(profileService.getUser(url).getId(), url));
+			//System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
+			
+			model.addAttribute("count",followService.getFollower(profileService.getUser(url).getId()));
+			model.addAttribute("subcount", profileService.getUser(url).getId());
+			//model.addAttribute("subcount", subscribeInfoService.countSub(followService.getFollow(uvo.getId(), url).getTo_id()));
 		}
-
-	
+		
+		//System.out.println(uvo.getId()+"   - getId");
+		
         return "profiles/profile";
 	   
 	}
 	
 	
-	
-	
+
 	
     ////* 크리에이터 프로필 - 상품목록 조회 *////
 	@RequestMapping(value="/{url}/products", method=RequestMethod.GET, produces = "application/text; charset=UTF-8")
@@ -134,21 +139,10 @@ public class ProfileController {
 		System.out.println(listIntoString);
 
 		String pagingIntoString = paging.toString();
-		
-		JsonObject wrapper = new JsonObject();
-		wrapper.addProperty("list", listIntoString);
-		wrapper.addProperty("paging", pagingIntoString);
-		
-		String wrapperIntoString = wrapper.toString();
-		
-		System.out.println(wrapperIntoString);
-    	
-    	return wrapperIntoString;
-    }
-    
-    
-    
 
-			
+		
+		
+		
 
 }
+
