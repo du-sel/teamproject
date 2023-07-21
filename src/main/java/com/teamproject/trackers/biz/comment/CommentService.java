@@ -42,7 +42,7 @@ public class CommentService {
 	}
 	
 	public Optional<UserVO> getUser(Long commentId) {
-        Optional<CommentVO> commentOptional = commentRepository.findById(commentId);
+        Optional<CommentVO> commentOptional = commentRepository.findById(commentId); 
         if (commentOptional.isPresent()) {
         	CommentVO commentVO = commentOptional.get();
             return commentRepository.findUserByUserId(commentVO.getId());

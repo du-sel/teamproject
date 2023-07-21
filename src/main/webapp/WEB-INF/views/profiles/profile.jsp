@@ -5,19 +5,31 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 <main id="myprofile">
 	<div  class="container firstcontainer">
+	<!-- 
 	<c:if test="${!empty sessionScope.id}">
-	
 	</c:if>
+	 -->
 		<!--상단 이미지-->
 		<div class="row topimg">
-			<div class="col-md-12 topimgdiv" >
-				<p id="img-topimgmodify"> IMAGE UPLOAD </p>
-			</div> 
+			<c:choose>
+			    <c:when test="${!empty sessionScope.user.id}" > 
+					<div class="col-md-12 topimgdiv">
+						<img id="img-topimgmodify" src="">
+						<!-- <p id="img-topimgmodify"> IMAGE UPLOAD </p> -->
+					</div> 
+				</c:when>
+				<c:otherwise>
+					<div class="col-md-12 topimgdiv">
+						<img src="">
+					</div>
+				
+				</c:otherwise>
+			</c:choose>
 		</div>
 
 		<div class="row  seconddiv">
 			<c:choose>
-			    <c:when test="" >  <!-- 자신의 프로필 일 때와  -->
+			    <c:when test="${!empty sessionScope.user.id}" >  <!-- 자신의 프로필 일 때와  -->
 					<div class="col-md-2 col-lg-1 profilediv">
 						<div class="profile" id="profile">
 							<img class="profileimgmodify" src="/resources/images/사람실루엣.jpg" >
@@ -29,49 +41,68 @@
 						<div class="profile" id="profile">
 							<!-- <img  id="Img" src="/resources/images/사람실루엣.jpg" > -->
 
-							<img class="profileimgmodify"  src="/resources/images/사람실루엣.jpg" >
+							<img id="profileimgmodify" src="/resources/images/사람실루엣.jpg" >
 						</div>
 					</div>
 			    </c:otherwise>
 			</c:choose>
 
-
+			
 			<div class="col-md-4 offset-md-1 col-lg-4">
-				<div class="nickname">mybulnet123</div>
+				<div class="nickname">${id.getName()}</div>
 				<div class="count">
-					팔로워  &nbsp;123명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;23명
+					팔로워  &nbsp;명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;명
 				</div>
 				<br>
 			<!-- SNS 주소 -->
-				<div class="addressdiv"><a href="https://www.instagram.com/?hl=ko" ><img src="resources/images/instagram.svg">&nbsp;인스타그램</a></div>
-				<div class="addressdiv"><a href="https://youtube.com/"><img src="resources/images/youtube.svg">&nbsp;유튜브</a></div>
+				<div class="addressdiv"><a href="https://www.instagram.com/${id.getInstagram()}"><img src="/resources/images/instagram.svg">&nbsp;${id.getInstagram()}</a></div>
+				<div class="addressdiv"><a href="https://youtube.com/${id.getYoutube()}"><img src="/resources/images/youtube.svg">&nbsp;${id.getYoutube()}</a></div>
+				
 
 			</div>
 			
-			
+ 			
 			<c:choose>
-				<c:when test="${!empty sessionScope.id && !empty sessionScope.url} ">
+			    <c:when test="${!empty sessionScope.user.id}" > 
 					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">
-
-				   		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
-						<div id="buttonright" class="longtext"><a href="sales-status.do">마이스토어 관리</a></div>
-								
+					<c:choose>
+						<c:when test=" ">
+				   			<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
+				   		</c:when>
+				   		<c:otherwise>
+							<div id="buttonright" class="longtext"><a href="store/sales-status">마이스토어 관리</a></div>
+						</c:otherwise>
+					</c:choose>
 					</div>				
 				</c:when>
-				<c:otherwise>
+				<c:when test="${empty sessionScope.user.id}">
 					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">						 
-						<button id="buttonright" class="btn">팔로우</button> 
+						<button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button> 
+						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>		
+					</div>	
+				</c:when>
+
+				<c:otherwise>
+					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">	
+									 
+						<button id="buttonright" class="btn">팔로우</button>
+				
 						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>
-						<c:when test="">
-							<button id="buttonright"  class="btn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-							<button id="buttonright"  class="btn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
-						</c:when>		
+					<c:when test="${follow.getFrom_id() == sessionScope.user.id}">		
+						<button  class="btn offbtn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
+					</c:when> 
+						<button  class="btn offbtn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
 					</div>				
 				</c:otherwise>
 			</c:choose>
 
 		</div>	
-	
+		<script>
+		    function showLoginAlert() {
+		        alert("로그인이 필요합니다");
+		    }
+		    
+		</script>
 	<br>
 
 	<!-- 탭 -->
@@ -573,7 +604,7 @@
 			               
 			        </div>
 			        <div class="uploadbtn">
-			        	<input type="button" value="전송하기" id="uploadbtn">
+			        	<input type="button" value="사진 업로드" id="uploadbtn">
 			        </div>
 		
 			</div>
@@ -590,7 +621,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        ____ 구독을 취소하시겠습니까?
+		        ${id.getName()} 구독을 취소하시겠습니까?
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -609,7 +640,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        ____ 팔로우을 취소하시겠습니까?
+		        ${id.getName()} 팔로우을 취소하시겠습니까?
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>

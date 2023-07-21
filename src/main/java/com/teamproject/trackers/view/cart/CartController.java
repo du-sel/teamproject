@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.teamproject.trackers.biz.cart.CartInfoVO;
 import com.teamproject.trackers.biz.cart.CartService;
@@ -47,6 +48,7 @@ public class CartController {
     
 	
     /* 장바구니에 상품 추가 */
+    /*
     @RequestMapping(value="/carts/{p_id}", method=RequestMethod.POST)
 	public String insertCart(@PathVariable("p_id") String p_id, CartVO vo) {
 		
@@ -57,7 +59,22 @@ public class CartController {
     	
     	return "redirect:/store/carts";
 	}
+	*/
 	
+    
+    /* 장바구니에 상품 추가 AJAX */
+    @RequestMapping(value="/carts/{p_id}", method=RequestMethod.POST)
+    @ResponseBody
+	public String insertCart(@PathVariable("p_id") String p_id, CartVO vo) {
+
+    	CartVO cart = new CartVO();
+    	cart.setPid(Long.parseLong(p_id));
+    	cart.setId((long)session.getAttribute("id"));
+    	cartService.insertCart(cart);
+
+    	return "success";
+	}
+    
     
     
     

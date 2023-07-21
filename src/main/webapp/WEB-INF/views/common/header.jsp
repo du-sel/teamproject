@@ -50,8 +50,14 @@
     <!-- tab JS -->
     <script src="/resources/js/tab.js"></script>
 
+
     <!-- intro -->
     <script src="/resources/js/intro.js"></script>
+    
+    <!-- cart JS -->
+	<script src="/resources/js/cart.js"></script>
+	
+
 
 	<script>	
 		// 세자리 마다 콤마(,) 넣는 함수
@@ -172,11 +178,12 @@
 				                                    <li><a href="/users/logout">로그아웃</a></li>
 				                                </ul>
 			                          		</div>
-			                          		<div class="scroll-to-section"><a href="/profiles">마이프로필</a></div>
+
+			                          		<div class="scroll-to-section"><a href="/profiles/${sessionScope.user.url}">마이프로필</a></div>
 										</c:when>
 										<c:otherwise> 
-											<div class="scroll-to-section" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
-	                          				<div class="scroll-to-section" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div>
+											<div class="scroll-to-section sign-in-menu" onclick="onSigninModal()"><a href="#" data-toggle="modal" data-target="#modal">로그인</a></div>
+	                          				<div class="scroll-to-section sign-up-menu" onclick="onSignupModal()"><a href="#" data-toggle="modal" data-target="#modal">회원가입</a></div>
 	                          			</c:otherwise>
 									</c:choose>
 	                            </div>
