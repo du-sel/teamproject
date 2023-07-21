@@ -164,7 +164,7 @@
 					<div>
 						<div class="header">
 							<div class="meta">
-								<a href="/profiles/${sessionScope.user.url} }" class="author"><img src="${sessionScope.user.profile_img}" alt="프로필 사진" />&nbsp;&nbsp;
+								<a href="/profiles/${sessionScope.user.url }" class="author"><img src="${sessionScope.user.profile_img}" alt="프로필 사진" />&nbsp;&nbsp;
 									<span class="name"><div class="author">${sessionScope.user.name}</div></span>
 								</a>
 								<button class="insertpost inserticon" type="button"><img alt="" src="/resources/images/icon-insertpost.png"></button>
