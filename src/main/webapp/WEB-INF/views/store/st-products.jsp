@@ -64,8 +64,8 @@
 	                        </div>
 	                        <div class="down-content">
 	                            <h4>${i.pname}</h4>
-	                            <c:if test="${i.sale != 0}"><span class="cost"> <fmt:formatNumber value="${i.price}" pattern="#,###" />원</span></c:if>
 	                            <span class="price"> <fmt:formatNumber value="${i.salePrice}" pattern="#,###" />원</span>
+	                            <c:if test="${i.sale != 0}"><span class="cost"> <fmt:formatNumber value="${i.price}" pattern="#,###" />원</span></c:if>
 	                            <ul class="stars">
 	                                <span class="star">
 										★★★★★
