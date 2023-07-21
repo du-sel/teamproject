@@ -67,9 +67,9 @@ public class PostService {
 		Page<PostInfoListVO> list = null;
 		
 		if(type.equals("follow")) list = postInfoListRepository.getFollowPost(id, keyword, pageable);
-		//else if(type.equals("subscribe")) list = postInfoListRepository.getCategoryMonthly(keyword, pageable);
-		//else if(type.equals("comment")) list = postInfoListRepository.getCategoryWeekly(keyword, pageable);
-		//else if(type.equals("like")) list = postInfoListRepository.getCategoryHabit(keyword, pageable);
+		else if(type.equals("subscribe")) list = postInfoListRepository.getSubscribePost(id, keyword, pageable);
+		else if(type.equals("like")) list = postInfoListRepository.getLikePost(id, keyword, pageable);
+		else if(type.equals("comment")) list = postInfoListRepository.getCommontPost(id, keyword, pageable);
 		
 		return list;
 	}
