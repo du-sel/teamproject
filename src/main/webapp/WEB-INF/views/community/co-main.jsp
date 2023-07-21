@@ -9,6 +9,8 @@
 <div id="wrapper container" class="co">
 	<main id="co-main" class="row" style="margin-top: 200px">
 	
+		<c:set var="user_id" value="${sessionScope.id }"/>	
+		
 		<!-- Sidebar -->
 		<section id="sidebar" class="col-lg-3">
 			<nav class="navbar navbar-expand-md navbar-absolute navbar-transparent">
@@ -20,36 +22,45 @@
 					</div>
 				</div>
 			</nav>
-		
+			
 			<div class="sidebar-wrapper scroll-y-custom">
 				<section class="sidebar-post-list">
 					<nav class="sidebar-nav">
 						<ul>
-							<li class="menu active">
-								<a href="#menu">통합 피드</a>
+							<li class="menu<c:if test="${type eq 'all'}"> active</c:if>">
+								<a href="/community/posts?page=0&type=all">통합 피드</a>
 							</li>
-							<li class="menu">
-								<a href="#menu">팔로잉 피드</a>
-							</li>
-							<li class="menu">
-								<a  href="#menu">크리에이터 피드</a>
-							</li>
-							<li class="menu">
-								<a href="#menu">내가 댓글 남긴 포스트</a>
-							</li>
-							<li class="menu">
-								<a href="#menu">내가 좋아요한 포스트</a>
-							</li>
+							<c:choose>
+						    	<c:when test="${!empty user_id}">	<!-- 로그인 o --> 
+						    		<li class="menu<c:if test="${type eq 'follow'}"> active</c:if>">
+										<a href="/community/posts?page=0&type=follow">팔로잉 피드</a>
+									</li>
+									<li class="menu<c:if test="${type eq 'subscribe'}"> active</c:if>">
+										<a href="/community/posts?page=0&type=subscribe">크리에이터 피드</a>
+									</li>
+									<li class="menu<c:if test="${type eq 'comment'}"> active</c:if>">
+										<a href="/community/posts?page=0&type=comment">내가 댓글 남긴 포스트</a>
+									</li>
+									<li class="menu<c:if test="${type eq 'like'}"> active</c:if>">
+										<a href="/community/posts?page=0&type=like">내가 좋아요한 포스트</a>
+									</li>
+						    	</c:when>		
+						    	<c:otherwise>		<!-- 로그인 x -->
+						    		<li class="menu" onclick="sidebarSignin();">
+										<a href="">팔로잉 피드</a>
+									</li>
+									<li class="menu" onclick="sidebarSignin();">
+										<a href="">크리에이터 피드</a>
+									</li>
+									<li class="menu" onclick="sidebarSignin();">
+										<a href="">내가 댓글 남긴 포스트</a>
+									</li>
+									<li class="menu" onclick="sidebarSignin();">
+										<a href="">내가 좋아요한 포스트</a>
+									</li>
+						    	</c:otherwise>
+					    	</c:choose>
 						</ul>
-						<!-- <form id="sidebar-search" class="d-flex justify-content-start" method="get" action="#">
-							<div class="d-flex justify-content-between">
-								<input class="form-control" type="text" name="co_keyword" placeholder="Search" />
-								<div class="d-flex flex-column justify-content-center">
-									<label for="co-search"><i class="fa fa-search" aria-hidden="true"></i></label>
-									<input id="co-search" type="submit" value="검색">
-	                  			</div>
-	                  		</div>
-		           		</form> -->
 					</nav> 
 				</section>
 	 
@@ -144,7 +155,6 @@
 		<!-- Main -->
 		<div id="main" class="col-lg-7 m-auto" > <!-- style="float: right;" -->
 		
-		<c:set var="user_id" value="${sessionScope.id }"/>	
 		<c:if test="${!empty user_id}">
 			<article class="post">
 				<form action="/community/posts" method="post" name="post" enctype="multipart/form-data">
@@ -153,7 +163,7 @@
 					<div>
 						<div class="header">
 							<div class="meta">
-								<a href="#" class="author"><img src="${sessionScope.user.profile_img}" alt="프로필 사진" />&nbsp;&nbsp;
+								<a href="/profiles/${sessionScope.user.url} }" class="author"><img src="${sessionScope.user.profile_img}" alt="프로필 사진" />&nbsp;&nbsp;
 									<span class="name"><div class="author">${sessionScope.user.name}</div></span>
 								</a>
 								<button class="insertpost inserticon" type="button"><img alt="" src="/resources/images/icon-insertpost.png"></button>
@@ -204,14 +214,13 @@
 		<c:forEach var="p" items="${posts.content }">
 			<!-- Post -->
 			<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
-				<div onclick="location.href='/community/posts/${p.postId}'">
-					<div class="title d-flex ">
-						<a href="#" class="author">
+				<form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'">
+					<div class="title d-flex justify-content-between">
+						<a href="/profiles/${p.url}" class="author">
 						    <img src="${p.profile_img}" alt="프로필 이미지" />&nbsp;&nbsp;
 				    		<span class="name"><input type="text" name="id" value="${p.name}" readonly="readonly" class="author"></span>
 						</a>
-						<p>${p.creDate}</p>
-						<%-- <input type="text" readonly="readonly" name="cre_date" class="published" value="${p.creDate}"> --%>
+						<input type="text" readonly="readonly" name="cre_date" class="published" value="${p.creDate}">
 					</div>
 					
 					<div class="post_img-outer">
@@ -229,7 +238,7 @@
 							${p.content}
 						</div>
 					</div>
-				</div>
+				</form>
 					
 				<c:if test="${p.id eq user_id}">
 					<form action="/community/posts/${p.postId}" method="post">
@@ -290,34 +299,34 @@
 						<c:when test="${!empty keyword || keyword ne '' }"> <!-- 검색 o -->
 					    	<c:if test="${posts.number-1 >= 0}" >
 					    		<li>
-						            <a href="/community/posts?page=${posts.number-1}&keyword=${keyword}" >&lt;</a>
+						            <a href="/community/posts?page=${posts.number-1}&type=${type}&keyword=${keyword}" >&lt;</a>
 						        </li>
 					    	</c:if>
 					    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
 				    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
-						            <a href="/community/posts?page=${p-1}&keyword=${keyword}">${p}</a>
+						            <a href="/community/posts?page=${p-1}&type=${type}&keyword=${keyword}">${p}</a>
 						        </li>	
 							</c:forEach>
 							<c:if test="${posts.number+1 < posts.totalPages }" >
 					    		<li>
-					           		<a href="/community/posts?page=${posts.number+1}&keyword=${keyword}">&gt;</a>
+					           		<a href="/community/posts?page=${posts.number+1}&type=${type}&keyword=${keyword}">&gt;</a>
 					        	</li>
 					    	</c:if>
 					    </c:when>
 						<c:otherwise> <!-- 검색 x -->
 							<c:if test="${posts.number-1 >= 0}" >
 					    		<li>
-						            <a href="/community/posts?page=${posts.number-1}" >&lt;</a>
+						            <a href="/community/posts?page=${posts.number-1}&type=${type}" >&lt;</a>
 						        </li>
 					    	</c:if>
 					    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
 				    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
-						            <a href="/community/posts?page=${p-1}">${p}</a>
+						            <a href="/community/posts?page=${p-1}&type=${type}">${p}</a>
 						        </li>	
 							</c:forEach>
 							<c:if test="${posts.number+1 < posts.totalPages }" >
 					    		<li>
-					           		<a href="/community/posts?page=${posts.number+1}">&gt;</a>
+					           		<a href="/community/posts?page=${posts.number+1}&type=${type}">&gt;</a>
 					        	</li>
 					    	</c:if>
 					    </c:otherwise> 
@@ -353,6 +362,9 @@
     	});
 	});
 	
+	function sidebarSignin(){
+		alert("로그인 후 이용 가능합니다.");
+	}
 </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
