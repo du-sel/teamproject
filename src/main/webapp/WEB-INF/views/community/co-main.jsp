@@ -242,12 +242,7 @@
 				</form>
 					
 
-				<c:if test="${p.id eq user_id}">
-					<form action="/community/posts/${p.postId}" method="post">
-					 	<input type="hidden" name="_method" value="DELETE"/>
-						<button type="submit">삭제하기</button>
-					</form>
-				</c:if>
+				
 			
 					
 				<footer>
@@ -256,22 +251,30 @@
 						<li><a class="like-button" ><span class="like-icon">❤️</span><span class="like-count">${p.t_count}</span></a></li> <!-- 좋아요 개수 -->
 					</ul>
 					<div class="comment-section">
-						<ul id="comment-list" class="comment-list">
+						<ul id="comment-list" class="comment-list col-12">
 							<c:if test="${!empty comments[p.postId]}">	<!-- 첨부 이미지 있는 경우 --> 
 					    		<c:forEach var="c" items="${comments[p.postId]}">
 					   	   			<li>
-										<div class="col-2">이름 ${c.name }</div>
-										<div class="col-7">내용 ${c.content}</div>
-										<div class="col-3">날짜 ${c.creDate }</div>
+										<div class="comment-name">이름 ${c.name }</div>
+										<div class="comment-date">날짜 ${c.creDate }</div>
+										<div class="comment-content"><div class="col-10">내용 ${c.content}</div></div>
+										
 									</li>
 				   	   			</c:forEach>
 					    	</c:if>	
-					    	<c:if test="${p.c_count > 3 }">
-	                           <div onclick="location.href='/community/posts/${p.postId}'">댓글 더보기</div>
-	                        </c:if>
+					    	
 						</ul>
 						<div class="button-row">
+							<c:if test="${p.id eq user_id}">
+								<form action="/community/posts/${p.postId}" method="post">
+								 	<input type="hidden" name="_method" value="DELETE"/>
+									<button type="submit" class="delete-post" onclick="return checkDeletePost()">포스트 삭제하기</button>
+								</form>
+							</c:if>
 							<button class="comment-button" type="button" onclick="return showCommentInput(this)">댓글쓰기</button>
+							<c:if test="${p.c_count > 3 }">
+	                           <div onclick="location.href='/community/posts/${p.postId}'">댓글 더보기</div>
+	                        </c:if>
 							<div class="comment-input">
 								<form action="/community/posts/${p.postId}/comments" method="post" name="comment" id="insertcomment">
 									<input type="hidden" name="postId" value="${p.postId }"/>
