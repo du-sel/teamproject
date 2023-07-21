@@ -108,13 +108,22 @@ System.out.println("imgvo.postid "+imgvo.getPostId());
 	
 	
 	
-	// 삭제
+	// 포스트 삭제
 	@RequestMapping(value = "/posts/{postId}", method = RequestMethod.DELETE)
 	public String deletePost(@PathVariable("postId")Long postId) {
 		postService.deletePost(postId);
 		// comment도 삭제
 		return "redirect:/community/posts";
 	}	
+
+	// 댓글 삭제
+	@RequestMapping(value = "/{postId}/comments/{comment_id}", method = RequestMethod.GET)
+	public String deleteComment(@PathVariable("comment_id")Long commentid, @PathVariable("postId")Long postId) {
+System.out.println("delete postid "+postId);		
+		commentService.deleteComment(commentid);
+		String postid = Long.toString(postId);
+		return "redirect:/community/posts/"+postid;
+	}
 	
 	
 	// 상세 조회
@@ -161,11 +170,9 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 			pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "cre_date"));
 			// 검색 x 경우
 			if(keyword == null) keyword="";
-			System.out.println(pageable);
-			System.out.println(keyword);
-			System.out.println(page);
 			
-			list = postService.getTypeList(type, (long) session.getAttribute("id"), keyword, pageable);
+			if(!type.equals("creator")) list = postService.getTypeList(type, (long) session.getAttribute("id"), keyword, pageable);
+			else list = postService.getCreatorPostList(keyword, pageable);
 		}else {
 			// 정렬
 			pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "creDate"));

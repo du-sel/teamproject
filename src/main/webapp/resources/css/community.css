@@ -227,7 +227,10 @@ scroll custom
 .co #user_id{
 	display: none;
 }
-.co .comment-input{display: none;}
+.co .comment-input{
+	display: none;
+	margin : 10px 30px;
+}
 
 .co .comment-list>li{
 	border-bottom: 1px solid rgba(178, 191, 194, 0.7);
@@ -240,7 +243,7 @@ scroll custom
 	margin-right: 30px;
 }
 .co .comment-name{
-	margin-left:20px;
+	margin-left:15px;
 	display: inline-block;
 }
 .co .comment-content{
@@ -264,6 +267,17 @@ scroll custom
 }
 .co .comment-section{
 	padding-top: 50px;
+}
+.co .postlist-button{
+	margin: 30px 0 0 30px;
+}
+.co .delete-comment{
+	float: right;
+	position: relative;
+	bottom: 30px;
+	height: 25px; 
+	font-size: 11px;
+	margin-left: 20px;
 }
 
 /* 

@@ -24,8 +24,8 @@
         	<div class="row justify-content-center">
         	    <!-- 상품정렬 버튼 추가 -->
             	<div class="col-lg-12 d-flex justify-content-between sort">
-					<div>
-						<h5>상품정렬</h5>
+					<div id="category-path" class="d-flex">
+						<h5 class="d-flex flex-column justify-content-center"></h5>
 					</div>
 					<form action="/store/products" method="get">
 						<input type="hidden" name="page" value="0">
@@ -130,7 +130,30 @@
 
 <script>
 	$(() =>{
+		
+		let params = new URL(location.href).searchParams;
+		let category = params.get('category');
+		let h5 = $("#category-path h5");
+		console.log(h5);
+		console.log(category);
+		
+		if(category == 'whole') h5.text('페이지 별 > 한달 세트');
+		else if(category == 'monthly') h5.text('페이지 별 > 먼슬리');
+		else if(category == 'weekly') h5.text('페이지 별 > 위클리');
+		else if(category == 'habit') h5.text('페이지 별 > 해빗트래커');
+		else if(category == 'mood') h5.text('페이지 별 > 무드트래커');
+		else if(category == 'reading') h5.text('페이지 별 > 독서트래커');
+		else if(category == 'expense') h5.text('페이지 별 > 가계부');
+		else if(category == 'study') h5.text('페이지 별 > 스터디');
+		else if(category == 'sticker') h5.text('페이지 별 > 스티커');
+		else if(category == 'etc') h5.text('페이지 별 > 그 외');
+		else if(category == 'minimal') h5.text('디자인 별 > 미니멀');
+		else if(category == 'illustration') h5.text('디자인 별 > 일러스트');
+		else if(category == 'photo') h5.text('디자인 별 > 포토');
+		else h5.text('전체');
+		
 		imgHeight();		
+		
 	});
 
 	$(window).on('resize', function() {
@@ -152,6 +175,7 @@
 			img.css('height', "350px");
 		}
 	}
+	
 </script>
     
 <jsp:include page="/WEB-INF/views/common/footer.jsp" /> 

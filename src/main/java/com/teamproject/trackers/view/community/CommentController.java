@@ -29,7 +29,10 @@ public class CommentController {
 System.out.println("vo.postid "+vo.getPostId());
 		commentService.insertComment(vo);
 		request.setAttribute("postId", vo.getPostId());
-		return "redirect:/community/posts";
+		
+		String postId = Long.toString(vo.getPostId());
+		
+		return "redirect:/community/posts/"+postId;
 	}
 	
 	// 삭제
