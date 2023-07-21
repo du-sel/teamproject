@@ -31,13 +31,13 @@
 							<li class="menu<c:if test="${type eq 'all'}"> active</c:if>">
 								<a href="/community/posts?page=0&type=all">통합 피드</a>
 							</li>
+							<li class="menu<c:if test="${type eq 'creator'}"> active</c:if>">
+										<a href="/community/posts?page=0&type=creator">크리에이터 피드</a>
+									</li>
 							<c:choose>
 						    	<c:when test="${!empty user_id}">	<!-- 로그인 o --> 
 						    		<li class="menu<c:if test="${type eq 'follow'}"> active</c:if>">
 										<a href="/community/posts?page=0&type=follow">팔로잉 피드</a>
-									</li>
-									<li class="menu<c:if test="${type eq 'subscribe'}"> active</c:if>">
-										<a href="/community/posts?page=0&type=subscribe">크리에이터 피드</a>
 									</li>
 									<li class="menu<c:if test="${type eq 'comment'}"> active</c:if>">
 										<a href="/community/posts?page=0&type=comment">내가 댓글 남긴 포스트</a>
@@ -49,9 +49,6 @@
 						    	<c:otherwise>		<!-- 로그인 x -->
 						    		<li class="menu" onclick="sidebarSignin();">
 										<a href="">팔로잉 피드</a>
-									</li>
-									<li class="menu" onclick="sidebarSignin();">
-										<a href="">크리에이터 피드</a>
 									</li>
 									<li class="menu" onclick="sidebarSignin();">
 										<a href="">내가 댓글 남긴 포스트</a>

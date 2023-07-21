@@ -171,7 +171,8 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 			// 검색 x 경우
 			if(keyword == null) keyword="";
 			
-			list = postService.getTypeList(type, (long) session.getAttribute("id"), keyword, pageable);
+			if(!type.equals("creator")) list = postService.getTypeList(type, (long) session.getAttribute("id"), keyword, pageable);
+			else list = postService.getCreatorPostList(keyword, pageable);
 		}else {
 			// 정렬
 			pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "creDate"));
