@@ -161,4 +161,19 @@ public class ProductService {
 	public List<ProductVO> getCreatorSignatureList(long id){
 		return productRepository.getCreatorSignatureList(id);
 	}
+	
+	
+	/* 크리에이터 상품 전체조회 */
+	public Page<ProductListVO> getCreatorProductList(long id, Pageable pageable) {
+		return productlistRepository.findAllById(id, pageable);
+	}
+	
+	//-----------------------------------------------정희
+	
+		/* 상품 삭제 */
+		public void deleteProduct(long p_id) {
+	        // 상품 삭제 로직을 여기에 작성합니다.
+	        // 상품 ID로 상품을 조회하고, 조회된 상품을 삭제합니다.
+	        productRepository.deleteById(p_id);
+	    }
 }

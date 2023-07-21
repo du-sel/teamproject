@@ -3,6 +3,180 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
+
+
+<script>
+
+/* 탭 - 스토어 클릭하면 스토어 정보 가져오기 */
+function getCreatorProductList(page, sort) {
+
+	let pathname = window.location.pathname;
+	let url = pathname.substring(pathname.indexOf("profiles")+9);
+	if(url.indexOf("/") > 0) {	
+		url = url.substring(0, url.indexOf("/"));
+		console.log(url);
+	}
+	console.log("COME IN SORT");
+	console.log(sort);
+	
+	// sort 값 구해서 넣어주기
+	let sortSelect = document.getElementsByName('sortSelect')[0];
+	console.log(sortSelect);
+	console.log(sortSelect.options[0]);
+	sort = sortSelect.options[sortSelect.selectedIndex].value;
+	console.log(sort);
+	
+	
+	$.ajax({
+		type: 'get',
+		url: '/profiles/'+url+'/products',
+		contentType: "application/text; charset=UTF-8",
+		datatype: 'json',
+		data: {
+			page: page,
+			sort: sort
+		},
+		success: function(data) {					
+			
+			// JSON 객체별로 쪼개기
+			let JSONdata = JSON.parse(data);
+			let list = JSON.parse(JSONdata.list);	// 상품 리스트
+			let paging = JSON.parse(JSONdata.paging);
+			console.log(paging);
+			
+			
+			let productArr = list.content;
+			//console.log(productArr.length);
+			
+			let box = document.getElementById("product-box");
+			let parent = box.parentElement;
+			let pagination = document.getElementById('pagination-container');
+			
+			$(box).hide();
+			$(pagination).hide();
+
+			
+			if(productArr.length > 0) {
+				$('.new-box').remove();
+				$('.new-li').remove();				
+
+				for(let i = 0; i < productArr.length; i++) {
+					let product = productArr[i];
+					
+					let newBox = document.createElement('div');
+					newBox.innerHTML = box.innerHTML;
+					newBox.classList.add('col-lg-4');
+					newBox.classList.add('new-box');
+					
+					let item = $(newBox).find('.item');
+					item.on('click', function(){
+						location.href='/store/products/'+product.pid;
+					});
+					
+					let cart = $(newBox).find('.hover-content li');
+					cart.on('click', function() {
+						preventDefaultGoCart(event, product.pid)
+					});
+					
+					let thumbnail = $(newBox).find('img');
+					thumbnail.attr('src', product.thumbnail)
+					
+					let p_name = $(newBox).find('.p_name');
+					p_name.text(product.pname);
+					
+					$(newBox).find('.cost').text(numberWithCommas(product.price)+'원');
+					$(newBox).find('.price').text(numberWithCommas(product.salePrice)+'원');
+					
+					if(product.sale <= 0) {
+						$(newBox).find('.cost').hide();
+					} 
+					
+					$(newBox).find('.star span').css('width', product.rating);
+
+					parent.insertBefore(newBox, pagination);
+				}
+
+				
+							
+				// 페이징 처리		
+				if(list.totalPages > 1) {
+					
+					console.log(list);
+					$(pagination).show();
+					console.log("NUMBER");
+					console.log(list.number);
+					
+					let ul = document.querySelector('.pagination ul');
+					let page = document.getElementById('page');
+					let prev = document.getElementById('prev');
+					let next = document.getElementById('next');
+					
+					if(list.number-1 >= 0) {
+						$(prev).show();
+						$(prev).on('click', function() {
+							getCreatorProductList((list.number-1), paging.sort);
+						});
+					} else {
+						$(prev).hide();
+					}
+					
+					if(list.number+1 < list.totalPages) {
+						$(next).show();
+						$(next).on('click', function() {
+							getCreatorProductList((list.number+1), paging.sort);
+						});
+					} else {
+						$(next).hide();
+					}
+
+					
+					for(let p = paging.startPage; p <= paging.endPage; p++) {
+						let newPage = document.createElement('a');
+						let newPageLi = document.createElement('li');
+						newPageLi.classList.add('new-li');
+						if(p == paging.nowPage) {
+							newPageLi.classList.add('active');
+						}
+
+						$(newPage).on('click', function() {
+							getCreatorProductList(p-1, paging.sort);
+						});
+						
+						$(newPage).text(p);
+						
+						newPageLi.appendChild(newPage);
+						ul.insertBefore(newPageLi, next.parentElement);
+					}
+				}
+				
+				
+			} else {
+				
+				// 판매자 등록은 되어있는데 상품은 없는 경우
+				let noItem = document.createElement('div');
+				noItem.innerHTML = '<h5>등록된 상품이 없습니다</h5>';
+				parent.appendChild(noItem);
+			}
+			
+			
+	
+			$("#store").addClass("active").addClass("show");
+			$("#feed").removeClass("active").removeClass("show");
+			$("#notice").removeClass("active").removeClass("show");
+			
+		},
+		error: function(message) { }
+		
+	})
+	
+	
+}
+
+
+</script>
+
+
+
 <main id="myprofile">
 	<div  class="container firstcontainer">
 	<!-- 
@@ -14,13 +188,13 @@
 			<c:choose>
 			    <c:when test="${!empty sessionScope.user.id}" > 
 					<div class="col-md-12 topimgdiv">
-						<img id="img-topimgmodify" src="">
+						<img src="/resources/images/E2E2E2.png">
 						<!-- <p id="img-topimgmodify"> IMAGE UPLOAD </p> -->
 					</div> 
 				</c:when>
 				<c:otherwise>
 					<div class="col-md-12 topimgdiv">
-						<img src="">
+						<img src="/resources/images/E2E2E2.png">
 					</div>
 				
 				</c:otherwise>
@@ -49,19 +223,19 @@
 
 			
 			<div class="col-md-4 offset-md-1 col-lg-4">
-				<div class="nickname">${id.getName()}</div>
+				<div class="nickname">${profile.getName()} ${follow.getTo_id() }</div>
 				<div class="count">
-					팔로워  &nbsp;명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;명
+					팔로워  &nbsp;${count}명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;${subcount}명
 				</div>
 				<br>
 			<!-- SNS 주소 -->
-				<div class="addressdiv"><a href="https://www.instagram.com/${id.getInstagram()}"><img src="/resources/images/instagram.svg">&nbsp;${id.getInstagram()}</a></div>
-				<div class="addressdiv"><a href="https://youtube.com/${id.getYoutube()}"><img src="/resources/images/youtube.svg">&nbsp;${id.getYoutube()}</a></div>
+				<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${id.instagram}">&nbsp;${id.instagram}</a></div>
+				<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/${id.youtube}">&nbsp;${id.youtube}</a></div>
 				
 
 			</div>
 			
- 			
+ 			<!-- 
 			<c:choose>
 			    <c:when test="${!empty sessionScope.user.id}" > 
 					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">
@@ -69,37 +243,82 @@
 						<c:when test=" ">
 				   			<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
 				   		</c:when>
-				   		<c:otherwise>
+				   		<c:when test="${sessionScope.user.url == id.url }">
 							<div id="buttonright" class="longtext"><a href="store/sales-status">마이스토어 관리</a></div>
-						</c:otherwise>
+						</c:when>
 					</c:choose>
 					</div>				
 				</c:when>
+				<c:when test="${!empty sessionScope.user.id}">
+					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">	
+					<c:otherwise>					 
+						<button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button>
+						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>
+					</c:otherwise>
+					<c:when test="${!empty follow.getFrom_id()} ">
+						<button id="buttonright" class="btn">팔로우 중 </button>
+						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독 중</button>
+					</c:when>
+							
+					</div>	
+				</c:when>
 				<c:when test="${empty sessionScope.user.id}">
-					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">						 
-						<button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button> 
-						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>		
+					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">					 
+						<button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button>
+						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="showLoginAlert()">구독</button>
 					</div>	
 				</c:when>
 
-				<c:otherwise>
-					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">	
-									 
-						<button id="buttonright" class="btn">팔로우</button>
-				
-						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>
-					<c:when test="${follow.getFrom_id() == sessionScope.user.id}">		
-						<button  class="btn offbtn" data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-					</c:when> 
-						<button  class="btn offbtn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
-					</div>				
-				</c:otherwise>
 			</c:choose>
+			-->
+			<c:choose>
+			    <c:when test="${!empty sessionScope.user.id}">
+			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
+			            <c:choose>
+			                <c:when test="${sessionScope.user.url == id.url}">
+			                	<c:choose>
+				                	<c:when test=" ">
+				                		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
+				                	</c:when>
+				                	<c:otherwise>
+				                		<div id="buttonright" class="longtext"><a href="store/sales-status">마이스토어 관리</a></div>
+				                	</c:otherwise>
+			                	</c:choose>
+			                </c:when>
+			                <c:otherwise>
+				                <c:choose>
+				                	<c:when test="">
+				                		 <button id="buttonright" class="btn"  onclick="showLoginAlert()">팔로우</button>
+				           				 <button id="buttonright" class="btn"  onclick="showLoginAlert()">구독</button>
+				                	</c:when>
+				                	<c:otherwise>
+					        			<button class="btn offbtn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
+					        			<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
+							 		</c:otherwise>
+						 		</c:choose>
+			                </c:otherwise>
+			                
+			            </c:choose>
+			        </div>
+			    </c:when>
+		    	
+			    <c:otherwise>
+			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
+			            <button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button>
+			            <button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="showLoginAlert()">구독</button>
+			        </div>
+			    </c:otherwise>
+			 </c:choose>   
+
+			
 
 		</div>	
 		<script>
 		    function showLoginAlert() {
 		        alert("로그인이 필요합니다");
+		        var link = '/community/posts';		        
+		        location.href=link;
+
 		    }
 		    
 		</script>
@@ -115,7 +334,7 @@
 			 		<a class="nav-link active" href="#feed" data-toggle="tab" id="feedtabbgcolor" >피드</a>
 			 	</li>
 			 	<li class="nav-item navli" id="li">
-			 		<a class="nav-link" href="#studio" data-toggle="tab">스튜디오</a>
+			 		<div class="nav-link" onclick="getCreatorProductList(0, 'creDate')" data-toggle="tab">스토어</div>
 			 	</li>
 			 	<li class="nav-item navli" id="li">
 			 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
@@ -253,124 +472,7 @@
 										  }
 										</script>
 									</article>
-									<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
-										<div>
-											<div class="title">
-												<p>
-													<a href="#" class="author"><img src="/resources/images/춘식이프로필.png" alt="" />&nbsp;&nbsp;<span class="name">춘식이폼미쳤다</span></a>
-												</p>
-												<p>
-													<time class="published" datetime="2023-07-07">July 7, 2023</time>
-												</p>
-											</div>
-										</div>
-							
-							
-										<div class="post_img-outer" onclick="location.href='post.do'">
-											<div class="post_img">
-												<img src="/resources/images/춘식이웹툰1.png" alt="" />
-											</div>
-										</div>
-										
-										
-										<div id="post-content" class="collapse-content">
-										  <div class="post-content-inner collapsed">
-										    안녕하세요 춘식이폼미쳤다 입니다.<br>
-										    이번에 새로운 다이어리를 출시했는데요.<br>
-										    춘식이와 함께 게으른 나 자신을 다잡을 수 있도록 아주 빡세게 귀여운 다이어리를 제작해 보았습니다ㅋㅋㅋ<br>
-										    관심 있으신 분들은 제 스토어에 방문하셔서 구매하실 수 있도록 상품을 등록 해놓았으니 많은 사랑 부탁드립니다.<br>
-										    날이 많이 덥습니다. 우리 밥은 맛나게 먹더라도 배부르게 더위까지는 먹지 않도록 온열질환 주의하자구요!<br>
-										    저는 요즘 더위를 먹었는지 몹시 피곤하고 몸이 축축 처지네요ㅠㅠㅠ 그래서 당분간 휴식을 좀 취할까 고민 중입니다.<br>
-										    오래 걸리진 않을 테니까 너무 섭섭해하지 마시고 저 기다리는 동안 도도도 춘식이 보면서 행복한 춘식이 생활해요 우리♥<br>
-										    아! 구독과 좋아요는 사랑입니다~ 힛 >.~
-										  </div>
-										</div>
-										
-										<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-							
-							
-							  
-										<script>
-										  $(document).ready(function() {
-										    var contentHeight = $('.post-content-inner').height();
-										    var lineHeight = parseFloat($('.post-content-inner').css('line-height'));
-										    var maxHeight = 5 * lineHeight;
-										    
-										    if (contentHeight > maxHeight) {
-										      $('.post-content-inner').addClass('collapsed');
-										      $('.post-content-inner').css('max-height', maxHeight + 'px');
-										      $('.post-content-inner').after('<span class="expand-button">더보기</span>');
-										      
-										      $('.expand-button').click(function() {
-										        $('.post-content-inner').removeClass('collapsed');
-										        $('.post-content-inner').css('max-height', 'none');
-										        $(this).hide();
-										      });
-										    }
-										  });
-										</script>
-							
-										
-										<footer>
-											<ul class="stats commment_stats">
-												<li><a class="comment-count" href="#" onclick="showCommentInput(this)">📝<span class="comment-count-number">2</span></a></li> <!-- 댓글 개수 -->
-												<li><a class="like-button"   href="#"><span class="like-icon">❤️</span><span class="like-count">2</span></a></li> <!-- 좋아요 개수 -->
-												<!-- <li><a href="#" class="icon solid fa-heart"><i class="fa fa-heart"></i></a> 2</li> -->
-											</ul>
-											<!-- <ul class="actions">
-												<li id="comment_li"><button class="comment ">댓글 쓰기</button></li>
-												<li id="comment_li"><div class="divcomment"><input type="text" name="comment"></div></li>
-											</ul> -->
-											<div class="comment-section">
-											<ul id="comment-list" class="comment-list" style="display: none;">
-											    <li>춘식이 다이어리 너무 기대됩니당!!</li>
-											    <li>춘식이폼미쳤다님 항상 제품 잘 보고 있습니다. 건강하세요</li>
-											</ul>
-											<div class="button-row">
-										        <button class="comment-button" onclick="showCommentInput(this)">댓글쓰기</button> <!-- 댓글쓰기 버튼 -->
-										        <div class="comment-input" style="display: none;">
-										            <!-- 댓글 입력 부분 -->
-										            <input type="text" id="comment-text" name="comment" placeholder="댓글을 입력하세요">
-										            <button class="submit-button" onclick="addComment()">입력</button>
-										        </div>
-										    </div>
-										    </div>
-										</footer>
-										
-										<script>
-										  $(document).ready(function() {
-										    // 댓글 개수 이모티콘 클릭 이벤트
-										    $(".comment-count").click(function() {
-										      $(this).parent().siblings(".button-row").find(".comment-input").toggle();
-										    });
-										    // 좋아요 버튼 클릭 이벤트
-										    $(".like-button").click(function() {
-										      var likeCount = parseInt($(this).find(".like-count").text().trim());
-										      likeCount++;
-										      $(this).find(".like-count").text(likeCount);
-										    });
-										  });
-										  /* 댓글 input창 보여주기 */
-										  function showCommentInput(elem) {
-										    const commentInput = $(elem).closest("footer").find(".comment-input");
-										    commentInput.toggle();
-										  }
-										  /* 댓글 추가 */
-										  function addComment() {
-										    const commentText = $("#comment-text").val();
-										    if (commentText.trim() !== "") {
-										      const commentItem = $("<li>").text(commentText);
-										      $("#comment-list").append(commentItem);
-										      $("#comment-text").val("");
-										    // 댓글 개수 증가
-										    const commentCount = $(".comment-count-number");
-										    let count = parseInt(commentCount.text().trim());
-										    count++;
-										    commentCount.text(count);
-											}
-										  }
-										</script>
-									</article>
+					
 								
 								</div> <!-- div col -->
 							</div> <!-- co-main 끝 -->
@@ -379,16 +481,16 @@
 					</div>
 					
 				
-				<!-- 스튜디오 탭 -->
-				<div class="tab-pane fade" id="studio"><br>
-					<div style="height:50px;">
-						<select class="line" name="shop__selector" id="shop__selector">
-							<option selected>기본 정렬</option>
-							<option>가나다순</option>
-							<option>낮은 가격순</option>
-							<option>높은 가격순</option>
+				<!-- 스토어 탭 -->
+				<div class="tab-pane fade" id="store"><br>
+					<div class="row col-lg-12 justify-content-between">
+						<select name="sortSelect" onchange="getCreatorProductList(0, 'creDate');">
+							<option value="creDate">최신순</option>
+							<option value="popularity">인기순</option>
+							<option value="highprice">높은가격순</option>
+							<option value="lowprice">낮은가격순</option>
 						</select>
-					
+
 						<div class="writenew line">
 							<a href="product-management.do">상품 관리</a>
 						</div>					
@@ -398,82 +500,47 @@
 					
 					<div id="products">
 					
-						<div class="row">
-							<div class="col-lg-4">
+						<div class="row">	               
+						 
+							<!-- Product Card Start -->	
+		            		<div class="col-lg-4" id="product-box">
 			                    <div class="item">
-				                    <a href="product-single.do">
-				                        <div class="thumb">
-				                            <div class="hover-content">
-				                                <ul>
-				                                    <li><i class="fa fa-shopping-cart"></i></li>
-				                                </ul>
-				                            </div>
-				                            <img src="/resources/images/men-01.jpg" alt="">
-				                        </div>
-				                        <div class="down-content">
-				                            <h4>Classic Spring</h4>
-				                            <span>$120.00</span>
-				                            <ul class="stars">
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                            </ul>
-				                        </div>
-			                        </a>
-			                    </div>								
-							</div>
-							<div class="col-lg-4">
-			                    <div class="item">
-				                    <a href="product-single.do">
-				                        <div class="thumb">
-				                            <div class="hover-content">
-				                                <ul>
-				                                    <li><i class="fa fa-shopping-cart"></i></li>
-				                                </ul>
-				                            </div>
-				                            <img src="/resources/images/men-01.jpg" alt="">
-				                        </div>
-				                        <div class="down-content">
-				                            <h4>Classic Spring</h4>
-				                            <span>$120.00</span>
-				                            <ul class="stars">
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                            </ul>
-				                        </div>
-			                        </a>
-			                    </div>								
-							</div>
-							<div class="col-lg-4">
-			                    <div class="item">
-				                    <a href="product-single.do">
-				                        <div class="thumb">
-				                            <div class="hover-content">
-				                                <ul>
-				                                    <li><i class="fa fa-shopping-cart"></i></li>
-				                                </ul>
-				                            </div>
-				                            <img src="/resources/images/men-01.jpg" alt="">
-				                        </div>
-				                        <div class="down-content">
-				                            <h4>Classic Spring</h4>
-				                            <span>$120.00</span>
-				                            <ul class="stars">
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                            </ul>
-				                        </div>
-			                        </a>
-			                    </div>								
-							</div>
+			                        <div class="thumb">
+			                            <div class="hover-content">
+			                                <ul>
+			                                    <li><i class="fa fa-shopping-cart"></i></li>
+			                                </ul>
+			                            </div>
+			                            <img alt="상품 썸네일">
+			                        </div>
+			                        <div class="down-content">
+			                            <h4 class="p_name"></h4>
+			                            <c:if test="${i.sale != 0}"><span class="cost">원</span></c:if>
+			                            <span class="price">원</span>
+			                            <ul class="stars">
+			                                <span class="star">
+												★★★★★
+												<span>★★★★★</span>
+												<input type="range" value="1" step="1" min="0" max="10">
+											</span>
+			                            </ul>
+			                        </div>
+			                    </div>
+			                </div>
+			                <!-- Product Card End -->
+			                
+			                <div class="col-lg-12" id="pagination-container">
+			                    <div class="pagination">
+			                        <ul>
+							    		<li>
+								            <a id="prev">&lt;</a>
+								        </li>
+							    		<li>
+							           		<a id="next">&gt;</a>
+							        	</li>
+								    </ul>
+			                    </div>
+			                </div>
 						</div>
 					</div>
 				</div>
@@ -621,7 +688,9 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        ${id.getName()} 구독을 취소하시겠습니까?
+		      
+		       <!-- ${id.getName()} 구독을 취소하시겠습니까?  -->
+		     
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -631,6 +700,7 @@
 		  </div>
 		</div>
 
+	<form action="" method="delete">
 		<div class="modal fade" id="ExampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered" role="document">
 		    <div class="modal-content">
@@ -640,15 +710,19 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        ${id.getName()} 팔로우을 취소하시겠습니까?
+		
+		        <!--  ${id.getName()} 팔로우을 취소하시겠습니까? -->
+		
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-		        <button type="button" class="btn cancel">팔로우 취소</button>
+		        <input type="submit" class="btn cancel" value="팔로우 취소">
+		        <!-- <button type="button" class="btn cancel">팔로우 취소</button> -->
 		      </div>
 		    </div>
 		  </div>
 		</div>		
+	</form>
 
 </main>
 
