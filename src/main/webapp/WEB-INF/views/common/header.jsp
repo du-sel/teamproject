@@ -151,13 +151,16 @@
 										</c:if>
 										<form name="search" action="${path}" class="search-input-container">
 											<input type="hidden" name="page" value="0">
-											<c:if test="${(path ne '/community/posts')}">				<!-- 크리에이터 리스트, 상품 리스트 -->
+											<c:if test="${(path ne '/community/posts')}">									<!-- 크리에이터 리스트, 상품 리스트 -->
 												<input type="hidden" name="sort" value="creDate">
 											</c:if>											
 											<c:if test="${(path ne '/store/creators') && (path ne '/community/posts')}">	<!-- 상품 리스트 -->
+												<c:if test="${empty category || category eq ''}">							<!-- 상품 상세 등 category 값이 없는 페이지에서 검색 시 디폴트 값 -->
+													<c:set var="category" value="all"/>
+												</c:if>
 												<input type="hidden" name="category" value="${category}">
 											</c:if>
-											<c:if test="${path eq '/community/posts'}">					<!-- 커뮤니티 포스트 리스트 -->
+											<c:if test="${path eq '/community/posts'}">										<!-- 커뮤니티 포스트 리스트 -->
 												<input type="hidden" name="type" value="${type}">
 											</c:if>
 											<input type="text" name="keyword">
