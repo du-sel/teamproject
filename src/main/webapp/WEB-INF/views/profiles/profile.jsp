@@ -227,73 +227,43 @@ function getCreatorProductList(page, sort) {
 				</div>
 				<br>
 			<!-- SNS 주소 -->
-				<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${id.instagram}">&nbsp;${id.instagram}</a></div>
-				<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/${id.youtube}">&nbsp;${id.youtube}</a></div>
+			<c:choose>
+				<c:when test="${!empty profile.youtube }">
+					<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+				</c:when>
+				<c:when test="${!empty profile.instagram }">
+					<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
+				</c:when>
 				
+			</c:choose>	
 
 			</div>
 			
- 			<!-- 
-			<c:choose>
-			    <c:when test="${!empty sessionScope.user.id}" > 
-					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">
-					<c:choose>
-						<c:when test=" ">
-				   			<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
-				   		</c:when>
-				   		<c:when test="${sessionScope.user.url == id.url }">
-							<div id="buttonright" class="longtext"><a href="store/sales-status">마이스토어 관리</a></div>
-						</c:when>
-					</c:choose>
-					</div>				
-				</c:when>
-				<c:when test="${!empty sessionScope.user.id}">
-					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">	
-					<c:otherwise>					 
-						<button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button>
-						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독</button>
-					</c:otherwise>
-					<c:when test="${!empty follow.getFrom_id()} ">
-						<button id="buttonright" class="btn">팔로우 중 </button>
-						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg">구독 중</button>
-					</c:when>
-							
-					</div>	
-				</c:when>
-				<c:when test="${empty sessionScope.user.id}">
-					<div class=" offset-md-1 col-md-3 offset-lg-2 col-lg-4 thriddiv">					 
-						<button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button>
-						<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="showLoginAlert()">구독</button>
-					</div>	
-				</c:when>
 
-			</c:choose>
-			-->
 			<c:choose>
 			    <c:when test="${!empty sessionScope.user.id}">
 			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
 			            <c:choose>
-			                <c:when test="${sessionScope.user.url == id.url}">
-			                	<c:choose>
-				                	<c:when test=" ">
+			                <c:when test="${sessionScope.user.url == profile.url}">
+			                	
+				                	
 				                		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
-				                	</c:when>
-				                	<c:otherwise>
+				                	
+				                	
 				                		<div id="buttonright" class="longtext"><a href="store/sales-status">마이스토어 관리</a></div>
-				                	</c:otherwise>
-			                	</c:choose>
+				                	
+			                	
 			                </c:when>
 			                <c:otherwise>
-				                <c:choose>
-				                	<c:when test="">
+				                
+				                	
 				                		 <button id="buttonright" class="btn"  onclick="showLoginAlert()">팔로우</button>
 				           				 <button id="buttonright" class="btn"  onclick="showLoginAlert()">구독</button>
-				                	</c:when>
-				                	<c:otherwise>
+				                	
 					        			<button class="btn offbtn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
 					        			<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-							 		</c:otherwise>
-						 		</c:choose>
+							 		
+						 		
 			                </c:otherwise>
 			                
 			            </c:choose>
@@ -705,7 +675,7 @@ function getCreatorProductList(page, sort) {
 		      </div>
 		      <div class="modal-body">
 		      
-		       <!-- ${id.getName()} 구독을 취소하시겠습니까?  -->
+		        ${profile.getName()} 구독을 취소하시겠습니까? 
 		     
 		      </div>
 		      <div class="modal-footer">
@@ -727,7 +697,7 @@ function getCreatorProductList(page, sort) {
 		      </div>
 		      <div class="modal-body">
 		
-		        <!--  ${id.getName()} 팔로우을 취소하시겠습니까? -->
+		        ${profile.getName()} 팔로우을 취소하시겠습니까? 
 		
 		      </div>
 		      <div class="modal-footer">
