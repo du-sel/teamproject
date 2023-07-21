@@ -228,14 +228,42 @@ function getCreatorProductList(page, sort) {
 				<br>
 			<!-- SNS 주소 -->
 			<c:choose>
-				<c:when test="${!empty profile.youtube }">
-					<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
-				</c:when>
-				<c:when test="${!empty profile.instagram }">
-					<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
-				</c:when>
-				
-			</c:choose>	
+			    <c:when test="${empty profile.youtube && empty profile.instagram }">
+			        <!-- No YouTube and Instagram, no images -->
+			        <div class="addressdiv"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+			        <div class="addressdiv"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
+			    </c:when>
+			    <c:otherwise>
+			        <c:choose>
+			            <c:when test="${empty profile.youtube}">
+			                <!-- Instagram has value, display Instagram image -->
+			                <c:choose>
+			                	<c:when test="${empty profile.instagram}">
+			                		<div class="addressdiv"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+			                		<div class="addressdiv"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
+			                	</c:when>
+			                	<c:otherwise>
+			                		<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
+			                		<div class="addressdiv"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+			                	</c:otherwise>
+			                </c:choose>
+			            </c:when>
+			            <c:otherwise>
+			            	<c:choose>
+			            		<c:when test="${!empty profile.instagram}">
+			            			<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+			                		<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
+			            		</c:when>
+			            		<c:otherwise>
+			            			<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+			                		<div class="addressdiv"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>	
+			            		</c:otherwise>
+			            	</c:choose>
+			            </c:otherwise>
+			        </c:choose>
+			    </c:otherwise>
+			</c:choose>
+	
 
 			</div>
 			
