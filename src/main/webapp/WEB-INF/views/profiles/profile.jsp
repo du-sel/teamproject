@@ -49,7 +49,7 @@
 
 			
 			<div class="col-md-4 offset-md-1 col-lg-4">
-				<div class="nickname">${profile.getName()} ${follow.getTo_id() }</div>
+				<div class="nickname">${profile.getName()}</div>
 				<div class="count">
 					팔로워  &nbsp;${count}명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;${subcount}명
 				</div>
@@ -630,8 +630,8 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <!--${id.getName()} 구독을 취소하시겠습니까? -->
-		         ${profile.name} 구독을 취소하시겠습니까?
+		       <!-- ${id.getName()} 구독을 취소하시겠습니까?  -->
+		         ${profile.name} 구독을 취소하시겠습니까? 
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -651,8 +651,8 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <!--${id.getName()} 팔로우을 취소하시겠습니까?-->
-		          ${profile.name} 팔로우을 취소하시겠습니까?
+		        <!--  ${id.getName()} 팔로우을 취소하시겠습니까? -->
+		         ${profile.name} 팔로우을 취소하시겠습니까? 
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
