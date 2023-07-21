@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
@@ -192,15 +193,6 @@
 						</form>
 					</div>
 					
-					<c:if test="${post.getId() eq sessionScope.id}">
-							<form action="/community/posts/${post.getPostId() }" method="post">
-							 	<input type="hidden" name="_method" value="DELETE"/>
-							 	<%-- <input type="hidden" name="postId" value="${post.getPostId() }"/> --%>
-								<button type="submit">삭제하기</button>
-							</form>
-						</c:if>
-			
-					
 					<footer>
 						<ul class="stats commment_stats">
 							<li><a class="comment-count">📝<span class="comment-count-number">2</span></a></li> <!-- 댓글 개수 -->
@@ -209,33 +201,58 @@
 						</ul>
 						<div class="comment-section">
 							<ul id="comment-list" class="comment-list col-12">
-								<c:forEach var="comment" items="${comments}">
-									<li>
-										<div class="col-2">이름 ${commentService.getUser(comment.getCommentid()).getName() }</div>
-										<div class="col-7">내용 ${comment.getContent()}</div>
-										<div class="col-3">날짜 ${comment.getCre_date() }</div>
-									</li>
-								</c:forEach>
-							</ul>
+								<c:set var="comments" value="${commentService.getCommentList(post.getPostId()) }"/>							
+								<c:forEach var="comment" items="${comments}" varStatus="loop">
+                                    
+                                        <li>
+                                        	<div>
+	                                            <div class="comment-name">이름 ${commentService.getUser(comment.getCommentid()).get().getName()}</div>                                            
+	                                            <div class="comment-date"><small>날짜 ${fn:substring(comment.getCre_date(),2,10) }</small> </div>
+	                                        </div>
+                                             <div class="comment-content"><div class="col-10">내용 ${comment.getContent()}</div></div>
+                                        </li>
+                                    
+                                </c:forEach>
+                            </ul>
+                            
+								
+							<input type="hidden" id="sessionId" name="id" value="${sessionScope.id}">
 							<div class="button-row">
+								<c:if test="${post.getId() eq sessionScope.id}">
+									<form action="/community/posts/${post.getPostId() }" method="post" id="deletePost">										
+									 	<input type="hidden" name="_method" value="DELETE"/>
+									 	<%-- <input type="hidden" name="postId" value="${post.getPostId() }"/> --%>
+										<button type="submit" class="delete-post" onclick="return checkDeletePost()">삭제하기</button>
+									</form>
+								</c:if>
 								<button class="comment-button" type="button" onclick="return showCommentInput(this)">댓글쓰기</button>
+								
+	                            
 								<div class="comment-input">
 									<form action="/community/posts/${post.getPostId()}/comments" method="post" name="comment" id="insertcomment">
 										<input type="hidden" name="postId" value="${post.getPostId() }">
-										<c:if test="${!empty sessionScope.id }">
-											<input type="hidden" name="id" value="${sessionScope.id}">
-											<input type="text" id="comment-text" name="content" placeholder="댓글을 입력하세요">
-								            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
-								        </c:if>
-								        <c:if test="${empty sessionScope.id }">
-								        	<div id="comment-text" >로그인이 필요합니다.</div>
-								        </c:if>
+										
+										<c:choose>
+											<c:when test="${!empty sessionScope.id }">
+												<input type="hidden" name="id" value="${sessionScope.id}">
+												<input type="text" id="comment-text" name="content" placeholder="댓글을 입력하세요">
+									            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
+											</c:when>
+											<c:otherwise>
+												<div id="comment-text" >로그인이 필요합니다.</div>
+											</c:otherwise>
+										</c:choose>
+									
 									</form>
 								</div>
 							</div>
+							
+							
+							
+							
+							
 						</div>
 					</footer>
-
 					
 					
 					<!-- <script>있던 자리 -->
@@ -268,6 +285,7 @@
     		}
     	});
 	});
+	
 	
 	
 	

@@ -156,7 +156,7 @@ scroll custom
 	background-color: #fff; 
 	margin:40px 0;
 }
-.co #main .footer{
+.co .footer{
 	background-color: #fff; 
 	margin-top:0;
 }
@@ -224,6 +224,43 @@ scroll custom
 	display: none;
 }
 .co .comment-input{display: none;}
+
+.co .comment-list>li{
+	border-bottom: 1px solid rgba(178, 191, 194, 0.7);
+	padding : 0 30px 8px 0;
+	margin-bottom: 25px;
+}
+
+.co .delete-post{
+	float: right;
+	margin-right: 30px;
+}
+.co .comment-name{
+	margin-left:20px;
+	display: inline-block;
+}
+.co .comment-content{
+	margin-top: 5px;
+}
+.co .comment-date{
+	display: inline-block;
+	float:right;
+	text-align: right;
+	margin-left: 20px;
+}
+.co .click-post{
+	padding-top:5px;  
+}
+.co .commment_stats>li{
+	display: inline-block;
+	margin: 0 5px;
+}
+.co .commment_stats{
+	margin-right:50px;
+}
+.co .comment-section{
+	padding-top: 50px;
+}
 
 /* 
 ---------------------------------------------
@@ -478,6 +515,7 @@ co-main post
     display: -webkit-box;
     -webkit-line-clamp: 5; /* 최대 줄 수 설정 */
     -webkit-box-orient: vertical;
+    padding: 0 20px;
      }
 
 	.post_img-outer {

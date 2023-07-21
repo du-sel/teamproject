@@ -49,14 +49,14 @@
 
 			
 			<div class="col-md-4 offset-md-1 col-lg-4">
-				<div class="nickname">${id.getName()} ${follow.getTo_id() }</div>
+				<div class="nickname">${profile.getName()} ${follow.getTo_id() }</div>
 				<div class="count">
 					팔로워  &nbsp;${count}명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;${subcount}명
 				</div>
 				<br>
 			<!-- SNS 주소 -->
-				<div class="addressdiv"><a href="https://www.instagram.com/${id.getInstagram()}"><img src="/resources/images/instagram.svg">&nbsp;${id.getInstagram()}</a></div>
-				<div class="addressdiv"><a href="https://youtube.com/${id.getYoutube()}"><img src="/resources/images/youtube.svg">&nbsp;${id.getYoutube()}</a></div>
+				<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
+				<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/${profile.youtube}">&nbsp;${profile.youtube}</a></div>
 				
 
 			</div>
@@ -160,7 +160,7 @@
 			 		<a class="nav-link active" href="#feed" data-toggle="tab" id="feedtabbgcolor" >피드</a>
 			 	</li>
 			 	<li class="nav-item navli" id="li">
-			 		<a class="nav-link" href="#studio" data-toggle="tab">스튜디오</a>
+			 		<div class="nav-link" onclick="getCreatorProductList()" data-toggle="tab">스토어</div>
 			 	</li>
 			 	<li class="nav-item navli" id="li">
 			 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
@@ -424,15 +424,28 @@
 					</div>
 					
 				
-				<!-- 스튜디오 탭 -->
-				<div class="tab-pane fade" id="studio"><br>
+				<!-- 스토어 탭 -->
+				<div class="tab-pane fade" id="store"><br>
 					<div style="height:50px;">
-						<select class="line" name="shop__selector" id="shop__selector">
+						<!-- <select class="line" name="shop__selector" id="shop__selector">
 							<option selected>기본 정렬</option>
 							<option>가나다순</option>
 							<option>낮은 가격순</option>
 							<option>높은 가격순</option>
-						</select>
+						</select> -->
+						<form action="/store/products" method="get" id="shop__selector">
+							<input type="hidden" name="page" value="0">
+							<select name="sort" onchange="this.form.submit();">
+								<option value="creDate" <c:if test="${sort eq 'creDate'}">selected</c:if>>최신순</option>
+								<option value="popularity" <c:if test="${sort eq 'popularity'}">selected</c:if>>인기순</option>
+								<option value="highprice" <c:if test="${sort eq 'highprice'}">selected</c:if>>높은가격순</option>
+								<option value="lowprice" <c:if test="${sort eq 'lowprice'}">selected</c:if>>낮은가격순</option>
+							</select>
+							<input type="hidden" name="category" value="${category}">
+							<c:if test="${!empty keyword || keyword ne '' }">
+								<input type="hidden" name="keyword" value="${keyword}">
+							</c:if>
+						</form>
 					
 						<div class="writenew line">
 							<a href="product-management.do">상품 관리</a>
@@ -443,82 +456,33 @@
 					
 					<div id="products">
 					
-						<div class="row">
-							<div class="col-lg-4">
-			                    <div class="item">
-				                    <a href="product-single.do">
-				                        <div class="thumb">
-				                            <div class="hover-content">
-				                                <ul>
-				                                    <li><i class="fa fa-shopping-cart"></i></li>
-				                                </ul>
-				                            </div>
-				                            <img src="/resources/images/men-01.jpg" alt="">
-				                        </div>
-				                        <div class="down-content">
-				                            <h4>Classic Spring</h4>
-				                            <span>$120.00</span>
-				                            <ul class="stars">
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                            </ul>
-				                        </div>
-			                        </a>
-			                    </div>								
-							</div>
-							<div class="col-lg-4">
-			                    <div class="item">
-				                    <a href="product-single.do">
-				                        <div class="thumb">
-				                            <div class="hover-content">
-				                                <ul>
-				                                    <li><i class="fa fa-shopping-cart"></i></li>
-				                                </ul>
-				                            </div>
-				                            <img src="/resources/images/men-01.jpg" alt="">
-				                        </div>
-				                        <div class="down-content">
-				                            <h4>Classic Spring</h4>
-				                            <span>$120.00</span>
-				                            <ul class="stars">
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                            </ul>
-				                        </div>
-			                        </a>
-			                    </div>								
-							</div>
-							<div class="col-lg-4">
-			                    <div class="item">
-				                    <a href="product-single.do">
-				                        <div class="thumb">
-				                            <div class="hover-content">
-				                                <ul>
-				                                    <li><i class="fa fa-shopping-cart"></i></li>
-				                                </ul>
-				                            </div>
-				                            <img src="/resources/images/men-01.jpg" alt="">
-				                        </div>
-				                        <div class="down-content">
-				                            <h4>Classic Spring</h4>
-				                            <span>$120.00</span>
-				                            <ul class="stars">
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                                <li><i class="fa fa-star"></i></li>
-				                            </ul>
-				                        </div>
-			                        </a>
-			                    </div>								
-							</div>
+										<div class="row">	                
+							<!-- Product Card Start -->	
+		            		<div class="col-lg-4" id="product-box">
+			                    <div class="item" onclick="location.href='/store/products/${i.pid}'">
+			                        <div class="thumb">
+			                            <div class="hover-content">
+			                                <ul>
+			                                    <li onclick="preventDefaultGoCart(event, ${i.pid})"><i class="fa fa-shopping-cart"></i></li>
+			                                </ul>
+			                            </div>
+			                            <img alt="상품 썸네일">
+			                        </div>
+			                        <div class="down-content">
+			                            <h4 class="p_name"></h4>
+			                            <c:if test="${i.sale != 0}"><span class="cost"> <fmt:formatNumber value="${i.price}" pattern="#,###" />원</span></c:if>
+			                            <span class="price"> <fmt:formatNumber value="" pattern="#,###" />원</span>
+			                            <ul class="stars">
+			                                <span class="star">
+												★★★★★
+												<span style="width: ${i.rating}%;">★★★★★</span>
+												<input type="range" value="1" step="1" min="0" max="10">
+											</span>
+			                            </ul>
+			                        </div>
+			                    </div>
+			                </div>
+			                <!-- Product Card End -->
 						</div>
 					</div>
 				</div>
@@ -666,7 +630,8 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        ${id.getName()} 구독을 취소하시겠습니까?
+		        <!--${id.getName()} 구독을 취소하시겠습니까? -->
+		         ${profile.name} 구독을 취소하시겠습니까?
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -686,7 +651,8 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        ${id.getName()} 팔로우을 취소하시겠습니까?
+		        <!--${id.getName()} 팔로우을 취소하시겠습니까?-->
+		          ${profile.name} 팔로우을 취소하시겠습니까?
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
