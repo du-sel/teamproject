@@ -215,7 +215,6 @@ public class UserController {
 	// 프로필 관련 이미지 저장 로직  
 	// 임시로 파일도 일단 여기에 저장
     private String saveFile(MultipartFile file, String type, long id, HttpServletRequest req) throws IllegalStateException, IOException {
-    	
     	System.out.println("경로:"+req.getServletContext().getRealPath("/resources/profilefile/"));
     	
     	String tmpPath = req.getServletContext().getRealPath("/resources/profilefile/");		// 위치 생각해 볼 것
