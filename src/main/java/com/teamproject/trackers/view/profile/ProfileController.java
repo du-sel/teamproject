@@ -1,7 +1,7 @@
+
 package com.teamproject.trackers.view.profile;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -80,8 +80,8 @@ public class ProfileController {
 	   
 	}
 	
-
-	   ////* 크리에이터 프로필 - 상품목록 조회 *////
+	
+	  ////* 크리에이터 프로필 - 상품목록 조회 *////
 		@RequestMapping(value="/{url}/products", method=RequestMethod.GET)
 		@ResponseBody
 	    public Page<ProductListVO> getCreatorProductList(@PathVariable("url") String url, 
@@ -136,11 +136,9 @@ public class ProfileController {
 	    	
 	    	return list;
 	    }
-	    
-	    
-	    
-
-
-			
+		
+		
+		
 
 }
+

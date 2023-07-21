@@ -221,9 +221,7 @@ function getCreatorProductList(page, sort) {
 
 			
 			<div class="col-md-4 offset-md-1 col-lg-4">
-
 				<div class="nickname">${profile.getName()} ${follow.getTo_id() }</div>
-
 				<div class="count">
 					팔로워  &nbsp;${count}명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;${subcount}명
 				</div>
@@ -472,7 +470,7 @@ function getCreatorProductList(page, sort) {
 										  }
 										</script>
 									</article>
-								
+					
 								
 								</div> <!-- div col -->
 							</div> <!-- co-main 끝 -->
@@ -484,6 +482,7 @@ function getCreatorProductList(page, sort) {
 				<!-- 스토어 탭 -->
 				<div class="tab-pane fade" id="store"><br>
 					<div style="height:50px;">
+		
 						<form action="/store/products" method="get" id="shop__selector">
 							<input type="hidden" name="page" value="0">
 							<select name="sort" onchange="this.form.submit();">
@@ -510,25 +509,30 @@ function getCreatorProductList(page, sort) {
 
 						<div class="row">	               
 						 
-
+              
 							<!-- Product Card Start -->	
 		            		<div class="col-lg-4" id="product-box">
-			                    <div class="item">
+			                    <!--<div class="item" onclick="location.href='/store/products/${i.pid}'"> -->
+			                     <div class="item">
 			                        <div class="thumb">
 			                            <div class="hover-content">
 			                                <ul>
-			                                    <li><i class="fa fa-shopping-cart"></i></li>
+			                                	<li><i class="fa fa-shopping-cart"></i></li>
+			                                    <!--<li onclick="preventDefaultGoCart(event, ${i.pid})"><i class="fa fa-shopping-cart"></i></li> -->
 			                                </ul>
 			                            </div>
 			                            <img alt="상품 썸네일">
 			                        </div>
 			                        <div class="down-content">
 			                            <h4 class="p_name"></h4>
-			                            <c:if test="${i.sale != 0}"><span class="cost">원</span></c:if>
+			                          <!--  <c:if test="${i.sale != 0}"><span class="cost"> <fmt:formatNumber value="${i.price}" pattern="#,###" />원</span></c:if>
+			                            <span class="price"> <fmt:formatNumber value="" pattern="#,###" />원</span>  -->
+			                             <c:if test="${i.sale != 0}"><span class="cost">원</span></c:if>
 			                            <span class="price">원</span>
 			                            <ul class="stars">
 			                                <span class="star">
 												★★★★★
+										<!--		<span style="width: ${i.rating}%;">★★★★★</span>-->
 												<span>★★★★★</span>
 												<input type="range" value="1" step="1" min="0" max="10">
 											</span>
@@ -537,7 +541,7 @@ function getCreatorProductList(page, sort) {
 			                    </div>
 			                </div>
 			                <!-- Product Card End -->
-			                
+			                               
 			                <div class="col-lg-12" id="pagination-container">
 			                    <div class="pagination">
 			                        <ul>
@@ -700,9 +704,9 @@ function getCreatorProductList(page, sort) {
 		        </button>
 		      </div>
 		      <div class="modal-body">
-
-		        <!--${id.getName()} 구독을 취소하시겠습니까? -->
-
+		      
+		       <!-- ${id.getName()} 구독을 취소하시겠습니까?  -->
+		     
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -722,9 +726,9 @@ function getCreatorProductList(page, sort) {
 		        </button>
 		      </div>
 		      <div class="modal-body">
-
-		        <!--${id.getName()} 팔로우을 취소하시겠습니까?-->
-
+		
+		        <!--  ${id.getName()} 팔로우을 취소하시겠습니까? -->
+		
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
