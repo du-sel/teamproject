@@ -189,7 +189,7 @@ function getCreatorProductList(page, sort) {
 			    <c:when test="${!empty sessionScope.user.id}" > 
 					<div class="col-md-12 topimgdiv">
 						<img src="/resources/images/E2E2E2.png">
-						<!-- <p id="img-topimgmodify"> IMAGE UPLOAD </p> -->
+						<p id="img-topimgmodify"> IMAGE UPLOAD </p> 
 					</div> 
 				</c:when>
 				<c:otherwise>
@@ -644,16 +644,17 @@ function getCreatorProductList(page, sort) {
 	<!-- 이미지 업로드 모달  -->
 		<div class="modal" id="modal">
 			
-			<div class="mcontent">
+			<form class="mcontent" action="/users/profile-img" method="post" enctype="multipart/form-data">
 				<p class="modalclose">&times;</p>
 					<!-- 코드추가 -->
 					<div class="image-upload" id="image-upload">
-			            <form method="post" enctype="multipart/form-data">
+			            <div>
+			                <input type="hidden" name="_method" value="PUT"/>
 			                <div class=" button">
 			                    <label for="chooseFile">  CLICK HERE!  </label>
 			                </div>
-			                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
-			            </form>
+			                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)" required>
+			            </div>
 			            
 				<br>
 			            <div class="fileContainer">
@@ -671,10 +672,10 @@ function getCreatorProductList(page, sort) {
 			               
 			        </div>
 			        <div class="uploadbtn">
-			        	<input type="button" value="사진 업로드" id="uploadbtn">
+			        	<input type="submit" value="사진 업로드" id="uploadbtn">
 			        </div>
 		
-			</div>
+			</form>
 	
 		</div>
 		

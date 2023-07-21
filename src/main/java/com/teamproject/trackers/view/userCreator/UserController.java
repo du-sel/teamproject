@@ -1,5 +1,10 @@
 package com.teamproject.trackers.view.userCreator;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Calendar;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.teamproject.trackers.biz.common.AlertVO;
+import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoVO;
 import com.teamproject.trackers.biz.userCreator.UserService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
@@ -182,4 +190,46 @@ public class UserController {
 
 		return (password.equals(userService.getUser(vo).get().getPassword()));
 	}
+	
+	
+	//-----------------------------------------------------
+	// 프로필
+	
+	// 프로필 이미지 수정
+	@RequestMapping(value="/users/profile-img", method=RequestMethod.PUT)
+	public String updateProfileImage(UserVO vo, @RequestParam("chooseFile") MultipartFile chooseFile, HttpServletRequest req) throws IllegalStateException, IOException {
+		vo.setId((long)session.getAttribute("id"));
+        
+		if (!chooseFile.isEmpty()) {
+			vo.setProfile_img(saveFile(chooseFile, "profile/", vo.getId(), req));			
+		}
+
+		userService.updateProfileImage(vo);
+		UserVO user = (UserVO) session.getAttribute("user");
+		
+		return "redirect:/profiles/"+user.getUrl();
+	}
+	
+	
+	
+	// 프로필 관련 이미지 저장 로직  
+	// 임시로 파일도 일단 여기에 저장
+    private String saveFile(MultipartFile file, String type, long id, HttpServletRequest req) throws IllegalStateException, IOException {
+    	
+    	System.out.println("경로:"+req.getServletContext().getRealPath("/resources/profilefile/"));
+    	
+    	String tmpPath = req.getServletContext().getRealPath("/resources/profilefile/");		// 위치 생각해 볼 것
+        
+    	String original = file.getOriginalFilename();
+    	String mime = original.substring(original.indexOf('.'));
+    	
+    	long now = System.currentTimeMillis(); 
+        String fileName = now+"-"+id+mime;		// 저장되는 파일 이름: (날짜-유저아이디.확장자)
+        
+		File uploadFile = new File(tmpPath+type+fileName);
+		file.transferTo(uploadFile);
+		
+        // 파일 저장하고 파일명 반환
+        return "/resources/profilefile/"+type+fileName;
+    }
 }
