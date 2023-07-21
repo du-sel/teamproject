@@ -98,7 +98,7 @@ public class ProfileController {
     	// 정렬 및 페이징 
 		Page<ProductListVO> list = null;
 		Pageable pageable = null;
-		
+		 
 		
 		// 정렬
 		if(sort.equals("creDate")) {
