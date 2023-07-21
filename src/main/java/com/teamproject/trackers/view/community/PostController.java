@@ -9,6 +9,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -50,6 +52,9 @@ public class PostController {
 	
 	@Autowired
 	private CommentService commentService;
+	
+	@Autowired
+	private HttpSession session;
 
 	
 	
@@ -146,19 +151,21 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 	
 	// 리스트 조회(페이징)
 	@RequestMapping(value="/posts", method=RequestMethod.GET)
-	public String getPostList(int page, String keyword, Model model) {
+	public String getPostList(int page, String type, String keyword, Model model) {
 						
 		// 정렬 및 페이징 , 검색 처리
 		Page<PostInfoListVO> list = null;
 		Pageable pageable = null;
-		String menu = "all";
-		if(!menu.equals("all")) {
+		if(!type.equals("all")) {
 			// 정렬
 			pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "cre_date"));
 			// 검색 x 경우
 			if(keyword == null) keyword="";
+			System.out.println(pageable);
+			System.out.println(keyword);
+			System.out.println(page);
 			
-			//list = postService.getMenuList(menu, keyword, pageable);
+			list = postService.getTypeList(type, (long) session.getAttribute("id"), keyword, pageable);
 		}else {
 			// 정렬
 			pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "creDate"));
@@ -214,7 +221,7 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 		model.addAttribute("posts", list);
 		model.addAttribute("imgs", imgList);
 		model.addAttribute("comments", commentList);
-		model.addAttribute("menu", menu);
+		model.addAttribute("type", type);
 		model.addAttribute("keyword", keyword);
 		
 		return "community/co-main";
