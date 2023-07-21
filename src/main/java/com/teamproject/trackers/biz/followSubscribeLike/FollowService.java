@@ -20,5 +20,11 @@ public class FollowService {
 		return followRepository.countbyId(id);
 	}
 	
+	public void deleteFollower(FollowVO vo) {
+		followRepository.deleteFollow(vo.getFrom_id(), vo.getTo_id());
+	}
+		
+	
+	
 	
 }

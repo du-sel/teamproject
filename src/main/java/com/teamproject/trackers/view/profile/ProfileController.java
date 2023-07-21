@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
+import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoService;
 import com.teamproject.trackers.biz.profile.ProfileService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
@@ -25,19 +26,29 @@ public class ProfileController {
 	private HttpSession session;
 	@Autowired
 	private FollowService followService;
-	
+	@Autowired
+	private SubscribeInfoService subscribeInfoService;
 	
 	
 	@RequestMapping(value ="/{url}", method = RequestMethod.GET)
 	public String getProfile(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo) {
 		
 		if(session.getAttribute("id") == null) {
+			
+			//System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
 			model.addAttribute("id", profileService.getUser(url));
+			model.addAttribute("follow", followService.getFollow(profileService.getUser(url).getId(), url));
+			model.addAttribute("count",followService.getFollower(profileService.getUser(url).getId()));
+			model.addAttribute("subcount", profileService.getUser(url).getId());
 		}else {
 			uvo.setId((long)session.getAttribute("id"));
-			model.addAttribute("follow", followService.getFollow(uvo.getId(), url));
 			model.addAttribute("id", profileService.getUser(url));
-			model.addAttribute("count",followService.getFollower(uvo.getId()));
+			model.addAttribute("follow", followService.getFollow(profileService.getUser(url).getId(), url));
+			//System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
+			
+			model.addAttribute("count",followService.getFollower(profileService.getUser(url).getId()));
+			model.addAttribute("subcount", profileService.getUser(url).getId());
+			//model.addAttribute("subcount", subscribeInfoService.countSub(followService.getFollow(uvo.getId(), url).getTo_id()));
 		}
 		
 		//System.out.println(uvo.getId()+"   - getId");

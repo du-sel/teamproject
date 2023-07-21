@@ -27,4 +27,8 @@ public class SubscribeInfoService {
 	public void deleteSubscribeInfo(SubscribeInfoVO vo) {
 		subscribeInfoRepository.deleteSubscribeInfo(vo.getId());
 	}
+	// 구독자 수 카운트
+	public SubscribeInfoVO  countSub(long id) {
+		return subscribeInfoRepository.countSub(id);
+	}
 }
