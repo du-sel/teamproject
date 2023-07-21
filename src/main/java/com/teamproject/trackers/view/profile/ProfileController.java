@@ -2,7 +2,8 @@
 package com.teamproject.trackers.view.profile;
 
 import java.util.List;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
 import com.teamproject.trackers.biz.product.ProductListVO;
@@ -57,13 +59,13 @@ public class ProfileController {
 		if(session.getAttribute("id") == null) {
 			
 			//System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
-			model.addAttribute("profile", profileService.getUser(url));
+			model.addAttribute("id", profileService.getUser(url));
 			model.addAttribute("follow", followService.getFollow(profileService.getUser(url).getId(), url));
 			model.addAttribute("count",followService.getFollower(profileService.getUser(url).getId()));
 			model.addAttribute("subcount", profileService.getUser(url).getId());
 		}else {
 			uvo.setId((long)session.getAttribute("id"));
-			model.addAttribute("profile", profileService.getUser(url));
+			model.addAttribute("id", profileService.getUser(url));
 			model.addAttribute("follow", followService.getFollow(profileService.getUser(url).getId(), url));
 			//System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
 			
@@ -78,7 +80,8 @@ public class ProfileController {
 	   
 	}
 	
-	   /* 크리에이터 프로필 - 상품목록 조회 */
+	
+	  ////* 크리에이터 프로필 - 상품목록 조회 *////
 		@RequestMapping(value="/{url}/products", method=RequestMethod.GET)
 		@ResponseBody
 	    public Page<ProductListVO> getCreatorProductList(@PathVariable("url") String url, 
@@ -133,6 +136,8 @@ public class ProfileController {
 	    	
 	    	return list;
 	    }
+		
+		
 		
 
 }

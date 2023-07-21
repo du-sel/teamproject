@@ -19,7 +19,9 @@ public class PostInfoListVO {
 	@Column(name = "post_id")
 	private long postId;
 	
-	private long id; 
+	private long id;
+	
+	@Column(nullable = true)
 	private Long p_id;
 	
 	@Temporal(TemporalType.DATE)
@@ -30,8 +32,8 @@ public class PostInfoListVO {
 	private String name;
 	private String url;
 	private String profile_img;
-	private int c_count;
-	private int t_count;
+	private long c_count;
+	private long t_count;
 	
 	
 	public long getPostId() {
@@ -82,16 +84,16 @@ public class PostInfoListVO {
 	public void setProfile_img(String profile_img) {
 		this.profile_img = profile_img;
 	}
-	public int getC_count() {
+	public long getC_count() {
 		return c_count;
 	}
-	public void setC_count(int c_count) {
+	public void setC_count(long c_count) {
 		this.c_count = c_count;
 	}
-	public int getT_count() {
+	public long getT_count() {
 		return t_count;
 	}
-	public void setT_count(int t_count) {
+	public void setT_count(long t_count) {
 		this.t_count = t_count;
 	}
 	

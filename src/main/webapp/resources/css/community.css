@@ -47,6 +47,10 @@ scroll custom
 	border-radius: 10px;
 	width: 100%;
 }
+.co #co-main .post>#post-form,
+.co #co-main .post>#post-form a.author *{
+	cursor: pointer;
+}
 .co #co-main{
 	margin: 250px auto; !import
 }

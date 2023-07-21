@@ -80,7 +80,7 @@ public class UserController {
 		}
 		
 		// 커뮤니티에서 로그인 한 경우 page 파라미터 추가
-		if(path.equals("/community/posts")) path += "?page=0";
+		if(path.equals("/community/posts")) path += "?page=0&type=all";
 		
 		return "redirect:"+path;
 	}
