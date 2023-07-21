@@ -1268,7 +1268,7 @@ st-main 상품 section
   font-size: 18px;
   color: #a1a1a1;
   font-weight: 500;
-  display: block;
+  /* display: block; */
 }
 
 #st-main .section .item .down-content span.cost {
@@ -1276,12 +1276,14 @@ st-main 상품 section
   color: #e97d7d;
   text-decoration: line-through;
   display: inline-block;
+  margin-left: 5px;
 }
 
 #st-main .section .item .down-content ul.stars {
   position: absolute;
   right: 0;
-  top: 30px;
+  /* top: 30px; */
+  bottom: 0;
 }
 
 #st-main .section .item .down-content ul.stars li {
@@ -1488,7 +1490,7 @@ Products Page
   font-size: 18px;
   color: #a1a1a1;
   font-weight: 500;
-  display: block;
+ /*  display: block; */
 }
 
 #products .item .down-content span.cost {
@@ -1496,12 +1498,14 @@ Products Page
   color: #e97d7d;
   text-decoration: line-through;
   display: inline-block;
+  margin-left: 5px;
 }
 
 #products .item .down-content ul.stars {
   position: absolute;
   right: 0;
-  top: 20px;
+  /* top: 20px; */
+  bottom: 0;
 }
 
 #products .item .down-content ul.stars li {
