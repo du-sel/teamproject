@@ -161,9 +161,6 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 			pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "cre_date"));
 			// 검색 x 경우
 			if(keyword == null) keyword="";
-			System.out.println(pageable);
-			System.out.println(keyword);
-			System.out.println(page);
 			
 			list = postService.getTypeList(type, (long) session.getAttribute("id"), keyword, pageable);
 		}else {
