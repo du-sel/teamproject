@@ -303,6 +303,8 @@ public class ProductController {
     }
     
     
+    
+    
     ////* 상품 카테고리 객체준비 - 디자인 *////
     private DesignCategoryVO prepareDesignCategory(long p_id, List<String> design) {
     	DesignCategoryVO vo = new DesignCategoryVO();   
