@@ -2,6 +2,8 @@ package com.teamproject.trackers.view.profile;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
 import com.teamproject.trackers.biz.product.ProductListVO;
@@ -76,13 +79,18 @@ public class ProfileController {
 	
 	
     ////* 크리에이터 프로필 - 상품목록 조회 *////
-	@RequestMapping(value="/{url}/products", method=RequestMethod.GET)
+	@RequestMapping(value="/{url}/products", method=RequestMethod.GET, produces = "application/text; charset=UTF-8")
 	@ResponseBody
-    public Page<ProductListVO> getCreatorProductList(@PathVariable("url") String url, 
+    public String getCreatorProductList(@PathVariable("url") String url, 
     												@RequestParam("page") int page, 
-    												@RequestParam("sort") String sort) throws JsonProcessingException {
+    												@RequestParam("sort") String sort,
+    												HttpServletRequest req, HttpServletResponse resp) throws Exception {
     	System.out.println("입장");
 		
+    	req.setCharacterEncoding("utf-8");
+    	resp.setContentType("text/html;charset=utf-8");
+    	
+    	
 		// URL로 id 얻기
 		long id = profileService.getUser(url).getId();
     	System.out.println("id: "+id);
@@ -112,23 +120,30 @@ public class ProfileController {
 		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
 		System.out.println("nowPage: "+nowPage+" / startPage"+startPage+" / endPage: "+endPage);
 		
-		/*
-		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
+
 		
-		model.addAttribute("products", list);
-		model.addAttribute("sort", sort);
-		model.addAttribute("category", category);
-		model.addAttribute("keyword", keyword);
-		*/
+		JsonObject paging = new JsonObject();
+		paging.addProperty("nowPage", nowPage);
+		paging.addProperty("startPage", startPage);
+		paging.addProperty("endPage", endPage);
+		paging.addProperty("sort", sort);
+		
     	
 		ObjectMapper mapper = new ObjectMapper();
 		String listIntoString = mapper.writeValueAsString(list);
 		System.out.println(listIntoString);
+
+		String pagingIntoString = paging.toString();
 		
+		JsonObject wrapper = new JsonObject();
+		wrapper.addProperty("list", listIntoString);
+		wrapper.addProperty("paging", pagingIntoString);
+		
+		String wrapperIntoString = wrapper.toString();
+		
+		System.out.println(wrapperIntoString);
     	
-    	return list;
+    	return wrapperIntoString;
     }
     
     

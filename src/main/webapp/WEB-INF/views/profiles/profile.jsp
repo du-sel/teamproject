@@ -8,7 +8,7 @@
 
 
 /* 탭 - 스토어 클릭하면 스토어 정보 가져오기 */
-function getCreatorProductList() {
+function getCreatorProductList(page, sort) {
 
 	let pathname = window.location.pathname;
 	console.log(pathname);
@@ -22,29 +22,53 @@ function getCreatorProductList() {
 	$.ajax({
 		type: 'get',
 		url: '/profiles/'+url+'/products',
-		contentType: "application/json",
+		contentType: "application/text; charset=UTF-8",
 		datatype: 'json',
 		data: {
-			page: 0,
-			sort: 'creDate'
+			page: page,
+			sort: sort
 		},
 		success: function(data) {					
 			
 			// JSON 객체별로 쪼개기
-			let productArr = data.content;
-			console.log(productArr.length);
+			let JSONdata = JSON.parse(data);
+			let list = JSON.parse(JSONdata.list);	// 상품 리스트
+			let paging = JSON.parse(JSONdata.paging);
+			console.log(paging);
+			
+			
+			let productArr = list.content;
+			//console.log(productArr.length);
 			
 			let box = document.getElementById("product-box");
 			let parent = box.parentElement;
+			let pagination = document.getElementById('pagination-container');
+			
+			$(box).hide();
+			$(pagination).hide();
 
-			if(productArr.length > 1) {
-				console.log('yes');
-				for(let i = 1; i < productArr.length; i++) {
+			
+			if(productArr.length > 0) {
+				$('.new-box').remove();
+				$('.new-li').remove();				
+
+				for(let i = 0; i < productArr.length; i++) {
 					let product = productArr[i];
 					
 					let newBox = document.createElement('div');
 					newBox.innerHTML = box.innerHTML;
 					newBox.classList.add('col-lg-4');
+					newBox.classList.add('new-box');
+					
+					let item = $(newBox).find('.item');
+					item.on('click', function(){
+						location.href='/store/products/'+product.pid;
+					});
+					
+					let cart = $(newBox).find('.hover-content li');
+					cart.on('click', function() {
+						preventDefaultGoCart(event, product.pid)
+					});
 					
 					let thumbnail = $(newBox).find('img');
 					thumbnail.attr('src', product.thumbnail)
@@ -55,23 +79,84 @@ function getCreatorProductList() {
 					$(newBox).find('.cost').text(numberWithCommas(product.price)+'원');
 					$(newBox).find('.price').text(numberWithCommas(product.salePrice)+'원');
 					
+					if(product.sale <= 0) {
+						$(newBox).find('.cost').hide();
+					} 
+					
 					$(newBox).find('.star span').css('width', product.rating);
 
 					
-					parent.appendChild(newBox);
+					parent.insertBefore(newBox, pagination);
+				}
+
+				
+				
+				
+				// 페이징 처리
+				/*
+				if(list.totalPages <= 1) {
+					
+					
+				} else {
+					
+				}
+				*/
+				
+				console.log(list);
+				/*
+				let ul = document.querySelector('.pagination ul');
+				console.log(ul);
+				let page = document.getElementById('page');
+				let prev = document.getElementById('prev');
+				let next = document.getElementById('next');
+				
+				if(list.number-1 >= 0) {
+					$(prev).attr('href', '/profiles/'+url+'/products?page='+(list.number-1)+'&sort='+(paging.sort));
+					
+				} else {
+					$(prev).hide();
 				}
 				
+				if(list.number+1 < list.totalPages) {
+					$(next).attr('href', '/profiles/'+url+'/products?page='+(list.number+1)+'&sort='+(paging.sort));
+					
+				} else {
+					$(next).hide();
+				}
+					
+
+				
+				$(page).attr('href', '/profiles/'+url+'/products?page=0&sort='+(paging.sort));
+				$(page).text('1');
+				
+				for(let p = paging.startPage; p <= paging.endPage; p++) {
+					let newPage = document.createElement('a');
+					let newPageLi = document.createElement('li');
+					newPageLi.classList.add('new-li');
+					
+					//$(newPage).attr('href', '/profiles/'+url+'/products?page='+(p-1)+'&sort='+(paging.sort));
+					$(newPage).on('click', function() {
+						getCreatorProductList(p-1, paging.sort);
+					});
+					
+					
+					$(newPage).text(p);
+					
+					newPageLi.appendChild(newPage);
+					ul.insertBefore(newPageLi, next.parentElement);
+				}
+				*/
+				
+				
 			} else {
-				// 첫번째것만 찍어주기
 				
-				
+				// 판매자 등록은 되어있는데 상품은 없는 경우
+				let noItem = document.createElement('div');
+				noItem.innerHTML = '<h5>등록된 상품이 없습니다</h5>';
+				parent.appendChild(noItem);
 			}
 			
-
-			
-			
-			
-			
+	
 			$("#store").addClass("active").addClass("show");
 			$("#feed").removeClass("active").removeClass("show");
 			$("#notice").removeClass("active").removeClass("show");
@@ -246,7 +331,7 @@ function getCreatorProductList() {
 			 		<a class="nav-link active" href="#feed" data-toggle="tab" id="feedtabbgcolor" >피드</a>
 			 	</li>
 			 	<li class="nav-item navli" id="li">
-			 		<div class="nav-link" onclick="getCreatorProductList()" data-toggle="tab">스토어</div>
+			 		<div class="nav-link" onclick="getCreatorProductList(0, 'creDate')" data-toggle="tab">스토어</div>
 			 	</li>
 			 	<li class="nav-item navli" id="li">
 			 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
@@ -419,14 +504,15 @@ function getCreatorProductList() {
 					
 					<div id="products">
 					
-						<div class="row">	                
+						<div class="row">	               
+						 
 							<!-- Product Card Start -->	
 		            		<div class="col-lg-4" id="product-box">
-			                    <div class="item" onclick="location.href='/store/products/${i.pid}'">
+			                    <div class="item">
 			                        <div class="thumb">
 			                            <div class="hover-content">
 			                                <ul>
-			                                    <li onclick="preventDefaultGoCart(event, ${i.pid})"><i class="fa fa-shopping-cart"></i></li>
+			                                    <li><i class="fa fa-shopping-cart"></i></li>
 			                                </ul>
 			                            </div>
 			                            <img alt="상품 썸네일">
@@ -446,6 +532,22 @@ function getCreatorProductList() {
 			                    </div>
 			                </div>
 			                <!-- Product Card End -->
+			                
+			                <div class="col-lg-12" id="pagination-container">
+			                    <div class="pagination">
+			                        <ul>
+							    		<li>
+								            <a id="prev">&lt;</a>
+								        </li>
+						    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
+								            <a id="page">${p}</a>
+								        </li>	
+							    		<li>
+							           		<a id="next">&gt;</a>
+							        	</li>
+								    </ul>
+			                    </div>
+			                </div>
 						</div>
 					</div>
 				</div>
