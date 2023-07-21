@@ -12,21 +12,13 @@
 function getCreatorProductList(page, sort) {
 
 	let pathname = window.location.pathname;
+	console.log(pathname);
 	let url = pathname.substring(pathname.indexOf("profiles")+9);
+	console.log(url);
 	if(url.indexOf("/") > 0) {	
 		url = url.substring(0, url.indexOf("/"));
 		console.log(url);
 	}
-	console.log("COME IN SORT");
-	console.log(sort);
-	
-	// sort 값 구해서 넣어주기
-	let sortSelect = document.getElementsByName('sortSelect')[0];
-	console.log(sortSelect);
-	console.log(sortSelect.options[0]);
-	sort = sortSelect.options[sortSelect.selectedIndex].value;
-	console.log(sort);
-	
 	
 	$.ajax({
 		type: 'get',
@@ -94,61 +86,67 @@ function getCreatorProductList(page, sort) {
 					
 					$(newBox).find('.star span').css('width', product.rating);
 
+					
 					parent.insertBefore(newBox, pagination);
 				}
 
 				
-							
-				// 페이징 처리		
-				if(list.totalPages > 1) {
+				
+				
+				// 페이징 처리
+				/*
+				if(list.totalPages <= 1) {
 					
-					console.log(list);
-					$(pagination).show();
-					console.log("NUMBER");
-					console.log(list.number);
 					
-					let ul = document.querySelector('.pagination ul');
-					let page = document.getElementById('page');
-					let prev = document.getElementById('prev');
-					let next = document.getElementById('next');
+				} else {
 					
-					if(list.number-1 >= 0) {
-						$(prev).show();
-						$(prev).on('click', function() {
-							getCreatorProductList((list.number-1), paging.sort);
-						});
-					} else {
-						$(prev).hide();
-					}
-					
-					if(list.number+1 < list.totalPages) {
-						$(next).show();
-						$(next).on('click', function() {
-							getCreatorProductList((list.number+1), paging.sort);
-						});
-					} else {
-						$(next).hide();
-					}
-
-					
-					for(let p = paging.startPage; p <= paging.endPage; p++) {
-						let newPage = document.createElement('a');
-						let newPageLi = document.createElement('li');
-						newPageLi.classList.add('new-li');
-						if(p == paging.nowPage) {
-							newPageLi.classList.add('active');
-						}
-
-						$(newPage).on('click', function() {
-							getCreatorProductList(p-1, paging.sort);
-						});
-						
-						$(newPage).text(p);
-						
-						newPageLi.appendChild(newPage);
-						ul.insertBefore(newPageLi, next.parentElement);
-					}
 				}
+				*/
+				
+				console.log(list);
+				/*
+				let ul = document.querySelector('.pagination ul');
+				console.log(ul);
+				let page = document.getElementById('page');
+				let prev = document.getElementById('prev');
+				let next = document.getElementById('next');
+				
+				if(list.number-1 >= 0) {
+					$(prev).attr('href', '/profiles/'+url+'/products?page='+(list.number-1)+'&sort='+(paging.sort));
+					
+				} else {
+					$(prev).hide();
+				}
+				
+				if(list.number+1 < list.totalPages) {
+					$(next).attr('href', '/profiles/'+url+'/products?page='+(list.number+1)+'&sort='+(paging.sort));
+					
+				} else {
+					$(next).hide();
+				}
+					
+
+				
+				$(page).attr('href', '/profiles/'+url+'/products?page=0&sort='+(paging.sort));
+				$(page).text('1');
+				
+				for(let p = paging.startPage; p <= paging.endPage; p++) {
+					let newPage = document.createElement('a');
+					let newPageLi = document.createElement('li');
+					newPageLi.classList.add('new-li');
+					
+					//$(newPage).attr('href', '/profiles/'+url+'/products?page='+(p-1)+'&sort='+(paging.sort));
+					$(newPage).on('click', function() {
+						getCreatorProductList(p-1, paging.sort);
+					});
+					
+					
+					$(newPage).text(p);
+					
+					newPageLi.appendChild(newPage);
+					ul.insertBefore(newPageLi, next.parentElement);
+				}
+				*/
 				
 				
 			} else {
@@ -158,7 +156,6 @@ function getCreatorProductList(page, sort) {
 				noItem.innerHTML = '<h5>등록된 상품이 없습니다</h5>';
 				parent.appendChild(noItem);
 			}
-			
 			
 	
 			$("#store").addClass("active").addClass("show");
@@ -484,16 +481,22 @@ function getCreatorProductList(page, sort) {
 				
 				<!-- 스토어 탭 -->
 				<div class="tab-pane fade" id="store"><br>
-
-					<div class="row col-lg-12 justify-content-between">
-						<select name="sortSelect" onchange="getCreatorProductList(0, 'creDate');">
-							<option value="creDate">최신순</option>
-							<option value="popularity">인기순</option>
-							<option value="highprice">높은가격순</option>
-							<option value="lowprice">낮은가격순</option>
-						</select>
-
-
+					<div style="height:50px;">
+		
+						<form action="/store/products" method="get" id="shop__selector">
+							<input type="hidden" name="page" value="0">
+							<select name="sort" onchange="this.form.submit();">
+								<option value="creDate" <c:if test="${sort eq 'creDate'}">selected</c:if>>최신순</option>
+								<option value="popularity" <c:if test="${sort eq 'popularity'}">selected</c:if>>인기순</option>
+								<option value="highprice" <c:if test="${sort eq 'highprice'}">selected</c:if>>높은가격순</option>
+								<option value="lowprice" <c:if test="${sort eq 'lowprice'}">selected</c:if>>낮은가격순</option>
+							</select>
+							<input type="hidden" name="category" value="${category}">
+							<c:if test="${!empty keyword || keyword ne '' }">
+								<input type="hidden" name="keyword" value="${keyword}">
+							</c:if>
+						</form>
+					
 						<div class="writenew line">
 							<a href="product-management.do">상품 관리</a>
 						</div>					
@@ -545,6 +548,9 @@ function getCreatorProductList(page, sort) {
 							    		<li>
 								            <a id="prev">&lt;</a>
 								        </li>
+						    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
+								            <a id="page">${p}</a>
+								        </li>	
 							    		<li>
 							           		<a id="next">&gt;</a>
 							        	</li>
