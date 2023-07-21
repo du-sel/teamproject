@@ -58,6 +58,13 @@ public class PostController {
 
 	
 	
+	// 파라미터 없이 들어올 경우 우회 
+	@RequestMapping(value="", method=RequestMethod.GET)
+	public String coMain(Model model) {
+		return "redirect:/community/posts?page=0&type=all";
+	}
+	
+	
 			
 		
 	// 작성
@@ -102,7 +109,7 @@ System.out.println("imgvo.postid "+imgvo.getPostId());
 		*/
 		postService.insertPost(vo);
 		//postIMGService.insertPostIMG(imgvo);
-		return "redirect:/community/posts";
+		return "redirect:/community";
 	}
 	
 	
@@ -113,7 +120,7 @@ System.out.println("imgvo.postid "+imgvo.getPostId());
 	public String deletePost(@PathVariable("postId")Long postId) {
 		postService.deletePost(postId);
 		// comment도 삭제
-		return "redirect:/community/posts";
+		return "redirect:/community";
 	}	
 
 	// 댓글 삭제
