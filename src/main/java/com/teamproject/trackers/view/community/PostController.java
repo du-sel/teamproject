@@ -101,7 +101,7 @@ System.out.println("imgvo.postid "+imgvo.getPostId());
 		return "redirect:/community/posts";
 		*/
 		postService.insertPost(vo);
-		postIMGService.insertPostIMG(imgvo);
+		//postIMGService.insertPostIMG(imgvo);
 		return "redirect:/community/posts";
 	}
 	
