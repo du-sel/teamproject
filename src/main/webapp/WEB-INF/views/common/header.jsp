@@ -145,6 +145,8 @@
 										<div class="search-icon-container d-flex align-items-center" onclick="showSearchInput();">
 											<i class="fa fa-search" aria-hidden="true"></i>
 										</div>
+										
+										<!-- path 정하기 -->
 										<c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />		<!-- 현재 위치 uri -->
 										<c:if test="${(path ne '/store/creators') && (not fn:contains(path, '/community/posts'))}">
 											<c:set var="path" value="/store/products"/>
@@ -152,6 +154,8 @@
 										<c:if test="${fn:contains(path, '/community/posts')}">
 											<c:set var="path" value="/community/posts"/>
 										</c:if>
+										
+										<!-- 파라미터 form으로 보냄 -->
 										<form name="search" action="${path}" class="search-input-container">
 											<input type="hidden" name="page" value="0">
 											<c:if test="${not fn:contains(path, '/community/posts')}">									<!-- 크리에이터 리스트, 상품 리스트 -->
@@ -171,7 +175,7 @@
 											</c:if>
 											<input type="text" name="keyword">
 											<button class="search-btn">검색</button>
-										</form>
+										</form> 
 									</div>
 									<c:choose>
 										<c:when test="${!empty sessionScope.id}"> <!-- if와 동일 -->
