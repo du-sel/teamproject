@@ -83,7 +83,7 @@ public class ProfileController {
 	
 
 	
-    ////* 크리에이터 프로필 - 상품목록 조회 *////
+        ////* 크리에이터 프로필 - 상품목록 조회 *////
 	@RequestMapping(value="/{url}/products", method=RequestMethod.GET, produces = "application/text; charset=UTF-8")
 	@ResponseBody
     public String getCreatorProductList(@PathVariable("url") String url, 
@@ -103,7 +103,7 @@ public class ProfileController {
     	// 정렬 및 페이징 
 		Page<ProductListVO> list = null;
 		Pageable pageable = null;
-		 
+		
 		
 		// 정렬
 		if(sort.equals("creDate")) {
@@ -132,14 +132,24 @@ public class ProfileController {
 		paging.addProperty("startPage", startPage);
 		paging.addProperty("endPage", endPage);
 		paging.addProperty("sort", sort);
-		 
+		
     	
 		ObjectMapper mapper = new ObjectMapper();
 		String listIntoString = mapper.writeValueAsString(list);
 		System.out.println(listIntoString);
 
 		String pagingIntoString = paging.toString();
-
+		
+		JsonObject wrapper = new JsonObject();
+		wrapper.addProperty("list", listIntoString);
+		wrapper.addProperty("paging", pagingIntoString);
+		
+		String wrapperIntoString = wrapper.toString();
+		
+		System.out.println(wrapperIntoString);
+    	
+    	return wrapperIntoString;
+    }
 		
 		
 		
