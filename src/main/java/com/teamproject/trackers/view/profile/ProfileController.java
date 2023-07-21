@@ -127,7 +127,7 @@ public class ProfileController {
 		paging.addProperty("startPage", startPage);
 		paging.addProperty("endPage", endPage);
 		paging.addProperty("sort", sort);
-		
+		 
     	
 		ObjectMapper mapper = new ObjectMapper();
 		String listIntoString = mapper.writeValueAsString(list);
