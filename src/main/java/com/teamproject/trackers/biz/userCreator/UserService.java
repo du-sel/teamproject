@@ -58,4 +58,12 @@ public class UserService {
 	public boolean validateURL(UserVO vo) {		
 		return userRepository.existsByUrl(vo.getUrl());
 	}
+	
+	//----------------------------------------------
+	// 프로필
+	
+	// 프로필 사진 업로드
+	public void updateProfileImage(UserVO vo) {
+		userRepository.updateProfileImg(vo.getId(), vo.getProfile_img());
+	}
 }
