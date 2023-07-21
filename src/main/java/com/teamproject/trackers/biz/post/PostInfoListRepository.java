@@ -9,10 +9,18 @@ import org.springframework.stereotype.Repository;
 
 public interface PostInfoListRepository extends JpaRepository<PostInfoListVO, Long>{
 	
-	// 메뉴 분류 x, 검색 o
+	// 포스트 분류 타입 x, 검색 o
 	Page<PostInfoListVO> findByContentContaining(String keyword, Pageable pageable);
 	
-	// 메뉴 분류 o, 검색 o/x
-	//@Query(value = "SELECT * FROM productlist p WHERE p.whole=1 and p.p_name like %:keyword%", nativeQuery = true)
-	//Page<PostInfoVO> getCategoryWhole(@Param("keyword") String keyword, Pageable pageable);
+	// 포스트 분류 타입 o, 검색 o/x
+	// 팔로우한 사람들 포스트만
+	@Query(value = "SELECT p.* FROM postinfolist p, follow f WHERE f.from_id=:id and p.id=f.to_id and content like %:keyword%",
+			 countQuery = "SELECT p.* FROM postinfolist p, follow f WHERE f.from_id=:id and p.id=f.to_id and content like %:keyword%",
+			 nativeQuery = true)
+	Page<PostInfoListVO> getFollowPost(@Param("id") long id, @Param("keyword") String keyword, Pageable pageable);
+	
+	// 구독한 사람들 포스트만
+	//@Query(value = "SELECT p.* FROM productlist p, follow f WHERE f.from_id=:id and p.id=f.to_id like %:keyword%", nativeQuery = true)
+	//Page<PostInfoListVO> getSubscribePost(@Param("keyword") String keyword, Pageable pageable);
+	
 }

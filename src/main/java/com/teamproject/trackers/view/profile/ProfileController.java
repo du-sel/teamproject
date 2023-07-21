@@ -2,6 +2,8 @@ package com.teamproject.trackers.view.profile;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
 import com.teamproject.trackers.biz.product.ProductListVO;
@@ -77,6 +80,7 @@ public class ProfileController {
 	   
 	}
 	
+
 	   ////* 크리에이터 프로필 - 상품목록 조회 *////
 		@RequestMapping(value="/{url}/products", method=RequestMethod.GET)
 		@ResponseBody
@@ -135,6 +139,7 @@ public class ProfileController {
 	    
 	    
 	    
+
 
 			
 

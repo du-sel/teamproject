@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.teamproject.trackers.biz.product.ProductListVO;
 import com.teamproject.trackers.biz.userCreator.UserRepository;
 import com.teamproject.trackers.biz.userCreator.UserService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
@@ -60,9 +61,17 @@ public class PostService {
 	public Page<PostInfoListVO> getSearchPostList(String keyword, Pageable pageable){
 		return postInfoListRepository.findByContentContaining(keyword, pageable);
 	}
-	// 리스트 조회(메뉴 선택)
-	//public Page<PostVO> getMenuList(String menu, String keyword, Pageable pageable){
-		//return postRepository.findAll();
-	//}
+	// 리스트 조회(포스트 타입 선택)
+	public Page<PostInfoListVO> getTypeList(String type, long id, String keyword, Pageable pageable){
+		
+		Page<PostInfoListVO> list = null;
+		
+		if(type.equals("follow")) list = postInfoListRepository.getFollowPost(id, keyword, pageable);
+		//else if(type.equals("subscribe")) list = postInfoListRepository.getCategoryMonthly(keyword, pageable);
+		//else if(type.equals("comment")) list = postInfoListRepository.getCategoryWeekly(keyword, pageable);
+		//else if(type.equals("like")) list = postInfoListRepository.getCategoryHabit(keyword, pageable);
+		
+		return list;
+	}
 }
 
