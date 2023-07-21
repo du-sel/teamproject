@@ -108,13 +108,22 @@ System.out.println("imgvo.postid "+imgvo.getPostId());
 	
 	
 	
-	// 삭제
+	// 포스트 삭제
 	@RequestMapping(value = "/posts/{postId}", method = RequestMethod.DELETE)
 	public String deletePost(@PathVariable("postId")Long postId) {
 		postService.deletePost(postId);
 		// comment도 삭제
 		return "redirect:/community/posts";
 	}	
+
+	// 댓글 삭제
+	@RequestMapping(value = "/{postId}/comments/{comment_id}", method = RequestMethod.GET)
+	public String deleteComment(@PathVariable("comment_id")Long commentid, @PathVariable("postId")Long postId) {
+System.out.println("delete postid "+postId);		
+		commentService.deleteComment(commentid);
+		String postid = Long.toString(postId);
+		return "redirect:/community/posts/"+postid;
+	}
 	
 	
 	// 상세 조회
