@@ -22,4 +22,11 @@ public interface SubscribeInfoRepository extends JpaRepository<SubscribeInfoVO, 
 	@Modifying
 	@Query(value = "DELETE FROM subscribeinfo si WHERE si.id = :id", nativeQuery = true)
 	void deleteSubscribeInfo(@Param("id")long id);
+	
+	
+	// 구독자 수 세기 
+	//SELECT COUNT(*) AS 구독자 	FROM subscribepurchase sp JOIN subscribeinfo si ON sp.subscribe_id = si.subscribe_id JOIN user u ON si.id = u.id WHERE u.id = '1';
+	@Query(value = "SELECT COUNT(*) AS 구독자 	FROM subscribepurchase sp JOIN subscribeinfo si ON sp.subscribe_id = si.subscribe_id JOIN user u ON si.id = u.id WHERE u.id = :subid;",nativeQuery = true)
+	SubscribeInfoVO countSub(@Param("subid")long id);
+	
 }

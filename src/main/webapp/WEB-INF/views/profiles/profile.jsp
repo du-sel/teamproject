@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
+
 <script>
 
 
@@ -185,13 +186,13 @@ function getCreatorProductList(page, sort) {
 			<c:choose>
 			    <c:when test="${!empty sessionScope.user.id}" > 
 					<div class="col-md-12 topimgdiv">
-						<img id="img-topimgmodify" src="">
+						<img src="/resources/images/E2E2E2.png">
 						<!-- <p id="img-topimgmodify"> IMAGE UPLOAD </p> -->
 					</div> 
 				</c:when>
 				<c:otherwise>
 					<div class="col-md-12 topimgdiv">
-						<img src="">
+						<img src="/resources/images/E2E2E2.png">
 					</div>
 				
 				</c:otherwise>
@@ -220,9 +221,11 @@ function getCreatorProductList(page, sort) {
 
 			
 			<div class="col-md-4 offset-md-1 col-lg-4">
-				<div class="nickname">${id.name}</div>
+
+				<div class="nickname">${profile.getName()} ${follow.getTo_id() }</div>
+
 				<div class="count">
-					팔로워  &nbsp;${count}명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;명
+					팔로워  &nbsp;${count}명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;${subcount}명
 				</div>
 				<br>
 			<!-- SNS 주소 -->
@@ -504,8 +507,10 @@ function getCreatorProductList(page, sort) {
 					
 					<div id="products">
 					
+
 						<div class="row">	               
 						 
+
 							<!-- Product Card Start -->	
 		            		<div class="col-lg-4" id="product-box">
 			                    <div class="item">
@@ -695,7 +700,9 @@ function getCreatorProductList(page, sort) {
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        ${id.name} 구독을 취소하시겠습니까?
+
+		        <!--${id.getName()} 구독을 취소하시겠습니까? -->
+
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -705,6 +712,7 @@ function getCreatorProductList(page, sort) {
 		  </div>
 		</div>
 
+	<form action="" method="delete">
 		<div class="modal fade" id="ExampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered" role="document">
 		    <div class="modal-content">
@@ -714,15 +722,19 @@ function getCreatorProductList(page, sort) {
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        ${id.name} 팔로우을 취소하시겠습니까?
+
+		        <!--${id.getName()} 팔로우을 취소하시겠습니까?-->
+
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-		        <button type="button" class="btn cancel">팔로우 취소</button>
+		        <input type="submit" class="btn cancel" value="팔로우 취소">
+		        <!-- <button type="button" class="btn cancel">팔로우 취소</button> -->
 		      </div>
 		    </div>
 		  </div>
 		</div>		
+	</form>
 
 </main>
 
