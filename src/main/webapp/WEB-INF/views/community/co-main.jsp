@@ -180,8 +180,8 @@
 										<p></p>
 									</div>
 									<div id="thumb-preview" class="thumb-preview"></div>
-									<!-- < input type="file" accept="image/*" name="post-img" id="thumbnail" 
-											onchange="imgPreview(event);" multiple="multiple" > -->
+									< input type="file" accept="image/*" name="post-img" id="thumbnail" 
+											onchange="imgPreview(event);" multiple="multiple" >
 								</div>
 								<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
 							</div>
