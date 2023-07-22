@@ -211,7 +211,7 @@ public class UserController {
 			}
 			else {		// 배경 이미지 수정
 				System.out.println("배경이미지: "+vo.getBg_img());
-				if(!vo.getBg_img().contains("basic")) {			// 배경 사진이 기본 배경이 아닌 경우 삭제 시도
+				if(!vo.getBg_img().equals("basic")) {			// 배경 사진이 기본 배경이 아닌 경우 삭제 시도
 					deleteFile("background/", vo.getBg_img(), req);
 				}
 				vo.setBg_img(saveFile(chooseFile, "background/", vo.getId(), req));			
