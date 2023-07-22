@@ -6,194 +6,219 @@
 
 
 <script>
-
-
-/* 탭 - 스토어 클릭하면 스토어 정보 가져오기*/
+/* 탭 - 스토어 클릭하면 스토어 정보 가져오기 */
 function getCreatorProductList(page, sort) {
 
-   let pathname = window.location.pathname;
-   console.log(pathname);
-   let url = pathname.substring(pathname.indexOf("profiles")+9);
-   console.log(url);
-   if(url.indexOf("/") > 0) {   
-      url = url.substring(0, url.indexOf("/"));
-      console.log(url);
-   }
-   
-   $.ajax({
-      type: 'get',
-      url: '/profiles/'+url+'/products',
-      contentType: "application/text; charset=UTF-8",
-      datatype: 'json',
-      data: {
-         page: page,
-         sort: sort
-      },
-      success: function(data) {               
-         
-         // JSON 객체별로 쪼개기
-         let JSONdata = JSON.parse(data);
-         let list = JSON.parse(JSONdata.list);   // 상품 리스트
-         let paging = JSON.parse(JSONdata.paging);
-         console.log(paging);
-         
-         
-         let productArr = list.content;
-         //console.log(productArr.length);
-         
-         let box = document.getElementById("product-box");
-         let parent = box.parentElement;
-         let pagination = document.getElementById('pagination-container');
-         
-         $(box).hide();
-         $(pagination).hide();
+	let pathname = window.location.pathname;
+	let url = pathname.substring(pathname.indexOf("profiles")+9);
+	if(url.indexOf("/") > 0) {	
+		url = url.substring(0, url.indexOf("/"));
+		console.log(url);
+	}
+	console.log("COME IN SORT");
+	console.log(sort);
+	
+	// sort 값 구해서 넣어주기
+	let sortSelect = document.getElementsByName('sortSelect')[0];
+	console.log(sortSelect);
+	console.log(sortSelect.options[0]);
+	sort = sortSelect.options[sortSelect.selectedIndex].value;
+	console.log(sort);
+	
+	
+	$.ajax({
+		type: 'get',
+		url: '/profiles/'+url+'/products',
+		contentType: "application/text; charset=UTF-8",
+		datatype: 'json',
+		data: {
+			page: page,
+			sort: sort
+		},
+		success: function(data) {					
+			
+			// JSON 객체별로 쪼개기
+			let JSONdata = JSON.parse(data);
+			let list = JSON.parse(JSONdata.list);	// 상품 리스트
+			let paging = JSON.parse(JSONdata.paging);
+			console.log(paging);
+			
+			
+			let productArr = list.content;
+			//console.log(productArr.length);
+			
+			let box = document.getElementById("product-box");
+			let parent = box.parentElement;
+			let pagination = document.getElementById('pagination-container');
+			
+			$(box).hide();
+			$(pagination).hide();
 
-         
-         if(productArr.length > 0) {
-            $('.new-box').remove();
-            $('.new-li').remove();            
+			
+			if(productArr.length > 0) {
+				$('.new-box').remove();
+				$('.new-li').remove();				
 
-            for(let i = 0; i < productArr.length; i++) {
-               let product = productArr[i];
-               
-               let newBox = document.createElement('div');
-               newBox.innerHTML = box.innerHTML;
-               newBox.classList.add('col-lg-4');
-               newBox.classList.add('new-box');
-               
-               let item = $(newBox).find('.item');
-               item.on('click', function(){
-                  location.href='/store/products/'+product.pid;
-               });
-               
-               let cart = $(newBox).find('.hover-content li');
-               cart.on('click', function() {
-                  preventDefaultGoCart(event, product.pid)
-               });
-               
-               let thumbnail = $(newBox).find('img');
-               thumbnail.attr('src', product.thumbnail)
-               
-               let p_name = $(newBox).find('.p_name');
-               p_name.text(product.pname);
-               
-               $(newBox).find('.cost').text(numberWithCommas(product.price)+'원');
-               $(newBox).find('.price').text(numberWithCommas(product.salePrice)+'원');
-               
-               if(product.sale <= 0) {
-                  $(newBox).find('.cost').hide();
-               } 
-               
-               $(newBox).find('.star span').css('width', product.rating);
+				for(let i = 0; i < productArr.length; i++) {
+					let product = productArr[i];
+					
+					let newBox = document.createElement('div');
+					newBox.innerHTML = box.innerHTML;
+					newBox.classList.add('col-lg-4');
+					newBox.classList.add('new-box');
+					
+					let item = $(newBox).find('.item');
+					item.on('click', function(){
+						location.href='/store/products/'+product.pid;
+					});
+					
+					let cart = $(newBox).find('.hover-content li');
+					cart.on('click', function() {
+						preventDefaultGoCart(event, product.pid)
+					});
+					
+					let thumbnail = $(newBox).find('img');
+					thumbnail.attr('src', product.thumbnail)
+					
+					let p_name = $(newBox).find('.p_name');
+					p_name.text(product.pname);
+					
+					$(newBox).find('.cost').text(numberWithCommas(product.price)+'원');
+					$(newBox).find('.price').text(numberWithCommas(product.salePrice)+'원');
+					
+					if(product.sale <= 0) {
+						$(newBox).find('.cost').hide();
+					} 
+					
+					$(newBox).find('.star span').css('width', product.rating);
 
-               
-               parent.insertBefore(newBox, pagination);
-            }
+					parent.insertBefore(newBox, pagination);
+				}
 
-            
-            
-            
-            // 페이징 처리
-            /*
-            if(list.totalPages <= 1) {
-               
-               
-            } else {
-               
-            }
-            */
-            
-            console.log(list);
-            /*
-            let ul = document.querySelector('.pagination ul');
-            console.log(ul);
-            let page = document.getElementById('page');
-            let prev = document.getElementById('prev');
-            let next = document.getElementById('next');
-            
-            if(list.number-1 >= 0) {
-               $(prev).attr('href', '/profiles/'+url+'/products?page='+(list.number-1)+'&sort='+(paging.sort));
-               
-            } else {
-               $(prev).hide();
-            }
-            
-            if(list.number+1 < list.totalPages) {
-               $(next).attr('href', '/profiles/'+url+'/products?page='+(list.number+1)+'&sort='+(paging.sort));
-               
-            } else {
-               $(next).hide();
-            }
-               
+				
+							
+				// 페이징 처리		
+				if(list.totalPages > 1) {
+					
+					console.log(list);
+					$(pagination).show();
+					console.log("NUMBER");
+					console.log(list.number);
+					
+					let ul = document.querySelector('.pagination ul');
+					let page = document.getElementById('page');
+					let prev = document.getElementById('prev');
+					let next = document.getElementById('next');
+					
+					if(list.number-1 >= 0) {
+						$(prev).show();
+						$(prev).on('click', function() {
+							getCreatorProductList((list.number-1), paging.sort);
+						});
+					} else {
+						$(prev).hide();
+					}
+					
+					if(list.number+1 < list.totalPages) {
+						$(next).show();
+						$(next).on('click', function() {
+							getCreatorProductList((list.number+1), paging.sort);
+						});
+					} else {
+						$(next).hide();
+					}
 
-            
-            $(page).attr('href', '/profiles/'+url+'/products?page=0&sort='+(paging.sort));
-            $(page).text('1');
-            
-            for(let p = paging.startPage; p <= paging.endPage; p++) {
-               let newPage = document.createElement('a');
-               let newPageLi = document.createElement('li');
-               newPageLi.classList.add('new-li');
-               
-               //$(newPage).attr('href', '/profiles/'+url+'/products?page='+(p-1)+'&sort='+(paging.sort));
-               $(newPage).on('click', function() {
-                  getCreatorProductList(p-1, paging.sort);
-               });
-               
-               
-               $(newPage).text(p);
-               
-               newPageLi.appendChild(newPage);
-               ul.insertBefore(newPageLi, next.parentElement);
-            }
-            */
-            
-            
-         } else {
-            
-            // 판매자 등록은 되어있는데 상품은 없는 경우
-            let noItem = document.createElement('div');
-            noItem.innerHTML = '<h5>등록된 상품이 없습니다</h5>';
-            parent.appendChild(noItem);
-         }
-         
-   
-         $("#store").addClass("active").addClass("show");
-         $("#feed").removeClass("active").removeClass("show");
-         $("#notice").removeClass("active").removeClass("show");
-         
-      },
-      error: function(message) { }
-      
-   })
-   
-   
+					
+					for(let p = paging.startPage; p <= paging.endPage; p++) {
+						let newPage = document.createElement('a');
+						let newPageLi = document.createElement('li');
+						newPageLi.classList.add('new-li');
+						if(p == paging.nowPage) {
+							newPageLi.classList.add('active');
+						}
+
+						$(newPage).on('click', function() {
+							getCreatorProductList(p-1, paging.sort);
+						});
+						
+						$(newPage).text(p);
+						
+						newPageLi.appendChild(newPage);
+						ul.insertBefore(newPageLi, next.parentElement);
+					}
+				}
+				
+				
+			} else {
+				
+				// 판매자 등록은 되어있는데 상품은 없는 경우
+				let noItem = document.createElement('div');
+				noItem.innerHTML = '<h5>등록된 상품이 없습니다</h5>';
+				parent.appendChild(noItem);
+			}
+			
+			
+	
+			$("#store").addClass("active").addClass("show");
+			$("#feed").removeClass("active").removeClass("show");
+			$("#notice").removeClass("active").removeClass("show");
+			
+		},
+		error: function(message) { }
+		
+	})
+	
+	
 }
-
-
 </script>
-
-
 
 <main id="myprofile">
 	<div  class="container firstcontainer">
+	<!-- 
+	<c:if test="${!empty sessionScope.id}">
+	</c:if>
+	 -->
 		<!--상단 이미지-->
-		 <div class="row img">
-         <div class="col-md-12 topimgdiv" <c:if test="${sessionScope.user.id == profile.id}">id="my-topimgdiv"</c:if>>
-            <img src="${profile.bg_img}">
-         </div> 
-      </div>
+		<div class="row topimg">
+			<c:choose>
+			    <c:when test="${!empty sessionScope.user.id}" > 
+					<div class="col-md-12 topimgdiv">
+						<img src="/resources/images/E2E2E2.png">
+						<p id="img-topimgmodify"> IMAGE UPLOAD </p> 
+					</div> 
+				</c:when>
+				<c:otherwise>
+					<div class="col-md-12 topimgdiv">
+						<img src="/resources/images/E2E2E2.png">
+					</div>
+				
+				</c:otherwise>
+			</c:choose>
+		</div>
 
-     
 		<div class="row  seconddiv">
-       <div class="col-md-2 col-lg-1 profilediv">
-          <div class="profile" id="profile">
-             <img <c:if test="${sessionScope.user.id == profile.id}">id="my-profileimg"</c:if> class="profileimgmodify" src="${profile.profile_img}" >
-          </div>
-       </div> 
+			<c:choose>
+			    <c:when test="${!empty sessionScope.user.id}" >  <!-- 자신의 프로필 일 때와  -->
+					<div class="col-md-2 col-lg-1 profilediv">
+						<div class="profile" id="profile">
+							<img class="profileimgmodify" src="/resources/images/사람실루엣.jpg" >
+						</div>
+					</div>			      
+			    </c:when>
+			    <c:otherwise> <!-- 아닐 때 -->
+					<div class="col-md-2 col-lg-1 profilediv">
+						<div class="profile" id="profile">
+							<!-- <img  id="Img" src="/resources/images/사람실루엣.jpg" > -->
+
+							<img id="profileimgmodify" src="/resources/images/사람실루엣.jpg" >
+						</div>
+					</div>
+			    </c:otherwise>
+			</c:choose>
+
 			
 			<div class="col-md-4 offset-md-1 col-lg-4">
-				<div class="nickname">${profile.getName()} ${follow.getTo_id() }</div>
+				<div class="nickname">${profile.getName()}</div>
 				<div class="count">
 					팔로워  &nbsp;${count}명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;${subcount}명
 				</div>
@@ -211,11 +236,11 @@ function getCreatorProductList(page, sort) {
 			                <!-- Instagram has value, display Instagram image -->
 			                <c:choose>
 			                	<c:when test="${empty profile.instagram}">
-			                		<div class="addressdiv"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+			                		<div class="addressdiv"><a class="icons" href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
 			                		<div class="addressdiv"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
 			                	</c:when>
 			                	<c:otherwise>
-			                		<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
+			                		<div class="addressdiv"><img class="icons" src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
 			                		<div class="addressdiv"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
 			                	</c:otherwise>
 			                </c:choose>
@@ -223,11 +248,11 @@ function getCreatorProductList(page, sort) {
 			            <c:otherwise>
 			            	<c:choose>
 			            		<c:when test="${!empty profile.instagram}">
-			            			<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
-			                		<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
+			            			<div class="addressdiv"><img class="icons"  src="/resources/images/youtube.svg"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+			                		<div class="addressdiv"><img class="icons"  src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
 			            		</c:when>
 			            		<c:otherwise>
-			            			<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+			            			<div class="addressdiv"><img class="icons"  src="/resources/images/youtube.svg"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
 			                		<div class="addressdiv"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>	
 			            		</c:otherwise>
 			            	</c:choose>
@@ -239,30 +264,26 @@ function getCreatorProductList(page, sort) {
 
 			</div>
 			
+
 			<c:choose>
 			    <c:when test="${!empty sessionScope.user.id}">
 			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
 			            <c:choose>
 			                <c:when test="${sessionScope.user.url == profile.url}">
-			                	
-				                	
 				                		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
-				                	
-				                	
 				                		<div id="buttonright" class="longtext"><a href="store/sales-status">마이스토어 관리</a></div>
-				                	
-			                	
 			                </c:when>
 			                <c:otherwise>
-				                
-				                	
-				                		 <button id="buttonright" class="btn"  onclick="showLoginAlert()">팔로우</button>
-				           				 <button id="buttonright" class="btn"  onclick="showLoginAlert()">구독</button>
-				                	
+			                	<c:choose>
+			                		<c:when test="${check = 1}">
+			                			<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
 					        			<button class="btn offbtn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
-					        			<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-							 		
-						 		
+				                	</c:when>
+				                	<c:otherwise>
+				                		<button id="buttonright" class="btn"  onclick="showLoginAlert()">팔로우</button>
+				           				<button id="buttonright" class="btn"  onclick="showLoginAlert()">구독</button>
+							 		</c:otherwise>
+						 		</c:choose>
 			                </c:otherwise>
 			                
 			            </c:choose>
@@ -606,16 +627,17 @@ function getCreatorProductList(page, sort) {
 	    </div>
 	  </div>
 	</div>
+
 	
 	<!-- 이미지 업로드 모달  -->
 		<div class="modal" id="modal">
 			
 			<form class="mcontent" action="/users/profile-img" method="post" enctype="multipart/form-data">
 				<p class="modalclose">&times;</p>
+					<!-- 코드추가 -->
 					<div class="image-upload" id="image-upload">
 			            <div>
-			               <input type="hidden" name="_method" value="PUT"/>
-			            	<input id="folder" type="hidden" name="folder" value=""/>
+			                <input type="hidden" name="_method" value="PUT"/>
 			                <div class=" button">
 			                    <label for="chooseFile">  CLICK HERE!  </label>
 			                </div>
@@ -642,7 +664,6 @@ function getCreatorProductList(page, sort) {
 			        </div>
 		
 			</form>
-
 	
 		</div>
 		
