@@ -52,26 +52,27 @@ public class ProfileController {
 		this.subscribeInfoService = subscribeInfoService;
 	}
 	
-	public String getProfile(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo) {
-		
-		if(session.getAttribute("id") == null) {
-			model.addAttribute("profile", profileService.getUser(url));  // url에 따른 프로필 정보
-			model.addAttribute("count",followService.Follower(url)); //팔로우 수
-			model.addAttribute("subcount", subscribeInfoService.Sub(url)); //구독 수
-			
-		}else {
-			uvo.setId((long)session.getAttribute("id"));
-			model.addAttribute("profile", profileService.getUser(url));
-			model.addAttribute("count",followService.Follower(url));
-			model.addAttribute("subcount", subscribeInfoService.Sub(url));
-			model.addAttribute("check",followService.followT(url, (long)session.getAttribute("id"))); // 팔로우 여부 확인
-			
-		}
-	
-		
-        return "profiles/profile";
+	 @RequestMapping(value ="/{url}", method = RequestMethod.GET)
+	   public String getProfile(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo) {
+	      
+	      if(session.getAttribute("id") == null) {
+	         model.addAttribute("profile", profileService.getUser(url));  // url에 따른 프로필 정보
+	         model.addAttribute("count",followService.Follower(url)); //팔로우 수
+	         model.addAttribute("subcount", subscribeInfoService.Sub(url)); //구독 수
+	         
+	      }else {
+	         uvo.setId((long)session.getAttribute("id"));
+	         model.addAttribute("profile", profileService.getUser(url));
+	         model.addAttribute("count",followService.Follower(url));
+	         model.addAttribute("subcount", subscribeInfoService.Sub(url));
+	         model.addAttribute("check",followService.followT(url, (long)session.getAttribute("id"))); // 팔로우 여부 확인
+	         
+	      }
 	   
-}
+	      
+	        return "profiles/profile";
+	      
+	   }
 	
 	
 
