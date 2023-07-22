@@ -103,7 +103,6 @@ public class ProductController {
 	////* 상품 상세 조회 *////
 	@RequestMapping(value="/products/{p_id}", method=RequestMethod.GET)
 	public String getProduct(@PathVariable("p_id") String p_id, Model model) throws Exception {
-		System.out.println("p_id: "+p_id);
 		
 		ProductPageVO product = productService.getProductPage(Long.parseLong(p_id));
 		
