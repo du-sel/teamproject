@@ -7,6 +7,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import lombok.Builder;
   
 @Entity
 @Table(name = "postimg")
@@ -28,16 +30,17 @@ public class PostIMGVO {
 	
 	@Builder
 	public PostIMGVO(String img, String filePath) {
-		this.img = img;
+		//this.img = img;
 		this.filePath = filePath;
 	}
 	
 	
 	public Long getImgid() {
-		return imgid;
+		//return imgid;
+		return null;
 	}
 	public void setImgid(Long imgid) {
-		this.imgid = imgid;
+		//this.imgid = imgid;
 	}
 	public long getPostId() {
 		return postId;
@@ -46,10 +49,11 @@ public class PostIMGVO {
 		this.postId = postId;
 	}
 	public String getImg() {
-		return img;
+		//return img;
+		return null;
 	}
 	public void setImg(String img) {
-		this.img = img;
+		//this.img = img;
 	}
 	
 	
