@@ -1,5 +1,10 @@
 package com.teamproject.trackers.view.userCreator;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Calendar;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.teamproject.trackers.biz.common.AlertVO;
+import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoVO;
 import com.teamproject.trackers.biz.userCreator.UserService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
@@ -182,4 +190,66 @@ public class UserController {
 
 		return (password.equals(userService.getUser(vo).get().getPassword()));
 	}
+	
+	
+	//---------------------------------------------------
+	// 프로필 
+	
+	// 프로필&배경 이미지 수정
+	@RequestMapping(value="/users/profile-img", method=RequestMethod.PUT)
+	public String updateProfileImage(UserVO vo, @RequestParam("folder") String folder, @RequestParam("chooseFile") MultipartFile chooseFile, HttpServletRequest req) throws IllegalStateException, IOException {
+		vo = (UserVO) session.getAttribute("user");
+		if (!chooseFile.isEmpty()) {
+			if(folder.equals("profile")) {			// 프로필 수정
+				
+				if(!vo.getProfile_img().contains("basic")) {		// 기본 프로필 사진이 아닌 경우 삭제 시도
+					deleteFile("profile/", vo.getProfile_img(), req);
+				}
+				vo.setProfile_img(saveFile(chooseFile, "profile/", vo.getId(), req));			
+	
+				userService.updateProfileImage(vo);
+			}
+			else {		// 배경 이미지 수정
+				System.out.println("배경이미지: "+vo.getBg_img());
+				if(!vo.getBg_img().contains("basic")) {			// 배경 사진이 기본 배경이 아닌 경우 삭제 시도
+					deleteFile("background/", vo.getBg_img(), req);
+				}
+				vo.setBg_img(saveFile(chooseFile, "background/", vo.getId(), req));			
+				
+				userService.updateBackgorundImage(vo);
+			}
+		}
+		
+		return "redirect:/profiles/"+vo.getUrl();
+	}
+	
+	
+	
+	// 프로필 관련 이미지 저장 로직  
+	// 임시로 파일도 일단 여기에 저장
+    private String saveFile(MultipartFile file, String type, long id, HttpServletRequest req) throws IllegalStateException, IOException {    	    	
+    	String tmpPath = req.getServletContext().getRealPath("/resources/profilefile/");		// 위치 생각해 볼 것
+       
+    	String original = file.getOriginalFilename();
+    	String mime = original.substring(original.indexOf('.'));
+    	
+    	long now = System.currentTimeMillis(); 
+        String fileName = now+"-"+id+mime;		// 저장되는 파일 이름: (날짜-유저아이디.확장자)
+        
+		File uploadFile = new File(tmpPath+type+fileName);
+		file.transferTo(uploadFile);
+		
+        // 파일 저장하고 파일명 반환
+        return "/resources/profilefile/"+type+fileName;
+    }
+    
+    // 프로필 관련 이미지 삭제 로직
+    private void deleteFile(String type, String filename, HttpServletRequest req) throws IllegalStateException, IOException {   
+    	String tmpPath = req.getServletContext().getRealPath("");		// 위치 생각해 볼 것		
+
+		File deleteFile = new File(tmpPath+filename);
+		
+		// 파일 삭제
+		deleteFile.delete();
+    }
 }

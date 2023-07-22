@@ -54,8 +54,8 @@
 	                                </div>
 	                                <div class="down-content">
 	                                    <h4>${bp.pname}</h4>
+	                                    <span class="price"> <fmt:formatNumber value="${bp.salePrice}" pattern="#,###" />원</span>
 	                                    <c:if test="${bp.sale != 0}"><span class="cost"> <fmt:formatNumber value="${bp.price}" pattern="#,###" />원</span></c:if>
-			                            <span class="price"> <fmt:formatNumber value="${bp.salePrice}" pattern="#,###" />원</span>
 			                            <ul class="stars">
 			                                <span class="star">
 												★★★★★
@@ -103,8 +103,8 @@
 	                                </div>
 	                                <div class="down-content">
 	                                    <h4>${rp.pname}</h4>
-	                                    <c:if test="${rp.sale != 0}"><span class="cost"> <fmt:formatNumber value="${rp.price}" pattern="#,###" />원</span></c:if>
 			                            <span class="price"> <fmt:formatNumber value="${rp.salePrice}" pattern="#,###" />원</span>
+			                            <c:if test="${rp.sale != 0}"><span class="cost"> <fmt:formatNumber value="${rp.price}" pattern="#,###" />원</span></c:if>
 			                            <ul class="stars">
 			                                <span class="star">
 												★★★★★

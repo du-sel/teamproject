@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: ymdlo
+=======
+Built-By: JAEEUN
+>>>>>>> branch 'main' of https://github.com/du-sel/teamproject.git
 Build-Jdk: 11.0.18
 Created-By: Maven Integration for Eclipse
 

@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FollowId implements Serializable{
+	
 	private long from_id;
 	private long to_id;
 }

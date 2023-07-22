@@ -1,7 +1,5 @@
 package com.teamproject.trackers.view.profile;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,9 +22,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
+import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoService;
 import com.teamproject.trackers.biz.product.ProductListVO;
 import com.teamproject.trackers.biz.product.ProductService;
-import com.teamproject.trackers.biz.product.ProductVO;
 import com.teamproject.trackers.biz.profile.ProfileService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
@@ -39,46 +36,48 @@ public class ProfileController {
 	private HttpSession session;
 	private FollowService followService;
 	private ProductService productService;
-	
+	private SubscribeInfoService subscribeInfoService;
 	
 	@Autowired
 	public ProfileController(ProfileService profileService,
 			HttpSession session,
 			FollowService followService,
-			ProductService productService) {
+			ProductService productService,
+			SubscribeInfoService subscribeInfoService) {
 		
 		this.profileService = profileService;
 		this.session = session;
 		this.followService = followService;
 		this.productService = productService;
+		this.subscribeInfoService = subscribeInfoService;
 	}
 	
+	 @RequestMapping(value ="/{url}", method = RequestMethod.GET)
+	   public String getProfile(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo) {
+	      
+	      if(session.getAttribute("id") == null) {
+	         model.addAttribute("profile", profileService.getUser(url));  // url에 따른 프로필 정보
+	         model.addAttribute("count",followService.Follower(url)); //팔로우 수
+	         model.addAttribute("subcount", subscribeInfoService.Sub(url)); //구독 수
+	         
+	      }else {
+	         uvo.setId((long)session.getAttribute("id"));
+	         model.addAttribute("profile", profileService.getUser(url));
+	         model.addAttribute("count",followService.Follower(url));
+	         model.addAttribute("subcount", subscribeInfoService.Sub(url));
+	         model.addAttribute("check",followService.followT(url, (long)session.getAttribute("id"))); // 팔로우 여부 확인
+	         
+	      }
+	   
+	      
+	        return "profiles/profile";
+	      
+	   }
 	
 	
-	
-	
-	@RequestMapping(value ="/{url}", method = RequestMethod.GET)
-	public String getProfile(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo) {
-		
-		if(session.getAttribute("id") == null) {
-			model.addAttribute("id", profileService.getUser(url));
-		}else {
-			uvo.setId((long)session.getAttribute("id"));
-			model.addAttribute("follow", followService.getFollow(uvo.getId(), url));
-			model.addAttribute("id", profileService.getUser(url));
-			model.addAttribute("count",followService.getFollower(uvo.getId()));
-		}
 
 	
-        return "profiles/profile";
-	   
-	}
-	
-	
-	
-	
-	
-    ////* 크리에이터 프로필 - 상품목록 조회 *////
+        ////* 크리에이터 프로필 - 상품목록 조회 *////
 	@RequestMapping(value="/{url}/products", method=RequestMethod.GET, produces = "application/text; charset=UTF-8")
 	@ResponseBody
     public String getCreatorProductList(@PathVariable("url") String url, 
@@ -145,10 +144,9 @@ public class ProfileController {
     	
     	return wrapperIntoString;
     }
-    
-    
-    
-
-			
+		
+		
+		
 
 }
+
