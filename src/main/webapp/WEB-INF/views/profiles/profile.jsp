@@ -635,32 +635,30 @@ function getCreatorProductList(page, sort) {
          <form class="mcontent" action="/users/profile-img" method="post" enctype="multipart/form-data">
 				<p class="modalclose">&times;</p>
 					<div class="image-upload" id="image-upload">
-			            <div>
+			            <div class="fileContainer">
 			                <input type="hidden" name="_method" value="PUT"/>
 			            	<input id="folder" type="hidden" name="folder" value=""/>
-			                <div class=" button">
-			                    <label for="chooseFile">  CLICK HERE!  </label>
-			                </div>
-			                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)" required>
-			            </div>
-			            
-				<br>
-			            <div class="fileContainer">
 			                <div class="fileInput">
 			                    <p>FILE NAME: </p>
 			                    <p id="fileName"></p>
 			                </div>
-			                <div class="buttonContainer">
-			                    <div class="submitButton" id="submitButton">미리보기</div>
-			                </div>  
+			                <div class="buttonContainer button">
+			                    <label class="submitButton" for="chooseFile">업로드</label>
+			                </div>
+			                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" required>
 			            </div>
-			            
+			            <!--
+				<br>
+			            <div class="fileContainer">
+			                
+			                 <div class="buttonContainer">
+			                    <div class="submitButton" id="submitButton">업로드</div>
+			                </div>  
+			            </div>--> 
 			        </div>
-			        <div class="image-show" id="image-show">
-			               
-			        </div>
+			        <!-- <div class="image-show" id="image-show"></div> -->
 			        <div class="uploadbtn">
-			        	<input type="submit" value="사진 업로드" id="uploadbtn">
+			        	<input type="submit" value="프로필 사진 수정" id="uploadbtn">
 			        </div>
 		
 			</form>
