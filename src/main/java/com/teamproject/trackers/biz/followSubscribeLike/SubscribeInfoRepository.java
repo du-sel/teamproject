@@ -26,7 +26,11 @@ public interface SubscribeInfoRepository extends JpaRepository<SubscribeInfoVO, 
 	
 	// 구독자 수 세기 
 	//SELECT COUNT(*) AS 구독자 	FROM subscribepurchase sp JOIN subscribeinfo si ON sp.subscribe_id = si.subscribe_id JOIN user u ON si.id = u.id WHERE u.id = '1';
-	@Query(value = "SELECT COUNT(*) AS 구독자 	FROM subscribepurchase sp JOIN subscribeinfo si ON sp.subscribe_id = si.subscribe_id JOIN user u ON si.id = u.id WHERE u.id = :subid;",nativeQuery = true)
-	SubscribeInfoVO countSub(@Param("subid")long id);
+	@Query(value = "SELECT COUNT(sp.subscribe_id) FROM subscribepurchase sp \r\n" + 
+			"WHERE sp.subscribe_id = (SELECT subscribe_id FROM subscribeinfo WHERE id = (SELECT id FROM user where url = :url));",
+			countQuery = "SELECT COUNT(sp.subscribe_id) FROM subscribepurchase sp \r\n" + 
+					"WHERE sp.subscribe_id = (SELECT subscribe_id FROM subscribeinfo WHERE id = (SELECT id FROM user where url = :url));",
+			nativeQuery = true)
+	long Sub(@Param("url") String url);
 	
 }

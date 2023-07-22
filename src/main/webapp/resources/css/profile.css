@@ -80,7 +80,10 @@ time,mark,audio,video{
 	font-size: 13px;
 	font-weight: 600;
 }
-
+#myprofile .icons{
+	width:20px;
+	
+} 
 /* 상단 이미지 업로드 글씨
 #myprofile #img-topimgmodify{
 	display: none;
