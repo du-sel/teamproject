@@ -103,6 +103,7 @@ public class ProductController {
 	////* 상품 상세 조회 *////
 	@RequestMapping(value="/products/{p_id}", method=RequestMethod.GET)
 	public String getProduct(@PathVariable("p_id") String p_id, Model model) throws Exception {
+		System.out.println("p_id: "+p_id);
 		
 		ProductPageVO product = productService.getProductPage(Long.parseLong(p_id));
 		
@@ -300,6 +301,8 @@ public class ProductController {
         // 파일 저장하고 파일명 반환
         return "/resources/productfile/"+type+fileName;
     }
+    
+    
     
     
     ////* 상품 카테고리 객체준비 - 디자인 *////
@@ -610,5 +613,3 @@ public class ProductController {
 		return "/store/st-creators";
 	}	
 }
-
-
