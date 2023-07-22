@@ -239,11 +239,11 @@ function getCreatorProductList(page, sort) {
 			                <!-- Instagram has value, display Instagram image -->
 			                <c:choose>
 			                	<c:when test="${empty profile.instagram}">
-			                		<div class="addressdiv"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+			                		<div class="addressdiv"><a class="icons" href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
 			                		<div class="addressdiv"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
 			                	</c:when>
 			                	<c:otherwise>
-			                		<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
+			                		<div class="addressdiv"><img class="icons" src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
 			                		<div class="addressdiv"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
 			                	</c:otherwise>
 			                </c:choose>
@@ -251,11 +251,11 @@ function getCreatorProductList(page, sort) {
 			            <c:otherwise>
 			            	<c:choose>
 			            		<c:when test="${!empty profile.instagram}">
-			            			<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
-			                		<div class="addressdiv"><img src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
+			            			<div class="addressdiv"><img class="icons"  src="/resources/images/youtube.svg"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+			                		<div class="addressdiv"><img class="icons"  src="/resources/images/instagram.svg"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>
 			            		</c:when>
 			            		<c:otherwise>
-			            			<div class="addressdiv"><img src="/resources/images/youtube.svg"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
+			            			<div class="addressdiv"><img class="icons"  src="/resources/images/youtube.svg"><a href="https://youtube.com/@${profile.youtube}">&nbsp;${profile.youtube}</a></div>
 			                		<div class="addressdiv"><a href="https://www.instagram.com/${profile.instagram}">&nbsp;${profile.instagram}</a></div>	
 			            		</c:otherwise>
 			            	</c:choose>
