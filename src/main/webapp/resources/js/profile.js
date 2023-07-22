@@ -37,6 +37,7 @@ const modalClose = document.querySelector(".modalclose");
   topimgModify.addEventListener('click', function() {
     $(".modal").css("display", "block");
     $("#folder").val("background");
+    $("#uploadbtn").val("배경 이미지 수정");
     
     let src = $("#my-topimgdiv img").attr("src");
     modalClose.addEventListener('click', () => modal_close('my-topimgdiv img', src));
@@ -47,6 +48,7 @@ const modalClose = document.querySelector(".modalclose");
   profileimgModify.addEventListener('click', function() {
     $(".modal").css("display", "block");
     $("#folder").val("profile");
+    $("#uploadbtn").val("프로필 이미지 수정");
     
     let src = $("#my-profileimg").attr("src");
     modalClose.addEventListener('click', () => modal_close('my-profileimg', src));
