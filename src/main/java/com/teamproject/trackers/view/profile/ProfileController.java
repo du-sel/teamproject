@@ -1,7 +1,5 @@
-
 package com.teamproject.trackers.view.profile;
 
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +24,6 @@ import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
 import com.teamproject.trackers.biz.product.ProductListVO;
 import com.teamproject.trackers.biz.product.ProductService;
-import com.teamproject.trackers.biz.product.ProductVO;
 import com.teamproject.trackers.biz.profile.ProfileService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
@@ -53,34 +49,31 @@ public class ProfileController {
 		this.productService = productService;
 	}
 	
-	@RequestMapping(value ="/{url}", method = RequestMethod.GET)
-	   public String getProfile(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo) {
-	      
-	      if(session.getAttribute("id") == null) {
-	         System.out.println("아이디 없음");
-	         //System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
-	         model.addAttribute("profile", profileService.getUser(url));
-	         //model.addAttribute("follow", followService.getFollow((long)session.getAttribute("id")));
-	         System.out.println(url);
-	         model.addAttribute("count",followService.Follower(url));
-	         System.out.println("count: "+followService.Follower(url));
-	         model.addAttribute("subcount", profileService.getUser(url).getId());
-	      }else {
-	         uvo.setId((long)session.getAttribute("id"));
-	         model.addAttribute("profile", profileService.getUser(url));
-	         //model.addAttribute("follow", followService.getFollow((long)session.getAttribute("id")));
-	         //System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
-	         System.out.println(url);
-	         model.addAttribute("count",followService.Follower(url));
-	         model.addAttribute("subcount", profileService.getUser(url).getId());
-	         //model.addAttribute("subcount", subscribeInfoService.countSub(followService.getFollow(uvo.getId(), url).getTo_id()));
-	      }
-	      
-	      //System.out.println(uvo.getId()+"   - getId");
-	      
-	        return "profiles/profile";
-	      
-	   }
+	public String getProfile(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo) {
+		
+		if(session.getAttribute("id") == null) {
+			
+			//System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
+			model.addAttribute("profile", profileService.getUser(url));
+			model.addAttribute("follow", followService.getFollow(profileService.getUser(url).getId(), url));
+			model.addAttribute("count",followService.getFollower(profileService.getUser(url).getId()));
+			model.addAttribute("subcount", profileService.getUser(url).getId());
+		}else {
+			uvo.setId((long)session.getAttribute("id"));
+			model.addAttribute("profile", profileService.getUser(url));
+			model.addAttribute("follow", followService.getFollow(profileService.getUser(url).getId(), url));
+			//System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
+			
+			model.addAttribute("count",followService.getFollower(profileService.getUser(url).getId()));
+			model.addAttribute("subcount", profileService.getUser(url).getId());
+			//model.addAttribute("subcount", subscribeInfoService.countSub(followService.getFollow(uvo.getId(), url).getTo_id()));
+		}
+		
+		//System.out.println(uvo.getId()+"   - getId");
+		
+        return "profiles/profile";
+	   
+}
 	
 	
 
