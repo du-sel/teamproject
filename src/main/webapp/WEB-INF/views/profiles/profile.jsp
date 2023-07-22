@@ -221,7 +221,7 @@ function getCreatorProductList(page, sort) {
 
 			
 			<div class="col-md-4 offset-md-1 col-lg-4">
-				<div class="nickname">${profile.getName()} ${follow.getTo_id() }</div>
+				<div class="nickname">${profile.getName()}</div>
 				<div class="count">
 					팔로워  &nbsp;${count}명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;${subcount}명
 				</div>
@@ -273,25 +273,20 @@ function getCreatorProductList(page, sort) {
 			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
 			            <c:choose>
 			                <c:when test="${sessionScope.user.url == profile.url}">
-			                	
-				                	
 				                		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
-				                	
-				                	
 				                		<div id="buttonright" class="longtext"><a href="store/sales-status">마이스토어 관리</a></div>
-				                	
-			                	
 			                </c:when>
 			                <c:otherwise>
-				                
-				                	
-				                		 <button id="buttonright" class="btn"  onclick="showLoginAlert()">팔로우</button>
-				           				 <button id="buttonright" class="btn"  onclick="showLoginAlert()">구독</button>
-				                	
+			                	<c:choose>
+			                		<c:when test="${check = 1}">
+			                			<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
 					        			<button class="btn offbtn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
-					        			<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-							 		
-						 		
+				                	</c:when>
+				                	<c:otherwise>
+				                		<button id="buttonright" class="btn"  onclick="showLoginAlert()">팔로우</button>
+				           				<button id="buttonright" class="btn"  onclick="showLoginAlert()">구독</button>
+							 		</c:otherwise>
+						 		</c:choose>
 			                </c:otherwise>
 			                
 			            </c:choose>

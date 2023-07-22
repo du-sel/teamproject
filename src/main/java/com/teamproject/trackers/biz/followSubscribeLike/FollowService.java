@@ -12,22 +12,19 @@ public class FollowService {
 	private FollowRepository followRepository;
 
 	
-	public FollowVO getFollow(long id) {
-		return null;
-		/* return followRepository.getFollow(id); */
-	}
-	
 	public Object Follower(String url) {
 		return (long) followRepository.Follower(url);
 	}
 	
+	public int followT(String url, long id) {
+		return followRepository.followT(url, id);
+		
+	}
+	
+	/*
 	public void deleteFollower(FollowVO vo) {
-		/* followRepository.deleteFollow(vo.getFrom_id(), vo.getTo_id()); */
+		followRepository.deleteFollow(vo.getFrom_id(), vo.getTo_id());
 	}
 
-	
-		
-	
-	
-	
+	*/
 }
