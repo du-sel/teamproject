@@ -20,7 +20,15 @@ public class PostIMGVO {
 	
 	@Column(name = "img")
 	private String postimg;
+
 	
+	public PostIMGVO() {	}
+	
+	@Builder
+	public PostIMGVO(String img, String filePath) {
+		this.img = img;
+		this.filePath = filePath;
+	}
 	
 	@Transient
 	private MultipartFile uploadFile;
