@@ -1,4 +1,4 @@
-/*
+/*  
 // 상단 수정이미지 보이게 하기
 const topimgContainer = document.querySelector('.topimg');
 
