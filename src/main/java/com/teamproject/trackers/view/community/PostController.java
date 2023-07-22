@@ -133,7 +133,7 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 		model.addAttribute("commentService",commentService);
 		model.addAttribute("userinfo",postService.getUser(postId).get());	
 		model.addAttribute("post", postService.getPost(postId).get());
-		//model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
+		model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
 
 		return "community/co-post";
 	}
@@ -149,7 +149,7 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 		model.addAttribute("commentService",commentService);		
 		model.addAttribute("postService",postService);
 		model.addAttribute("postList", postService.getPostList());
-		model.addAttribute("postIMGList", postIMGService.getPostIMGList());
+		model.addAttribute("postIMGList", postIMGService);
 		return "community/co-main";
 	}
 	*/
