@@ -35,7 +35,7 @@ public class FollowController {
 	  System.out.println(vo.getTo_id()+ "to_id");
 	  System.out.println(vo.getFrom_id()+ "from_id");
 	  
-	  followService.deleteFollower(vo);
+	  //followService.deleteFollower(vo);
 	 
 	  alert.setStr("팔로우가 취소되었습니다."); 
 	  alert.setPath("/"+url); 
