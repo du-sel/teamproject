@@ -145,24 +145,37 @@
 										<div class="search-icon-container d-flex align-items-center" onclick="showSearchInput();">
 											<i class="fa fa-search" aria-hidden="true"></i>
 										</div>
+										
+										<!-- path 정하기 -->
 										<c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />		<!-- 현재 위치 uri -->
-										<c:if test="${(path ne '/store/creators') && (path ne '/community/posts')}">
+										<c:if test="${(path ne '/store/creators') && (not fn:contains(path, '/community/posts'))}">
 											<c:set var="path" value="/store/products"/>
 										</c:if>
+										<c:if test="${fn:contains(path, '/community/posts')}">
+											<c:set var="path" value="/community/posts"/>
+										</c:if>
+										
+										<!-- 파라미터 form으로 보냄 -->
 										<form name="search" action="${path}" class="search-input-container">
 											<input type="hidden" name="page" value="0">
-											<c:if test="${(path ne '/community/posts')}">				<!-- 크리에이터 리스트, 상품 리스트 -->
+											<c:if test="${not fn:contains(path, '/community/posts')}">									<!-- 크리에이터 리스트, 상품 리스트 -->
 												<input type="hidden" name="sort" value="creDate">
 											</c:if>											
-											<c:if test="${(path ne '/store/creators') && (path ne '/community/posts')}">	<!-- 상품 리스트 -->
+											<c:if test="${(path ne '/store/creators') && (not fn:contains(path, '/community/posts'))}">	<!-- 상품 리스트 -->
+												<c:if test="${empty category || category eq ''}">										<!-- 상품 상세 등 category 값이 없는 페이지에서 검색 시 디폴트 값 -->
+													<c:set var="category" value="all"/>
+												</c:if>
 												<input type="hidden" name="category" value="${category}">
 											</c:if>
-											<c:if test="${path eq '/community/posts'}">					<!-- 커뮤니티 포스트 리스트 -->
+											<c:if test="${fn:contains(path, '/community/posts')}">
+												<c:if test="${empty type || type eq ''}">										<!-- 상품 상세 등 category 값이 없는 페이지에서 검색 시 디폴트 값 -->
+													<c:set var="type" value="all"/>
+												</c:if>										<!-- 커뮤니티 포스트 리스트 -->
 												<input type="hidden" name="type" value="${type}">
 											</c:if>
 											<input type="text" name="keyword">
 											<button class="search-btn">검색</button>
-										</form>
+										</form> 
 									</div>
 									<c:choose>
 										<c:when test="${!empty sessionScope.id}"> <!-- if와 동일 -->

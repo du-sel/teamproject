@@ -601,3 +601,11 @@ time,mark,audio,video{
 	display: none;
 }
 
+
+
+/*  페이징 버튼  */
+
+#myprofile .pagination ul li a:hover, 
+#myprofile .pagination ul li.active a {
+    color: #fff;
+}

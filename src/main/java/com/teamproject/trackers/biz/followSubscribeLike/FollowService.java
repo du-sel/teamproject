@@ -16,10 +16,10 @@ public class FollowService {
 		return (long) followRepository.Follower(url);
 	}
 	
-	public int followT(String url, long id) {
-		return followRepository.followT(url, id);
-		
+	public Long followT(String url, long id) {
+		return null;
 	}
+
 	
 	/*
 	public void deleteFollower(FollowVO vo) {

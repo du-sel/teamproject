@@ -34,6 +34,17 @@ public interface UserRepository extends JpaRepository<UserVO, Long> {
 	
 	// url 중복 확인
 	boolean existsByUrl(String url);
+	
+	
+	//------------------------------------------
+	// 프로필
+	
+	// 이미지 업로드
+	@Modifying(clearAutomatically = true)
+	@Transactional
+	@Query(value = "UPDATE user u SET u.profile_img = :profile_img WHERE u.id = :id", nativeQuery = true)
+	void updateProfileImg(@Param("id")long id, @Param("profile_img")String profile_img);
+	
 
 
 }
