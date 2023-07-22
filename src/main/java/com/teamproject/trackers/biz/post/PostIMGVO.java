@@ -30,16 +30,17 @@ public class PostIMGVO {
 	
 	@Builder
 	public PostIMGVO(String img, String filePath) {
-		this.postimg = img;
+		//this.img = img;
 		this.filePath = filePath;
 	}
 	
 	
 	public Long getImgid() {
-		return postId;
+		//return imgid;
+		return null;
 	}
 	public void setImgid(Long imgid) {
-		this.postId = imgid;
+		//this.imgid = imgid;
 	}
 	public long getPostId() {
 		return postId;
@@ -48,10 +49,11 @@ public class PostIMGVO {
 		this.postId = postId;
 	}
 	public String getImg() {
-		return postimg;
+		//return img;
+		return null;
 	}
 	public void setImg(String img) {
-		this.postimg = img;
+		//this.img = img;
 	}
 	
 	

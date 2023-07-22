@@ -179,43 +179,18 @@ function getCreatorProductList(page, sort) {
 	</c:if>
 	 -->
 		<!--상단 이미지-->
-		<div class="row topimg">
-			<c:choose>
-			    <c:when test="${!empty sessionScope.user.id}" > 
-					<div class="col-md-12 topimgdiv">
-						<img src="/resources/images/E2E2E2.png">
-						<p id="img-topimgmodify"> IMAGE UPLOAD </p> 
-					</div> 
-				</c:when>
-				<c:otherwise>
-					<div class="col-md-12 topimgdiv">
-						<img src="/resources/images/E2E2E2.png">
-					</div>
-				
-				</c:otherwise>
-			</c:choose>
-		</div>
+		<div class="row img">
+			<div class="col-md-12 topimgdiv" <c:if test="${sessionScope.user.id == profile.id}">id="my-topimgdiv"</c:if>>
+				<img src="${profile.bg_img}">
+	        </div> 
+	    </div>
 
 		<div class="row  seconddiv">
-			<c:choose>
-			    <c:when test="${!empty sessionScope.user.id}" >  <!-- 자신의 프로필 일 때와  -->
-					<div class="col-md-2 col-lg-1 profilediv">
-						<div class="profile" id="profile">
-							<img class="profileimgmodify" src="/resources/images/사람실루엣.jpg" >
-						</div>
-					</div>			      
-			    </c:when>
-			    <c:otherwise> <!-- 아닐 때 -->
-					<div class="col-md-2 col-lg-1 profilediv">
-						<div class="profile" id="profile">
-							<!-- <img  id="Img" src="/resources/images/사람실루엣.jpg" > -->
-
-							<img id="profileimgmodify" src="/resources/images/사람실루엣.jpg" >
-						</div>
-					</div>
-			    </c:otherwise>
-			</c:choose>
-
+			<div class="col-md-2 col-lg-1 profilediv">
+				<div class="profile" id="profile">
+					<img <c:if test="${sessionScope.user.id == profile.id}">id="my-profileimg"</c:if> class="profileimgmodify" src="${profile.profile_img}" >
+				</div>
+			</div> 
 			
 			<div class="col-md-4 offset-md-1 col-lg-4">
 				<div class="nickname">${profile.getName()}</div>
@@ -634,33 +609,23 @@ function getCreatorProductList(page, sort) {
 			
 			<form class="mcontent" action="/users/profile-img" method="post" enctype="multipart/form-data">
 				<p class="modalclose">&times;</p>
-					<!-- 코드추가 -->
 					<div class="image-upload" id="image-upload">
-			            <div>
-			                <input type="hidden" name="_method" value="PUT"/>
-			                <div class=" button">
-			                    <label for="chooseFile">  CLICK HERE!  </label>
-			                </div>
-			                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)" required>
-			            </div>
-			            
-				<br>
 			            <div class="fileContainer">
+			                <input type="hidden" name="_method" value="PUT"/>
+			            	<input id="folder" type="hidden" name="folder" value=""/>
 			                <div class="fileInput">
 			                    <p>FILE NAME: </p>
 			                    <p id="fileName"></p>
 			                </div>
-			                <div class="buttonContainer">
-			                    <div class="submitButton" id="submitButton">미리보기</div>
-			                </div>  
+			                <div class="buttonContainer button">
+			                    <label class="submitButton" for="chooseFile">업로드</label>
+			                </div>
+			                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" required>
 			            </div>
-			            
 			        </div>
-			        <div class="image-show" id="image-show">
-			               
-			        </div>
+			        <!-- <div class="image-show" id="image-show"></div> -->
 			        <div class="uploadbtn">
-			        	<input type="submit" value="사진 업로드" id="uploadbtn">
+			        	<input type="submit" value="프로필 사진 수정" id="uploadbtn">
 			        </div>
 		
 			</form>

@@ -6,6 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+
+
+@DynamicInsert
 @Entity
 @Table(name="user")
 public class UserVO {
@@ -20,7 +25,10 @@ public class UserVO {
 	private String url;
 	private String instagram;
 	private String youtube;
+	
+	@ColumnDefault("/resources/profilefile/profile/basic-profile.png")			// 디폴트 이미지
 	private String profile_img;
+	@ColumnDefault("/resources/profilefile/background/basic-background.png")			// 디폴트 이미지
 	private String bg_img;
 	
 	
