@@ -6,7 +6,6 @@
 
 
 <script>
-
 /* 탭 - 스토어 클릭하면 스토어 정보 가져오기 */
 function getCreatorProductList(page, sort) {
 
@@ -171,11 +170,7 @@ function getCreatorProductList(page, sort) {
 	
 	
 }
-
-
 </script>
-
-
 
 <main id="myprofile">
 	<div  class="container firstcontainer">
