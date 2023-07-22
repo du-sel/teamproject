@@ -279,6 +279,7 @@ time,mark,audio,video{
     /* font-size: 1em; */
     /* font-size: 30px; */
 	font-weight: 600;
+    padding: 10px;
 }
 
 #myprofile #chooseFile {
@@ -317,7 +318,6 @@ time,mark,audio,video{
     color: #2a2a2a;
    /*  border-radius: 30px; */
     border-radius: 10px;
-    padding: 10px;
     font-size: 0.8em;
 
     cursor: pointer;
