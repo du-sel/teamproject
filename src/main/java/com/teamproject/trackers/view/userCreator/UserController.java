@@ -193,7 +193,7 @@ public class UserController {
 	
 	
 	//----------------------------------------------------
-	// 프로필
+	// 프로필 
 	
 	// 프로필&배경 이미지 수정
 	@RequestMapping(value="/users/profile-img", method=RequestMethod.PUT)

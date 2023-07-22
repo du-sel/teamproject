@@ -239,7 +239,6 @@ function getCreatorProductList(page, sort) {
 
 			</div>
 			
-
 			<c:choose>
 			    <c:when test="${!empty sessionScope.user.id}">
 			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
