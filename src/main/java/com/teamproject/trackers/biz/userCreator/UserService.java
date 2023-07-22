@@ -62,8 +62,13 @@ public class UserService {
 	//----------------------------------------------
 	// 프로필
 	
-	// 프로필 사진 업로드
+	// 프로필 이미지 업로드
 	public void updateProfileImage(UserVO vo) {
 		userRepository.updateProfileImg(vo.getId(), vo.getProfile_img());
+	}
+	
+	// 배경 이미지 업로드
+	public void updateBackgorundImage(UserVO vo) {
+		userRepository.updateBackgroundImg(vo.getId(), vo.getBg_img());
 	}
 }

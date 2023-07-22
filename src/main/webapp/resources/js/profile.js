@@ -1,3 +1,4 @@
+/*
 // 상단 수정이미지 보이게 하기
 const topimgContainer = document.querySelector('.topimg');
 
@@ -10,7 +11,7 @@ topimgContainer.addEventListener('mouseleave', function() {
   const topimgModify = topimgContainer.querySelector('#img-topimgmodify');
   topimgModify.style.display = 'none';
 });
-
+*/
 
 /*
 // 프로필 수정이미지 보이게 하
@@ -28,16 +29,18 @@ profileimgContainer.addEventListener('mouseleave', function() {
 */
 
 //모달창 띄우기
-const topimgModify = document.querySelector("#img-topimgmodify");
-const profileimgModify = document.querySelector(".profileimgmodify");
+const topimgModify = document.querySelector("#my-topimgdiv");
+const profileimgModify = document.querySelector("#my-profileimg");
 const modalClose = document.querySelector(".modalclose");
 
   topimgModify.addEventListener('click', function() {
     $(".modal").css("display", "block");
+    $("#folder").val("background");
   });
 
   profileimgModify.addEventListener('click', function() {
     $(".modal").css("display", "block");
+    $("#folder").val("profile");
   });
 
   modalClose.addEventListener('click', function() {

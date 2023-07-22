@@ -54,31 +54,33 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(value ="/{url}", method = RequestMethod.GET)
-	public String getProfile(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo) {
-		
-		if(session.getAttribute("id") == null) {
-			
-			//System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
-			model.addAttribute("id", profileService.getUser(url));
-			model.addAttribute("follow", followService.getFollow(profileService.getUser(url).getId(), url));
-			model.addAttribute("count",followService.getFollower(profileService.getUser(url).getId()));
-			model.addAttribute("subcount", profileService.getUser(url).getId());
-		}else {
-			uvo.setId((long)session.getAttribute("id"));
-			model.addAttribute("id", profileService.getUser(url));
-			model.addAttribute("follow", followService.getFollow(profileService.getUser(url).getId(), url));
-			//System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
-			
-			model.addAttribute("count",followService.getFollower(profileService.getUser(url).getId()));
-			model.addAttribute("subcount", profileService.getUser(url).getId());
-			//model.addAttribute("subcount", subscribeInfoService.countSub(followService.getFollow(uvo.getId(), url).getTo_id()));
-		}
-		
-		//System.out.println(uvo.getId()+"   - getId");
-		
-        return "profiles/profile";
-	   
-	}
+	   public String getProfile(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo) {
+	      
+	      if(session.getAttribute("id") == null) {
+	         System.out.println("아이디 없음");
+	         //System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
+	         model.addAttribute("profile", profileService.getUser(url));
+	         //model.addAttribute("follow", followService.getFollow((long)session.getAttribute("id")));
+	         System.out.println(url);
+	         model.addAttribute("count",followService.Follower(url));
+	         System.out.println("count: "+followService.Follower(url));
+	         model.addAttribute("subcount", profileService.getUser(url).getId());
+	      }else {
+	         uvo.setId((long)session.getAttribute("id"));
+	         model.addAttribute("profile", profileService.getUser(url));
+	         //model.addAttribute("follow", followService.getFollow((long)session.getAttribute("id")));
+	         //System.out.println(followService.getFollow(uvo.getId(), url).getTo_id() +" 여기");
+	         System.out.println(url);
+	         model.addAttribute("count",followService.Follower(url));
+	         model.addAttribute("subcount", profileService.getUser(url).getId());
+	         //model.addAttribute("subcount", subscribeInfoService.countSub(followService.getFollow(uvo.getId(), url).getTo_id()));
+	      }
+	      
+	      //System.out.println(uvo.getId()+"   - getId");
+	      
+	        return "profiles/profile";
+	      
+	   }
 	
 	
 

@@ -180,7 +180,7 @@
 									<c:choose>
 										<c:when test="${!empty sessionScope.id}"> <!-- if와 동일 -->
 											<div id="user-menu" class="scroll-to-section submenu">
-			                          			<img src="/resources/images/baner-right-image-02.jpg" alt="프로필사진" id="profile-image">
+			                          			<img src="${sessionScope.user.profile_img}" alt="프로필사진" id="profile-image">
 			                          			<ul>
 				                                    <li><a href="/store/carts">장바구니</a></li>
 				                                    <li><a href="news.do">내 소식</a></li>
