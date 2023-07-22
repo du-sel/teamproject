@@ -21,6 +21,8 @@ public class PostIMGVO {
 	@Column(name = "img")
 	private String postimg;
 
+	@Transient
+	private String filePath;
 	
 	public PostIMGVO() {	}
 	
@@ -30,21 +32,12 @@ public class PostIMGVO {
 		this.filePath = filePath;
 	}
 	
-	@Transient
-	private MultipartFile uploadFile;
 	
-	public MultipartFile getUploadFile() {
-		return uploadFile;
+	public Long getImgid() {
+		return imgid;
 	}
-	public void setUploadFile(MultipartFile uploadFile) {
-		this.uploadFile = uploadFile;
-	}
-	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
+	public void setImgid(Long imgid) {
+		this.imgid = imgid;
 	}
 	public long getPostId() {
 		return postId;
@@ -52,11 +45,11 @@ public class PostIMGVO {
 	public void setPostId(long postId) {
 		this.postId = postId;
 	}
-	public String getPostimg() {
-		return postimg;
+	public String getImg() {
+		return img;
 	}
-	public void setPostimg(String postimg) {
-		this.postimg = postimg;
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 	
