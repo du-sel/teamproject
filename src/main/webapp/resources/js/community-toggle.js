@@ -82,16 +82,12 @@ console.log(event.target.files.length);
 		 
 		var uploadFile = event.target.files[0]; // Get the first selected file
 		
-		  
+		// Clear the preview area
+		    document.querySelector("div#thumb-preview").replaceChildren();  
 		
 		if (uploadFile) {
 		    length = event.target.files.length;
-		
-		    // Clear the preview area
-		    document.querySelector("div#thumb-preview").replaceChildren();
-		
-		    
-		
+
 		for (var image of event.target.files) {
 		      var reader = new FileReader();
 		
