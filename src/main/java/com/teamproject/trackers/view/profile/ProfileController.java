@@ -49,7 +49,6 @@ public class ProfileController {
 		this.productService = productService;
 	}
 	
-	@RequestMapping(value ="/{url}", method = RequestMethod.GET)
 	public String getProfile(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo) {
 		
 		if(session.getAttribute("id") == null) {
@@ -74,7 +73,7 @@ public class ProfileController {
 		
         return "profiles/profile";
 	   
-	}
+}
 	
 	
 
