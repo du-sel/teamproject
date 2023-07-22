@@ -8,7 +8,7 @@
 <script>
 
 
-/* 탭 - 스토어 클릭하면 스토어 정보 가져오기 */
+/* 탭 - 스토어 클릭하면 스토어 정보 가져오기*/
 function getCreatorProductList(page, sort) {
 
    let pathname = window.location.pathname;
