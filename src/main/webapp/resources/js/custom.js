@@ -76,7 +76,7 @@
 
 		}	  
 	  setTimeout(function() {
-			$("main.broad").css("margin-top", $('header').height());
+			$("main").css("margin-top", $('header').height());
 		}, 100);
 
 	});
