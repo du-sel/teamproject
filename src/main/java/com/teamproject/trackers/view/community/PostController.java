@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,47 +70,36 @@ public class PostController {
 		
 	// 작성
 	@RequestMapping(value = "/posts", method = RequestMethod.POST)
-	public String insertPost(PostVO vo, PostIMGVO imgvo , @RequestParam("post-img")List<MultipartFile> files) throws Exception {	
+	public String insertPost(PostVO vo, PostIMGVO imgvo , @RequestParam("post-img")List<MultipartFile> files, HttpServletRequest request) throws Exception {	
 
-		/*
-System.out.println("vo.getpostid "+vo.getPostId());
-System.out.println("vo.getid "+vo.getId());
 		PostVO p = postService.insertPost(vo);	
-		imgvo.setPostId(p.getPostId());
-System.out.println("imgvo.postid "+imgvo.getPostId());		
-System.out.println("p.postid "+p.getPostId());
-		if(!files.isEmpty()) { //uploadFile !=null
 		
-			for(MultipartFile file : files) {
+		
+		List<String> fileNames = new ArrayList<>();
 				
-				//파일 이름 가져오기
-				String fileName = file.getOriginalFilename();
-
+		for (MultipartFile file : files) {
+			if(!file.isEmpty()) { //uploadFile !=null
 				
-				imgvo = new PostIMGVO();
+				String path = request.getServletContext().getRealPath("/resources/file/");
+				//새로운 파일 이름
+				String fileName = p.getPostId()+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
+				fileNames.add(fileName);
 				
-System.out.println("imgvo.postid "+imgvo.getPostId());				
-				imgvo.setPostimg(fileName);
+				// 로컬에 파일 저장			
+				file.transferTo(new File(path+fileName));
 	
-			   
-				//확장자 추출
-				//String extension = fileName.substring(fileName.lastIndexOf("."));
-				
-				// 로컬에 파일 저장
-
-				//File file = new File(uploadFile.getOriginalFilename());
-			
-				file.transferTo(new File("C:\\Users\\1\\git\\"+fileName));
-				
-				postIMGService.insertPostIMG(imgvo);				
 			}
 		}
 		
-		return "redirect:/community/posts";
-		*/
-		postService.insertPost(vo);
-		//postIMGService.insertPostIMG(imgvo);
-		return "redirect:/community";
+		// imgvo 저장하기
+		for (String fileName : fileNames) {
+			imgvo.setImg(fileName);
+			imgvo.setPostId(p.getPostId());
+			postIMGService.insertPostIMG(imgvo);
+		}
+			
+		
+		return "redirect:/community/posts/"+p.getPostId();
 	}
 	
 	
@@ -144,7 +134,7 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 		model.addAttribute("commentService",commentService);
 		model.addAttribute("userinfo",postService.getUser(postId).get());	
 		model.addAttribute("post", postService.getPost(postId).get());
-		//model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
+		model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
 
 		return "community/co-post";
 	}
@@ -160,7 +150,7 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 		model.addAttribute("commentService",commentService);		
 		model.addAttribute("postService",postService);
 		model.addAttribute("postList", postService.getPostList());
-		model.addAttribute("postIMGList", postIMGService.getPostIMGList());
+		model.addAttribute("postIMGList", postIMGService);
 		return "community/co-main";
 	}
 	*/
