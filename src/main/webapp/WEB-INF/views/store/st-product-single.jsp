@@ -52,7 +52,7 @@ function goPurchase() {
         <br><br><br>
         <!-- 화면 왼쪽 위에 목록으로 돌아가기 -->
 	    <div class="back">
-	    <a href="products.do"><span class="fa fa-angle-double-left"></span> 목록으로 돌아가기</a>
+	    <a onclick="javascript:history.go(-1);"><span class="fa fa-angle-double-left"></span> 목록으로 돌아가기</a>
 	    </div>
 	    <br><br><br>
         
@@ -368,7 +368,7 @@ function goPurchase() {
          <!-- 세번째 탭 (상품문의) -->
           <div id = "inquiry" class ="tab-pane">
            	<div class="inquiry-btn-container">
-           		<button type="button" class="inquiry-btn">문의하기</button>
+           		<button type="button" class="inquiry-btn" onclick="javascript:location.href='/store/products/id/inquiries'">문의하기</button>
            	</div>
              
 			
