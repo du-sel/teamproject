@@ -129,9 +129,9 @@ console.log(event.target.files.length);
 	   /* <footer> 아래에 있던 script 코드 */
 	   $(document).ready(function() {
 				    // 댓글 개수 이모티콘 클릭 이벤트
-				    $(".comment-count").click(function() {
-				      $(this).parent().parent().find(".comment-input").slideToggle('fast');
-				    });
+				    //$(".comment-count").click(function() {
+				     // $(this).parent().parent().find(".comment-input").slideToggle('fast');
+				    //});
 				    // 좋아요 버튼 클릭 이벤트
 				    $(".like-icon").click(function() {
 				    console.log("LIKE");
