@@ -12,6 +12,7 @@ import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoVO;
 import com.teamproject.trackers.biz.profile.ProfileService;
+import com.teamproject.trackers.view.common.CommonController;
 
 @Controller
 public class FollowController {
@@ -22,8 +23,8 @@ public class FollowController {
 	private HttpSession session;
 	@Autowired
 	private ProfileService profileService;
-	
-	private AlertVO alert = new AlertVO();
+	@Autowired
+	public CommonController common;
 
 	
 	  // 언팔로우 (삭제)
@@ -37,9 +38,9 @@ public class FollowController {
 	  
 	  //followService.deleteFollower(vo);
 	 
-	  alert.setStr("팔로우가 취소되었습니다."); 
-	  alert.setPath("/"+url); 
-	  alert.setFlag(true);
+	  common.alert.setStr("팔로우가 취소되었습니다."); 
+	  common.alert.setPath("/"+url); 
+	  common.alert.setFlag(true);
 	  
 	  return "redirect:/profiles/"+url; }
 	 
