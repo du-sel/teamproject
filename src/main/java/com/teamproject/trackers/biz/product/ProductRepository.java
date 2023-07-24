@@ -8,7 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.teamproject.trackers.biz.purchase.PurchaseVO;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ProductRepository extends JpaRepository<ProductVO, Long> {
 	
 	
@@ -28,4 +30,9 @@ public interface ProductRepository extends JpaRepository<ProductVO, Long> {
 	//-------------------------------------정희	
 		// 상품 삭제
 	    void deleteProductById(long pid);
+	    
+	    // 판매자 ID로 상품 목록 조회
+		@Query(value = "SELECT * FROM products p WHERE p.id=:sellerId", nativeQuery = true)
+		List<ProductVO> findBySellerId(@Param("sellerId") long sellerId);
+
 }
