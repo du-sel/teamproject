@@ -62,7 +62,7 @@
 					</nav> 
 				</section>
 	 
-				<!-- Posts List -->
+				<!-- Following List -->
 				<section>
 					<ul class="posts">
 						<li class="d-flex justify-content-start">
@@ -151,10 +151,10 @@
 		</section>
 		
 		<!-- Main -->
-		<div id="main" class="col-lg-7 m-auto" > 
+		<div id="main" class="col-lg-7" > 
 
 			<c:if test="${!empty user_id}">
-				<section class="post">
+				<section class="post post-input">
 					<form action="/community/posts" method="post" name="post" enctype="multipart/form-data">
 						<input type="hidden" id="sessionId" name="id" value="${user_id}">
 						<div class="header meta">
@@ -168,17 +168,23 @@
 
 						<div class="submitpost">
 							<textarea id="co-textarea" name="content" rows="2"></textarea>
-							<input type="text" name="p_id" id="p_id" placeholder="태그 입력">
-							<div class="row flex-column">
+							<div class="icons-container d-flex justify-content-between">
+								<div class="d-flex flex-row">
+									<div><i class="fa fa-tag"></i></div>
+									<div><i class="fa fa-image" onclick=""></i></div>
+									<!-- 파일 input 대신 클릭 -->
+								</div>
+								<!-- <button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button> -->
+								<button class="submiticon" type="button" onclick="checkPhotoCount()"><i class="fa fa-paper-plane"></i></button>
+							</div>
+							
+								<input type="file" accept="image/*" name="post-img" id="thumbnail" 
+										onchange="imgPreview(event);" multiple="multiple" >
 								<div class="d-flex align-items-center thumb-title inputphoto">
-									<h6>사진&nbsp;<small>최대 4개까지 업로드 가능</small></h6>
+									<small>사진 최대 4개까지 업로드 가능</small>
 									<p></p>
 								</div>
 								<div id="thumb-preview" class="thumb-preview"></div>
-								<input type="file" accept="image/*" name="post-img" id="thumbnail" 
-										onchange="imgPreview(event);" multiple="multiple" >
-							</div>
-							<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
 						</div>
 					</form>
 				</section>
@@ -262,7 +268,7 @@
 						</div>
 					</div>
 					
-					<c:if test="${!empty imgs[p.postId]}">	<!-- 첨부 이미지 있는 경우 --> 
+					<%-- <c:if test="${!empty imgs[p.postId]}">	<!-- 첨부 이미지 있는 경우 --> 
 						<div class="post_img-outer">
 				    		<c:forEach var="img" items="${imgs[p.postId]}">
 				   	   			<div class="post_img">
@@ -270,13 +276,32 @@
 								</div>
 			   	   			</c:forEach>
 						</div>
-			    	</c:if>	
+			    	</c:if>	 --%>
+			    	
+			    	<div class="post-content-container row justify-content-center">
+				    	<c:if test="${true }">
+				    		<div class="img-container four col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
+				    			<div class="img-card">
+				    				<img src="/resources/images/men-02.jpg" alt="포스트 이미지">
+				    			</div>
+				    			<div class="img-card">
+				    				<img src="/resources/images/men-01.jpg" alt="포스트 이미지">
+				    			</div>
+				    			<div class="img-card">
+				    				<img src="/resources/images/men-01.jpg" alt="포스트 이미지">
+				    			</div>
+				    			<div class="img-card">
+				    				<img src="/resources/images/men-01.jpg" alt="포스트 이미지">
+				    			</div>
+				    		</div>
+				    	</c:if>
 					
-					<div id="post-content" class="collapse-content">
-						<div class="post-content-inner collapsed">
-							${p.content}
+						<div id="post-content" class="collapse-content">
+							<div class="post-content-inner collapsed">
+								${p.content}
+							</div>
 						</div>
-					</div>
+			    	</div>
 				</form>
 					
 
@@ -285,7 +310,14 @@
 					
 				<div class="footer">
 					<ul class="stats commment_stats">
-						<li class="comment-count"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${p.c_count}</span></li>
+						<c:choose>
+							<c:when test="${p.c_count > 3 }">
+								<li class="comment-count" onclick="location.href='/community/posts/${p.postId}'"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${p.c_count}</span></li>
+							</c:when>
+							<c:otherwise>
+								<li class="comment-count" onclick="showCommentInput(this)"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${p.c_count}</span></li>
+							</c:otherwise>
+						</c:choose>
 						<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number">${p.t_count}</span></li>
 					</ul>
 					<div class="comment-section">
@@ -324,7 +356,9 @@
 								    	<c:when test="${!empty user_id}">	<!-- 로그인 o --> 
 								    		<input type="hidden" name="id" value="${user_id}">
 											<input type="text" id="comment-text" name="content" class="form-control" placeholder="댓글을 입력하세요">
-								            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
+								            <!-- <button class="submit-button" type="submit" >입력</button> -->
+								            <button class="submit-button" id="submit-button" type="submit" ><i class="fa fa-paper-plane"></i></button>
+								            <!-- <span class="submit-button"><i class="fa fa-paper-plane"></i></span> -->
 								    	</c:when>		
 								    	<c:otherwise>		<!-- 로그인 x -->
 								    		<div id="comment-text" >로그인이 필요합니다.</div>

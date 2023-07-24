@@ -246,8 +246,8 @@ public class ProductController {
 		
 		// 파일 구글드라이브 저장
 		if(!file_f.isEmpty()) {
-			file = drive.uploadProductFile(file_f);
-			//file = saveFile(file_f, "file/", req);
+			//file = drive.uploadProductFile(file_f);
+			file = saveFile(file_f, "file/", req);
 			// 일단 일반 폴더에 저장
 			System.out.println("저장된 file: "+file);
 		}
