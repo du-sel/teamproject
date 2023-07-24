@@ -35,7 +35,7 @@
                 <h2 class="card-title text-center a-title">팝업 등록</h2>
               </div>
               <div class="card-body">
-                <form class="row"  action="notice-popup.do" method="post">
+                <form class="row"  action="" method="post">
                 	<div class="col-lg-12">
                 		<div class="d-flex flex-column justify-content-center popup-info">
 		                	<div>

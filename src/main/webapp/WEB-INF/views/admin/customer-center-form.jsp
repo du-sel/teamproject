@@ -56,7 +56,7 @@
                 		<h6>문의 내용</h6>
                 		<p>구매하면 영구 다운로드인가요</p>
                 	</div>
-                	<form class="col-lg-12" action="inquiry-management.do">
+                	<form class="col-lg-12" action="">
                 		<textarea name="customer_inquiry" maxlength="300" placeholder="답변 내용 작성" required></textarea>
                 		<input class="a-btn" type="submit" value="답변">
                 	</form>

@@ -54,7 +54,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr onclick="location.href='notice-popup-form.do'">
+                      <tr onclick="location.href='/popup/id'">
                       	<td>
                           	10
                         </td>
