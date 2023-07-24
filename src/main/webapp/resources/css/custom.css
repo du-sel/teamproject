@@ -2765,12 +2765,14 @@ user-modify, user-pwd-modify
 
 /* 
 ---------------------------------------------
-my-info-form common (insert-review, product-inquiry, customer-inquiry)
+my-info-form, st- common (insert-review, product-inquiry, customer-inquiry, st-inquiry, st-center)
 --------------------------------------------- 
 */
 #insert-review #page .container,
 #product-inquiry #page .container,
-#customer-inquiry #page .container{
+#customer-inquiry #page .container,
+#st-inquiry #page .container,
+#st-center #page .container{
 	margin-top: 30px;
 	position: relative;
 }
@@ -2799,6 +2801,10 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
 	margin-bottom: 15px;
 	word-break: keep-all;
 }
+#st-center.my-info-form .p-info+.form-data,
+#st-inquiry.my-info-form .p-info+.form-data{
+	border-bottom: none;
+}
 .my-info-form .p-info{
 	overflow-x: auto; 
 }
@@ -2819,7 +2825,8 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
 .my-info-form .p-info p{
 	display: inline-block;
 }
-.my-info-form .p-info+form textarea{
+.my-info-form .p-info+form textarea,
+.my-info-form form textarea{
 	height: 250px;
 	resize: none;
 	width: 100%;
@@ -2860,6 +2867,12 @@ my-info-form common (insert-review, product-inquiry, customer-inquiry)
 }
 .my-info-form .sub-title h6,
 .my-info-form .sub-title p{
+	display: inline-block;
+}
+.my-info-form .sub-title h6+input{
+	border: none;
+	border-bottom: 1px solid #e4e4eb;
+	width: calc(100% - 100px);
 	display: inline-block;
 }
 .my-info-form .answer{
@@ -4096,7 +4109,7 @@ my-store common + admin common
 		min-width: 70px;
 	}
 
-/* notice, inquiry, store - managemnet + notice-popup, customer-center */
+/* notice, inquiry, store - managemnet + notice-popup, customer-center + st-center, st-inquiry */
 	.management-title{
 		font-weight: 600 !important;
 	}
@@ -4233,7 +4246,7 @@ my-store common + admin common
 		padding-left:0 !important;
 	}
 
-/* review, inquiry, notice - form */
+/* review, inquiry, notice - form + st-center, st-inquiry */
 	.management-form .p-info+div+form textarea,
 	#notice-management .notice-box textarea{
 		resize: none;
@@ -4242,7 +4255,9 @@ my-store common + admin common
 		padding: 10px;	
 	}
 	.management-form .p-info+div+form .management-btn,
-	#notice-management .management-btn{
+	#notice-management .management-btn,
+	#st-center .management-btn,
+	#st-inquiry .management-btn{
 	    width: 150px;
 	    float: right;
 	    margin: 15px 0 0;
