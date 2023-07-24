@@ -183,9 +183,9 @@
 			                          			<img src="${sessionScope.user.profile_img}" alt="프로필사진" id="profile-image">
 			                          			<ul>
 				                                    <li><a href="/store/carts">장바구니</a></li>
-				                                    <li><a href="news.do">내 소식</a></li>
+				                                    <li><a href="/news">내 소식</a></li>
 				                                    <li><a href="/store/purchases?page=0">구매 내역</a></li>
-				                                    <li><a href="inquiry-history.do">문의 내역</a></li>
+				                                    <li><a href="/store/products/inquiries">문의 내역</a></li>
 				                                    <li><a href="/users?path=info">회원정보 변경</a></li>
 				                                    <li><a href="/users?path=pwd">비밀번호 변경</a></li>
 				                                    <li><a href="/users/logout">로그아웃</a></li>
