@@ -59,7 +59,15 @@ public class PostController {
 
 	
 	
-	// 파라미터 없이 들어올 경우 우회 
+	// 이미지 모달창
+	@RequestMapping(value="/image-modal")
+	public String imageModal() {
+		return "modal/image-modal";
+	}
+	
+	
+	
+	// posts 없이 들어올 경우 우회 
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String coMain(Model model) {
 		return "redirect:/community/posts?page=0&type=all";
@@ -130,7 +138,7 @@ System.out.println("delete postid "+postId);
 		CommentController cc = new CommentController();
 		//cc.getCommentList(postId, model);
 		model.addAttribute("comments",commentService.getCommentList(postId));
-System.out.println("com "+commentService.getCommentList(postId).size());		
+		System.out.println("com "+commentService.getCommentList(postId).size());		
 		model.addAttribute("commentService",commentService);
 		model.addAttribute("userinfo",postService.getUser(postId).get());	
 		model.addAttribute("post", postService.getPost(postId).get());
@@ -158,7 +166,8 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 	// 리스트 조회(페이징)
 	@RequestMapping(value="/posts", method=RequestMethod.GET)
 	public String getPostList(int page, String type, String keyword, Model model) {
-						
+		
+		
 		// 정렬 및 페이징 , 검색 처리
 		Page<PostInfoListVO> list = null;
 		Pageable pageable = null;

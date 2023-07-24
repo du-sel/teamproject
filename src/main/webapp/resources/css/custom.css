@@ -1098,15 +1098,16 @@ pagination
   display: inline-block;
   text-align: center;
   line-height: 44px;
-  font-size: 14px;
+  /* font-size: 18px; */
   font-weight: 500;
   color: #2a2a2a;
 }
 
 .pagination ul li a:hover,
 .pagination ul li.active a {
-  background-color: #2a2a2a;
-  color: #fff;
+	background-color: transparent;
+	color: #e97d7d;
+    font-weight: bolder;
 }
 
 

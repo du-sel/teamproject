@@ -159,7 +159,7 @@
 						<input type="hidden" id="sessionId" name="id" value="${user_id}">
 						<div class="header meta">
 							<a href="/profiles/${sessionScope.user.url }" class="author">
-								<img src="" alt="프로필 사진" />
+								<img src="${sessionScope.user.profile_img }" alt="프로필 사진" />
 								<span class="name author">${sessionScope.user.name}</span>
 							</a>
 							<div class="insertpost inserticon" id="inserticon" type="button"><i class="fa fa-plus"></i></div>
@@ -249,7 +249,7 @@
 		<c:forEach var="p" items="${posts.content }">
 			<!-- Post -->
 			<section class="post"> 
-				<form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'">
+				<form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'"><!--  onclick="location.href='/community/posts/${p.postId}'" -->
 					<div class="header">
 						<a href="/profiles/${p.url}" class="author">
 						    <img src="${p.profile_img}" alt="프로필 이미지" />
@@ -279,21 +279,20 @@
 			    	</c:if>	 --%>
 			    	
 			    	<div class="post-content-container row justify-content-center">
-				    	<c:if test="${true }">
-				    		<div class="img-container four col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
-				    			<div class="img-card">
-				    				<img src="/resources/images/men-02.jpg" alt="포스트 이미지">
-				    			</div>
-				    			<div class="img-card">
-				    				<img src="/resources/images/men-01.jpg" alt="포스트 이미지">
-				    			</div>
-				    			<div class="img-card">
-				    				<img src="/resources/images/men-01.jpg" alt="포스트 이미지">
-				    			</div>
-				    			<div class="img-card">
-				    				<img src="/resources/images/men-01.jpg" alt="포스트 이미지">
-				    			</div>
-				    		</div>
+				    	<c:if test="${!empty imgs[p.postId]}">
+					    	<div class="img-container 
+					    		<c:choose>
+					    			<c:when test="${fn:length(imgs[p.postId]) == 1 }">one</c:when>
+					    			<c:when test="${fn:length(imgs[p.postId]) == 2 }">two</c:when>
+					    			<c:when test="${fn:length(imgs[p.postId]) == 3 }">three</c:when>
+					    			<c:when test="${fn:length(imgs[p.postId]) == 4 }">four</c:when>
+					    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
+					    		<c:forEach var="img" items="${imgs[p.postId]}">
+									<div class="img-card">
+					    				<img src="${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
+					    			</div>
+				   	   			</c:forEach>
+			   	   			</div>
 				    	</c:if>
 					
 						<div id="post-content" class="collapse-content">
@@ -422,6 +421,16 @@
 	</main>
 </div>
 
+<!-- ***** Modal Start ***** -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-container" role="document" >
+     <div class="modal-content">
+		</div>
+    </div>
+</div>
+<!-- ***** Modal End ***** -->
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/resources/js/community-toggle.js"></script>
 <script>
@@ -446,6 +455,10 @@
 	function sidebarSignin(){
 		alert("로그인 후 이용 가능합니다.");
 	}
+	
+	
+	
+	
 </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
