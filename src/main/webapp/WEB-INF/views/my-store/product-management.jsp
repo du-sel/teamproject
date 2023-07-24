@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
   <!-- 
   =========================================
@@ -29,85 +30,67 @@
       	<div class="row justify-content-center listtop">
       		<div class="col-xl-10 col-lg-12 d-flex justify-content-between align-items-center">
 				<div>
-					<h5>총 상품 개수</h5>
+					<h5>총 상품 개수 : ${fn:length(productList)}개</h5>
 				</div>
+				<!-- 상품 등록 버튼 -->
 				<button type="button" onclick="location.href='/store/products/new'">신규 상품 등록</button>
 			</div>
       	</div>
-      	
-      	     	
-      	
-	    <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info" data-product-id="1"> <!-- data-product-id를 추가 -->
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-	                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-	                   <div class="thumb">
-	                       <a href="#"><img src="/resources/images/썸네일.jpg" alt=""></a>
-	                   </div>
-	                </div>
-	                <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
-	                    <div class="down-content d-flex flex-column justify-content-around product-info">
-	                        <h4>춘식이 다이어리</h4>
-	                        <h4>10000원</h4>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
-	                    <div class="d-flex flex-column justify-content-center align-items-center">
-		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
-			                    <button type="button" class="update-btn">수정</button>
-			                    <!-- 상품 삭제 버튼 -->
-								<form method="post" action="/store/products/1">
-						        	<input type="hidden" name="_method" value="delete" />
-						        	<button type="button" class="delete-btn" onclick="confirmDelete(this)">삭제</button>
-						        </form>
-		                    </div>
-		                    <button type="button" class="signature-btn button">대표 상품 등록</button>
-	                    </div>
-	                </div>
-	             </div>
-              </div>
-            </div>
-          </div>
-        </div>
-	
-	
-    	 
-        <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 info">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-	                <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
-	                   <div class="thumb">
-	                       <a href="#"><img src="/resources/images/men-01.jpg" alt=""></a>
-	                   </div>
-	                </div>
-	                <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
-	                    <div class="down-content d-flex flex-column justify-content-around product-info">
-	                        <h4>상품명</h4>
-	                        <h4>7,000원</h4>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
-	                    <div class="d-flex flex-column justify-content-center align-items-center">
-		                    <div class="up-del-btn-container d-flex flex-row justify-content-between">
-			                    <button type="button" class="update-btn">수정</button>
-			                    <button type="button" class="delete-btn">삭제</button>
-		                    </div>
-		                    <button type="button" class="signature-btn button">대표 상품 등록</button>
-	                    </div>
-	                </div>
-	             </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      	       
+        
+        
+        <!-- 상품 목록 -->
+        <c:choose>
+            <c:when test="${fn:length(productList) > 0 }">
+                <c:forEach var="product" items="${productList}">
+                    <div class="row justify-content-center">
+                    	<!-- 상품 정보 표시 -->
+                        <div class="col-xl-10 col-lg-12 info" data-product-id="${product.pid}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
+                                            <div class="thumb">
+                                                <a href="#"><img src="${product.thumbnail}" alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
+                                            <div class="down-content d-flex flex-column justify-content-around product-info">
+                                                <h4>${product.p_name}</h4>
+                                                <h4>${product.price}원</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
+                                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                                <div class="up-del-btn-container d-flex flex-row justify-content-between">
+                                                    <button type="button" class="update-btn">수정</button>
+                                                    <form method="post" action="/store/products/${product.pid}">
+                                                        <input type="hidden" name="_method" value="delete" />
+                                                        <button type="button" class="delete-btn" onclick="confirmDelete(this)">삭제</button>
+                                                    </form>
+                                                </div>
+                                                <button type="button" class="signature-btn button">대표 상품 등록</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <div class="row justify-content-center">
+                    <div class="col-xl-10 col-lg-12">
+                        <p>등록된 상품이 없습니다.</p>
+                    </div>
+                </div>
+            </c:otherwise>
+        </c:choose>
         
         
         
-		<!-- 페이지 번호 -->
+        <!-- 페이지 번호 -->
         <div class="col-lg-12">
           <div class="pagination">
               <ul>
@@ -155,17 +138,13 @@
     deletedProducts = deletedIds;
   }
 
-  
   function confirmDelete(obj) {	
 		let delFrm = obj.parentElement;
 		console.log(delFrm.getAttribute('action'));
 		
 		if(confirm("상품을 목록에서 삭제하시겠습니까?")) {		
 			//let delFrm = document.getElementsByName('delete')[0];
-			
-			
-			delFrm.submit();
-			
+			delFrm.submit();	
 		}
 	}
 
@@ -180,8 +159,7 @@
     });
   });
 </script>
-
-  
+ 
   
   
   
