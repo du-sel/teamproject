@@ -21,6 +21,7 @@ import com.teamproject.trackers.biz.common.AlertVO;
 import com.teamproject.trackers.biz.drive.DriveController;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoService;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoVO;
+import com.teamproject.trackers.view.common.CommonController;
 
 
 @Controller
@@ -33,7 +34,8 @@ public class SubscribeController {
 	private SubscribeInfoService subscribeInfoService;
 	@Autowired
     private HttpSession session;
-	private AlertVO alert = new AlertVO();
+	@Autowired
+	public CommonController common;
 	
 	// 구독 정보 조회
 	@RequestMapping(value="/subscribes", method=RequestMethod.GET)
@@ -62,16 +64,16 @@ public class SubscribeController {
 		if(infoVO == null) {		// 등록
 			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장
 			subscribeInfoService.insertSubscribeInfo(vo);
-			alert.setStr("구독이 활성화되었습니다.");
+			common.alert.setStr("구독이 활성화되었습니다.");
 		}else {
 			//drive.SubscribeDelete(infoVO);						// 저번 달 파일 삭제
 			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장
 			subscribeInfoService.updateSubscribeInfo(vo);
-			alert.setStr("구독 정보가 업데이트되었습니다.");
+			common.alert.setStr("구독 정보가 업데이트되었습니다.");
 		}
 
-		alert.setPath("store/subscribes");
-		alert.setFlag(true);
+		common.alert.setPath("store/subscribes");
+		common.alert.setFlag(true);
 		
 		return "redirect:/common";
 	}
@@ -85,9 +87,9 @@ public class SubscribeController {
 		
 		subscribeInfoService.deleteSubscribeInfo(vo);
 		
-		alert.setStr("구독이 비활성화되었습니다.");
-		alert.setPath("/store/subscribes");
-		alert.setFlag(true);
+		common.alert.setStr("구독이 비활성화되었습니다.");
+		common.alert.setPath("/store/subscribes");
+		common.alert.setFlag(true);
 
 		return "redirect:/common";
 	}

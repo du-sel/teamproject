@@ -13,6 +13,8 @@ import com.teamproject.trackers.biz.common.AlertVO;
 import com.teamproject.trackers.biz.userCreator.CreatorService;
 import com.teamproject.trackers.biz.userCreator.CreatorVO;
 import com.teamproject.trackers.biz.userCreator.CreatorViewVO;
+import com.teamproject.trackers.view.common.CommonController;
+import com.teamproject.trackers.view.userCreator.UserController;
 
 @Controller
 public class CreatorController {
@@ -21,7 +23,8 @@ public class CreatorController {
 	private CreatorService creatorService;
 	@Autowired
     private HttpSession session;
-	private AlertVO alert = new AlertVO();
+	@Autowired
+	public CommonController common;
 
 	/*
 	 * // 프로필 임시 연결
@@ -41,9 +44,9 @@ public class CreatorController {
 		creatorService.insertCreator(vo);
 		creatorService.updateUrlTel(view_vo);
 
-		alert.setStr("스토어가 생성되었습니다.");
-		alert.setPath("/profiles");
-		alert.setFlag(true);
+		common.alert.setStr("스토어가 생성되었습니다.");
+		common.alert.setPath("/profiles");
+		common.alert.setFlag(true);
 
 		return "redirect:/common";
 	}
@@ -59,14 +62,14 @@ public class CreatorController {
 	
 	// 스토어 수정
 	@RequestMapping(value="/profiles/creators", method=RequestMethod.PUT)
-	public String updateCreator(CreatorViewVO vo) {
+	public String updateCreator(CreatorViewVO vo, Model model) {
 		vo.setId((long)session.getAttribute("id"));
 		creatorService.updateCreator(vo);
-		creatorService.updateUrl(vo);
+		creatorService.updateUrl(vo);		
 		
-		alert.setStr("스토어 정보가 수정되었습니다.");
-		alert.setPath("/profiles/creators");
-		alert.setFlag(true);
+		common.alert.setStr("스토어 정보가 수정되었습니다.");
+		common.alert.setPath("/profiles/creators");
+		common.alert.setFlag(true);
 
 		return "redirect:/common";
 	}
@@ -78,9 +81,9 @@ public class CreatorController {
 		vo.setId((long)session.getAttribute("id"));
 		creatorService.deleteCreator(vo);
 		
-		alert.setStr("스토어 삭제가 완료되었습니다.");
-		alert.setPath("/store/main");
-		alert.setFlag(true);
+		common.alert.setStr("스토어 삭제가 완료되었습니다.");
+		common.alert.setPath("/store/main");
+		common.alert.setFlag(true);
 
 		return "redirect:/common";
 	}
