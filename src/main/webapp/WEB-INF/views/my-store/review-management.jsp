@@ -57,7 +57,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr onclick="location.href='review-management-form.do'">
+                      <tr onclick="location.href='/profiles/url/reviews/id'">
                       	<td>
                           	10
                         </td>

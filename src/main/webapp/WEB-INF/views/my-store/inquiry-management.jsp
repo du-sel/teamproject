@@ -57,7 +57,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr onclick="location.href='inquiry-management-form.do'">
+                      <tr onclick="location.href='/profiles/url/inquiries/inquiry_id'">
                       	<td>
                           	10
                         </td>
