@@ -160,7 +160,7 @@
 		let delFrm = obj.parentElement;
 		console.log(delFrm.getAttribute('action'));
 		
-		if(confirm("상품을 장바구니에서 삭제하시겠습니까?")) {		
+		if(confirm("상품을 목록에서 삭제하시겠습니까?")) {		
 			//let delFrm = document.getElementsByName('delete')[0];
 			
 			

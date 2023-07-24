@@ -546,7 +546,7 @@ public class ProductController {
         System.out.println("1");
     	// 상품 삭제 로직
     	productService.deleteProduct(p_id);
-        return "redirect:/";
+        return "redirect:/store/products/management";
     }
 
     
