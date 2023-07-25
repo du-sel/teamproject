@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.teamproject.trackers.biz.comment.CommentService;
 import com.teamproject.trackers.biz.comment.CommentVO;
 import com.teamproject.trackers.biz.comment.PostCommentListVO;
+import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.post.PostIMGService;
 import com.teamproject.trackers.biz.post.PostIMGVO;
 import com.teamproject.trackers.biz.post.PostInfoListVO;
@@ -53,6 +54,9 @@ public class PostController {
 	
 	@Autowired
 	private CommentService commentService;
+	
+	@Autowired
+	private FollowService followService;
 	
 	@Autowired
 	private HttpSession session;
@@ -82,13 +86,13 @@ public class PostController {
 
 		PostVO p = postService.insertPost(vo);	
 		
-		String path = request.getServletContext().getRealPath("/resources/postimg/");
 		List<String> fileNames = new ArrayList<>();
 				
 		for (MultipartFile file : files) {
 			if(!file.isEmpty()) { //uploadFile !=null
-				
-				
+
+				String path = request.getServletContext().getRealPath("/resources/postimg/");
+
 				//새로운 파일 이름
 				String fileName = p.getPostId()+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
 				fileNames.add(fileName);
@@ -234,7 +238,7 @@ System.out.println("delete postid "+postId);
 					commentList.put(item.getPostId(), comments);
 				}
 			}
-		}		
+		}
 		
 		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
 		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
@@ -250,8 +254,26 @@ System.out.println("delete postid "+postId);
 		model.addAttribute("type", type);
 		model.addAttribute("keyword", keyword);
 		
-		return "community/co-main";
+		// 사용자별 팔로우 리스트
+		long id = 0;
+		List<Object[]> followList = null;
 		
+		if (session.getAttribute("id") != null) {
+			id = (long) session.getAttribute("id");
+			followList = followService.getfollowList((long) session.getAttribute("id"));
+			System.out.println(followList.size());
+			System.out.println(followList.get(0)[0]);
+			System.out.println(followList.get(0)[1]);
+			System.out.println(followList.get(0)[2]);
+			System.out.println(followList.get(1)[0]);
+			System.out.println(followList.get(1)[1]);
+			System.out.println(followList.get(1)[2]);
+			
+		}
+		model.addAttribute("followList", followList);
+		
+		return "community/co-main";
 	}
+	
 
 }
