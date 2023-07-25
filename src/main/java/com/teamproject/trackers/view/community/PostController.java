@@ -32,6 +32,7 @@ import com.teamproject.trackers.biz.comment.PostCommentListVO;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.post.PostIMGService;
 import com.teamproject.trackers.biz.post.PostIMGVO;
+import com.teamproject.trackers.biz.post.PostInfoListRepository;
 import com.teamproject.trackers.biz.post.PostInfoListVO;
 import com.teamproject.trackers.biz.post.PostService;
 import com.teamproject.trackers.biz.post.PostVO;
@@ -60,6 +61,10 @@ public class PostController {
 	
 	@Autowired
 	private HttpSession session;
+	
+	@Autowired
+	private PostInfoListRepository postInfoListRepository;
+	
 
 	
 	
@@ -155,16 +160,37 @@ System.out.println("delete postid "+postId);
 	@RequestMapping(value="/posts/{postId}", method=RequestMethod.GET)
 	public String getPost(@PathVariable("postId")Long postId, Model model) {
  
+		/*
 		CommentController cc = new CommentController();
 		//cc.getCommentList(postId, model);
 		model.addAttribute("comments",commentService.getCommentList(postId));
 		System.out.println("com "+commentService.getCommentList(postId).size());		
 		model.addAttribute("commentService",commentService);
+		
 		model.addAttribute("userinfo",postService.getUser(postId).get());	
+		
 		model.addAttribute("post", postService.getPost(postId).get());
+		
 		if(postIMGService.getPostIMG(postId).isPresent()) {
 			model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
 		}
+		*/
+		
+		PostInfoListVO vo = postInfoListRepository.findByPostId(postId);
+		
+		// 이미지 목록
+		List<PostIMGVO> imgList = postIMGService.getPImgList(postId);
+		
+		// 댓글 목록
+		List<PostCommentListVO> commentList = commentService.getPostCommentList(postId);
+		// 전체 댓글로 바꿔야됨
+		
+		
+		
+		model.addAttribute("post", vo);
+		model.addAttribute("imgList", imgList);
+		model.addAttribute("commentList", commentList);
+		
 
 		return "community/co-post";
 	}

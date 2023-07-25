@@ -150,73 +150,64 @@
 		
 			<!-- Post -->
 			<section class="post"> 
-				<%-- <form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'"> --%>
-				<div onclick="location.href='/community/posts/${p.postId}'">
-					<div class="header">
-						<a href="/profiles/${p.url}" class="author">
-						    <img src="${p.profile_img}" alt="프로필 이미지" />
-				    		<%-- <span class="name"><input type="text" name="id" value="${p.name}" readonly="readonly" class="author"></span> --%>
-				    		<span class="name author">${p.name}</span>
-						</a>
-						<%-- <input type="text" readonly="readonly" name="cre_date" class="published" value="${p.creDate}"> --%>
-						<div class="d-flex">
-							<c:if test="${p.id eq user_id}">
-								<form action="/community/posts/${p.postId}" method="post" id="deletePost">
-								 	<input type="hidden" name="_method" value="DELETE"/>
-									<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
-								</form>
-							</c:if>
-							<span class="published">${p.creDate}</span>
-						</div>
-					</div>
-
-			    	
-			    	<div class="post-content-container row justify-content-center">
-				    	<c:if test="${!empty imgs[p.postId]}">
-					    	<div class="img-container 
-					    		<c:choose>
-					    			<c:when test="${fn:length(imgs[p.postId]) == 1 }">one</c:when>
-					    			<c:when test="${fn:length(imgs[p.postId]) == 2 }">two</c:when>
-					    			<c:when test="${fn:length(imgs[p.postId]) == 3 }">three</c:when>
-					    			<c:when test="${fn:length(imgs[p.postId]) == 4 }">four</c:when>
-					    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
-					    		<c:forEach var="img" items="${imgs[p.postId]}">
-									<div class="img-card">
-					    				<img src="/resources/postimg/${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
-					    			</div>
-				   	   			</c:forEach>
-			   	   			</div>
-				    	</c:if>
-					
-						<div id="post-content" class="collapse-content">
-							<div class="post-content-inner collapsed">
-								${p.content}
-							</div>
-				    	</div>
+				<div class="header">
+					<a href="/profiles/${post.url}" class="author">
+					    <img src="${post.profile_img}" alt="프로필 이미지"/>
+			    		<span class="name author">${post.name}</span>
+					</a>
+					<div class="d-flex">
+						<c:if test="${post.id eq user_id}">
+							<form action="/community/posts/${post.postId}" method="post" id="deletePost">
+							 	<input type="hidden" name="_method" value="DELETE"/>
+								<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
+							</form>
+						</c:if>
+						<span class="published">${post.creDate}</span>
 					</div>
 				</div>
-				<!-- </form> -->
 
-					
-
+		    	
+		    	<div class="post-content-container row justify-content-center">
+			    	<c:if test="${!empty imgList}">
+				    	<div class="img-container 
+				    		<c:choose>
+				    			<c:when test="${fn:length(imgList) == 1 }">one</c:when>
+				    			<c:when test="${fn:length(imgList) == 2 }">two</c:when>
+				    			<c:when test="${fn:length(imgList) == 3 }">three</c:when>
+				    			<c:when test="${fn:length(imgList) == 4 }">four</c:when>
+				    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
+				    		<c:forEach var="img" items="${imgList}">
+								<div class="img-card">
+				    				<img src="/resources/postimg/${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
+				    			</div>
+			   	   			</c:forEach>
+		   	   			</div>
+			    	</c:if>
 				
-			
-					
+					<div id="post-content" class="collapse-content">
+						<div class="post-content-inner collapsed">
+							${post.content}
+						</div>
+			    	</div>
+				</div>
+
+
+	
 				<div class="footer">
 					<ul class="stats commment_stats">
-						<li class="comment-count"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${p.c_count}</span></li>
-						<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number">${p.t_count}</span></li>
+						<li class="comment-count"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${post.c_count}</span></li>
+						<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number">${post.t_count}</span></li>
 					</ul>
 					<div class="comment-section">
-						<c:if test="${!empty comments[p.postId]}">	
+						<c:if test="${!empty commentList}">	
 							<ul id="comment-list" class="comment-list">
-					    		<c:forEach var="c" items="${comments[p.postId]}">
+					    		<c:forEach var="c" items="${commentList}">
 					   	   			<li>
 					   	   				<div class="comment-top d-flex justify-content-between align-items-center">
 											<div class="comment-name">${c.name }</div>
 											<div class="d-flex">
 												<c:if test="${c.id eq user_id}">
-													<form id="deleteComment" action="/community/posts/${p.postId}/comments/${c.comment_id}" method="post">
+													<form id="deleteComment" action="/community/posts/${post.postId}/comments/${c.comment_id}" method="post">
 													 	<input type="hidden" name="_method" value="DELETE"/>
 														<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
 													</form>
@@ -237,7 +228,7 @@
 	                           <div onclick="location.href='/community/posts/${p.postId}'">댓글 더보기</div>
 	                        </c:if> --%>
 							<div class="comment-input">
-								<form action="/community/posts/${p.postId}/comments" method="post" name="comment" id="insertcomment">
+								<form action="/community/posts/${post.postId}/comments" method="post" name="comment" id="insertcomment">
 									<input type="hidden" name="postId" value="${p.postId }"/>
 									<c:choose>
 								    	<c:when test="${!empty user_id}">	<!-- 로그인 o --> 
@@ -256,7 +247,7 @@
 				</div>
 			</section>
 		
-		
+		<input type="hidden" id="sessionId" name="id" value="${user_id}">
 	</main>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
