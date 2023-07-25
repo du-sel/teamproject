@@ -87,11 +87,10 @@ public class PostController {
 		PostVO p = postService.insertPost(vo);	
 		
 		List<String> fileNames = new ArrayList<>();
-				
+		String path = request.getServletContext().getRealPath("/resources/postimg/");	
+		
 		for (MultipartFile file : files) {
 			if(!file.isEmpty()) { //uploadFile !=null
-
-				String path = request.getServletContext().getRealPath("/resources/postimg/");
 
 				//새로운 파일 이름
 				String fileName = p.getPostId()+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
@@ -105,7 +104,7 @@ System.out.println("newfile "+path+fileName);
 		
 		// imgvo 저장하기
 		for (String fileName : fileNames) {
-			imgvo.setImg(fileName);
+			imgvo.setImg(path+fileName);
 			imgvo.setPostId(p.getPostId());
 			postIMGService.insertPostIMG(imgvo);
 		}
