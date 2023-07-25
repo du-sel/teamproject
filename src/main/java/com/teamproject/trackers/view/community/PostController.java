@@ -140,7 +140,7 @@ System.out.println("newfile "+path+fileName);
   	*/
 
 	// 댓글 삭제
-	/*
+	
 	@RequestMapping(value = "/{postId}/comments/{comment_id}", method = RequestMethod.DELETE)
 	public String deleteComment(@PathVariable("comment_id")Long commentid, @PathVariable("postId")Long postId) {
 System.out.println("delete postid "+postId);		
@@ -148,7 +148,7 @@ System.out.println("delete postid "+postId);
 		String postid = Long.toString(postId);
 		return "redirect:/community/posts/"+postid;
 	}
- 	*/
+ 	
 	
 	
 	// 상세 조회
