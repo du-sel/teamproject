@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 public class ReviewId implements Serializable{
 	
 	private long id;
-	private long p_id;
+	private long pid;
 }
