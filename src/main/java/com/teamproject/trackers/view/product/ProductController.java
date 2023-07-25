@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.google.gson.JsonObject;
+import com.teamproject.trackers.biz.common.AlertVO;
 import com.teamproject.trackers.biz.drive.DriveController;
 import com.teamproject.trackers.biz.product.CreatorListVO;
 import com.teamproject.trackers.biz.product.ProductPageVO;
@@ -22,6 +23,7 @@ import com.teamproject.trackers.biz.product.ProductListVO;
 import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryVO;
 import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryVO;
 import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
+import com.teamproject.trackers.biz.reviewInquiry.ReviewService;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
 import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryVO;
@@ -54,8 +56,6 @@ import org.springframework.data.domain.Pageable;
 //----------------정희 추가-----------------
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-
 
 
 @Controller
@@ -65,15 +65,20 @@ public class ProductController {
 
 	
     private ProductService productService;
+    private ReviewService reviewService;
     private HttpSession session;
 	private DriveController drive;
 		
     @Autowired
-	public ProductController(ProductService productService, HttpSession session, DriveController drive) {
+	public ProductController(
+			ProductService productService, ReviewService reviewService,
+			HttpSession session, DriveController drive) {
 		this.productService = productService;
+		this.reviewService = reviewService;
 		this.session = session;
 		this.drive = drive;
 	}
+	
 	
 	
 	
@@ -91,7 +96,7 @@ public class ProductController {
     	model.addAttribute("r_products", productService.getRecentProduct());	// 최신 상품 최대 5개
     	model.addAttribute("b_creators", b_creators);							// 인기 크리에이터 최대 5명
     	model.addAttribute("b_signatures", b_signatures);						// 인기 크리에이터 대표상품
-    	
+    	    	
     	return "store/st-main";
     }
     
@@ -114,6 +119,7 @@ public class ProductController {
 		}
 		
 		model.addAttribute("product", product);	
+		model.addAttribute("reviews", reviewService.getProductReview(Long.parseLong(p_id)));
 		
 		return "store/st-product-single";
 	}
@@ -194,37 +200,23 @@ public class ProductController {
 		return "/store/st-products";
 	}
 
-
+	
+	
+	
+	
+	
+	
 	
 	////* 상품 관리 페이지 띄우기 (판매자별 상품 목록) *////
-		
-	//------------------------------------------------------정희
-	// 상품 관리 페이지 띄우기
-    @GetMapping("/products/management")
-    public String showProductManagement(Model model, HttpSession session) {
-        // 현재 로그인한 판매자의 아이디를 세션에서 가져옴
-    	Long id = (Long) session.getAttribute("id");
-    	
-    	// 세션에 "id"라는 속성이 없는 경우 예외 처리
-        if (id == null) {
-            // 로그인이 되어있지 않으므로 로그인 페이지로 이동하거나 다른 처리를 수행해야 할 수 있음
-            // 예를 들면, 로그인 페이지로 리다이렉트하려면 아래와 같이 처리할 수 있습니다.
-            return "redirect:/login"; // 로그인 페이지로 리다이렉트
-        }
-        
-        // 판매자의 상품 리스트 조회 (현재 판매자가 등록한 상품들만 조회)
-        List<ProductVO> productList = productService.getProductListBySellerId(id);
-        
-        // 서버로부터 삭제된 상품 ID 목록을 받아옴
-        List<Long> deletedProductIds = productService.getDeletedProductIds();
-        
-        // 삭제된 상품 ID 목록을 JSP에 전달하여 숨겨진 상품 처리를 위해 JavaScript에서 사용
-        model.addAttribute("deletedProductIds", deletedProductIds);
-        model.addAttribute("productList", productList);
-        
-        return "my-store/product-management";
-    }
-    //------------------------------------------------------정희
+	// 임시 URI
+	@RequestMapping(value="/products/management", method=RequestMethod.GET)
+	public String showProductManagement() {
+		return "my-store/product-management";
+	}
+	
+	
+
+
 
 
 	////* 상품 등록 페이지 띄우기 *////
@@ -233,7 +225,10 @@ public class ProductController {
         return "my-store/insert-product";
     }
 	
-   
+	
+	
+
+    
     
 	////* 상품 등록 처리 *////
 	@RequestMapping(value="/products", method=RequestMethod.POST)
@@ -565,6 +560,16 @@ public class ProductController {
 
 //----------------------------------------------------정희 추가
 	
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
 	
 
     ////* 크리에이터 리스트 조회 & 정렬 & 검색 *////
