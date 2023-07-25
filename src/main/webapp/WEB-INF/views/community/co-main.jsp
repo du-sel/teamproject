@@ -218,11 +218,12 @@
 			   	   			</div>
 				    	</c:if>
 					
-					<div id="post-content" class="collapse-content">
-						<div class="post-content-inner collapsed">
-							${p.content}
-						</div>
-			    	</div>
+						<div id="post-content" class="collapse-content">
+							<div class="post-content-inner collapsed">
+								${p.content}
+							</div>
+				    	</div>
+					</div>
 				</div>
 				<!-- </form> -->
 
