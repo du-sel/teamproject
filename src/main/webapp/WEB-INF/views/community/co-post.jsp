@@ -149,35 +149,45 @@
 			 
 		
 			<!-- Post -->
-			<article class="post"> 
+			<section class="post"> 
 				<div>
-					<form action="/community/posts/${post.getPostId()}" method="get">
+					<form id="post-form" action="/community/posts/${post.getPostId()}" method="get">
 						<div>
-							<div class="title">
-								<p>
-									<c:if test="${!empty userinfo.getProfile_img() }">
-										<a href="#" class="author"><img src="/resources/images/${userinfo.getProfile_img()}" alt="" />&nbsp;&nbsp;
-											<span class="name"><input type="text" name="id" value="${userinfo.getName() }" readonly="readonly" class="author"></span>
-										</a>
+							<div class="header">
+								<c:if test="${!empty userinfo.getProfile_img() }">
+									<a href="/profiles/${userinfo.getUrl()}" class="author">
+										<img src="${userinfo.getProfile_img()}" alt="프로필 이미지" />&nbsp;&nbsp;
+										<span class="name author">${userinfo.getName() }</span>
+									</a>
+								</c:if>
+								<c:if test="${empty userinfo.getProfile_img() }">
+									<a href="/profiles/${userinfo.getUrl()}" class="author"><img src="" alt="" style="background-color: gray;" />&nbsp;&nbsp;
+										<span class="name">${userinfo.getName() }</span>
+									</a>
+								</c:if>
+								<div class="d-flex">
+									<c:if test="${post.getId() eq sessionScope.id}">
+										<form action="/community/posts/${p.postId}" method="post">
+										 	<input type="hidden" name="_method" value="DELETE"/>
+											<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
+										</form>
 									</c:if>
-									<c:if test="${empty userinfo.getProfile_img() }">
-										<a href="#" class="author"><img src="" alt="" style="background-color: gray;" />&nbsp;&nbsp;
-											<span class="name"><input type="text" name="id" value="${userinfo.getName() }" readonly="readonly" class="author"></span>
-										</a>
-									</c:if>
-								</p>
-								<p>
-									<input type="text" readonly="readonly" name="cre_date" class="published" value="${post.getCre_date() }">
-								</p>
+									
+									<span class="published">${p.creDate}</span>
+								</div>
+								
+								<span class="published">${post.getCre_date() }</span>
+								
 								
 							</div>
 						</div>
 			
 						
-						<div class="post_img-outer">
-							<div class="post_img">
-								<img src="/resources/images/춘식이웹툰1.png" alt="" />
-								<%-- <img src="/resources/postimg/${postIMG.getPostimg() }"> --%>
+						<div class="post-content-container row justify-content-center"> <!-- post_img-outer -->
+							<div class="img-container"> <!-- post_img -->
+								<c:if test="${!empty postIMG.getImg() }">
+									<img src="/resources/postimg/${postIMG.getImg() }">
+								</c:if>
 							</div>
 						</div>
 						
@@ -193,23 +203,41 @@
 						</form>
 					</div>
 					
-					<footer>
+					<div class="footer">
 						<ul class="stats commment_stats">
-							<li><a class="comment-count">📝<span class="comment-count-number">2</span></a></li> <!-- 댓글 개수 -->
-							<li><a class="like-button" ><span class="like-icon">❤️</span><span class="like-count">2</span></a></li> <!-- 좋아요 개수 -->
-							<!-- <li><a href="#" class="icon solid fa-heart"><i class="fa fa-heart"></i></a> 2</li> -->
+							<li class="comment-count" onclick="showCommentInput(this)">
+								<span class="comment-icon">
+									<i class="fa fa-comment"></i>
+								</span>
+								<span class="comment-count-number">${comments.size()}</span>
+							</li>
+							<li class="like-count">
+								<span class="like-icon">
+									<i class="fa fa-thumbs-up"></i>
+								</span>
+								<span class="like-count-number"></span> <!-- 좋아요 수 -->
+							</li>
+					
 						</ul>
 						<div class="comment-section">
-							<ul id="comment-list" class="comment-list col-12">
+							<ul id="comment-list" class="comment-list">
 								<c:set var="comments" value="${commentService.getCommentList(post.getPostId()) }"/>							
 								<c:forEach var="comment" items="${comments}" varStatus="loop">
                                     
                                         <li>
-                                        	<div>
-	                                            <div class="comment-name">이름 ${commentService.getUser(comment.getCommentid()).get().getName()}</div>                                            
-	                                            <div class="comment-date"><small>날짜 ${fn:substring(comment.getCre_date(),2,10) }</small> </div>
+                                        	<div class="comment-top d-flex justify-content-between align-items-center">
+	                                            <div class="comment-name">이름 ${commentService.getUser(comment.getCommentid()).get().getName()}</div> 
+	                                            <div class="d-flex">
+													<c:if test="${commentService.getUser(comment.getCommentid()).get().getId() eq sessionScope.id}">
+														<form id="deleteComment" action="/community/posts/${post.getPostId() }" method="post">
+														 	<input type="hidden" name="_method" value="DELETE"/>
+															<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
+														</form>
+													</c:if>
+													<div class="comment-date">${omment.getCre_date()}</div>
+												</div>
 	                                        </div>
-                                             <div class="comment-content"><div class="col-10">내용 ${comment.getContent()}</div></div>
+                                             <div class="comment-content">${comment.getContent()}</div>
                                         </li>
                                     
                                 </c:forEach>
@@ -217,17 +245,11 @@
                             
 								
 							<input type="hidden" id="sessionId" name="id" value="${sessionScope.id}">
+							<div class="comment-button" type="button" onclick="return showCommentInput(this)">
+								<span class="comment-plus">+</span> 댓글쓰기
+							</div>
 							<div class="button-row">
-								<c:if test="${post.getId() eq sessionScope.id}">
-									<form action="/community/posts/${post.getPostId() }" method="post" id="deletePost">										
-									 	<input type="hidden" name="_method" value="DELETE"/>
-									 	<%-- <input type="hidden" name="postId" value="${post.getPostId() }"/> --%>
-										<button type="submit" class="delete-post" onclick="return checkDeletePost()">삭제하기</button>
-									</form>
-								</c:if>
-								<button class="comment-button" type="button" onclick="return showCommentInput(this)">댓글쓰기</button>
-								
-	                            
+						
 								<div class="comment-input">
 									<form action="/community/posts/${post.getPostId()}/comments" method="post" name="comment" id="insertcomment">
 										<input type="hidden" name="postId" value="${post.getPostId() }">
@@ -245,6 +267,8 @@
 									
 									</form>
 								</div>
+								
+								
 							</div>
 							
 							
@@ -257,7 +281,7 @@
 					
 					<!-- <script>있던 자리 -->
 				
-			</article>
+			</section>
 		
 		
 	</main>
