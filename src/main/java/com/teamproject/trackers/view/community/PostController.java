@@ -266,14 +266,6 @@ System.out.println("delete postid "+postId);
 		if (session.getAttribute("id") != null) {
 			id = (long) session.getAttribute("id");
 			followList = followService.getfollowList((long) session.getAttribute("id"));
-			System.out.println(followList.size());
-			System.out.println(followList.get(0)[0]);
-			System.out.println(followList.get(0)[1]);
-			System.out.println(followList.get(0)[2]);
-			System.out.println(followList.get(1)[0]);
-			System.out.println(followList.get(1)[1]);
-			System.out.println(followList.get(1)[2]);
-			
 		}
 		model.addAttribute("followList", followList);
 		

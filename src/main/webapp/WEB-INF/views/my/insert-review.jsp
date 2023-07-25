@@ -22,34 +22,34 @@
 			<div class="row justify-content-center">
 				<a href="/store/purchases?page=0" class="back">&lt; 구매 내역</a>
 				<div class="col-lg-12 d-flex p-info scroll-custom">
-               		<img src="/resources/images/men-01.jpg" alt="">
+               		<img src="${p_info.thumbnail}" alt="상품 썸네일">
                		<div class="d-flex flex-column justify-content-center p-text-info">
                			<div>
 	                		<h6>상품명</h6>
-	                		<p>무슨 플래너</p>
+	                		<p>${p_info.p_name}</p>
 	                	</div>
 	                	<div>
 	                		<h6>크리에이터</h6>
-	                		<p>김판매</p>
+	                		<p>${p_info.store_name}</p>
 	                	</div>
 	                	<div>
-	                		<h6>작성 일자</h6>
-	                		<p>2023.06.28</p>
+	                		<h6>구매 일자</h6>
+	                		<p>${p_info.creDate}</p>
 	                	</div>
                		</div>
                	</div>
-               	<form class="col-lg-12 form-data" action="">
+               	<form class="col-lg-12 form-data" action="/store/reviews/${p_info.bak_p_id}" method="post">
                 	<div class="sub-title">
                 		<h6>별점</h6>
                 		<span class="star">
 							★★★★★
-							<span>★★★★★</span>
-							<input type="range" name="score" oninput="score(this);" value="1" step="1" min="0" max="10">
+							<span style="width:${review.rating}%">★★★★★</span>
+							<input type="range" name="rating" oninput="score(this);" value="0" step="1" min="0" max="10">
 						</span>
                 	</div>
                 	<div>
                			<h6>후기</h6>
-               			<textarea name="review" maxlength="300" placeholder="후기 내용을 입력하세요." required></textarea>
+               			<textarea name="content" maxlength="300" placeholder="후기 내용을 입력하세요." required>${review.content}</textarea>
 	               		<input class="form-btn" type="submit" value="작성">
                		</div>
                	</form>
