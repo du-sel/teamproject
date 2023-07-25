@@ -289,7 +289,7 @@
 					    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
 					    		<c:forEach var="img" items="${imgs[p.postId]}">
 									<div class="img-card">
-					    				<img src="${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
+					    				<img src="/resources/file/${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
 					    			</div>
 				   	   			</c:forEach>
 			   	   			</div>
