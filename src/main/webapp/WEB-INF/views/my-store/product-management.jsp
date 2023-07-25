@@ -51,7 +51,7 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
                                             <div class="thumb">
-                                                <a href="#"><img src="${product.thumbnail}" alt=""></a>
+                                                <a href="#"><img src="${product.thumbnail}" alt="thumbnail"></a>
                                             </div>
                                         </div>
                                         <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
