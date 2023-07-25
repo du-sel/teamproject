@@ -37,4 +37,12 @@ public interface PostInfoListRepository extends JpaRepository<PostInfoListVO, Lo
 			 countQuery = "SELECT DISTINCT p.* FROM postinfolist p, comment c WHERE p.post_id=c.post_id and c.id=:id and p.content like %:keyword%",
 			 nativeQuery = true)
 	Page<PostInfoListVO> getCommontPost(@Param("id") long id, @Param("keyword") String keyword, Pageable pageable);
+
+
+
+
+	// 특정 회원의 포스트만
+	Page<PostInfoListVO> findAllById(long id, Pageable pageable);
+
+
 }

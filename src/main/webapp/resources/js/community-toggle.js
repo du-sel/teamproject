@@ -22,6 +22,7 @@
 	
 	    let textarea = document.getElementById('co-textarea');	    
 	 	// Textarea 자동 높이 조절
+	 	/*
 	    textarea.oninput = (event) => {
 	      let target = event.target;
 	
@@ -32,6 +33,19 @@
 		      target.style.height = DEFAULT_HEIGHT + target.scrollHeight + 'px';  //2줄일 때 높이 유지  	      	  
 	      }
 	    };
+	    */
+	    
+	    $(textarea).on('input', function(event) {
+		    let target = event.target;
+		
+		    target.style.height = 0;
+		    if(target.scrollHeight >51){ //2줄일 때 높이
+			    target.style.height = 7 + target.scrollHeight + 'px';  // 마지막 줄 아래 여백생기지 않음  	  
+		    }else{
+			    target.style.height = DEFAULT_HEIGHT + target.scrollHeight + 'px';  //2줄일 때 높이 유지  	      	  
+		    }
+	    });
+	    
 	    
 	    
 	    function checkPhotoCount(){
@@ -133,7 +147,7 @@ console.log(event.target.files.length);
 				     // $(this).parent().parent().find(".comment-input").slideToggle('fast');
 				    //});
 				    // 좋아요 버튼 클릭 이벤트
-				    $(".like-icon").click(function() {
+				    $(".like-icon").on('click', function() {
 				    console.log("LIKE");
 				      var likeCount = parseInt($(this).parent().find(".like-count-number").text().trim());
 				      likeCount++;
