@@ -49,4 +49,9 @@ public class CreatorService {
 	public boolean validateStoreName(CreatorVO vo) {	
 		return creatorRepository.existsByStoreName(vo.getStoreName());
 	}
+	
+	
+	public CreatorVO getCreator(String url) {
+		return creatorRepository.getCreator(url);
+	}
 }

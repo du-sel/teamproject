@@ -41,7 +41,7 @@
 			                <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center">
 			                    <div class="d-flex flex-column justify-content-center">
 				                    <button type="button" class="download button" onclick="window.open('about:blank').location.href='https://drive.google.com/file/d/${p.file}'">다운로드</button>
-				                    <button type="button" class="review button" onclick="location.href='insert-review.do'">후기 작성</button>			                    
+				                    <button type="button" class="review button" onclick="location.href='/store/reviews/${p.bak_p_id}'">후기 작성</button>			                    
 			                    </div>
 			                </div>
 		                </div>

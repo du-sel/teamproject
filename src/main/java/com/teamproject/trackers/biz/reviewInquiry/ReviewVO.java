@@ -1,10 +1,24 @@
 package com.teamproject.trackers.biz.reviewInquiry;
 
-import java.sql.Date;
+import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="review")
+@IdClass(ReviewId.class)
 public class ReviewVO {
+	
+	@Id
 	private long id;
+	@Id
 	private long p_id;
+	@Temporal(TemporalType.DATE)
 	private Date cre_date;
 	private String content;
 	private int rating;

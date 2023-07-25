@@ -33,4 +33,8 @@ public interface SubscribeInfoRepository extends JpaRepository<SubscribeInfoVO, 
 			nativeQuery = true)
 	long Sub(@Param("url") String url);
 	
+	// url에 따라서 멤버십 정보 가져오기
+	@Query(value="SELECT * FROM subscribeinfo si WHERE si.id = (SELECT u.id FROM user u WHERE u.url = :url) ", nativeQuery = true)
+	SubscribeInfoVO getSubInfo(@Param("url") String url);
+	
 }

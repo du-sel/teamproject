@@ -11,7 +11,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="SubscribePurchase")
+@Table(name="subscribePurchase")
 @IdClass(SubscribePurchaseId.class)
 public class SubscribePurchaseVO {
 	
@@ -20,12 +20,13 @@ public class SubscribePurchaseVO {
 	private long subscribeId;
 	@Id
 	private long id;
-	
+	/*
 	private String payment;
+	
 	@Column(name="pay_date")
 	@Temporal(TemporalType.DATE)
 	private Date payDate;
-	
+	*/
 	
 	public long getSubscribeId() {
 		return subscribeId;
@@ -39,22 +40,28 @@ public class SubscribePurchaseVO {
 	public void setId(long id) {
 		this.id = id;
 	}
+	/*
 	public String getPayment() {
 		return payment;
 	}
 	public void setPayment(String payment) {
 		this.payment = payment;
 	}
+	
 	public Date getPayDate() {
 		return payDate;
 	}
+	
 	public void setPayDate(Date payDate) {
 		this.payDate = payDate;
 	}
+	*/
 	
+	/*
 	public String toString() {
 		return "subscribeId: "+subscribeId+", id: "+id+", payment: "+payment+", payDate: "+payDate;
 	}
+	*/
 	
 
 }

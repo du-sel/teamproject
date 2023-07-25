@@ -53,6 +53,7 @@
 
 			if(length> maxlength){
 				alert("파일 개수가 4개를 초과했습니다.");
+				return false;
 			}else{
 				if(confirm('포스트를 등록하시겠습니까?')){
 					document.post.submit();				

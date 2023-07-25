@@ -2,7 +2,7 @@ package com.teamproject.trackers.view.userCreator;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Calendar;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.teamproject.trackers.biz.common.AlertVO;
-import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoVO;
+
 import com.teamproject.trackers.biz.userCreator.UserService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 import com.teamproject.trackers.view.common.CommonController;

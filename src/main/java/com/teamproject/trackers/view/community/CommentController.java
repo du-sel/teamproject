@@ -36,11 +36,13 @@ System.out.println("vo.postid "+vo.getPostId());
 	}
 	
 	// 삭제
+	/*
 	@RequestMapping(value = "/{comment_id}", method = RequestMethod.DELETE)
 	public String deleteComment(@PathVariable("comment_id")Long commentid) {
 		commentService.deleteComment(commentid);
 		return "redirect:/community/posts";
 	}
+ 	*/
 	
 	// 리스트 조회
 	/*

@@ -538,7 +538,7 @@ $(()=> {
 			</div> 
 			
 			<div class="col-md-4 offset-md-1 col-lg-4">
-				<div class="nickname">${profile.getName()}</div>
+				<div class="nickname">${profile.getName()} </div>
 				<div class="count">
 					팔로워  &nbsp;${count}명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;${subcount}명
 				</div>
@@ -589,23 +589,46 @@ $(()=> {
 			    <c:when test="${!empty sessionScope.user.id}">
 			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
 			            <c:choose>
-			                <c:when test="${sessionScope.user.url == profile.url}">
-				                <div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
-				                <div id="buttonright" class="longtext"><a href="/store/sales">마이스토어 관리</a></div>
-			                </c:when>
-			                <c:otherwise>
+					<c:when test="${sessionScope.user.url != profile.url}"> <!-- 로그인해서 남의 프로필에 들어왔을 때 -->
 			                	<c:choose>
-			                		<c:when test="${check = 1}">
-			                			<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-					        			<button class="btn offbtn" data-toggle="modal" data-target="#exampleModalCenter">구독 중</button>
+			                		<c:when test="${checks.getId() eq sessionScope.user.id && checkf.getFrom_id() eq sessionScope.user.id && checkf.getTo_id() eq profile.id}">
+
+	                						<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter" >팔로우 중</button>
+	                						<button class="btn offbtn" data-toggle="modal" data-target="#exampleModalCenter" >구독 중</button>
 				                	</c:when>
+				                	
+				                	<c:when test="${checkf.getFrom_id() eq sessionScope.user.id && checkf.getTo_id() eq profile.id && checks.getId() ne sessionScope.user.id}">
+				                		
+				                		<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
+				                		<button id="buttonright" class="btn"data-toggle="modal" data-target="#subModal">구독 </button>
+				                	</c:when>
+				                	
+				                	<c:when test="${checkf.getFrom_id() ne sessionScope.user.id && checkf.getTo_id() ne profile.id && checks.getId() eq sessionScope.user.id}">
+				                		<form action="/profiles/${profile.url}" method="post">
+				                			<button id="buttonright" class="btn" onclick="startf()">팔로우</button>
+				                		</form>
+				                		<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter"  style=" display: none;">팔로우 중</button>
+				                		<button class="btn offbtn" data-toggle="modal" data-target="#exampleModalCenter" >구독 중</button>
+				                	</c:when>
+				                	
 				                	<c:otherwise>
-				                		<button id="buttonright" class="btn"  onclick="showLoginAlert()">팔로우</button>
-				           				<button id="buttonright" class="btn"  onclick="showLoginAlert()">구독</button>
+				                		<form action="/profiles/${profile.url}" method="post">
+				                			<button id="buttonright" class="btn" onclick="startf()">팔로우</button>
+				                		</form>
+				                		<button class="btn offbtn" id="changef" data-toggle="modal" data-target="#ExampleModalCenter"  style=" display: none;">팔로우 중</button>
+				           				<button id="buttonright" class="btn" data-toggle="modal" data-target="#subModal">구독</button>
 							 		</c:otherwise>
-						 		</c:choose>
+						</c:choose>
+				                		
+			                </c:when
+			                <c:otherwise>
+			                	<c:if test="${getCreator.getId() eq sessionScope.user.id}">
+			                		<div id="buttonright" class="longtext"><a href="store/sales-status">마이스토어 관리</a></div>
+			                	</c:if>
+			                	<c:if test="${getCreator.getId() ne sessionScope.user.id}">
+			                		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
+			                	</c:if>	
 			                </c:otherwise>
-			                
 			            </c:choose>
 			        </div>
 			    </c:when>
@@ -613,7 +636,7 @@ $(()=> {
 			    <c:otherwise>
 			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
 			            <button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button>
-			            <button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="showLoginAlert()">구독</button>
+			            <button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" >구독</button>
 			        </div>
 			    </c:otherwise>
 			 </c:choose>   
@@ -624,8 +647,8 @@ $(()=> {
 		<script>
 		    function showLoginAlert() {
 		        alert("로그인이 필요합니다");
-		        var link = '/community/posts';		        
-		        location.href=link;
+		        /* var link = 'store/main';		        
+		        location.href=link; */
 
 		    }
 		    
@@ -898,23 +921,29 @@ $(()=> {
   	</div>
 	<!-- ***** StoreCreate Modal End ***** -->
 	
+	
 	<!-- 멤버십 모달 -->
 	<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
-	<div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="subModal">
 	  <div class="modal-dialog modal-lg fixed-bottom">
 	    <div class="modal-content Membershipdiv" >
-	      <form action="">
+	      <form action="" method="post">
 		      <br>
 		      	<h5 class="membershipSub">멤버십 구독</h5>
 		      <br>
 		      <div class="Subdiv">
-				<div class="s s1">춘식이 폼 미쳤다</div>
-				<div class="s "><strong class="s2">9,000원</strong>/월</div>
-				<div class="s s3">특별 아트웍 제공 및 선공개 템플릿</div>
+				<div class="s s1"></div>
+				<div class="s "><strong class="s2">${getMembership.price} 원</strong>/월</div>
+				<div class="s s3">${getMembership.content}</div>
 		      </div>
 		      <br>
 		      <div class="Subjoin">
-		      	<h6><input type="submit" value="멤버십 가입하기" class="subjoin"></h6>
+		      	<c:if test="${empty sessionScope.user.id}">
+		      		<h6><input type="button" value="멤버십 가입하기" class="subjoin" onclick="showLoginAlertSub()"></h6>
+		      	</c:if>
+		      	<c:if test="${!empty sessionScope.user.id}">
+		      		<h6><input type="submit" value="멤버십 가입하기" class="subjoin" ></h6>
+		      	</c:if>
 		      </div>
 	      </form>
 	    </div>
@@ -965,14 +994,17 @@ $(()=> {
 		     
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-		        <button type="button" class="btn cancel">구독 취소</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>		        
+		       
+		        	<button type="button" class="btn cancel">구독 취소</button>
+		
+		        
 		      </div>
 		    </div>
 		  </div>
 		</div>
 
-	<form action="" method="delete">
+	
 		<div class="modal fade" id="ExampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered" role="document">
 		    <div class="modal-content">
@@ -987,14 +1019,16 @@ $(()=> {
 		
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-		        <input type="submit" class="btn cancel" value="팔로우 취소">
-		        <!-- <button type="button" class="btn cancel">팔로우 취소</button> -->
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>		        
+		        <form action="/profiles/${profile.url}" method="post">
+		        	<input type="hidden" name="_method" value="delete">
+		        	<input type="submit" class="btn cancel" value="팔로우 취소">
+	        	</form>
 		      </div>
 		    </div>
 		  </div>
 		</div>		
-	</form>
+
 
 <input type="hidden" id="sessionId" name="id" value="${user_id}">
 </main>
