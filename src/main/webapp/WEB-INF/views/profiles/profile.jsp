@@ -598,9 +598,11 @@ $(()=> {
 				                	</c:when>
 				                	
 				                	<c:when test="${checkf.getFrom_id() eq sessionScope.user.id && checkf.getTo_id() eq profile.id && checks.getId() ne sessionScope.user.id}">
-				                		
+								
 				                		<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-				                		<button id="buttonright" class="btn"data-toggle="modal" data-target="#subModal">구독 </button>
+								<c:if test="${!empty getMembership }">
+				                			<button id="buttonright" class="btn"data-toggle="modal" data-target="#subModal">구독 </button>
+								</c:if>
 				                	</c:when>
 				                	
 				                	<c:when test="${checkf.getFrom_id() ne sessionScope.user.id && checkf.getTo_id() ne profile.id && checks.getId() eq sessionScope.user.id}">
