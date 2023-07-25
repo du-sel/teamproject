@@ -71,11 +71,10 @@ function goPurchase() {
 		                    <h4>${product.p_name }</h4>
 		                    <span class="creator"><a href="/profiles/${product.url }">${product.store_name }</a></span>
 		                    <ul class="stars">
-		                        <li><i class="fa fa-star"></i></li>
-		                        <li><i class="fa fa-star"></i></li>
-		                        <li><i class="fa fa-star"></i></li>
-		                        <li><i class="fa fa-star"></i></li>
-		                        <li><i class="fa fa-star"></i></li>
+		                        <span class="star">
+									★★★★★
+									<span style="width: ${product.rating}%;">★★★★★</span>
+								</span>
 		                    </ul>
 	                	</div>
 	                	<div class="notice-content">
@@ -142,227 +141,37 @@ function goPurchase() {
           <!-- 두번째 탭 (구매후기) -->
           <div id = "review" class ="tab-pane">
             <br><br>
-			<div class="speech-bubble">
-				<table>
-				  <tr>
-				    <td>
-				      <div class="profile">
-				        <img src="/resources/images/프로필1.png" alt="프로필 이미지" class="profile-image">
-				      </div>
-				      <div class="user-info">
-				        <div class="rating">
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				        </div>
-				        <p class="user-id">mathl*** &nbsp;| &nbsp; 23.03.27</p>
-				        <p class="product-name">상품명 : 춘식이 다이어리</p>
-				      </div>
-				    </td>
-				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="review-content" style="text-align: left;">
-				        <p>춘식이 다이어리 대박 귀여워요ㅠㅠ 스터디플래너로 쓰고 싶어서 일부러 만년다이어리로 주문한건데 마음에 쏙 들어요.. 매일 뭐할지 적는 위클리 부분도 있어서 유용하게 쓸 수 있을것같아요!! 한장도 버릴 구석이 없는 다이어리예요~~~</p>
-				      </div>
-				    </td>
-				  </tr>
-				</table>
-			</div>
-			<br><br>
-			
-			<br><br>
-			<div class="speech-bubble">
-				<table>
-				  <tr>
-				    <td>
-				      <div class="profile">
-				        <img src="/resources/images/프로필2.png" alt="프로필 이미지" class="profile-image">
-				      </div>
-				      <div class="user-info">
-				        <div class="rating">
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				        </div>
-				        <p class="user-id">chick*** &nbsp;| &nbsp; 23.01.01</p>
-				        <p class="product-name">상품명 : 춘식이 다이어리</p>
-				      </div>
-				    </td>
-				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="review-content" style="text-align: left;">
-				        <p>춘식이 다이어리는 사랑이쥬!♥</p>
-				      </div>
-				    </td>
-				  </tr>
-				</table>
-			</div>
-			<br><br>
-			
-			<br><br>
-			<div class="speech-bubble">
-				<table>
-				  <tr>
-				    <td>
-				      <div class="profile">
-				        <img src="/resources/images/프로필3.png" alt="프로필 이미지" class="profile-image">
-				      </div>
-				      <div class="user-info">
-				        <div class="rating">
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				        </div>
-				        <p class="user-id">yello*** &nbsp;| &nbsp; 22.12.27</p>
-				        <p class="product-name">상품명 : 춘식이 다이어리</p>
-				      </div>
-				    </td>
-				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="review-content" style="text-align: left;">
-				        <p>내년부터는 작심삼일하고 싶지 않아서 샀습니다. 매번 연말마다 내년엔 잘해봐야지 마음만 먹고 실천을 못해서 자괴감이 들었는데 이렇게나 귀여운 다이어리라면 내년엔 정말로 가능하지 않을까 기대하고 있습니다. 내년엔 진짜 제대로 실천할 수 있게 도와줘 춘식아!!</p>
-				      </div>
-				    </td>
-				  </tr>
-				</table>
-			</div>
-			<br><br>
-			
-			<br><br>
-			<div class="speech-bubble">
-				<table>
-				  <tr>
-				    <td>
-				      <div class="profile">
-				        <img src="/resources/images/프로필4.png" alt="프로필 이미지" class="profile-image">
-				      </div>
-				      <div class="user-info">
-				        <div class="rating">
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				        </div>
-				        <p class="user-id">heart*** &nbsp;| &nbsp; 22.11.11</p>
-				        <p class="product-name">상품명 : 춘식이 다이어리</p>
-				      </div>
-				    </td>
-				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="review-content" style="text-align: left;">
-				        <p>빼빼로데이라고 친구한테 선물해주려고 샀어요 제가 다이어리 쓰는 거 부러워하던 친구라 유용하게 잘 썼으면 좋겠네요ㅎ</p>
-				      </div>
-				    </td>
-				  </tr>
-				</table>
-			</div>
-			<br><br>
-			
-			<br><br>
-			<div class="speech-bubble">
-				<table>
-				  <tr>
-				    <td>
-				      <div class="profile">
-				        <img src="/resources/images/프로필5.png" alt="프로필 이미지" class="profile-image">
-				      </div>
-				      <div class="user-info">
-				        <div class="rating">
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				        </div>
-				        <p class="user-id">pretty*** &nbsp;| &nbsp; 22.10.01</p>
-				        <p class="product-name">상품명 : 춘식이 다이어리</p>
-				      </div>
-				    </td>
-				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="review-content" style="text-align: left;">
-				        <p>좋아요ㅎㅎㅎㅎㅎ</p>
-				      </div>
-				    </td>
-				  </tr>
-				</table>
-			</div>
-			<br><br>
-			
-			<br><br>
-			<div class="speech-bubble">
-				<table>
-				  <tr>
-				    <td>
-				      <div class="profile">
-				        <img src="/resources/images/프로필6.png" alt="프로필 이미지" class="profile-image">
-				      </div>
-				      <div class="user-info">
-				        <div class="rating">
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				        </div>
-				        <p class="user-id">prefe*** &nbsp;| &nbsp; 22.07.07</p>
-				        <p class="product-name">상품명 : 춘식이 다이어리</p>
-				      </div>
-				    </td>
-				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="review-content" style="text-align: left;">
-				        <p>어렸을 때 일기 쓴거 말고는 다이어리 한번도 안 써봤는데 이건 너무 귀여워서 도저히 안 살 수 없어 질렀습니다!!ㅋㅋㅋ 잘 쓸게욧!</p>
-				      </div>
-				    </td>
-				  </tr>
-				</table>
-			</div>
-			<br><br>
-			
-			<br><br>
-			<div class="speech-bubble">
-				<table>
-				  <tr>
-				    <td>
-				      <div class="profile">
-				        <img src="/resources/images/프로필7.png" alt="프로필 이미지" class="profile-image">
-				      </div>
-				      <div class="user-info">
-				        <div class="rating">
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				          <i class="fa fa-star"></i>
-				        </div>
-				        <p class="user-id">nonam*** &nbsp;| &nbsp; 22.06.26</p>
-				        <p class="product-name">상품명 : 춘식이 다이어리</p>
-				      </div>
-				    </td>
-				  </tr>
-				  <tr>
-				    <td colspan="2">
-				      <div class="review-content" style="text-align: left;">
-				        <p>문의할 때마다 매번 친절하게 응대해 주셔서 정말 정말 감사합니다 판매자님.<br>하시는 일 모두 잘 되기를 기원합니다.</p>
-				      </div>
-				    </td>
-				  </tr>
-				</table>
-			</div>
+            <c:forEach var="review" items="${reviews}">
+				<div class="speech-bubble">
+					<table>
+					  <tr>
+					    <td>
+					      <div class="profile">
+					        <img src="${review.profile_img}" alt="프로필 이미지" class="profile-image">
+					      </div>
+					      <div class="user-info">
+					        <div class="rating">
+					          	<span class="star">
+									★★★★★
+									<span style="width: ${review.rating}%;">★★★★★</span>
+								</span>
+					        </div>
+					        <p class="user-id">${review.name} &nbsp;| &nbsp; ${review.creDate}</p>
+					        <!-- <p class="product-name">상품명 : 춘식이 다이어리</p> -->
+					      </div>
+					    </td>
+					  </tr>
+					  <tr>
+					    <td colspan="2">
+					      <div class="review-content" style="text-align: left;">
+					        <p>${review.content}</p>
+					      </div>
+					    </td>
+					  </tr>
+					</table>
+				</div>
+				<br>
+			</c:forEach>
           </div>
 
          <!-- 세번째 탭 (상품문의) -->
