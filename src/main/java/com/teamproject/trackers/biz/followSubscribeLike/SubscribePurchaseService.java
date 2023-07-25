@@ -18,6 +18,12 @@ public class SubscribePurchaseService {
 		subscribePurchaseRepository.save(vo);		
 	}
 	
+	public SubscribePurchaseVO SubT(String url, long id) {
+		return subscribePurchaseRepository.subT(url, id);
+	}
 	
+	public void deleteSub(SubscribePurchaseVO vo){
+		subscribePurchaseRepository.delete(vo);
+	}
 	
 }

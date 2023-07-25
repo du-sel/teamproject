@@ -108,17 +108,14 @@
 								<button class="submiticon" type="submit" onclick="return checkPhotoCount()"><i class="fa fa-paper-plane"></i></button>
 							</div>
 							
-								<input type="file" accept="image/*" name="post-img" id="thumbnail" 
-										onchange="imgPreview(event);" multiple="multiple" >
-								<div class="d-flex align-items-center thumb-title inputphoto">
-									<h6>사진&nbsp;<small>최대 4개까지 업로드 가능</small></h6>
-									<p></p>
-								</div>
-								<div id="thumb-preview" class="thumb-preview"></div>
-								<input type="file" accept="image/*" name="post-img" id="thumbnail" 
-										onchange="imgPreview(event);" multiple="multiple" >
+							<input type="file" accept="image/*" name="post-img" id="thumbnail" 
+									onchange="imgPreview(event);" multiple="multiple" >
+							<div class="d-flex align-items-center thumb-title inputphoto">
+								<small>사진 최대 4개까지 업로드 가능</small>
+								<p></p>
 							</div>
-							<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
+							<div id="thumb-preview" class="thumb-preview"></div>
+								
 						</div>
 					</form>
 				</section>
@@ -183,7 +180,8 @@
 		<c:forEach var="p" items="${posts.content }">
 			<!-- Post -->
 			<section class="post"> 
-				<form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'"><!--  onclick="location.href='/community/posts/${p.postId}'" -->
+				<%-- <form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'"> --%>
+				<div onclick="location.href='/community/posts/${p.postId}'">
 					<div class="header">
 						<a href="/profiles/${p.url}" class="author">
 						    <img src="${p.profile_img}" alt="프로필 이미지" />
@@ -193,7 +191,7 @@
 						<%-- <input type="text" readonly="readonly" name="cre_date" class="published" value="${p.creDate}"> --%>
 						<div class="d-flex">
 							<c:if test="${p.id eq user_id}">
-								<form action="/community/posts/${p.postId}" method="post">
+								<form action="/community/posts/${p.postId}" method="post" id="deletePost">
 								 	<input type="hidden" name="_method" value="DELETE"/>
 									<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
 								</form>
@@ -201,16 +199,7 @@
 							<span class="published">${p.creDate}</span>
 						</div>
 					</div>
-					
-					<c:if test="${!empty imgs[p.postId]}">	<!-- 첨부 이미지 있는 경우 --> 
-						<div class="post_img-outer">
-				    		<c:forEach var="img" items="${imgs[p.postId]}">
-				   	   			<div class="post_img">
-									<img src="${img.postimg}" alt="포스트 첨부 이미지" />
-								</div>
-			   	   			</c:forEach>
-						</div>
-			    	</c:if>	 --%>
+
 			    	
 			    	<div class="post-content-container row justify-content-center">
 				    	<c:if test="${!empty imgs[p.postId]}">
@@ -223,18 +212,21 @@
 					    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
 					    		<c:forEach var="img" items="${imgs[p.postId]}">
 									<div class="img-card">
-					    				<img src="/resources/postimg/${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
+					    				<img src="${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
 					    			</div>
 				   	   			</c:forEach>
 			   	   			</div>
 				    	</c:if>
 					
-					<div id="post-content" class="collapse-content">
-						<div class="post-content-inner collapsed">
-							${p.content}
-						</div>
+						<div id="post-content" class="collapse-content">
+							<div class="post-content-inner collapsed">
+								${p.content}
+							</div>
+				    	</div>
 					</div>
-				</form>
+				</div>
+				<!-- </form> -->
+
 					
 
 				
@@ -242,7 +234,14 @@
 					
 				<div class="footer">
 					<ul class="stats commment_stats">
-						<li class="comment-count"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${p.c_count}</span></li>
+						<c:choose>
+							<c:when test="${p.c_count > 3 }">
+								<li class="comment-count" onclick="location.href='/community/posts/${p.postId}'"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${p.c_count}</span></li>
+							</c:when>
+							<c:otherwise>
+								<li class="comment-count" onclick="showCommentInput(this)"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${p.c_count}</span></li>
+							</c:otherwise>
+						</c:choose>
 						<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number">${p.t_count}</span></li>
 					</ul>
 					<div class="comment-section">
@@ -254,7 +253,7 @@
 											<div class="comment-name">${c.name }</div>
 											<div class="d-flex">
 												<c:if test="${c.id eq user_id}">
-													<form id="deleteComment" action="/community/posts/${post.getPostId() }" method="post">
+													<form id="deleteComment" action="/community/posts/${p.postId}/comments/${c.comment_id}" method="post">
 													 	<input type="hidden" name="_method" value="DELETE"/>
 														<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
 													</form>
@@ -266,7 +265,7 @@
 									</li>
 				   	   			</c:forEach>
 							</ul>
-							<div class="comment-button" type="button" onclick="showCommentInput(this)"><span class="comment-plus">+</span> 댓글쓰기</div>
+							<!-- <div class="comment-button" type="button" onclick="showCommentInput(this)"><span class="comment-plus">+</span> 댓글쓰기</div> -->
 				    	</c:if>	
 					    	
 						<div class="button-row">
@@ -341,7 +340,7 @@
 
 	</div>
 		
-		
+		<input type="hidden" id="sessionId" name="id" value="${user_id}">
 	</main>
 </div>
 

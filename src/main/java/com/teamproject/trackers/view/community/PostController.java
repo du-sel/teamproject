@@ -32,6 +32,7 @@ import com.teamproject.trackers.biz.comment.PostCommentListVO;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.post.PostIMGService;
 import com.teamproject.trackers.biz.post.PostIMGVO;
+import com.teamproject.trackers.biz.post.PostInfoListRepository;
 import com.teamproject.trackers.biz.post.PostInfoListVO;
 import com.teamproject.trackers.biz.post.PostService;
 import com.teamproject.trackers.biz.post.PostVO;
@@ -60,6 +61,10 @@ public class PostController {
 	
 	@Autowired
 	private HttpSession session;
+	
+	@Autowired
+	private PostInfoListRepository postInfoListRepository;
+	
 
 	
 	
@@ -86,17 +91,16 @@ public class PostController {
 
 		PostVO p = postService.insertPost(vo);	
 		
-		
 		List<String> fileNames = new ArrayList<>();
-				
+		String path = request.getServletContext().getRealPath("/resources/postimg/");	
+		
 		for (MultipartFile file : files) {
 			if(!file.isEmpty()) { //uploadFile !=null
-				
-				String path = request.getServletContext().getRealPath("/resources/postimg/");
+
 				//새로운 파일 이름
 				String fileName = p.getPostId()+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
 				fileNames.add(fileName);
-				
+System.out.println("newfile "+path+fileName);				
 				// 로컬에 파일 저장			
 				file.transferTo(new File(path+fileName));
 	
@@ -105,7 +109,7 @@ public class PostController {
 		
 		// imgvo 저장하기
 		for (String fileName : fileNames) {
-			imgvo.setImg(fileName);
+			imgvo.setImg(path+fileName);
 			imgvo.setPostId(p.getPostId());
 			postIMGService.insertPostIMG(imgvo);
 		}
@@ -122,31 +126,51 @@ public class PostController {
 	public String deletePost(@PathVariable("postId")Long postId) {
 		postService.deletePost(postId);
 		// comment도 삭제
-		return "redirect:/community";
+		return "redirect:/community/posts";
 	}	
+	
+	// 댓글 작성
+	/*	@RequestMapping(value = "posts/{postId}/comments", method = RequestMethod.POST)
+		public String insertComment(CommentVO vo, HttpServletRequest request) {
+
+	System.out.println("vo.postid "+vo.getPostId());
+			commentService.insertComment(vo);
+			request.setAttribute("postId", vo.getPostId());
+			
+			String postId = Long.toString(vo.getPostId());
+			
+			return "redirect:/community/posts/"+postId;
+		}
+  	*/
 
 	// 댓글 삭제
-	@RequestMapping(value = "/{postId}/comments/{comment_id}", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/{postId}/comments/{comment_id}", method = RequestMethod.DELETE)
 	public String deleteComment(@PathVariable("comment_id")Long commentid, @PathVariable("postId")Long postId) {
 System.out.println("delete postid "+postId);		
 		commentService.deleteComment(commentid);
 		String postid = Long.toString(postId);
 		return "redirect:/community/posts/"+postid;
 	}
+ 	
 	
 	
 	// 상세 조회
 	@RequestMapping(value="/posts/{postId}", method=RequestMethod.GET)
 	public String getPost(@PathVariable("postId")Long postId, Model model) {
- 
-		CommentController cc = new CommentController();
-		//cc.getCommentList(postId, model);
-		model.addAttribute("comments",commentService.getCommentList(postId));
-		System.out.println("com "+commentService.getCommentList(postId).size());		
-		model.addAttribute("commentService",commentService);
-		model.addAttribute("userinfo",postService.getUser(postId).get());	
-		model.addAttribute("post", postService.getPost(postId).get());
-		model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
+		
+		PostInfoListVO vo = postInfoListRepository.findByPostId(postId);
+		
+		// 이미지 목록
+		List<PostIMGVO> imgList = postIMGService.getPImgList(postId);
+		
+		// 댓글 목록
+		List<PostCommentListVO> commentList = commentService.getCommentListPage(postId);		
+		
+		model.addAttribute("post", vo);
+		model.addAttribute("imgList", imgList);
+		model.addAttribute("commentList", commentList);
+		
 
 		return "community/co-post";
 	}
