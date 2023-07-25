@@ -156,7 +156,7 @@
 			    		<span class="name author">${post.name}</span>
 					</a>
 					<div class="d-flex">
-						<c:if test="${post.id eq user_id}">
+						<c:if test="${post.id eq sessionScope.id}">
 							<form action="/community/posts/${post.postId}" method="post" id="deletePost">
 							 	<input type="hidden" name="_method" value="DELETE"/>
 								<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
@@ -215,7 +215,7 @@
 					   	   				<div class="comment-top d-flex justify-content-between align-items-center">
 											<div class="comment-name">${c.name }</div>
 											<div class="d-flex">
-												<c:if test="${c.id eq user_id}">
+												<c:if test="${c.id eq sessionScope.id}">
 													<form id="deleteComment" action="/community/posts/${post.postId}/comments/${c.comment_id}" method="post">
 													 	<input type="hidden" name="_method" value="DELETE"/>
 														<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
@@ -256,7 +256,7 @@
 				</div>
 			</section>
 		
-		<input type="hidden" id="sessionId" name="id" value="${user_id}">
+		<input type="hidden" id="sessionId" name="id" value="${sessionScope.id}">
 	</main>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
