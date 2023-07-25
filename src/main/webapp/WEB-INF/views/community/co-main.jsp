@@ -175,7 +175,7 @@
 									<!-- 파일 input 대신 클릭 -->
 								</div>
 								<!-- <button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button> -->
-								<button class="submiticon" type="button" onclick="checkPhotoCount()"><i class="fa fa-paper-plane"></i></button>
+								<button class="submiticon" type="submit" onclick="return checkPhotoCount()"><i class="fa fa-paper-plane"></i></button>
 							</div>
 							
 								<input type="file" accept="image/*" name="post-img" id="thumbnail" 
