@@ -44,6 +44,9 @@ community-main
 .co #co-main #main{
 	width: 100%;
 }
+.co #co-main #main{
+	margin-top: 0 !important;
+}
 .co #co-main #main>div{
 	width: 100%;
     margin: 0 auto;
