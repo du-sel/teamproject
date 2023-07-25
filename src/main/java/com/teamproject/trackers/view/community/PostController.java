@@ -193,91 +193,97 @@ System.out.println("delete postid "+postId);
 		// 정렬 및 페이징 , 검색 처리
 		Page<PostInfoListVO> list = null;
 		Pageable pageable = null;
-		if(!type.equals("all")) {
-			// 정렬
-			pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "cre_date"));
-			// 검색 x 경우
-			if(keyword == null) keyword="";
-			
-			if(!type.equals("creator")) list = postService.getTypeList(type, (long) session.getAttribute("id"), keyword, pageable);
-			else list = postService.getCreatorPostList(keyword, pageable);
-		}else {
-			// 정렬
-			pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "creDate"));
-			
-			// 검색
-			if(keyword != null) {			// 검색 o
-				list = postService.getSearchPostList(keyword, pageable);
-			}else {							// 검색 x
-				keyword = "";
-				list = postService.getPostList(pageable);
-			}
-		}
+
+		if(type != null) {
 		
-		
-		// 포스트 이미지 리스트 조회
-		HashMap<Long, List<PostIMGVO>> imgList = new HashMap<>();
-		HashMap<Long, List<PostCommentListVO>> commentList = new HashMap<>();
-		for(PostInfoListVO p : list.getContent()) {
-			List<PostIMGVO> pi = postIMGService.getPImgList(p.getPostId());
-			List<PostCommentListVO> ci = commentService.getPostCommentList(p.getPostId());
-			
-			// 포스트 이미지 리스트
-			for(PostIMGVO item : pi) {
-				if(imgList.get(item.getPostId()) != null) {
-					imgList.get(item.getPostId()).add(item);
-				}else {
-					ArrayList<PostIMGVO> imgs = new ArrayList<>();
-					imgs.add(item);
-					imgList.put(item.getPostId(), imgs);
+			if(!type.equals("all")) {
+				// 정렬
+				pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "cre_date"));
+				// 검색 x 경우
+				if(keyword == null) keyword="";
+				
+				if(!type.equals("creator")) list = postService.getTypeList(type, (long) session.getAttribute("id"), keyword, pageable);
+				else list = postService.getCreatorPostList(keyword, pageable);
+			}else {
+				// 정렬
+				pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "creDate"));
+				
+				// 검색
+				if(keyword != null) {			// 검색 o
+					list = postService.getSearchPostList(keyword, pageable);
+				}else {							// 검색 x
+					keyword = "";
+					list = postService.getPostList(pageable);
 				}
 			}
 			
-			// 댓글 리스트
-			for(PostCommentListVO item : ci) {
-				if(commentList.get(item.getPostId()) != null) {
-					commentList.get(item.getPostId()).add(item);
-				}else {
-					ArrayList<PostCommentListVO> comments = new ArrayList<>();
-					comments.add(item);
-					commentList.put(item.getPostId(), comments);
+			
+			// 포스트 이미지 리스트 조회
+			HashMap<Long, List<PostIMGVO>> imgList = new HashMap<>();
+			HashMap<Long, List<PostCommentListVO>> commentList = new HashMap<>();
+			for(PostInfoListVO p : list.getContent()) {
+				List<PostIMGVO> pi = postIMGService.getPImgList(p.getPostId());
+				List<PostCommentListVO> ci = commentService.getPostCommentList(p.getPostId());
+				
+				// 포스트 이미지 리스트
+				for(PostIMGVO item : pi) {
+					if(imgList.get(item.getPostId()) != null) {
+						imgList.get(item.getPostId()).add(item);
+					}else {
+						ArrayList<PostIMGVO> imgs = new ArrayList<>();
+						imgs.add(item);
+						imgList.put(item.getPostId(), imgs);
+					}
+				}
+				
+				// 댓글 리스트
+				for(PostCommentListVO item : ci) {
+					if(commentList.get(item.getPostId()) != null) {
+						commentList.get(item.getPostId()).add(item);
+					}else {
+						ArrayList<PostCommentListVO> comments = new ArrayList<>();
+						comments.add(item);
+						commentList.put(item.getPostId(), comments);
+					}
 				}
 			}
-		}
-		
-		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
-		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
-		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
-		
-		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
-		
-		model.addAttribute("posts", list);
-		model.addAttribute("imgs", imgList);
-		model.addAttribute("comments", commentList);
-		model.addAttribute("type", type);
-		model.addAttribute("keyword", keyword);
-		
-		// 사용자별 팔로우 리스트
-		long id = 0;
-		List<Object[]> followList = null;
-		
-		if (session.getAttribute("id") != null) {
-			id = (long) session.getAttribute("id");
-			followList = followService.getfollowList((long) session.getAttribute("id"));
-			System.out.println(followList.size());
-			System.out.println(followList.get(0)[0]);
-			System.out.println(followList.get(0)[1]);
-			System.out.println(followList.get(0)[2]);
-			System.out.println(followList.get(1)[0]);
-			System.out.println(followList.get(1)[1]);
-			System.out.println(followList.get(1)[2]);
 			
+			int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
+			int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
+			int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
+			
+			model.addAttribute("nowPage", nowPage);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			
+			model.addAttribute("posts", list);
+			model.addAttribute("imgs", imgList);
+			model.addAttribute("comments", commentList);
+			model.addAttribute("type", type);
+			model.addAttribute("keyword", keyword);
+			
+			// 사용자별 팔로우 리스트
+			long id = 0;
+			List<Object[]> followList = null;
+			
+			if (session.getAttribute("id") != null) {
+				id = (long) session.getAttribute("id");
+				followList = followService.getfollowList((long) session.getAttribute("id"));
+				System.out.println(followList.size());
+				System.out.println(followList.get(0)[0]);
+				System.out.println(followList.get(0)[1]);
+				System.out.println(followList.get(0)[2]);
+				System.out.println(followList.get(1)[0]);
+				System.out.println(followList.get(1)[1]);
+				System.out.println(followList.get(1)[2]);
+				
+			}
+			model.addAttribute("followList", followList);
+			
+			return "community/co-main";
+		}else{
+			return "redirect:/community/posts?page=0&type=all";
 		}
-		model.addAttribute("followList", followList);
-		
-		return "community/co-main";
 	}
 	
 
