@@ -167,7 +167,7 @@
 								</c:if>
 								<div class="d-flex">
 									<c:if test="${post.getId() eq sessionScope.id}">
-										<form action="/community/posts/${post.getPostId()}" method="post">
+										<form action="/community/posts/${post.getPostId()}" method="post" id="deletePost">
 										 	<input type="hidden" name="_method" value="DELETE"/>
 											<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
 										</form>
@@ -229,7 +229,7 @@
 	                                            <div class="comment-name">이름 ${commentService.getUser(comment.getCommentid()).get().getName()}</div> 
 	                                            <div class="d-flex">
 													<c:if test="${commentService.getUser(comment.getCommentid()).get().getId() eq sessionScope.id}">
-														<form id="deleteComment" action="/community/posts/${post.getPostId()}/comments/${comment.getCommentid()" method="post">
+														<form id="deleteComment" action="/community/posts/${post.getPostId()}/comments/${comment.getCommentid()}" method="post">
 														 	<input type="hidden" name="_method" value="DELETE"/>
 															<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
 														</form>
@@ -245,9 +245,7 @@
                             
 								
 							<input type="hidden" id="sessionId" name="id" value="${sessionScope.id}">
-							<div class="comment-button" type="button" onclick="return showCommentInput(this)">
-								<span class="comment-plus">+</span> 댓글쓰기
-							</div>
+							
 							<div class="button-row">
 						
 								<div class="comment-input">
