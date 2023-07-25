@@ -1,5 +1,7 @@
 package com.teamproject.trackers.biz.followSubscribeLike;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -22,6 +24,11 @@ public interface FollowRepository extends JpaRepository<FollowVO, FollowId> {
 	// 팔로우 정보 수정 -구독한 사람의 정보를 제거하는거(팔로우 취소)
 	//@Query(value="DELETE FROM follow WHERE from_id = :fromid  and to_id = :toid", nativeQuery = true)
 	//void deleteFollow(@Param("fromid") long fromid, @Param("toid") long toid);
+	
+	
+	// 사용자별 팔로우 리스트
+	@Query(value = "SELECT u.url, u.profile_img, c.store_name FROM follow f, creator c, user u WHERE (:id is null or f.from_id=:id) AND f.to_id=c.id AND c.id=u.id",nativeQuery = true)
+	public List<Object[]> getFollowList(@Param("id") long id);
 	
 	
 }
