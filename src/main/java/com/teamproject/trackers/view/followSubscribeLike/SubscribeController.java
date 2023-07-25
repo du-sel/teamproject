@@ -4,25 +4,22 @@ import java.text.DecimalFormat;
 
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.teamproject.trackers.biz.common.AlertVO;
 import com.teamproject.trackers.biz.drive.DriveController;
+import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoService;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoVO;
-import com.teamproject.trackers.view.common.CommonController;
-
+import com.teamproject.trackers.biz.profile.ProfileService;
+import com.teamproject.trackers.biz.userCreator.UserVO;
 
 @Controller
 @RequestMapping("/store")
@@ -35,7 +32,9 @@ public class SubscribeController {
 	@Autowired
     private HttpSession session;
 	@Autowired
-	public CommonController common;
+	private ProfileService profileService;
+	private AlertVO alert = new AlertVO();
+
 	
 	// 구독 정보 조회
 	@RequestMapping(value="/subscribes", method=RequestMethod.GET)
@@ -64,16 +63,16 @@ public class SubscribeController {
 		if(infoVO == null) {		// 등록
 			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장
 			subscribeInfoService.insertSubscribeInfo(vo);
-			common.alert.setStr("구독이 활성화되었습니다.");
+			alert.setStr("구독이 활성화되었습니다.");
 		}else {
 			//drive.SubscribeDelete(infoVO);						// 저번 달 파일 삭제
 			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장
 			subscribeInfoService.updateSubscribeInfo(vo);
-			common.alert.setStr("구독 정보가 업데이트되었습니다.");
+			alert.setStr("구독 정보가 업데이트되었습니다.");
 		}
 
-		common.alert.setPath("store/subscribes");
-		common.alert.setFlag(true);
+		alert.setPath("store/subscribes");
+		alert.setFlag(true);
 		
 		return "redirect:/common";
 	}
@@ -87,10 +86,33 @@ public class SubscribeController {
 		
 		subscribeInfoService.deleteSubscribeInfo(vo);
 		
-		common.alert.setStr("구독이 비활성화되었습니다.");
-		common.alert.setPath("/store/subscribes");
-		common.alert.setFlag(true);
+		alert.setStr("구독이 비활성화되었습니다.");
+		alert.setPath("/store/subscribes");
+		alert.setFlag(true);
 
 		return "redirect:/common";
 	}
+	
+	// 구독 중 버튼에서 구독 취소 눌렀을 때
+	
+	 @RequestMapping(value ="/profiles/{url}", method = RequestMethod.DELETE)
+	 public String unFollow(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo, SubscribeInfoVO svo) {
+		 
+		 if(session.getAttribute("id") != null){
+	         svo.setSubscribeId((long)session.getAttribute("id"));
+	         fvo.setTo_id(profileService.getUser(url).getId());
+	         
+	          
+	         
+	         alert.setStr("구독 취소되었습니다."); 
+			 alert.setPath("/"+url); 
+			 alert.setFlag(true);
+			  
+		 }
+		 
+		return "redirect:/profiles/"+url;
+	 }
+	
+	
+	
 }

@@ -29,9 +29,6 @@ public class FollowService {
 		followRepository.delete(vo);
 	}
 
-
-	
-	
 	// 사용자별 팔로우 리스트
 	public List<Object[]> getfollowList(long id){
 		return followRepository.getFollowList(id);

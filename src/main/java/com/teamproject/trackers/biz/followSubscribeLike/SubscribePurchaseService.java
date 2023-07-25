@@ -22,5 +22,8 @@ public class SubscribePurchaseService {
 		return subscribePurchaseRepository.subT(url, id);
 	}
 	
+	public void deleteSub(SubscribePurchaseVO vo){
+		subscribePurchaseRepository.delete(vo);
+	}
 	
 }

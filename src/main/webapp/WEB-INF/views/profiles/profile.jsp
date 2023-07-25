@@ -589,7 +589,7 @@ $(()=> {
 			    <c:when test="${!empty sessionScope.user.id}">
 			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
 			            <c:choose>
-					<c:when test="${sessionScope.user.url != profile.url}"> <!-- 로그인해서 남의 프로필에 들어왔을 때 -->
+			                <c:when test="${sessionScope.user.url != profile.url}"> <!-- 로그인해서 남의 프로필에 들어왔을 때 -->
 			                	<c:choose>
 			                		<c:when test="${checks.getId() eq sessionScope.user.id && checkf.getFrom_id() eq sessionScope.user.id && checkf.getTo_id() eq profile.id}">
 
@@ -618,12 +618,12 @@ $(()=> {
 				                		<button class="btn offbtn" id="changef" data-toggle="modal" data-target="#ExampleModalCenter"  style=" display: none;">팔로우 중</button>
 				           				<button id="buttonright" class="btn" data-toggle="modal" data-target="#subModal">구독</button>
 							 		</c:otherwise>
-						</c:choose>
+						 		</c:choose>
 				                		
 			                </c:when>
 			                <c:otherwise>
 			                	<c:if test="${getCreator.getId() eq sessionScope.user.id}">
-			                		<div id="buttonright" class="longtext"><a href="store/sales-status">마이스토어 관리</a></div>
+			                		<div id="buttonright" class="longtext"><a href="store/sales">마이스토어 관리</a></div>
 			                	</c:if>
 			                	<c:if test="${getCreator.getId() ne sessionScope.user.id}">
 			                		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
@@ -675,14 +675,17 @@ $(()=> {
 				<!-- post 탭 -->
  				<div class="tab-pane fade show active co" id="feed">
 					<br>
+
 					<div class="feed-listtop">
 						<c:if test="${sessionScope.user.url == profile.url}">
 							<div id="feed-insert-btn" class="writenew1">
 								<a href="/community/posts?page=0&type=all">새 글 작성</a>
 							</div>
 						</c:if>
+
 					</div>				
 					<div id="co-main" >
+
 						<div id="main" class="col-sm-12 col-md-12 col-lg-12">
 						<!-- post -->
 							<section class="post" id="post-box"> 
@@ -698,6 +701,7 @@ $(()=> {
 												<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
 											</form>
 											<span class="published"></span>
+
 										</div>
 									</div>
 							    	
@@ -791,11 +795,13 @@ $(()=> {
 							<option value="highprice">높은가격순</option>
 							<option value="lowprice">낮은가격순</option>
 						</select>
+
 						<c:if test="${sessionScope.user.url == profile.url}">
 							<div class="writenew line">
 								<a href="/store/products/management">상품 관리</a>
 							</div>	
 						</c:if>				
+
 					
 					</div>
 					<br>

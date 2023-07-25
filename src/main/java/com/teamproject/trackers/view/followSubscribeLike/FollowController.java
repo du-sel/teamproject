@@ -28,6 +28,7 @@ public class FollowController {
 	private ProfileService profileService;
 	@Autowired
 	public CommonController common;
+	private AlertVO alert = new AlertVO();
 
 	
 	  // 언팔로우 (삭제)
