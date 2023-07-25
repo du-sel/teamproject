@@ -616,7 +616,9 @@ $(()=> {
 				                			<button id="buttonright" class="btn" onclick="startf()">팔로우</button>
 				                		</form>
 				                		<button class="btn offbtn" id="changef" data-toggle="modal" data-target="#ExampleModalCenter"  style=" display: none;">팔로우 중</button>
+								<c:if test="${!empty getMembership }">
 				           				<button id="buttonright" class="btn" data-toggle="modal" data-target="#subModal">구독</button>
+								</c:if>
 							 		</c:otherwise>
 						 		</c:choose>
 				                		
