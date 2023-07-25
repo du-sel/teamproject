@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -31,5 +33,10 @@ public class ReviewService {
 	// 특정 상품에 대한 리뷰 리스트
 	public List<ReviewListVO> getProductReview(long p_id) {
 		return reviewListRepository.findAllByPidOrderByCreDateDesc(p_id);
+	}
+	
+	// 크리에이터별 리뷰 리스트
+	public Page<ReviewListVO> getCreatorReview(long c_id, Pageable pageable){
+		return reviewListRepository.findAllByCid(c_id, pageable);
 	}
 }

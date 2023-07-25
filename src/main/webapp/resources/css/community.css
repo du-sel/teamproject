@@ -595,7 +595,8 @@ sidebar
 	left: -310px;
 	max-width: 350px;
 	overflow-x: hidden;
-	height: 100%;
+	/* height: 100%; */
+	height: 100vh;
 	z-index: 1;
 }
 .co #co-main #sidebar .navbar{
@@ -694,13 +695,17 @@ sidebar
 	min-width: 4em;
 	width: 4em;
 	height: 4em;
-	border: 1px solid;
+	/* border: 1px solid; 
 	border-radius: 50%;
-	background-image: url('../../images/pic08.jpg');
+	background-image: url('../../images/pic08.jpg');*/
 	background-size: contain;
 }
 .co #co-main #sidebar .sidebar-wrapper .divimg+div{
 	width: max-content;
+}
+.co #co-main #sidebar .sidebar-wrapper .divimg img{ 
+	width: 100%;
+	border-radius: 50%;
 }
 .co #co-main #sidebar .sidebar-wrapper .lidiv{
 	display: inline-block;

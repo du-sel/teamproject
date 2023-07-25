@@ -50,7 +50,7 @@ public class ReviewController {
 		this.purchaseService = purchaseService;
 	}
 	
-	// 리뷰 작성 & 상세 조회
+	// 리뷰 상세 조회
 	@RequestMapping(value ="/store/reviews/{p_id}", method = RequestMethod.GET)
 	public String getReview(@PathVariable("p_id") long p_id, Model model) {
 		long id = (long) session.getAttribute("id");
@@ -61,6 +61,17 @@ public class ReviewController {
 		return "/my/insert-review"; 
 	}
 	
+	// 리뷰 작성
+		@RequestMapping(value ="/store/reviews/{p_id}", method = RequestMethod.POST)
+		public String insertReview(@PathVariable("p_id") long p_id, ReviewVO vo) {
+			vo.setId((long) session.getAttribute("id"));
+			vo.setPid(p_id);
+			
+			reviewService.insertReview(vo);
+			
+			return "redirect:/store/reviews/"+p_id; 
+		}
+	
 	
 	// 판매자 리뷰 리스트 조회
 	@RequestMapping(value ="/profiles/{url}/reviews", method = RequestMethod.GET)
@@ -68,7 +79,7 @@ public class ReviewController {
 
 		// 정렬 및 페이징
 		Pageable pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "creDate"));	// 시작 페이지, 데이터 개수, 정렬 기준
-		Page<ReviewListVO> list = reviewService.getCreatorReview(pageable, (long) session.getAttribute("id"));
+		Page<ReviewListVO> list = reviewService.getCreatorReview((long) session.getAttribute("id"), pageable);
 		
 		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
 		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
