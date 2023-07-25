@@ -122,11 +122,11 @@ System.out.println("newfile "+path+fileName);
 	public String deletePost(@PathVariable("postId")Long postId) {
 		postService.deletePost(postId);
 		// comment도 삭제
-		return "redirect:/community";
+		return "redirect:/community/posts";
 	}	
 	
 	// 댓글 작성
-		@RequestMapping(value = "posts/{postId}/comments", method = RequestMethod.POST)
+	/*	@RequestMapping(value = "posts/{postId}/comments", method = RequestMethod.POST)
 		public String insertComment(CommentVO vo, HttpServletRequest request) {
 
 	System.out.println("vo.postid "+vo.getPostId());
@@ -137,8 +137,10 @@ System.out.println("newfile "+path+fileName);
 			
 			return "redirect:/community/posts/"+postId;
 		}
+  	*/
 
 	// 댓글 삭제
+	/*
 	@RequestMapping(value = "/{postId}/comments/{comment_id}", method = RequestMethod.DELETE)
 	public String deleteComment(@PathVariable("comment_id")Long commentid, @PathVariable("postId")Long postId) {
 System.out.println("delete postid "+postId);		
@@ -146,6 +148,7 @@ System.out.println("delete postid "+postId);
 		String postid = Long.toString(postId);
 		return "redirect:/community/posts/"+postid;
 	}
+ 	*/
 	
 	
 	// 상세 조회
@@ -159,7 +162,9 @@ System.out.println("delete postid "+postId);
 		model.addAttribute("commentService",commentService);
 		model.addAttribute("userinfo",postService.getUser(postId).get());	
 		model.addAttribute("post", postService.getPost(postId).get());
-		model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
+		if(postIMGService.getPostIMG(postId).isPresent()) {
+			model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
+		}
 
 		return "community/co-post";
 	}
