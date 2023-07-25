@@ -29,6 +29,7 @@ import com.teamproject.trackers.biz.comment.PostCommentListVO;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoService;
+import com.teamproject.trackers.biz.followSubscribeLike.SubscribePurchaseService;
 import com.teamproject.trackers.biz.post.PostIMGService;
 import com.teamproject.trackers.biz.post.PostIMGVO;
 import com.teamproject.trackers.biz.post.PostInfoListVO;
@@ -36,6 +37,7 @@ import com.teamproject.trackers.biz.post.PostService;
 import com.teamproject.trackers.biz.product.ProductListVO;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.profile.ProfileService;
+import com.teamproject.trackers.biz.userCreator.CreatorService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
 @Controller
@@ -50,6 +52,8 @@ public class ProfileController {
 	private PostIMGService postIMGService;
 	private CommentService commentService;
 	private SubscribeInfoService subscribeInfoService;
+	private SubscribePurchaseService subscribePurchaseService; 
+	private CreatorService creatorService;
 	
 	
 	@Autowired
@@ -60,7 +64,9 @@ public class ProfileController {
 			PostService postService,
 			PostIMGService postIMGService,
 			CommentService commentService,
-			SubscribeInfoService subscribeInfoService) {
+			SubscribeInfoService subscribeInfoService,
+			SubscribePurchaseService subscribePurchaseService,
+			CreatorService creatorService) {
 		
 		this.profileService = profileService;
 		this.session = session;
@@ -70,6 +76,8 @@ public class ProfileController {
 		this.postIMGService = postIMGService;
 		this.commentService = commentService;
 		this.subscribeInfoService = subscribeInfoService;
+		this.subscribePurchaseService = subscribePurchaseService;
+		this.creatorService = creatorService;
 	}
 	
 	 @RequestMapping(value ="/{url}", method = RequestMethod.GET)
