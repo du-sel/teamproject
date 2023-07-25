@@ -44,8 +44,8 @@ public class SubscribePurchaseController {
     	SubscribePurchaseVO vo = new SubscribePurchaseVO();
     	vo.setSubscribeId(Long.parseLong(subscribe_id));
     	vo.setId((long)session.getAttribute("id"));
-    	vo.setPayment(String.valueOf((long)session.getAttribute("id")));
-    	vo.setPayDate(new Date());
+    	//vo.setPayment(String.valueOf((long)session.getAttribute("id")));
+    	//vo.setPayDate(new Date());
     	System.out.println(vo.toString());
     	
     	subscribePurchaseService.insertSubscribePurchase(vo);		
