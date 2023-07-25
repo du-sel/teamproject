@@ -202,7 +202,7 @@
 						</div>
 					</div>
 					
-					<c:if test="${!empty imgs[p.postId]}">	<!-- 첨부 이미지 있는 경우 --> 
+				<%--	<c:if test="${!empty imgs[p.postId]}">	<!-- 첨부 이미지 있는 경우 --> 
 						<div class="post_img-outer">
 				    		<c:forEach var="img" items="${imgs[p.postId]}">
 				   	   			<div class="post_img">
