@@ -150,138 +150,113 @@
 		
 			<!-- Post -->
 			<section class="post"> 
-				<div>
-					<form id="post-form" action="/community/posts/${post.getPostId()}" method="get">
-						<div>
-							<div class="header">
-								<c:if test="${!empty userinfo.getProfile_img() }">
-									<a href="/profiles/${userinfo.getUrl()}" class="author">
-										<img src="${userinfo.getProfile_img()}" alt="프로필 이미지" />&nbsp;&nbsp;
-										<span class="name author">${userinfo.getName() }</span>
-									</a>
-								</c:if>
-								<c:if test="${empty userinfo.getProfile_img() }">
-									<a href="/profiles/${userinfo.getUrl()}" class="author"><img src="" alt="" style="background-color: gray;" />&nbsp;&nbsp;
-										<span class="name">${userinfo.getName() }</span>
-									</a>
-								</c:if>
-								<div class="d-flex">
-									<c:if test="${post.getId() eq sessionScope.id}">
-										<form action="/community/posts/${post.getPostId()}" method="post" id="deletePost">
-										 	<input type="hidden" name="_method" value="DELETE"/>
-											<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
-										</form>
-									</c:if>
-									
-									<span class="published">${p.creDate}</span>
-								</div>
-								
-								<span class="published">${post.getCre_date() }</span>
-								
-								
-							</div>
-						</div>
-			
-						
-						<div class="post-content-container row justify-content-center"> <!-- post_img-outer -->
-							<div class="img-container"> <!-- post_img -->
-								<c:if test="${!empty postIMG.getImg() }">
-									<img src="/resources/postimg/${postIMG.getImg() }">
-								</c:if>
-							</div>
-						</div>
-						
-					
-							<div id="post-content" class="collapse-content">
-							  <div class="post-content-inner collapsed">
-							  	
-							   ${post.getContent() }
-							  </div>
-							</div>
-						
-						<!-- <script>있던 자리 -->
-						</form>
+				<div class="header">
+					<a href="/profiles/${post.url}" class="author">
+					    <img src="${post.profile_img}" alt="프로필 이미지"/>
+			    		<span class="name author">${post.name}</span>
+					</a>
+					<div class="d-flex">
+						<c:if test="${post.id eq sessionScope.id}">
+							<form action="/community/posts/${post.postId}" method="post" id="deletePost">
+							 	<input type="hidden" name="_method" value="DELETE"/>
+								<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
+							</form>
+						</c:if>
+						<span class="published">${post.creDate}</span>
 					</div>
-					
-					<div class="footer">
-						<ul class="stats commment_stats">
-							<li class="comment-count" onclick="showCommentInput(this)">
-								<span class="comment-icon">
-									<i class="fa fa-comment"></i>
-								</span>
-								<span class="comment-count-number">${comments.size()}</span>
-							</li>
-							<li class="like-count">
-								<span class="like-icon">
-									<i class="fa fa-thumbs-up"></i>
-								</span>
-								<span class="like-count-number"></span> <!-- 좋아요 수 -->
-							</li>
-					
-						</ul>
-						<div class="comment-section">
-							<ul id="comment-list" class="comment-list">
-								<c:set var="comments" value="${commentService.getCommentList(post.getPostId()) }"/>							
-								<c:forEach var="comment" items="${comments}" varStatus="loop">
-                                    
-                                        <li>
-                                        	<div class="comment-top d-flex justify-content-between align-items-center">
-	                                            <div class="comment-name">이름 ${commentService.getUser(comment.getCommentid()).get().getName()}</div> 
-	                                            <div class="d-flex">
-													<c:if test="${commentService.getUser(comment.getCommentid()).get().getId() eq sessionScope.id}">
-														<form id="deleteComment" action="/community/posts/${post.getPostId()}/comments/${comment.getCommentid()}" method="post">
-														 	<input type="hidden" name="_method" value="DELETE"/>
-															<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
-														</form>
-													</c:if>
-													<div class="comment-date">${omment.getCre_date()}</div>
-												</div>
-	                                        </div>
-                                             <div class="comment-content">${comment.getContent()}</div>
-                                        </li>
-                                    
-                                </c:forEach>
-                            </ul>
-                            
-								
-							<input type="hidden" id="sessionId" name="id" value="${sessionScope.id}">
-							
-							<div class="button-row">
-						
-								<div class="comment-input">
-									<form action="/community/posts/${post.getPostId()}/comments" method="post" name="comment" id="insertcomment">
-										<input type="hidden" name="postId" value="${post.getPostId() }">
-										
-										<c:choose>
-											<c:when test="${!empty sessionScope.id }">
-												<input type="hidden" name="id" value="${sessionScope.id}">
-												<input type="text" id="comment-text" name="content" placeholder="댓글을 입력하세요">
-									            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
-											</c:when>
-											<c:otherwise>
-												<div id="comment-text" >로그인이 필요합니다.</div>
-											</c:otherwise>
-										</c:choose>
-									
-									</form>
-								</div>
-								
-								
-							</div>
-							
-							
-							
-							
-							
-						</div>
-					</footer>
-					
-					
-					<!-- <script>있던 자리 -->
+				</div>
+
+
+		    	
+		    	<div class="post-content-container row justify-content-center">
+			    	<c:if test="${!empty imgList}">
+				    	<div class="img-container 
+				    		<c:choose>
+				    			<c:when test="${fn:length(imgList) == 1 }">one</c:when>
+				    			<c:when test="${fn:length(imgList) == 2 }">two</c:when>
+				    			<c:when test="${fn:length(imgList) == 3 }">three</c:when>
+				    			<c:when test="${fn:length(imgList) == 4 }">four</c:when>
+				    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
+				    		<c:forEach var="img" items="${imgList}">
+								<div class="img-card">
+				    				<img src="${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
+				    			</div>
+			   	   			</c:forEach>
+		   	   			</div>
+			    	</c:if>
 				
+					<div id="post-content" class="collapse-content">
+						<div class="post-content-inner collapsed">
+							${post.content}
+						</div>
+			    	</div>
+
+				</div>
+
+
+	
+				<div class="footer">
+					<ul class="stats commment_stats">
+						<c:choose>
+							<c:when test="${p.c_count > 3 }">
+								<li class="comment-count" onclick="location.href='/community/posts/${p.postId}'"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${post.c_count}</span></li>
+							</c:when>
+							<c:otherwise>
+								<li class="comment-count" onclick="showCommentInput(this)"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${post.c_count}</span></li>
+							</c:otherwise>
+						</c:choose>
+						<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number">${post.t_count}</span></li>
+					</ul>
+					<div class="comment-section">
+						<c:if test="${!empty commentList}">	
+							<ul id="comment-list" class="comment-list">
+					    		<c:forEach var="c" items="${commentList}">
+					   	   			<li>
+					   	   				<div class="comment-top d-flex justify-content-between align-items-center">
+											<div class="comment-name">${c.name }</div>
+											<div class="d-flex">
+												<c:if test="${c.id eq sessionScope.id}">
+													<form id="deleteComment" action="/community/posts/${post.postId}/comments/${c.comment_id}" method="post">
+													 	<input type="hidden" name="_method" value="DELETE"/>
+														<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
+													</form>
+												</c:if>
+												<div class="comment-date">${c.creDate }</div>
+											</div>
+					   	   				</div>
+										<div class="comment-content">${c.content}</div>
+									</li>
+				   	   			</c:forEach>
+							</ul>
+							<!-- <div class="comment-button" type="button" onclick="showCommentInput(this)"><span class="comment-plus">+</span> 댓글쓰기</div> -->
+				    	</c:if>	
+					    	
+						<div class="button-row">
+
+							<%-- <c:if test="${p.c_count > 3 }">
+	                           <div onclick="location.href='/community/posts/${p.postId}'">댓글 더보기</div>
+	                        </c:if> --%>
+							<div class="comment-input">
+								<form action="/community/posts/${post.postId}/comments" method="post" name="comment" id="insertcomment">
+									<input type="hidden" name="postId" value="${p.postId }"/>
+									<c:choose>
+								    	<c:when test="${!empty user_id}">	<!-- 로그인 o --> 
+								    		<input type="hidden" name="id" value="${user_id}">
+											<input type="text" id="comment-text" name="content" class="form-control" placeholder="댓글을 입력하세요">
+								            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
+								    	</c:when>		
+								    	<c:otherwise>		<!-- 로그인 x -->
+								    		<div id="comment-text" >로그인이 필요합니다.</div>
+								    	</c:otherwise>
+							    	</c:choose>
+								</form>
+							</div>	
+						</div>
+					</div>
+				</div>
 			</section>
 		
-		
+		<input type="hidden" id="sessionId" name="id" value="${sessionScope.id}">
 	</main>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

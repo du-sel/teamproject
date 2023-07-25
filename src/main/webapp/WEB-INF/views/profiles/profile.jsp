@@ -598,9 +598,11 @@ $(()=> {
 				                	</c:when>
 				                	
 				                	<c:when test="${checkf.getFrom_id() eq sessionScope.user.id && checkf.getTo_id() eq profile.id && checks.getId() ne sessionScope.user.id}">
-				                		
+								
 				                		<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-				                		<button id="buttonright" class="btn"data-toggle="modal" data-target="#subModal">구독 </button>
+								<c:if test="${!empty getMembership }">
+				                			<button id="buttonright" class="btn"data-toggle="modal" data-target="#subModal">구독 </button>
+								</c:if>
 				                	</c:when>
 				                	
 				                	<c:when test="${checkf.getFrom_id() ne sessionScope.user.id && checkf.getTo_id() ne profile.id && checks.getId() eq sessionScope.user.id}">
@@ -616,14 +618,16 @@ $(()=> {
 				                			<button id="buttonright" class="btn" onclick="startf()">팔로우</button>
 				                		</form>
 				                		<button class="btn offbtn" id="changef" data-toggle="modal" data-target="#ExampleModalCenter"  style=" display: none;">팔로우 중</button>
+								<c:if test="${!empty getMembership }">
 				           				<button id="buttonright" class="btn" data-toggle="modal" data-target="#subModal">구독</button>
+								</c:if>
 							 		</c:otherwise>
 						 		</c:choose>
 				                		
 			                </c:when>
 			                <c:otherwise>
 			                	<c:if test="${getCreator.getId() eq sessionScope.user.id}">
-			                		<div id="buttonright" class="longtext"><a href="store/sales">마이스토어 관리</a></div>
+			                		<div id="buttonright" class="longtext"><a href="/store/sales">마이스토어 관리</a></div>
 			                	</c:if>
 			                	<c:if test="${getCreator.getId() ne sessionScope.user.id}">
 			                		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
@@ -636,7 +640,9 @@ $(()=> {
 			    <c:otherwise>
 			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
 			            <button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button>
+				<c:if test="${!empty getMembership }">	
 			            <button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" >구독</button>
+				</c:if>
 			        </div>
 			    </c:otherwise>
 			 </c:choose>   

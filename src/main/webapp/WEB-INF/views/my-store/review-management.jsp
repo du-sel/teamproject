@@ -57,229 +57,49 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr onclick="location.href='/profiles/url/reviews/id'">
-                      	<td>
-                          	10
-                        </td>
-                        <td>
-                          	아기토끼 굿노트그림일기 다이어리_베이비핑크_아이패드 굿노트 속지
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	<span class="star">
-								★★★★★
-								<span style="width: 50%;">★★★★★</span>
-							</span>
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          	9
-                        </td>
-                        <td>
-                          	아기토끼 굿노트그림일기 다이어리_베이비핑크_아이패드 굿노트 속지
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	<span class="star">
-								★★★★★
-								<span style="width: 50%;">★★★★★</span>
-							</span>
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          	8
-                        </td>
-                        <td>
-                          	리훈 이야기 다이어리 굿노트 아이패드 속지
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	<span class="star">
-								★★★★★
-								<span style="width: 50%;">★★★★★</span>
-							</span>
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          	7
-                        </td>
-                        <td>
-                          	영이의숲_2023 굿노트 스터디플래너
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	<span class="star">
-								★★★★★
-								<span style="width: 50%;">★★★★★</span>
-							</span>
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          	6
-                        </td>
-                        <td>
-                          	리훈 이야기 다이어리 굿노트 아이패드 속지
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	<span class="star">
-								★★★★★
-								<span style="width: 50%;">★★★★★</span>
-							</span>
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          	5
-                        </td>
-                        <td>
-                          	리훈 이야기 다이어리 굿노트 아이패드 속지
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	<span class="star">
-								★★★★★
-								<span style="width: 50%;">★★★★★</span>
-							</span>
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          	4
-                        </td>
-                        <td>
-                          	리훈 이야기 다이어리 굿노트 아이패드 속지
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	<span class="star">
-								★★★★★
-								<span style="width: 50%;">★★★★★</span>
-							</span>
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          	3
-                        </td>
-                        <td>
-                          	영이의숲_2023 굿노트 스터디플래너
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	<span class="star">
-								★★★★★
-								<span style="width: 50%;">★★★★★</span>
-							</span>
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          	2
-                        </td>
-                        <td>
-                          	영이의숲_2023 굿노트 스터디플래너
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	<span class="star">
-								★★★★★
-								<span style="width: 50%;">★★★★★</span>
-							</span>
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          	1
-                        </td>
-                        <td>
-                          	리훈 이야기 다이어리 굿노트 아이패드 속지
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	<span class="star">
-								★★★★★
-								<span style="width: 50%;">★★★★★</span>
-							</span>
-                        </td>
-                      </tr>
+                    	<c:forEach var="review" items="${reviews.content}" varStatus="status">
+	                      <tr onclick="location.href='/profiles/url/reviews/id'">
+	                      	<td>
+	                          	10
+	                        </td>
+	                        <td>
+	                          	${review.p_name}
+	                        </td>
+	                        <td>
+	                          	${review.name}
+	                        </td>
+	                        <td>
+	                            ${review.creDate}
+	                        </td>
+	                        <td>
+	                          	<span class="star">
+									★★★★★
+									<span style="width: ${review.rating}%;">★★★★★</span>
+								</span>
+	                        </td>
+	                      </tr>
+                      </c:forEach>
                     </tbody>
                   </table>
                   <div>
+                  	<c:set var="url" value="${sessionScope.user.url}"/>
 	                 <div class="pagination">
 	                     <ul>
-	                         <li>
-	                             <a href="#"><</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">1</a>
-	                         </li>
-	                         <li class="active">
-	                             <a href="#">2</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">3</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">4</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">></a>
-	                         </li>
+	                     	<c:if test="${reviews.number-1 >= 0}" >
+					    		<li>
+						            <a href="/profiles/${url}/reviews?page=${reviews.number-1}">&lt;</a>
+						        </li>
+					    	</c:if>
+					    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
+				    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
+						            <a href="/profiles/${url}/reviews?page=${p-1}">${p}</a>
+						        </li>	
+							</c:forEach>
+							<c:if test="${reviews.number+1 < reviews.totalPages }" >
+					    		<li>
+					           		<a href="/profiles/${url}/reviews?page=${reviews.number+1}">&gt;</a>
+					        	</li>
+					    	</c:if>
 	                     </ul>
 	                 </div>
                 </div>

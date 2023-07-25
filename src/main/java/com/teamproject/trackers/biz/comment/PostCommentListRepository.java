@@ -15,4 +15,10 @@ public interface PostCommentListRepository extends JpaRepository<PostCommentList
 	
 	// 포스트 조회 시 포스트별 가장 최신 댓글 3개 출력
 	List<PostCommentListVO> findTop3ByPostIdOrderByCreDateDesc(long postId);
+	
+	// 특정 포스트 댓글 전체 조회
+	List<PostCommentListVO> findAllByPostId(long postId);
+	
+	
+	
 }

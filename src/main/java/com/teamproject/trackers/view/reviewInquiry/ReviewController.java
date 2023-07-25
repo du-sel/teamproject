@@ -26,7 +26,9 @@ import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoService;
 import com.teamproject.trackers.biz.product.ProductListVO;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.profile.ProfileService;
+import com.teamproject.trackers.biz.purchase.PurchaseListVO;
 import com.teamproject.trackers.biz.purchase.PurchaseService;
+import com.teamproject.trackers.biz.reviewInquiry.ReviewListVO;
 import com.teamproject.trackers.biz.reviewInquiry.ReviewService;
 import com.teamproject.trackers.biz.reviewInquiry.ReviewVO;
 import com.teamproject.trackers.biz.userCreator.UserVO;
@@ -48,6 +50,7 @@ public class ReviewController {
 		this.purchaseService = purchaseService;
 	}
 	
+	// 리뷰 작성 & 상세 조회
 	@RequestMapping(value ="/store/reviews/{p_id}", method = RequestMethod.GET)
 	public String getReview(@PathVariable("p_id") long p_id, Model model) {
 		long id = (long) session.getAttribute("id");
@@ -58,15 +61,26 @@ public class ReviewController {
 		return "/my/insert-review"; 
 	}
 	
-	@RequestMapping(value ="/store/reviews/{p_id}", method = RequestMethod.POST)
-	public String insrtReview(@PathVariable("p_id") long p_id, ReviewVO vo) {
-		vo.setId((long) session.getAttribute("id"));
-		vo.setP_id(p_id);
+	
+	// 판매자 리뷰 리스트 조회
+	@RequestMapping(value ="/profiles/{url}/reviews", method = RequestMethod.GET)
+	public String getReviewList(int page, @PathVariable("url") String url, Model model) {
+
+		// 정렬 및 페이징
+		Pageable pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "creDate"));	// 시작 페이지, 데이터 개수, 정렬 기준
+		Page<ReviewListVO> list = reviewService.getCreatorReview(pageable, (long) session.getAttribute("id"));
 		
-		reviewService.insertReview(vo);
+		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
+		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
+		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
 		
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
 		
-		return "redirect:/store/reviews/"+p_id; 
+		model.addAttribute("reviews", list);
+				
+		return "/my-store/review-management"; 
 	}
 }
 

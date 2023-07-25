@@ -212,17 +212,18 @@
 					    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
 					    		<c:forEach var="img" items="${imgs[p.postId]}">
 									<div class="img-card">
-					    				<img src="/resources/postimg/${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
+					    				<img src="${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
 					    			</div>
 				   	   			</c:forEach>
 			   	   			</div>
 				    	</c:if>
 					
-					<div id="post-content" class="collapse-content">
-						<div class="post-content-inner collapsed">
-							${p.content}
-						</div>
-			    	</div>
+						<div id="post-content" class="collapse-content">
+							<div class="post-content-inner collapsed">
+								${p.content}
+							</div>
+				    	</div>
+					</div>
 				</div>
 				<!-- </form> -->
 
@@ -233,7 +234,14 @@
 					
 				<div class="footer">
 					<ul class="stats commment_stats">
-						<li class="comment-count"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${p.c_count}</span></li>
+						<c:choose>
+							<c:when test="${p.c_count > 3 }">
+								<li class="comment-count" onclick="location.href='/community/posts/${p.postId}'"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${p.c_count}</span></li>
+							</c:when>
+							<c:otherwise>
+								<li class="comment-count" onclick="showCommentInput(this)"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${p.c_count}</span></li>
+							</c:otherwise>
+						</c:choose>
 						<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number">${p.t_count}</span></li>
 					</ul>
 					<div class="comment-section">
