@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.Controller;
 
 public class TmpHandler implements Controller {
 
-	@Override
+	//@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
