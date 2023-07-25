@@ -11,9 +11,7 @@ topimgContainer.addEventListener('mouseleave', function() {
   const topimgModify = topimgContainer.querySelector('#img-topimgmodify');
   topimgModify.style.display = 'none';
 });
-*/
 
-/*
 // 프로필 수정이미지 보이게 하
 const profileimgContainer = document.querySelector('.profilediv');
 
@@ -58,7 +56,8 @@ const modalClose = document.querySelector(".modalclose");
 /*
   modalClose.addEventListener('click', function() {
     $(".modal").css("display", "none");
-  });*/
+  });
+*/
   
   // 모달 닫는 함수(+ 이미지 초기화)
   function modal_close(id, src){
@@ -116,3 +115,27 @@ function loadFile(id, event) {
     container.appendChild(newImage);
     */
 };
+
+
+// 팔로우하기 버튼
+function startf(){
+	  alert("팔로우 추가 되었습니다.");
+	  // 원래 버튼은 display: none으로 감추고
+	  document.getElementById("buttonright").style.display = "none";
+	  // 바뀔 버튼은 display: block으로 표시
+	  document.querySelector("#changef").style.display = "block";
+};
+
+// 로그인 안 했을 때 멤버십 가입하기 눌렀을 때
+function showLoginAlertSub(){
+	alert("로그인이 필요합니다.");
+	$('#subModal').modal('hide'); // 모달 숨기기
+	
+}
+
+
+
+
+
+
+

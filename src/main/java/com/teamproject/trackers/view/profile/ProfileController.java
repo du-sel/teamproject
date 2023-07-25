@@ -17,15 +17,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoService;
+import com.teamproject.trackers.biz.followSubscribeLike.SubscribePurchaseService;
 import com.teamproject.trackers.biz.product.ProductListVO;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.profile.ProfileService;
+import com.teamproject.trackers.biz.userCreator.CreatorService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
 @Controller
@@ -37,19 +38,25 @@ public class ProfileController {
 	private FollowService followService;
 	private ProductService productService;
 	private SubscribeInfoService subscribeInfoService;
+	private SubscribePurchaseService subscribePurchaseService; 
+	private CreatorService creatorService;
 	
 	@Autowired
 	public ProfileController(ProfileService profileService,
 			HttpSession session,
 			FollowService followService,
 			ProductService productService,
-			SubscribeInfoService subscribeInfoService) {
+			SubscribeInfoService subscribeInfoService,
+			SubscribePurchaseService subscribePurchaseService,
+			CreatorService creatorService) {
 		
 		this.profileService = profileService;
 		this.session = session;
 		this.followService = followService;
 		this.productService = productService;
 		this.subscribeInfoService = subscribeInfoService;
+		this.subscribePurchaseService = subscribePurchaseService;
+		this.creatorService = creatorService; 
 	}
 	
 	 @RequestMapping(value ="/{url}", method = RequestMethod.GET)
@@ -59,23 +66,25 @@ public class ProfileController {
 	         model.addAttribute("profile", profileService.getUser(url));  // url에 따른 프로필 정보
 	         model.addAttribute("count",followService.Follower(url)); //팔로우 수
 	         model.addAttribute("subcount", subscribeInfoService.Sub(url)); //구독 수
-	         
+	         model.addAttribute("getMembership",subscribeInfoService.getSubInfo(url)); //url 따른 멤버십 정보 가져오기
 	      }else {
 	         uvo.setId((long)session.getAttribute("id"));
 	         model.addAttribute("profile", profileService.getUser(url));
 	         model.addAttribute("count",followService.Follower(url));
 	         model.addAttribute("subcount", subscribeInfoService.Sub(url));
-	         model.addAttribute("check",followService.followT(url, (long)session.getAttribute("id"))); // 팔로우 여부 확인
-	         
+	         model.addAttribute("checkf",followService.followT(url, (long)session.getAttribute("id"))); // 팔로우 여부 확인
+	         model.addAttribute("checks",subscribePurchaseService.SubT(url, (long)session.getAttribute("id"))); // 구독 여부 확인
+	         model.addAttribute("getMembership",subscribeInfoService.getSubInfo(url)); //url 따른 멤버십 정보 가져오기
+	         model.addAttribute("getCreator", creatorService.getCreator(url));
+	         	   
 	      }
 	   
-	      
-	        return "profiles/profile";
+	        return "/profiles/profile";
 	      
 	   }
 	
 	
-
+	 
 	
         ////* 크리에이터 프로필 - 상품목록 조회 *////
 	@RequestMapping(value="/{url}/products", method=RequestMethod.GET, produces = "application/text; charset=UTF-8")
