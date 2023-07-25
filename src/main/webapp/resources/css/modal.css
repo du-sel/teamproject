@@ -143,3 +143,37 @@
 	border-bottom: 1px solid #e4e4eb;
 	text-align: center;
 }
+
+
+
+
+/* 
+---------------------------------------------
+image-modal
+--------------------------------------------- 
+*/
+
+#image-modal {
+	width: auto;
+	height: auto;
+}
+#modal:has(#image-modal) {
+	text-align: center;
+}	
+
+.modal-dialog:has(#image-modal) {
+	display: inline-block;
+	max-width: unset;
+	width: auto;
+	height: auto;
+}	
+
+
+#image-modal .modal-header,
+#image-modal .modal-body,
+#image-modal .modal-footer {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+

@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.teamproject.trackers.biz.comment.CommentService;
 import com.teamproject.trackers.biz.comment.CommentVO;
 import com.teamproject.trackers.biz.comment.PostCommentListVO;
+import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.post.PostIMGService;
 import com.teamproject.trackers.biz.post.PostIMGVO;
 import com.teamproject.trackers.biz.post.PostInfoListVO;
@@ -55,11 +56,22 @@ public class PostController {
 	private CommentService commentService;
 	
 	@Autowired
+	private FollowService followService;
+	
+	@Autowired
 	private HttpSession session;
 
 	
 	
-	// 파라미터 없이 들어올 경우 우회 
+	// 이미지 모달창
+	@RequestMapping(value="/image-modal")
+	public String imageModal() {
+		return "modal/image-modal";
+	}
+	
+	
+	
+	// posts 없이 들어올 경우 우회 
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String coMain(Model model) {
 		return "redirect:/community/posts?page=0&type=all";
@@ -74,17 +86,17 @@ public class PostController {
 
 		PostVO p = postService.insertPost(vo);	
 		
-		
 		List<String> fileNames = new ArrayList<>();
 				
 		for (MultipartFile file : files) {
 			if(!file.isEmpty()) { //uploadFile !=null
-				
-				String path = request.getServletContext().getRealPath("/resources/file/");
+
+				String path = request.getServletContext().getRealPath("/resources/postimg/");
+
 				//새로운 파일 이름
 				String fileName = p.getPostId()+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
 				fileNames.add(fileName);
-				
+System.out.println("newfile "+path+fileName);				
 				// 로컬에 파일 저장			
 				file.transferTo(new File(path+fileName));
 	
@@ -110,17 +122,33 @@ public class PostController {
 	public String deletePost(@PathVariable("postId")Long postId) {
 		postService.deletePost(postId);
 		// comment도 삭제
-		return "redirect:/community";
+		return "redirect:/community/posts";
 	}	
+	
+	// 댓글 작성
+	/*	@RequestMapping(value = "posts/{postId}/comments", method = RequestMethod.POST)
+		public String insertComment(CommentVO vo, HttpServletRequest request) {
+
+	System.out.println("vo.postid "+vo.getPostId());
+			commentService.insertComment(vo);
+			request.setAttribute("postId", vo.getPostId());
+			
+			String postId = Long.toString(vo.getPostId());
+			
+			return "redirect:/community/posts/"+postId;
+		}
+  	*/
 
 	// 댓글 삭제
-	@RequestMapping(value = "/{postId}/comments/{comment_id}", method = RequestMethod.GET)
+	/*
+	@RequestMapping(value = "/{postId}/comments/{comment_id}", method = RequestMethod.DELETE)
 	public String deleteComment(@PathVariable("comment_id")Long commentid, @PathVariable("postId")Long postId) {
 System.out.println("delete postid "+postId);		
 		commentService.deleteComment(commentid);
 		String postid = Long.toString(postId);
 		return "redirect:/community/posts/"+postid;
 	}
+ 	*/
 	
 	
 	// 상세 조회
@@ -130,11 +158,13 @@ System.out.println("delete postid "+postId);
 		CommentController cc = new CommentController();
 		//cc.getCommentList(postId, model);
 		model.addAttribute("comments",commentService.getCommentList(postId));
-System.out.println("com "+commentService.getCommentList(postId).size());		
+		System.out.println("com "+commentService.getCommentList(postId).size());		
 		model.addAttribute("commentService",commentService);
 		model.addAttribute("userinfo",postService.getUser(postId).get());	
 		model.addAttribute("post", postService.getPost(postId).get());
-		model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
+		if(postIMGService.getPostIMG(postId).isPresent()) {
+			model.addAttribute("postIMG", postIMGService.getPostIMG(postId).get());
+		}
 
 		return "community/co-post";
 	}
@@ -158,7 +188,8 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 	// 리스트 조회(페이징)
 	@RequestMapping(value="/posts", method=RequestMethod.GET)
 	public String getPostList(int page, String type, String keyword, Model model) {
-						
+		
+		
 		// 정렬 및 페이징 , 검색 처리
 		Page<PostInfoListVO> list = null;
 		Pageable pageable = null;
@@ -212,7 +243,7 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 					commentList.put(item.getPostId(), comments);
 				}
 			}
-		}		
+		}
 		
 		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
 		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
@@ -228,8 +259,26 @@ System.out.println("com "+commentService.getCommentList(postId).size());
 		model.addAttribute("type", type);
 		model.addAttribute("keyword", keyword);
 		
-		return "community/co-main";
+		// 사용자별 팔로우 리스트
+		long id = 0;
+		List<Object[]> followList = null;
 		
+		if (session.getAttribute("id") != null) {
+			id = (long) session.getAttribute("id");
+			followList = followService.getfollowList((long) session.getAttribute("id"));
+			System.out.println(followList.size());
+			System.out.println(followList.get(0)[0]);
+			System.out.println(followList.get(0)[1]);
+			System.out.println(followList.get(0)[2]);
+			System.out.println(followList.get(1)[0]);
+			System.out.println(followList.get(1)[1]);
+			System.out.println(followList.get(1)[2]);
+			
+		}
+		model.addAttribute("followList", followList);
+		
+		return "community/co-main";
 	}
+	
 
 }

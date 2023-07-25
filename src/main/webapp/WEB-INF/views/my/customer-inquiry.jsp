@@ -20,7 +20,7 @@
         </div>
 		<div class="container">
 			<div class="row justify-content-center">
-				<a href="inquiry-history.do" class="back">&lt; 문의 내역</a>
+				<a href="/store/center/inquires" class="back">&lt; 문의 내역</a>
                	<div class="col-lg-12 form-data">
 	               	<div class="sub-title">
 	               		<h6>작성 일자</h6>

@@ -20,7 +20,7 @@
         </div>
 		<div class="container">
 			<div class="row justify-content-center">
-				<a href="inquiry-history.do" class="back">&lt; 문의 내역</a>
+				<a href="/store/products/inquiries" class="back">&lt; 문의 내역</a>
 				<div class="col-lg-12 d-flex p-info scroll-custom">
                		<img src="/resources/images/men-01.jpg" alt="">
                		<div class="d-flex flex-column justify-content-center p-text-info">

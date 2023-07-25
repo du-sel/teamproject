@@ -244,7 +244,6 @@ function getCreatorProductList(page, sort) {
 			    <c:when test="${!empty sessionScope.user.id}">
 			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
 			            <c:choose>
-			            
 			                <c:when test="${sessionScope.user.url != profile.url}"> <!-- 로그인해서 남의 프로필에 들어왔을 때 -->
 			                	<c:choose>
 			                		<c:when test="${checks.getId() eq sessionScope.user.id && checkf.getFrom_id() eq sessionScope.user.id && checkf.getTo_id() eq profile.id}">

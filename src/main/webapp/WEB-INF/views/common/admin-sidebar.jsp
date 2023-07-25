@@ -20,13 +20,13 @@
 	    </div>
 	    <ul class="nav">
 	      <li>
-	        <a href="notice-popup.do">
+	        <a href="/popup">
 	          <i class="tim-icons icon-volume-98"></i>
 	          <p>팝업 관리</p>
 	        </a>
 	      </li>
 	      <li>
-	        <a href="customer-center.do">
+	        <a href="/center/inquires">
 	          <i class="tim-icons icon-chat-33"></i>
 	          <p>고객 센터</p>
 	        </a>

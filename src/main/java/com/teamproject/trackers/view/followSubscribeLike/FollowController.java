@@ -12,7 +12,10 @@ import com.teamproject.trackers.biz.common.AlertVO;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
 import com.teamproject.trackers.biz.profile.ProfileService;
+
+import com.teamproject.trackers.view.common.CommonController;
 import com.teamproject.trackers.biz.userCreator.UserVO;
+
 
 @Controller
 public class FollowController {
@@ -23,13 +26,14 @@ public class FollowController {
 	private HttpSession session;
 	@Autowired
 	private ProfileService profileService;
-	
-	private AlertVO alert = new AlertVO();
+	@Autowired
+	public CommonController common;
 
 	
 	  // 언팔로우 (삭제)
 		/*
 	  @RequestMapping(value="/profiles/{url}", method=RequestMethod.DELETE)
+
 		  public String deleteFollower(FollowVO vo, @PathVariable("url") String url) throws Exception { vo.setFrom_id((long)session.getAttribute("id"));
 		  vo.setTo_id(profileService.getUser(url).getId());
 		  System.out.println(vo.getTo_id()+ "to_id");
@@ -62,6 +66,7 @@ public class FollowController {
 		 
 		return "redirect:/profiles/"+url;
 	 }
+
 	 
 	// 언팔로우
 	 @RequestMapping(value ="/profiles/{url}", method = RequestMethod.DELETE)
