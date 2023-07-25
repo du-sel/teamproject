@@ -88,7 +88,7 @@ public class PostController {
 		for (MultipartFile file : files) {
 			if(!file.isEmpty()) { //uploadFile !=null
 				
-				String path = request.getServletContext().getRealPath("/resources/file/");
+				String path = request.getServletContext().getRealPath("/resources/postimg/");
 				//새로운 파일 이름
 				String fileName = p.getPostId()+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
 				fileNames.add(fileName);
