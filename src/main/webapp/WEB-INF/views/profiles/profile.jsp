@@ -636,7 +636,9 @@ $(()=> {
 			    <c:otherwise>
 			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
 			            <button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button>
+				<c:if test="${!empty getMembership }">	
 			            <button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" >구독</button>
+				</c:if>
 			        </div>
 			    </c:otherwise>
 			 </c:choose>   
