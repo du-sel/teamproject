@@ -183,7 +183,8 @@
 		<c:forEach var="p" items="${posts.content }">
 			<!-- Post -->
 			<section class="post"> 
-				<form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'"><!--  onclick="location.href='/community/posts/${p.postId}'" -->
+				<%-- <form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'"> --%>
+				<div onclick="location.href='/community/posts/${p.postId}'">
 					<div class="header">
 						<a href="/profiles/${p.url}" class="author">
 						    <img src="${p.profile_img}" alt="프로필 이미지" />
@@ -201,16 +202,7 @@
 							<span class="published">${p.creDate}</span>
 						</div>
 					</div>
-					
-				<%--	<c:if test="${!empty imgs[p.postId]}">	<!-- 첨부 이미지 있는 경우 --> 
-						<div class="post_img-outer">
-				    		<c:forEach var="img" items="${imgs[p.postId]}">
-				   	   			<div class="post_img">
-									<img src="${img.postimg}" alt="포스트 첨부 이미지" />
-								</div>
-			   	   			</c:forEach>
-						</div>
-			    	</c:if>	 --%>
+
 			    	
 			    	<div class="post-content-container row justify-content-center">
 				    	<c:if test="${!empty imgs[p.postId]}">
@@ -233,8 +225,10 @@
 						<div class="post-content-inner collapsed">
 							${p.content}
 						</div>
-					</div>
-				</form>
+			    	</div>
+				</div>
+				<!-- </form> -->
+
 					
 
 				
@@ -341,7 +335,7 @@
 
 	</div>
 		
-		
+		<input type="hidden" id="sessionId" name="id" value="${user_id}">
 	</main>
 </div>
 
