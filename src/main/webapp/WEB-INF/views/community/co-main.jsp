@@ -266,7 +266,7 @@
 									</li>
 				   	   			</c:forEach>
 							</ul>
-							<div class="comment-button" type="button" onclick="showCommentInput(this)"><span class="comment-plus">+</span> 댓글쓰기</div>
+							<!-- <div class="comment-button" type="button" onclick="showCommentInput(this)"><span class="comment-plus">+</span> 댓글쓰기</div> -->
 				    	</c:if>	
 					    	
 						<div class="button-row">
