@@ -140,7 +140,6 @@ function goPurchase() {
 
           <!-- 두번째 탭 (구매후기) -->
           <div id = "review" class ="tab-pane">
-            <br><br>
             <c:forEach var="review" items="${reviews}">
 				<div class="speech-bubble">
 					<table>
@@ -156,7 +155,7 @@ function goPurchase() {
 									<span style="width: ${review.rating}%;">★★★★★</span>
 								</span>
 					        </div>
-					        <p class="user-id">${review.name} &nbsp;| &nbsp; ${review.creDate}</p>
+					        <p class="user-id">${review.name}&nbsp;|&nbsp;${review.creDate}</p>
 					        <!-- <p class="product-name">상품명 : 춘식이 다이어리</p> -->
 					      </div>
 					    </td>
@@ -170,7 +169,6 @@ function goPurchase() {
 					  </tr>
 					</table>
 				</div>
-				<br>
 			</c:forEach>
           </div>
 

@@ -41,6 +41,10 @@ public class ReviewListVO {
 	private String name;
 	private String profile_img;
 	
+	@Column(name="c_id")
+	private long cid;
+	private String p_name;
+	
 	
 	public long getId() {
 		return id;
@@ -89,5 +93,17 @@ public class ReviewListVO {
 	}
 	public void setProfile_img(String profile_img) {
 		this.profile_img = profile_img;
+	}
+	public long getCid() {
+		return cid;
+	}
+	public void setCid(long cid) {
+		this.cid = cid;
+	}
+	public String getP_name() {
+		return p_name;
+	}
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
 	}
 }

@@ -1105,9 +1105,8 @@ pagination
 
 .pagination ul li a:hover,
 .pagination ul li.active a {
-  background-color: transparent;
-  color: #e97d7d;
-  font-weight: bolder;
+  background-color: #2a2a2a;
+  color: #fff;
 }
 
 
@@ -1756,9 +1755,11 @@ Single Product Page
 #product .nav-tabs a:hover {
     color: #b8b8c4 !important;
 }
-
 #product .tab-content div{
    text-align:center;
+}
+#product .tab-content div.rating{
+   text-align:left;
 }
 
 #product .sticky {
@@ -1808,13 +1809,13 @@ Single Product Page
 /* -----------------말풍선 효과-------------------- */
 
 #product .speech-bubble {
-  width: 1100px;
+  max-width: 1100px;
+  width: 100%;
   position: relative;
   background-color: #f2f2f6;
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 20px;
-  margin: 0 auto;
+  margin: 0 auto 15px;
 }
 
 #product .speech-bubble table{
@@ -1835,6 +1836,10 @@ Single Product Page
   left: 50%;
   border: 10px solid transparent;
   transform: translateX(-50%);
+}
+
+#product .speech-bubble .review-content{
+	margin: 10px 0 0 10px;
 }
 
 /* ------------------표 꾸미기------------------ */
@@ -1860,6 +1865,7 @@ Single Product Page
 #product .profile-image {
   width: 70px;
   height: 70px;
+  border-radius: 50%;
 }
 
 
