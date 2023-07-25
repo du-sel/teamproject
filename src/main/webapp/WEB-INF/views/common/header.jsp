@@ -178,7 +178,7 @@
 										</form> 
 									</div>
 									<c:choose>
-										<c:when test="${!empty sessionScope.id}"> <!-- if와 동일 -->
+										<c:when test="${!empty sessionScope.user}"> <!-- if와 동일 -->
 											<div id="user-menu" class="scroll-to-section submenu">
 			                          			<img src="${sessionScope.user.profile_img}" alt="프로필사진" id="profile-image">
 			                          			<ul>
