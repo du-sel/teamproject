@@ -108,17 +108,14 @@
 								<button class="submiticon" type="submit" onclick="return checkPhotoCount()"><i class="fa fa-paper-plane"></i></button>
 							</div>
 							
-								<input type="file" accept="image/*" name="post-img" id="thumbnail" 
-										onchange="imgPreview(event);" multiple="multiple" >
-								<div class="d-flex align-items-center thumb-title inputphoto">
-									<h6>사진&nbsp;<small>최대 4개까지 업로드 가능</small></h6>
-									<p></p>
-								</div>
-								<div id="thumb-preview" class="thumb-preview"></div>
-								<input type="file" accept="image/*" name="post-img" id="thumbnail" 
-										onchange="imgPreview(event);" multiple="multiple" >
+							<input type="file" accept="image/*" name="post-img" id="thumbnail" 
+									onchange="imgPreview(event);" multiple="multiple" >
+							<div class="d-flex align-items-center thumb-title inputphoto">
+								<small>사진 최대 4개까지 업로드 가능</small>
+								<p></p>
 							</div>
-							<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
+							<div id="thumb-preview" class="thumb-preview"></div>
+								
 						</div>
 					</form>
 				</section>
