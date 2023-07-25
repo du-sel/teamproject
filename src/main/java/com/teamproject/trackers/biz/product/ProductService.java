@@ -9,32 +9,62 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryRepository;
+import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryVO;
+import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryRepository;
+import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryVO;
+import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailRepository;
+import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
+
 @Service
 public class ProductService {
 	
 	private ProductRepository productRepository;
-	@Autowired
 	private ProductListRepository productlistRepository;
-	@Autowired
 	private DesignCategoryRepository designCategoryRepository;
 	private PageCategoryRepository pageCategoryRepository;	
 	private ProductDetailRepository productDetailRepository;
 	private CreatorListRepository creatorlistRepository;
+	private ProductPageRepository productPageRepository;
 	
 	@Autowired
 	public ProductService(ProductRepository productRepository,
+			ProductListRepository productlistRepository,
 			DesignCategoryRepository designCategoryRepository,
 			PageCategoryRepository pageCategoryRepository,
 			ProductDetailRepository productDetailRepository,
-			CreatorListRepository creatorlistRepository) {
+			CreatorListRepository creatorlistRepository,
+			ProductPageRepository productPageRepository) {
 		
 		this.productRepository= productRepository;
+		this.productlistRepository = productlistRepository;
 		this.designCategoryRepository = designCategoryRepository;
 		this.pageCategoryRepository = pageCategoryRepository;
 		this.productDetailRepository = productDetailRepository;
 		this.creatorlistRepository = creatorlistRepository;
+		this.productPageRepository = productPageRepository;
 	}
 	
+	
+	/* st-main 베스트 상품 조회 */
+	public List<ProductListVO> getBestProduct() {
+		return productlistRepository.findTop5ByOrderByPopularityDescCreDateDesc();
+	}
+	
+	/* st-main 최신 상품 조회 */
+	public List<ProductListVO> getRecentProduct() {
+		return productlistRepository.findTop5ByOrderByCreDateDesc();
+	}
+	
+	/* st-main 인기 크리에이터 조회 */
+	public List<CreatorListVO> getBestCreator() {
+		return creatorlistRepository.findTop5ByOrderByPopularityDescSaleDesc();
+	}
+	
+	/* st-main 인기 크리에이터 대표 상품 조회 */
+	public ProductVO getBestSignature(long id) {
+		return productRepository.findTopByIdAndSignatureOrderByRatingDescCreDateDesc(id, true);
+	}
 	
 	
 	/* p_id 로 특정 상품 조회 */
@@ -47,7 +77,19 @@ public class ProductService {
 		return productRepository.findByFile(file);
 	}
 	
+	/* p_id 로 상품 디테일 조회 */
+	public ProductDetailVO getProductDetail(long pid) {
+		return productDetailRepository.findByPid(pid);
+	}
 	
+	/* p_id 로 상품 상세정보 모두 조회 */
+	public ProductPageVO getProductPage(long pid) {
+		return productPageRepository.findByPid(pid);
+	}
+	
+	
+	
+	/* 상품 등록 */
 	public void insertProduct(ProductVO vo) {
 		productRepository.save(vo);
 	}
@@ -70,18 +112,17 @@ public class ProductService {
 	
 
 	
-	
-	// 상품 전체 조회(검색 x)
+	/* 상품 전체 조회(검색 x) */
 	public Page<ProductListVO> getProductList(Pageable pageable) {
 		return productlistRepository.findAll(pageable);
 	}
 	
-	// 상품 전체 조회(검색 o)
+	/* 상품 전체 조회(검색 o) */
 	public Page<ProductListVO> getSearchProductList(String keyword, Pageable pageable) {
 		return productlistRepository.findByPnameContaining(keyword, pageable);
 	}
 
-	// 상품 필터링
+	/* 상품 필터링 */
 	public Page<ProductListVO> getCategorList(String category, String keyword, Pageable pageable) {
 		
 		Page<ProductListVO> list = null;
@@ -104,19 +145,53 @@ public class ProductService {
 	}
 	
 	
-	// 스토어(크리에이터) 조회(검색 x)
+	/* 스토어(크리에이터) 조회(검색 x) */
 	public Page<CreatorListVO> getCreatorList(Pageable pageable) {
 		return creatorlistRepository.findAll(pageable);
 
 	}
 	
-	// 스토어(크리에이터) 조회(검색 o)
+	/* 스토어(크리에이터) 조회(검색 o) */
 	public Page<CreatorListVO> getSearchCreatorList(String keyword, Pageable pageable) {
 		return creatorlistRepository.findBystoreNameContaining(keyword, pageable);
 	}
 	
-	// 스토어(크리에이터) 대표 상품 리스트
-	public List<ProductVO> getCreatorSignatureList(){
-		return productRepository.getCreatorSignatureList();
+	/* 스토어(크리에이터) 대표 상품 리스트 */
+	public List<ProductVO> getCreatorSignatureList(long id){
+		return productRepository.getCreatorSignatureList(id);
 	}
+	
+	
+	/* 크리에이터 상품 전체조회 */
+	public Page<ProductListVO> getCreatorProductList(long id, Pageable pageable) {
+		return productlistRepository.findAllById(id, pageable);
+	}
+	
+	//-----------------------------------------------정희
+	
+		/* 상품 삭제 */
+		public void deleteProduct(long p_id) {
+	        // 상품 삭제 로직을 여기에 작성합니다.
+	        // 상품 ID로 상품을 조회하고, 조회된 상품을 삭제합니다.
+	        productRepository.deleteById(p_id);
+	    }
+		
+		// 판매자 ID로 상품 목록 조회
+	    public List<ProductVO> getProductListBySellerId(long id) {
+	        return productRepository.findBySellerId(id);
+	    }
+
+	    // 삭제된 상품 ID 목록 조회
+	    public List<Long> getDeletedProductIds() {
+	        List<Long> deletedProductIds = new ArrayList<>();
+	        // 삭제된 상품 ID 목록 조회 로직을 추가해주세요.
+	        // 예를 들면, 삭제 상태를 나타내는 컬럼을 가진 테이블에서 삭제 상태인 상품들의 ID를 조회하는 쿼리를 실행합니다.
+	        // 또는 삭제 상태를 나타내는 특정 필드를 가진 객체들을 가져와서 해당 ID들을 추출합니다.
+	        // 이 예시에서는 빈 리스트를 반환합니다. 실제 로직에 맞게 수정해주세요.
+	        return deletedProductIds;
+	    }
+		
+		
+		
+		
 }

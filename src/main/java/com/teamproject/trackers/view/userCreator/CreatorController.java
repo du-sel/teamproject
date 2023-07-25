@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.teamproject.trackers.biz.common.AlertVO;
 import com.teamproject.trackers.biz.userCreator.CreatorService;
 import com.teamproject.trackers.biz.userCreator.CreatorVO;
 import com.teamproject.trackers.biz.userCreator.CreatorViewVO;
+import com.teamproject.trackers.view.common.CommonController;
+import com.teamproject.trackers.view.userCreator.UserController;
 
 @Controller
 public class CreatorController {
@@ -20,12 +23,15 @@ public class CreatorController {
 	private CreatorService creatorService;
 	@Autowired
     private HttpSession session;
-	
-	// 프로필 임시 연결
-	@RequestMapping(value="/profiles")
-	public String getProfile() {
-		return "/profile/profile";
-	}	
+	@Autowired
+	public CommonController common;
+
+	/*
+	 * // 프로필 임시 연결
+	 * 
+	 * @RequestMapping(value="/profiles") public String getProfile() { return
+	 * "/profiles/profile"; }
+	 */
 
 	
 	// 스토어 열기(크리에이터 등록)
@@ -37,8 +43,12 @@ public class CreatorController {
 		
 		creatorService.insertCreator(vo);
 		creatorService.updateUrlTel(view_vo);
-		
-		return "redirect:/profiles";
+
+		common.alert.setStr("스토어가 생성되었습니다.");
+		common.alert.setPath("/profiles/"+view_vo.getUrl());
+		common.alert.setFlag(true);
+
+		return "redirect:/common";
 	}
 	
 	// 스토어 조회
@@ -52,12 +62,16 @@ public class CreatorController {
 	
 	// 스토어 수정
 	@RequestMapping(value="/profiles/creators", method=RequestMethod.PUT)
-	public String updateCreator(CreatorViewVO vo) {
+	public String updateCreator(CreatorViewVO vo, Model model) {
 		vo.setId((long)session.getAttribute("id"));
 		creatorService.updateCreator(vo);
-		creatorService.updateUrl(vo);
+		creatorService.updateUrl(vo);		
 		
-		return "redirect:/profiles/creators";
+		common.alert.setStr("스토어 정보가 수정되었습니다.");
+		common.alert.setPath("/profiles/creators");
+		common.alert.setFlag(true);
+
+		return "redirect:/common";
 	}
 	
 		
@@ -66,7 +80,12 @@ public class CreatorController {
 	public String deleteCreator(CreatorVO vo) {
 		vo.setId((long)session.getAttribute("id"));
 		creatorService.deleteCreator(vo);
-		return "redirect:/store/main";
+		
+		common.alert.setStr("스토어 삭제가 완료되었습니다.");
+		common.alert.setPath("/store/main");
+		common.alert.setFlag(true);
+
+		return "redirect:/common";
 	}
 	
 	

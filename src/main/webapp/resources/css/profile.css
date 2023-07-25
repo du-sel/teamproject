@@ -10,10 +10,10 @@ tbody,tfoot,thead,tr,th,td,article,aside,
 canvas,details,embed,figure,figcaption,footer,
 header,main,menu,nav,output,ruby,section,summary,
 time,mark,audio,video{
-   margin: 0; padding: 0; border: 0; font-size: 100%;
+  margin: 0; padding: 0; border: 0; font-size: 100%;
 } */
 
-/*
+/* 
 #myprofile .firstcontainer{
 	border: 1px solid gray;
 	padding-top:100px;
@@ -30,18 +30,40 @@ time,mark,audio,video{
 	
 	height:auto;
 }
-
+#myprofile #img-topimgmodify{
+	display: none;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	text-align: center;
+	font-size: 30px;
+	
+}
 /* 상단이미지 */
+#myprofile div.row.img{
+	margin-bottom: 70px;
+}
 #myprofile .topimg{
-	border-bottom:1px solid lightgray;
+/* 	border-bottom:1px solid lightgray; */
 	height: 208px;
-	padding-top: 70px;
+}
+#myprofile #my-topimgdiv:hover{
+	opacity: 0.6;
 }
 #myprofile .topimgdiv{
 	height: 158px;
-	background-color: #e6e9eb;
+/* 	background-color: #e6e9eb; */
+	padding-top: 70px;
 }
-
+#myprofile .topimgdiv img{
+	height:inherit;
+	width: inherit;
+	object-fit: cover;
+}
+#myprofile .topimgdiv:hover #img-topimgmodify{
+	display: block;
+}
 /* #img-topimgmodify{
 	display: none;
 	width: 100px;
@@ -58,7 +80,8 @@ time,mark,audio,video{
 	font-size: 13px;
 	font-weight: 600;
 }
-/* 상단 이미지 업로드 글씨 */
+
+/* 상단 이미지 업로드 글씨
 #myprofile #img-topimgmodify{
 	display: none;
 	padding-top: 70px;
@@ -67,7 +90,7 @@ time,mark,audio,video{
 	color:#2a2a2a;
 	
 }
-
+ */
 #myprofile .seconddiv{
 	min-height: 160px;
 
@@ -134,6 +157,23 @@ time,mark,audio,video{
 	float: right;
 	margin-left: 10px;
 }
+#myprofile .offbtn{
+	display: inline-block;
+	border-radius: 5px;
+	min-width: 120px;
+	width: auto;
+    height: 44px;
+	padding-top: 9px;
+	text-align: center;
+	float: right;
+	margin-left: 10px;
+	background-color: #586579;
+	color: white;
+}
+#myprofile .offbtn:hover{
+	color:black;
+	background-color: #e4e4eb;
+}
 
 #myprofile .longtext{
 	padding-right: 9px;
@@ -164,7 +204,27 @@ time,mark,audio,video{
 }
 
 /* 프로필 수정 이미지 */
+#myprofile #my-profileimg:hover{
+	opacity: 0.6;
+}
+#myprofile #profile{
+	background: #fff;
+	border: none;
+	border-radius: 50%;
+	
+} 
 #myprofile .profileimgmodify{
+	width: 120px;
+	height: 120px;
+
+	/* border-radius: 50%; */
+
+ 	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#myprofile #profileimgmodify{
 	width: 120px;
 	height: 120px;
 
@@ -173,9 +233,9 @@ time,mark,audio,video{
  	display: flex;
     justify-content: center;
     align-items: center;
-
-
 }
+
+
 
 #myprofile .navli{
 	text-align: center;
@@ -192,15 +252,19 @@ time,mark,audio,video{
 	height: auto;
 }
 
-/* 이미지 업도르 */
+/* 이미지 업로드 */
 #myprofile .image-upload {
-	margin-top: 20px;
+	/* margin-top: 20px;
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; */
     position: relative;
     z-index: 2;
+    
+    top: 40px;
+    width: 90%;
+    margin: 0 auto;
 }
 
 #myprofile .button {
@@ -213,8 +277,9 @@ time,mark,audio,video{
 #myprofile label {
     cursor: pointer;
     /* font-size: 1em; */
-    font-size: 30px;
-	font-weight: 500;
+    /* font-size: 30px; */
+	font-weight: 600;
+    padding: 10px;
 }
 
 #myprofile #chooseFile {
@@ -231,8 +296,9 @@ time,mark,audio,video{
 #myprofile .fileInput {
     display: flex;
     align-items: center;
-    border-bottom: solid 2px black;
-    width: 60%;
+    border-bottom: solid 2px #000;
+    /* width: 60%; */
+    width: 100%;   
     height: 30px;
 }
 
@@ -241,20 +307,25 @@ time,mark,audio,video{
 }
 
 #myprofile .buttonContainer {
-    width: 15%;
+    /* width: 15%; */
+    width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 10px;
-    background-color: black;
-    color: white;
-    border-radius: 30px;
-    padding: 10px;
+    /* background-color: black; */
+    background-color: #e4e4eb;
+    color: #2a2a2a;
+   /*  border-radius: 30px; */
+    border-radius: 10px;
     font-size: 0.8em;
 
     cursor: pointer;
 }
-
+#myprofile .buttonContainer:hover{
+	background-color: #586579;
+	color: #fff;
+}
 #myprofile .image-show {
     /*z-index: -1;*/
     display: flex;
@@ -352,10 +423,14 @@ time,mark,audio,video{
   border-radius: 20px;
   max-width: 500px;
   width:auto;
-  height: 460px;
+  /* height: 460px; */
+  height: 250px;
   position: relative;
-  top:10px;
+  /* top:10px; */
   left:6.3px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 30px;
 }
 
 #myprofile .modalclose {
@@ -539,13 +614,25 @@ time,mark,audio,video{
 	margin-top: 15px;
 	padding-top: 15px;
 }
-
-#myprofile #uploadbtn{
+#myprofile .uploadbtn{
 	position:relative;
-	top: 270px;
-
-	width:400px;
+    bottom: -90px;
+}
+#myprofile #uploadbtn{
+	/* position:relative; */
+	/* top: 270px; */
+	/* width:400px; */
 	border-radius: 5px;
+	
+	width: 90%;
+    height: 35px;
+    background-color: #e4e4eb;
+	border: none;
+	font-weight: 600;
+}
+#myprofile #uploadbtn:hover{
+	background-color: #586579;
+	color: #fff;
 }
 
 /* 포스트부분 */
@@ -565,3 +652,11 @@ time,mark,audio,video{
 	display: none;
 }
 
+
+
+/*  페이징 버튼  */
+
+#myprofile .pagination ul li a:hover, 
+#myprofile .pagination ul li.active a {
+    color: #fff;
+}

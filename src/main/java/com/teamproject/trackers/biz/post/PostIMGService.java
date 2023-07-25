@@ -25,14 +25,19 @@ public class PostIMGService {
 		}
 	//삭제
 		public void deletePostIMG(Long postId) {
-			postIMGRepository.deleteById(postId);
+			postIMGRepository.deleteByPostId(postId);
 		}
 	//상세 조회
 		public Optional<PostIMGVO> getPostIMG(Long postId) {
-			return postIMGRepository.findById(postId);
+			return postIMGRepository.findByPostId(postId);
 		}
 	//리스트 조회
 		public List<PostIMGVO> getPostIMGList(){
 			return postIMGRepository.findAll();
+		}
+		
+	// 페이징에 따른 조회
+		public List<PostIMGVO> getPImgList(long postId){
+			return postIMGRepository.getPImgList(postId);
 		}
 }

@@ -44,6 +44,11 @@ public class UserService {
 	
 	
 	// 유효성
+	// 로그인 성공 유무
+	public boolean validateSignin(UserVO vo) {
+		return userRepository.existsByEmailAndPassword(vo.getEmail(), vo.getPassword());
+	}
+	
 	// 이메일(중복 체크)
 	public boolean validateEmail(UserVO vo) {
 		return userRepository.existsByEmail(vo.getEmail());
@@ -52,5 +57,18 @@ public class UserService {
 	// url(중복 체크)
 	public boolean validateURL(UserVO vo) {		
 		return userRepository.existsByUrl(vo.getUrl());
+	}
+	
+	//----------------------------------------------
+	// 프로필
+	
+	// 프로필 이미지 업로드
+	public void updateProfileImage(UserVO vo) {
+		userRepository.updateProfileImg(vo.getId(), vo.getProfile_img());
+	}
+	
+	// 배경 이미지 업로드
+	public void updateBackgorundImage(UserVO vo) {
+		userRepository.updateBackgroundImg(vo.getId(), vo.getBg_img());
 	}
 }

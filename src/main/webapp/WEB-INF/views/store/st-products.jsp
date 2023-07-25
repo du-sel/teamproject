@@ -24,8 +24,8 @@
         	<div class="row justify-content-center">
         	    <!-- 상품정렬 버튼 추가 -->
             	<div class="col-lg-12 d-flex justify-content-between sort">
-					<div>
-						<h5>상품정렬</h5>
+					<div id="category-path" class="d-flex">
+						<h5 class="d-flex flex-column justify-content-center"></h5>
 					</div>
 					<form action="/store/products" method="get">
 						<input type="hidden" name="page" value="0">
@@ -45,6 +45,11 @@
          </main>        	
             <div class="row">
        
+       			<c:if test="${(!empty keyword || keyword ne '') && products.totalElements == 0}">
+					<div class="empty-search">
+						<p>'<span>${keyword}</span>' 검색 결과가 없습니다.</p>
+					</div>
+				</c:if>
  				<!-- Product Card Start -->
             	<c:forEach var="i" items="${products.content}">
             		<div class="col-lg-4">
@@ -52,15 +57,15 @@
 	                        <div class="thumb">
 	                            <div class="hover-content">
 	                                <ul>
-	                                    <li><i class="fa fa-shopping-cart"></i></li>
+	                                    <li onclick="preventDefaultGoCart(event, ${i.pid})"><i class="fa fa-shopping-cart"></i></li>
 	                                </ul>
 	                            </div>
 	                            <img src="${i.thumbnail}" alt="상품 썸네일">
 	                        </div>
 	                        <div class="down-content">
 	                            <h4>${i.pname}</h4>
-	                            <c:if test="${i.sale != 0}"><span class="cost"> <fmt:formatNumber value="${i.price}" pattern="#,###" />원</span></c:if>
 	                            <span class="price"> <fmt:formatNumber value="${i.salePrice}" pattern="#,###" />원</span>
+	                            <c:if test="${i.sale != 0}"><span class="cost"> <fmt:formatNumber value="${i.price}" pattern="#,###" />원</span></c:if>
 	                            <ul class="stars">
 	                                <span class="star">
 										★★★★★
@@ -122,6 +127,56 @@
     <!-- ***** Products Area Ends ***** -->
     
 </main>  
+
+<script>
+	$(() =>{
+		
+		let params = new URL(location.href).searchParams;
+		let category = params.get('category');
+		let h5 = $("#category-path h5");
+		console.log(h5);
+		console.log(category);
+		
+		if(category == 'whole') h5.text('페이지 별 > 한달 세트');
+		else if(category == 'monthly') h5.text('페이지 별 > 먼슬리');
+		else if(category == 'weekly') h5.text('페이지 별 > 위클리');
+		else if(category == 'habit') h5.text('페이지 별 > 해빗트래커');
+		else if(category == 'mood') h5.text('페이지 별 > 무드트래커');
+		else if(category == 'reading') h5.text('페이지 별 > 독서트래커');
+		else if(category == 'expense') h5.text('페이지 별 > 가계부');
+		else if(category == 'study') h5.text('페이지 별 > 스터디');
+		else if(category == 'sticker') h5.text('페이지 별 > 스티커');
+		else if(category == 'etc') h5.text('페이지 별 > 그 외');
+		else if(category == 'minimal') h5.text('디자인 별 > 미니멀');
+		else if(category == 'illustration') h5.text('디자인 별 > 일러스트');
+		else if(category == 'photo') h5.text('디자인 별 > 포토');
+		else h5.text('전체');
+		
+		imgHeight();		
+		
+	});
+
+	$(window).on('resize', function() {
+		imgHeight();
+	});
+	
+	function imgHeight(){
+		let img = $('#products .item .thumb img');
+		let w = $(window).width();
+		if(w < 576) { 		
+			img.css('height', w-30+"px");
+		}else if(w < 768){
+			img.css('height', "510px");
+		}else if(w < 992){
+			img.css('height', "690px");
+		}else if(w < 1200){
+			img.css('height', "289.98px");
+		}else{
+			img.css('height', "350px");
+		}
+	}
+	
+</script>
     
 <jsp:include page="/WEB-INF/views/common/footer.jsp" /> 
     

@@ -74,7 +74,7 @@ $(()=>{
     	
         setTimeout(function(){
         	if(tab == 'co-tab'){
-        		location.href="/community/posts";
+        		location.href="/community/posts?page=0&type=all";
 	        }
 	        else if(tab=='st-tab'){
 	        	location.href="/store/main";        

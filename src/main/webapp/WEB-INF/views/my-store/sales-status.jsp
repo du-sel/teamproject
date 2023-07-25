@@ -56,7 +56,7 @@
                 <div class="chart-area d-flex flex-column justify-content-center revenue scroll-custom">
                		<p class="card-content" style="width: max-content;">￦<span id="m-revenue">0</span></p>
                 </div>
-                <button type="button" class="cal-history" onclick="javascript:location.href='calculate-history.do';">정산 내역 보러가기<i class="tim-icons icon-double-right"></i></button>
+                <button type="button" class="cal-history" onclick="javascript:location.href='/store/sales/table';">정산 내역 보러가기<i class="tim-icons icon-double-right"></i></button>
               </div>
             </div>
           </div>

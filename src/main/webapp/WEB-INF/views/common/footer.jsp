@@ -21,23 +21,23 @@
                 <div class="col-lg-3">
                     <h4>커뮤니티</h4>
                     <ul>
-                        <li><a href="/community/posts">커뮤니티</a></li>
+                        <li><a href="/community/posts?page=0&type=all">커뮤니티</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
                     <h4>스토어</h4>
                     <ul>
-                        <li><a href="/store/products">상품</a></li>
+                        <li><a href="/store/products?page=0&sort=creDate&category=all">상품</a></li>
                         <li><a href="/store/creators?page=0&sort=creDate">크리에이터</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
                     <h4>고객지원</h4>
                     <ul>
-                        <li><a href="#">고객센터</a></li>
+                        <li><a href="/store/center/inquiries">고객센터</a></li>
                         <!-- 마이스토어,프로필,관리자 링크 넣어둘 곳이 없어서 임시로 연결해둠 -->
-                        <li><a href="sales-status.do">마이스토어</a></li>
-                        <li><a href="notice-popup.do">관리자</a></li>
+                        <li><a href="/store/sales">마이스토어</a></li>
+                        <li><a href="/popup">관리자</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-12">

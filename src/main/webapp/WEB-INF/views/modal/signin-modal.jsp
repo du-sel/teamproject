@@ -20,13 +20,13 @@
 			<div class="form-group">		<!-- 아이디(이메일) -->
 				<div class="input-group">		
 					<span class="input-group-addon"><i class="fa fa-user"></i></span>
-					<input type="email" class="form-control" name="email" placeholder="UserEmail" required oninput="remove(2, this)">
+					<input id="email" type="email" class="form-control" name="email" placeholder="UserEmail" required oninput="remove(2, this)">
 				</div>
 			</div>
 			<div class="form-group">		<!-- 패스워드 -->
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-					<input type="password" class="form-control" name="password" placeholder="Password" required oninput="remove(1, this)">
+					<input id="password" type="password" class="form-control" name="password" placeholder="Password" required oninput="remove(1, this)">
 				</div>
 			</div>
 			<div class="form-group">

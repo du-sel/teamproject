@@ -1,12 +1,16 @@
 package com.teamproject.trackers.biz.product;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.teamproject.trackers.biz.purchase.PurchaseVO;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ProductRepository extends JpaRepository<ProductVO, Long> {
 	
 	
@@ -16,11 +20,19 @@ public interface ProductRepository extends JpaRepository<ProductVO, Long> {
 	// 파일이름으로 특정 상품 조회
 	ProductVO findByFile(String file);
 	
+	// 크리에이터별 대표상품 조회
+	@Query(value = "SELECT * FROM products p WHERE p.id=:id and p.signature=1 ORDER BY p.cre_date", nativeQuery = true)
+	List<ProductVO> getCreatorSignatureList(@Param("id") long id);	
 	
-	@Query(value = "SELECT * FROM products p WHERE p.signature=1", nativeQuery = true)
-	List<ProductVO> getCreatorSignatureList();	
+	// 인기 크리에이터 대표 상품 조회
+	ProductVO findTopByIdAndSignatureOrderByRatingDescCreDateDesc(long id, boolean signature);
 	
-	
-	
-	
+	//-------------------------------------정희	
+		// 상품 삭제
+	    void deleteProductById(long pid);
+	    
+	    // 판매자 ID로 상품 목록 조회
+		@Query(value = "SELECT * FROM products p WHERE p.id=:sellerId", nativeQuery = true)
+		List<ProductVO> findBySellerId(@Param("sellerId") long sellerId);
+
 }

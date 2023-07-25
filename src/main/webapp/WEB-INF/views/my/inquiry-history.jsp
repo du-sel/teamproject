@@ -36,13 +36,13 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr onclick="location.href='product-inquiry.do'">
+							<tr onclick="location.href='/store/products/inquiries/id'">
 								<td>10</td>
 								<td>구성이 어떻게 되나요?-상품문의 form</td>
 								<td>2023.06.24</td>
 								<td>답변 대기</td>
 							</tr>
-							<tr onclick="location.href='customer-inquiry.do'">
+							<tr onclick="location.href='/store/center/inquires/id'">
 								<td>9</td>
 								<td>구성이 어떻게 되나요?-고객센터 form</td>
 								<td>2023.06.24</td>

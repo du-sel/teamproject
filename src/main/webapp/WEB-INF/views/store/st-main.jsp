@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
    
 
@@ -39,100 +40,32 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="men-item-carousel">
-                        <div class="owl-men-item owl-carousel">
-                            <div class="item">
-                            	<a href="product-single.do">
+                    <div class="best-item-carousel">
+                        <div class="owl-best-item owl-carousel">
+                        	<c:forEach var="bp" items="${b_products}">
+	                            <div class="item" onclick="location.href='/store/products/${bp.pid}'">
 	                                <div class="thumb">
 	                                    <div class="hover-content">
 	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
+	                                            <li onclick="preventDefaultGoCart(event, ${bp.pid})"><i class="fa fa-shopping-cart"></i></li>
 	                                        </ul>
 	                                    </div>
-	                                    <img src="/resources/images/men-01.jpg" alt="">
+	                                    <img src="${bp.thumbnail}" alt="상품 썸네일">
 	                                </div>
 	                                <div class="down-content">
-	                                    <h4>Classic Spring</h4>
-	                                    <span>$120.00</span>
-	                                    <ul class="stars">
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                    </ul>
+	                                    <h4>${bp.pname}</h4>
+	                                    <span class="price"> <fmt:formatNumber value="${bp.salePrice}" pattern="#,###" />원</span>
+	                                    <c:if test="${bp.sale != 0}"><span class="cost"> <fmt:formatNumber value="${bp.price}" pattern="#,###" />원</span></c:if>
+			                            <ul class="stars">
+			                                <span class="star">
+												★★★★★
+												<span style="width: ${bp.rating}%;">★★★★★</span>
+												<input type="range" value="1" step="1" min="0" max="10">
+											</span>
+			                            </ul>
 	                                </div>
-                                </a>
-                            </div>
-                            <div class="item">
-	                            <a href="product-single.do">
-	                                <div class="thumb">
-	                                    <div class="hover-content">
-	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
-	                                        </ul>
-	                                    </div>
-	                                    <img src="/resources/images/men-02.jpg" alt="">
-	                                </div>
-	                                <div class="down-content">
-	                                    <h4>Air Force 1 X</h4>
-	                                    <span>$90.00</span>
-	                                    <ul class="stars">
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                    </ul>
-	                                </div>
-                                </a>
-                            </div>
-                            <div class="item">
-	                            <a href="product-single.do">
-	                                <div class="thumb">
-	                                    <div class="hover-content">
-	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
-	                                        </ul>
-	                                    </div>
-	                                    <img src="/resources/images/kid-01.jpg" alt="">
-	                                </div>
-	                                <div class="down-content">
-	                                    <h4>School Collection</h4>
-	                                    <span>$80.00</span>
-	                                    <ul class="stars">
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                    </ul>
-	                                </div>
-                                </a>
-                            </div>
-                            <div class="item">
-	                            <a href="product-single.do">
-	                                <div class="thumb">
-	                                    <div class="hover-content">
-	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
-	                                        </ul>
-	                                    </div>
-	                                    <img src="/resources/images/kid-01.jpg" alt="">
-	                                </div>
-	                                <div class="down-content">
-	                                    <h4>School Collection</h4>
-	                                    <span>$80.00</span>
-	                                    <ul class="stars">
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                    </ul>
-	                                </div>
-                                </a>
-                            </div>
+	                            </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -156,100 +89,32 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="women-item-carousel">
-                        <div class="owl-women-item owl-carousel">
-                            <div class="item">
-	                            <a href="product-single.do">
+                    <div class="recent-item-carousel">
+                        <div class="owl-recent-item owl-carousel">
+                            <c:forEach var="rp" items="${r_products}">
+	                            <div class="item" onclick="location.href='/store/products/${rp.pid}'">
 	                                <div class="thumb">
 	                                    <div class="hover-content">
 	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
+	                                            <li onclick="preventDefaultGoCart(event, ${rp.pid})"><i class="fa fa-shopping-cart"></i></li>
 	                                        </ul>
 	                                    </div>
-	                                    <img src="/resources/images/kid-01.jpg" alt="">
+	                                    <img src="${rp.thumbnail}" alt="상품 썸네일">
 	                                </div>
 	                                <div class="down-content">
-	                                    <h4>School Collection</h4>
-	                                    <span>$80.00</span>
-	                                    <ul class="stars">
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                    </ul>
+	                                    <h4>${rp.pname}</h4>
+			                            <span class="price"> <fmt:formatNumber value="${rp.salePrice}" pattern="#,###" />원</span>
+			                            <c:if test="${rp.sale != 0}"><span class="cost"> <fmt:formatNumber value="${rp.price}" pattern="#,###" />원</span></c:if>
+			                            <ul class="stars">
+			                                <span class="star">
+												★★★★★
+												<span style="width: ${rp.rating}%;">★★★★★</span>
+												<input type="range" value="1" step="1" min="0" max="10">
+											</span>
+			                            </ul>
 	                                </div>
-                                </a>
-                            </div>
-                            <div class="item">
-	                            <a href="product-single.do">
-	                                <div class="thumb">
-	                                    <div class="hover-content">
-	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
-	                                        </ul>
-	                                    </div>
-	                                    <img src="/resources/images/kid-01.jpg" alt="">
-	                                </div>
-	                                <div class="down-content">
-	                                    <h4>School Collection</h4>
-	                                    <span>$80.00</span>
-	                                    <ul class="stars">
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                    </ul>
-	                                </div>
-                                </a>
-                            </div>
-                            <div class="item">
-	                            <a href="product-single.do">
-	                                <div class="thumb">
-	                                    <div class="hover-content">
-	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
-	                                        </ul>
-	                                    </div>
-	                                    <img src="/resources/images/kid-01.jpg" alt="">
-	                                </div>
-	                                <div class="down-content">
-	                                    <h4>School Collection</h4>
-	                                    <span>$80.00</span>
-	                                    <ul class="stars">
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                    </ul>
-	                                </div>
-                                </a>
-                            </div>
-                            <div class="item">
-	                            <a href="product-single.do">
-	                                <div class="thumb">
-	                                    <div class="hover-content">
-	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
-	                                        </ul>
-	                                    </div>
-	                                    <img src="/resources/images/kid-01.jpg" alt="">
-	                                </div>
-	                                <div class="down-content">
-	                                    <h4>School Collection</h4>
-	                                    <span>$80.00</span>
-	                                    <ul class="stars">
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                    </ul>
-	                                </div>
-                                </a>
-                            </div>
+	                            </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -273,100 +138,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="kid-item-carousel">
-                        <div class="owl-kid-item owl-carousel">
-                            <div class="item">
-	                            <a href="product-single.do">
-	                                <div class="thumb">
-	                                    <div class="hover-content">
-	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
-	                                        </ul>
-	                                    </div>
-	                                    <img src="/resources/images/kid-01.jpg" alt="">
+                    <div class="creator-item-carousel">
+                        <div class="owl-creator-item owl-carousel">
+                        	<c:forEach var="bc" items="${b_creators}" varStatus="status">
+	                            <div class="item">
+	                                <div class="thumb" onclick="location.href='/store/products/${b_signatures[status.index].pid}'">
+	                                    <img src="${b_signatures[status.index].thumbnail}" alt="대표 상품 썸네일">
 	                                </div>
-	                                <div class="down-content">
-	                                    <h4>School Collection</h4>
-	                                    <span>$80.00</span>
-	                                    <ul class="stars">
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                    </ul>
+	                                <div class="down-content d-flex" onclick="location.href='/profiles/${bc.url}'">
+	                                	<img src="${bc.profile_img}">
+	                                    <h4 class="d-flex flex-column justify-content-center">${bc.storeName}</h4>
 	                                </div>
-                                </a>
-                            </div>
-                            <div class="item">
-	                            <a href="product-single.do">
-	                                <div class="thumb">
-	                                    <div class="hover-content">
-	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
-	                                        </ul>
-	                                    </div>
-	                                    <img src="/resources/images/kid-02.jpg" alt="">
-	                                </div>
-	                                <div class="down-content">
-	                                    <h4>Summer Cap</h4>
-	                                    <span>$12.00</span>
-	                                    <ul class="stars">
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                    </ul>
-	                                </div>
-                                </a>
-                            </div>
-                            <div class="item">
-	                            <a href="product-single.do">
-	                                <div class="thumb">
-	                                    <div class="hover-content">
-	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
-	                                        </ul>
-	                                    </div>
-	                                    <img src="/resources/images/kid-03.jpg" alt="">
-	                                </div>
-	                                <div class="down-content">
-	                                    <h4>Classic Kid</h4>
-	                                    <span>$30.00</span>
-	                                    <ul class="stars">
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                    </ul>
-	                                </div>
-                                </a>
-                            </div>
-                            <div class="item">
-	                            <a href="product-single.do">
-	                                <div class="thumb">
-	                                    <div class="hover-content">
-	                                        <ul>
-	                                            <li><i class="fa fa-shopping-cart"></i></li>
-	                                        </ul>
-	                                    </div>
-	                                    <img src="/resources/images/kid-01.jpg" alt="">
-	                                </div>
-	                                <div class="down-content">
-	                                    <h4>Classic Spring</h4>
-	                                    <span>$120.00</span>
-	                                    <ul class="stars">
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                        <li><i class="fa fa-star"></i></li>
-	                                    </ul>
-	                                </div>
-                                </a>
-                            </div>
+	                            </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -374,11 +158,33 @@
         </div>
     </section>
     <!-- ***** 인기 판매자 Area Ends ***** -->
-
-
 </main>
 
-<div id="co-main"></div>
+<script>
+	$(() =>{
+		imgHeight();		
+	});
+
+	$(window).on('resize', function() {
+		imgHeight();
+	});
+	
+	function imgHeight(){
+		let img = $('.owl-carousel .owl-item .thumb img');
+		let w = $(window).width();
+		if(w < 576) { 		
+			img.css('height', w-30+"px");
+		}else if(w < 768){
+			img.css('height', "240px");
+		}else if(w < 992){
+			img.css('height', "330px");
+		}else if(w < 1200){
+			img.css('height', "290px");
+		}else{
+			img.css('height', "350px");
+		}
+	}
+</script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	    

@@ -1,7 +1,7 @@
 (function ($) {
 	
 	"use strict";
-	$('.owl-men-item').owlCarousel({
+	$('.owl-best-item').owlCarousel({
 		items:5,
 		loop:true,
 		dots: true,
@@ -20,7 +20,7 @@
 		 }
 	})
 
-	$('.owl-women-item').owlCarousel({
+	$('.owl-recent-item').owlCarousel({
 		items:5,
 		loop:true,
 		dots: true,
@@ -39,7 +39,7 @@
 		 }
 	 })
 
-	$('.owl-kid-item').owlCarousel({
+	$('.owl-creator-item').owlCarousel({
 		items:5,
 		loop:true,
 		dots: true,
@@ -76,7 +76,7 @@
 
 		}	  
 	  setTimeout(function() {
-			$("main.broad").css("margin-top", $('header').height());
+			$("main").css("margin-top", $('header').height());
 		}, 100);
 
 	});
@@ -241,7 +241,7 @@
 		let st_menu = $('.header-area .store-menu');
 		
 		// 일단 임시 URI로 시험 적용
-		if(path.includes('community')) {
+		if(path.includes('community') || path.includes('profiles') || path.includes('users')) {
 			$(st_menu).css('visibility', 'hidden');
 			$(st_menu).addClass('hidden');
 			return;
@@ -305,4 +305,12 @@
 	
 	
 	
+	
+
+	
+	
+	
+	
 })(window.jQuery);
+
+

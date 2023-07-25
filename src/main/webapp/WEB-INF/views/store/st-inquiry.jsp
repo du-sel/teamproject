@@ -6,7 +6,7 @@
   
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-  <main id="product-inquiry" class="my-info broad my-info-form">
+  <main id="st-inquiry" class="my-info broad my-info-form">
   	
     <section class="section" id="page">
     	<div class="page-title">
@@ -20,7 +20,7 @@
         </div>
 		<div class="container">
 			<div class="row justify-content-center">
-				<a href="product-single.do" class="back">&lt; 상품 상세보기</a>
+				<a class="back" onclick="javascript:history.go(-1);">&lt; 상품 상세보기</a>
 				<div class="col-lg-12 d-flex p-info scroll-custom">
                		<img src="/resources/images/썸네일.jpg" alt="">
                		<div class="d-flex flex-column justify-content-center p-text-info">
@@ -37,7 +37,7 @@
                	<form class="col-lg-12 form-data">
                		<div class="sub-title">
 	               		<h6>문의 제목</h6>
-	               		<input type="text" name="title">
+	               		<input type="text" name="title" placeholder="문의 제목 작성">
 	               	</div>
 	               	<div>
 	               		<h6>문의 내용</h6>
