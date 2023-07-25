@@ -105,6 +105,18 @@ community-main
 
 
 
+/*  pagination   */
+
+.co .pagination {
+	margin-top: 120px;
+}
+
+.co .pagination ul li a:hover, 
+.co .pagination ul li.active a {
+    background-color: transparent;
+    color: #e97d7d;
+    font-weight: bolder;
+}
 
 
 /* 
@@ -188,13 +200,16 @@ post
 	align-items: center;
 }
 
-.co #co-main #inserticon{
+.co #co-main #inserticon {
 	background: #fff;
 	border: 0;
 	outline: none;
 	font-size: 18px;
 	display: flex;
 	align-items: center;
+}
+.co #co-main #inserticon:hover {
+	color: #b8b8c4;
 }
 
 .co .author {
@@ -703,4 +718,11 @@ sidebar
 		padding: 0;
 	}
 }
+
+
+
+
+
+
+
 

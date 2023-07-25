@@ -39,6 +39,7 @@
 
 			if(length> maxlength){
 				alert("파일 개수가 4개를 초과했습니다.");
+				return false;
 			}else{
 				if(confirm('포스트를 등록하시겠습니까?')){
 					document.post.submit();				
@@ -200,5 +201,21 @@ console.log(event.target.files.length);
 	  			}
 	  			
 	
+// 이미지 클릭 시 확대해서 모달창에 띄워주기
+function showImageModal(e, src) {
+	
+	e.stopPropagation();
+  
+	$("#modal .modal-content").load("/community/image-modal", function() {
+		$('.modal img').attr('src', src);
+		$("#modal").modal("show");
+	});
+}
+
+
+
+
+
+
 
 	  

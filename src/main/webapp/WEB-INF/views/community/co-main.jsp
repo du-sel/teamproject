@@ -98,8 +98,18 @@
 
 						<div class="submitpost">
 							<textarea id="co-textarea" name="content" rows="2"></textarea>
-							<input type="text" name="p_id" id="p_id" placeholder="태그 입력">
-							<div class="row flex-column">
+							<div class="icons-container d-flex justify-content-between">
+								<div class="d-flex flex-row">
+									<div><i class="fa fa-tag"></i></div>
+									<div><i class="fa fa-image" onclick=""></i></div>
+									<!-- 파일 input 대신 클릭 -->
+								</div>
+								<!-- <button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button> -->
+								<button class="submiticon" type="submit" onclick="return checkPhotoCount()"><i class="fa fa-paper-plane"></i></button>
+							</div>
+							
+								<input type="file" accept="image/*" name="post-img" id="thumbnail" 
+										onchange="imgPreview(event);" multiple="multiple" >
 								<div class="d-flex align-items-center thumb-title inputphoto">
 									<h6>사진&nbsp;<small>최대 4개까지 업로드 가능</small></h6>
 									<p></p>
@@ -173,7 +183,7 @@
 		<c:forEach var="p" items="${posts.content }">
 			<!-- Post -->
 			<section class="post"> 
-				<form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'">
+				<form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'"><!--  onclick="location.href='/community/posts/${p.postId}'" -->
 					<div class="header">
 						<a href="/profiles/${p.url}" class="author">
 						    <img src="${p.profile_img}" alt="프로필 이미지" />
@@ -200,7 +210,24 @@
 								</div>
 			   	   			</c:forEach>
 						</div>
-			    	</c:if>	
+			    	</c:if>	 --%>
+			    	
+			    	<div class="post-content-container row justify-content-center">
+				    	<c:if test="${!empty imgs[p.postId]}">
+					    	<div class="img-container 
+					    		<c:choose>
+					    			<c:when test="${fn:length(imgs[p.postId]) == 1 }">one</c:when>
+					    			<c:when test="${fn:length(imgs[p.postId]) == 2 }">two</c:when>
+					    			<c:when test="${fn:length(imgs[p.postId]) == 3 }">three</c:when>
+					    			<c:when test="${fn:length(imgs[p.postId]) == 4 }">four</c:when>
+					    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
+					    		<c:forEach var="img" items="${imgs[p.postId]}">
+									<div class="img-card">
+					    				<img src="/resources/postimg/${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
+					    			</div>
+				   	   			</c:forEach>
+			   	   			</div>
+				    	</c:if>
 					
 					<div id="post-content" class="collapse-content">
 						<div class="post-content-inner collapsed">
@@ -227,7 +254,7 @@
 											<div class="comment-name">${c.name }</div>
 											<div class="d-flex">
 												<c:if test="${c.id eq user_id}">
-													<form id="deleteComment" action="" method="post">
+													<form id="deleteComment" action="/community/posts/${post.getPostId() }" method="post">
 													 	<input type="hidden" name="_method" value="DELETE"/>
 														<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
 													</form>
@@ -318,6 +345,16 @@
 	</main>
 </div>
 
+<!-- ***** Modal Start ***** -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-container" role="document" >
+     <div class="modal-content">
+		</div>
+    </div>
+</div>
+<!-- ***** Modal End ***** -->
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/resources/js/community-toggle.js"></script>
 <script>
@@ -342,6 +379,10 @@
 	function sidebarSignin(){
 		alert("로그인 후 이용 가능합니다.");
 	}
+	
+	
+	
+	
 </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
