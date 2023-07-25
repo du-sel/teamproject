@@ -1,6 +1,8 @@
 package com.teamproject.trackers.biz.followSubscribeLike;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,4 +29,9 @@ public class FollowService {
 	}
 
 	*/
+	
+	// 사용자별 팔로우 리스트
+	public List<Object[]> getfollowList(long id){
+		return followRepository.getFollowList(id);
+	}
 }

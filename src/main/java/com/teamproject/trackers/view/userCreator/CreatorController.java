@@ -45,7 +45,7 @@ public class CreatorController {
 		creatorService.updateUrlTel(view_vo);
 
 		common.alert.setStr("스토어가 생성되었습니다.");
-		common.alert.setPath("/profiles");
+		common.alert.setPath("/profiles/"+view_vo.getUrl());
 		common.alert.setFlag(true);
 
 		return "redirect:/common";

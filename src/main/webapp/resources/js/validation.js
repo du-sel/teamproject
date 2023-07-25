@@ -99,7 +99,7 @@ function login(){
 	});
 	
 	if(flag){
-		$('#path').val($(location).attr('pathname'));
+		$('#path').val($(location).attr('pathname')+$(location).attr('search'));
 		return true;
 	}else{
 		alert('이메일 또는 비밀번호가 일치하지 않습니다. 다시 시도해 주세요.');
@@ -294,7 +294,10 @@ function sign_chk(){
 		return false;
 	}
 	
-	$('#path').val($(location).attr('pathname'));
+	
+	$('#path').val($(location).attr('pathname')+$(location).attr('search'));
+	
+	
 	return true;
 }
 
