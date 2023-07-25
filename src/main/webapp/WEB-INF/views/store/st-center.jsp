@@ -6,34 +6,21 @@
   
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-  <main id="st-inquiry" class="my-info broad my-info-form">
+  <main id="st-center" class="my-info broad my-info-form">
   	
     <section class="section" id="page">
     	<div class="page-title">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>상품 문의하기</h2>
+                        <h2>고객센터 문의</h2>
                     </div>
                 </div>
             </div>
         </div>
 		<div class="container">
 			<div class="row justify-content-center">
-				<a class="back" onclick="javascript:history.go(-1);">&lt; 상품 상세보기</a>
-				<div class="col-lg-12 d-flex p-info scroll-custom">
-               		<img src="/resources/images/썸네일.jpg" alt="">
-               		<div class="d-flex flex-column justify-content-center p-text-info">
-               			<div>
-	                		<h6>상품명</h6>
-	                		<p>춘식이 다이어리</p>
-	                	</div>
-	                	<div>
-	                		<h6>크리에이터</h6>
-	                		<p>춘식이폼미쳤다</p>
-	                	</div>
-               		</div>
-               	</div>
+				<a class="back" href="/store/main">&lt; 스토어 메인으로 돌아가기</a>
                	<form class="col-lg-12 form-data">
                		<div class="sub-title">
 	               		<h6>문의 제목</h6>

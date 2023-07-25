@@ -112,7 +112,6 @@ public class ProductService {
 	
 
 	
-	
 	/* 상품 전체 조회(검색 x) */
 	public Page<ProductListVO> getProductList(Pageable pageable) {
 		return productlistRepository.findAll(pageable);
@@ -176,4 +175,23 @@ public class ProductService {
 	        // 상품 ID로 상품을 조회하고, 조회된 상품을 삭제합니다.
 	        productRepository.deleteById(p_id);
 	    }
+		
+		// 판매자 ID로 상품 목록 조회
+	    public List<ProductVO> getProductListBySellerId(long id) {
+	        return productRepository.findBySellerId(id);
+	    }
+
+	    // 삭제된 상품 ID 목록 조회
+	    public List<Long> getDeletedProductIds() {
+	        List<Long> deletedProductIds = new ArrayList<>();
+	        // 삭제된 상품 ID 목록 조회 로직을 추가해주세요.
+	        // 예를 들면, 삭제 상태를 나타내는 컬럼을 가진 테이블에서 삭제 상태인 상품들의 ID를 조회하는 쿼리를 실행합니다.
+	        // 또는 삭제 상태를 나타내는 특정 필드를 가진 객체들을 가져와서 해당 ID들을 추출합니다.
+	        // 이 예시에서는 빈 리스트를 반환합니다. 실제 로직에 맞게 수정해주세요.
+	        return deletedProductIds;
+	    }
+		
+		
+		
+		
 }

@@ -244,8 +244,9 @@ function getCreatorProductList(page, sort) {
 			    <c:when test="${!empty sessionScope.user.id}">
 			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
 			            <c:choose>
-			            
+
 			                <c:when test="${sessionScope.user.url != profile.url}">
+
 			                	<c:choose>
 			                		<c:when test="${checks.getId() eq sessionScope.user.id && checkf.getFrom_id() eq sessionScope.user.id && checkf.getTo_id() eq profile.id}">
 
@@ -324,7 +325,7 @@ function getCreatorProductList(page, sort) {
 					<br>
 					<div class="col-md-12">
 						<div class="writenew1">
-							<a href="co-main.do">글 작성하기</a>
+							<a href="/community/posts?page=0&type=all">글 작성하기</a>
 						</div>
 					</div>				
 					<br><br><br>
@@ -345,7 +346,7 @@ function getCreatorProductList(page, sort) {
 										</div>
 							
 							
-										<div class="post_img-outer" onclick="location.href='post.do'">
+										<div class="post_img-outer" onclick="location.href='#'">
 											<div class="post_img">
 												<img src="/resources/images/춘식이웹툰1.png" alt="" />
 											</div>
@@ -470,7 +471,7 @@ function getCreatorProductList(page, sort) {
 						</select>
 
 						<div class="writenew line">
-							<a href="product-management.do">상품 관리</a>
+							<a href="/store/products/management">상품 관리</a>
 						</div>					
 					
 					</div>
@@ -535,7 +536,7 @@ function getCreatorProductList(page, sort) {
 					<div class="row">
 						<div class="col-12" style="margin-bottom:15px;">
 							<div class="writenew1">
-								<a href="co-main.do">공지관리</a>
+								<a href="/profiles/url/notice">공지관리</a>
 							</div>
 						</div>	
 						<br>

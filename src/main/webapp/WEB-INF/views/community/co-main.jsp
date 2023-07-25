@@ -8,7 +8,7 @@
   
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
-	<main id="co-main" class="row" style="margin-top: 200px">
+	<main id="co-main" class="row">
 	
 		<c:set var="user_id" value="${sessionScope.id }"/>	
 		
@@ -65,132 +65,103 @@
 				<!-- Posts List -->
 				<section>
 					<ul class="posts">
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler J</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler A</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler Q</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler K</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler I</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler J</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler A</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler Q</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler K</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler I</p>
-	                  			</div>
-							</div>
-						</li>
+						<c:forEach var="f" items="${followList}">
+							<li class="d-flex justify-content-start">
+								<div class="divlist d-flex justify-content-between" onclick="location.href='/profiles/${f[0]}'">
+									<div class="divimg" id="article_img1"><img src="${f[1]}"></div>
+									<div class="d-flex flex-column justify-content-center">
+		                  				<p class="lidiv">${f[2]}</p>
+		                  			</div>
+								</div>
+							</li>
+						</c:forEach>
 					</ul>
 				</section>
 			</div>
 		</section>
 		
 		<!-- Main -->
-		<div id="main" class="col-lg-7 m-auto" > <!-- style="float: right;" -->
-		
-		<c:if test="${!empty user_id}">
-			<article class="post">
-				<form action="/community/posts" method="post" name="post" enctype="multipart/form-data">
-					<!-- <input type="hidden" name="_method" value="post"> -->
-					<input type="hidden" id="sessionId" name="id" value="${user_id}">
-					<div>
-						<div class="header">
-							<div class="meta">
-								<a href="/profiles/${sessionScope.user.url }" class="author"><img src="${sessionScope.user.profile_img}" alt="프로필 사진" />&nbsp;&nbsp;
-									<span class="name"><div class="author">${sessionScope.user.name}</div></span>
-								</a>
-								<button class="insertpost inserticon" type="button"><img alt="" src="/resources/images/icon-insertpost.png"></button>
-							</div>
+		<div id="main" class="col-lg-7 m-auto" > 
+
+			<c:if test="${!empty user_id}">
+				<section class="post">
+					<form action="/community/posts" method="post" name="post" enctype="multipart/form-data">
+						<input type="hidden" id="sessionId" name="id" value="${user_id}">
+						<div class="header meta">
+							<a href="/profiles/${sessionScope.user.url }" class="author">
+								<img src="${sessionScope.user.profile_img}" alt="프로필 사진" />
+								<span class="name author">${sessionScope.user.name}</span>
+							</a>
+							<div class="insertpost inserticon" id="inserticon" type="button"><i class="fa fa-plus"></i></div>
 						</div>
-					</div>
-	
-				 
-				   		<div class="col-12">
-							<div class="submitpost col-12">
-								<textarea id="co-textarea" name="content" class="col-11" rows="2"></textarea>
-								<input type="text" name="p_id" id="p_id" placeholder="태그 입력">
-								<div class="row flex-column">
-									<div class="d-flex align-items-center thumb-title inputphoto">
-										<h6>사진&nbsp;<small>최대 4개까지 업로드 가능</small></h6>
-										<p></p>
-									</div>
-									<div id="thumb-preview" class="thumb-preview"></div>
-									<input type="file" accept="image/*" name="post-img" id="thumbnail" 
-											onchange="imgPreview(event);" multiple="multiple" >
+						 
+
+						<div class="submitpost">
+							<textarea id="co-textarea" name="content" rows="2"></textarea>
+							<div class="icons-container d-flex justify-content-between">
+								<div class="d-flex flex-row">
+									<div><i class="fa fa-tag"></i></div>
+									<div><i class="fa fa-image" onclick=""></i></div>
+									<!-- 파일 input 대신 클릭 -->
 								</div>
-								<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
+								<!-- <button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button> -->
+								<button class="submiticon" type="submit" onclick="return checkPhotoCount()"><i class="fa fa-paper-plane"></i></button>
 							</div>
+							
+								<input type="file" accept="image/*" name="post-img" id="thumbnail" 
+										onchange="imgPreview(event);" multiple="multiple" >
+								<div class="d-flex align-items-center thumb-title inputphoto">
+									<h6>사진&nbsp;<small>최대 4개까지 업로드 가능</small></h6>
+									<p></p>
+								</div>
+								<div id="thumb-preview" class="thumb-preview"></div>
+								<input type="file" accept="image/*" name="post-img" id="thumbnail" 
+										onchange="imgPreview(event);" multiple="multiple" >
+							</div>
+							<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
 						</div>
 					</form>
-				</article>
+				</section>
+					
+<%-- 				<article class="post">
+					<form action="/community/posts" method="post" name="post" enctype="multipart/form-data">
+						<!-- <input type="hidden" name="_method" value="post"> -->
+						<input type="hidden" id="sessionId" name="id" value="${user_id}">
+						<div>
+							<div class="header">
+								<div class="meta">
+									<a href="/profiles/${sessionScope.user.url }" class="author"><img src="${sessionScope.user.profile_img}" alt="프로필 사진" />&nbsp;&nbsp;
+										<span class="name"><div class="author">${sessionScope.user.name}</div></span>
+									</a>
+									<button class="insertpost inserticon" type="button"><img alt="" src="/resources/images/icon-insertpost.png"></button>
+								</div>
+							</div>
+						</div>
+		
+					 
+					   		<div class="col-12">
+								<div class="submitpost col-12">
+									<textarea id="co-textarea" name="content" class="col-11" rows="2"></textarea>
+									<input type="text" name="p_id" id="p_id" placeholder="태그 입력">
+									<div class="row flex-column">
+										<div class="d-flex align-items-center thumb-title inputphoto">
+											<h6>사진&nbsp;<small>최대 4개까지 업로드 가능</small></h6>
+											<p></p>
+										</div>
+										<div id="thumb-preview" class="thumb-preview"></div>
+										<input type="file" accept="image/*" name="post-img" id="thumbnail" 
+												onchange="imgPreview(event);" multiple="multiple" >
+									</div>
+									<button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button>
+								</div>
+							</div>
+						</form>
+					</article> --%>
 			</c:if>	
-			<c:if test="${empty user_id}">
-				<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
+			
+			
+<%-- 			<c:if test="${empty user_id}">
+				<article class="post">
 					<form action="" method="post" name="post">
 						<div>
 							<div class="header">
@@ -205,31 +176,58 @@
 	
 					</form>
 				</article>
-			</c:if>
+			</c:if> --%>
 			
 			
 			
 		<c:forEach var="p" items="${posts.content }">
 			<!-- Post -->
-			<article class="post">  <!-- onclick="window.location.href = 'post.do';" -->
-				<form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'">
-					<div class="title d-flex justify-content-between">
+			<section class="post"> 
+				<form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'"><!--  onclick="location.href='/community/posts/${p.postId}'" -->
+					<div class="header">
 						<a href="/profiles/${p.url}" class="author">
-						    <img src="${p.profile_img}" alt="프로필 이미지" />&nbsp;&nbsp;
-				    		<span class="name"><input type="text" name="id" value="${p.name}" readonly="readonly" class="author"></span>
+						    <img src="${p.profile_img}" alt="프로필 이미지" />
+				    		<%-- <span class="name"><input type="text" name="id" value="${p.name}" readonly="readonly" class="author"></span> --%>
+				    		<span class="name author">${p.name}</span>
 						</a>
-						<input type="text" readonly="readonly" name="cre_date" class="published" value="${p.creDate}">
+						<%-- <input type="text" readonly="readonly" name="cre_date" class="published" value="${p.creDate}"> --%>
+						<div class="d-flex">
+							<c:if test="${p.id eq user_id}">
+								<form action="/community/posts/${p.postId}" method="post" id="deletePost">
+								 	<input type="hidden" name="_method" value="DELETE"/>
+									<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
+								</form>
+							</c:if>
+							<span class="published">${p.creDate}</span>
+						</div>
 					</div>
 					
-					<div class="post_img-outer">
-						<c:if test="${!empty imgs[p.postId]}">	<!-- 첨부 이미지 있는 경우 --> 
+					<c:if test="${!empty imgs[p.postId]}">	<!-- 첨부 이미지 있는 경우 --> 
+						<div class="post_img-outer">
 				    		<c:forEach var="img" items="${imgs[p.postId]}">
 				   	   			<div class="post_img">
 									<img src="${img.postimg}" alt="포스트 첨부 이미지" />
 								</div>
 			   	   			</c:forEach>
-				    	</c:if>	
-					</div>
+						</div>
+			    	</c:if>	 --%>
+			    	
+			    	<div class="post-content-container row justify-content-center">
+				    	<c:if test="${!empty imgs[p.postId]}">
+					    	<div class="img-container 
+					    		<c:choose>
+					    			<c:when test="${fn:length(imgs[p.postId]) == 1 }">one</c:when>
+					    			<c:when test="${fn:length(imgs[p.postId]) == 2 }">two</c:when>
+					    			<c:when test="${fn:length(imgs[p.postId]) == 3 }">three</c:when>
+					    			<c:when test="${fn:length(imgs[p.postId]) == 4 }">four</c:when>
+					    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
+					    		<c:forEach var="img" items="${imgs[p.postId]}">
+									<div class="img-card">
+					    				<img src="/resources/postimg/${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
+					    			</div>
+				   	   			</c:forEach>
+			   	   			</div>
+				    	</c:if>
 					
 					<div id="post-content" class="collapse-content">
 						<div class="post-content-inner collapsed">
@@ -242,43 +240,47 @@
 				
 			
 					
-				<footer>
+				<div class="footer">
 					<ul class="stats commment_stats">
-						<li><a class="comment-count">📝<span class="comment-count-number">${p.c_count}</span></a></li> <!-- 댓글 개수 -->
-						<li><a class="like-button" ><span class="like-icon">❤️</span><span class="like-count">${p.t_count}</span></a></li> <!-- 좋아요 개수 -->
+						<li class="comment-count"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number">${p.c_count}</span></li>
+						<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number">${p.t_count}</span></li>
 					</ul>
 					<div class="comment-section">
-						<ul id="comment-list" class="comment-list col-12">
-							<c:if test="${!empty comments[p.postId]}">	<!-- 첨부 이미지 있는 경우 --> 
+						<c:if test="${!empty comments[p.postId]}">	
+							<ul id="comment-list" class="comment-list">
 					    		<c:forEach var="c" items="${comments[p.postId]}">
 					   	   			<li>
-										<div class="comment-name">이름 ${c.name }</div>
-										<div class="comment-date">날짜 ${c.creDate }</div>
-										<div class="comment-content"><div class="col-10">내용 ${c.content}</div></div>
-										
+					   	   				<div class="comment-top d-flex justify-content-between align-items-center">
+											<div class="comment-name">${c.name }</div>
+											<div class="d-flex">
+												<c:if test="${c.id eq user_id}">
+													<form id="deleteComment" action="/community/posts/${p.postId}/comments/${c.id}" method="post">
+													 	<input type="hidden" name="_method" value="DELETE"/>
+														<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
+													</form>
+												</c:if>
+												<div class="comment-date">${c.creDate }</div>
+											</div>
+					   	   				</div>
+										<div class="comment-content">${c.content}</div>
 									</li>
 				   	   			</c:forEach>
-					    	</c:if>	
+							</ul>
+							<div class="comment-button" type="button" onclick="showCommentInput(this)"><span class="comment-plus">+</span> 댓글쓰기</div>
+				    	</c:if>	
 					    	
-						</ul>
 						<div class="button-row">
-							<c:if test="${p.id eq user_id}">
-								<form action="/community/posts/${p.postId}" method="post">
-								 	<input type="hidden" name="_method" value="DELETE"/>
-									<button type="submit" class="delete-post" onclick="return checkDeletePost()">포스트 삭제하기</button>
-								</form>
-							</c:if>
-							<button class="comment-button" type="button" onclick="return showCommentInput(this)">댓글쓰기</button>
-							<c:if test="${p.c_count > 3 }">
+
+							<%-- <c:if test="${p.c_count > 3 }">
 	                           <div onclick="location.href='/community/posts/${p.postId}'">댓글 더보기</div>
-	                        </c:if>
+	                        </c:if> --%>
 							<div class="comment-input">
 								<form action="/community/posts/${p.postId}/comments" method="post" name="comment" id="insertcomment">
 									<input type="hidden" name="postId" value="${p.postId }"/>
 									<c:choose>
 								    	<c:when test="${!empty user_id}">	<!-- 로그인 o --> 
 								    		<input type="hidden" name="id" value="${user_id}">
-											<input type="text" id="comment-text" name="content" placeholder="댓글을 입력하세요">
+											<input type="text" id="comment-text" name="content" class="form-control" placeholder="댓글을 입력하세요">
 								            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
 								    	</c:when>		
 								    	<c:otherwise>		<!-- 로그인 x -->
@@ -289,8 +291,8 @@
 							</div>	
 						</div>
 					</div>
-				</footer>
-			</article>
+				</div>
+			</section>
 		</c:forEach>	
 		
 		<!-- 페이지 번호 -->
@@ -343,6 +345,16 @@
 	</main>
 </div>
 
+<!-- ***** Modal Start ***** -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-container" role="document" >
+     <div class="modal-content">
+		</div>
+    </div>
+</div>
+<!-- ***** Modal End ***** -->
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/resources/js/community-toggle.js"></script>
 <script>
@@ -367,6 +379,10 @@
 	function sidebarSignin(){
 		alert("로그인 후 이용 가능합니다.");
 	}
+	
+	
+	
+	
 </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

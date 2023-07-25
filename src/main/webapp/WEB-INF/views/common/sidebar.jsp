@@ -23,13 +23,13 @@
 	    </div>
 	    <ul class="nav">
 	      <li>
-	        <a href="sales-status.do">
+	        <a href="/store/sales">
 	          <i class="tim-icons icon-money-coins"></i>
 	          <p>판매 현황</p>
 	        </a>
 	      </li>
 	      <li>
-	        <a href="calculate-history.do">
+	        <a href="/store/sales/table">
 	          <i class="tim-icons icon-paper"></i>
 	          <p>정산 내역</p>
 	        </a>
@@ -48,19 +48,19 @@
 	        </a>
 	      </li>
 	      <li>
-	        <a href="review-management.do">
+	        <a href="/profiles/url/reviews">
 	          <i class="tim-icons icon-pencil"></i>
 	          <p>후기 관리</p>
 	        </a>
 	      </li>
 	      <li>
-	        <a href="inquiry-management.do">
+	        <a href="/profiles/url/inquiries">
 	          <i class="tim-icons icon-chat-33"></i>
 	          <p>문의 관리</p>
 	        </a>
 	      </li>
 	      <li>
-	        <a href="#">
+	        <a href="/profiles/url/notice">
 	          <i class="tim-icons icon-volume-98"></i>
 	          <p>공지 관리</p>
 	        </a>

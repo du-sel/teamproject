@@ -15,13 +15,13 @@ import lombok.Builder;
 public class PostIMGVO { 	
 	@Id
 	@Column(name = "img_id")
-	private long id;
+	private long imgid;
 	
 	@Column(name = "post_id")
 	private long postId;
 	
 	@Column(name = "img")
-	private String postimg;
+	private String img;
 
 	@Transient
 	private String filePath;
@@ -36,11 +36,11 @@ public class PostIMGVO {
 	
 	
 	public Long getImgid() {
-		//return imgid;
-		return null;
+		return imgid;
+		//return null;
 	}
 	public void setImgid(Long imgid) {
-		//this.imgid = imgid;
+		this.imgid = imgid;
 	}
 	public long getPostId() {
 		return postId;
@@ -49,11 +49,18 @@ public class PostIMGVO {
 		this.postId = postId;
 	}
 	public String getImg() {
-		//return img;
-		return null;
+		return img;
+		//return null;
 	}
 	public void setImg(String img) {
-		//this.img = img;
+		this.img = img;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 	
 	

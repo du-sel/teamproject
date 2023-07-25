@@ -21,6 +21,7 @@ import com.teamproject.trackers.biz.common.AlertVO;
 
 import com.teamproject.trackers.biz.userCreator.UserService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
+import com.teamproject.trackers.view.common.CommonController;
 
 
 @Controller
@@ -30,7 +31,8 @@ public class UserController {
 	private UserService userService;
 	@Autowired
     private HttpSession session;
-	private AlertVO alert = new AlertVO();
+	@Autowired
+	public CommonController common;
 	
 	// 모달
 	@RequestMapping(value="/signin-modal")
@@ -49,16 +51,6 @@ public class UserController {
 		return "modal/store-create-modal";
 	}
 	
-	// alert창 페이지
-	@RequestMapping(value="/common")
-	public String test(Model model) {		
-		model.addAttribute("alert_str", alert.getStr());
-		model.addAttribute("alert_path", alert.getPath());
-		model.addAttribute("alert_flag", alert.isFlag());
-		
-		return "common/alert";
-	}
-	
 	
 	// 로그아웃
 	@RequestMapping(value="/users/logout")
@@ -66,9 +58,9 @@ public class UserController {
 		if(session.getAttribute("id") != null) {
 			session.invalidate();
 			
-			alert.setStr("로그아웃 되었습니다.");
-			alert.setPath("/");
-			alert.setFlag(true);
+			common.alert.setStr("로그아웃 되었습니다.");
+			common.alert.setPath("/");
+			common.alert.setFlag(true);
 
 			return "redirect:/common";
 		}
@@ -99,9 +91,9 @@ public class UserController {
 		
 		userService.insertUser(vo);
 		
-		alert.setStr("회원가입이 완료되었습니다.");
-		alert.setPath(path);
-		alert.setFlag(true);
+		common.alert.setStr("회원가입이 완료되었습니다.");
+		common.alert.setPath(path);
+		common.alert.setFlag(true);
 		
 		return "redirect:/common";
 	}
@@ -112,9 +104,9 @@ public class UserController {
 		vo.setId((long)session.getAttribute("id"));
 		userService.updateUser(vo);
 		
-		alert.setStr("회원정보가 수정되었습니다.");
-		alert.setPath("/users?path=info");
-		alert.setFlag(true);
+		common.alert.setStr("회원정보가 수정되었습니다.");
+		common.alert.setPath("/users?path=info");
+		common.alert.setFlag(true);
 		
 		return "redirect:/common";
 	}
@@ -126,9 +118,9 @@ public class UserController {
 		vo.setId((long)session.getAttribute("id"));
 		userService.updateUserPwd(vo);
 	 
-		alert.setStr("비밀번호가 변경되었습니다.");
-		alert.setPath("/users?path=ipwdnfo");
-		alert.setFlag(true);
+		common.alert.setStr("비밀번호가 변경되었습니다.");
+		common.alert.setPath("/users?path=ipwdnfo");
+		common.alert.setFlag(true);
 		
 		return "redirect:/common";
 	}
@@ -142,9 +134,9 @@ public class UserController {
 		userService.deleteUser(vo);
 		session.invalidate();
 
-		alert.setStr("회원탈퇴가 완료되었습니다.");
-		alert.setPath("/store/main");
-		alert.setFlag(true);
+		common.alert.setStr("회원탈퇴가 완료되었습니다.");
+		common.alert.setPath("/store/main");
+		common.alert.setFlag(true);
 		
 		return "redirect:/common";
 	}

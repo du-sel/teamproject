@@ -11,7 +11,7 @@
 		} );
 		
 		$( document ).ready( function() {
-			$( 'button.insertpost' ).click( function() {
+			$( '.insertpost' ).click( function() {
 			$( '.submitpost' ).slideToggle();
 			} );
 		} );
@@ -20,8 +20,7 @@
 		/* co-main.do, post.do textarea */
 		const DEFAULT_HEIGHT = 31; // textarea 기본 height
 	
-	    let textarea = document.getElementById('co-textarea');
-console.log(textarea);	    
+	    let textarea = document.getElementById('co-textarea');	    
 	 	// Textarea 자동 높이 조절
 	    textarea.oninput = (event) => {
 	      let target = event.target;
@@ -37,9 +36,10 @@ console.log(textarea);
 	    
 	    function checkPhotoCount(){
 	    	
-console.log(length);
+
 			if(length> maxlength){
 				alert("파일 개수가 4개를 초과했습니다.");
+				return false;
 			}else{
 				if(confirm('포스트를 등록하시겠습니까?')){
 					document.post.submit();				
@@ -130,14 +130,15 @@ console.log(event.target.files.length);
 	   /* <footer> 아래에 있던 script 코드 */
 	   $(document).ready(function() {
 				    // 댓글 개수 이모티콘 클릭 이벤트
-				    $(".comment-count").click(function() {
-				      $(this).parent().siblings(".button-row").find(".comment-input").toggle();
-				    });
+				    //$(".comment-count").click(function() {
+				     // $(this).parent().parent().find(".comment-input").slideToggle('fast');
+				    //});
 				    // 좋아요 버튼 클릭 이벤트
-				    $(".like-button").click(function() {
-				      var likeCount = parseInt($(this).find(".like-count").text().trim());
+				    $(".like-icon").click(function() {
+				    console.log("LIKE");
+				      var likeCount = parseInt($(this).parent().find(".like-count-number").text().trim());
 				      likeCount++;
-				      $(this).find(".like-count").text(likeCount);
+				      $(this).parent().find(".like-count-number").text(likeCount);
 				    });
 				  });
 				  
@@ -149,12 +150,11 @@ console.log(event.target.files.length);
 				  
 				  /* 댓글 input창 보여주기 */
 				  function showCommentInput(elem) { 
-						var sessionId = document.getElementById('sessionId').value;				  	 
-console.log("sessionId 2"+sessionId);				  	 
+						var sessionId = document.getElementById('sessionId').value;				  	 			  	 
 					  	if(sessionId != null){ /* 세션에 id있다면 토글 */
 					  	
-					  		const commentInput = $(elem).closest("footer").find(".comment-input");
-					    	commentInput.toggle();
+					  		const commentInput = $(elem).closest(".footer").find(".comment-input");
+					    	commentInput.slideToggle('fast');
 					  	}else{ /* 세션에 id없다면 alert 로그인필요함 알림 */
 					  		alert("댓글을 작성하려면 로그인이 필요합니다.");
 					  		return false;
@@ -180,7 +180,9 @@ console.log("sessionId 2"+sessionId);
 				  }
 	  
 	  			
-	  			function checkDeletePost() {
+	  			function checkDeletePost(e) {
+	  				e.stopPropagation();
+	  				
 	  				if(confirm('삭제하시겠습니까?')){
 	  					document.getElementById('deletePost').submit();
 	  				}else{
@@ -188,6 +190,32 @@ console.log("sessionId 2"+sessionId);
 	  				}
 	  			}
 	  			
+	  			function checkDeleteComment(e) {
+	  				e.stopPropagation();
+	  				
+	  				if(confirm('삭제하시겠습니까?')){
+	  					document.getElementById('deleteComment').submit();
+	  				}else{
+	  					return false;
+	  				}
+	  			}
+	  			
 	
+// 이미지 클릭 시 확대해서 모달창에 띄워주기
+function showImageModal(e, src) {
+	
+	e.stopPropagation();
+  
+	$("#modal .modal-content").load("/community/image-modal", function() {
+		$('.modal img').attr('src', src);
+		$("#modal").modal("show");
+	});
+}
+
+
+
+
+
+
 
 	  

@@ -57,7 +57,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr onclick="location.href='customer-center-form.do'">
+                      <tr onclick="location.href='/center/inquires/inquiry_id'">
                       	<td>
                           	10
                         </td>

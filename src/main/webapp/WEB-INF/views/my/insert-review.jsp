@@ -20,7 +20,7 @@
         </div>
 		<div class="container">
 			<div class="row justify-content-center">
-				<a href="purchase-history.do" class="back">&lt; 구매 내역</a>
+				<a href="/store/purchases?page=0" class="back">&lt; 구매 내역</a>
 				<div class="col-lg-12 d-flex p-info scroll-custom">
                		<img src="/resources/images/men-01.jpg" alt="">
                		<div class="d-flex flex-column justify-content-center p-text-info">
@@ -38,7 +38,7 @@
 	                	</div>
                		</div>
                	</div>
-               	<form class="col-lg-12 form-data" action="purchase-history.do">
+               	<form class="col-lg-12 form-data" action="">
                 	<div class="sub-title">
                 		<h6>별점</h6>
                 		<span class="star">
