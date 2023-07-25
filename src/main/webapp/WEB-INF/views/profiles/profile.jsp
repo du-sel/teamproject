@@ -620,7 +620,7 @@ $(()=> {
 							 		</c:otherwise>
 						</c:choose>
 				                		
-			                </c:when
+			                </c:when>
 			                <c:otherwise>
 			                	<c:if test="${getCreator.getId() eq sessionScope.user.id}">
 			                		<div id="buttonright" class="longtext"><a href="store/sales-status">마이스토어 관리</a></div>
