@@ -86,17 +86,17 @@ public class PostController {
 
 		PostVO p = postService.insertPost(vo);	
 		
-		
 		List<String> fileNames = new ArrayList<>();
 				
 		for (MultipartFile file : files) {
 			if(!file.isEmpty()) { //uploadFile !=null
-				
+
 				String path = request.getServletContext().getRealPath("/resources/postimg/");
+
 				//새로운 파일 이름
 				String fileName = p.getPostId()+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
 				fileNames.add(fileName);
-				
+System.out.println("newfile "+path+fileName);				
 				// 로컬에 파일 저장			
 				file.transferTo(new File(path+fileName));
 	
@@ -124,9 +124,22 @@ public class PostController {
 		// comment도 삭제
 		return "redirect:/community";
 	}	
+	
+	// 댓글 작성
+		@RequestMapping(value = "posts/{postId}/comments", method = RequestMethod.POST)
+		public String insertComment(CommentVO vo, HttpServletRequest request) {
+
+	System.out.println("vo.postid "+vo.getPostId());
+			commentService.insertComment(vo);
+			request.setAttribute("postId", vo.getPostId());
+			
+			String postId = Long.toString(vo.getPostId());
+			
+			return "redirect:/community/posts/"+postId;
+		}
 
 	// 댓글 삭제
-	@RequestMapping(value = "/{postId}/comments/{comment_id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{postId}/comments/{comment_id}", method = RequestMethod.DELETE)
 	public String deleteComment(@PathVariable("comment_id")Long commentid, @PathVariable("postId")Long postId) {
 System.out.println("delete postid "+postId);		
 		commentService.deleteComment(commentid);
