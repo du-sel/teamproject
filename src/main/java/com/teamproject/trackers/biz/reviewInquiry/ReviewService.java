@@ -12,6 +12,8 @@ public class ReviewService {
 
 	@Autowired
 	private ReviewRepository reviewRepository;
+	@Autowired
+	private ReviewListRepository reviewListRepository;
 
 	
 	// 리뷰 조회
@@ -24,5 +26,10 @@ public class ReviewService {
 		vo.setRating(vo.getRating()*10);
 		vo.setCre_date(new Date());
 		reviewRepository.save(vo);
+	}
+	
+	// 특정 상품에 대한 리뷰 리스트
+	public List<ReviewListVO> getProductReview(long p_id) {
+		return reviewListRepository.findAllByPidOrderByCreDateDesc(p_id);
 	}
 }

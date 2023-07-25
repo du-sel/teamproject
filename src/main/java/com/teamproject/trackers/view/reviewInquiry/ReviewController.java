@@ -61,7 +61,7 @@ public class ReviewController {
 	@RequestMapping(value ="/store/reviews/{p_id}", method = RequestMethod.POST)
 	public String insrtReview(@PathVariable("p_id") long p_id, ReviewVO vo) {
 		vo.setId((long) session.getAttribute("id"));
-		vo.setP_id(p_id);
+		vo.setPid(p_id);
 		
 		reviewService.insertReview(vo);
 		

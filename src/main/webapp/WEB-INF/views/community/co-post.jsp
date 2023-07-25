@@ -166,6 +166,7 @@
 					</div>
 				</div>
 
+
 		    	
 		    	<div class="post-content-container row justify-content-center">
 			    	<c:if test="${!empty imgList}">
@@ -189,6 +190,7 @@
 							${post.content}
 						</div>
 			    	</div>
+
 				</div>
 
 
