@@ -43,6 +43,10 @@ public interface PostInfoListRepository extends JpaRepository<PostInfoListVO, Lo
 
 	// 특정 회원의 포스트만
 	Page<PostInfoListVO> findAllById(long id, Pageable pageable);
+	
+	
+	// post_id 로 특정 포스트 조회
+	PostInfoListVO findByPostId(long postId);
 
 
 }
