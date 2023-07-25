@@ -20,13 +20,13 @@ public class SubscribePurchaseVO {
 	private long subscribeId;
 	@Id
 	private long id;
-	/*
+	
 	private String payment;
 	
 	@Column(name="pay_date")
 	@Temporal(TemporalType.DATE)
 	private Date payDate;
-	*/
+	
 	
 	public long getSubscribeId() {
 		return subscribeId;
@@ -40,7 +40,7 @@ public class SubscribePurchaseVO {
 	public void setId(long id) {
 		this.id = id;
 	}
-	/*
+	
 	public String getPayment() {
 		return payment;
 	}
@@ -55,13 +55,14 @@ public class SubscribePurchaseVO {
 	public void setPayDate(Date payDate) {
 		this.payDate = payDate;
 	}
-	*/
 	
-	/*
+	
+	
+	
 	public String toString() {
 		return "subscribeId: "+subscribeId+", id: "+id+", payment: "+payment+", payDate: "+payDate;
 	}
-	*/
+	
 	
 
 }

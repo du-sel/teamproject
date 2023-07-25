@@ -255,7 +255,9 @@ function getCreatorProductList(page, sort) {
 				                	<c:when test="${checkf.getFrom_id() eq sessionScope.user.id && checkf.getTo_id() eq profile.id && checks.getId() ne sessionScope.user.id}">
 				                		
 				                		<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-				                		<button id="buttonright" class="btn"data-toggle="modal" data-target="#subModal">구독 </button>
+				                		
+			                			<button id="buttonright" class="btn"data-toggle="modal" data-target="#subModal">구독 </button>
+				                		
 				                	</c:when>
 				                	
 				                	<c:when test="${checkf.getFrom_id() ne sessionScope.user.id && checkf.getTo_id() ne profile.id && checks.getId() eq sessionScope.user.id}">
@@ -291,7 +293,10 @@ function getCreatorProductList(page, sort) {
 			    <c:otherwise>
 			        <div class="offset-md-1 col-md-4 offset-lg-2 col-lg-4 thriddiv">
 			            <button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button>
-			            <button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" >구독</button>
+			            <c:if test="${!empty getMembership }">
+			            	<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" >구독</button>
+			            </c:if>
+			            
 			        </div>
 			    </c:otherwise>
 			 </c:choose>   
@@ -606,31 +611,33 @@ function getCreatorProductList(page, sort) {
 	
 	<!-- 멤버십 모달 -->
 	<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
-	<div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="subModal">
-	  <div class="modal-dialog modal-lg fixed-bottom">
-	    <div class="modal-content Membershipdiv" >
-	      <form action="" method="post">
-		      <br>
-		      	<h5 class="membershipSub">멤버십 구독</h5>
-		      <br>
-		      <div class="Subdiv">
-				<div class="s s1"></div>
-				<div class="s "><strong class="s2">${getMembership.price} 원</strong>/월</div>
-				<div class="s s3">${getMembership.content}</div>
-		      </div>
-		      <br>
-		      <div class="Subjoin">
-		      	<c:if test="${empty sessionScope.user.id}">
-		      		<h6><input type="button" value="멤버십 가입하기" class="subjoin" onclick="showLoginAlertSub()"></h6>
-		      	</c:if>
-		      	<c:if test="${!empty sessionScope.user.id}">
-		      		<h6><input type="submit" value="멤버십 가입하기" class="subjoin" ></h6>
-		      	</c:if>
-		      </div>
-	      </form>
-	    </div>
-	  </div>
-	</div>
+
+			<div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="subModal">
+			  <div class="modal-dialog modal-lg fixed-bottom">
+			    <div class="modal-content Membershipdiv" >
+			      <form action="" method="post">
+				      <br>
+				      	<h5 class="membershipSub">멤버십 구독</h5>
+				      <br>
+				      <div class="Subdiv">
+						<div class="s s1"></div>
+						<div class="s "><strong class="s2">${getMembership.price} 원</strong>/월</div>
+						<div class="s s3">${getMembership.content}</div>
+				      </div>
+				      <br>
+				      <div class="Subjoin">
+				      	<c:if test="${empty sessionScope.user.id}">
+				      		<h6><input type="button" value="멤버십 가입하기" class="subjoin" onclick="showLoginAlertSub()"></h6>
+				      	</c:if>
+				      	<c:if test="${!empty sessionScope.user.id}">
+				      		<h6><input type="submit" value="멤버십 가입하기" class="subjoin" ></h6>
+				      	</c:if>
+				      </div>
+			      </form>
+			    </div>
+			  </div>
+			</div>
+
 
 	
 	<!-- 이미지 업로드 모달  -->
