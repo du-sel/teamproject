@@ -245,9 +245,7 @@
                             
 								
 							<input type="hidden" id="sessionId" name="id" value="${sessionScope.id}">
-							<div class="comment-button" type="button" onclick="return showCommentInput(this)">
-								<span class="comment-plus">+</span> 댓글쓰기
-							</div>
+							
 							<div class="button-row">
 						
 								<div class="comment-input">
