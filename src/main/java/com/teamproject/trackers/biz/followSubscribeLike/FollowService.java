@@ -18,8 +18,8 @@ public class FollowService {
 		return (long) followRepository.Follower(url);
 	}
 	
-	public Long followT(String url, long id) {
-		return null;
+	public int followT(String url, long id) {
+		return followRepository.followT(url,id);
 	}
 
 	
