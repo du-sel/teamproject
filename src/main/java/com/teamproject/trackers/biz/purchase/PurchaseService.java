@@ -3,6 +3,7 @@ package com.teamproject.trackers.biz.purchase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,6 +40,14 @@ public class PurchaseService {
 		return purchaselistRepository.findAllById(vo.getId(), pageable);
 	}
 	
+	// 특정 구매 내역 상품 조회
+	public Optional<PurchaseListVO> getProductInfo(long id, long bak_p_id) {
+		PurchaseId purchase_id = new PurchaseId();
+		purchase_id.setId(id);
+		purchase_id.setBak_p_id(bak_p_id);
+		
+		return purchaselistRepository.findById(purchase_id);
+	}
 	
 	
 	
