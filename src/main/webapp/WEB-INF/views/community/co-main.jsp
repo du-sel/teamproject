@@ -254,7 +254,7 @@
 											<div class="comment-name">${c.name }</div>
 											<div class="d-flex">
 												<c:if test="${c.id eq user_id}">
-													<form id="deleteComment" action="/community/posts/${p.postId}/comments/${c.id}" method="post">
+													<form id="deleteComment" action="/community/posts/${p.postId}/comments/${c.comment_id}" method="post">
 													 	<input type="hidden" name="_method" value="DELETE"/>
 														<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
 													</form>
