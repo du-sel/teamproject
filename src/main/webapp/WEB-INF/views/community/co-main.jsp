@@ -12,10 +12,7 @@
 <script>
 
 function showTagModal() {
-	console.log('시작');
 	$('.modal-content').load("/community/tag-modal");
-	console.log('끝');
-	
 }
 
 </script>
@@ -114,11 +111,12 @@ function showTagModal() {
 						<div class="submitpost">
 							<textarea id="co-textarea" name="content" rows="2"></textarea>
 							<div class="icons-container d-flex justify-content-between">
-								<div class="d-flex flex-row">
-									<div onclick="showTagModal()" data-toggle="modal" data-target="#modal"><i class="fa fa-tag"></i></div>
-									<input type="hidden" name="tag" id="tag" value="">
+								<div class="d-flex flex-row align-items-center">
 									<div onclick=""><i class="fa fa-image"></i></div>
 									<!-- 파일 input 대신 클릭 -->
+									<div onclick="showTagModal()" data-toggle="modal" data-target="#modal"><i class="fa fa-tag"></i></div>
+									<input type="hidden" name="p_id" id="tag" value="">
+									<div class="tag-preview"></div>
 								</div>
 								<!-- <button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button> -->
 								<button class="submiticon" type="submit" onclick="return checkPhotoCount()"><i class="fa fa-paper-plane"></i></button>
@@ -259,6 +257,9 @@ function showTagModal() {
 							</c:otherwise>
 						</c:choose>
 						<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number">${p.t_count}</span></li>
+						<c:if test="${!empty p.p_id }">
+							<li class="tag"><a href="/store/products/${p.p_id }"><span class="tag-icon"><i class="fa fa-tag"></i></span><span class="tag-product">${p.p_name}</span></a></li>
+						</c:if>
 					</ul>
 					<div class="comment-section">
 						<c:if test="${!empty comments[p.postId]}">	
