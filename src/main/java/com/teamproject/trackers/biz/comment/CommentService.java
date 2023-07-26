@@ -55,4 +55,13 @@ public class CommentService {
 	public List<PostCommentListVO> getPostCommentList(long postId){
 		return postCommentListRepository.findTop3ByPostIdOrderByCreDateDesc(postId);
 	}
+	
+	
+	// 특정 포스트 댓글 전체 조회
+	public List<PostCommentListVO> getCommentListPage(long postId) {
+		return postCommentListRepository.findAllByPostId(postId);
+	}
+	
+	
+	
 }

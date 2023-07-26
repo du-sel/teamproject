@@ -60,7 +60,6 @@
 			                                <span class="star">
 												★★★★★
 												<span style="width: ${bp.rating}%;">★★★★★</span>
-												<input type="range" value="1" step="1" min="0" max="10">
 											</span>
 			                            </ul>
 	                                </div>
@@ -109,7 +108,6 @@
 			                                <span class="star">
 												★★★★★
 												<span style="width: ${rp.rating}%;">★★★★★</span>
-												<input type="range" value="1" step="1" min="0" max="10">
 											</span>
 			                            </ul>
 	                                </div>

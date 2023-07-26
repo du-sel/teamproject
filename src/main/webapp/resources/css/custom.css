@@ -1098,16 +1098,15 @@ pagination
   display: inline-block;
   text-align: center;
   line-height: 44px;
-  /* font-size: 18px; */
+  font-size: 14px;
   font-weight: 500;
   color: #2a2a2a;
 }
 
 .pagination ul li a:hover,
 .pagination ul li.active a {
-	background-color: transparent;
-	color: #e97d7d;
-    font-weight: bolder;
+  background-color: #2a2a2a;
+  color: #fff;
 }
 
 
@@ -1634,7 +1633,7 @@ Single Product Page
 #product .right-content ul.stars {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 20px;
 }
 
 #product .right-content ul.stars li {
@@ -1756,9 +1755,11 @@ Single Product Page
 #product .nav-tabs a:hover {
     color: #b8b8c4 !important;
 }
-
 #product .tab-content div{
    text-align:center;
+}
+#product .tab-content div.rating{
+   text-align:left;
 }
 
 #product .sticky {
@@ -1808,13 +1809,13 @@ Single Product Page
 /* -----------------말풍선 효과-------------------- */
 
 #product .speech-bubble {
-  width: 1100px;
+  max-width: 1100px;
+  width: 100%;
   position: relative;
   background-color: #f2f2f6;
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 20px;
-  margin: 0 auto;
+  margin: 0 auto 15px;
 }
 
 #product .speech-bubble table{
@@ -1835,6 +1836,10 @@ Single Product Page
   left: 50%;
   border: 10px solid transparent;
   transform: translateX(-50%);
+}
+
+#product .speech-bubble .review-content{
+	margin: 10px 0 0 10px;
 }
 
 /* ------------------표 꾸미기------------------ */
@@ -1860,6 +1865,7 @@ Single Product Page
 #product .profile-image {
   width: 70px;
   height: 70px;
+  border-radius: 50%;
 }
 
 
@@ -2798,8 +2804,8 @@ my-info-form, st- common (insert-review, product-inquiry, customer-inquiry, st-i
 }
 .my-info-form .p-info+.form-data,
 .my-info-form .back+.form-data{
-   	border-bottom: 1px solid #e4e4eb;
-	margin-bottom: 15px;
+   /* 	border-bottom: 1px solid #e4e4eb;
+	margin-bottom: 15px; */
 	word-break: keep-all;
 }
 #st-center.my-info-form .p-info+.form-data,
@@ -2845,11 +2851,18 @@ my-info-form, st- common (insert-review, product-inquiry, customer-inquiry, st-i
 .my-info-form .p-info .p-text-info>div{
 	width: max-content;
 }
-.my-info-form .p-info+form+div{
-	padding: 15px;
+.my-info-form .p-info+form+div,
+.my-info-form .p-info+div+div{
+	padding: 30px 15px 15px;
+	border-top: 1px solid #e4e4eb;
 }
 .my-info-form .p-info+form+div p{
 	padding: 10px 0 0 10px;
+}
+.my-info-form .my-info-p{
+	margin-top: 10px;
+    margin-left: 10px;
+    display: block !important;
 }
 .my-info-form .form-data div{
 	margin-bottom: 20px;

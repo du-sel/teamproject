@@ -48,7 +48,7 @@
 	        </a>
 	      </li>
 	      <li>
-	        <a href="/profiles/url/reviews">
+	        <a href="/profiles/${sessionScope.user.url}/reviews?page=0">
 	          <i class="tim-icons icon-pencil"></i>
 	          <p>후기 관리</p>
 	        </a>

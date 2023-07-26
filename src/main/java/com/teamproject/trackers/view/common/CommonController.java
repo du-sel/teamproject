@@ -2,6 +2,7 @@ package com.teamproject.trackers.view.common;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,12 +29,6 @@ public class CommonController {
 	@RequestMapping(value = "/news", method = RequestMethod.GET)
 	public String getNewsList() {
 		return "/my/news";
-	}
-	
-	// 구매 후기 작성 폼
-	@RequestMapping(value = "/store/reviews", method = RequestMethod.GET)
-	public String insrtReview() {
-		return "/my/insert-review";
 	}
 
 	
@@ -95,11 +90,7 @@ public class CommonController {
 		return "/my-store/inquiry-management-form";
 	}
 	
-	// 구매 후기 리스트
-	@RequestMapping(value = "/profiles/url/reviews", method = RequestMethod.GET)
-	public String getReviewList() {
-		return "/my-store/review-management";
-	}
+	
 	// 구매 후기 상세 조회
 	@RequestMapping(value = "/profiles/url/reviews/id", method = RequestMethod.GET)
 	public String getReview() {

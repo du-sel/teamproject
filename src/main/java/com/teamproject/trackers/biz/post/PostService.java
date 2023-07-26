@@ -76,5 +76,15 @@ public class PostService {
 		
 		return list;
 	}
+	
+	
+	
+	/* 회원 포스트 전체조회 */
+	public Page<PostInfoListVO> getUserPostList(long id, Pageable pageable) {
+		return postInfoListRepository.findAllById(id, pageable);
+	}
+	
+	
+	
 }
 
