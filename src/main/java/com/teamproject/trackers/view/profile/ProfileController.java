@@ -22,7 +22,9 @@ import com.google.gson.JsonObject;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoService;
+import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoVO;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribePurchaseService;
+import com.teamproject.trackers.biz.followSubscribeLike.SubscribePurchaseVO;
 import com.teamproject.trackers.biz.product.ProductListVO;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.profile.ProfileService;
@@ -82,8 +84,27 @@ public class ProfileController {
 	        return "/profiles/profile";
 	      
 	   }
+	 
+	// 구독 중 버튼에서 구독 취소 눌렀을 때
+		/*
+		 @RequestMapping(value ="/profiles/{url}/s", method = RequestMethod.DELETE)
+		 public String unSub(@PathVariable("url") String url, @RequestParam("type") String type,SubscribePurchaseVO spvo) {
+			 String c = "unSub";
+			 
+			 if(c.equals(type) && session.getAttribute("id") != null){
+				//System.out.println(type);
+			         spvo.setId((long)session.getAttribute("id"));
+			         spvo.setSubscribeId(profileService.getUser(url).getId());
+			         
+			         subscribePurchaseService.deleteSub(spvo);
+			        
+				 
+			 }
+			 
+			return "redirect:/profiles/"+url;
+		 }
 	
-	
+	*/
 	 
 	
         ////* 크리에이터 프로필 - 상품목록 조회 *////

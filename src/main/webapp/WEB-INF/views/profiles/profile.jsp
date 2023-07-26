@@ -255,9 +255,9 @@ function getCreatorProductList(page, sort) {
 				                	<c:when test="${checkf.getFrom_id() eq sessionScope.user.id && checkf.getTo_id() eq profile.id && checks.getId() ne sessionScope.user.id}">
 				                		
 				                		<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
-				                		
-			                			<button id="buttonright" class="btn"data-toggle="modal" data-target="#subModal">구독 </button>
-				                		
+				                		<c:if test="${!empty getMembership }">
+			                				<button id="buttonright" class="btn"data-toggle="modal" data-target="#subModal">구독 </button>
+				                		</c:if>
 				                	</c:when>
 				                	
 				                	<c:when test="${checkf.getFrom_id() ne sessionScope.user.id && checkf.getTo_id() ne profile.id && checks.getId() eq sessionScope.user.id}">
@@ -273,14 +273,16 @@ function getCreatorProductList(page, sort) {
 				                			<button id="buttonright" class="btn" onclick="startf()">팔로우</button>
 				                		</form>
 				                		<button class="btn offbtn" id="changef" data-toggle="modal" data-target="#ExampleModalCenter"  style=" display: none;">팔로우 중</button>
-				           				<button id="buttonright" class="btn" data-toggle="modal" data-target="#subModal">구독</button>
+				                		<c:if test="${!empty getMembership }">
+				           					<button id="buttonright" class="btn" data-toggle="modal" data-target="#subModal">구독</button>
+			           					</c:if>
 							 		</c:otherwise>
 						 		</c:choose>
 				                		
 			                </c:when>
 			                <c:otherwise>
 			                	<c:if test="${getCreator.getId() eq sessionScope.user.id}">
-			                		<div id="buttonright" class="longtext"><a href="store/sales">마이스토어 관리</a></div>
+			                		<div id="buttonright" class="longtext"><a href="/store/sales">마이스토어 관리</a></div>
 			                	</c:if>
 			                	<c:if test="${getCreator.getId() ne sessionScope.user.id}">
 			                		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>
@@ -630,7 +632,7 @@ function getCreatorProductList(page, sort) {
 				      		<h6><input type="button" value="멤버십 가입하기" class="subjoin" onclick="showLoginAlertSub()"></h6>
 				      	</c:if>
 				      	<c:if test="${!empty sessionScope.user.id}">
-				      		<h6><input type="submit" value="멤버십 가입하기" class="subjoin" ></h6>
+				      		<h6><input type="submit" value="멤버십 가입하기" class="subjoin" onclick="joinmembership()"></h6>
 				      	</c:if>
 				      </div>
 			      </form>
@@ -684,10 +686,11 @@ function getCreatorProductList(page, sort) {
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>		        
-		       
-		        	<button type="button" class="btn cancel">구독 취소</button>
-		
-		        
+		       	<form action="/profiles/${profile.url}" method="post">
+		       		<input type="hidden" name="_method" value="delete">
+		       		<input type="hidden" name="type" value="unSub">
+		        	<input type="submit" class="btn cancel" value="구독취소">
+				</form>		        
 		      </div>
 		    </div>
 		  </div>
@@ -709,8 +712,9 @@ function getCreatorProductList(page, sort) {
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>		        
-		        <form action="/profiles/${profile.url}" method="post">
+		        <form action="/profiles/${profile.url}" method="post" >
 		        	<input type="hidden" name="_method" value="delete">
+		        	<input type="hidden" name="type" value="unFollow"> 
 		        	<input type="submit" class="btn cancel" value="팔로우 취소">
 	        	</form>
 		      </div>

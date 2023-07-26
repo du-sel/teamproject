@@ -133,6 +133,12 @@ function showLoginAlertSub(){
 	
 }
 
+// 로그인 후 멤버십 가입하기
+function joinmembership(){
+	alert("멤버십에 가입되었습니다.");
+	$('#subModal').modal('hide');
+	
+}
 
 
 
