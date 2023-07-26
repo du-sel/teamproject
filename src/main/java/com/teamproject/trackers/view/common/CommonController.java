@@ -48,23 +48,6 @@ public class CommonController {
 		return "/store/st-center";
 	}
 	
-	// 문의 내역(상품 문의)
-	@RequestMapping(value = "/store/products/inquiries", method = RequestMethod.GET)
-	public String getStoreInquiryList() {
-		return "/my/inquiry-history";
-	}
-	// 문의 상세(상품 문의)
-	@RequestMapping(value = "/store/products/inquiries/id", method = RequestMethod.GET)
-	public String getStoreInquiry() {
-		return "/my/product-inquiry";
-	}
-	// 문의 작성(상품 문의)
-	@RequestMapping(value = "/store/products/id/inquiries", method = RequestMethod.GET)
-	public String insertInquiry() {
-		return "/store/st-inquiry";
-	}
-	
-	
 	
 	// 판매자
 	
