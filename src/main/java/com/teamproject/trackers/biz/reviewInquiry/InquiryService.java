@@ -40,7 +40,6 @@ public class InquiryService {
 	
 	// 상품문의 작성
 	public void insertInquiry(InquiryVO vo) {
-		vo.setCreDate(new Date());
 		inquiryRepository.save(vo);
 	}
 	
@@ -49,34 +48,23 @@ public class InquiryService {
 		return inquiryRepository.findAllByPidOrderByCreDateDesc(pid);
 	}
 	
+	// 상품 문의 상세 내용 조회
+	public Optional<InquiryVO> getInquiry(long inquiry_id){
+		return inquiryRepository.findById(inquiry_id);
+	}
+	
 	// 사용자별 상품 문의 조회
 	public Page<InquiryVO> getUserInquiryList(long id, Pageable pageable){
 		return inquiryRepository.findAllById(id, pageable);
 	}
 	
-	// 사용자별 상품 문의 상세 조회
-	public Optional<InquiryVO> getUserInquiry(long inquiry_id){
-		return inquiryRepository.findById(inquiry_id);
+	// 크리에이터별 상품 문의 조회
+	public Page<InquiryVO> getCreatorInquiryList(long cid, Pageable pageable){
+		return inquiryRepository.findAllByCId(cid, pageable);
 	}
 	
-	
-	
-	
-	
-	/*
-	// 크리에이터별 리뷰 리스트
-	public Page<ReviewListVO> getCreatorReviewList(long c_id, Pageable pageable){
-		return reviewListRepository.findAllByCid(c_id, pageable);
+	// 크리에이터 상품 문의 답변 저장
+	public void updateInquiryComment(InquiryVO vo) {
+		inquiryRepository.updateInquiryComment(vo.getAnswer(), vo.getAnswer_date(), vo.getInquiryId());
 	}
-	
-	// 크리에이터별 상세 리뷰
-	public ReviewListVO getCreatorReview(long id, long p_id) {
-		return reviewListRepository.findByIdAndPid(id, p_id);
-	}
-	
-	// 크리에이터 답변 저장
-	public void updateReviewComment(ReviewVO vo) {
-		reviewRepository.updateReviewComment(vo.getAnswer(), vo.getId(), vo.getPid());
-	}
-	*/
 }

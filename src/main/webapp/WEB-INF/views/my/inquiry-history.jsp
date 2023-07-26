@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 
@@ -36,11 +37,11 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="inquiry" items="${inquities.content}" varStatus="status">
-								<tr onclick="location.href='/store/inquiries/${inquiry.inquiry_id}'">
-									<td>${inquities.totalElements-((inquities.number*10)+status.index)} </td>
+							<c:forEach var="inquiry" items="${inquiries.content}" varStatus="status">
+								<tr onclick="location.href='/store/inquiries/${inquiry.inquiryId}'">
+									<td>${inquiries.totalElements-((inquiries.number*10)+status.index)} </td>
 									<td>${inquiry.title}</td>
-									<td>${inquiry.creDate}</td>
+									<td>${fn:substring(inquiry.creDate, 0, 10)}</td>
 									<td>
 										<c:choose>
 											<c:when test="${!empty inquiry.answer}">
@@ -61,9 +62,9 @@
                 <div class="col-lg-12">
 	                 <div class="pagination">
 	                     <ul>
-	                     	<c:if test="${inquities.number-1 >= 0}" >
+	                     	<c:if test="${inquiries.number-1 >= 0}" >
 					    		<li>
-						            <a href="/store/inquiries?page=${inquities.number-1}">&lt;</a>
+						            <a href="/store/inquiries?page=${inquiries.number-1}">&lt;</a>
 						        </li>
 					    	</c:if>
 					    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
@@ -71,9 +72,9 @@
 						            <a href="/store/inquiries?page=${p-1}">${p}</a>
 						        </li>	
 							</c:forEach>
-							<c:if test="${inquities.number+1 < inquities.totalPages }" >
+							<c:if test="${inquiries.number+1 < inquiries.totalPages }" >
 					    		<li>
-					           		<a href="/store/inquiries?page=${inquities.number+1}">&gt;</a>
+					           		<a href="/store/inquiries?page=${inquiries.number+1}">&gt;</a>
 					        	</li>
 					    	</c:if>
 	                     </ul>

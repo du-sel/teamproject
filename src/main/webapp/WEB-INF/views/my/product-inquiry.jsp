@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
   
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
@@ -34,7 +35,7 @@
 	                	</div>
 	                	<div>
 	                		<h6>작성 일자</h6>
-	                		<p>${inquiry.creDate}</p>
+	                		<p>${fn:substring(inquiry.creDate, 0, 10)}</p>
 	                	</div>
                		</div>
                	</div>

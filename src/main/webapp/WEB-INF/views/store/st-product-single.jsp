@@ -178,7 +178,7 @@ function goPurchase() {
          <!-- 세번째 탭 (상품문의) -->
           <div id = "inquiry" class ="tab-pane">
            	<div class="inquiry-btn-container">
-           		<button type="button" class="inquiry-btn" onclick="javascript:location.href='/store/products/${product.pid}/inquities'">문의하기</button>
+           		<button type="button" class="inquiry-btn" onclick="javascript:location.href='/store/products/${product.pid}/inquiries'">문의하기</button>
            	</div>
              
 			
@@ -203,7 +203,7 @@ function goPurchase() {
 				    </td>
 				    <td>${inquiry.title}</td>
 				    <td>${fn:substring(inquiry.name, 0, 3)}***</td>
-				    <td>${inquiry.creDate}</td>
+				    <td>${fn:substring(inquiry.creDate, 0, 10)}</td>
 				  </tr>
 				  <c:if test="${!empty inquiry.answer}">
 					  <tr id="hiddenRow${status.index}" class="hidden-row" style="display: none;">

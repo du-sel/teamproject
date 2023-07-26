@@ -54,7 +54,7 @@
 	        </a>
 	      </li>
 	      <li>
-	        <a href="/profiles/url/inquiries">
+	        <a href="/profiles/${sessionScope.user.url}/inquiries?page=0">
 	          <i class="tim-icons icon-chat-33"></i>
 	          <p>문의 관리</p>
 	        </a>

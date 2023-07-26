@@ -34,7 +34,7 @@
 	                	</div>
                		</div>
                	</div>
-               	<form class="col-lg-12 form-data" action="/store/products/${p_info.pid}/inquities" method="post" onsubmit="enter('inquiry-content');">
+               	<form class="col-lg-12 form-data" action="/store/products/${p_info.pid}/inquiries" method="post" onsubmit="enter('inquiry-content');">
                		<div class="sub-title">
 	               		<h6>문의 제목</h6>
 	               		<input type="text" name="title" placeholder="문의 제목 작성">
