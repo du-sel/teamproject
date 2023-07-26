@@ -181,7 +181,7 @@ function addActive(){
 	
 	for(let i=0; i<href.length; i++){
 		let url = $(href[i]).attr('href');
-		if(path.includes(url)) {
+		if(url.includes(path)) {
 			console.log(url)
 			$(href[i]).parent().addClass('active');
 			break;
