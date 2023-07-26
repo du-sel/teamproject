@@ -102,9 +102,7 @@ public class ProfileController {
 	        return "/profiles/profile";
 	      
 	   }
-	 
 
-	 
 	
         ////* 크리에이터 프로필 - 상품목록 조회 *////
 	@RequestMapping(value="/{url}/products", method=RequestMethod.GET, produces = "application/text; charset=UTF-8")
