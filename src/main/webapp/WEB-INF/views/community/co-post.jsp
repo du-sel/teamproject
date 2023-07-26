@@ -206,6 +206,9 @@
 							</c:otherwise>
 						</c:choose>
 						<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number">${post.t_count}</span></li>
+						<c:if test="${!empty post.p_id }">
+							<li class="tag"><a href="/store/products/${post.p_id }"><span class="tag-icon"><i class="fa fa-tag"></i></span><span class="tag-product">${post.p_name}</span></a></li>
+						</c:if>
 					</ul>
 					<div class="comment-section">
 						<c:if test="${!empty commentList}">	
