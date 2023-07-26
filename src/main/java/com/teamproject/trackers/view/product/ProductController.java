@@ -237,10 +237,12 @@ public class ProductController {
     }
     //------------------------------------------------------정희
 	
-	
-	
-
     
+    ////* 상품 등록 페이지 띄우기 *////
+	@RequestMapping(value="/products/new", method=RequestMethod.GET)
+    public String showProductForm() {
+        return "my-store/insert-product";
+    }
     
 	////* 상품 등록 처리 *////
 	@RequestMapping(value="/products", method=RequestMethod.POST)
