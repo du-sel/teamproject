@@ -49,23 +49,11 @@ public class CommonController {
 	}
 	
 	
-	// 판매자
-	
+	// 크리에이터
 	// 정산 내역
 	@RequestMapping(value = "/store/sales/table", method = RequestMethod.GET)
 	public String getSalesList() {
 		return "/my-store/calculate-history";
-	}
-	
-	// 문의 리스트
-	@RequestMapping(value = "/profiles/url/inquiries", method = RequestMethod.GET)
-	public String getInquiryList() {
-		return "/my-store/inquiry-management";
-	}
-	// 문의 상세 조회
-	@RequestMapping(value = "/profiles/url/inquiries/inquiry_id", method = RequestMethod.GET)
-	public String getInquiry() {
-		return "/my-store/inquiry-management-form";
 	}
 	
 	// 공지 리스트
@@ -74,6 +62,7 @@ public class CommonController {
 		return "/my-store/notice-management";
 	}
 		
+	
 	// 관리자
 	// 고객센터 문의 리스트
 	@RequestMapping(value = "/center/inquires", method = RequestMethod.GET)
