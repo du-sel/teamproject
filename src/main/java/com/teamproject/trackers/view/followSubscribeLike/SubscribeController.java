@@ -18,6 +18,8 @@ import com.teamproject.trackers.biz.drive.DriveController;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoService;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoVO;
+import com.teamproject.trackers.biz.followSubscribeLike.SubscribePurchaseService;
+import com.teamproject.trackers.biz.followSubscribeLike.SubscribePurchaseVO;
 import com.teamproject.trackers.biz.profile.ProfileService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
@@ -30,7 +32,10 @@ public class SubscribeController {
 	@Autowired
 	private SubscribeInfoService subscribeInfoService;
 	@Autowired
+	private SubscribePurchaseService subscribePurchaseService;
+	@Autowired
     private HttpSession session;
+
 	@Autowired
 	private ProfileService profileService;
 	private AlertVO alert = new AlertVO();
@@ -93,25 +98,9 @@ public class SubscribeController {
 		return "redirect:/common";
 	}
 	
-	// 구독 중 버튼에서 구독 취소 눌렀을 때
 	
-	 @RequestMapping(value ="/profiles/{url}", method = RequestMethod.DELETE)
-	 public String unFollow(@PathVariable("url") String url, Model model, UserVO uvo, FollowVO fvo, SubscribeInfoVO svo) {
-		 
-		 if(session.getAttribute("id") != null){
-	         svo.setSubscribeId((long)session.getAttribute("id"));
-	         fvo.setTo_id(profileService.getUser(url).getId());
-	         
-	          
-	         
-	         alert.setStr("구독 취소되었습니다."); 
-			 alert.setPath("/"+url); 
-			 alert.setFlag(true);
-			  
-		 }
-		 
-		return "redirect:/profiles/"+url;
-	 }
+	 
+	
 	
 	
 	

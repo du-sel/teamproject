@@ -1,9 +1,9 @@
 package com.teamproject.trackers.view.profile;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -39,6 +39,7 @@ import com.teamproject.trackers.biz.profile.ProfileService;
 import com.teamproject.trackers.biz.userCreator.CreatorService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
 
+
 @Controller
 @RequestMapping("/profiles")
 public class ProfileController {
@@ -47,25 +48,23 @@ public class ProfileController {
 	private HttpSession session;
 	private FollowService followService;
 	private ProductService productService;
-	private PostService postService;
-	private PostIMGService postIMGService;
-	private CommentService commentService;
 	private SubscribeInfoService subscribeInfoService;
 	private SubscribePurchaseService subscribePurchaseService; 
 	private CreatorService creatorService;
-
+	private PostService postService;
+	private PostIMGService postIMGService;
+	private CommentService commentService;
 	
 	@Autowired
 	public ProfileController(ProfileService profileService,
 			HttpSession session,
 			FollowService followService,
 			ProductService productService,
-			PostService postService,
-			PostIMGService postIMGService,
-			CommentService commentService,
 			SubscribeInfoService subscribeInfoService,
 			SubscribePurchaseService subscribePurchaseService,
-			CreatorService creatorService) {
+			CreatorService creatorService,
+			PostService postService,PostIMGService postIMGService,
+			CommentService commentService) {
 		
 		this.profileService = profileService;
 		this.session = session;
@@ -103,11 +102,9 @@ public class ProfileController {
 	        return "/profiles/profile";
 	      
 	   }
+
 	
-	
-	 
-	
-    ////* 크리에이터 프로필 - 상품목록 조회 *////
+        ////* 크리에이터 프로필 - 상품목록 조회 *////
 	@RequestMapping(value="/{url}/products", method=RequestMethod.GET, produces = "application/text; charset=UTF-8")
 	@ResponseBody
     public String getCreatorProductList(@PathVariable("url") String url, 
@@ -176,9 +173,6 @@ public class ProfileController {
     }
 		
 		
-	
-	
-	
 	////* 회원 프로필 - 포스트목록 조회 *////
 	@RequestMapping(value="/{url}/posts", method=RequestMethod.GET, produces = "application/text; charset=UTF-8")
 	@ResponseBody
@@ -261,8 +255,6 @@ public class ProfileController {
 		
 		return wrapperIntoString;
 	}
-	
-	
 		
 
 }

@@ -55,9 +55,10 @@ public class SubscribePurchaseVO {
 	public void setPayDate(Date payDate) {
 		this.payDate = payDate;
 	}
-	*/
 	
-	/*
+	
+	
+	
 	public String toString() {
 		return "subscribeId: "+subscribeId+", id: "+id+", payment: "+payment+", payDate: "+payDate;
 	}
