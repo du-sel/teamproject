@@ -9,18 +9,23 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name="inquiry")
 public class InquiryVO {
 	
 	@Id
-	private long inquiry_id;
+	@Column(name="inquiry_id")
+	private long inquiryId;
 	
 	@Column(name="p_id")
 	private long pid;
 	private long id;
 	private String name;
-	@Temporal(TemporalType.DATE)
+	
+	@Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
 	@Column(name = "cre_date")
 	private Date creDate;
 	private String title;
@@ -30,11 +35,11 @@ public class InquiryVO {
 	private Date answer_date;
 	
 	
-	public long getInquiry_id() {
-		return inquiry_id;
+	public long getInquiryId() {
+		return inquiryId;
 	}
-	public void setInquiry_id(long inquiry_id) {
-		this.inquiry_id = inquiry_id;
+	public void setInquiryId(long inquiryId) {
+		this.inquiryId = inquiryId;
 	}
 	public long getPid() {
 		return pid;

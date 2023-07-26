@@ -182,8 +182,13 @@ function addActive(){
 	for(let i=0; i<href.length; i++){
 		let url = $(href[i]).attr('href');
 		if(url.includes(path)) {
-			console.log(url)
 			$(href[i]).parent().addClass('active');
+			break;
+		}else if(path.includes('reviews')){
+			$(href[4]).parent().addClass('active');
+			break;
+		}else if(path.includes('inquiries')){
+			$(href[5]).parent().addClass('active');
 			break;
 		}
 	}

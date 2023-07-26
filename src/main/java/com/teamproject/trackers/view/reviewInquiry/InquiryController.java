@@ -1,5 +1,7 @@
 package com.teamproject.trackers.view.reviewInquiry;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -51,15 +53,15 @@ public class InquiryController {
 	}
 	
 	// 상품 문의 작성 폼
-	@RequestMapping(value ="/store/products/{p_id}/inquities", method = RequestMethod.GET)
-	public String insertInquiryForm(@PathVariable("p_id") long p_id, Model model) {		
+	@RequestMapping(value ="/store/products/{p_id}/inquiries", method = RequestMethod.GET)
+	public String insertInquiry(@PathVariable("p_id") long p_id, Model model) {		
 		model.addAttribute("p_info", inquiryService.getProductInfo(p_id));
 		
 		return "/store/st-inquiry";
 	}
 	
 	// 상품 문의 작성
-	@RequestMapping(value ="/store/products/{p_id}/inquities", method = RequestMethod.POST)
+	@RequestMapping(value ="/store/products/{p_id}/inquiries", method = RequestMethod.POST)
 	public String insertInquiry(@PathVariable("p_id") long p_id, InquiryVO vo) {		
 		UserVO user = (UserVO) session.getAttribute("user");
 		
@@ -72,6 +74,7 @@ public class InquiryController {
 		return "redirect:/store/products/"+p_id;
 	}
 	
+	// 일반 사용자
 	// 사용자별 상품 문의 조회
 	@RequestMapping(value = "/store/inquiries", method = RequestMethod.GET)
 	public String getInquiryList(int page, Model model) {
@@ -88,16 +91,16 @@ public class InquiryController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		
-		model.addAttribute("inquities", list);
+		model.addAttribute("inquiries", list);
 		
 		return "/my/inquiry-history";
 	}
 
 	// 사용자 상품 문의 상세
 	@RequestMapping(value = "/store/inquiries/{inquiry_id}", method = RequestMethod.GET)
-	public String getStoreInquiry(@PathVariable("inquiry_id") long inquiry_id, Model model) {
+	public String getInquiry(@PathVariable("inquiry_id") long inquiry_id, Model model) {
 		
-		InquiryVO vo = inquiryService.getUserInquiry(inquiry_id).get();
+		InquiryVO vo = inquiryService.getInquiry(inquiry_id).get();
 		
 		model.addAttribute("p_info", inquiryService.getProductInfo(vo.getPid()));
 		model.addAttribute("inquiry", vo);
@@ -105,16 +108,50 @@ public class InquiryController {
 		return "/my/product-inquiry";
 	}
 	
-	/*
-	@RequestMapping(value ="/store/reviews/{p_id}", method = RequestMethod.POST)
-	public String insertReview(@PathVariable("p_id") long p_id, ReviewVO vo) {
-		vo.setId((long) session.getAttribute("id"));
-		vo.setPid(p_id);
+	
+	// 크리에이터
+	// 크리에이터별 상품 문의 조회
+	@RequestMapping(value = "/profiles/{url}/inquiries", method = RequestMethod.GET)
+	public String getInquiryList(int page, @PathVariable("url") String url, Model model) {
 		
-		reviewService.insertReview(vo);
+		// 정렬 및 페이징
+		Pageable pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "cre_date"));	// 시작 페이지, 데이터 개수, 정렬 기준
+		Page<InquiryVO> list = inquiryService.getCreatorInquiryList((long) session.getAttribute("id"), pageable);
 		
-		return "redirect:/store/reviews/"+p_id; 
+		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
+		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
+		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
+		
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		
+		model.addAttribute("inquiries", list);
+		
+		return "/my-store/inquiry-management";
 	}
-	*/
+	
+	// 크리에이터 상품 문의 상세
+	@RequestMapping(value = "/profiles/{url}/inquiries/{inquiry_id}", method = RequestMethod.GET)
+	public String getInquiry(@PathVariable("url") String url, @PathVariable("inquiry_id") long inquiry_id, Model model) {
+		
+		InquiryVO vo = inquiryService.getInquiry(inquiry_id).get();
+		
+		model.addAttribute("p_info", inquiryService.getProductInfo(vo.getPid()));
+		model.addAttribute("inquiry", vo);
+		
+		return "/my-store/inquiry-management-form";
+	}
+	
+	// 크리에이터 상품 문의 답변 업데이트
+	@RequestMapping(value ="/profiles/{url}/inquiries/{inquiry_id}/comment", method = RequestMethod.POST)
+	public String updateInquiryComment(@PathVariable("url") String url, @PathVariable("inquiry_id") long inquiry_id, InquiryVO vo) {
+		vo.setInquiryId(inquiry_id);
+		vo.setAnswer_date(new Date());
+		
+		inquiryService.updateInquiryComment(vo);
+		
+		return "redirect:/profiles/"+url+"/inquiries/"+inquiry_id;
+	}
 }
 
