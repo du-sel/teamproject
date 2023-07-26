@@ -90,13 +90,6 @@ public class CommonController {
 		return "/my-store/inquiry-management-form";
 	}
 	
-	
-	// 구매 후기 상세 조회
-	@RequestMapping(value = "/profiles/url/reviews/id", method = RequestMethod.GET)
-	public String getReview() {
-		return "/my-store/review-management-form";
-	}
-	
 	// 공지 리스트
 	@RequestMapping(value = "/profiles/url/notice", method = RequestMethod.GET)
 	public String getNoticeList() {
