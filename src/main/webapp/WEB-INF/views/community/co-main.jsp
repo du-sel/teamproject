@@ -217,28 +217,34 @@ function showTagModal() {
 					</div>
 
 			    	
-			    	<div class="post-content-container row justify-content-center" onclick="location.href='/community/posts/${p.postId}'">
-				    	<c:if test="${!empty imgs[p.postId]}">
-					    	<div class="img-container 
-					    		<c:choose>
-					    			<c:when test="${fn:length(imgs[p.postId]) == 1 }">one</c:when>
-					    			<c:when test="${fn:length(imgs[p.postId]) == 2 }">two</c:when>
-					    			<c:when test="${fn:length(imgs[p.postId]) == 3 }">three</c:when>
-					    			<c:when test="${fn:length(imgs[p.postId]) == 4 }">four</c:when>
-					    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
-					    		<c:forEach var="img" items="${imgs[p.postId]}">
-									<div class="img-card">
-					    				<img src="${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
-					    			</div>
-				   	   			</c:forEach>
-			   	   			</div>
-				    	</c:if>
-					
-						<div id="post-content" class="collapse-content">
-							<div class="post-content-inner collapsed">
-								${p.content}
+			    	<div>
+			    		<a href="/community/posts/${p.postId}">
+			    		
+			    			<div class="post-content-container row justify-content-center"> <!-- onclick="location.href='/community/posts/${p.postId}'" -->
+						    	<c:if test="${!empty imgs[p.postId]}">
+							    	<div class="img-container 
+							    		<c:choose>
+							    			<c:when test="${fn:length(imgs[p.postId]) == 1 }">one</c:when>
+							    			<c:when test="${fn:length(imgs[p.postId]) == 2 }">two</c:when>
+							    			<c:when test="${fn:length(imgs[p.postId]) == 3 }">three</c:when>
+							    			<c:when test="${fn:length(imgs[p.postId]) == 4 }">four</c:when>
+							    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
+							    		<c:forEach var="img" items="${imgs[p.postId]}">
+											<div class="img-card">
+							    				<img src="${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
+							    			</div>
+						   	   			</c:forEach>
+					   	   			</div>
+						    	</c:if>
+							
+								<div id="post-content" class="collapse-content">
+									<div class="post-content-inner collapsed">
+										${p.content}
+									</div>
+						    	</div>
 							</div>
-				    	</div>
+			    		</a>
+	
 					</div>
 				</div>
 				<!-- </form> -->
@@ -269,9 +275,9 @@ function showTagModal() {
 											<div class="comment-name">${c.name }</div>
 											<div class="d-flex">
 												<c:if test="${c.id eq user_id}">
-													<form id="deleteComment" action="/community/posts/${p.postId}/comments/${c.comment_id}" method="post">
+													<form id="deleteComment" action="/community/posts/${p.postId}/comments/${c.comment_id}" method="post" name="commentid_${c.comment_id }">
 													 	<input type="hidden" name="_method" value="DELETE"/>
-														<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
+														<div class="delete-comment" onclick="checkDeleteComment(${c.comment_id })">삭제</div>
 													</form>
 												</c:if>
 												<div class="comment-date">${c.creDate }</div>

@@ -194,20 +194,19 @@ console.log(event.target.files.length);
 				  }
 	  
 		
-				var form = $("form[name^='postId_']").get();
+				var postform = $("form[name^='postId_']").get();
 				function checkDeletePost(postId) {
 					var divId = postId;
 			console.log("divId "+divId);
 					
 					if(confirm('삭제하시겠습니까?')){
-						for ( var i = 0; i < form.length; i++) {
-						var formname = form[i].getAttribute('name');	
-			console.log("formname "+formname);	
+						for ( var i = 0; i < postform.length; i++) {
+						var formname = postform[i].getAttribute('name');	
+
 						var id = formname.substring(7,formname.length);
-			console.log("id "+id);											
+										
 					        if(id == divId){
-			console.log("form[i] "+form[i]);
-					        	form[i].submit();
+					        	postform[i].submit();
 					        }
 					    }
 					}else{						
@@ -217,11 +216,25 @@ console.log(event.target.files.length);
 		
 	  			
 	  			
-	  			function checkDeleteComment(e) {
-	  				e.stopPropagation();
+	  			var commentform = $("form[name^='commentid_']").get();
+	  			function checkDeleteComment(commentid) {
+	  				
+	  				var divId = commentid;
+			console.log("divId "+divId);
 	  				
 	  				if(confirm('삭제하시겠습니까?')){
-	  					document.getElementById('deleteComment').submit();
+	  					for ( var i = 0; i < commentform.length; i++) {
+						var formname = commentform[i].getAttribute('name');	
+	
+						var id = formname.substring(10,formname.length);
+											
+					        if(id == divId){
+
+					        	commentform[i].submit();
+					        }
+					    }
+	  					
+	  					
 	  				}else{
 	  					return false;
 	  				}
