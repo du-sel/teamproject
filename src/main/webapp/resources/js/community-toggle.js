@@ -193,16 +193,29 @@ console.log(event.target.files.length);
 					}
 				  }
 	  
+		
+				var form = $("form[name^='postId_']").get();
+				function checkDeletePost(postId) {
+					var divId = postId;
+			console.log("divId "+divId);
+					
+					if(confirm('삭제하시겠습니까?')){
+						for ( var i = 0; i < form.length; i++) {
+						var formname = form[i].getAttribute('name');	
+			console.log("formname "+formname);	
+						var id = formname.substring(7,formname.length);
+			console.log("id "+id);											
+					        if(id == divId){
+			console.log("form[i] "+form[i]);
+					        	form[i].submit();
+					        }
+					    }
+					}else{						
+			        	return false;
+					}					
+				}
+		
 	  			
-	  			function checkDeletePost(e) {
-	  				e.stopPropagation();
-	  				
-	  				if(confirm('삭제하시겠습니까?')){
-	  					document.getElementById('deletePost').submit();
-	  				}else{
-	  					return false;
-	  				}
-	  			}
 	  			
 	  			function checkDeleteComment(e) {
 	  				e.stopPropagation();
@@ -213,7 +226,7 @@ console.log(event.target.files.length);
 	  					return false;
 	  				}
 	  			}
-	  			
+	  		
 	
 // 이미지 클릭 시 확대해서 모달창에 띄워주기
 function showImageModal(e, src) {

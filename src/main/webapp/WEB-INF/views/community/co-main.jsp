@@ -197,7 +197,7 @@ function showTagModal() {
 			<!-- Post -->
 			<section class="post"> 
 				<%-- <form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'"> --%>
-				<div onclick="location.href='/community/posts/${p.postId}'">
+				<div>
 					<div class="header">
 						<a href="/profiles/${p.url}" class="author">
 						    <img src="${p.profile_img}" alt="프로필 이미지" />
@@ -207,9 +207,9 @@ function showTagModal() {
 						<%-- <input type="text" readonly="readonly" name="cre_date" class="published" value="${p.creDate}"> --%>
 						<div class="d-flex">
 							<c:if test="${p.id eq user_id}">
-								<form action="/community/posts/${p.postId}" method="post" id="deletePost">
+								<form action="/community/posts/${p.postId}" method="post" id="deletePost" name="postId_${p.postId }">
 								 	<input type="hidden" name="_method" value="DELETE"/>
-									<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
+									<div class="delete-post" onclick="javascript:checkDeletePost(${p.postId })">삭제</div>
 								</form>
 							</c:if>
 							<span class="published">${p.creDate}</span>
@@ -217,7 +217,7 @@ function showTagModal() {
 					</div>
 
 			    	
-			    	<div class="post-content-container row justify-content-center">
+			    	<div class="post-content-container row justify-content-center" onclick="location.href='/community/posts/${p.postId}'">
 				    	<c:if test="${!empty imgs[p.postId]}">
 					    	<div class="img-container 
 					    		<c:choose>
@@ -398,8 +398,7 @@ function showTagModal() {
 		alert("로그인 후 이용 가능합니다.");
 	}
 	
-	
-	
+
 	
 </script>
 
