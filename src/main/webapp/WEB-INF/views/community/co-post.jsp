@@ -216,9 +216,9 @@
 											<div class="comment-name">${c.name }</div>
 											<div class="d-flex">
 												<c:if test="${c.id eq sessionScope.id}">
-													<form id="deleteComment" action="/community/posts/${post.postId}/comments/${c.comment_id}" method="post">
+													<form id="deleteComment" action="/community/posts/${post.postId}/comments/${c.comment_id}" method="post" name="commentid_${c.comment_id }">
 													 	<input type="hidden" name="_method" value="DELETE"/>
-														<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
+														<div class="delete-comment" onclick="checkDeleteComment(${c.comment_id })">삭제</div>
 													</form>
 												</c:if>
 												<div class="comment-date">${c.creDate }</div>
@@ -238,10 +238,10 @@
 	                        </c:if> --%>
 							<div class="comment-input">
 								<form action="/community/posts/${post.postId}/comments" method="post" name="comment" id="insertcomment">
-									<input type="hidden" name="postId" value="${p.postId }"/>
+									<input type="hidden" name="postId" value="${post.postId }"/>
 									<c:choose>
-								    	<c:when test="${!empty user_id}">	<!-- 로그인 o --> 
-								    		<input type="hidden" name="id" value="${user_id}">
+								    	<c:when test="${!empty sessionScope.id}">	<!-- 로그인 o --> 
+								    		<input type="hidden" name="id" value="${sessionScope.id}">
 											<input type="text" id="comment-text" name="content" class="form-control" placeholder="댓글을 입력하세요">
 								            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
 								    	</c:when>		
