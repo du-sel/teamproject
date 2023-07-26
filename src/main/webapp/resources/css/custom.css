@@ -1905,6 +1905,10 @@ Single Product Page
   padding: 20px;
   margin: 20px;
   font-size: 15px;
+  font-weight: 600;
+}
+#product .back:hover{
+	color: #b8b8c4;
 }
 
 #product .inquiry-btn-container {
