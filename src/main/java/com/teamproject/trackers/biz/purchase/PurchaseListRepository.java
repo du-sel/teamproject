@@ -15,7 +15,7 @@ public interface PurchaseListRepository extends JpaRepository<PurchaseListVO, Pu
 	Page<PurchaseListVO> findAllById(long id, Pageable pageable);
 	
 	// 크리에이터 베스트5 상품 판매액 및 수량 리스트
-	@Query(value = "SELECT pl.p_name, COUNT(pl.bak_p_id) AS quantity, SUM(pl.price) AS total FROM purchaselist pl, products p WHERE pl.c_id=:id and p.p_id=pl.bak_p_id GROUP BY pl.bak_p_id ORDER BY quantity DESC, total DESC LIMIT 5", nativeQuery = true)
+	@Query(value = "SELECT p_name, COUNT(bak_p_id) AS quantity, SUM(price) AS total FROM purchaselist WHERE c_id=:id GROUP BY bak_p_id ORDER BY quantity DESC, total DESC LIMIT 5", nativeQuery = true)
 	List<Object[]> getBest5Sales(@Param("id") long id);
-
+	
 }
