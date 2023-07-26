@@ -157,9 +157,9 @@
 					</a>
 					<div class="d-flex">
 						<c:if test="${post.id eq sessionScope.id}">
-							<form action="/community/posts/${post.postId}" method="post" id="deletePost">
+							<form action="/community/posts/${post.postId}" method="post" id="deletePost" name="postId_${post.postId}">
 							 	<input type="hidden" name="_method" value="DELETE"/>
-								<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
+								<div class="delete-post" onclick="javascript:checkDeletePost(${post.postId})">삭제</div>
 							</form>
 						</c:if>
 						<span class="published">${post.creDate}</span>
