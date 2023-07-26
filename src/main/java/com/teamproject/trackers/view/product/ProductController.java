@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,9 +28,6 @@ import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
 import com.teamproject.trackers.biz.reviewInquiry.ReviewService;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
-import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryVO;
-import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryVO;
-import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -57,6 +55,8 @@ import org.springframework.data.domain.Pageable;
 //----------------정희 추가-----------------
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 
 @Controller
@@ -524,40 +524,24 @@ public class ProductController {
     
     
     
-    /*---------------------------------------------------정희 추가
+//---------------------------------------------------정희 추가
 
-    // 상품 수정 페이지
+    
+    // 상품 수정 페이지로 이동
     @GetMapping("/products/{p_id}/edit")
-    public String showEditProductForm(@PathVariable("p_id") String p_id) {
-        // 상품 정보 조회 및 수정 페이지로 이동
-        return "my-store/product-management";
+    public String showEditProductForm(@PathVariable("p_id") long p_id, Model model) {
+        ProductVO product = productService.getProductById(p_id);
+        model.addAttribute("product", product);
+        return "store/edit-product";
     }
 
     // 상품 수정 처리
     @PostMapping("/products/{p_id}")
-    public String updateProduct(
-            @PathVariable("p_id") String p_id,
-            @RequestParam("name") String name,
-            @RequestParam("price") int price,
-            @RequestParam(value = "file", required = false) MultipartFile file) {
-   
-        // 상품 수정 로직
-        ProductVO product = productService.getProductById(p_id);
-        if (product != null) {
-            product.setP_name(name);
-            product.setPrice(price);
-            if (!file.isEmpty()) {
-                // 파일 업로드 처리 로직
-                String fileName = saveFile(file);
-                // 파일명을 이용하여 thumbnail 정보를 처리하는 로직을 구현합니다.
-                // product.setThumbnail(fileName);
-            }
-            productService.updateProduct(product);
-        }
-
-        return "redirect:/store/st-products";
+    public String updateProduct(@PathVariable("p_id") long p_id, @ModelAttribute ProductVO product) {
+        productService.updateProduct(product);
+        return "redirect:/store/products/management";
     }
-*/
+
 
     // 상품 삭제 처리
     @RequestMapping(value = "/products/{p_id}", method = RequestMethod.DELETE)
