@@ -425,8 +425,7 @@ demo = {
 
 
     var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
-
+    var chart_data = document.getElementById("month").value.split(" ");
 
     var ctx = document.getElementById("chartBig1").getContext('2d');
 
@@ -440,7 +439,7 @@ demo = {
       data: {
         labels: chart_labels,
         datasets: [{
-          label: "My First dataset",
+          label: "Sales",
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#000',
@@ -483,8 +482,10 @@ demo = {
     });
 
 
-    var ctx = document.getElementById("CountryChart").getContext("2d");
+    var ctx = document.getElementById("ProductChart").getContext("2d");
 
+ 	var p_data = document.getElementById("products").value.split(" ");
+ 
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
     gradientStroke.addColorStop(1, 'rgba(170,170,170,0.2)');
@@ -509,7 +510,7 @@ demo = {
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          data: [8, 6, 5, 5, 4],
+          data: p_data,
         }]
       },
       options: gradientBarChartConfiguration

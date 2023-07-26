@@ -14,7 +14,7 @@ public interface ProductListRepository extends JpaRepository<ProductListVO, Long
 	List<ProductListVO> findTop5ByOrderByPopularityDescCreDateDesc();
 	
 	// 최신 상품 5
-	List<ProductListVO> findTop5ByOrderByCreDateDesc();
+	List<ProductListVO> findTop5ByOrderByCreDateDescPidDesc();
 	
 	
 	// 카테고리 분류 x, 검색 o
