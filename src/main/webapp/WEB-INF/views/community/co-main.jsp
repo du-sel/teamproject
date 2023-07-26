@@ -5,6 +5,21 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
+<!-- tag js -->
+<script src="/resources/js/tag-modal.js"></script>
+
+
+<script>
+
+function showTagModal() {
+	console.log('시작');
+	$('.modal-content').load("/community/tag-modal");
+	console.log('끝');
+	
+}
+
+</script>
+
   
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
@@ -100,8 +115,9 @@
 							<textarea id="co-textarea" name="content" rows="2"></textarea>
 							<div class="icons-container d-flex justify-content-between">
 								<div class="d-flex flex-row">
-									<div><i class="fa fa-tag"></i></div>
-									<div><i class="fa fa-image" onclick=""></i></div>
+									<div onclick="showTagModal()" data-toggle="modal" data-target="#modal"><i class="fa fa-tag"></i></div>
+									<input type="hidden" name="tag" id="tag" value="">
+									<div onclick=""><i class="fa fa-image"></i></div>
 									<!-- 파일 input 대신 클릭 -->
 								</div>
 								<!-- <button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button> -->
@@ -352,6 +368,9 @@
     </div>
 </div>
 <!-- ***** Modal End ***** -->
+
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

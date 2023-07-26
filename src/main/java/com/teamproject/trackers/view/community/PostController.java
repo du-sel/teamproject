@@ -75,6 +75,14 @@ public class PostController {
 	}
 	
 	
+	// 태그 모달창
+	@RequestMapping(value="/tag-modal")
+	public String taggModal(Model model) {
+		model.addAttribute("test", "TEST");
+		return "modal/tag-modal";
+	}
+	
+	
 	
 	// posts 없이 들어올 경우 우회 
 	@RequestMapping(value="", method=RequestMethod.GET)
