@@ -47,10 +47,6 @@ $(()=>{
 			}
 	
 	        $('#st-tab').css('background', '#dce0e3');
-	       
-	        //$(this).removeClass('stretchRight');
-			//$('#co-main').show();
-	        //$('#st-main').hide();
 	    }
 	    else if(tab=='st-tab'){
 	        e.preventDefault();

@@ -4227,6 +4227,11 @@ my-store common + admin common
 	.management-form .p-info p{
 		display: inline-block;
 	}
+	.management-form p.answer-p{
+		margin-top: 10px;
+	    margin-left: 10px;
+	    display: block !important;
+	}
 	.management-form .p-info+div+form textarea{
 		height: 250px;
 	}
@@ -4570,6 +4575,7 @@ notice-management
 .management-form .p-info+div+form textarea,
 #notice-management .notice-box textarea{
 	height: 150px;
+	margin-top: 10px;
 }
 #notice-management h6{
 	line-height: 25px;

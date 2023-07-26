@@ -58,7 +58,7 @@
                     </thead>
                     <tbody>
                     	<c:forEach var="review" items="${reviews.content}" varStatus="status">
-	                      <tr onclick="location.href='/profiles/${url}/reviews/${review.id}'">
+	                      <tr onclick="location.href='/profiles/${url}/reviews/${review.pid}/${review.id}'">
 	                      	<td>
 	                          	${reviews.totalPages-((reviews.number*10)+status.index)+1} 
 	                        </td>

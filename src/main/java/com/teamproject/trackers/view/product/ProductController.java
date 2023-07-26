@@ -119,7 +119,7 @@ public class ProductController {
 		}
 		
 		model.addAttribute("product", product);	
-		model.addAttribute("reviews", reviewService.getProductReview(Long.parseLong(p_id)));
+		model.addAttribute("reviews", reviewService.getProductReviewList(Long.parseLong(p_id)));
 		
 		return "store/st-product-single";
 	}
