@@ -39,6 +39,8 @@ function goPurchase() {
 
 
 
+
+
 </script>
 
 
@@ -102,6 +104,7 @@ function goPurchase() {
    								<%-- </form:form> --%>
    								
    								<button onclick="goPurchase()">바로 구매</button> 								
+   								<button onclick="testpay()">정기 테스트</button> 								
 	      					</div>
 	                    </div>
 	                </div>

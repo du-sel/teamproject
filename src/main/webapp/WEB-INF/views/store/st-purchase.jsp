@@ -192,6 +192,8 @@ function kakaopay(){
 	}, function(rsp) {
 		if ( rsp.success ) {
 			
+			alert('구독을 시작합니다.');
+			/*
 			$.ajax({
 				url:'/subscribe/1', //DB에 구독정보 등록하는 부분..
 				type: 'POST',
@@ -203,6 +205,7 @@ function kakaopay(){
 					alert('정기결제 등록'+result);
 				}
 			});
+			*/
 			
 			/*
 		    //alert($('#customer_id').val());
