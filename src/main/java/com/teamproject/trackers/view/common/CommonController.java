@@ -67,11 +67,6 @@ public class CommonController {
 	
 	
 	// 판매자
-	// 판매현황
-	@RequestMapping(value = "/store/sales", method = RequestMethod.GET)
-	public String getSalesStatus() {
-		return "/my-store/sales-status";
-	}
 	
 	// 정산 내역
 	@RequestMapping(value = "/store/sales/table", method = RequestMethod.GET)

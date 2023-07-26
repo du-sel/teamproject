@@ -4307,7 +4307,9 @@ calculate-history
 #sales-status .m-revenue .cal-history:hover{
 	color: #b8b8c4;
 }
-
+#sales-status .table tbody{
+	height: 215px;
+}
 
 /* 
 ---------------------------------------------

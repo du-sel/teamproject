@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
   <!-- 
   =========================================
@@ -35,13 +36,17 @@
                 <div class="row">
                   <div class="col-sm-12 text-left">
                     <h5 class="card-category">월별 판매 수익</h5>
-                    <h2 class="card-title">Total. ￦<span id="revenue">0</span></h2>
+                    <h2 class="card-title">
+	                  	<input id="total" type="hidden" value="${m_sum}">
+                    	Total. ￦<span id="revenue">0</span>
+                    </h2>
                   </div>
                 </div>
               </div>
               <div class="card-body">
                 <div class="chart-area">
                   <canvas id="chartBig1"></canvas>
+                  <input id="month" type="hidden" value="${months}">
                 </div>
               </div>
             </div>
@@ -49,12 +54,15 @@
           <div class="col-lg-4">
             <div class="card card-chart m-revenue">
               <div class="card-header">
-                <h5 class="card-category">2023년 06월</h5>
+                <h5 class="card-category"><fmt:formatDate value="${now}" pattern="yyyy년 MM월" /></h5>
                 <h3 class="card-title">이번달 수익</h3>
               </div>
               <div class="card-body">
                 <div class="chart-area d-flex flex-column justify-content-center revenue scroll-custom">
-               		<p class="card-content" style="width: max-content;">￦<span id="m-revenue">0</span></p>
+               		<p class="card-content" style="width: max-content;">
+               			<input id="oneMonth" type="hidden" value="${oneMonth}">
+               			￦<span id="m-revenue">0</span>
+               		</p>
                 </div>
                 <button type="button" class="cal-history" onclick="javascript:location.href='/store/sales/table';">정산 내역 보러가기<i class="tim-icons icon-double-right"></i></button>
               </div>
@@ -67,11 +75,15 @@
             <div class="card card-chart bar-chart">
               <div class="card-header">
                 <h5 class="card-category">Best5 상품 수익</h5>
-                <h2 class="card-title">Total. ￦<span id="p-revenue">0</span></h2>
+                <h2 class="card-title">
+                	<input id="p-total" type="hidden" value="${p_sum}">
+                	Total. ￦<span id="p-revenue">0</span>
+                </h2>
               </div>
               <div class="card-body">
                 <div class="chart-area">
-                  <canvas id="CountryChart"></canvas>
+                  <canvas id="ProductChart"></canvas>
+                  <input id="products" type="hidden" value="${p_cnt}">
                 </div>
               </div>
             </div>
@@ -101,76 +113,28 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                      	<td>
-                          1
-                        </td>
-                        <td>
-                          	리훈 이야기 다이어리 굿노트 아이패드 속지
-                        </td>
-                        <td>
-                          8건
-                        </td>
-                        <td>
-                          	￦ 64,000
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          2
-                        </td>
-                        <td>
-                          	영이의숲_2023 굿노트 스터디플래너
-                        </td>
-                        <td>
-                          6건
-                        </td>
-                        <td>
-                          	￦ 54,000
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          3
-                        </td>
-                        <td>
-                          	타임라인 디지털 플래너 굿노트 속지 PDF
-                        </td>
-                        <td>
-                          	5건
-                        </td>
-                        <td>
-                          	￦ 45,000
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          4
-                        </td>
-                        <td>
-                          	아기토끼 굿노트그림일기 다이어리_베이비핑크_아이패드 굿노트 속지
-                        </td>
-                        <td>
-                          	5건
-                        </td>
-                        <td>
-                          	￦ 45,000
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          5
-                        </td>
-                        <td>
-                          	2023 굿노트 스티커북 (673개 스티커 포함)
-                        </td>
-                        <td>
-                          	4건
-                        </td>
-                        <td>
-                          	￦ 36,000
-                        </td>
-                      </tr>
+                      <c:if test="${empty products}">
+                    	  <tr>
+                     	  	<td colspan="4", rowspan="5">등록한 상품이 없습니다.</td>
+                     	  </tr>
+                      </c:if>	
+                      <c:forEach var="p" items="${products}" varStatus="status">
+	                      <tr>
+	                      	<td>
+	                          ${status.count}
+	                        </td>
+	                        <td>
+	                          	${p[0]}
+	                        </td>
+	                        <td>
+	                          ${p[1]}건
+	                        </td>
+	                        <td>
+	                        	<input type="hidden" value="${p[2]}">
+	                          	￦<fmt:formatNumber value="${p[2]}" pattern="#,###" /> 
+	                        </td>
+	                      </tr>
+                      </c:forEach>
                     </tbody>
                   </table>
                 </div>
@@ -197,9 +161,9 @@
   <script>
     $(document).ready(function() {
       $().ready(function() {
-		countingUp($('#m-revenue'), 3000000);
-		countingUp($('#revenue'), 12345678);
-		countingUp($('#p-revenue'), 450000);
+		countingUp($('#m-revenue'), $('#oneMonth').val());
+		countingUp($('#revenue'), $('#total').val());
+		countingUp($('#p-revenue'), $('#p-total').val());
 	  });
   	});
   </script>
