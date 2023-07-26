@@ -51,6 +51,9 @@ public class ProfileController {
 	private SubscribeInfoService subscribeInfoService;
 	private SubscribePurchaseService subscribePurchaseService; 
 	private CreatorService creatorService;
+	private PostService postService;
+	private PostIMGService postIMGService;
+	private CommentService commentService;
 	
 	@Autowired
 	public ProfileController(ProfileService profileService,
@@ -59,7 +62,9 @@ public class ProfileController {
 			ProductService productService,
 			SubscribeInfoService subscribeInfoService,
 			SubscribePurchaseService subscribePurchaseService,
-			CreatorService creatorService) {
+			CreatorService creatorService,
+			PostService postService,PostIMGService postIMGService,
+			CommentService commentService) {
 		
 		this.profileService = profileService;
 		this.session = session;
@@ -97,7 +102,6 @@ public class ProfileController {
 	        return "/profiles/profile";
 	      
 	   }
-	 
 
 	
         ////* 크리에이터 프로필 - 상품목록 조회 *////
