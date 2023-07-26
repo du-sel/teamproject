@@ -24,6 +24,8 @@ import com.teamproject.trackers.biz.product.ProductListVO;
 import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryVO;
 import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryVO;
 import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
+import com.teamproject.trackers.biz.reviewInquiry.InquiryRepository;
+import com.teamproject.trackers.biz.reviewInquiry.InquiryService;
 import com.teamproject.trackers.biz.reviewInquiry.ReviewService;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
@@ -67,15 +69,17 @@ public class ProductController {
 	
     private ProductService productService;
     private ReviewService reviewService;
+    private InquiryService inquiryService;
     private HttpSession session;
 	private DriveController drive;
 		
     @Autowired
 	public ProductController(
-			ProductService productService, ReviewService reviewService,
+			ProductService productService, ReviewService reviewService, InquiryService inquiryService,
 			HttpSession session, DriveController drive) {
 		this.productService = productService;
 		this.reviewService = reviewService;
+		this.inquiryService = inquiryService;
 		this.session = session;
 		this.drive = drive;
 	}
@@ -121,6 +125,7 @@ public class ProductController {
 		
 		model.addAttribute("product", product);	
 		model.addAttribute("reviews", reviewService.getProductReviewList(Long.parseLong(p_id)));
+		model.addAttribute("inquiries", inquiryService.getInquiryList(Long.parseLong(p_id)));
 		
 		return "store/st-product-single";
 	}

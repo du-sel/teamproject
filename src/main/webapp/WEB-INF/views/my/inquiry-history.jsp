@@ -36,66 +36,23 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr onclick="location.href='/store/products/inquiries/id'">
-								<td>10</td>
-								<td>구성이 어떻게 되나요?-상품문의 form</td>
-								<td>2023.06.24</td>
-								<td>답변 대기</td>
-							</tr>
-							<tr onclick="location.href='/store/center/inquires/id'">
-								<td>9</td>
-								<td>구성이 어떻게 되나요?-고객센터 form</td>
-								<td>2023.06.24</td>
-								<td>답변 완료</td>
-							</tr>
-							<tr onclick="location.href='#'">
-								<td>8</td>
-								<td>구성이 어떻게 되나요?</td>
-								<td>2023.06.24</td>
-								<td>답변 완료</td>
-							</tr>
-							<tr onclick="location.href='#'">
-								<td>7</td>
-								<td>구성이 어떻게 되나요?</td>
-								<td>2023.06.24</td>
-								<td>답변 완료</td>
-							</tr>
-							<tr onclick="location.href='#'">
-								<td>6</td>
-								<td>구성이 어떻게 되나요?</td>
-								<td>2023.06.24</td>
-								<td>답변 완료</td>
-							</tr>
-							<tr onclick="location.href='#'">
-								<td>5</td>
-								<td>구성이 어떻게 되나요?</td>
-								<td>2023.06.24</td>
-								<td>답변 완료</td>
-							</tr>
-							<tr onclick="location.href='#'">
-								<td>4</td>
-								<td>구성이 어떻게 되나요?</td>
-								<td>2023.06.24</td>
-								<td>답변 완료</td>
-							</tr>
-							<tr onclick="location.href='#'">
-								<td>3</td>
-								<td>구성이 어떻게 되나요?</td>
-								<td>2023.06.24</td>
-								<td>답변 완료</td>
-							</tr>
-							<tr onclick="location.href='#'">
-								<td>2</td>
-								<td>구성이 어떻게 되나요?</td>
-								<td>2023.06.24</td>
-								<td>답변 완료</td>
-							</tr>
-							<tr onclick="location.href='#'">
-								<td>1</td>
-								<td>구성이 어떻게 되나요?</td>
-								<td>2023.06.24</td>
-								<td>답변 완료</td>
-							</tr>
+							<c:forEach var="inquiry" items="${inquities.content}" varStatus="status">
+								<tr onclick="location.href='/store/inquiries/${inquiry.inquiry_id}'">
+									<td>${inquities.totalElements-((inquities.number*10)+status.index)} </td>
+									<td>${inquiry.title}</td>
+									<td>${inquiry.creDate}</td>
+									<td>
+										<c:choose>
+											<c:when test="${!empty inquiry.answer}">
+												답변 완료
+											</c:when>
+											<c:otherwise>
+												답변 대기
+											</c:otherwise>			
+										</c:choose>
+									</td>
+								</tr>
+							</c:forEach>
 						</tbody> 
 					</table>
 				</div>
@@ -104,24 +61,21 @@
                 <div class="col-lg-12">
 	                 <div class="pagination">
 	                     <ul>
-	                         <li>
-	                             <a href="#"><</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">1</a>
-	                         </li>
-	                         <li class="active">
-	                             <a href="#">2</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">3</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">4</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">></a>
-	                         </li>
+	                     	<c:if test="${inquities.number-1 >= 0}" >
+					    		<li>
+						            <a href="/store/inquiries?page=${inquities.number-1}">&lt;</a>
+						        </li>
+					    	</c:if>
+					    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
+				    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
+						            <a href="/store/inquiries?page=${p-1}">${p}</a>
+						        </li>	
+							</c:forEach>
+							<c:if test="${inquities.number+1 < inquities.totalPages }" >
+					    		<li>
+					           		<a href="/store/inquiries?page=${inquities.number+1}">&gt;</a>
+					        	</li>
+					    	</c:if>
 	                     </ul>
 	                 </div>
                 </div>
