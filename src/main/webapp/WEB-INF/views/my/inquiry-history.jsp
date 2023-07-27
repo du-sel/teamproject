@@ -20,7 +20,7 @@
         </div>
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-12 table-responsive">
+				<div class="col-lg-12 table-responsive scroll-custom">
 					<form action="" class="inquiry-type">
 						<select name="inquiry_type">
 							<option value="" selected>상품문의</option>
@@ -37,6 +37,11 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:if test="${empty inquiries.content}">
+		                    	<tr class="empty-data">
+		                     	  	<td colspan="4" rowspan="5">작성한 문의가 없습니다.</td>
+		                     	</tr>
+		                    </c:if>	
 							<c:forEach var="inquiry" items="${inquiries.content}" varStatus="status">
 								<tr onclick="location.href='/store/inquiries/${inquiry.inquiryId}'">
 									<td>${inquiries.totalElements-((inquiries.number*10)+status.index)} </td>

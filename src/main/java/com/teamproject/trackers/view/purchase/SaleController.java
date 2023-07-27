@@ -47,6 +47,9 @@ public class SaleController {
 			p_sum += Integer.parseInt(p[2].toString());
 		}
 		
+		// 스토어 이름 세션에 저장
+		session.setAttribute("store_name", products.get(0)[3]);
+		
 		// 월별&이번 달 판매 수익
 		model.addAttribute("now", now);
 		model.addAttribute("months", months);
