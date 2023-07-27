@@ -28,7 +28,7 @@ public class ProductVO {
 	private String thumbnail;
 	private String file;
 	private int rating;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="cre_date")
 	private Date creDate;
 	private boolean signature;
