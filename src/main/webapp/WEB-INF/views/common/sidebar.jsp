@@ -18,7 +18,7 @@
 	  <div class="sidebar-wrapper">
 	    <div class="logo">
 	      <a href="javascript:void(0)" class="simple-text logo-normal">
-	        Brand Name
+	        ${sessionScope.store_name}
 	      </a>
 	    </div>
 	    <ul class="nav">

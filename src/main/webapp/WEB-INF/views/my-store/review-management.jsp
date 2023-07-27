@@ -57,6 +57,11 @@
                       </tr>
                     </thead>
                     <tbody>
+                    	<c:if test="${empty reviews.content}">
+	                    	<tr class="empty-data">
+	                     	 	<td colspan="5" rowspan="5">작성된 후기가 없습니다.</td>
+	                     	</tr>
+	                    </c:if>
                     	<c:forEach var="review" items="${reviews.content}" varStatus="status">
 	                      <tr onclick="location.href='/profiles/${url}/reviews/${review.pid}/${review.id}'">
 	                      	<td>

@@ -148,7 +148,11 @@ function goPurchase() {
     	      	<p class="desc">다른 구매자들이 어떻게 사용하고 있는지 궁금하다면?</p>
 	          	<button type="button" class="tag-btn" onclick="getTagList(${product.pid})">태그 모아보기</button>
           	</div>
-          
+          <c:if test="${empty reviews}">
+            	<div class="empty-data">
+             	  	<p>작성된 후기가 없습니다.</p>
+             	</div>
+            </c:if>
             <c:forEach var="review" items="${reviews}">
 				<div class="speech-bubble">
 					<table>
@@ -195,6 +199,11 @@ function goPurchase() {
 			    <th>작성자</th>
 			    <th>작성일</th>
 			  </tr>
+			  <c:if test="${empty inquiries}">
+              	<tr class="empty-data">
+               	  	<td colspan="4" rowspan="5">작성된 상품 문의가 없습니다.</td>
+               	</tr>
+              </c:if>	
 			  <c:forEach var="inquiry" items="${inquiries}" varStatus="status">
 			  	  <tr onclick="toggleRow(${status.index})" <c:if test="${!empty inquiry.answer}">class="has-answer"</c:if>>
 				    <td>

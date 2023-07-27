@@ -67,6 +67,8 @@ public class CreatorController {
 		creatorService.updateCreator(vo);
 		creatorService.updateUrl(vo);		
 		
+		session.setAttribute("store_name", vo.getStoreName());
+		
 		common.alert.setStr("스토어 정보가 수정되었습니다.");
 		common.alert.setPath("/profiles/creators");
 		common.alert.setFlag(true);

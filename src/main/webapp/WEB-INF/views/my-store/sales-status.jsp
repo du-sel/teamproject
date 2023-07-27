@@ -115,7 +115,7 @@
                     <tbody>
                       <c:if test="${empty products}">
                     	  <tr>
-                     	  	<td colspan="4", rowspan="5">등록한 상품이 없습니다.</td>
+                     	  	<td colspan="4" rowspan="5">등록한 상품이 없습니다.</td>
                      	  </tr>
                       </c:if>	
                       <c:forEach var="p" items="${products}" varStatus="status">
