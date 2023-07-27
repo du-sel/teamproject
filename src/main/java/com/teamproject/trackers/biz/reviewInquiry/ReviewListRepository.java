@@ -18,5 +18,8 @@ public interface ReviewListRepository extends JpaRepository<ReviewListVO, Review
 
 	// 크리에이터별 리뷰 리스트
 	Page<ReviewListVO> findAllByCid(long cid, Pageable pageable);
+	
+	// 크리에이터별 리뷰 상세
+	ReviewListVO findByIdAndPid(long id, long pid);
 
 }

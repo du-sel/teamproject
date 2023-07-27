@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
   <!-- 
   =========================================
@@ -57,199 +58,57 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr onclick="location.href='/profiles/url/inquiries/inquiry_id'">
-                      	<td>
-                          	10
-                        </td>
-                        <td>
-                          	영구 다운로드 가능한가요?
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	미답변
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          	9
-                        </td>
-                        <td>
-                          	영구 다운로드 가능한가요?
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	미답변
-                        </td>
-                      </tr>
-                      <tr class="answer">
-                      	<td>
-                          	8
-                        </td>
-                        <td>
-                          	영구 다운로드 가능한가요?
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	답변
-                        </td>
-                      </tr>
-                      <tr class="answer">
-                      	<td>
-                          	7
-                        </td>
-                        <td>
-                          	영구 다운로드 가능한가요?
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	답변
-                        </td>
-                      </tr>
-                      <tr class="answer">
-                      	<td>
-                          	6
-                        </td>
-                        <td>
-                          	영구 다운로드 가능한가요?
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	답변
-                        </td>
-                      </tr>
-                      <tr class="answer">
-                      	<td>
-                          	5
-                        </td>
-                        <td>
-                          	영구 다운로드 가능한가요?
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	답변
-                        </td>
-                      </tr>
-                      <tr class="answer">
-                      	<td>
-                          	4
-                        </td>
-                        <td>
-                          	영구 다운로드 가능한가요?
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	답변
-                        </td>
-                      </tr>
-                      <tr class="answer">
-                      	<td>
-                          	3
-                        </td>
-                        <td>
-                          	영구 다운로드 가능한가요?
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	답변
-                        </td>
-                      </tr>
-                      <tr class="answer">
-                      	<td>
-                          	2
-                        </td>
-                        <td>
-                          	영구 다운로드 가능한가요?
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	답변
-                        </td>
-                      </tr>
-                      <tr class="answer">
-                      	<td>
-                          	1
-                        </td>
-                        <td>
-                          	영구 다운로드 가능한가요?
-                        </td>
-                        <td>
-                          	이고객
-                        </td>
-                        <td>
-                          2023.06.28
-                        </td>
-                        <td>
-                          	답변
-                        </td>
-                      </tr>
+                      <c:if test="${empty inquiries.content}">
+                    	  <tr class="empty-data">
+                     	  	<td colspan="5" rowspan="5">작성된 문의가 없습니다.</td>
+                     	  </tr>
+                      </c:if>	
+                      <c:forEach var="inquiry" items="${inquiries.content}" varStatus="status">
+	                      <tr <c:if test="${!empty inquiry.answer}">class="answer"</c:if> onclick="location.href='/profiles/${sessionScope.user.url}/inquiries/${inquiry.inquiryId}'">
+	                      	<td>
+	                          	${inquiries.totalElements-((inquiries.number*10)+status.index)} 
+	                        </td>
+	                        <td>
+	                          	${inquiry.title}
+	                        </td>
+	                        <td>
+	                          	${inquiry.name}
+	                        </td>
+	                        <td>
+	                            ${fn:substring(inquiry.creDate, 0, 10)}
+	                        </td>
+	                        <td>
+	                        	<c:choose>
+									<c:when test="${!empty inquiry.answer}">
+										답변
+									</c:when>
+									<c:otherwise>
+	                          			미답변
+									</c:otherwise>			
+								</c:choose>
+	                        </td>
+	                      </tr>
+                      </c:forEach>
                     </tbody>
                   </table>
                   <div>
 	                 <div class="pagination">
 	                     <ul>
-	                         <li>
-	                             <a href="#"><</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">1</a>
-	                         </li>
-	                         <li class="active">
-	                             <a href="#">2</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">3</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">4</a>
-	                         </li>
-	                         <li>
-	                             <a href="#">></a>
-	                         </li>
+	                     	<c:if test="${inquiries.number-1 >= 0}" >
+					    		<li>
+						            <a href="/profiles/${url}/inquiries?page=${inquiries.number-1}">&lt;</a>
+						        </li>
+					    	</c:if>
+					    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
+				    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
+						            <a href="/profiles/${url}/inquiries?page=${p-1}">${p}</a>
+						        </li>	
+							</c:forEach>
+							<c:if test="${inquiries.number+1 < inquiries.totalPages }" >
+					    		<li>
+					           		<a href="/profiles/${url}/inquiries?page=${inquiries.number+1}">&gt;</a>
+					        	</li>
+					    	</c:if>
 	                     </ul>
 	                 </div>
                 </div>
@@ -258,11 +117,7 @@
             </div>
           </div>
         </div>
-
       </div>
-      
-      
-
     </div>
   </main>
 

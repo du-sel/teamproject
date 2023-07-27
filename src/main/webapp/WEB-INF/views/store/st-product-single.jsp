@@ -6,6 +6,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
+<!-- tag js -->
+<script src="/resources/js/tag-modal.js"></script>
 
 
 <script>
@@ -54,7 +56,7 @@ function goPurchase() {
         <br><br><br>
         <!-- 화면 왼쪽 위에 목록으로 돌아가기 -->
 	    <div class="back">
-	    <a onclick="javascript:history.go(-1);"><span class="fa fa-angle-double-left"></span> 목록으로 돌아가기</a>
+	    <a href="/store/products?page=0&sort=creDate&category=all"><span class="fa fa-angle-double-left"></span> 전체 목록으로 돌아가기</a>
 	    </div>
 	    <br><br><br>
         
@@ -103,8 +105,7 @@ function goPurchase() {
    									<button type="button" onclick="goCart(${product.pid })">장바구니</button>
    								<%-- </form:form> --%>
    								
-   								<button onclick="goPurchase()">바로 구매</button> 								
-   								<button onclick="testpay()">정기 테스트</button> 								
+   								<button onclick="goPurchase()">바로 구매</button> 															
 	      					</div>
 	                    </div>
 	                </div>
@@ -142,11 +143,20 @@ function goPurchase() {
            </div>
 
           <!-- 두번째 탭 (구매후기) -->
-          <div id = "review" class ="tab-pane">
+          <div id = "review" class ="tab-pane container">
+          	<div class="row col-12 justify-content-end tag-btn-container">
+    	      	<p class="desc">다른 구매자들이 어떻게 사용하고 있는지 궁금하다면?</p>
+	          	<button type="button" class="tag-btn" onclick="getTagList(${product.pid})">태그 모아보기</button>
+          	</div>
+          	<c:if test="${empty reviews}">
+            	<div class="empty-data">
+             	  	<p>작성된 후기가 없습니다.</p>
+             	</div>
+            </c:if>
             <c:forEach var="review" items="${reviews}">
 				<div class="speech-bubble">
 					<table>
-					  <tr>
+					  <tr class="review-info">
 					    <td>
 					      <div class="profile">
 					        <img src="${review.profile_img}" alt="프로필 이미지" class="profile-image">
@@ -165,11 +175,20 @@ function goPurchase() {
 					  </tr>
 					  <tr>
 					    <td colspan="2">
-					      <div class="review-content" style="text-align: left;">
+					      <div class="review-content">
 					        <p>${review.content}</p>
 					      </div>
 					    </td>
 					  </tr>
+					  <c:if test="${!empty review.answer}">
+		           		  <tr class="creator">
+						    <td colspan="2">
+						      	<img src="${product.profile_img}">
+						      	<h6>크리에이터</h6> 
+						        <p>${review.answer}</p>
+						    </td>
+						  </tr>
+		              </c:if>
 					</table>
 				</div>
 			</c:forEach>
@@ -178,7 +197,7 @@ function goPurchase() {
          <!-- 세번째 탭 (상품문의) -->
           <div id = "inquiry" class ="tab-pane">
            	<div class="inquiry-btn-container">
-           		<button type="button" class="inquiry-btn" onclick="javascript:location.href='/store/products/id/inquiries'">문의하기</button>
+           		<button type="button" class="inquiry-btn" onclick="javascript:location.href='/store/products/${product.pid}/inquiries'">문의하기</button>
            	</div>
              
 			
@@ -189,66 +208,39 @@ function goPurchase() {
 			    <th>작성자</th>
 			    <th>작성일</th>
 			  </tr>
-			  <tr onclick="toggleRow(1)">
-			    <td>답변 대기</td>
-			    <td>비밀글입니다. 🔒</td>
-			    <td>pinkl***</td>
-			    <td>23.01.10</td>
-			  </tr>
-			  <tr onclick="toggleRow(2)" class="has-answer">
-			    <td>답변 완료</td>
-			    <td>춘식이 다이어리 언제 재입고 되나요ㅜㅜ</td>
-			    <td>dms77***</td>
-			    <td>23.01.06</td>
-			  </tr>
-			  <tr id="hiddenRow2" class="hidden-row" style="display: none;">
-			    <td></td>
-			    <td>2023 춘식이 다이어리는 단종되었습니다</td>
-			    <td>판매자</td>
-			    <td>23.01.07</td>
-			  </tr>
-			  <tr onclick="toggleRow(3)" class="has-answer">
-			    <td>답변 완료</td>
-			    <td>펜도 같이 들어있나요?</td>
-			    <td>ghfds***</td>
-			    <td>22.12.26</td>
-			  </tr>
-			  <tr id="hiddenRow3" class="hidden-row" style="display: none;">
-			    <td></td>
-			    <td>펜은 별도로 구매하셔야 합니다</td>
-			    <td>판매자</td>
-			    <td>22.12.27</td>
-			  </tr>
-			  <tr onclick="toggleRow(4)" class="has-answer">
-			    <td>답변 완료</td>
-			    <td>다이어리 속지를 다른 걸로 변경 가능한가요?</td>
-			    <td>asdcf***</td>
-			    <td>22.10.03</td>
-			  </tr>
-			  <tr id="hiddenRow4" class="hidden-row" style="display: none;">
-			    <td></td>
-			    <td>다이어리 속지 변경이 불가한 상품입니다</td>
-			    <td>판매자</td>
-			    <td>22.10.04</td>
-			  </tr>
-			  <tr onclick="toggleRow(5)" class="has-answer">
-			    <td>답변 완료</td>
-			    <td>춘식이 스티커도 들어있나요?</td>
-			    <td>stick***</td>
-			    <td>22.09.15</td>
-			  </tr>
-			  <tr id="hiddenRow5" class="hidden-row" style="display: none;">
-			    <td></td>
-			    <td>스티커는 별도로 구매하셔야 합니다</td>
-			    <td>판매자</td>
-			    <td>22.09.16</td>
-			  </tr>  
+			  <c:if test="${empty inquiries}">
+              	<tr class="empty-data">
+               	  	<td colspan="4" rowspan="5">작성된 상품 문의가 없습니다.</td>
+               	</tr>
+              </c:if>	
+			  <c:forEach var="inquiry" items="${inquiries}" varStatus="status">
+			  	  <tr onclick="toggleRow(${status.index})" <c:if test="${!empty inquiry.answer}">class="has-answer"</c:if>>
+				    <td>
+				    	<c:choose>
+							<c:when test="${!empty inquiry.answer}">
+								답변 완료
+							</c:when>
+							<c:otherwise>
+								답변 대기
+							</c:otherwise>			
+						</c:choose>
+				    </td>
+				    <td>${inquiry.title}</td>
+				    <td>${fn:substring(inquiry.name, 0, 3)}***</td>
+				    <td>${fn:substring(inquiry.creDate, 0, 10)}</td>
+				  </tr>
+				  <c:if test="${!empty inquiry.answer}">
+					  <tr id="hiddenRow${status.index}" class="hidden-row" style="display: none;">
+					    <td></td>
+					    <td>${inquiry.answer}</td>
+					    <td>판매자</td>
+					    <td>${inquiry.answer_date}</td>
+					  </tr>
+				  </c:if>
+			  </c:forEach>
 			</table>
 			<br><br><br>
 			
-
-
-           
           </div>          
         </div>
         

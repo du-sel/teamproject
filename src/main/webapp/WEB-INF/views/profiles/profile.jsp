@@ -177,12 +177,14 @@
 			 	<li class="nav-item navli" id="li" >
 			 		<a class="nav-link active" onclick="getUserPostList(0)" data-toggle="tab" id="feedtabbgcolor" >피드</a>
 			 	</li>
-			 	<li class="nav-item navli" id="li">
-			 		<div class="nav-link" onclick="getCreatorProductList(0, 'creDate')" data-toggle="tab" id="storenamediv">${getCreator.getStoreName()} 스토어</div>
-			 	</li>
-			 	<li class="nav-item navli" id="li">
-			 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
-			 	</li>
+			 	<c:if test="${getCreator != null }">
+				 	<li class="nav-item navli" id="li">
+				 		<div class="nav-link" onclick="getCreatorProductList(0, 'creDate')" data-toggle="tab">스토어</div>
+				 	</li>
+				 	<li class="nav-item navli" id="li">
+				 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
+				 	</li>
+			 	</c:if>
 			</ul>
 
 				<!-- post 탭 -->
@@ -239,6 +241,7 @@
 									<ul class="stats commment_stats">
 										<li class="comment-count"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number"></span></li>
 										<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number"></span></li>
+										<li class="tag"><a><span class="tag-icon"><i class="fa fa-tag"></i></span><span class="tag-product"></span></a></li>
 									</ul>
  									<div class="comment-section">
 										<ul id="comment-list" class="comment-list">
@@ -292,14 +295,17 @@
 			                </div>			
 						
 						</div> 
+					
 					</div> 
-						
+					<div class="no-post d-flex justify-content-center"></div>	
 					
 				</div>
 					 
 				
 				<!-- 스토어 탭 -->
+				
 				<div class="tab-pane fade" id="store"><br>
+				
 					<div class="row col-lg-12 justify-content-between">
 						<select name="sortSelect" onchange="getCreatorProductList(0, 'creDate');" class="form-control-sm">
 							<option value="creDate">최신순</option>
@@ -363,6 +369,8 @@
 			                </div>
 						</div>
 					</div>
+						
+					<div class="no-item d-flex justify-content-center"></div>
 				</div>
 		
 			<!-- 공지 탭 -->
@@ -558,5 +566,5 @@
 
 <input type="hidden" id="sessionId" name="id" value="${user_id}">
 </main>
-
+<script src="/resources/js/profile.js"></script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

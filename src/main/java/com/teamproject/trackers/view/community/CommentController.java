@@ -35,6 +35,25 @@ System.out.println("vo.postid "+vo.getPostId());
 		return "redirect:/community/posts/"+postId;
 	}
 	
+	
+	// 댓글 삭제
+	
+		@RequestMapping(value = "/{comment_id}", method = RequestMethod.DELETE)
+		public String deleteComment(@PathVariable("comment_id")Long commentid, HttpServletRequest request) {
+			
+			commentService.deleteComment(commentid);
+			String url = request.getRequestURI();
+System.out.println("url "+url);
+			String c = "/comments";
+			int index = url.indexOf(c);
+			
+			String path = url.substring(0,index);
+System.out.println("path "+path);
+					
+			//return "redirect:/community/posts/"+postid;
+			return "redirect:"+path;
+		}
+	
 	// 삭제
 	/*
 	@RequestMapping(value = "/{comment_id}", method = RequestMethod.DELETE)

@@ -150,7 +150,7 @@ function getUserPostList(page) {
 					// 좋아요 버튼 onclick
 					let t_count_container = $(newBox).find('.like-count');
 					$(t_count_container).on('click', function() {
-					    console.log("LIKE");
+					    
 					    var likeCount = parseInt($(this).parent().find(".like-count-number").text().trim());
 					    likeCount++;
 					    $(this).parent().find(".like-count-number").text(likeCount);
@@ -175,6 +175,18 @@ function getUserPostList(page) {
 					$(newBox).find('.like-count-number').text(post.t_count);
 					
 					
+					// 태그 있을 경우에만 태그아이콘 및 상품명 표시
+					let tag = $(newBox).find('.tag');
+					tag.hide();
+					
+					if(post.pid != null && post.pid > 0) {
+						$(tag).find('.tag-product').text(post.p_name);
+						$(tag).on('click', function() {
+							location.href='/store/products/'+post.pid;
+						});					
+						tag.show();
+					} 
+					
 					
 					// 댓글 표시
 					
@@ -198,8 +210,7 @@ function getUserPostList(page) {
 						
 						for(let j = 0; j < commentList.length; j++) {
 							let comment = commentList[j];
-							console.log('comment index: '+j);
-							console.log(comment);
+							
 							
 							let newLi = document.createElement('li');
 							newLi.innerHTML = comment_li.html();
@@ -264,10 +275,9 @@ function getUserPostList(page) {
 				
 				if(list.totalPages > 1) {
 					
-					console.log(list);
+					
 					$(pagination).show();
-					console.log("NUMBER");
-					console.log(list.number);
+					
 					
 					let ul = document.querySelector('.feed-pagination ul');
 					let page = document.querySelector('.feed-pagination #page');
@@ -316,9 +326,8 @@ function getUserPostList(page) {
 			} else {
 				
 				// 작성한 포스트가 없는 경우
-				let noItem = document.createElement('div');
-				noItem.innerHTML = '<h5>작성한 포스트가 없습니다</h5>';
-				parent.appendChild(noItem);
+				$('.no-post').html('<h5>작성한 포스트가 없습니다</h5>');
+				
 			}
 			
 			
@@ -345,15 +354,13 @@ function getCreatorProductList(page, sort) {
 	let url = pathname.substring(pathname.indexOf("profiles")+9);
 	if(url.indexOf("/") > 0) {	
 		url = url.substring(0, url.indexOf("/"));
-		console.log(url);
+		
 	}
 	
 	// sort 값 구해서 넣어주기
-	let sortSelect = document.getElementsByName('sortSelect')[0];
-	console.log(sortSelect);
-	console.log(sortSelect.options[0]);
+	let sortSelect = document.getElementsByName('sortSelect')[0];	
 	sort = sortSelect.options[sortSelect.selectedIndex].value;
-	console.log(sort);
+	
 	
 	
 	$.ajax({
@@ -371,11 +378,9 @@ function getCreatorProductList(page, sort) {
 			let JSONdata = JSON.parse(data);
 			let list = JSON.parse(JSONdata.list);	// 상품 리스트
 			let paging = JSON.parse(JSONdata.paging);
-			console.log(paging);
 			
 			
 			let productArr = list.content;
-			//console.log(productArr.length);
 			
 			let box = document.getElementById("product-box");
 			let parent = box.parentElement;
@@ -479,9 +484,7 @@ function getCreatorProductList(page, sort) {
 			} else {
 				
 				// 판매자 등록은 되어있는데 상품은 없는 경우
-				let noItem = document.createElement('div');
-				noItem.innerHTML = '<h5>등록된 상품이 없습니다</h5>';
-				parent.appendChild(noItem);
+				$('.no-item').html('<h5>등록된 상품이 없습니다</h5>');
 			}
 			
 			

@@ -31,12 +31,22 @@ public class ReviewService {
 	}
 	
 	// 특정 상품에 대한 리뷰 리스트
-	public List<ReviewListVO> getProductReview(long p_id) {
+	public List<ReviewListVO> getProductReviewList(long p_id) {
 		return reviewListRepository.findAllByPidOrderByCreDateDesc(p_id);
 	}
 	
 	// 크리에이터별 리뷰 리스트
-	public Page<ReviewListVO> getCreatorReview(long c_id, Pageable pageable){
+	public Page<ReviewListVO> getCreatorReviewList(long c_id, Pageable pageable){
 		return reviewListRepository.findAllByCid(c_id, pageable);
+	}
+	
+	// 크리에이터별 상세 리뷰
+	public ReviewListVO getCreatorReview(long id, long p_id) {
+		return reviewListRepository.findByIdAndPid(id, p_id);
+	}
+	
+	// 크리에이터 답변 저장
+	public void updateReviewComment(ReviewVO vo) {
+		reviewRepository.updateReviewComment(vo.getAnswer(), vo.getId(), vo.getPid());
 	}
 }

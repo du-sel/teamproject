@@ -114,7 +114,6 @@ public class ProfileController {
     												@RequestParam("page") int page, 
     												@RequestParam("sort") String sort,
     												HttpServletRequest req, HttpServletResponse resp) throws Exception {
-    	System.out.println("입장");
 		
     	req.setCharacterEncoding("utf-8");
     	resp.setContentType("text/html;charset=utf-8");
@@ -180,7 +179,6 @@ public class ProfileController {
 	@RequestMapping(value="/{url}/posts", method=RequestMethod.GET, produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String getUserPostList(@PathVariable("url") String url, @RequestParam("page") int page) throws Exception {
-		System.out.println("입장");
 		
 		// URL로 id 얻기
 		long id = profileService.getUser(url).getId();

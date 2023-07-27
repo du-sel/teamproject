@@ -48,61 +48,21 @@ public class CommonController {
 		return "/store/st-center";
 	}
 	
-	// 문의 내역(상품 문의)
-	@RequestMapping(value = "/store/products/inquiries", method = RequestMethod.GET)
-	public String getStoreInquiryList() {
-		return "/my/inquiry-history";
-	}
-	// 문의 상세(상품 문의)
-	@RequestMapping(value = "/store/products/inquiries/id", method = RequestMethod.GET)
-	public String getStoreInquiry() {
-		return "/my/product-inquiry";
-	}
-	// 문의 작성(상품 문의)
-	@RequestMapping(value = "/store/products/id/inquiries", method = RequestMethod.GET)
-	public String insertInquiry() {
-		return "/store/st-inquiry";
-	}
 	
-	
-	
-	// 판매자
-	// 판매현황
-	@RequestMapping(value = "/store/sales", method = RequestMethod.GET)
-	public String getSalesStatus() {
-		return "/my-store/sales-status";
-	}
-	
+	// 크리에이터
 	// 정산 내역
 	@RequestMapping(value = "/store/sales/table", method = RequestMethod.GET)
 	public String getSalesList() {
 		return "/my-store/calculate-history";
 	}
 	
-	// 문의 리스트
-	@RequestMapping(value = "/profiles/url/inquiries", method = RequestMethod.GET)
-	public String getInquiryList() {
-		return "/my-store/inquiry-management";
-	}
-	// 문의 상세 조회
-	@RequestMapping(value = "/profiles/url/inquiries/inquiry_id", method = RequestMethod.GET)
-	public String getInquiry() {
-		return "/my-store/inquiry-management-form";
-	}
-	
-	
-	// 구매 후기 상세 조회
-	@RequestMapping(value = "/profiles/url/reviews/id", method = RequestMethod.GET)
-	public String getReview() {
-		return "/my-store/review-management-form";
-	}
-	
 	// 공지 리스트
-	@RequestMapping(value = "/profiles/url/notice", method = RequestMethod.GET)
+	@RequestMapping(value = "/profiles/url/notices", method = RequestMethod.GET)
 	public String getNoticeList() {
 		return "/my-store/notice-management";
 	}
 		
+	
 	// 관리자
 	// 고객센터 문의 리스트
 	@RequestMapping(value = "/center/inquires", method = RequestMethod.GET)

@@ -309,10 +309,12 @@ tab
 #tab #co-tab {
 	border-radius: 0 40px 0 0;
 	left: 0;
+	cursor: pointer;
 }
 #tab #st-tab {
 	border-radius: 40px 0 0 0;
-	 right: 0; 
+	right: 0; 
+	cursor: pointer;
 }
 
 #tab .active {
@@ -872,6 +874,7 @@ header
     margin-top: 80px !important;
     max-height: 500px;
     overflow-y: auto;
+    overflow-x: hidden;
   }
   .header-area .main-nav .nav div {
     width: 100%;
@@ -990,6 +993,9 @@ header
   align-items: center;
 }
 
+.narrow-header .menu-trigger{
+  top: inherit !important;
+}
 
 
 /* 
@@ -1094,19 +1100,18 @@ pagination
 .pagination ul li a {
   width: 44px;
   height: 44px;
-  /* border: 1px solid #2a2a2a; */
   display: inline-block;
   text-align: center;
   line-height: 44px;
-  font-size: 14px;
   font-weight: 500;
   color: #2a2a2a;
 }
 
 .pagination ul li a:hover,
 .pagination ul li.active a {
-  background-color: #2a2a2a;
-  color: #fff;
+  background-color: transparent;
+  color: #e97d7d;
+  font-weight: 900;
 }
 
 
@@ -1736,6 +1741,30 @@ Single Product Page
 }
 
 
+/* 태그 모아보기 버튼 */
+#product .tag-btn-container {
+	margin-bottom: 30px;
+}
+#product .tag-btn-container .desc {
+	margin-right: 15px;
+}
+#product .tag-btn {
+	border: none;
+	background: #e4e4eb;
+	padding: 5px 8px;
+	border-radius: 2px;
+}
+#product .tag-btn:hover {
+	border: none;
+	background: #586579;
+	color: #fff;
+}
+#product .tag-btn:focus {
+	border: none;
+	outline: none;
+}
+
+
 
 /* tab메뉴 */
 #product .nav-tabs li {
@@ -1819,11 +1848,12 @@ Single Product Page
 }
 
 #product .speech-bubble table{
-	width: 900px;
+	/* width: 900px; */
 	margin: 0 auto;
+	width: 100%;
 }
 #product .speech-bubble td {
-	background: #f2f2f6;
+	/* background: #f2f2f6; */
 }
 #product .speech-bubble tr:hover {
 	background: #f2f2f6;
@@ -1837,9 +1867,31 @@ Single Product Page
   border: 10px solid transparent;
   transform: translateX(-50%);
 }
-
+#product .speech-bubble .review-info td{
+	padding-left: 10px;
+}
 #product .speech-bubble .review-content{
-	margin: 10px 0 0 10px;
+	margin: 10px 0 10px 10px;
+	text-align: left;
+	padding-left: 10px;
+}
+#product .speech-bubble .creator td{
+	border-top: 1px solid #dce0e3;
+    padding-top: 10px;
+    text-align: left;
+    padding-left: 10px;
+}
+#product .speech-bubble .creator img{
+	border-radius: 50%;
+    width: 70px;
+}
+#product .speech-bubble .creator h6{
+	font-weight: 600;
+    display: inline-block;
+}
+#product .speech-bubble .creator p{
+	margin-left: 10px;
+    margin-top: 10px;
 }
 
 /* ------------------표 꾸미기------------------ */
@@ -1866,6 +1918,18 @@ Single Product Page
   width: 70px;
   height: 70px;
   border-radius: 50%;
+}
+#product #review div.empty-data p{
+	height: 100px;
+    padding-top: 50px;
+}
+#product tr.empty-data td{
+    height: 100px;
+    padding-top: 70px;
+    cursor: default !important;
+}
+#product tr.empty-data:hover{
+	background-color: inherit !important;
 }
 
 
@@ -1905,6 +1969,10 @@ Single Product Page
   padding: 20px;
   margin: 20px;
   font-size: 15px;
+  font-weight: 600;
+}
+#product .back:hover{
+	color: #b8b8c4;
 }
 
 #product .inquiry-btn-container {
@@ -1966,11 +2034,11 @@ st-creator
 	width: 80px;
 }
 
-#creators .profile h5 {
+#creators .profile h4 {
 	padding: 0 0 0 15px;
 }
 
-#creators .rep h4 {
+#creators .rep h5 {
 	padding-bottom: 15px;
 	margin-bottom: 15px;
 	border-bottom: 2px solid #e4e4eb99;
@@ -2159,7 +2227,7 @@ responsive
 
 /* 
 ---------------------------------------------
-my-info 공통 (cart, purchase-history, 
+my-info 공통 (cart, purchase-history, inquiry-history)
 --------------------------------------------- 
 */
 
@@ -2207,8 +2275,16 @@ my-info 공통 (cart, purchase-history,
 .my-info .product-info{
 	height: 100%;
 }
- 	
- 
+.my-info tr.empty-data td,
+.my-info div.empty-data p {
+	border: none;
+    height: 100px;
+    padding-top: 70px;
+    cursor: default !important;
+}
+.my-info tr.empty-data:hover{
+	background-color: inherit !important;
+}
 
 
 /* @media (max-width: 767px){
@@ -4176,6 +4252,14 @@ my-store common + admin common
 		width: 18%;
 		min-width: 110px;
 	}
+	.table-management .empty-data td{
+		padding-top: 70px;
+		cursor: default;
+	}
+	.table-management .empty-data:hover{
+		background-color: #fff !important;
+	}
+	
 	
 	@media (min-width:769px) and (max-width:991px){
 		.table-management{
@@ -4226,6 +4310,11 @@ my-store common + admin common
 	}
 	.management-form .p-info p{
 		display: inline-block;
+	}
+	.management-form p.answer-p{
+		margin-top: 10px;
+	    margin-left: 10px;
+	    display: block !important;
 	}
 	.management-form .p-info+div+form textarea{
 		height: 250px;
@@ -4302,7 +4391,9 @@ calculate-history
 #sales-status .m-revenue .cal-history:hover{
 	color: #b8b8c4;
 }
-
+#sales-status .table tbody{
+	height: 215px;
+}
 
 /* 
 ---------------------------------------------
@@ -4343,7 +4434,8 @@ product-management
 #product-management .info .up-del-btn-container {
     margin-bottom: 10px;
 }
-#product-management .info .signature-btn {
+#product-management .info .signature-btn,
+#product-management .info .signature-del-btn {
     padding: 5px;
     width: 7rem;
     border-radius: 0.2rem;
@@ -4378,8 +4470,17 @@ product-management
 	background: #e4e4eb;
 	border: none;
 }
+#product-management .info .signature-del-btn  {
+	background: #586579;
+	color: #fff;
+	border: none;
+}
 #product-management button.signature-btn:hover {
 	background: #586579;
+	color: #fff;
+}
+#product-management .info .signature-del-btn:hover  {
+	background: #e97d7d;
 	color: #fff;
 }
 
@@ -4570,6 +4671,7 @@ notice-management
 .management-form .p-info+div+form textarea,
 #notice-management .notice-box textarea{
 	height: 150px;
+	margin-top: 10px;
 }
 #notice-management h6{
 	line-height: 25px;

@@ -111,7 +111,7 @@
 		                                <c:set var="ps" value="page=0&sort=creDate"/>
 		                                <ul>
 		                                 	<li class="all"><a href="/store/products?${ps}&category=all">전체</a></li>
-		                                	<li class="category">페이지 별</li>
+		                                	<li class="category">페이지 카테고리</li>
 		                                    <li><a href="/store/products?${ps}&category=whole">한달 세트</a></li>
 		                                    <li><a href="/store/products?${ps}&category=monthly">먼슬리</a></li>
 		                                    <li><a href="/store/products?${ps}&category=weekly">위클리</a></li>
@@ -122,7 +122,7 @@
 		                                    <li><a href="/store/products?${ps}&category=study">스터디</a></li>
 		                                    <li><a href="/store/products?${ps}&category=sticker">스티커</a></li>
 		                                    <li><a href="/store/products?${ps}&category=etc">그 외</a></li>
-		                                    <li class="category">디자인 별</li>
+		                                    <li class="category">디자인 카테고리</li>
 		                                    <li><a href="/store/products?${ps}&category=minimal">미니멀</a></li>
 		                                    <li><a href="/store/products?${ps}&category=illustration">일러스트</a></li>
 		                                    <li><a href="/store/products?${ps}&category=photo">포토</a></li>
@@ -134,7 +134,7 @@
 								</div>
 	                            <!-- ***** Logo Start ***** -->
 		                        <div id="logo_container">
-	                                <a href="/store/main" class="logo">
+	                                <a href="" class="logo">
 	                                    <img src="/resources/images/trackers-navy.svg">
 	                                </a>
 	                            </div>
@@ -156,7 +156,7 @@
 										</c:if>
 										
 										<!-- 파라미터 form으로 보냄 -->
-										<form name="search" action="${path}" class="search-input-container">
+										<form id="header-search" name="search" action="${path}" class="search-input-container">
 											<input type="hidden" name="page" value="0">
 											<c:if test="${not fn:contains(path, '/community/posts')}">									<!-- 크리에이터 리스트, 상품 리스트 -->
 												<input type="hidden" name="sort" value="creDate">
@@ -171,7 +171,11 @@
 												<c:if test="${empty type || type eq ''}">										<!-- 상품 상세 등 category 값이 없는 페이지에서 검색 시 디폴트 값 -->
 													<c:set var="type" value="all"/>
 												</c:if>										<!-- 커뮤니티 포스트 리스트 -->
+												<c:if test="${type eq 'tag'}">										<!-- 태그모아보기 상태라면 검색시 pid 유지 필요 -->
+													<c:set var="pid" value="${param.pid}"/>
+												</c:if>										<!-- 커뮤니티 포스트 리스트 -->
 												<input type="hidden" name="type" value="${type}">
+												<input type="hidden" name="pid" value="${pid}">
 											</c:if>
 											<input type="text" name="keyword">
 											<button class="search-btn">검색</button>
@@ -185,7 +189,7 @@
 				                                    <li><a href="/store/carts">장바구니</a></li>
 				                                    <li><a href="/news">내 소식</a></li>
 				                                    <li><a href="/store/purchases?page=0">구매 내역</a></li>
-				                                    <li><a href="/store/products/inquiries">문의 내역</a></li>
+				                                    <li><a href="/store/inquiries?page=0">문의 내역</a></li>
 				                                    <li><a href="/users?path=info">회원정보 변경</a></li>
 				                                    <li><a href="/users?path=pwd">비밀번호 변경</a></li>
 				                                    <li><a href="/users/logout">로그아웃</a></li>

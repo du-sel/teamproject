@@ -79,6 +79,11 @@ public class PostService {
 	
 	
 	
+	/* 특정상품을 태그한 포스트 전체조회 */
+	public Page<PostInfoListVO> getTagPostList(long pid, String keyword, Pageable pageable) {
+		return postInfoListRepository.getTagPost(pid, keyword, pageable);
+	}
+	
 	/* 회원 포스트 전체조회 */
 	public Page<PostInfoListVO> getUserPostList(long id, Pageable pageable) {
 		return postInfoListRepository.findAllById(id, pageable);

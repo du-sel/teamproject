@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,12 +25,11 @@ import com.teamproject.trackers.biz.product.ProductListVO;
 import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryVO;
 import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryVO;
 import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
+import com.teamproject.trackers.biz.reviewInquiry.InquiryRepository;
+import com.teamproject.trackers.biz.reviewInquiry.InquiryService;
 import com.teamproject.trackers.biz.reviewInquiry.ReviewService;
 import com.teamproject.trackers.biz.product.ProductService;
 import com.teamproject.trackers.biz.product.ProductVO;
-import com.teamproject.trackers.biz.product.categoryDetail.DesignCategoryVO;
-import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryVO;
-import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -56,6 +57,8 @@ import org.springframework.data.domain.Pageable;
 //----------------정희 추가-----------------
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 
 @Controller
@@ -66,15 +69,17 @@ public class ProductController {
 	
     private ProductService productService;
     private ReviewService reviewService;
+    private InquiryService inquiryService;
     private HttpSession session;
 	private DriveController drive;
 		
     @Autowired
 	public ProductController(
-			ProductService productService, ReviewService reviewService,
+			ProductService productService, ReviewService reviewService, InquiryService inquiryService,
 			HttpSession session, DriveController drive) {
 		this.productService = productService;
 		this.reviewService = reviewService;
+		this.inquiryService = inquiryService;
 		this.session = session;
 		this.drive = drive;
 	}
@@ -119,7 +124,8 @@ public class ProductController {
 		}
 		
 		model.addAttribute("product", product);	
-		model.addAttribute("reviews", reviewService.getProductReview(Long.parseLong(p_id)));
+		model.addAttribute("reviews", reviewService.getProductReviewList(Long.parseLong(p_id)));
+		model.addAttribute("inquiries", inquiryService.getInquiryList(Long.parseLong(p_id)));
 		
 		return "store/st-product-single";
 	}
@@ -200,35 +206,42 @@ public class ProductController {
 		return "/store/st-products";
 	}
 
-	
-	
-	
-	
-	
-	
-	
+		
 	////* 상품 관리 페이지 띄우기 (판매자별 상품 목록) *////
-	// 임시 URI
-	@RequestMapping(value="/products/management", method=RequestMethod.GET)
-	public String showProductManagement() {
-		return "my-store/product-management";
-	}
+	//------------------------------------------------------정희
+	// 상품 관리 페이지 띄우기
+    @GetMapping("/products/management")
+    public String showProductManagement(Model model, HttpSession session) {
+        // 현재 로그인한 판매자의 아이디를 세션에서 가져옴
+    	Long id = (Long) session.getAttribute("id");
+
+    	// 세션에 "id"라는 속성이 없는 경우 예외 처리
+        if (id == null) {
+            // 로그인이 되어있지 않으므로 로그인 페이지로 이동하거나 다른 처리를 수행해야 할 수 있음
+            // 예를 들면, 로그인 페이지로 리다이렉트하려면 아래와 같이 처리할 수 있습니다.
+            return "redirect:/login"; // 로그인 페이지로 리다이렉트
+        }
+
+        // 판매자의 상품 리스트 조회 (현재 판매자가 등록한 상품들만 조회)
+        List<ProductVO> productList = productService.getProductListBySellerId(id);
+
+        // 서버로부터 삭제된 상품 ID 목록을 받아옴
+        List<Long> deletedProductIds = productService.getDeletedProductIds();
+
+        // 삭제된 상품 ID 목록을 JSP에 전달하여 숨겨진 상품 처리를 위해 JavaScript에서 사용
+        model.addAttribute("deletedProductIds", deletedProductIds);
+        model.addAttribute("productList", productList);
+
+        return "my-store/product-management";
+    }
+    //------------------------------------------------------정희
 	
-	
-
-
-
-
-	////* 상품 등록 페이지 띄우기 *////
+    
+    ////* 상품 등록 페이지 띄우기 *////
 	@RequestMapping(value="/products/new", method=RequestMethod.GET)
     public String showProductForm() {
         return "my-store/insert-product";
     }
-	
-	
-	
-
-    
     
 	////* 상품 등록 처리 *////
 	@RequestMapping(value="/products", method=RequestMethod.POST)
@@ -267,8 +280,10 @@ public class ProductController {
 		vo.setFile(file);
 		
 		// 현재 날짜 저장
-		LocalDate now = LocalDate.now();
-		vo.setCreDate(Date.valueOf(now));
+		//LocalDate now = LocalDate.now();
+		System.out.println("밀리초: "+System.currentTimeMillis());
+		vo.setCreDate(new java.util.Date(System.currentTimeMillis()));
+		System.out.println(new java.util.Date());
 		
 		// 상품 등록 로직
 		productService.insertProduct(vo);
@@ -512,40 +527,25 @@ public class ProductController {
     
     
     
-    /*---------------------------------------------------정희 추가
+//---------------------------------------------------정희 추가
 
-    // 상품 수정 페이지
-    @GetMapping("/products/{p_id}/edit")
-    public String showEditProductForm(@PathVariable("p_id") String p_id) {
-        // 상품 정보 조회 및 수정 페이지로 이동
-        return "my-store/product-management";
+    
+    // 상품 수정 페이지로 이동
+    @GetMapping("/products/update/{p_id}")
+    public String showEditProductForm(@PathVariable("p_id") long p_id, Model model) {
+        ProductVO product = productService.getProductById(p_id);
+        model.addAttribute("product", product);
+        return "my-store/product-update";
     }
 
     // 상품 수정 처리
-    @PostMapping("/products/{p_id}")
-    public String updateProduct(
-            @PathVariable("p_id") String p_id,
-            @RequestParam("name") String name,
-            @RequestParam("price") int price,
-            @RequestParam(value = "file", required = false) MultipartFile file) {
-   
-        // 상품 수정 로직
-        ProductVO product = productService.getProductById(p_id);
-        if (product != null) {
-            product.setP_name(name);
-            product.setPrice(price);
-            if (!file.isEmpty()) {
-                // 파일 업로드 처리 로직
-                String fileName = saveFile(file);
-                // 파일명을 이용하여 thumbnail 정보를 처리하는 로직을 구현합니다.
-                // product.setThumbnail(fileName);
-            }
-            productService.updateProduct(product);
-        }
-
-        return "redirect:/store/st-products";
+    @PostMapping("/products/update/{p_id}")
+    public String updateProduct(@PathVariable("p_id") long p_id, @ModelAttribute ProductVO updatedproduct) {
+    	// updatedProduct를 사용하여 상품 정보를 업데이트하는 로직을 추가한다.
+    	productService.updateProduct(updatedproduct); // 여기에서 실제로 상품 정보를 업데이트
+        return "redirect:/store/products/management"; // 수정된 정보로 상품 관리 페이지로 리다이렉트
     }
-*/
+
 
     // 상품 삭제 처리
     @RequestMapping(value = "/products/{p_id}", method = RequestMethod.DELETE)
@@ -561,6 +561,42 @@ public class ProductController {
 //----------------------------------------------------정희 추가
 	
     
+    
+    
+    ////* 대표상품 등록 *////
+    @RequestMapping(value="/products/signature/{pid}", method=RequestMethod.PUT)
+    public String updateSignature(@PathVariable("pid") long pid) {
+    	
+    	// pid로 상품 객체 가져오기
+    	ProductVO vo = productService.getProduct(pid);
+    	System.out.println("시그니처 가져온 vo: "+vo.getP_name());
+    	
+    	// signature 컬럼 수정
+    	vo.setSignature(true);
+    	
+    	// update문 실행
+    	productService.updateProductSignature(vo);
+    	
+    	return "redirect:/store/products/management";
+    }
+    
+    
+    ////* 대표상품 해제 *////
+    @RequestMapping(value="/products/signature/{pid}", method=RequestMethod.DELETE)
+    public String deleteSignature(@PathVariable("pid") long pid) {
+    	
+    	// pid로 상품 객체 가져오기
+    	ProductVO vo = productService.getProduct(pid);
+    	System.out.println("시그니처 가져온 vo: "+vo.getP_name());
+    	
+    	// signature 컬럼 수정
+    	vo.setSignature(false);
+    	
+    	// update문 실행
+    	productService.updateProductSignature(vo);
+    	
+    	return "redirect:/store/products/management";
+    }
     
 
     

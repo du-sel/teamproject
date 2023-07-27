@@ -20,7 +20,7 @@
         </div>
 		<div class="container">
 			<div class="row justify-content-center">
-				<a href="/store/purchases?page=0" class="back">&lt; 구매 내역</a>
+				<a href="/store/purchases?page=0" class="back"><span class="fa fa-angle-double-left"></span> 구매 내역</a>
 				<div class="col-lg-12 d-flex p-info scroll-custom">
                		<img src="${p_info.thumbnail}" alt="상품 썸네일">
                		<div class="d-flex flex-column justify-content-center p-text-info">
@@ -38,7 +38,7 @@
 	                	</div>
                		</div>
                	</div>
-               	<form class="col-lg-12 form-data" action="/store/reviews/${p_info.bak_p_id}" method="post">
+               	<form class="col-lg-12 form-data" action="/store/reviews/${p_info.bak_p_id}" method="post" onsubmit="enter('review-content');">
                		<c:choose>
 				    	<c:when test="${!empty review.content}">	<!-- 리뷰 존재 --> 
 				    		<div class="sub-title">
@@ -64,7 +64,7 @@
 		                	</div>
 		                	<div>
 		               			<h6>후기</h6>
-		               			<textarea name="content" maxlength="300" placeholder="후기 내용을 입력하세요." required></textarea>
+		               			<textarea id="review-content" name="content" maxlength="300" placeholder="후기 내용을 입력하세요." required></textarea>
 			               		<input class="form-btn" type="submit" value="작성">
 		               		</div>
 				    	</c:otherwise>
