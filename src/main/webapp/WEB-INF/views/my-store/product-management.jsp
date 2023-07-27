@@ -9,7 +9,7 @@
 		dash-board template  
   =========================================
    -->     
-    
+  
   <!-- Fonts and icons -->
   <!-- <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"> -->
   
@@ -63,7 +63,7 @@
                                         <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">
                                             <div class="d-flex flex-column justify-content-center align-items-center">
                                                 <div class="up-del-btn-container d-flex flex-row justify-content-between">
-                                                    <button type="button" class="update-btn">수정</button>
+                                                    <button type="button" class="update-btn" onclick="goToUpdatePage(${product.pid})">수정</button>
                                                     <form method="post" action="/store/products/${product.pid}">
                                                         <input type="hidden" name="_method" value="delete" />
                                                         <button type="button" class="delete-btn" onclick="confirmDelete(this)">삭제</button>
@@ -158,6 +158,14 @@
       }
     });
   });
+  
+  
+  function goToUpdatePage(productId) {
+    // 상품 정보 수정 페이지로 이동하는 코드
+    location.href = '/store/products/update/' + productId;
+  }
+  
+
 </script>
  
   
