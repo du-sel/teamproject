@@ -235,7 +235,7 @@ function showTagModal() {
 								    	<c:when test="${!empty user_id}">	<!-- 로그인 o --> 
 								    		<input type="hidden" name="id" value="${user_id}">
 											<input type="text" id="comment-text" name="content" class="form-control" placeholder="댓글을 입력하세요">
-								            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
+								            <button class="submit-button" id="comment-submit-button" type="submit" ><i class="fa fa-paper-plane"></i></button> <!-- onclick="addComment()" -->
 								    	</c:when>		
 								    	<c:otherwise>		<!-- 로그인 x -->
 								    		<div id="comment-text" >로그인이 필요합니다.</div>

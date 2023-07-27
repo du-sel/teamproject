@@ -160,10 +160,9 @@ image-modal
 #modal:has(#image-modal) {
 	text-align: center;
 }	
-
 .modal-dialog:has(#image-modal) {
 	display: inline-block;
-	max-width: unset;
+	max-width: 800px;
 	width: auto;
 	height: auto;
 }	
@@ -175,6 +174,10 @@ image-modal
 	border: none;
 	padding: 0;
 	margin: 0;
+}
+
+#image-modal img {
+	width: 100%;
 }
 
 
