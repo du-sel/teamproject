@@ -69,7 +69,20 @@
                                                         <button type="button" class="delete-btn" onclick="confirmDelete(this)">삭제</button>
                                                     </form>
                                                 </div>
-                                                <button type="button" class="signature-btn button">대표 상품 등록</button>
+                                                <c:choose>
+                                                	<c:when test="${product.signature }">	<!-- 대표상품일 경우 해제버튼 출력 -->
+		                                                <form action="/store/products/signature/${product.pid}" method="post">
+		                                                	<input type="hidden" name="_method" value="DELETE">
+			                                                <button type="submit" class="signature-del-btn button">대표 상품 해제</button>
+		                                                </form>
+                                                	</c:when>
+                                                	<c:otherwise>		<!-- 대표상품 아닐 경우 등록버튼 출력 -->
+		                                                <form action="/store/products/signature/${product.pid}" method="post">
+		                                                	<input type="hidden" name="_method" value="PUT">
+			                                                <button type="submit" class="signature-btn button">대표 상품 등록</button>
+		                                                </form>
+                                                	</c:otherwise>
+                                                </c:choose>
                                             </div>
                                         </div>
                                     </div>
