@@ -4405,7 +4405,8 @@ product-management
 #product-management .info .up-del-btn-container {
     margin-bottom: 10px;
 }
-#product-management .info .signature-btn {
+#product-management .info .signature-btn,
+#product-management .info .signature-del-btn {
     padding: 5px;
     width: 7rem;
     border-radius: 0.2rem;
@@ -4440,8 +4441,17 @@ product-management
 	background: #e4e4eb;
 	border: none;
 }
+#product-management .info .signature-del-btn  {
+	background: #586579;
+	color: #fff;
+	border: none;
+}
 #product-management button.signature-btn:hover {
 	background: #586579;
+	color: #fff;
+}
+#product-management .info .signature-del-btn:hover  {
+	background: #e97d7d;
 	color: #fff;
 }
 
