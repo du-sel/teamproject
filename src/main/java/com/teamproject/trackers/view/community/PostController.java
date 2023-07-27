@@ -68,7 +68,18 @@ public class PostController {
 	
 	private AlertVO alert = new AlertVO();
 	
-
+	// 사용자 팔로우 목록
+	private List<Object[]> followList() {
+		long id = 0;
+		List<Object[]> followList = null;
+		
+		if (session.getAttribute("id") != null) {
+			id = (long) session.getAttribute("id");
+			followList = followService.getfollowList((long) session.getAttribute("id"));
+		}
+		
+		return followList;
+	}
 	
 	
 	// 이미지 모달창
@@ -178,7 +189,10 @@ System.out.println("newfile "+"/resources/postimg/"+fileName);
 		List<PostIMGVO> imgList = postIMGService.getPImgList(postId);
 		
 		// 댓글 목록
-		List<PostCommentListVO> commentList = commentService.getCommentListPage(postId);		
+		List<PostCommentListVO> commentList = commentService.getCommentListPage(postId);	
+		
+		// 사이드바 팔로잉 목록
+		model.addAttribute("followList", followList());
 		
 		model.addAttribute("post", vo);
 		model.addAttribute("imgList", imgList);
@@ -281,21 +295,13 @@ System.out.println("newfile "+"/resources/postimg/"+fileName);
 			model.addAttribute("type", type);
 			model.addAttribute("keyword", keyword);
 			
-			// 사용자별 팔로우 리스트
-			long id = 0;
-			List<Object[]> followList = null;
-			
-			if (session.getAttribute("id") != null) {
-				id = (long) session.getAttribute("id");
-				followList = followService.getfollowList((long) session.getAttribute("id"));
-			}
-			model.addAttribute("followList", followList);
+			// 사용자 팔로우 목록
+			model.addAttribute("followList", followList());
 			
 			return "community/co-main";
 		}else {
 			return "redirect:/community/posts?page=0&type=all";
 		}
 	}
-	
 
 }
