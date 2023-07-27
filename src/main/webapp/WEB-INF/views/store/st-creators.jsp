@@ -52,13 +52,13 @@
 								<div class="profile">
 									<div class="d-flex">
 										<img src="${c.profile_img}" alt="프로필 이미지">
-										<h5 class="d-flex flex-column justify-content-center">${c.storeName}</h5>
+										<h4 class="d-flex flex-column justify-content-center">${c.storeName}</h4>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-12">
 								<div class="rep">
-									<h4>대표 상품</h4>
+									<h5>대표 상품</h5>
 								</div>
 							    <div class="down-content d-flex justify-content-start product scroll-custom">
 							    	<c:choose>
