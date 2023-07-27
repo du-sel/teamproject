@@ -66,10 +66,15 @@ community-main
 /* Button */
 
 #co-main input[type="submit"],
+#co-post input[type="submit"],
 #co-main input[type="reset"],
+#co-post input[type="reset"],
 #co-main input[type="button"],
+#co-post input[type="button"],
 #co-main button,
-#co-main .button {
+#co-post button,
+#co-main .button,
+#co-post .button {
 	appearance: none;
 	transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 	background-color: transparent;
@@ -85,7 +90,8 @@ community-main
 	white-space: nowrap;
 } 
 
-.co #co-main button {
+.co #co-main button,
+.co #co-post button {
 	background-color: #e4e4eb;
 	border-radius: 2.5px;
 	font-size: 14px;
@@ -95,11 +101,13 @@ community-main
 	padding: 0 8px;
 /* 	line-height: 0; */
 }
-.co #co-main button:hover {
+.co #co-main button:hover,
+.co #co-post button:hover {
 	background-color: #586579;
 	color: #fff;
 }
-.co #co-main button:focus {
+.co #co-main button:focus,
+.co #co-post button:focus {
 	border: none;
 	outline: none;
 }
@@ -229,7 +237,8 @@ post
 	}
 }
 
-.co #co-main .post {
+.co #co-main .post,
+.co #co-post .post {
 	/* padding: 1em 3em; */
 	border-radius: 10px;
 	width: 100%;
@@ -337,19 +346,23 @@ post
 
 
 /*  새 글 작성 등록버튼   */
-.co #co-main .submitpost{
+.co #co-main .submitpost,
+.co #co-post .submitpost{
 	display:none;	
-	/* margin-bottom:10px; */
+	margin-bottom:10px;
 }
-.co #co-main .submitpost .icons-container{
+.co #co-main .submitpost .icons-container,
+.co #co-post .submitpost .icons-container{
 	margin-top: 5px;
 }
-.co #co-main .submitpost i{
+.co #co-main .submitpost i,
+.co #co-post .submitpost i{
 	font-size: 22px;
 	color: #b2bfc2;
 	margin: 8px;
 }
-.co #co-main .submitpost i:hover{
+.co #co-main .submitpost i:hover,
+.co #co-post .submitpost i:hover{
 	color: #dce0e3;
 }
 .co .submiticon{
@@ -357,6 +370,10 @@ post
 	background:none !important;
 	padding: 0 !important;
 }
+
+
+
+/* 태그 관련  */
 .co .tag-preview {
 	font-size: 0.8rem;
 	margin-left: 10px;
@@ -426,16 +443,18 @@ post
 	margin-bottom: 36px;
 	display: grid;
 	justify-content: center;
-	max-height: 420px;
+	
+	max-height: 720px;
 	gap: 10px;
 	grid-auto-flow: row;
 }
 .co .img-container img {
 	width: 100%;
+	object-fit: cover; 
 }
 
 .co .img-container.one {
-	
+	/* max-height: 720px; */
 }
 .co .img-container.two {
 	grid-template-columns: repeat(2,1fr);
@@ -570,23 +589,24 @@ post
 .co #comment-text:focus {
 	box-shadow: 0 0 0 .2rem rgba(184,184,196,.15);
 }
-.co .comment-input #submit-button {
-	flex-shrink: 0;
-	padding: 0;
-	display: flex;
-	align-items: center;
-	background: none;
+.co .comment-input #comment-submit-button {
+   flex-shrink: 0;
+   padding: 0;
+   display: flex;
+   align-items: center;
+   background: none;
 }
-.co .comment-input #submit-button:hover {
-	background: none;
+.co .comment-input #comment-submit-button:hover {
+   background: none;
 }
 .co .comment-input .fa-paper-plane {
-	font-size: 22px;
-	color: #b2bfc2;
+   font-size: 22px;
+   color: #b2bfc2;
 }
 .co .comment-input .fa-paper-plane:hover {
-	color: #dce0e3;
+   color: #dce0e3;
 }
+
 
 
 
