@@ -244,6 +244,7 @@ console.log(event.target.files.length);
 // 이미지 클릭 시 확대해서 모달창에 띄워주기
 function showImageModal(e, src) {
 	
+	e.preventDefault();
 	e.stopPropagation();
   
 	$("#modal .modal-content").load("/community/image-modal", function() {

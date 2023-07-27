@@ -179,10 +179,10 @@ function getUserPostList(page) {
 					let tag = $(newBox).find('.tag');
 					tag.hide();
 					
-					if(post.p_id != null && post.p_id > 0) {
+					if(post.pid != null && post.pid > 0) {
 						$(tag).find('.tag-product').text(post.p_name);
 						$(tag).on('click', function() {
-							location.href='/store/products/'+post.p_id;
+							location.href='/store/products/'+post.pid;
 						});					
 						tag.show();
 					} 

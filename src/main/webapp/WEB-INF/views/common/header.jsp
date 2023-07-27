@@ -171,7 +171,11 @@
 												<c:if test="${empty type || type eq ''}">										<!-- 상품 상세 등 category 값이 없는 페이지에서 검색 시 디폴트 값 -->
 													<c:set var="type" value="all"/>
 												</c:if>										<!-- 커뮤니티 포스트 리스트 -->
+												<c:if test="${type eq 'tag'}">										<!-- 태그모아보기 상태라면 검색시 pid 유지 필요 -->
+													<c:set var="pid" value="${param.pid}"/>
+												</c:if>										<!-- 커뮤니티 포스트 리스트 -->
 												<input type="hidden" name="type" value="${type}">
+												<input type="hidden" name="pid" value="${pid}">
 											</c:if>
 											<input type="text" name="keyword">
 											<button class="search-btn">검색</button>

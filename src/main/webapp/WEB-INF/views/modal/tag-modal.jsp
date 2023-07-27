@@ -9,8 +9,6 @@
 <script>
 
 function getTagModal(page) {
-	console.log('getTagModal() 실행시작');
-	console.log(page);
 	
 	$.ajax({
 		type: 'get',
@@ -134,7 +132,7 @@ function getTagModal(page) {
 			
 		},
 		error: function(message) { 
-			alert('ajax 실행 실패');
+			alert('통신 에러 발생');
 		}
 		
 	})
