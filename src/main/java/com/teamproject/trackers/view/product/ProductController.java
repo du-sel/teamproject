@@ -567,6 +567,42 @@ public class ProductController {
 	
     
     
+    
+    ////* 대표상품 등록 *////
+    @RequestMapping(value="/products/signature/{pid}", method=RequestMethod.PUT)
+    public String updateSignature(@PathVariable("pid") long pid) {
+    	
+    	// pid로 상품 객체 가져오기
+    	ProductVO vo = productService.getProduct(pid);
+    	System.out.println("시그니처 가져온 vo: "+vo.getP_name());
+    	
+    	// signature 컬럼 수정
+    	vo.setSignature(true);
+    	
+    	// update문 실행
+    	productService.updateProductSignature(vo);
+    	
+    	return "redirect:/store/products/management";
+    }
+    
+    
+    ////* 대표상품 해제 *////
+    @RequestMapping(value="/products/signature/{pid}", method=RequestMethod.DELETE)
+    public String deleteSignature(@PathVariable("pid") long pid) {
+    	
+    	// pid로 상품 객체 가져오기
+    	ProductVO vo = productService.getProduct(pid);
+    	System.out.println("시그니처 가져온 vo: "+vo.getP_name());
+    	
+    	// signature 컬럼 수정
+    	vo.setSignature(false);
+    	
+    	// update문 실행
+    	productService.updateProductSignature(vo);
+    	
+    	return "redirect:/store/products/management";
+    }
+    
 
     
     

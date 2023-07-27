@@ -223,4 +223,9 @@ public class ProductService {
 	    }
 		
 		
+	    
+	// 대표상품 등록/해제
+	public void updateProductSignature(ProductVO vo) {
+		productRepository.save(vo);
+	}
 }
