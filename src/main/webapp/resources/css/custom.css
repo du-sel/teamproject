@@ -992,6 +992,9 @@ header
   align-items: center;
 }
 
+.narrow-header .menu-trigger{
+  top: inherit !important;
+}
 
 
 /* 
@@ -1848,7 +1851,7 @@ Single Product Page
 	margin: 0 auto;
 }
 #product .speech-bubble td {
-	background: #f2f2f6;
+	/* background: #f2f2f6; */
 }
 #product .speech-bubble tr:hover {
 	background: #f2f2f6;
