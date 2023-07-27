@@ -6,6 +6,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
+<!-- tag js -->
+<script src="/resources/js/tag-modal.js"></script>
 
 
 <script>
@@ -103,8 +105,7 @@ function goPurchase() {
    									<button type="button" onclick="goCart(${product.pid })">장바구니</button>
    								<%-- </form:form> --%>
    								
-   								<button onclick="goPurchase()">바로 구매</button> 								
-   								<button onclick="testpay()">정기 테스트</button> 								
+   								<button onclick="goPurchase()">바로 구매</button> 															
 	      					</div>
 	                    </div>
 	                </div>
@@ -142,12 +143,16 @@ function goPurchase() {
            </div>
 
           <!-- 두번째 탭 (구매후기) -->
-          <div id = "review" class ="tab-pane">
-          	<c:if test="${empty reviews}">
+          <div id = "review" class ="tab-pane container">
+          	<div class="row col-12 justify-content-end tag-btn-container">
+    	      	<p class="desc">다른 구매자들이 어떻게 사용하고 있는지 궁금하다면?</p>
+	          	<button type="button" class="tag-btn" onclick="getTagList(${product.pid})">태그 모아보기</button>
+          	</div>
+          <c:if test="${empty reviews}">
             	<div class="empty-data">
              	  	<p>작성된 후기가 없습니다.</p>
              	</div>
-            </c:if>	
+            </c:if>
             <c:forEach var="review" items="${reviews}">
 				<div class="speech-bubble">
 					<table>

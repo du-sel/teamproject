@@ -1735,6 +1735,30 @@ Single Product Page
 }
 
 
+/* 태그 모아보기 버튼 */
+#product .tag-btn-container {
+	margin-bottom: 30px;
+}
+#product .tag-btn-container .desc {
+	margin-right: 15px;
+}
+#product .tag-btn {
+	border: none;
+	background: #e4e4eb;
+	padding: 5px 8px;
+	border-radius: 2px;
+}
+#product .tag-btn:hover {
+	border: none;
+	background: #586579;
+	color: #fff;
+}
+#product .tag-btn:focus {
+	border: none;
+	outline: none;
+}
+
+
 
 /* tab메뉴 */
 #product .nav-tabs li {
