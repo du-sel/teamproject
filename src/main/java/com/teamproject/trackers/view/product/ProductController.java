@@ -286,8 +286,10 @@ public class ProductController {
 		vo.setFile(file);
 		
 		// 현재 날짜 저장
-		LocalDate now = LocalDate.now();
-		vo.setCreDate(Date.valueOf(now));
+		//LocalDate now = LocalDate.now();
+		System.out.println("밀리초: "+System.currentTimeMillis());
+		vo.setCreDate(new java.util.Date(System.currentTimeMillis()));
+		System.out.println(new java.util.Date());
 		
 		// 상품 등록 로직
 		productService.insertProduct(vo);
