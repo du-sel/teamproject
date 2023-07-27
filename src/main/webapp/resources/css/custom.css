@@ -874,6 +874,7 @@ header
     margin-top: 80px !important;
     max-height: 500px;
     overflow-y: auto;
+    overflow-x: hidden;
   }
   .header-area .main-nav .nav div {
     width: 100%;
@@ -1847,8 +1848,9 @@ Single Product Page
 }
 
 #product .speech-bubble table{
-	width: 900px;
+	/* width: 900px; */
 	margin: 0 auto;
+	width: 100%;
 }
 #product .speech-bubble td {
 	/* background: #f2f2f6; */
@@ -1865,9 +1867,31 @@ Single Product Page
   border: 10px solid transparent;
   transform: translateX(-50%);
 }
-
+#product .speech-bubble .review-info td{
+	padding-left: 10px;
+}
 #product .speech-bubble .review-content{
-	margin: 10px 0 0 10px;
+	margin: 10px 0 10px 10px;
+	text-align: left;
+	padding-left: 10px;
+}
+#product .speech-bubble .creator td{
+	border-top: 1px solid #dce0e3;
+    padding-top: 10px;
+    text-align: left;
+    padding-left: 10px;
+}
+#product .speech-bubble .creator img{
+	border-radius: 50%;
+    width: 70px;
+}
+#product .speech-bubble .creator h6{
+	font-weight: 600;
+    display: inline-block;
+}
+#product .speech-bubble .creator p{
+	margin-left: 10px;
+    margin-top: 10px;
 }
 
 /* ------------------표 꾸미기------------------ */
@@ -2010,11 +2034,11 @@ st-creator
 	width: 80px;
 }
 
-#creators .profile h5 {
+#creators .profile h4 {
 	padding: 0 0 0 15px;
 }
 
-#creators .rep h4 {
+#creators .rep h5 {
 	padding-bottom: 15px;
 	margin-bottom: 15px;
 	border-bottom: 2px solid #e4e4eb99;
