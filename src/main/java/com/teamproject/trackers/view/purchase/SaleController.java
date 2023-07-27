@@ -12,17 +12,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.teamproject.trackers.biz.purchase.PurchaseService;
+import com.teamproject.trackers.biz.userCreator.CreatorService;
+import com.teamproject.trackers.biz.userCreator.CreatorVO;
+import com.teamproject.trackers.biz.userCreator.CreatorViewVO;
 
 @Controller
 public class SaleController {
+	
 	private PurchaseService purchaseService;
+	private CreatorService creatorService;
     private HttpSession session;
 	
     
     @Autowired
 	public SaleController(PurchaseService purchaseService, 
+			CreatorService creatorService,
 			HttpSession session) {
 		this.purchaseService = purchaseService;
+		this.creatorService = creatorService;
 		this.session = session;
 	}
 
@@ -48,7 +55,9 @@ public class SaleController {
 		}
 		
 		// 스토어 이름 세션에 저장
-		session.setAttribute("store_name", products.get(0)[3]);
+		CreatorViewVO vo = new CreatorViewVO();
+		vo.setId(id);
+		session.setAttribute("store_name", creatorService.getCreator(vo).get().getStoreName());
 		
 		// 월별&이번 달 판매 수익
 		model.addAttribute("now", now);
