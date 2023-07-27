@@ -555,4 +555,5 @@
 <input type="hidden" id="sessionId" name="id" value="${user_id}">
 </main>
 
+<script src="/resources/js/profile.js"></script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

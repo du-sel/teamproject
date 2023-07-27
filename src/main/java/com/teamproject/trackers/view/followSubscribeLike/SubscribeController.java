@@ -68,12 +68,12 @@ public class SubscribeController {
 		SubscribeInfoVO infoVO = subscribeInfoService.getSubscribeInfo(vo);
 		
 		if(infoVO == null) {		// 등록
-			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장
+			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장(구글 드라이브)
 			subscribeInfoService.insertSubscribeInfo(vo);
 			common.alert.setStr("구독이 활성화되었습니다.");
 		}else {
-			//drive.SubscribeDelete(infoVO);						// 저번 달 파일 삭제
-			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장
+			//drive.SubscribeDelete(infoVO);						// 저번 달 파일 삭제(구글 드라이브)
+			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장(구글 드라이브)
 			subscribeInfoService.updateSubscribeInfo(vo);
 			common.alert.setStr("구독 정보가 업데이트되었습니다.");
 		}

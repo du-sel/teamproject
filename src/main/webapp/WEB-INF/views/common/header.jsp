@@ -156,7 +156,7 @@
 										</c:if>
 										
 										<!-- 파라미터 form으로 보냄 -->
-										<form name="search" action="${path}" class="search-input-container">
+										<form id="header-search" name="search" action="${path}" class="search-input-container">
 											<input type="hidden" name="page" value="0">
 											<c:if test="${not fn:contains(path, '/community/posts')}">									<!-- 크리에이터 리스트, 상품 리스트 -->
 												<input type="hidden" name="sort" value="creDate">

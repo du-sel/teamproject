@@ -321,7 +321,7 @@ function showTagModal() {
 <script>
 
 	$(() => {
- 		$('body').css('background-color', '#f2f2f6');
+ 		$('body').css('background', '#f2f2f6');
     	
     	// 모바일 화면 사이드 바
     	$("#sidebar .navbar button").on('click', function(){
