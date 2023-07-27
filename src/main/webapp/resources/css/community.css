@@ -371,24 +371,9 @@ post
 	padding: 0 !important;
 }
 
-.co .comment-input #comment-submit-button {
-   flex-shrink: 0;
-   padding: 0;
-   display: flex;
-   align-items: center;
-   background: none;
-}
-.co .comment-input #comment-submit-button:hover {
-   background: none;
-}
-.co .comment-input .fa-paper-plane {
-   font-size: 22px;
-   color: #b2bfc2;
-}
-.co .comment-input .fa-paper-plane:hover {
-   color: #dce0e3;
-}
 
+
+/* 태그 관련  */
 .co .tag-preview {
 	font-size: 0.8rem;
 	margin-left: 10px;
@@ -602,23 +587,24 @@ post
 .co #comment-text:focus {
 	box-shadow: 0 0 0 .2rem rgba(184,184,196,.15);
 }
-.co .comment-input #submit-button {
-	flex-shrink: 0;
-	padding: 0;
-	display: flex;
-	align-items: center;
-	background: none;
+.co .comment-input #comment-submit-button {
+   flex-shrink: 0;
+   padding: 0;
+   display: flex;
+   align-items: center;
+   background: none;
 }
-.co .comment-input #submit-button:hover {
-	background: none;
+.co .comment-input #comment-submit-button:hover {
+   background: none;
 }
 .co .comment-input .fa-paper-plane {
-	font-size: 22px;
-	color: #b2bfc2;
+   font-size: 22px;
+   color: #b2bfc2;
 }
 .co .comment-input .fa-paper-plane:hover {
-	color: #dce0e3;
+   color: #dce0e3;
 }
+
 
 
 
