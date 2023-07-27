@@ -58,6 +58,11 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <c:if test="${empty inquiries.content}">
+                    	  <tr class="empty-data">
+                     	  	<td colspan="5" rowspan="5">작성된 문의가 없습니다.</td>
+                     	  </tr>
+                      </c:if>	
                       <c:forEach var="inquiry" items="${inquiries.content}" varStatus="status">
 	                      <tr <c:if test="${!empty inquiry.answer}">class="answer"</c:if> onclick="location.href='/profiles/${sessionScope.user.url}/inquiries/${inquiry.inquiryId}'">
 	                      	<td>

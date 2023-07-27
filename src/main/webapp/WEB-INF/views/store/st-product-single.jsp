@@ -143,6 +143,11 @@ function goPurchase() {
 
           <!-- 두번째 탭 (구매후기) -->
           <div id = "review" class ="tab-pane">
+          	<c:if test="${empty reviews}">
+            	<div class="empty-data">
+             	  	<p>작성된 후기가 없습니다.</p>
+             	</div>
+            </c:if>	
             <c:forEach var="review" items="${reviews}">
 				<div class="speech-bubble">
 					<table>
@@ -189,6 +194,11 @@ function goPurchase() {
 			    <th>작성자</th>
 			    <th>작성일</th>
 			  </tr>
+			  <c:if test="${empty inquiries}">
+              	<tr class="empty-data">
+               	  	<td colspan="4" rowspan="5">작성된 상품 문의가 없습니다.</td>
+               	</tr>
+              </c:if>	
 			  <c:forEach var="inquiry" items="${inquiries}" varStatus="status">
 			  	  <tr onclick="toggleRow(${status.index})" <c:if test="${!empty inquiry.answer}">class="has-answer"</c:if>>
 				    <td>
