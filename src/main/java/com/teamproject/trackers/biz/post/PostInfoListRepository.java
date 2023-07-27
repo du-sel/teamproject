@@ -40,6 +40,18 @@ public interface PostInfoListRepository extends JpaRepository<PostInfoListVO, Lo
 
 
 
+	
+	// 특정 상품을 태그한 포스트만
+	@Query(value = "SELECT DISTINCT p.* FROM postinfolist p WHERE p.p_id=:pid and p.content like %:keyword%",
+			countQuery = "SELECT DISTINCT p.* FROM postinfolist p WHERE p.p_id=:pid and p.content like %:keyword%",
+			nativeQuery = true)
+	Page<PostInfoListVO> getTagPost(@Param("pid") long pid, @Param("keyword") String keyword, Pageable pageable);
+	
+	
+	
+	
+	// 특정 상품을 태그한 포스트만
+	//Page<PostInfoListVO> findAllByPid(long pid, Pageable pageable);
 
 	// 특정 회원의 포스트만
 	Page<PostInfoListVO> findAllById(long id, Pageable pageable);

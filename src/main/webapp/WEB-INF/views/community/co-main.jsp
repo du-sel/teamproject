@@ -115,7 +115,7 @@ function showTagModal() {
 									<div onclick=""><i class="fa fa-image"></i></div>
 									<!-- 파일 input 대신 클릭 -->
 									<div onclick="showTagModal()" data-toggle="modal" data-target="#modal"><i class="fa fa-tag"></i></div>
-									<input type="hidden" name="p_id" id="tag" value="">
+									<input type="hidden" name="pid" id="tag" value="">
 									<div class="tag-preview"></div>
 									<div class="tag-delete" onclick="deleteTag()"><i class="fa fa-close"></i></div>
 								</div>
@@ -154,7 +154,7 @@ function showTagModal() {
 					   		<div class="col-12">
 								<div class="submitpost col-12">
 									<textarea id="co-textarea" name="content" class="col-11" rows="2"></textarea>
-									<input type="text" name="p_id" id="p_id" placeholder="태그 입력">
+									<input type="text" name="pid" id="pid" placeholder="태그 입력">
 									<div class="row flex-column">
 										<div class="d-flex align-items-center thumb-title inputphoto">
 											<h6>사진&nbsp;<small>최대 4개까지 업로드 가능</small></h6>
@@ -264,8 +264,8 @@ function showTagModal() {
 							</c:otherwise>
 						</c:choose>
 						<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number">${p.t_count}</span></li>
-						<c:if test="${!empty p.p_id }">
-							<li class="tag"><a href="/store/products/${p.p_id }"><span class="tag-icon"><i class="fa fa-tag"></i></span><span class="tag-product">${p.p_name}</span></a></li>
+						<c:if test="${!empty p.pid }">
+							<li class="tag"><a href="/store/products/${p.pid }"><span class="tag-icon"><i class="fa fa-tag"></i></span><span class="tag-product">${p.p_name}</span></a></li>
 						</c:if>
 					</ul>
 					<div class="comment-section">
