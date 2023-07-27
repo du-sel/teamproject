@@ -50,7 +50,7 @@ public class CreatorService {
 		return creatorRepository.existsByStoreName(vo.getStoreName());
 	}
 	
-	
+	// 스토어 유무 구분
 	public CreatorVO getCreator(String url) {
 		return creatorRepository.getCreator(url);
 	}
