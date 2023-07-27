@@ -95,7 +95,7 @@ function showTagModal() {
 		<!-- Main -->
 		<div id="main" class="col-lg-7 m-auto" > 
 
-			<c:if test="${!empty user_id}">
+			<c:if test="${!empty sessionScope.user}">
 				<section class="post">
 					<form action="/community/posts" method="post" name="post" enctype="multipart/form-data">
 						<input type="hidden" id="sessionId" name="id" value="${user_id}">
@@ -117,6 +117,7 @@ function showTagModal() {
 									<div onclick="showTagModal()" data-toggle="modal" data-target="#modal"><i class="fa fa-tag"></i></div>
 									<input type="hidden" name="p_id" id="tag" value="">
 									<div class="tag-preview"></div>
+									<div class="tag-delete" onclick="deleteTag()"><i class="fa fa-close"></i></div>
 								</div>
 								<!-- <button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button> -->
 								<button class="submiticon" type="submit" onclick="return checkPhotoCount()"><i class="fa fa-paper-plane"></i></button>

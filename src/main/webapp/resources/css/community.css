@@ -361,7 +361,18 @@ post
 	text-overflow: ellipsis; 
 	flex: 1 1 auto;
 }
-
+.co #co-main .tag-delete i {
+	font-size: 0.8rem;
+}
+.co #co-main .tag-delete i:hover {
+	color: #e97d7d;
+}
+.co #co-main .tag-delete {
+	display: none;
+}
+.co #co-main .tag-delete.active {
+	display: block;
+}
 
 
 
@@ -488,6 +499,7 @@ post
 	color: #b8b8c4;
 	cursor: pointer;
 }
+
 
 
 
