@@ -443,16 +443,18 @@ post
 	margin-bottom: 36px;
 	display: grid;
 	justify-content: center;
-	max-height: 420px;
+	
+	max-height: 720px;
 	gap: 10px;
 	grid-auto-flow: row;
 }
 .co .img-container img {
 	width: 100%;
+	object-fit: cover; 
 }
 
 .co .img-container.one {
-	
+	/* max-height: 720px; */
 }
 .co .img-container.two {
 	grid-template-columns: repeat(2,1fr);
