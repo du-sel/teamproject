@@ -1,30 +1,3 @@
-/*
-// 상단 수정이미지 보이게 하기
-const topimgContainer = document.querySelector('.topimg');
-
-topimgContainer.addEventListener('mouseenter', function() {
-  const topimgModify = topimgContainer.querySelector('#img-topimgmodify');
-  topimgModify.style.display = 'block';
-});
-
-topimgContainer.addEventListener('mouseleave', function() {
-  const topimgModify = topimgContainer.querySelector('#img-topimgmodify');
-  topimgModify.style.display = 'none';
-});
-
-// 프로필 수정이미지 보이게 하
-const profileimgContainer = document.querySelector('.profilediv');
-
-profileimgContainer.addEventListener('mouseenter', function() {
-  const profileimgModify = profileimgContainer.querySelector('.profileimgmodify');
-  profileimgModify.style.display = 'block';
-});
-
-profileimgContainer.addEventListener('mouseleave', function() {
-  const profileimgModify = profileimgContainer.querySelector('.profileimgmodify');
-  profileimgModify.style.display = 'none';
-});
-*/
 
 //모달창 띄우기
 const topimgModify = document.querySelector("#my-topimgdiv");
@@ -69,20 +42,7 @@ const modalClose = document.querySelector(".modalclose");
   }
   
 
-//상단이미지 업로드 코드 추가
-/*
-var submit = document.getElementById('submitButton');	// 미리보기 버튼
-submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
 
-function showImage() {
-    var newImage = document.getElementById('image-show').lastElementChild;
-    newImage.style.visibility = "visible";
-    
-    document.getElementById('image-upload').style.visibility = 'hidden';
-
-    document.getElementById('fileName').textContent = null;     //기존 파일 이름 지우기
-}
-*/
 
 
 function loadFile(id, event) {
@@ -133,11 +93,9 @@ function showLoginAlertSub(){
 	
 }
 
-// 로그인 후 멤버십 가입하기
-function joinmembership(){
-	alert("멤버십에 가입되었습니다.");
-	$('#subModal').modal('hide');
-	
+function starts(){
+	document.querySelector(".sbutton").style.display ="none" ;
+	document.getElementById("changesbutton").style.display ="block";
 }
 
 

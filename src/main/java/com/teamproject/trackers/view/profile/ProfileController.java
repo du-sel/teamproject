@@ -87,6 +87,7 @@ public class ProfileController {
 	         model.addAttribute("count",followService.Follower(url)); //팔로우 수
 	         model.addAttribute("subcount", subscribeInfoService.Sub(url)); //구독 수
 	         model.addAttribute("getMembership",subscribeInfoService.getSubInfo(url)); //url 따른 멤버십 정보 가져오기
+	         model.addAttribute("getCreator", creatorService.getCreator(url));
 	      }else {
 	         uvo.setId((long)session.getAttribute("id"));
 	         model.addAttribute("profile", profileService.getUser(url));
@@ -96,6 +97,8 @@ public class ProfileController {
 	         model.addAttribute("checks",subscribePurchaseService.SubT(url, (long)session.getAttribute("id"))); // 구독 여부 확인
 	         model.addAttribute("getMembership",subscribeInfoService.getSubInfo(url)); //url 따른 멤버십 정보 가져오기
 	         model.addAttribute("getCreator", creatorService.getCreator(url));
+	         model.addAttribute("getspsubid", subscribePurchaseService.SubId(url));
+	        
 	         	   
 	      }
 	   
