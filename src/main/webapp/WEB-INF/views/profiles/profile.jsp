@@ -179,7 +179,7 @@
 			 	</li>
 			 	<c:if test="${getCreator != null }">
 				 	<li class="nav-item navli" id="li">
-				 		<div class="nav-link" onclick="getCreatorProductList(0, 'creDate')" data-toggle="tab">스토어</div>
+				 		<div class="nav-link" onclick="getCreatorProductList(0, 'creDate')" data-toggle="tab" id="storenamediv">${getCreator.getStoreName() } 스토어</div>
 				 	</li>
 				 	<li class="nav-item navli" id="li">
 				 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
