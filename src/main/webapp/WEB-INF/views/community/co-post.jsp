@@ -9,7 +9,7 @@
   
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
-	<main id="co-main" class="row" style="margin-top: 200px">
+	<main id="co-post" class="row" style="margin-top: 200px">
 	
 		<!-- Sidebar -->
 		<jsp:include page="/WEB-INF/views/common/co-sidebar.jsp" />
