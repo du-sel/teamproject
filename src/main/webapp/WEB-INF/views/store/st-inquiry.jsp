@@ -3,7 +3,6 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-  
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
   <main id="st-inquiry" class="my-info broad my-info-form">
