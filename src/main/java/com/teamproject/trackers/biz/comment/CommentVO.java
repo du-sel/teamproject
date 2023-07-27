@@ -28,7 +28,7 @@ public class CommentVO {
 	private Long id;
 	private String content;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date cre_date;
 	
 	
