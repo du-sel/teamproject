@@ -60,7 +60,7 @@
 	        </a>
 	      </li>
 	      <li>
-	        <a href="/profiles/url/notice">
+	        <a href="/profiles/url/notices">
 	          <i class="tim-icons icon-volume-98"></i>
 	          <p>공지 관리</p>
 	        </a>

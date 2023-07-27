@@ -134,7 +134,7 @@
 								</div>
 	                            <!-- ***** Logo Start ***** -->
 		                        <div id="logo_container">
-	                                <a href="/store/main" class="logo">
+	                                <a href="" class="logo">
 	                                    <img src="/resources/images/trackers-navy.svg">
 	                                </a>
 	                            </div>
