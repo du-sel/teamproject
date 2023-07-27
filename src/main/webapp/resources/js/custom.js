@@ -218,20 +218,16 @@
 		let width = window.innerWidth;
 		
 		if(width <= 767 && !menu_flag) {
-			$('#user-menu').children('img').remove();
-			$('#user-menu').prepend("<a>마이 메뉴</a>");
+			$('#user-menu').children('img').css('display', 'none');
+			$('#user-menu').prepend("<a class='submenu'>마이 메뉴</a>");
 			menu_flag = true;
 		}else if(width > 767 && menu_flag){
 			$('#user-menu').children('a').remove();
-			$('#user-menu').prepend("<img src='/resources/images/baner-right-image-02.jpg' alt='프로필사진' id='profile-image'>");
+			$('#user-menu').children('img').css('display', 'block');
 			menu_flag = false;
 		}
 	}
 	
-	
-
-	
-
 	
 	
 	

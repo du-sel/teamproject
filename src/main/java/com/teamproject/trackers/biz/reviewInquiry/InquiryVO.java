@@ -1,28 +1,51 @@
 package com.teamproject.trackers.biz.reviewInquiry;
 
-import java.sql.Date;
+import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+@Entity
+@Table(name="inquiry")
 public class InquiryVO {
-	private long inquiry_id;
-	private long p_id;
+	
+	@Id
+	@Column(name="inquiry_id")
+	private long inquiryId;
+	
+	@Column(name="p_id")
+	private long pid;
 	private long id;
-	private Date cre_date;
+	private String name;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+	@Column(name = "cre_date")
+	private Date creDate;
 	private String title;
 	private String content;
 	private String answer;
+	@Temporal(TemporalType.DATE)
+	private Date answer_date;
 	
 	
-	public long getInquiry_id() {
-		return inquiry_id;
+	public long getInquiryId() {
+		return inquiryId;
 	}
-	public void setInquiry_id(long inquiry_id) {
-		this.inquiry_id = inquiry_id;
+	public void setInquiryId(long inquiryId) {
+		this.inquiryId = inquiryId;
 	}
-	public long getP_id() {
-		return p_id;
+	public long getPid() {
+		return pid;
 	}
-	public void setP_id(long p_id) {
-		this.p_id = p_id;
+	public void setPid(long pid) {
+		this.pid = pid;
 	}
 	public long getId() {
 		return id;
@@ -30,11 +53,17 @@ public class InquiryVO {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Date getCre_date() {
-		return cre_date;
+	public String getName() {
+		return name;
 	}
-	public void setCre_date(Date cre_date) {
-		this.cre_date = cre_date;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Date getCreDate() {
+		return creDate;
+	}
+	public void setCreDate(Date creDate) {
+		this.creDate = creDate;
 	}
 	public String getTitle() {
 		return title;
@@ -54,5 +83,10 @@ public class InquiryVO {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-	
+	public Date getAnswer_date() {
+		return answer_date;
+	}
+	public void setAnswer_date(Date answer_date) {
+		this.answer_date = answer_date;
+	}	
 }

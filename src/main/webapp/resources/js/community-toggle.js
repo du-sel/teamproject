@@ -193,27 +193,53 @@ console.log(event.target.files.length);
 					}
 				  }
 	  
+		
+				var postform = $("form[name^='postId_']").get();
+				function checkDeletePost(postId) {
+					var divId = postId;
+			console.log("divId "+divId);
+					
+					if(confirm('삭제하시겠습니까?')){
+						for ( var i = 0; i < postform.length; i++) {
+						var formname = postform[i].getAttribute('name');	
+
+						var id = formname.substring(7,formname.length);
+										
+					        if(id == divId){
+					        	postform[i].submit();
+					        }
+					    }
+					}else{						
+			        	return false;
+					}					
+				}
+		
 	  			
-	  			function checkDeletePost(e) {
-	  				e.stopPropagation();
+	  			
+	  			var commentform = $("form[name^='commentid_']").get();
+	  			function checkDeleteComment(commentid) {
+	  				
+	  				var divId = commentid;
+			console.log("divId "+divId);
 	  				
 	  				if(confirm('삭제하시겠습니까?')){
-	  					document.getElementById('deletePost').submit();
+	  					for ( var i = 0; i < commentform.length; i++) {
+						var formname = commentform[i].getAttribute('name');	
+	
+						var id = formname.substring(10,formname.length);
+											
+					        if(id == divId){
+
+					        	commentform[i].submit();
+					        }
+					    }
+	  					
+	  					
 	  				}else{
 	  					return false;
 	  				}
 	  			}
-	  			
-	  			function checkDeleteComment(e) {
-	  				e.stopPropagation();
-	  				
-	  				if(confirm('삭제하시겠습니까?')){
-	  					document.getElementById('deleteComment').submit();
-	  				}else{
-	  					return false;
-	  				}
-	  			}
-	  			
+	  		
 	
 // 이미지 클릭 시 확대해서 모달창에 띄워주기
 function showImageModal(e, src) {

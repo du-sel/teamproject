@@ -23,6 +23,7 @@ public class PostInfoListVO {
 	
 	@Column(nullable = true)
 	private Long p_id;
+	private String p_name;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="cre_date")
@@ -53,6 +54,12 @@ public class PostInfoListVO {
 	}
 	public void setP_id(Long p_id) {
 		this.p_id = p_id;
+	}
+	public String getP_name() {
+		return p_name;
+	}
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
 	}
 	public Date getCreDate() {
 		return creDate;

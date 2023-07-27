@@ -350,8 +350,29 @@ post
 	background:none !important;
 	padding: 0 !important;
 }
-
-
+.co .tag-preview {
+	font-size: 0.8rem;
+	margin-left: 10px;
+ 	max-width: 240px;
+	max-height: 1rem;
+	flex-wrap: nowrap;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis; 
+	flex: 1 1 auto;
+}
+.co #co-main .tag-delete i {
+	font-size: 0.8rem;
+}
+.co #co-main .tag-delete i:hover {
+	color: #e97d7d;
+}
+.co #co-main .tag-delete {
+	display: none;
+}
+.co #co-main .tag-delete.active {
+	display: block;
+}
 
 
 
@@ -446,15 +467,37 @@ post
 }
 .co .stats li{
 	margin-right: 30px;
+	white-space: nowrap;
 }
 .co .stats .comment-icon,
-.co .stats .like-icon {
+.co .stats .like-icon,
+.co .stats .tag-icon {
 	margin-right: 7px;
 	font-size: 18px;
 	color: #b8b8c4;
 }
-.co .stats li:hover i {
+.co .stats .comment-icon:hover,
+.co .stats .like-icon:hover {
 	color: #e4e4eb;
+	cursor: pointer;
+}
+
+/*  태그    */
+.co .stats .tag-product {
+	font-size: 0.8rem;
+	max-width: 240px;
+	max-height: 1rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis; 
+}
+.co .stats .tag:hover .tag-icon {
+	color: #e4e4eb;
+	cursor: pointer;
+}
+.co .stats .tag:hover .tag-product {
+	color: #b8b8c4;
+	cursor: pointer;
 }
 
 

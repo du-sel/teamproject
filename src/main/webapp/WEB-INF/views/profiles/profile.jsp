@@ -237,6 +237,7 @@
 									<ul class="stats commment_stats">
 										<li class="comment-count"><span class="comment-icon"><i class="fa fa-comment"></i></span><span class="comment-count-number"></span></li>
 										<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number"></span></li>
+										<li class="tag"><a><span class="tag-icon"><i class="fa fa-tag"></i></span><span class="tag-product"></span></a></li>
 									</ul>
  									<div class="comment-section">
 										<ul id="comment-list" class="comment-list">

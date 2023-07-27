@@ -1094,19 +1094,18 @@ pagination
 .pagination ul li a {
   width: 44px;
   height: 44px;
-  /* border: 1px solid #2a2a2a; */
   display: inline-block;
   text-align: center;
   line-height: 44px;
-  font-size: 14px;
   font-weight: 500;
   color: #2a2a2a;
 }
 
 .pagination ul li a:hover,
 .pagination ul li.active a {
-  background-color: #2a2a2a;
-  color: #fff;
+  background-color: transparent;
+  color: #e97d7d;
+  font-weight: 900;
 }
 
 
@@ -1905,6 +1904,10 @@ Single Product Page
   padding: 20px;
   margin: 20px;
   font-size: 15px;
+  font-weight: 600;
+}
+#product .back:hover{
+	color: #b8b8c4;
 }
 
 #product .inquiry-btn-container {
@@ -4307,7 +4310,9 @@ calculate-history
 #sales-status .m-revenue .cal-history:hover{
 	color: #b8b8c4;
 }
-
+#sales-status .table tbody{
+	height: 215px;
+}
 
 /* 
 ---------------------------------------------

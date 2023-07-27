@@ -20,7 +20,7 @@
         </div>
 		<div class="container">
 			<div class="row justify-content-center">
-				<a href="/store/purchases?page=0" class="back">&lt; 구매 내역</a>
+				<a href="/store/purchases?page=0" class="back"><span class="fa fa-angle-double-left"></span> 구매 내역</a>
 				<div class="col-lg-12 d-flex p-info scroll-custom">
                		<img src="${p_info.thumbnail}" alt="상품 썸네일">
                		<div class="d-flex flex-column justify-content-center p-text-info">

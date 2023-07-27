@@ -177,3 +177,48 @@ image-modal
 	margin: 0;
 }
 
+
+
+
+/* 
+---------------------------------------------
+tag-modal
+--------------------------------------------- 
+*/
+
+#tag-modal {
+	width: auto;
+	height: auto;
+}
+#modal:has(#tag-modal) {
+	text-align: center;
+}	
+
+.modal-dialog:has(#tag-modal) {
+	display: inline-block;
+	max-width: unset;
+	width: auto;
+	height: auto;
+}	
+
+#tag-modal .modal-header {
+	padding: 5px;
+}
+#tag-modal .tag-info {
+	margin-bottom: 60px;
+}
+#tag-modal .thumb img {
+	max-width: 160px;
+	margin-bottom: 20px;
+}
+#tag-modal .product-info {
+	max-width: 400px;
+	margin-bottom: 10px;
+}
+#tag-modal .product-info .tag-name {
+	margin-bottom: 5px;
+}
+#tag-modal .tag-btn {
+	width: 6rem;
+}
+

@@ -12,10 +12,7 @@
 <script>
 
 function showTagModal() {
-	console.log('시작');
 	$('.modal-content').load("/community/tag-modal");
-	console.log('끝');
-	
 }
 
 </script>
@@ -98,7 +95,7 @@ function showTagModal() {
 		<!-- Main -->
 		<div id="main" class="col-lg-7 m-auto" > 
 
-			<c:if test="${!empty user_id}">
+			<c:if test="${!empty sessionScope.user}">
 				<section class="post">
 					<form action="/community/posts" method="post" name="post" enctype="multipart/form-data">
 						<input type="hidden" id="sessionId" name="id" value="${user_id}">
@@ -114,11 +111,13 @@ function showTagModal() {
 						<div class="submitpost">
 							<textarea id="co-textarea" name="content" rows="2"></textarea>
 							<div class="icons-container d-flex justify-content-between">
-								<div class="d-flex flex-row">
-									<div onclick="showTagModal()" data-toggle="modal" data-target="#modal"><i class="fa fa-tag"></i></div>
-									<input type="hidden" name="tag" id="tag" value="">
+								<div class="d-flex flex-row align-items-center">
 									<div onclick=""><i class="fa fa-image"></i></div>
 									<!-- 파일 input 대신 클릭 -->
+									<div onclick="showTagModal()" data-toggle="modal" data-target="#modal"><i class="fa fa-tag"></i></div>
+									<input type="hidden" name="p_id" id="tag" value="">
+									<div class="tag-preview"></div>
+									<div class="tag-delete" onclick="deleteTag()"><i class="fa fa-close"></i></div>
 								</div>
 								<!-- <button class="submiticon" type="button" onclick="checkPhotoCount()"><img alt="" src="/resources/images/icon-submit.png"></button> -->
 								<button class="submiticon" type="submit" onclick="return checkPhotoCount()"><i class="fa fa-paper-plane"></i></button>
@@ -197,7 +196,7 @@ function showTagModal() {
 			<!-- Post -->
 			<section class="post"> 
 				<%-- <form id="post-form" action="/community/posts" method="post" name="post" onclick="location.href='/community/posts/${p.postId}'"> --%>
-				<div onclick="location.href='/community/posts/${p.postId}'">
+				<div>
 					<div class="header">
 						<a href="/profiles/${p.url}" class="author">
 						    <img src="${p.profile_img}" alt="프로필 이미지" />
@@ -207,9 +206,9 @@ function showTagModal() {
 						<%-- <input type="text" readonly="readonly" name="cre_date" class="published" value="${p.creDate}"> --%>
 						<div class="d-flex">
 							<c:if test="${p.id eq user_id}">
-								<form action="/community/posts/${p.postId}" method="post" id="deletePost">
+								<form action="/community/posts/${p.postId}" method="post" id="deletePost" name="postId_${p.postId }">
 								 	<input type="hidden" name="_method" value="DELETE"/>
-									<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
+									<div class="delete-post" onclick="javascript:checkDeletePost(${p.postId })">삭제</div>
 								</form>
 							</c:if>
 							<span class="published">${p.creDate}</span>
@@ -217,28 +216,34 @@ function showTagModal() {
 					</div>
 
 			    	
-			    	<div class="post-content-container row justify-content-center">
-				    	<c:if test="${!empty imgs[p.postId]}">
-					    	<div class="img-container 
-					    		<c:choose>
-					    			<c:when test="${fn:length(imgs[p.postId]) == 1 }">one</c:when>
-					    			<c:when test="${fn:length(imgs[p.postId]) == 2 }">two</c:when>
-					    			<c:when test="${fn:length(imgs[p.postId]) == 3 }">three</c:when>
-					    			<c:when test="${fn:length(imgs[p.postId]) == 4 }">four</c:when>
-					    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
-					    		<c:forEach var="img" items="${imgs[p.postId]}">
-									<div class="img-card">
-					    				<img src="${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
-					    			</div>
-				   	   			</c:forEach>
-			   	   			</div>
-				    	</c:if>
-					
-						<div id="post-content" class="collapse-content">
-							<div class="post-content-inner collapsed">
-								${p.content}
+			    	<div>
+			    		<a href="/community/posts/${p.postId}">
+			    		
+			    			<div class="post-content-container row justify-content-center"> <!-- onclick="location.href='/community/posts/${p.postId}'" -->
+						    	<c:if test="${!empty imgs[p.postId]}">
+							    	<div class="img-container 
+							    		<c:choose>
+							    			<c:when test="${fn:length(imgs[p.postId]) == 1 }">one</c:when>
+							    			<c:when test="${fn:length(imgs[p.postId]) == 2 }">two</c:when>
+							    			<c:when test="${fn:length(imgs[p.postId]) == 3 }">three</c:when>
+							    			<c:when test="${fn:length(imgs[p.postId]) == 4 }">four</c:when>
+							    		</c:choose> col-12"> <!-- 이미지 개수에 따라 class 부여 필요 -->
+							    		<c:forEach var="img" items="${imgs[p.postId]}">
+											<div class="img-card">
+							    				<img src="${img.img}" alt="포스트 이미지" data-toggle="modal" data-target="#image-modal" onclick="showImageModal(event, '${img.img}')">
+							    			</div>
+						   	   			</c:forEach>
+					   	   			</div>
+						    	</c:if>
+							
+								<div id="post-content" class="collapse-content">
+									<div class="post-content-inner collapsed">
+										${p.content}
+									</div>
+						    	</div>
 							</div>
-				    	</div>
+			    		</a>
+	
 					</div>
 				</div>
 				<!-- </form> -->
@@ -259,6 +264,9 @@ function showTagModal() {
 							</c:otherwise>
 						</c:choose>
 						<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number">${p.t_count}</span></li>
+						<c:if test="${!empty p.p_id }">
+							<li class="tag"><a href="/store/products/${p.p_id }"><span class="tag-icon"><i class="fa fa-tag"></i></span><span class="tag-product">${p.p_name}</span></a></li>
+						</c:if>
 					</ul>
 					<div class="comment-section">
 						<c:if test="${!empty comments[p.postId]}">	
@@ -269,9 +277,9 @@ function showTagModal() {
 											<div class="comment-name">${c.name }</div>
 											<div class="d-flex">
 												<c:if test="${c.id eq user_id}">
-													<form id="deleteComment" action="/community/posts/${p.postId}/comments/${c.comment_id}" method="post">
+													<form id="deleteComment" action="/community/posts/${p.postId}/comments/${c.comment_id}" method="post" name="commentid_${c.comment_id }">
 													 	<input type="hidden" name="_method" value="DELETE"/>
-														<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
+														<div class="delete-comment" onclick="checkDeleteComment(${c.comment_id })">삭제</div>
 													</form>
 												</c:if>
 												<div class="comment-date">${c.creDate }</div>
@@ -398,8 +406,7 @@ function showTagModal() {
 		alert("로그인 후 이용 가능합니다.");
 	}
 	
-	
-	
+
 	
 </script>
 

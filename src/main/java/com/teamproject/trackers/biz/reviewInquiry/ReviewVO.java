@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name="review")
 @IdClass(ReviewId.class)
@@ -20,7 +22,8 @@ public class ReviewVO {
 	@Id
 	@Column(name="p_id")
 	private long pid;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
 	private Date cre_date;
 	private String content;
 	private int rating;

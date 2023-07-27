@@ -175,6 +175,18 @@ function getUserPostList(page) {
 					$(newBox).find('.like-count-number').text(post.t_count);
 					
 					
+					// 태그 있을 경우에만 태그아이콘 및 상품명 표시
+					let tag = $(newBox).find('.tag');
+					tag.hide();
+					
+					if(post.p_id != null && post.p_id > 0) {
+						$(tag).find('.tag-product').text(post.p_name);
+						$(tag).on('click', function() {
+							location.href='/store/products/'+post.p_id;
+						});					
+						tag.show();
+					} 
+					
 					
 					// 댓글 표시
 					

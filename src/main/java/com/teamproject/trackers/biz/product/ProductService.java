@@ -56,7 +56,7 @@ public class ProductService {
 	
 	/* st-main 최신 상품 조회 */
 	public List<ProductListVO> getRecentProduct() {
-		return productlistRepository.findTop5ByOrderByCreDateDesc();
+		return productlistRepository.findTop5ByOrderByCreDateDescPidDesc();
 	}
 	
 	/* st-main 인기 크리에이터 조회 */

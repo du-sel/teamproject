@@ -49,6 +49,16 @@ public class PurchaseService {
 		return purchaselistRepository.findById(purchase_id);
 	}
 	
+	// 크리에이터 한달 판매액
+	public Integer getMonthSales(long c_id, int month) {
+		return purchaseRepository.getMonthSales(c_id, month);
+	}
+	
+	// 크리에이터 베스트5 상품 판매액 및 수량 리스트
+	public List<Object[]> getBest5Sales(long c_id){
+		return purchaselistRepository.getBest5Sales(c_id);
+	}
+	
 	
 	
 	

@@ -111,7 +111,7 @@
 		                                <c:set var="ps" value="page=0&sort=creDate"/>
 		                                <ul>
 		                                 	<li class="all"><a href="/store/products?${ps}&category=all">전체</a></li>
-		                                	<li class="category">페이지 별</li>
+		                                	<li class="category">페이지 카테고리</li>
 		                                    <li><a href="/store/products?${ps}&category=whole">한달 세트</a></li>
 		                                    <li><a href="/store/products?${ps}&category=monthly">먼슬리</a></li>
 		                                    <li><a href="/store/products?${ps}&category=weekly">위클리</a></li>
@@ -122,7 +122,7 @@
 		                                    <li><a href="/store/products?${ps}&category=study">스터디</a></li>
 		                                    <li><a href="/store/products?${ps}&category=sticker">스티커</a></li>
 		                                    <li><a href="/store/products?${ps}&category=etc">그 외</a></li>
-		                                    <li class="category">디자인 별</li>
+		                                    <li class="category">디자인 카테고리</li>
 		                                    <li><a href="/store/products?${ps}&category=minimal">미니멀</a></li>
 		                                    <li><a href="/store/products?${ps}&category=illustration">일러스트</a></li>
 		                                    <li><a href="/store/products?${ps}&category=photo">포토</a></li>
@@ -185,7 +185,7 @@
 				                                    <li><a href="/store/carts">장바구니</a></li>
 				                                    <li><a href="/news">내 소식</a></li>
 				                                    <li><a href="/store/purchases?page=0">구매 내역</a></li>
-				                                    <li><a href="/store/products/inquiries">문의 내역</a></li>
+				                                    <li><a href="/store/inquiries?page=0">문의 내역</a></li>
 				                                    <li><a href="/users?path=info">회원정보 변경</a></li>
 				                                    <li><a href="/users?path=pwd">비밀번호 변경</a></li>
 				                                    <li><a href="/users/logout">로그아웃</a></li>

@@ -104,14 +104,14 @@ public class ReviewController {
 	}
 	
 	// 리뷰 답변 업데이트
-	@RequestMapping(value ="/profiles/{url}/reviews/{p_id}/{id}", method = RequestMethod.POST)
+	@RequestMapping(value ="/profiles/{url}/reviews/{p_id}/{id}/comments", method = RequestMethod.POST)
 	public String updateReviewComment(@PathVariable("url") String url, @PathVariable("p_id") long p_id, @PathVariable("id") long id, ReviewVO vo) {
 		vo.setId(id);
 		vo.setPid(p_id);
 		
 		reviewService.updateReviewComment(vo);
 		
-		return "redirect:/profiles/"+url+"/reviews?/"+p_id+"/"+id;
+		return "redirect:/profiles/"+url+"/reviews/"+p_id+"/"+id;
 	}
 }
 
