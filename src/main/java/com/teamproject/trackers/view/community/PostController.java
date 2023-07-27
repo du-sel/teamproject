@@ -122,7 +122,7 @@ public class PostController {
 				//새로운 파일 이름
 				String fileName = p.getPostId()+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
 				fileNames.add(fileName);
-System.out.println("newfile "+path+fileName);				
+System.out.println("newfile "+"/resources/postimg/"+fileName);				
 				// 로컬에 파일 저장			
 				file.transferTo(new File(path+fileName));
 	
@@ -131,7 +131,7 @@ System.out.println("newfile "+path+fileName);
 		
 		// imgvo 저장하기
 		for (String fileName : fileNames) {
-			imgvo.setImg(path+fileName);
+			imgvo.setImg("/resources/postimg/"+fileName);
 			imgvo.setPostId(p.getPostId());
 			postIMGService.insertPostIMG(imgvo);
 		}
@@ -220,7 +220,7 @@ System.out.println("newfile "+path+fileName);
 	
 	// 리스트 조회(페이징)
 	@RequestMapping(value="/posts", method=RequestMethod.GET)
-	public String getPostList(Integer page, String type, String keyword, Model model) {
+	public String getPostList(Integer page, String type, String keyword, String pid, Model model) {
 		
 		
 		// 정렬 및 페이징 , 검색 처리
@@ -234,8 +234,9 @@ System.out.println("newfile "+path+fileName);
 				// 검색 x 경우
 				if(keyword == null) keyword="";
 				
-				if(!type.equals("creator")) list = postService.getTypeList(type, (long) session.getAttribute("id"), keyword, pageable);
-				else list = postService.getCreatorPostList(keyword, pageable);
+				if(type.equals("creator")) list = postService.getCreatorPostList(keyword, pageable);
+				else if(type.equals("tag")) list = postService.getTagPostList(Long.parseLong(pid), keyword, pageable);
+				else list = postService.getTypeList(type, (long) session.getAttribute("id"), keyword, pageable);
 			}else {
 				// 정렬
 				pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "creDate"));
