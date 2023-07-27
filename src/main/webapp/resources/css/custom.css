@@ -1866,6 +1866,18 @@ Single Product Page
   height: 70px;
   border-radius: 50%;
 }
+#product #review div.empty-data p{
+	height: 100px;
+    padding-top: 50px;
+}
+#product tr.empty-data td{
+    height: 100px;
+    padding-top: 70px;
+    cursor: default !important;
+}
+#product tr.empty-data:hover{
+	background-color: inherit !important;
+}
 
 
 /* -----------상품문의 표----------- */
@@ -2162,7 +2174,7 @@ responsive
 
 /* 
 ---------------------------------------------
-my-info 공통 (cart, purchase-history, 
+my-info 공통 (cart, purchase-history, inquiry-history)
 --------------------------------------------- 
 */
 
@@ -2210,8 +2222,16 @@ my-info 공통 (cart, purchase-history,
 .my-info .product-info{
 	height: 100%;
 }
- 	
- 
+.my-info tr.empty-data td,
+.my-info div.empty-data p {
+	border: none;
+    height: 100px;
+    padding-top: 70px;
+    cursor: default !important;
+}
+.my-info tr.empty-data:hover{
+	background-color: inherit !important;
+}
 
 
 /* @media (max-width: 767px){
@@ -4179,6 +4199,14 @@ my-store common + admin common
 		width: 18%;
 		min-width: 110px;
 	}
+	.table-management .empty-data td{
+		padding-top: 70px;
+		cursor: default;
+	}
+	.table-management .empty-data:hover{
+		background-color: #fff !important;
+	}
+	
 	
 	@media (min-width:769px) and (max-width:991px){
 		.table-management{

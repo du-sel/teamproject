@@ -12,141 +12,10 @@
 	<main id="co-main" class="row" style="margin-top: 200px">
 	
 		<!-- Sidebar -->
-		<section id="sidebar" class="col-lg-3">
-			<nav class="navbar navbar-expand-md navbar-absolute navbar-transparent">
-				 <div class="navbar-wrapper">
-					<div class="navbar-toggle d-inline">
-						<button type="button" class="navbar-toggler">
-							<i class="fa fa-quote-left"></i>
-						</button>
-					</div>
-				</div>
-			</nav>
-		
-			<div class="sidebar-wrapper scroll-y-custom">
-				<section class="sidebar-post-list">
-					<nav class="sidebar-nav">
-						<ul>
-							<li class="menu active">
-								<a href="#menu">통합 피드</a>
-							</li>
-							<li class="menu">
-								<a href="#menu">팔로잉 피드</a>
-							</li>
-							<li class="menu">
-								<a  href="#menu">크리에이터 피드</a>
-							</li>
-							<li class="menu">
-								<a href="#menu">내가 댓글 남긴 포스트</a>
-							</li>
-							<li class="menu">
-								<a href="#menu">내가 좋아요한 포스트</a>
-							</li>
-						</ul>
-						<form id="sidebar-search" class="d-flex justify-content-start" method="get" action="#">
-							<div class="d-flex justify-content-between">
-								<input class="form-control" type="text" name="co_keyword" placeholder="Search" />
-								<div class="d-flex flex-column justify-content-center">
-									<label for="co-search"><i class="fa fa-search" aria-hidden="true"></i></label>
-									<input id="co-search" type="submit" value="검색">
-	                  			</div>
-	                  		</div>
-		           		</form>
-					</nav> 
-				</section>
-	 
-				<!-- Posts List -->
-				<section>
-					<ul class="posts">
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler J</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler A</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler Q</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler K</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler I</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler J</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler A</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler Q</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler K</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler I</p>
-	                  			</div>
-							</div>
-						</li>
-					</ul>
-				</section>
-			</div>
-		</section>
+		<jsp:include page="/WEB-INF/views/common/co-sidebar.jsp" />
 		
 		<!-- Main -->
 		<div id="main" class="col-lg-7 ml-auto mr-auto" > <!-- style="float: right;" -->
-		
-			 
 		
 			<!-- Post -->
 			<section class="post"> 
@@ -258,7 +127,7 @@
 					</div>
 				</div>
 			</section>
-		
+		</div>
 		<input type="hidden" id="sessionId" name="id" value="${sessionScope.id}">
 	</main>
 </div>
