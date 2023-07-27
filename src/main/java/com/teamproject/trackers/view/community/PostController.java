@@ -286,5 +286,8 @@ System.out.println("delete postid "+postId);
 		return "community/co-main";
 	}
 	
+	
+	// 좋아요 
+	
 
 }
