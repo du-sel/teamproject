@@ -24,7 +24,7 @@ public class PostInfoListVO {
 	@Column(nullable = true)
 	private Long p_id;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="cre_date")
 	private Date creDate = new Date();	
 

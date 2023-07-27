@@ -53,7 +53,7 @@ public class PostVO {
 	private Long p_id; // wrapper타입일 때 null로 insert됨
 
 	//@CreatedDate
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date cre_date = new Date();	
 
 	private String content;
