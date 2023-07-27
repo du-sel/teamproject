@@ -21,7 +21,7 @@
         </div>
 		<div class="container">
 			<div class="row justify-content-center">
-				<c:if test="${empty inquiries.content}">
+				<c:if test="${empty purchases.content}">
                 	<div class="empty-data">
                  	  	<p>구매 내역이 없습니다.</p>
                  	</div>
