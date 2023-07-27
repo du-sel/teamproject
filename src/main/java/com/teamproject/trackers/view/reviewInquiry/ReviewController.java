@@ -62,16 +62,15 @@ public class ReviewController {
 	}
 	
 	// 리뷰 작성
-		@RequestMapping(value ="/store/reviews/{p_id}", method = RequestMethod.POST)
-		public String insertReview(@PathVariable("p_id") long p_id, ReviewVO vo) {
-			vo.setId((long) session.getAttribute("id"));
-			vo.setPid(p_id);
-			
-			reviewService.insertReview(vo);
-			
-			return "redirect:/store/reviews/"+p_id; 
-		}
-	
+	@RequestMapping(value ="/store/reviews/{p_id}", method = RequestMethod.POST)
+	public String insertReview(@PathVariable("p_id") long p_id, ReviewVO vo) {
+		vo.setId((long) session.getAttribute("id"));
+		vo.setPid(p_id);
+		
+		reviewService.insertReview(vo);
+		
+		return "redirect:/store/reviews/"+p_id; 
+	}
 	
 	// 판매자 리뷰 리스트 조회
 	@RequestMapping(value ="/profiles/{url}/reviews", method = RequestMethod.GET)
@@ -79,7 +78,7 @@ public class ReviewController {
 
 		// 정렬 및 페이징
 		Pageable pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "creDate"));	// 시작 페이지, 데이터 개수, 정렬 기준
-		Page<ReviewListVO> list = reviewService.getCreatorReview((long) session.getAttribute("id"), pageable);
+		Page<ReviewListVO> list = reviewService.getCreatorReviewList((long) session.getAttribute("id"), pageable);
 		
 		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
 		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
@@ -92,6 +91,27 @@ public class ReviewController {
 		model.addAttribute("reviews", list);
 				
 		return "/my-store/review-management"; 
+	}
+	
+	// 판매자 페이지 리뷰 상세 조회
+	@RequestMapping(value ="/profiles/{url}/reviews/{p_id}/{id}", method = RequestMethod.GET)
+	public String getReview(@PathVariable("url") String url, @PathVariable("p_id") long p_id, @PathVariable("id") long id, Model model) {
+		
+		model.addAttribute("p_info", purchaseService.getProductInfo(id, p_id).get());
+		model.addAttribute("review", reviewService.getCreatorReview(id, p_id));
+		
+		return "/my-store/review-management-form";
+	}
+	
+	// 리뷰 답변 업데이트
+	@RequestMapping(value ="/profiles/{url}/reviews/{p_id}/{id}/comments", method = RequestMethod.POST)
+	public String updateReviewComment(@PathVariable("url") String url, @PathVariable("p_id") long p_id, @PathVariable("id") long id, ReviewVO vo) {
+		vo.setId(id);
+		vo.setPid(p_id);
+		
+		reviewService.updateReviewComment(vo);
+		
+		return "redirect:/profiles/"+url+"/reviews/"+p_id+"/"+id;
 	}
 }
 

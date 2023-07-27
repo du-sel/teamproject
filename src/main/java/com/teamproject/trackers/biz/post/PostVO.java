@@ -49,11 +49,11 @@ public class PostVO {
 	}
 	
 	@JoinColumn(columnDefinition="integer", name = "p_id") //외래키
-	@Column(nullable = true) //null허용
-	private Long p_id; // wrapper타입일 때 null로 insert됨
+	@Column(name="p_id", nullable = true) //null허용
+	private Long pid; // wrapper타입일 때 null로 insert됨
 
 	//@CreatedDate
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date cre_date = new Date();	
 
 	private String content;
@@ -82,11 +82,11 @@ public class PostVO {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Long getP_id() {
-		return p_id;
+	public Long getPid() {
+		return pid;
 	}
-	public void setP_id(Long p_id) {
-		this.p_id = p_id;
+	public void setPid(Long pid) {
+		this.pid = pid;
 	}
 	public Date getCre_date() {
 		return cre_date;

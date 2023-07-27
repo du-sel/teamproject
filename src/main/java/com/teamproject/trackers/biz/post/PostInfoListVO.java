@@ -21,10 +21,11 @@ public class PostInfoListVO {
 	
 	private long id;
 	
-	@Column(nullable = true)
-	private Long p_id;
+	@Column(name="p_id", nullable = true)
+	private Long pid;
+	private String p_name;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="cre_date")
 	private Date creDate = new Date();	
 
@@ -48,11 +49,17 @@ public class PostInfoListVO {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Long getP_id() {
-		return p_id;
+	public Long getPid() {
+		return pid;
 	}
-	public void setP_id(Long p_id) {
-		this.p_id = p_id;
+	public void setPid(Long pid) {
+		this.pid = pid;
+	}
+	public String getP_name() {
+		return p_name;
+	}
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
 	}
 	public Date getCreDate() {
 		return creDate;

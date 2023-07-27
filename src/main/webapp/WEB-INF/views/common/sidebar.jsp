@@ -18,7 +18,7 @@
 	  <div class="sidebar-wrapper">
 	    <div class="logo">
 	      <a href="javascript:void(0)" class="simple-text logo-normal">
-	        Brand Name
+	        ${sessionScope.store_name}
 	      </a>
 	    </div>
 	    <ul class="nav">
@@ -54,13 +54,13 @@
 	        </a>
 	      </li>
 	      <li>
-	        <a href="/profiles/url/inquiries">
+	        <a href="/profiles/${sessionScope.user.url}/inquiries?page=0">
 	          <i class="tim-icons icon-chat-33"></i>
 	          <p>문의 관리</p>
 	        </a>
 	      </li>
 	      <li>
-	        <a href="/profiles/url/notice">
+	        <a href="/profiles/url/notices">
 	          <i class="tim-icons icon-volume-98"></i>
 	          <p>공지 관리</p>
 	        </a>

@@ -26,9 +26,6 @@ $(()=>{
 	        $('#st-tab').removeClass();
 	        $(this).addClass('active').addClass('stretchRight');
 	   
-	   		// URI 변경 - 임시
-	   		//history.pushState('', '', '/community/posts');
-	   
 		    // 탭+헤더 애니메이션 디자인
 	        // 프로필, 회원정보 수정인 경우
 	        let path = $(location).attr('pathname');
@@ -47,18 +44,11 @@ $(()=>{
 			}
 	
 	        $('#st-tab').css('background', '#dce0e3');
-	       
-	        //$(this).removeClass('stretchRight');
-			//$('#co-main').show();
-	        //$('#st-main').hide();
 	    }
 	    else if(tab=='st-tab'){
 	        e.preventDefault();
 	        $('#co-tab').removeClass();
 	        $(this).addClass('active').addClass('stretchLeft');
-	         
-	        // URI 변경 - 임시
-	   		//history.pushState('', '', '/store/main');
 	   		
 	        // 탭+헤더 애니메이션 디자인
 	        $('#tab .active').css('background', '#fff'); 
@@ -87,24 +77,21 @@ $(()=>{
 
 
 function tabActive(){
-	let path = $(location).attr('pathname');
-	let search = $(location).attr('search');
+	let path = $(location).attr('href');
 	
-	if(path.includes('community')){
+	if(path.includes('/community/posts')){
 		$('#co-tab').addClass("active").css('background', '#f2f2f6');
 		$('#header-back-color').css('width', '100%').css('right', '0');
 		$('#body-back-color').css('width', '100%').css('right', '0');
 	}
-	else if(path.includes('/profiles') || (path.includes('users')&&search.includes('?path'))){
+	else if(path.includes('users?path') || (path.includes("/profiles/") && 
+    		(!path.includes('reviews') && !path.includes('inquiries') && !path.includes('notices') && !path.includes('creators')))){
 		$('#co-tab').addClass("active").css('background', '#fff');
 	}
 	else{
 		$('#st-tab').addClass("active").css('background', '#fff');
-		  
         $('#header-back-color').css('width', '0%').css('left', '0');
-        $('#body-back-color').css('width', '0%').css('left', '0');
-		
-
+        $('#body-back-color').css('width', '0%').css('left', '0');		
 	}
 }
 

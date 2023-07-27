@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 
   <!-- 
   =========================================
@@ -37,19 +38,19 @@
               <div class="card-body">
                 <div class="row">
                 	<div class="col-lg-12 d-flex p-info scroll-custom">
-                		<img src="/resources/images/men-01.jpg" alt="">
+                		<img src="${p_info.thumbnail}" alt="상품 썸네일">
                 		<div class="d-flex flex-column justify-content-center p-text-info">
                 			<div>
 		                		<h6>상품명</h6>
-		                		<p>무슨 플래너</p>
+		                		<p>${p_info.p_name}</p>
 		                	</div>
 		                	<div>
 		                		<h6>작성자</h6>
-		                		<p>이고객</p>
+		                		<p>${review.name}</p>
 		                	</div>
 		                	<div>
 		                		<h6>작성 일자</h6>
-		                		<p>2023.06.28</p>
+		                		<p>${review.creDate}</p>
 		                	</div>
                 		</div>
                 	</div>
@@ -58,16 +59,23 @@
 	                		<h6>별점</h6>
 	                		<span class="star">
 								★★★★★
-								<span style="width: 50%;">★★★★★</span>
-								<input type="range" value="1" step="1" min="0" max="10">
+								<span style="width: ${review.rating}%;">★★★★★</span>
 							</span>
 	                	</div>
                 		<h6>후기</h6>
-                		<p>잘 쓰고 있습니다!</p>
+                		<p>${review.content}</p>
                 	</div>
-                	<form class="col-lg-12" action="">
-                		<textarea name="review_answer" maxlength="300" placeholder="답변 내용 작성" required></textarea>
-                		<input class="management-btn insert-btn" type="submit" value="답변">
+                	<form class="col-lg-12" action="/profiles/${sessionScope.user.url}/reviews/${review.pid}/${review.id}/comments" method="post" onsubmit="enter('answer');">		
+                		<h6>답변</h6>
+                		<c:choose>	
+						    <c:when test="${!empty review.answer}">	<!-- 답변 존재 --> 
+					    		<p class="answer-p">${review.answer}</p>
+					    	</c:when>		
+					    	<c:otherwise>		<!-- 답변 존재 x -->
+					    		<textarea id="answer" name="answer" maxlength="300" placeholder="답변 내용 작성" required></textarea>
+       	         				<input class="management-btn insert-btn" type="submit" value="답변">
+					    	</c:otherwise>
+				    	</c:choose>
                 	</form>
                 </div>
               </div>
@@ -81,7 +89,6 @@
 
     </div>
   </main>
-
   <script src="/resources/js/my-store.js"></script>
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

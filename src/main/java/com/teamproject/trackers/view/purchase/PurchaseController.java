@@ -3,6 +3,7 @@ package com.teamproject.trackers.view.purchase;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,13 +28,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.teamproject.trackers.biz.cart.CartInfoRepository;
 import com.teamproject.trackers.biz.cart.CartInfoVO;
 import com.teamproject.trackers.biz.cart.CartService;
+import com.teamproject.trackers.biz.comment.PostCommentListVO;
+import com.teamproject.trackers.biz.post.PostIMGVO;
+import com.teamproject.trackers.biz.post.PostInfoListVO;
 import com.teamproject.trackers.biz.product.CreatorListVO;
 import com.teamproject.trackers.biz.product.ProductPageVO;
 import com.teamproject.trackers.biz.product.ProductService;
@@ -91,6 +98,70 @@ public class PurchaseController {
     	return "/my/purchase-history";
     }
     
+    
+    
+    // 태그 모달창에 구매내역 데이터 전송
+    @RequestMapping(value="/tag", method=RequestMethod.GET, produces = "application/text; charset=UTF-8")
+	@ResponseBody
+    public String getTagModal(PurchaseListVO vo, @RequestParam("page") int page) throws JsonProcessingException {
+    	
+    	/*
+    	vo.setId((long) session.getAttribute("id"));
+    	
+    	
+    	// 정렬 및 페이징 , 검색 처리
+		Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, "creDate"));	// 시작 페이지, 데이터 개수, 정렬 기준
+		Page<PurchaseListVO> list = purchaseService.getPurchaseList(vo, pageable);
+		
+		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
+		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
+		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
+		
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		
+		model.addAttribute("purchases", list);
+    	*/
+    	System.out.println("컨트롤러 들어오나요");
+    	
+    	// 매개변수 vo 준비
+		//long id = (long) session.getAttribute("id");
+    	vo.setId((long) session.getAttribute("id"));
+		
+		// 페이징 
+    	Pageable pageable = PageRequest.of(page, 3, Sort.by(Sort.Direction.DESC, "creDate"));
+		Page<PurchaseListVO> list = purchaseService.getPurchaseList(vo, pageable);
+		
+		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
+		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
+		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
+		
+		JsonObject paging = new JsonObject();
+		paging.addProperty("nowPage", nowPage);
+		paging.addProperty("startPage", startPage);
+		paging.addProperty("endPage", endPage);
+				
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String listIntoString = mapper.writeValueAsString(list);
+		
+		String pagingIntoString = paging.toString();
+
+		
+		JsonObject wrapper = new JsonObject();
+		wrapper.addProperty("list", listIntoString);
+		wrapper.addProperty("paging", pagingIntoString);
+		
+		String wrapperIntoString = wrapper.toString();		
+		
+		return wrapperIntoString;
+    }
+    
+    
+    
+    
+    /*
 	@RequestMapping(value="/purchases/{p_id}", method=RequestMethod.POST)
 	public String insertPurchase(@PathVariable("p_id") String p_id) {
 		System.out.println("insertPurchase() 실행");
@@ -115,6 +186,7 @@ public class PurchaseController {
 		
 		return "redirect:/store/products/"+p_id;
 	}
+	*/
 	
 	
 	

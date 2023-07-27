@@ -9,144 +9,13 @@
   
 <!-- Wrapper -->
 <div id="wrapper container" class="co">
-	<main id="co-main" class="row" style="margin-top: 200px">
+	<main id="co-post" class="row" style="margin-top: 200px">
 	
 		<!-- Sidebar -->
-		<section id="sidebar" class="col-lg-3">
-			<nav class="navbar navbar-expand-md navbar-absolute navbar-transparent">
-				 <div class="navbar-wrapper">
-					<div class="navbar-toggle d-inline">
-						<button type="button" class="navbar-toggler">
-							<i class="fa fa-quote-left"></i>
-						</button>
-					</div>
-				</div>
-			</nav>
-		
-			<div class="sidebar-wrapper scroll-y-custom">
-				<section class="sidebar-post-list">
-					<nav class="sidebar-nav">
-						<ul>
-							<li class="menu active">
-								<a href="#menu">통합 피드</a>
-							</li>
-							<li class="menu">
-								<a href="#menu">팔로잉 피드</a>
-							</li>
-							<li class="menu">
-								<a  href="#menu">크리에이터 피드</a>
-							</li>
-							<li class="menu">
-								<a href="#menu">내가 댓글 남긴 포스트</a>
-							</li>
-							<li class="menu">
-								<a href="#menu">내가 좋아요한 포스트</a>
-							</li>
-						</ul>
-						<form id="sidebar-search" class="d-flex justify-content-start" method="get" action="#">
-							<div class="d-flex justify-content-between">
-								<input class="form-control" type="text" name="co_keyword" placeholder="Search" />
-								<div class="d-flex flex-column justify-content-center">
-									<label for="co-search"><i class="fa fa-search" aria-hidden="true"></i></label>
-									<input id="co-search" type="submit" value="검색">
-	                  			</div>
-	                  		</div>
-		           		</form>
-					</nav> 
-				</section>
-	 
-				<!-- Posts List -->
-				<section>
-					<ul class="posts">
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler J</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler A</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler Q</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler K</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler I</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler J</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler A</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler Q</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler K</p>
-	                  			</div>
-							</div>
-						</li>
-						<li class="d-flex justify-content-start">
-							<div class="divlist d-flex justify-content-between" onclick="location.href='#'">
-								<div class="divimg" id="article_img1"></div>
-								<div class="d-flex flex-column justify-content-center">
-	                  				<p class="lidiv">saler I</p>
-	                  			</div>
-							</div>
-						</li>
-					</ul>
-				</section>
-			</div>
-		</section>
+		<jsp:include page="/WEB-INF/views/common/co-sidebar.jsp" />
 		
 		<!-- Main -->
 		<div id="main" class="col-lg-7 ml-auto mr-auto" > <!-- style="float: right;" -->
-		
-			 
 		
 			<!-- Post -->
 			<section class="post"> 
@@ -157,9 +26,9 @@
 					</a>
 					<div class="d-flex">
 						<c:if test="${post.id eq sessionScope.id}">
-							<form action="/community/posts/${post.postId}" method="post" id="deletePost">
+							<form action="/community/posts/${post.postId}" method="post" id="deletePost" name="postId_${post.postId}">
 							 	<input type="hidden" name="_method" value="DELETE"/>
-								<div class="delete-post" onclick="checkDeletePost(event)">삭제</div>
+								<div class="delete-post" onclick="javascript:checkDeletePost(${post.postId})">삭제</div>
 							</form>
 						</c:if>
 						<span class="published">${post.creDate}</span>
@@ -206,6 +75,9 @@
 							</c:otherwise>
 						</c:choose>
 						<li class="like-count"><span class="like-icon"><i class="fa fa-thumbs-up"></i></span><span class="like-count-number">${post.t_count}</span></li>
+						<c:if test="${!empty post.pid }">
+							<li class="tag"><a href="/store/products/${post.pid }"><span class="tag-icon"><i class="fa fa-tag"></i></span><span class="tag-product">${post.p_name}</span></a></li>
+						</c:if>
 					</ul>
 					<div class="comment-section">
 						<c:if test="${!empty commentList}">	
@@ -216,9 +88,9 @@
 											<div class="comment-name">${c.name }</div>
 											<div class="d-flex">
 												<c:if test="${c.id eq sessionScope.id}">
-													<form id="deleteComment" action="/community/posts/${post.postId}/comments/${c.comment_id}" method="post">
+													<form id="deleteComment" action="/community/posts/${post.postId}/comments/${c.comment_id}" method="post" name="commentid_${c.comment_id }">
 													 	<input type="hidden" name="_method" value="DELETE"/>
-														<div class="delete-comment" onclick="checkDeleteComment(event)">삭제</div>
+														<div class="delete-comment" onclick="checkDeleteComment(${c.comment_id })">삭제</div>
 													</form>
 												</c:if>
 												<div class="comment-date">${c.creDate }</div>
@@ -238,12 +110,12 @@
 	                        </c:if> --%>
 							<div class="comment-input">
 								<form action="/community/posts/${post.postId}/comments" method="post" name="comment" id="insertcomment">
-									<input type="hidden" name="postId" value="${p.postId }"/>
+									<input type="hidden" name="postId" value="${post.postId }"/>
 									<c:choose>
-								    	<c:when test="${!empty user_id}">	<!-- 로그인 o --> 
-								    		<input type="hidden" name="id" value="${user_id}">
+								    	<c:when test="${!empty sessionScope.id}">	<!-- 로그인 o --> 
+								    		<input type="hidden" name="id" value="${sessionScope.id}">
 											<input type="text" id="comment-text" name="content" class="form-control" placeholder="댓글을 입력하세요">
-								            <button class="submit-button" type="submit" >입력</button> <!-- onclick="addComment()" -->
+								            <button class="submit-button" id="comment-submit-button" type="submit" ><i class="fa fa-paper-plane"></i></button> <!-- onclick="addComment()" -->
 								    	</c:when>		
 								    	<c:otherwise>		<!-- 로그인 x -->
 								    		<div id="comment-text" >로그인이 필요합니다.</div>
@@ -255,7 +127,7 @@
 					</div>
 				</div>
 			</section>
-		
+		</div>
 		<input type="hidden" id="sessionId" name="id" value="${sessionScope.id}">
 	</main>
 </div>

@@ -18,12 +18,12 @@ function mobileSearch() {
 }
 */
 
-
+	
 	// 헤더 검색버튼 클릭 시 검색창 토글
 function showSearchInput() {
 	let icon = $('.header-area .search-icon-container');
 	let input = $('.header-area .search-input-container');
-	let color = $('.header-area').css('background-color');
+	let color = $('body').css('background-color');
 	
 	if(!$(icon).hasClass('active')) {
 		$(input).css({'background-color':color});
