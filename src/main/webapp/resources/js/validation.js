@@ -89,12 +89,8 @@ function login(){
 		success : function(result) { 		// 매개변수에 통신성공시 데이터 저장
 			if(result) {					// 로그인 성공
 				flag = true;
-				console.log("성공");
-				//return true;
 			} else {						// 로그인 실패
 				flag = false;
-				console.log("실패");
-				//return false;
 			}	
 		},
 		error : function (status, error) {	//통신 실패

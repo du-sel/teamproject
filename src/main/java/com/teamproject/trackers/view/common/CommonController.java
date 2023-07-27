@@ -57,7 +57,7 @@ public class CommonController {
 	}
 	
 	// 공지 리스트
-	@RequestMapping(value = "/profiles/url/notice", method = RequestMethod.GET)
+	@RequestMapping(value = "/profiles/url/notices", method = RequestMethod.GET)
 	public String getNoticeList() {
 		return "/my-store/notice-management";
 	}

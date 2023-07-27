@@ -186,6 +186,17 @@
 				$("#preloader").css("visibility", "hidden").fadeOut();
 			}, 300);
 		});
+		
+		// 헤더 로고 path 지정 함수
+		let href = $(location).attr('href');
+    	let path;
+    	if(href.includes('/community/posts') || href.includes('users?path') || (href.includes("/profiles/") && 
+    		(!href.includes('reviews') && !href.includes('inquiries') && !href.includes('notices') && !href.includes('creators')))){
+    		path = "/community/posts?page=0&type=all";
+    	}else{
+    		path = "/store/main";
+    	}
+    	$("#logo_container .logo").attr('href', path);
 	});
 	
 	// Window Resize Mobile Menu Fix
