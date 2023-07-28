@@ -206,13 +206,7 @@ public class ProductController {
 		return "/store/st-products";
 	}
 
-	
-	
-	
-	
-	
-	
-	
+		
 	////* 상품 관리 페이지 띄우기 (판매자별 상품 목록) *////
 	//------------------------------------------------------정희
 	// 상품 관리 페이지 띄우기
@@ -537,18 +531,19 @@ public class ProductController {
 
     
     // 상품 수정 페이지로 이동
-    @GetMapping("/products/{p_id}/edit")
+    @GetMapping("/products/update/{p_id}")
     public String showEditProductForm(@PathVariable("p_id") long p_id, Model model) {
         ProductVO product = productService.getProductById(p_id);
         model.addAttribute("product", product);
-        return "store/edit-product";
+        return "my-store/product-update";
     }
 
     // 상품 수정 처리
-    @PostMapping("/products/{p_id}")
-    public String updateProduct(@PathVariable("p_id") long p_id, @ModelAttribute ProductVO product) {
-        productService.updateProduct(product);
-        return "redirect:/store/products/management";
+    @PostMapping("/products/update/{p_id}")
+    public String updateProduct(@PathVariable("p_id") long p_id, @ModelAttribute ProductVO updatedproduct) {
+    	// updatedProduct를 사용하여 상품 정보를 업데이트하는 로직을 추가한다.
+    	productService.updateProduct(updatedproduct); // 여기에서 실제로 상품 정보를 업데이트
+        return "redirect:/store/products/management"; // 수정된 정보로 상품 관리 페이지로 리다이렉트
     }
 
 

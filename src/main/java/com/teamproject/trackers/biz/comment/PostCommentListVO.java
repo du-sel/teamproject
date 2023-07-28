@@ -23,7 +23,7 @@ public class PostCommentListVO {
 	private long id;
 	private String content;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="cre_date")
 	private Date creDate = new Date();	
 	
