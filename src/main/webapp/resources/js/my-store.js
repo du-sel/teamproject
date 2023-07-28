@@ -175,7 +175,7 @@ function addActive(){
 	console.log(path);
 	// 상품등록 페이지 수동으로 current값 주기
 	if(path.includes('products/new')) {
-		$(href).filter("[href='/store/products/management']").parent().addClass('active');
+		$(href).filter("[href='/store/my/products']").parent().addClass('active');
 		return;
 	}
 	

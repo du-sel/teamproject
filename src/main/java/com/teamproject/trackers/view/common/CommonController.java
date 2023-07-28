@@ -49,18 +49,9 @@ public class CommonController {
 	}
 	
 	
-	// 크리에이터
-	// 정산 내역
-	@RequestMapping(value = "/store/sales/table", method = RequestMethod.GET)
-	public String getSalesList() {
-		return "/my-store/calculate-history";
-	}
 	
-	// 공지 리스트
-	@RequestMapping(value = "/profiles/url/notices", method = RequestMethod.GET)
-	public String getNoticeList() {
-		return "/my-store/notice-management";
-	}
+	
+
 		
 	
 	// 관리자

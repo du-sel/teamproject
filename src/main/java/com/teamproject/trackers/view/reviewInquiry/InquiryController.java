@@ -111,8 +111,8 @@ public class InquiryController {
 	
 	// 크리에이터
 	// 크리에이터별 상품 문의 조회
-	@RequestMapping(value = "/profiles/{url}/inquiries", method = RequestMethod.GET)
-	public String getInquiryList(int page, @PathVariable("url") String url, Model model) {
+	@RequestMapping(value = "/store/my/inquiries", method = RequestMethod.GET)
+	public String getCreatorInquiryList(int page, Model model) {
 		
 		// 정렬 및 페이징
 		Pageable pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "cre_date"));	// 시작 페이지, 데이터 개수, 정렬 기준
@@ -132,8 +132,8 @@ public class InquiryController {
 	}
 	
 	// 크리에이터 상품 문의 상세
-	@RequestMapping(value = "/profiles/{url}/inquiries/{inquiry_id}", method = RequestMethod.GET)
-	public String getInquiry(@PathVariable("url") String url, @PathVariable("inquiry_id") long inquiry_id, Model model) {
+	@RequestMapping(value = "/store/my/inquiries/{inquiry_id}", method = RequestMethod.GET)
+	public String getCreatorInquiry(@PathVariable("inquiry_id") long inquiry_id, Model model) {
 		
 		InquiryVO vo = inquiryService.getInquiry(inquiry_id).get();
 		
@@ -144,14 +144,14 @@ public class InquiryController {
 	}
 	
 	// 크리에이터 상품 문의 답변 업데이트
-	@RequestMapping(value ="/profiles/{url}/inquiries/{inquiry_id}/comment", method = RequestMethod.POST)
-	public String updateInquiryComment(@PathVariable("url") String url, @PathVariable("inquiry_id") long inquiry_id, InquiryVO vo) {
+	@RequestMapping(value ="/store/inquiries/{inquiry_id}/comment", method = RequestMethod.POST)
+	public String updateInquiryComment(@PathVariable("inquiry_id") long inquiry_id, InquiryVO vo) {
 		vo.setInquiryId(inquiry_id);
 		vo.setAnswer_date(new Date());
 		
 		inquiryService.updateInquiryComment(vo);
 		
-		return "redirect:/profiles/"+url+"/inquiries/"+inquiry_id;
+		return "redirect:/store/my/inquiries/"+inquiry_id;
 	}
 }
 
