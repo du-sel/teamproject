@@ -45,8 +45,8 @@
 			           		<input type="radio" name="subscribe" id="no-subscribe" value="false" <c:if test="${empty subscribe}">checked</c:if> <c:if test="${!empty subscribe}">disabled</c:if>>
 			           	</div>	 
 			           	
-			           	<div class="subscribe-info">
-			           		<form action="/store/subscribes" method="post" enctype="multipart/form-data" onsubmit="remove_comma();">
+			           	<form action="/store/subscribes" method="post" enctype="multipart/form-data" onsubmit="remove_comma();">
+			           		<div class="subscribe-info">
 				           		<div class="row flex-column">
 					           		<label for="subscribe-content"><h5>구독 내용</h5></label>
 					           		<div class="form-control-container d-flex subscribe">
@@ -69,13 +69,15 @@
 										<input type="file" accept=".zip" name="mfile" required>
 					           		</div>
 					           	</div>
-								<input type="submit" class="main-btn management-btn" value="등록">
-							</form>
+							</div>
+							<input type="submit" class="main-btn management-btn" value="수정">
+			            </form>
+			            <!-- 
 							<form action="/store/subscribes" method="post" onsubmit="return subscribe_remove();">
 								<input type="hidden" name="_method" value="delete">
 								<input type="submit" class="main-btn management-btn" value="구독 상품 삭제">
 							</form>
-			            </div>
+							 -->
 					</div>
 				</div>
               </div>
