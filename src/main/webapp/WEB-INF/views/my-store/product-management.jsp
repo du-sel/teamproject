@@ -28,7 +28,7 @@
 	
 	
 
-  <main id="product-management" class="my-store wrapper">
+  <main id="product-management" class="my-store wrapper narrow">
     <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />  
     <div class="main-panel">     
       <div class="content">
