@@ -238,7 +238,7 @@ public class ProductController {
 	    }
 
 	    // 페이징을 위한 상품 리스트
-	    int startIndex = (page - 1) * itemsPerPage;
+	    int startIndex = (page - 1) < 0 ? 0 : (page - 1) * itemsPerPage;
 	    int endIndex = Math.min(startIndex + itemsPerPage, productList.size());
 	    List<ProductVO> pagedProductList = productList.subList(startIndex, endIndex);
 
