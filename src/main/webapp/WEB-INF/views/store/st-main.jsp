@@ -140,8 +140,16 @@
                         <div class="owl-creator-item owl-carousel">
                         	<c:forEach var="bc" items="${b_creators}" varStatus="status">
 	                            <div class="item">
-	                                <div class="thumb" onclick="location.href='/store/products/${b_signatures[status.index].pid}'">
-	                                    <img src="${b_signatures[status.index].thumbnail}" alt="대표 상품 썸네일">
+	                                <div class="thumb creator" onclick="location.href='/store/products/${b_signatures[status.index].pid}'">
+	                                    <c:choose>
+							    			<c:when test="${!empty b_signatures[status.index].thumbnail}">
+							    				<img src="${b_signatures[status.index].thumbnail}" alt="대표 상품 썸네일">
+							    			</c:when>
+							    			<c:otherwise>
+												<img src="/resources/productfile/thumbnail/basic-thumbnail.png" alt="대표 상품 썸네일">
+												<p>지정한 대표 상품이 없습니다.</p>
+											</c:otherwise>
+							    		</c:choose>
 	                                </div>
 	                                <div class="down-content d-flex" onclick="location.href='/profiles/${bc.url}'">
 	                                	<img src="${bc.profile_img}">

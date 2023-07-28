@@ -1324,6 +1324,15 @@ st-main 상품 section
   cursor: pointer;
 }
 
+#st-main .section .item .thumb.creator p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
 #st-main .section .item .thumb .hover-content ul li {
   display: inline;
   margin: 0px 10px;
