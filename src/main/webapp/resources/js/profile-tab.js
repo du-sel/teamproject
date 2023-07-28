@@ -418,7 +418,7 @@ function getCreatorProductList(page, sort) {
 					
 					let cart = $(newBox).find('.hover-content li');
 					cart.on('click', function() {
-						preventDefaultGoCart(event, product.pid)
+						preventDefaultGoCartProfile(event, product.pid)
 					});
 					
 					let thumbnail = $(newBox).find('img');

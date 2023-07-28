@@ -14,6 +14,12 @@
 
 // p_id 컨트롤러로 넘겨주기
 function goPurchase() {
+	
+	let id = '${user.id}';
+	if(id == null || id.length <= 0) {
+		alert('로그인이 필요한 메뉴입니다');
+		return;
+	}
 
 	let pidList = new Array();
 	let path = window.location.pathname;
@@ -102,7 +108,7 @@ function goPurchase() {
 	                    <div class="buy-content">                        
 	                        <div class="d-flex justify-content-center">
 	                        	<%-- <form:form name="cart" id="cart" action="/store/carts/${product.pid }" method="post"> --%>
-   									<button type="button" onclick="goCart(${product.pid })">장바구니</button>
+   									<button type="button" onclick="goCart('${user.id }', '${product.pid }')">장바구니</button>
    								<%-- </form:form> --%>
    								
    								<button onclick="goPurchase()">바로 구매</button> 															
