@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowService;
 import com.teamproject.trackers.biz.followSubscribeLike.FollowVO;
+import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoService;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribeInfoVO;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribePurchaseService;
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribePurchaseVO;
@@ -33,6 +34,8 @@ public class FollowController {
 	private ProfileService profileService;
 	@Autowired
 	private SubscribePurchaseService subscribePurchaseService;
+	@Autowired
+	private SubscribeInfoService subscribeInfoService;
 	@Autowired
 	public CommonController common;
 
@@ -77,14 +80,20 @@ public class FollowController {
 	 
 	 // 구독
 	 @RequestMapping(value ="/profile/{url}", method = RequestMethod.POST)
-	 public String changestateSub(@PathVariable("url") String url, @RequestBody SubscribePurchaseVO spvo		
-			 ) {
+	 public String changestateSub(@PathVariable("url") String url, @RequestBody SubscribePurchaseVO spvo) {
 				
 		 //if( session.getAttribute("id") != null){
 			System.out.println("controller");
 	
-		 
-		     subscribePurchaseService.changeSub(spvo);	 
+		     subscribePurchaseService.changeSub(spvo);	
+		     
+		     if(followService.followT(url, spvo.getId()) == null){
+		    	FollowVO vo = new FollowVO();
+		    	vo.setFrom_id(spvo.getId());
+		    	vo.setTo_id(subscribeInfoService.getSubscribeCid(spvo.getSubscribeId()));
+		    	
+		    	followService.insertFollower(vo);
+		     }
 		     System.out.println("controller1"); 
 		     common.alert.setStr("구독이 추가되었습니다."); 
 		     common.alert.setPath("/"+url); 
