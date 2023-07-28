@@ -44,7 +44,7 @@ public class SubscribeController {
 
 	
 	// 구독 정보 조회
-	@RequestMapping(value="/subscribes", method=RequestMethod.GET)
+	@RequestMapping(value="/my/subscribes", method=RequestMethod.GET)
 	public String getCreator(SubscribeInfoVO vo, Model model) {
 		vo.setId((long)session.getAttribute("id"));
 		

@@ -22,8 +22,13 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 
+<!-- product-management JS -->
+<script src="/resources/js/product-management.js"></script>
+	
+	
+	
 
-  <main id="product-management" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+  <main id="product-management" class="my-store wrapper">
     <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />  
     <div class="main-panel">     
       <div class="content">
@@ -33,7 +38,7 @@
 					<h5>총 상품 개수 : ${fn:length(productList)}개</h5>
 				</div>
 				<!-- 상품 등록 버튼 -->
-				<button type="button" onclick="location.href='/store/products/new'">신규 상품 등록</button>
+				<button type="button" onclick="location.href='/store/my/products/new'">신규 상품 등록</button>
 			</div>
       	</div>
       	       
@@ -79,7 +84,7 @@
                                                 	<c:otherwise>		<!-- 대표상품 아닐 경우 등록버튼 출력 -->
 		                                                <form action="/store/products/signature/${product.pid}" method="post">
 		                                                	<input type="hidden" name="_method" value="PUT">
-			                                                <button type="submit" class="signature-btn button">대표 상품 등록</button>
+			                                                <button type="button" onclick="signatureLimit(this)" class="signature-btn button">대표 상품 등록</button>
 		                                                </form>
                                                 	</c:otherwise>
                                                 </c:choose>
@@ -175,7 +180,7 @@
   
   function goToUpdatePage(productId) {
     // 상품 정보 수정 페이지로 이동하는 코드
-    location.href = '/store/products/update/' + productId;
+    location.href = '/store/my/products/update/' + productId;
   }
   
 

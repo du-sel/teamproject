@@ -65,7 +65,7 @@
                 		<h6>후기</h6>
                 		<p>${review.content}</p>
                 	</div>
-                	<form class="col-lg-12" action="/profiles/${sessionScope.user.url}/reviews/${review.pid}/${review.id}/comments" method="post" onsubmit="enter('answer');">		
+                	<form class="col-lg-12" action="/store/reviews/${review.pid}/${review.id}/comments" method="post" onsubmit="enter('answer');">		
                 		<h6>답변</h6>
                 		<c:choose>	
 						    <c:when test="${!empty review.answer}">	<!-- 답변 존재 --> 
