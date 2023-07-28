@@ -4490,6 +4490,13 @@ product-management
 	color: #fff;
 }
 
+#product-management h4.discount {
+	text-decoration: line-through;
+	font-size: 20px;
+	margin-right: 10px;
+	color: #b8b8c4;
+}
+
 
 
 /* 
