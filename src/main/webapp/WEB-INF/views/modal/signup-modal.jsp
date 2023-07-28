@@ -34,10 +34,11 @@
 				</div>
 				<p></p>
 			</div>
-			<div class="form-group">		<!-- 이름(닉네임) -->
+			<div class="form-group name">		<!-- 이름(닉네임) -->
 				<div class="input-group necessary">
-					<input type="text" class="form-control" name="name" placeholder="닉네임" required oninput="remove(3, this)">
+					<input type="text" class="form-control" name="name" placeholder="닉네임" maxlength="8" required onkeyup="name_len();"  oninput="remove(3, this)">
 				</div>
+				<p></p>
 			</div>
 			<div class="form-group">		<!-- 핸드폰번호 -->
 				<div class="input-group necessary">
@@ -56,16 +57,12 @@
 			<div class="form-group">		<!-- sns 링크 -->
 				<div class="input-group un-necessary">
               		<span class="input-group-addon"><i class="fa fa-instagram"></i></span>
-					<input type="text" class="form-control" name="instagram" placeholder="Instagram URL" oninput="remove(1, this)">
+					<input type="text" class="form-control" name="instagram" placeholder="Instagram URL" oninput="remove(1, this); at(this);">
 				</div>
 				<div class="input-group un-necessary">
               		<span class="input-group-addon"><i class="fa fa-youtube-play"></i></span>
-					<input type="text" class="form-control" name="youtube" placeholder="YouTube URL" oninput="remove(1, this)">
+					<input type="text" class="form-control" name="youtube" placeholder="YouTube URL" oninput="remove(1, this); at(this);">
 				</div>
-				<!-- <div class="input-group">
-              		<span class="input-group-addon"><i class="fa fa-twitter"></i></span>
-					<input type="text" class="form-control" name="sns" placeholder="Twitter URL" oninput="remove(1, this)">
-				</div> -->
 			</div>
 			<div class="form-group">
 				<input type="submit" class="btn btn-block btn-lg" value="Sign Up">
