@@ -148,7 +148,7 @@ function goPurchase() {
     	      	<p class="desc">다른 구매자들이 어떻게 사용하고 있는지 궁금하다면?</p>
 	          	<button type="button" class="tag-btn" onclick="getTagList(${product.pid})">태그 모아보기</button>
           	</div>
-          <c:if test="${empty reviews}">
+          	<c:if test="${empty reviews}">
             	<div class="empty-data">
              	  	<p>작성된 후기가 없습니다.</p>
              	</div>
@@ -156,7 +156,7 @@ function goPurchase() {
             <c:forEach var="review" items="${reviews}">
 				<div class="speech-bubble">
 					<table>
-					  <tr>
+					  <tr class="review-info">
 					    <td>
 					      <div class="profile">
 					        <img src="${review.profile_img}" alt="프로필 이미지" class="profile-image">
@@ -175,11 +175,20 @@ function goPurchase() {
 					  </tr>
 					  <tr>
 					    <td colspan="2">
-					      <div class="review-content" style="text-align: left;">
+					      <div class="review-content">
 					        <p>${review.content}</p>
 					      </div>
 					    </td>
 					  </tr>
+					  <c:if test="${!empty review.answer}">
+		           		  <tr class="creator">
+						    <td colspan="2">
+						      	<img src="${product.profile_img}">
+						      	<h6>크리에이터</h6> 
+						        <p>${review.answer}</p>
+						    </td>
+						  </tr>
+		              </c:if>
 					</table>
 				</div>
 			</c:forEach>

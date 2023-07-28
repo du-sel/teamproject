@@ -3,7 +3,6 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-  
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
   <main id="st-inquiry" class="my-info broad my-info-form">
@@ -37,7 +36,7 @@
                	<form class="col-lg-12 form-data" action="/store/products/${p_info.pid}/inquiries" method="post" onsubmit="enter('inquiry-content');">
                		<div class="sub-title">
 	               		<h6>문의 제목</h6>
-	               		<input type="text" name="title" placeholder="문의 제목 작성">
+	               		<input type="text" name="title" placeholder="문의 제목 작성" required>
 	               	</div>
 	               	<div>
 	               		<h6>문의 내용</h6>

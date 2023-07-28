@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 
@@ -91,7 +92,6 @@
 			                <c:when test="${sessionScope.user.url != profile.url}"> <!-- 로그인해서 남의 프로필에 들어왔을 때 -->
 			                	<c:choose>
 			                		<c:when test="${checks.getId() eq sessionScope.user.id && checkf.getFrom_id() eq sessionScope.user.id && checkf.getTo_id() eq profile.id}">
-
 	                						<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter" >팔로우 중</button>
 	                						<button class="btn offbtn" data-toggle="modal" data-target="#exampleModalCenter" >구독 중</button>
 				                	</c:when>
@@ -101,8 +101,9 @@
 				                		<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
 
 				                		<c:if test="${!empty getMembership }">
-			                				<button id="buttonright" class="btn"data-toggle="modal" data-target="#subModal">구독 </button>
+			                				<button id="buttonright" class="btn sbutton" data-toggle="modal" data-target="#subModal" onclick="starts">구독 </button>
 				                		</c:if>
+				                		
 
 				                	</c:when>
 				                	
@@ -120,8 +121,9 @@
 				                		</form>
 				                		<button class="btn offbtn" id="changef" data-toggle="modal" data-target="#ExampleModalCenter"  style=" display: none;">팔로우 중</button>
 				                		<c:if test="${!empty getMembership }">
-				           					<button id="buttonright" class="btn" data-toggle="modal" data-target="#subModal">구독</button>
+				           					<button id="buttonright" class="btn sbutton" data-toggle="modal" data-target="#subModal" onclick="starts">구독</button>
 			           					</c:if>
+			           					
 
 							 		</c:otherwise>
 						 		</c:choose>
@@ -177,7 +179,7 @@
 			 	</li>
 			 	<c:if test="${getCreator != null }">
 				 	<li class="nav-item navli" id="li">
-				 		<div class="nav-link" onclick="getCreatorProductList(0, 'creDate')" data-toggle="tab">스토어</div>
+				 		<div class="nav-link" onclick="getCreatorProductList(0, 'creDate')" data-toggle="tab" id="storenamediv">${getCreator.getStoreName() } 스토어</div>
 				 	</li>
 				 	<li class="nav-item navli" id="li">
 				 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
@@ -278,8 +280,7 @@
 								</div>
 							</section>
 							
-							
-							
+						
 							<div class="col-lg-12" id="feed-pagination-container" class="pagination-container">
 			                    <div class="feed-pagination pagination">
 			                        <ul>
@@ -294,17 +295,17 @@
 			                </div>			
 						
 						</div> 
+					
 					</div> 
-						
-					<div class="no-post d-flex justify-content-center"></div>
+					<div class="no-post d-flex justify-content-center"></div>	
 					
 				</div>
 					 
 				
 				<!-- 스토어 탭 -->
-			
+				
 				<div class="tab-pane fade" id="store"><br>
-			
+				
 					<div class="row col-lg-12 justify-content-between">
 						<select name="sortSelect" onchange="getCreatorProductList(0, 'creDate');" class="form-control-sm">
 							<option value="creDate">최신순</option>
@@ -368,7 +369,7 @@
 			                </div>
 						</div>
 					</div>
-					
+						
 					<div class="no-item d-flex justify-content-center"></div>
 				</div>
 		
@@ -453,7 +454,7 @@
 	<div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="subModal">
 	  <div class="modal-dialog modal-lg fixed-bottom">
 	    <div class="modal-content Membershipdiv" >
-	      <form action="" method="post">
+	      <form action="/profiles/{url}" method="post">
 		      <br>
 		      	<h5 class="membershipSub">멤버십 구독</h5>
 		      <br>
@@ -468,7 +469,11 @@
 		      		<h6><input type="button" value="멤버십 가입하기" class="subjoin" onclick="showLoginAlertSub()"></h6>
 		      	</c:if>
 		      	<c:if test="${!empty sessionScope.user.id}">
-		      		<h6><input type="button" value="멤버십 가입하기" class="subjoin" onclick="testpay()"></h6>
+		      		<c:set var="now" value="<%=new java.util.Date()%>" />
+		      		
+		      		<h6><input type="button" value="멤버십 가입하기" class="subjoin" onclick="testpay('${getspsubid}','${sessionScope.user.id}')"></h6>
+		      		<%-- <h6><input type="button" value="멤버십 가입하기" class="subjoin" onclick="testpay('${getspsubid}','${sessionScope.user.id}','10002-951-321321','<fmt:formatDate value="${now}" pattern="yyyy-MM-dd"/>')"></h6> --%>
+		      		
 		      	</c:if>
 		      </div>
 	      </form>
@@ -561,6 +566,5 @@
 
 <input type="hidden" id="sessionId" name="id" value="${user_id}">
 </main>
-
 <script src="/resources/js/profile.js"></script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

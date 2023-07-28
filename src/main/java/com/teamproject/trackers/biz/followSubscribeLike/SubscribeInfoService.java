@@ -36,4 +36,9 @@ public class SubscribeInfoService {
 	public SubscribeInfoVO getSubInfo(String url) {
 		return subscribeInfoRepository.getSubInfo(url);
 	}
+	
+	// 구독 정보에 따른 크리에이터 아이디
+	public long getSubscribeCid(long subscribe_id) {
+		return subscribeInfoRepository.getSubscribeCid(subscribe_id);
+	}
 }
