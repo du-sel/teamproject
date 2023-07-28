@@ -24,7 +24,7 @@
 
 
 
-  <main id="insert-product" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+  <main id="insert-product" class="my-store wrapper narrow">
     <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />     
     
     

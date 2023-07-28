@@ -25,7 +25,7 @@
 
 
 
-  <main id="review-management-form" class="my-store wrapper broad management-form"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+  <main id="review-management-form" class="my-store wrapper broad management-form narrow"><!-- 추후 좁은헤더로 class명 변경 필요 -->
     <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />  
     <div class="main-panel">     
       <div class="content">
