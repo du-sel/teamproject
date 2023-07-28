@@ -17,7 +17,7 @@
 
 
 
-<main id="myprofile">
+<main id="myprofile" class="narrow">
 	<div  class="container firstcontainer">
 	<!-- 
 	<c:if test="${!empty sessionScope.id}">
@@ -101,7 +101,7 @@
 				                		<button class="btn offbtn"  data-toggle="modal" data-target="#ExampleModalCenter">팔로우 중</button>
 
 				                		<c:if test="${!empty getMembership }">
-			                				<button id="buttonright" class="btn sbutton" data-toggle="modal" data-target="#subModal" onclick="starts">구독 </button>
+			                				<button id="buttonright" class="btn sbutton" data-toggle="modal" data-target="#subModal" onclick="starts"><i class="fa fa-money"></i>구독</button>
 				                		</c:if>
 				                		
 
@@ -121,7 +121,7 @@
 				                		</form>
 				                		<button class="btn offbtn" id="changef" data-toggle="modal" data-target="#ExampleModalCenter"  style=" display: none;">팔로우 중</button>
 				                		<c:if test="${!empty getMembership }">
-				           					<button id="buttonright" class="btn sbutton" data-toggle="modal" data-target="#subModal" onclick="starts">구독</button>
+				           					<button id="buttonright" class="btn sbutton" data-toggle="modal" data-target="#subModal" onclick="starts"><i class="fa fa-money"></i>구독</button>
 			           					</c:if>
 			           					
 
@@ -146,7 +146,7 @@
 			            <button id="buttonright" class="btn" onclick="showLoginAlert()">팔로우</button>
 
 			            <c:if test="${!empty getMembership }">
-			            	<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" >구독</button>
+			            	<button id="buttonright" class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" ><i class="fa fa-money"></i>구독</button>
 			            </c:if>
 
 
@@ -456,7 +456,7 @@
 	    <div class="modal-content Membershipdiv" >
 	      <form action="/profiles/{url}" method="post">
 		      <br>
-		      	<h5 class="membershipSub">멤버십 구독</h5>
+		      	<h4 class="membershipSub">구독 안내</h4>
 		      <br>
 		      <div class="Subdiv">
 				<div class="s s1"></div>
@@ -464,14 +464,15 @@
 				<div class="s s3">${getMembership.content}</div>
 		      </div>
 		      <br>
+		      <p class="desc">크리에이터 구독은 매달 정기결제를 통해<br>크리에이터의 새로운 상품을 만나볼 수 있는 구매 방식입니다</p>
 		      <div class="Subjoin">
 		      	<c:if test="${empty sessionScope.user.id}">
-		      		<h6><input type="button" value="멤버십 가입하기" class="subjoin" onclick="showLoginAlertSub()"></h6>
+		      		<h6><input type="button" value="크리에이터 구독하기" class="subjoin" onclick="showLoginAlertSub()"></h6>
 		      	</c:if>
 		      	<c:if test="${!empty sessionScope.user.id}">
 		      		<c:set var="now" value="<%=new java.util.Date()%>" />
 		      		
-		      		<h6><input type="button" value="멤버십 가입하기" class="subjoin" onclick="testpay('${getspsubid}','${sessionScope.user.id}')"></h6>
+		      		<h6><input type="button" value="크리에이터 구독하기" class="subjoin" onclick="testpay('${getspsubid}','${sessionScope.user.id}')"></h6>
 		      		<%-- <h6><input type="button" value="멤버십 가입하기" class="subjoin" onclick="testpay('${getspsubid}','${sessionScope.user.id}','10002-951-321321','<fmt:formatDate value="${now}" pattern="yyyy-MM-dd"/>')"></h6> --%>
 		      		
 		      	</c:if>

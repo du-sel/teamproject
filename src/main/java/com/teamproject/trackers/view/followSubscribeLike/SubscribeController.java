@@ -78,7 +78,7 @@ public class SubscribeController {
 			common.alert.setStr("구독 정보가 업데이트되었습니다.");
 		}
 
-		common.alert.setPath("store/subscribes");
+		common.alert.setPath("store/my/subscribes");
 		common.alert.setFlag(true);
 		
 		return "redirect:/common";
@@ -94,7 +94,7 @@ public class SubscribeController {
 		subscribeInfoService.deleteSubscribeInfo(vo);
 		
 		common.alert.setStr("구독이 비활성화되었습니다.");
-		common.alert.setPath("/store/subscribes");
+		common.alert.setPath("/store/my/subscribes");
 		common.alert.setFlag(true);
 
 		return "redirect:/common";

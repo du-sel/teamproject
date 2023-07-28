@@ -204,6 +204,9 @@ body {
 		margin-top: 80px;
 	}
 }
+main.narrow {
+	margin-top: 80px;
+}
 
 ::selection {
   background: #2a2a2a;
