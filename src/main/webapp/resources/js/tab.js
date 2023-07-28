@@ -55,10 +55,7 @@ $(()=>{
 	        $('#co-tab').css('background', '#dce0e3');  
 	        $('#header-back-color').css('width', '0%').css('left', '0');
 	        $('#body-back-color').css('width', '0%').css('left', '0');
-	        $('body').css('background-color', '#fff');
-	        //$(this).removeClass('stretcLeft');
-	        //$('#st-main').show();
-	        //$('#co-main').hide(); 
+	        $('body').css('background-color', '#fff'); 
 		}
     	
     	
