@@ -369,6 +369,7 @@ post
 .co #co-main .submitpost i:hover,
 .co #co-post .submitpost i:hover{
 	color: #dce0e3;
+	cursor: pointer;
 }
 .co .submiticon{
 	box-shadow:none !important;
