@@ -42,10 +42,10 @@
 			           		<label for="yes-subscribe">활성화</label>
 			           		<input type="radio" name="subscribe" id="yes-subscribe" value="true" <c:if test="${!empty subscribe}">checked</c:if>>
 			           		<label for="no-subscribe">비활성화</label>
-			           		<input type="radio" name="subscribe" id="no-subscribe" value="false" <c:if test="${empty subscribe}">checked</c:if> <c:if test="${!empty subscribe}">disabled</c:if>>
+			           		<input type="radio" name="subscribe" id="no-subscribe" value="false" <c:if test="${empty subscribe}">checked</c:if>>
 			           	</div>	 
 			           	
-			           	<form action="/store/subscribes" method="post" enctype="multipart/form-data" onsubmit="remove_comma();">
+			           	<form id="subscribe-form" action="/store/subscribes" method="post" enctype="multipart/form-data">
 			           		<div class="subscribe-info">
 				           		<div class="row flex-column">
 					           		<label for="subscribe-content"><h5>구독 내용</h5></label>
@@ -70,14 +70,11 @@
 					           		</div>
 					           	</div>
 							</div>
-							<input type="submit" class="main-btn management-btn" value="수정">
+							<input type="button" class="main-btn management-btn" value="수정" onclick="subscribe();">
 			            </form>
-			            <!-- 
-							<form action="/store/subscribes" method="post" onsubmit="return subscribe_remove();">
-								<input type="hidden" name="_method" value="delete">
-								<input type="submit" class="main-btn management-btn" value="구독 상품 삭제">
-							</form>
-							 -->
+			            <form id="delete-form" action="/store/subscribes" method="post">
+			           		<input type='hidden' name='_method' value='delete'>
+			            </form>
 					</div>
 				</div>
               </div>
@@ -94,15 +91,20 @@
 		//구독정보 슬라이드업다운		
 		if($('#yes-subscribe').attr('checked') == 'checked'){
 			$('.subscribe-info').show();
+			$('input[name=mfile]').attr('required', 'required');
 		}else{
 			$('.subscribe-info').hide();
+			$('input[name=mfile]').removeAttr("required");
 		}
 		
 		$('#no-subscribe').on('click', function() {
 			$('.subscribe-info').slideUp('300');
+			$('input[name=mfile]').removeAttr("required");
+			$("#subscribe-form").prepend("<input type='hidden' name='_method' value='delete'>"); 
 		});
 		$('#yes-subscribe').on('click', function() {
 			$('.subscribe-info').slideDown('300');
+			$('input[name=mfile]').attr('required', 'required');
 		});
 	});
 	
@@ -113,14 +115,20 @@
 	function remove_comma(){
 		let price = $('#subscribe-price').val();
 		$('#subscribe-price').val(price.replaceAll(',', ''));
-		
-		console.log($('#subscribe-price').val());
-		return false;
 	}
 	
-	function subscribe_remove(){
-		return confirm('정말 구독 상품을 삭제 하시겠습니까?');
-	}
+	function subscribe(){
+		if($('.subscribe-info').css('display') == 'block'){
+			remove_comma();
+			$("#subscribe-form").submit();
+		}
+		else if($('.subscribe-info').css('display') == 'none'){		// 만약 비활성화 누르고 수정 시 삭제되는걸로
+			if(confirm('정말 구독 상품을 삭제 하시겠습니까?')){
+				$("#delete-form").submit();
+			}
+		}
+		
+	}		
 	
   </script>
   <script src="/resources/js/my-store.js"></script>
