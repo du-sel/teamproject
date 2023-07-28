@@ -11,8 +11,14 @@
 
 <script>
 
+// 태그 모달 표시
 function showTagModal() {
 	$('.modal-content').load("/community/tag-modal");
+}
+
+// 이미지 아이콘 클릭시 input 대신 클릭됨
+function clickImageInput() {
+	$('#thumbnail').trigger('click');
 }
 
 </script>
@@ -47,7 +53,7 @@ function showTagModal() {
 							<textarea id="co-textarea" name="content" rows="2"></textarea>
 							<div class="icons-container d-flex justify-content-between">
 								<div class="d-flex flex-row align-items-center">
-									<div onclick=""><i class="fa fa-image"></i></div>
+									<div onclick="clickImageInput()"><i class="fa fa-image"></i></div>
 									<!-- 파일 input 대신 클릭 -->
 									<div onclick="showTagModal()" data-toggle="modal" data-target="#modal"><i class="fa fa-tag"></i></div>
 									<input type="hidden" name="pid" id="tag" value="">
