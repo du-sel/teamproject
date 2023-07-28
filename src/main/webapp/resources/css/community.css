@@ -338,9 +338,14 @@ post
 .co input[type=file]{
 	font-size:14px;
 	/*border: 1px solid #586579;*/
+	display: none;
 }
 .co .thumb-preview{
 	margin:15px 0;
+}
+.co .thumb-title {
+	color: #b8b8c4;
+	margin-left: 8px;
 }
 
 
