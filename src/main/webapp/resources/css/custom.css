@@ -281,7 +281,10 @@ p.desc {
 	color: #e97d7d;
 }
 
-
+.row{
+	margin-left: 0;
+	margin-right: 0;
+}
 
 
 
