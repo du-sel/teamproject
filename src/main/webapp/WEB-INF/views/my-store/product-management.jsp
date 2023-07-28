@@ -116,17 +116,17 @@
         <c:when test="${totalPages > 1 }"> <!-- 페이지가 1개 이상일 때에만 페이징 처리 -->
           <c:if test="${currentPage > 1}" >
             <li>
-              <a href="/store/products/management?page=${currentPage - 1}" >&lt;</a>
+              <a href="/store/my/products?page=${currentPage - 1}" >&lt;</a>
             </li>
           </c:if>
           <c:forEach var="p" begin="1" end="${totalPages}">
             <li <c:if test="${currentPage == p}">class='active'</c:if>>
-              <a href="/store/products/management?page=${p}">${p}</a>
+              <a href="/store/my/products?page=${p}">${p}</a>
             </li>
           </c:forEach>
           <c:if test="${currentPage < totalPages }" >
             <li>
-              <a href="/store/products/management?page=${currentPage + 1}">&gt;</a>
+              <a href="/store/my/products?page=${currentPage + 1}">&gt;</a>
             </li>
           </c:if>
         </c:when>
