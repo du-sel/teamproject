@@ -995,12 +995,12 @@ header
   -moz-transition: all .1s ease 0s;
   -o-transition: all .1s ease 0s;
   transition: all .1s ease 0s;
-  display: flex;
+  /* display: flex; */
   align-items: center;
 }
 
 .narrow-header .menu-trigger{
-  top: inherit !important;
+  /* top: inherit !important; */
 }
 
 
