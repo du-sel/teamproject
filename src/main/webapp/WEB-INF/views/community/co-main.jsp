@@ -152,7 +152,7 @@ function clickImageInput() {
 									<div class="delete-post" onclick="javascript:checkDeletePost(${p.postId })">삭제</div>
 								</form>
 							</c:if>
-							<span class="published">${p.creDate}</span>
+							<span class="published">${fn:substring(p.creDate, 0, 19)}</span>
 						</div>
 					</div>
 

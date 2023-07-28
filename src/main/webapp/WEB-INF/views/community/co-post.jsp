@@ -31,7 +31,7 @@
 								<div class="delete-post" onclick="javascript:checkDeletePost(${post.postId})">삭제</div>
 							</form>
 						</c:if>
-						<span class="published">${post.creDate}</span>
+						<span class="published">${fn:substring(post.creDate, 0, 19)}</span>
 					</div>
 				</div>
 
