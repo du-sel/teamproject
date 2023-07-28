@@ -50,6 +50,7 @@
 					<input type="text" class="form-control" name="url" placeholder="프로필 URL" onkeyup="chk_reset('url')" oninput="remove(3, this)" required>
 					<button type="button" class="btn btn-chk" onclick="url_chk('', 5, 'user');">Check</button>
 				</div>
+				<p>개인 프로필 화면의 URL로 사용됩니다.</p>
 				<p></p>
 			</div>
 			<div class="form-group">		<!-- sns 링크 -->
