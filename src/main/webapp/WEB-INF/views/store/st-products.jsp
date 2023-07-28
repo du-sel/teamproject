@@ -57,7 +57,15 @@
 	                        <div class="thumb">
 	                            <div class="hover-content">
 	                                <ul>
-	                                    <li onclick="preventDefaultGoCart(event, '${user.id}', '${i.pid}')"><i class="fa fa-shopping-cart"></i></li>
+		                                <c:choose>
+			                        		<c:when test="${user.id == null }">
+			                        			<li onclick="loginAlert(event)"><i class="fa fa-shopping-cart"></i></li>
+			                        		</c:when>
+			                        		<c:otherwise>
+		   										<li onclick="preventDefaultGoCart(event, '${i.pid}')"><i class="fa fa-shopping-cart"></i></li>
+			                        		</c:otherwise>
+			                        	</c:choose>
+	                                    
 	                                </ul>
 	                            </div>
 	                            <img src="${i.thumbnail}" alt="상품 썸네일">
