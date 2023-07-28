@@ -40,6 +40,10 @@ time,mark,audio,video{
 	font-size: 30px;
 	
 }
+/* 탭 스토어 부분 너비 */
+#myprofile #storenamediv{
+    width: max-content;
+}
 /* 상단이미지 */
 #myprofile div.row.img{
 	margin-bottom: 70px;

@@ -11,7 +11,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="subscribePurchase")
+@Table(name="subscribepurchase")
 @IdClass(SubscribePurchaseId.class)
 public class SubscribePurchaseVO {
 	
