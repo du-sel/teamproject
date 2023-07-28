@@ -175,6 +175,16 @@ time,mark,audio,video{
 	background-color: #586579;
 	color: white;
 }
+
+/* 구독버튼 지폐 아이콘 */
+#myprofile #buttonright .fa-money {
+	margin-right: 5px;
+	color: #586579;
+}
+#myprofile #buttonright:hover .fa-money {
+	color: #fff;
+}
+
 #myprofile .offbtn:hover{
 	color:black;
 	background-color: #e4e4eb;
@@ -566,41 +576,51 @@ time,mark,audio,video{
 
 /* 멤버십 모달 */
 #myprofile .modal-dialog .modal-content{
-	padding: 0;
+	padding: 15px;
 }
 
 #myprofile .membershipSub{
 	text-align: center;
+	font-weight: 900;
 }
 #myprofile .Subdiv{
 	text-align: center;
 	height: flex;
-	border: 1px solid #586579;
+	border: 1px solid #b8b8c4;
 	margin: 4px;
-	margin-bottom: 100px;
+	margin-bottom: 10px;
 	padding: 13px;
-	border-radius: 8px;
+	border-radius: 3px;
 }
 #myprofile .Subjoin{
-	
 	height: 46px;
 	margin: 4px;
-	background-color: #586579;
-	border: 1px solid #586579;
-	border-radius: 50px;
+	background-color: #e4e4eb;
+	border: none;
+	border-radius: 3px;
 	padding-top:12px;
+}
+#myprofile .Subjoin:hover {
+	background-color: #586579;
+	border: none;
 }
 
 #myprofile .Membershipdiv{
 /* 	border-top-left-radius: 24px;
     border-top-right-radius: 24px; */
-    border-radius: 24px;
+    border-radius: 5px;
 }
 #myprofile .subjoin{
 	border:0;
+	background-color: #e4e4eb;
+	font-weight: 600;
+}
+#myprofile .Subjoin:hover .subjoin {
 	background-color: #586579;
 	color: white;
-	font-weight: 600;
+}
+#myprofile .subjoin:hover {
+	border:0;
 }
 #myprofile .s{
 	text-align: left;
@@ -611,13 +631,17 @@ time,mark,audio,video{
 }
 
 #myprofile .s2 {
-	font-size: 30px;
+	font-size: 20px;
 }
 
 #myprofile .s3{
 	border-top: 1px solid #f2f2f6;
 	margin-top: 15px;
 	padding-top: 15px;
+}
+#myprofile p.desc {
+	color: #2a2a2a;
+	margin-bottom: 15px;
 }
 #myprofile .uploadbtn{
 	position:relative;
