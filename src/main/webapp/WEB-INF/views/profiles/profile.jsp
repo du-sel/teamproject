@@ -17,7 +17,7 @@
 
 
 
-<main id="myprofile">
+<main id="myprofile" class="narrow">
 	<div  class="container firstcontainer">
 	<!-- 
 	<c:if test="${!empty sessionScope.id}">

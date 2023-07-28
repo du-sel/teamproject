@@ -47,7 +47,7 @@ time,mark,audio,video{
 }
 /* 상단이미지 */
 #myprofile div.row.img{
-	margin-bottom: 70px;
+	/* margin-bottom: 70px; */
 }
 #myprofile .topimg{
 /* 	border-bottom:1px solid lightgray; */
@@ -59,7 +59,7 @@ time,mark,audio,video{
 #myprofile .topimgdiv{
 	height: 158px;
 /* 	background-color: #e6e9eb; */
-	padding-top: 70px;
+	/* padding-top: 70px; */
 }
 #myprofile .topimgdiv img{
 	height:inherit;
@@ -99,7 +99,7 @@ time,mark,audio,video{
 #myprofile .seconddiv{
 	min-height: 160px;
 
-	padding-top: 20px;
+	/* padding-top: 20px; */
 	
 }
 #myprofile .thriddiv{
