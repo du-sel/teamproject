@@ -6,13 +6,22 @@ function convertDate(milliSecond) {
 	let year = data.getFullYear();
 	let month = data.getMonth() + 1;
 	let date = data.getDate();
+	let hour = data.getHours();
+	let minute = data.getMinutes();
+	let second = data.getSeconds();
 	
 	let result = year + '-' +
 		(month < 10 ? '0'+month : month) + '-' +
-		(date < 10 ? '0'+date : date);
+		(date < 10 ? '0'+date : date) + ' '+
+		(hour < 10 ? '0'+hour : hour) + ':' +
+		(minute < 10 ? '0'+minute : minute) + ':' +
+		(second < 10 ? '0'+second : second);
 		
 	return result;
 }
+
+
+
 
 
 /* 탭 - 피드 선택하면 피드 정보 가져오기    */
@@ -409,7 +418,7 @@ function getCreatorProductList(page, sort) {
 					
 					let cart = $(newBox).find('.hover-content li');
 					cart.on('click', function() {
-						preventDefaultGoCart(event, product.pid)
+						preventDefaultGoCartProfile(event, product.pid)
 					});
 					
 					let thumbnail = $(newBox).find('img');

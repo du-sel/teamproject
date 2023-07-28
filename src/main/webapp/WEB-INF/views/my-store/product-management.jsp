@@ -35,7 +35,7 @@
       	<div class="row justify-content-center listtop">
       		<div class="col-xl-10 col-lg-12 d-flex justify-content-between align-items-center">
 				<div>
-					<h5>총 상품 개수 : ${totalProducts}개</h5>
+					<h5>총 ${totalProducts} 개 상품</h5>
 				</div>
 				<!-- 상품 등록 버튼 -->
 				<button type="button" onclick="location.href='/store/my/products/new'">신규 상품 등록</button>
@@ -56,13 +56,18 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 col-sm-5 sm_info">
                                             <div class="thumb">
-                                                <a href="#"><img src="${product.thumbnail}" alt="thumbnail"></a>
+                                                <a href="/store/products/${product.pid}"><img src="${product.thumbnail}" alt="thumbnail"></a>
                                             </div>
                                         </div>
                                         <div class="col-lg-7 col-md-5 col-sm-4 sm_info">
                                             <div class="down-content d-flex flex-column justify-content-around product-info">
-                                                <h4>${product.p_name}</h4>
-                                                <h4>${product.price}원</h4>
+                                                <h5>${product.p_name}</h5>
+                                                <div class="d-flex align-items-center">
+	                                                <h4 class="<c:if test="${product.sale > 0}">discount</c:if>">${product.price}원</h4>
+	                                                <c:if test="${product.sale > 0}">
+	                                                	<h4>${product.price - product.sale}원</h4>
+	                                                </c:if>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-2 col-md-3 col-sm-3 d-flex flex-column justify-content-center btn-container">

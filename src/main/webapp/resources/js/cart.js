@@ -1,6 +1,15 @@
 // 장바구니에 담고 이동할 것인지 확인하는 confirm
 
-function goCart(p_id) {
+function goCart(id, p_id) {
+
+/*
+	console.log(id);
+	console.log(p_id);
+	if(id == null || id.length <= 0) {
+		alert('로그인이 필요한 메뉴입니다');
+		return;
+	}
+	*/
 
 	$.ajax({
 		type: "post",
@@ -19,7 +28,21 @@ function goCart(p_id) {
 	})
 }
 
-function preventDefaultGoCart(e, p_id) {
+function preventDefaultGoCart(e, id, p_id) {
+
+/*
+	if(id == null || id.length <= 0) {
+		alert('로그인이 필요한 메뉴입니다');
+		return;
+	}
+	*/
+
+	e.stopPropagation();
+	goCart(p_id);
+}
+
+
+function preventDefaultGoCartProfile(e, p_id) {
 
 	e.stopPropagation();
 	goCart(p_id);
