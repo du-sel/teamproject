@@ -64,7 +64,7 @@
                      	  </tr>
                       </c:if>	
                       <c:forEach var="inquiry" items="${inquiries.content}" varStatus="status">
-	                      <tr <c:if test="${!empty inquiry.answer}">class="answer"</c:if> onclick="location.href='/profiles/${sessionScope.user.url}/inquiries/${inquiry.inquiryId}'">
+	                      <tr <c:if test="${!empty inquiry.answer}">class="answer"</c:if> onclick="location.href='/store/my/inquiries/${inquiry.inquiryId}'">
 	                      	<td>
 	                          	${inquiries.totalElements-((inquiries.number*10)+status.index)} 
 	                        </td>
@@ -96,17 +96,17 @@
 	                     <ul>
 	                     	<c:if test="${inquiries.number-1 >= 0}" >
 					    		<li>
-						            <a href="/profiles/${url}/inquiries?page=${inquiries.number-1}">&lt;</a>
+						            <a href="/store/my/inquiries?page=${inquiries.number-1}">&lt;</a>
 						        </li>
 					    	</c:if>
 					    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
 				    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
-						            <a href="/profiles/${url}/inquiries?page=${p-1}">${p}</a>
+						            <a href="/store/my/inquiries?page=${p-1}">${p}</a>
 						        </li>	
 							</c:forEach>
 							<c:if test="${inquiries.number+1 < inquiries.totalPages }" >
 					    		<li>
-					           		<a href="/profiles/${url}/inquiries?page=${inquiries.number+1}">&gt;</a>
+					           		<a href="/store/my/inquiries?page=${inquiries.number+1}">&gt;</a>
 					        	</li>
 					    	</c:if>
 	                     </ul>

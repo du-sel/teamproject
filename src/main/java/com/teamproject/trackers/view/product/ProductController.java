@@ -210,7 +210,8 @@ public class ProductController {
 	////* 상품 관리 페이지 띄우기 (판매자별 상품 목록) *////
 	//------------------------------------------------------정희
 	// 상품 관리 페이지 띄우기
-	@GetMapping("/products/management")
+
+	@GetMapping("/my/products")
 	public String showProductManagement(@RequestParam(defaultValue = "1") int page, Model model, HttpSession session) {
 	    // 페이지당 아이템 개수 설정
 	    int itemsPerPage = 5;
@@ -256,11 +257,12 @@ public class ProductController {
 	    return "my-store/product-management";
 	}
 
+
     //------------------------------------------------------정희
 	
     
     ////* 상품 등록 페이지 띄우기 *////
-	@RequestMapping(value="/products/new", method=RequestMethod.GET)
+	@RequestMapping(value="/my/products/new", method=RequestMethod.GET)
     public String showProductForm() {
         return "my-store/insert-product";
     }
@@ -325,7 +327,7 @@ public class ProductController {
         insertProductDetail(p_id, content);
         
 
-        return "redirect:/store/products/management";
+        return "redirect:/store/my/products";
     }
 
 	
@@ -553,7 +555,7 @@ public class ProductController {
 
     
     // 상품 수정 페이지로 이동
-    @GetMapping("/products/update/{p_id}")
+    @GetMapping("/my/products/update/{p_id}")
     public String showEditProductForm(@PathVariable("p_id") long p_id, Model model) {
         ProductVO product = productService.getProductById(p_id);
         model.addAttribute("product", product);
@@ -565,7 +567,7 @@ public class ProductController {
     public String updateProduct(@PathVariable("p_id") long p_id, @ModelAttribute ProductVO updatedproduct) {
     	// updatedProduct를 사용하여 상품 정보를 업데이트하는 로직을 추가한다.
     	productService.updateProduct(updatedproduct); // 여기에서 실제로 상품 정보를 업데이트
-        return "redirect:/store/products/management"; // 수정된 정보로 상품 관리 페이지로 리다이렉트
+        return "redirect:/store/my/products"; // 수정된 정보로 상품 관리 페이지로 리다이렉트
     }
 
 
@@ -575,7 +577,7 @@ public class ProductController {
         System.out.println("1");
     	// 상품 삭제 로직
     	productService.deleteProduct(p_id);
-        return "redirect:/store/products/management";
+        return "redirect:/store/my/products";
     }
 
     
@@ -591,7 +593,6 @@ public class ProductController {
     	
     	// pid로 상품 객체 가져오기
     	ProductVO vo = productService.getProduct(pid);
-    	System.out.println("시그니처 가져온 vo: "+vo.getP_name());
     	
     	// signature 컬럼 수정
     	vo.setSignature(true);
@@ -599,7 +600,7 @@ public class ProductController {
     	// update문 실행
     	productService.updateProductSignature(vo);
     	
-    	return "redirect:/store/products/management";
+    	return "redirect:/store/my/products";
     }
     
     
@@ -609,7 +610,6 @@ public class ProductController {
     	
     	// pid로 상품 객체 가져오기
     	ProductVO vo = productService.getProduct(pid);
-    	System.out.println("시그니처 가져온 vo: "+vo.getP_name());
     	
     	// signature 컬럼 수정
     	vo.setSignature(false);
@@ -617,7 +617,7 @@ public class ProductController {
     	// update문 실행
     	productService.updateProductSignature(vo);
     	
-    	return "redirect:/store/products/management";
+    	return "redirect:/store/my/products";
     }
     
 

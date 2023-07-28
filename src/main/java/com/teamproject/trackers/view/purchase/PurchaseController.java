@@ -104,29 +104,8 @@ public class PurchaseController {
     @RequestMapping(value="/tag", method=RequestMethod.GET, produces = "application/text; charset=UTF-8")
 	@ResponseBody
     public String getTagModal(PurchaseListVO vo, @RequestParam("page") int page) throws JsonProcessingException {
-    	
-    	/*
-    	vo.setId((long) session.getAttribute("id"));
-    	
-    	
-    	// 정렬 및 페이징 , 검색 처리
-		Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, "creDate"));	// 시작 페이지, 데이터 개수, 정렬 기준
-		Page<PurchaseListVO> list = purchaseService.getPurchaseList(vo, pageable);
-		
-		int nowPage = list.getPageable().getPageNumber()+1;			// 현재 페이지, 0부터 시작하므로 +1
-		int startPage = Math.max(nowPage-4, 1);						// 시작 페이지 번호
-		int endPage = Math.min(nowPage+5, list.getTotalPages());	// 끝 페이지 번호
-		
-		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
-		
-		model.addAttribute("purchases", list);
-    	*/
-    	System.out.println("컨트롤러 들어오나요");
-    	
+
     	// 매개변수 vo 준비
-		//long id = (long) session.getAttribute("id");
     	vo.setId((long) session.getAttribute("id"));
 		
 		// 페이징 
@@ -160,46 +139,19 @@ public class PurchaseController {
     
     
     
-    
-    /*
-	@RequestMapping(value="/purchases/{p_id}", method=RequestMethod.POST)
-	public String insertPurchase(@PathVariable("p_id") String p_id) {
-		System.out.println("insertPurchase() 실행");
-		System.out.println("test p_id : "+p_id);
-		
-		// INSERT 할 VO 객체 준비
-		PurchaseVO vo = new PurchaseVO();
-		vo.setBak_p_id(Long.parseLong(p_id));
-		vo.setId((long)session.getAttribute("id"));
-		
-		ProductVO product = productService.getProduct(Long.parseLong(p_id));
-		
-		
-		// 일단 테스트로 아무값이나 넣어보겠음
-		//vo.setId(1);
-		vo.setPrice(product.getPrice()-product.getSale());
-		vo.setCre_date(new Date(2023, 3, 3));
-		
-		// 나중에는 상품테이블 조회해서 데이터 가져와서 INSERT 해야함
-		
-		purchaseService.insertPurchase(vo);
-		
-		return "redirect:/store/products/"+p_id;
-	}
-	*/
 	
 	
 	
 	// 객체 받아서 넣는 버전
-	public String insertPurchase(PurchaseVO vo) {
-		System.out.println("객체 받아서 insertPurchase() 실행");		
+    /*
+	public String insertPurchase(PurchaseVO vo) {		
 		
 		purchaseService.insertPurchase(vo);
 		
 		long p_id = vo.getBak_p_id();
 		return "redirect:/store/products/"+p_id;
 	}
-	
+	*/
 	
 
 	/* 구매하기 페이지 띄워주기 */

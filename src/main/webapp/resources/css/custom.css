@@ -4748,7 +4748,11 @@ store-management
 	padding-left:0;
 }
 #store-management .store-form .store-input .store-base-url{
-	width: 90px;
+	width: 100px;
+	border-radius: 0.25rem 0 0 0.25rem;
+}
+#store-management .store-form .store-input #url{
+	border-radius: 0 0.25rem 0.25rem 0;
 }
 #store-management .store-form .store-input .sub-btn{
 	padding: 0;

@@ -35,7 +35,7 @@ public class SaleController {
 
 	
 	/* 판매 현황 */
-	@RequestMapping(value="/store/sales", method=RequestMethod.GET)
+	@RequestMapping(value="/store/my/sales", method=RequestMethod.GET)
 	public String getSalesStatus(Model model) {
 		long id = (long) session.getAttribute("id");
 		String months = "", p_cnt = "";
@@ -72,5 +72,18 @@ public class SaleController {
 		
 		return "/my-store/sales-status";
 	}
+	
+	
+	
+	
+	/*  정산 내역 페이지 띄워주기    */
+	@RequestMapping(value = "/store/my/sales/table", method = RequestMethod.GET)
+	public String getSalesList() {
+		return "/my-store/calculate-history";
+	}
+	
+	
+	
+
 	
 }
