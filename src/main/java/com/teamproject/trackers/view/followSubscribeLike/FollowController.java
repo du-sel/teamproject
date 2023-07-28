@@ -40,25 +40,6 @@ public class FollowController {
 	public CommonController common;
 
 	
-	  // 언팔로우 (삭제)
-		/*
-	  @RequestMapping(value="/profiles/{url}", method=RequestMethod.DELETE)
-
-		  public String deleteFollower(FollowVO vo, @PathVariable("url") String url) throws Exception { vo.setFrom_id((long)session.getAttribute("id"));
-		  vo.setTo_id(profileService.getUser(url).getId());
-		  System.out.println(vo.getTo_id()+ "to_id");
-		  System.out.println(vo.getFrom_id()+ "from_id");
-		  
-		  followService.deleteFollower(vo);
-		 
-		  alert.setStr("팔로우가 취소되었습니다."); 
-		  alert.setPath("/"+url); 
-		  alert.setFlag(true);
-		  
-		  return "redirect:/profiles/"+url; 
-	  }
-	*/
-	
 	// 팔로우
 	 @RequestMapping(value ="/profiles/{url}", method = RequestMethod.POST)
 	 public String changestateFollow(@PathVariable("url") String url,
@@ -72,10 +53,10 @@ public class FollowController {
 	         followService.insertFollower(fvo);	 
 	         
 	         common.alert.setStr("팔로우가 추가되었습니다."); 
-	         common.alert.setPath("/"+url); 
+	         common.alert.setPath("/profiles/"+url); 
 	         common.alert.setFlag(true);
 		 }
-		return "redirect:/profiles/"+url;
+		return "redirect:/common";
 	 }
 	 
 	 // 구독
@@ -96,10 +77,10 @@ public class FollowController {
 		     }
 		     System.out.println("controller1"); 
 		     common.alert.setStr("구독이 추가되었습니다."); 
-		     common.alert.setPath("/"+url); 
+		     common.alert.setPath("/profiles/"+url); 
 		     common.alert.setFlag(true);
 		 
-		return "redirect:/profiles/"+url;
+		return "redirect:/common";
 	 }
 	 
 
@@ -114,28 +95,27 @@ public class FollowController {
 		
 		 if(f.equals(type) && session.getAttribute("id") != null) {
 	
-		         fvo.setFrom_id((long)session.getAttribute("id"));
-		         fvo.setTo_id(profileService.getUser(url).getId());
-		         
-		         followService.deleteFollower(fvo);	 
-		         
-		         common.alert.setStr("팔로우가 취소되었습니다."); 
-		         common.alert.setPath("/"+url); 
-		         common.alert.setFlag(true);
+	         fvo.setFrom_id((long)session.getAttribute("id"));
+	         fvo.setTo_id(profileService.getUser(url).getId());
+	         
+	         followService.deleteFollower(fvo);	 
+	         
+	         common.alert.setStr("팔로우가 취소되었습니다."); 
+	         common.alert.setPath("/profiles/"+url); 
+	         common.alert.setFlag(true);
 		 }	
 		 else if ( c.equals(type) && session.getAttribute("id") != null) {
-			 
 			 spvo.setId((long)session.getAttribute("id"));
-	         spvo.setSubscribeId(profileService.getUser(url).getId());
+	         spvo.setSubscribeId(subscribePurchaseService.SubId(url));
 	         
 	         subscribePurchaseService.deleteSub(spvo);
 	         
 	         common.alert.setStr("구독이 취소되었습니다."); 
-	         common.alert.setPath("/"+url); 
+	         common.alert.setPath("/profiles/"+url); 
 	         common.alert.setFlag(true);
 		 }
-		 
-		return "redirect:/profiles/"+url;
+
+		return "redirect:/common";
 	 }
 	 
 
