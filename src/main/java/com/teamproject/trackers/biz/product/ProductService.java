@@ -16,7 +16,10 @@ import com.teamproject.trackers.biz.product.categoryDetail.PageCategoryVO;
 import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailRepository;
 import com.teamproject.trackers.biz.product.categoryDetail.ProductDetailVO;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class ProductService {
 	
 	private ProductRepository productRepository;
@@ -181,17 +184,48 @@ public class ProductService {
 	        return productRepository.findBySellerId(id);
 	    }
 
-	    // 삭제된 상품 ID 목록 조회
+	    /* 삭제된 상품 ID 목록 조회 */
 	    public List<Long> getDeletedProductIds() {
 	        List<Long> deletedProductIds = new ArrayList<>();
-	        // 삭제된 상품 ID 목록 조회 로직을 추가해주세요.
-	        // 예를 들면, 삭제 상태를 나타내는 컬럼을 가진 테이블에서 삭제 상태인 상품들의 ID를 조회하는 쿼리를 실행합니다.
+	        // 삭제된 상품 ID 목록 조회 로직을 추가합니다.
+	        // 예를 들어, 삭제 상태를 나타내는 컬럼을 가진 테이블에서 삭제 상태인 상품들의 ID를 조회하는 쿼리를 실행합니다.
 	        // 또는 삭제 상태를 나타내는 특정 필드를 가진 객체들을 가져와서 해당 ID들을 추출합니다.
 	        // 이 예시에서는 빈 리스트를 반환합니다. 실제 로직에 맞게 수정해주세요.
+
+	        // 예시로 직접 목록을 추가하는 코드입니다.
+	        deletedProductIds.add(1L);
+	        deletedProductIds.add(2L);
+	        deletedProductIds.add(3L);
+	        // ... 삭제된 상품 ID들을 추가로 조회하는 로직을 구현합니다 ...
+
 	        return deletedProductIds;
+	    }
+
+	    
+	    // 상품 정보 조회
+	    public ProductVO getProductById(long p_id) {
+	        return productRepository.findByPid(p_id);
+	    }
+	    	    
+	    // 상품 정보 수정
+	    public void updateProduct(ProductVO product) {
+	        ProductVO existingProduct = productRepository.findByPid(product.getPid());
+	        if (existingProduct != null) {
+	            existingProduct.setP_name(product.getP_name());
+	            existingProduct.setPrice(product.getPrice());
+	            existingProduct.setThumbnail(product.getThumbnail());
+	            existingProduct.setFile(product.getFile());
+	            productRepository.save(existingProduct);
+	        } else {
+	            // 해당 pid의 상품이 존재하지 않을 경우 예외 처리
+	            throw new RuntimeException("존재하지 않는 상품입니다.");
+	        }
 	    }
 		
 		
-		
-		
+	    
+	// 대표상품 등록/해제
+	public void updateProductSignature(ProductVO vo) {
+		productRepository.save(vo);
+	}
 }

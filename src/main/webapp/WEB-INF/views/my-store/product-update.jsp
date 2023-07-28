@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
   <!-- 
   =========================================
@@ -16,31 +17,28 @@
   <link href="/resources/css/nucleo-icons.css" rel="stylesheet" />
   
   <!-- CSS Files -->
-  <link href="/resources/css/black-dashboard.css" rel="stylesheet" />
-  
-    
+  <link href="/resources/css/black-dashboard.css" rel="stylesheet" /> 
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
-
-
 
   <main id="insert-product" class="my-store wrapper narrow">
     <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />     
     
-    
     <div class="main-panel">     
       <div class="content">
       	<div class="row justify-content-center page-title">
-			<h2>신규 상품 등록</h2>
+			<h2>상품 정보 수정</h2>
       	</div>
       
-      	<form name="frm" id="frm" action="/store/products" method="post" enctype="multipart/form-data" onsubmit="insert_p_chk(this); return false;">    
-
+      	<form method="post" action="/store/products/${product.pid}" name="frm" id="frm" enctype="multipart/form-data" onsubmit="insert_p_chk(this); return false;">    
+		  <input type="hidden" name="_method" value="put" />
 	        <div class="row justify-content-center page-content">
 	          <div class="col-xxl-8 col-xl-10 col-lg-12 info">
 	            <div class="row name-container">
-		           	<label for="product-name"><h5 class="must">상품명</h5></label>
-		           	<input type="text" name="p_name" id="product-name" class="form-control" placeholder="상품명을 입력하세요">
+		           	<label for="product-name">
+		           		<h5 class="must">상품명</h5>
+		           	</label>
+		           	<input type="text" name="p_name" id="product-name" class="form-control" placeholder="상품명을 입력하세요" value="${product.p_name}" required>
 	            </div>
 	            <div class="row file-container">
 		           	<label for="file"><h5 class="must">상품 파일 등록</h5></label>
@@ -57,7 +55,7 @@
 			           	<label for="product-price"><h5 class="must">금액</h5></label>
 			           	<div class="form-control-container d-flex">
 			           		<span>&#8361;</span>
-			           		<input type="text" name="price" id="product-price" class="form-control form-number" placeholder="금액을 입력하세요" onchange="getNumber(this); getSalePrice();" onkeyup="getNumber(this);">
+			           		<input type="number" name="price" id="product-price" class="form-control form-number" placeholder="금액을 입력하세요" onchange="getNumber(this); getSalePrice();" onkeyup="getNumber(this);" value="${product.price}" required>
 			           	</div>
 		            </div>
 					<div class="row flex-column">
@@ -177,7 +175,7 @@
 				</div>
 	
 				<div id="insert-btn-container" class="row justify-content-center insert-btn-container">
-					<button>상품 등록하기</button>
+					<button type="submit">수정하기</button>
 				</div>
 	            
 	          </div>
@@ -186,12 +184,8 @@
 
       </div>
     </div>
-    
-
-
-  </main>
-
   
+  </main>
 
   <script src="/resources/js/my-store.js"></script>
   
@@ -206,9 +200,7 @@
  }
  */
  </script>
-	
-	
-	
+		
 	<!-- CKEditor standard -->
 <%--   	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor_re/ckeditor.js"></script>
 	<script>
@@ -232,9 +224,7 @@
 			});
 		});
 	</script> --%>
-  	
-  	
-  	
+ 
 	<!-- CKEditor Youtube -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor4_y/ckeditor.js"></script>
 	<script>
@@ -250,7 +240,6 @@
   
   
   <script>
-
   
 	/* 파일 등록 시 용량 표시 */
 	function getFileSize(obj) {
@@ -265,7 +254,6 @@
 		} 
 	}
   
-  
   /* 금액 입력창 */
     function getNumber(obj){
 	   var num01;
@@ -277,8 +265,7 @@
 	
 	   $('#test').text(num01);
 	}
-    
-    
+  
     function getSalePrice() {
     	let price = document.getElementById('product-price').value.replace(/\D/g,"");
     	let sale = document.getElementById('product-sale').value.replace(/\D/g,"");
@@ -287,9 +274,7 @@
     	let saleFinalInput = document.getElementById('product-sale-final');    	
     	saleFinalInput.value = numberWithCommas(eval(saleFinal));
     }
-    
-    
-    
+  
     $(() => {
     	
     	//할인정보 슬라이드업다운
@@ -301,14 +286,9 @@
 			do_sale_val = $("input[name='do-sale']:checked").val();
 			$('.sale-info').slideToggle('300');
 		});
-		
-
-    	
+	
     });
-    
-    
-    
-    
+ 
     /* 썸네일 미리보기 */
     function imgPreview(input) {
 	  if (input.files && input.files[0]) {
@@ -326,16 +306,12 @@
 	      document.getElementById('img-modify-white').style.display = "block";
 	  }
 	}
-    
-    
-  
+      
   </script>
   
   
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
-   
 
 <!--
 =========================================================
@@ -352,5 +328,3 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
-
-

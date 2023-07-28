@@ -186,6 +186,16 @@
 				$("#preloader").css("visibility", "hidden").fadeOut();
 			}, 300);
 		});
+		 
+		// 헤더 로고 path 지정 함수
+		let href = $(location).attr('href');
+    	let path;
+    	if(href.includes('/community/posts') || href.includes('users?path') || href.includes("/profiles/")){
+    		path = "/community/posts?page=0&type=all";
+    	}else{
+    		path = "/store/main";
+    	}
+    	$("#logo_container .logo").attr('href', path);
 	});
 	
 	// Window Resize Mobile Menu Fix
@@ -281,7 +291,7 @@
 		
 		// 일단 프로필에만 적용
 		// 마이스토어는 공통 URI 정한 뒤 적용 예정
-		if(path.includes('profile')) {
+		if(path.includes('profile') || path.includes('store/my')) {
 			$(header).addClass('narrow-header');
 			return;
 		} else {

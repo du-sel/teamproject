@@ -25,7 +25,7 @@
 
 
 
-  <main id="sales-status" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+  <main id="sales-status" class="my-store wrapper narrow">
    	<jsp:include page="/WEB-INF/views/common/sidebar.jsp" /> 
     <div class="main-panel">     
       <div class="content">
@@ -64,7 +64,7 @@
                			￦<span id="m-revenue">0</span>
                		</p>
                 </div>
-                <button type="button" class="cal-history" onclick="javascript:location.href='/store/sales/table';">정산 내역 보러가기<i class="tim-icons icon-double-right"></i></button>
+                <button type="button" class="cal-history" onclick="javascript:location.href='/store/my/sales/table';">정산 내역 보러가기<i class="tim-icons icon-double-right"></i></button>
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@
                     <tbody>
                       <c:if test="${empty products}">
                     	  <tr>
-                     	  	<td colspan="4", rowspan="5">등록한 상품이 없습니다.</td>
+                     	  	<td colspan="4" rowspan="5">등록한 상품이 없습니다.</td>
                      	  </tr>
                       </c:if>	
                       <c:forEach var="p" items="${products}" varStatus="status">

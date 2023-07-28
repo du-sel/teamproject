@@ -24,7 +24,7 @@
 
 
 
-  <main id="review-management" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+  <main id="review-management" class="my-store wrapper narrow">
     <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />
     <div class="main-panel">     
       <div class="content">
@@ -57,10 +57,15 @@
                       </tr>
                     </thead>
                     <tbody>
+                    	<c:if test="${empty reviews.content}">
+	                    	<tr class="empty-data">
+	                     	 	<td colspan="5" rowspan="5">작성된 후기가 없습니다.</td>
+	                     	</tr>
+	                    </c:if>
                     	<c:forEach var="review" items="${reviews.content}" varStatus="status">
-	                      <tr onclick="location.href='/profiles/${url}/reviews/${review.pid}/${review.id}'">
+	                      <tr onclick="location.href='/store/my/reviews/${review.pid}/${review.id}'">
 	                      	<td>
-	                          	${reviews.totalPages-((reviews.number*10)+status.index)+1} 
+	                          	${reviews.totalElements-((reviews.number*10)+status.index)} 
 	                        </td>
 	                        <td>
 	                          	${review.p_name}
@@ -87,17 +92,17 @@
 	                     <ul>
 	                     	<c:if test="${reviews.number-1 >= 0}" >
 					    		<li>
-						            <a href="/profiles/${url}/reviews?page=${reviews.number-1}">&lt;</a>
+						            <a href="/store/my/reviews?page=${reviews.number-1}">&lt;</a>
 						        </li>
 					    	</c:if>
 					    	<c:forEach var="p" begin="${startPage}" end="${endPage}">
 				    			<li <c:if test="${p == nowPage}">class='active'</c:if>>
-						            <a href="/profiles/${url}/reviews?page=${p-1}">${p}</a>
+						            <a href="/store/my/reviews?page=${p-1}">${p}</a>
 						        </li>	
 							</c:forEach>
 							<c:if test="${reviews.number+1 < reviews.totalPages }" >
 					    		<li>
-					           		<a href="/profiles/${url}/reviews?page=${reviews.number+1}">&gt;</a>
+					           		<a href="/store/my/reviews?page=${reviews.number+1}">&gt;</a>
 					        	</li>
 					    	</c:if>
 	                     </ul>

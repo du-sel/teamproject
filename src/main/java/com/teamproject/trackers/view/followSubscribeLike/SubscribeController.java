@@ -22,6 +22,7 @@ import com.teamproject.trackers.biz.followSubscribeLike.SubscribePurchaseService
 import com.teamproject.trackers.biz.followSubscribeLike.SubscribePurchaseVO;
 import com.teamproject.trackers.biz.profile.ProfileService;
 import com.teamproject.trackers.biz.userCreator.UserVO;
+import com.teamproject.trackers.view.common.CommonController;
 
 @Controller
 @RequestMapping("/store")
@@ -38,11 +39,12 @@ public class SubscribeController {
 
 	@Autowired
 	private ProfileService profileService;
-	private AlertVO alert = new AlertVO();
+	@Autowired
+	public CommonController common;
 
 	
 	// 구독 정보 조회
-	@RequestMapping(value="/subscribes", method=RequestMethod.GET)
+	@RequestMapping(value="/my/subscribes", method=RequestMethod.GET)
 	public String getCreator(SubscribeInfoVO vo, Model model) {
 		vo.setId((long)session.getAttribute("id"));
 		
@@ -66,18 +68,18 @@ public class SubscribeController {
 		SubscribeInfoVO infoVO = subscribeInfoService.getSubscribeInfo(vo);
 		
 		if(infoVO == null) {		// 등록
-			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장
+			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장(구글 드라이브)
 			subscribeInfoService.insertSubscribeInfo(vo);
-			alert.setStr("구독이 활성화되었습니다.");
+			common.alert.setStr("구독이 활성화되었습니다.");
 		}else {
-			//drive.SubscribeDelete(infoVO);						// 저번 달 파일 삭제
-			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장
+			//drive.SubscribeDelete(infoVO);						// 저번 달 파일 삭제(구글 드라이브)
+			//vo.setFile(drive.SubscribeUpload(vo, mfile));			// 파일 저장 후 경로 저장(구글 드라이브)
 			subscribeInfoService.updateSubscribeInfo(vo);
-			alert.setStr("구독 정보가 업데이트되었습니다.");
+			common.alert.setStr("구독 정보가 업데이트되었습니다.");
 		}
 
-		alert.setPath("store/subscribes");
-		alert.setFlag(true);
+		common.alert.setPath("store/my/subscribes");
+		common.alert.setFlag(true);
 		
 		return "redirect:/common";
 	}
@@ -91,9 +93,9 @@ public class SubscribeController {
 		
 		subscribeInfoService.deleteSubscribeInfo(vo);
 		
-		alert.setStr("구독이 비활성화되었습니다.");
-		alert.setPath("/store/subscribes");
-		alert.setFlag(true);
+		common.alert.setStr("구독이 비활성화되었습니다.");
+		common.alert.setPath("/store/my/subscribes");
+		common.alert.setFlag(true);
 
 		return "redirect:/common";
 	}

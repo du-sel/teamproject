@@ -175,15 +175,20 @@ function addActive(){
 	console.log(path);
 	// 상품등록 페이지 수동으로 current값 주기
 	if(path.includes('products/new')) {
-		$(href).filter("[href='/store/products/management']").parent().addClass('active');
+		$(href).filter("[href='/store/my/products']").parent().addClass('active');
 		return;
 	}
 	
 	for(let i=0; i<href.length; i++){
 		let url = $(href[i]).attr('href');
 		if(url.includes(path)) {
-			console.log(url)
 			$(href[i]).parent().addClass('active');
+			break;
+		}else if(path.includes('reviews')){
+			$(href[4]).parent().addClass('active');
+			break;
+		}else if(path.includes('inquiries')){
+			$(href[5]).parent().addClass('active');
 			break;
 		}
 	}
@@ -209,3 +214,14 @@ function countingUp(target, count){
 function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+
+
+
+
+
+
+
+
+
+

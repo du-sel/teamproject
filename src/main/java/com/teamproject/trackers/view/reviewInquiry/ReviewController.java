@@ -73,8 +73,8 @@ public class ReviewController {
 	}
 	
 	// 판매자 리뷰 리스트 조회
-	@RequestMapping(value ="/profiles/{url}/reviews", method = RequestMethod.GET)
-	public String getReviewList(int page, @PathVariable("url") String url, Model model) {
+	@RequestMapping(value ="/store/my/reviews", method = RequestMethod.GET)
+	public String getReviewList(int page, Model model) {
 
 		// 정렬 및 페이징
 		Pageable pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "creDate"));	// 시작 페이지, 데이터 개수, 정렬 기준
@@ -94,8 +94,8 @@ public class ReviewController {
 	}
 	
 	// 판매자 페이지 리뷰 상세 조회
-	@RequestMapping(value ="/profiles/{url}/reviews/{p_id}/{id}", method = RequestMethod.GET)
-	public String getReview(@PathVariable("url") String url, @PathVariable("p_id") long p_id, @PathVariable("id") long id, Model model) {
+	@RequestMapping(value ="/store/my/reviews/{p_id}/{id}", method = RequestMethod.GET)
+	public String getReview(@PathVariable("p_id") long p_id, @PathVariable("id") long id, Model model) {
 		
 		model.addAttribute("p_info", purchaseService.getProductInfo(id, p_id).get());
 		model.addAttribute("review", reviewService.getCreatorReview(id, p_id));
@@ -104,14 +104,14 @@ public class ReviewController {
 	}
 	
 	// 리뷰 답변 업데이트
-	@RequestMapping(value ="/profiles/{url}/reviews/{p_id}/{id}", method = RequestMethod.POST)
-	public String updateReviewComment(@PathVariable("url") String url, @PathVariable("p_id") long p_id, @PathVariable("id") long id, ReviewVO vo) {
+	@RequestMapping(value ="/store/reviews/{p_id}/{id}/comments", method = RequestMethod.POST)
+	public String updateReviewComment(@PathVariable("p_id") long p_id, @PathVariable("id") long id, ReviewVO vo) {
 		vo.setId(id);
 		vo.setPid(p_id);
 		
 		reviewService.updateReviewComment(vo);
 		
-		return "redirect:/profiles/"+url+"/reviews?/"+p_id+"/"+id;
+		return "redirect:/store/my/reviews/"+p_id+"/"+id;
 	}
 }
 

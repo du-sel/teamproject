@@ -24,7 +24,7 @@
 
 
 
-  <main id="store-management" class="my-store wrapper broad"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+  <main id="store-management" class="my-store wrapper narrow">
     <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />  
     <div class="main-panel">     
       <div class="content">
@@ -35,7 +35,7 @@
                 <h2 class="card-title text-center management-title">스토어 관리</h2>
               </div>
               <div class="card-body">
-				<form action="/profiles/creators" method="post" onsubmit="return modify_chk('store', 1);">
+				<form action="/store/creators" method="post" onsubmit="return modify_chk('store', 1);">
 					<input type="hidden" name="_method" value="put">
 					<div class="store-form">
 			           	<label for="store-name"><h5>스토어 이름</h5></label>
@@ -48,7 +48,7 @@
 						<p></p>
 		            </div>
 		            <div class="store-form">
-		           		<label for="url"><h5>개인 프로필 URL</h5></label>
+		           		<label for="url"><h5>URL</h5></label>
 		           		<div class="store-input d-flex justify-content-center row">
 			           		<div class="col-sm-9 d-flex">
 				           		<input type="text" class="form-control text-center store-base-url" value="/profiles/" disabled>

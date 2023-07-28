@@ -18,12 +18,15 @@
 				<div><p class="slide-up">welcome to  </p></div>
 				<div><p class="slide-up">recording the moments.</p></div>	
 				<br>
+				
 				<div id="div4">
-					<p class="slide-up"><a href="http://localhost:8080/store/main" data-content="스토어">스토어</a></p>
+					<p class="slide-up"><a class="taga" href="http://localhost:8080/community/posts?page=0&type=all" data-content="커뮤니티">커뮤니티</a></p>
 				</div>
 				<div>
-					<p class="slide-up"><a class="taga" href="http://localhost:8080/community/posts?page=0&type=all" data-content="커뮤니티">커뮤니티</a></p>
-				</div> 
+					<p class="slide-up"><a href="http://localhost:8080/store/main" data-content="스토어">스토어</a></p>
+					
+				</div>
+				 
 			</div>
 		</div>
     </div>

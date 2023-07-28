@@ -25,7 +25,7 @@
 
 
 
-  <main id="review-management-form" class="my-store wrapper broad management-form"><!-- 추후 좁은헤더로 class명 변경 필요 -->
+  <main id="review-management-form" class="my-store wrapper broad management-form narrow"><!-- 추후 좁은헤더로 class명 변경 필요 -->
     <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />  
     <div class="main-panel">     
       <div class="content">
@@ -65,7 +65,7 @@
                 		<h6>후기</h6>
                 		<p>${review.content}</p>
                 	</div>
-                	<form class="col-lg-12" action="/profiles/${sessionScope.user.url}/reviews/${review.pid}/${review.id}" method="post" onsubmit="enter('answer');">		
+                	<form class="col-lg-12" action="/store/reviews/${review.pid}/${review.id}/comments" method="post" onsubmit="enter('answer');">		
                 		<h6>답변</h6>
                 		<c:choose>	
 						    <c:when test="${!empty review.answer}">	<!-- 답변 존재 --> 
@@ -73,7 +73,7 @@
 					    	</c:when>		
 					    	<c:otherwise>		<!-- 답변 존재 x -->
 					    		<textarea id="answer" name="answer" maxlength="300" placeholder="답변 내용 작성" required></textarea>
-       	         			<input class="management-btn insert-btn" type="submit" value="답변">
+       	         				<input class="management-btn insert-btn" type="submit" value="답변">
 					    	</c:otherwise>
 				    	</c:choose>
                 	</form>

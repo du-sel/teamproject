@@ -68,7 +68,18 @@ public class PostController {
 	
 	private AlertVO alert = new AlertVO();
 	
-
+	// 사용자 팔로우 목록
+	private List<Object[]> followList() {
+		long id = 0;
+		List<Object[]> followList = null;
+		
+		if (session.getAttribute("id") != null) {
+			id = (long) session.getAttribute("id");
+			followList = followService.getfollowList((long) session.getAttribute("id"));
+		}
+		
+		return followList;
+	}
 	
 	
 	// 이미지 모달창
@@ -111,7 +122,7 @@ public class PostController {
 				//새로운 파일 이름
 				String fileName = p.getPostId()+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
 				fileNames.add(fileName);
-System.out.println("newfile "+path+fileName);				
+System.out.println("newfile "+"/resources/postimg/"+fileName);				
 				// 로컬에 파일 저장			
 				file.transferTo(new File(path+fileName));
 	
@@ -120,7 +131,7 @@ System.out.println("newfile "+path+fileName);
 		
 		// imgvo 저장하기
 		for (String fileName : fileNames) {
-			imgvo.setImg(path+fileName);
+			imgvo.setImg("/resources/postimg/"+fileName);
 			imgvo.setPostId(p.getPostId());
 			postIMGService.insertPostIMG(imgvo);
 		}
@@ -178,7 +189,10 @@ System.out.println("newfile "+path+fileName);
 		List<PostIMGVO> imgList = postIMGService.getPImgList(postId);
 		
 		// 댓글 목록
-		List<PostCommentListVO> commentList = commentService.getCommentListPage(postId);		
+		List<PostCommentListVO> commentList = commentService.getCommentListPage(postId);	
+		
+		// 사이드바 팔로잉 목록
+		model.addAttribute("followList", followList());
 		
 		model.addAttribute("post", vo);
 		model.addAttribute("imgList", imgList);
@@ -206,7 +220,7 @@ System.out.println("newfile "+path+fileName);
 	
 	// 리스트 조회(페이징)
 	@RequestMapping(value="/posts", method=RequestMethod.GET)
-	public String getPostList(Integer page, String type, String keyword, Model model) {
+	public String getPostList(Integer page, String type, String keyword, String pid, Model model) {
 		
 		
 		// 정렬 및 페이징 , 검색 처리
@@ -220,8 +234,9 @@ System.out.println("newfile "+path+fileName);
 				// 검색 x 경우
 				if(keyword == null) keyword="";
 				
-				if(!type.equals("creator")) list = postService.getTypeList(type, (long) session.getAttribute("id"), keyword, pageable);
-				else list = postService.getCreatorPostList(keyword, pageable);
+				if(type.equals("creator")) list = postService.getCreatorPostList(keyword, pageable);
+				else if(type.equals("tag")) list = postService.getTagPostList(Long.parseLong(pid), keyword, pageable);
+				else list = postService.getTypeList(type, (long) session.getAttribute("id"), keyword, pageable);
 			}else {
 				// 정렬
 				pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "creDate"));
@@ -280,21 +295,13 @@ System.out.println("newfile "+path+fileName);
 			model.addAttribute("type", type);
 			model.addAttribute("keyword", keyword);
 			
-			// 사용자별 팔로우 리스트
-			long id = 0;
-			List<Object[]> followList = null;
-			
-			if (session.getAttribute("id") != null) {
-				id = (long) session.getAttribute("id");
-				followList = followService.getfollowList((long) session.getAttribute("id"));
-			}
-			model.addAttribute("followList", followList);
+			// 사용자 팔로우 목록
+			model.addAttribute("followList", followList());
 			
 			return "community/co-main";
 		}else {
 			return "redirect:/community/posts?page=0&type=all";
 		}
 	}
-	
 
 }

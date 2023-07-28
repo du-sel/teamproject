@@ -52,7 +52,7 @@ public class CreatorController {
 	}
 	
 	// 스토어 조회
-	@RequestMapping(value="/profiles/creators", method=RequestMethod.GET)
+	@RequestMapping(value="/store/my/creators", method=RequestMethod.GET)
 	public String getCreator(CreatorViewVO vo, Model model) {
 		vo.setId((long)session.getAttribute("id"));
 		model.addAttribute("creator", creatorService.getCreator(vo).get());
@@ -61,14 +61,16 @@ public class CreatorController {
 	}
 	
 	// 스토어 수정
-	@RequestMapping(value="/profiles/creators", method=RequestMethod.PUT)
+	@RequestMapping(value="/store/creators", method=RequestMethod.PUT)
 	public String updateCreator(CreatorViewVO vo, Model model) {
 		vo.setId((long)session.getAttribute("id"));
 		creatorService.updateCreator(vo);
 		creatorService.updateUrl(vo);		
 		
+		session.setAttribute("store_name", vo.getStoreName());
+		
 		common.alert.setStr("스토어 정보가 수정되었습니다.");
-		common.alert.setPath("/profiles/creators");
+		common.alert.setPath("/store/my/creators");
 		common.alert.setFlag(true);
 
 		return "redirect:/common";
@@ -76,7 +78,7 @@ public class CreatorController {
 	
 		
 	// 스토어 닫기
-	@RequestMapping(value="/store/creators", method=RequestMethod.DELETE)
+	@RequestMapping(value="/store/my/creators", method=RequestMethod.DELETE)
 	public String deleteCreator(CreatorVO vo) {
 		vo.setId((long)session.getAttribute("id"));
 		creatorService.deleteCreator(vo);
