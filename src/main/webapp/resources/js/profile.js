@@ -79,7 +79,6 @@ function loadFile(id, event) {
 
 // 팔로우하기 버튼
 function startf(){
-	  alert("팔로우 추가 되었습니다.");
 	  // 원래 버튼은 display: none으로 감추고
 	  document.getElementById("buttonright").style.display = "none";
 	  // 바뀔 버튼은 display: block으로 표시
