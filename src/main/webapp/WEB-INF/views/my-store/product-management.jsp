@@ -30,7 +30,7 @@
       	<div class="row justify-content-center listtop">
       		<div class="col-xl-10 col-lg-12 d-flex justify-content-between align-items-center">
 				<div>
-					<h5>총 상품 개수 : ${fn:length(productList)}개</h5>
+					<h5>총 상품 개수 : ${totalProducts}개</h5>
 				</div>
 				<!-- 상품 등록 버튼 -->
 				<button type="button" onclick="location.href='/store/products/new'">신규 상품 등록</button>
@@ -103,42 +103,43 @@
         
         
         
-        <!-- 페이지 번호 -->
-        <div class="col-lg-12">
-          <div class="pagination">
-              <ul>
-                  <li>
-                      <a href="#"><</a>
-                  </li>
-                  <li>
-                      <a href="#">1</a>
-                  </li>
-                  <li class="active">
-                      <a href="#">2</a>
-                  </li>
-                  <li>
-                      <a href="#">3</a>
-                  </li>
-                  <li>
-                      <a href="#">4</a>
-                  </li>
-                  <li>
-                      <a href="#">></a>
-                  </li>
-              </ul>
-          </div>
-        </div>
-      
+      <!-- 페이지 번호 -->
+<div class="col-lg-12">
+  <div class="pagination">
+    <ul>
+      <c:choose>
+        <c:when test="${totalPages > 1 }"> <!-- 페이지가 1개 이상일 때에만 페이징 처리 -->
+          <c:if test="${currentPage > 1}" >
+            <li>
+              <a href="/store/products/management?page=${currentPage - 1}" >&lt;</a>
+            </li>
+          </c:if>
+          <c:forEach var="p" begin="1" end="${totalPages}">
+            <li <c:if test="${currentPage == p}">class='active'</c:if>>
+              <a href="/store/products/management?page=${p}">${p}</a>
+            </li>
+          </c:forEach>
+          <c:if test="${currentPage < totalPages }" >
+            <li>
+              <a href="/store/products/management?page=${currentPage + 1}">&gt;</a>
+            </li>
+          </c:if>
+        </c:when>
+        <c:otherwise>
+          <!-- 페이지가 없을 때 처리할 내용 (예를 들어, "등록된 상품이 없습니다." 메시지 출력 등) -->
+        </c:otherwise>
+      </c:choose>
+    </ul>
+  </div>
+</div>
+
       
 
       </div>
     </div>
   </main>
 
-  
-
-  <script src="/resources/js/my-store.js"></script>
-  
+<script src="/resources/js/my-store.js"></script>
   
 <!-- 정희 -->
 
@@ -177,17 +178,10 @@
     // 상품 정보 수정 페이지로 이동하는 코드
     location.href = '/store/products/update/' + productId;
   }
-  
-
 </script>
- 
-  
-  
+
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
-   
-
 <!--
 =========================================================
 * * Black Dashboard - v1.0.1
@@ -203,5 +197,3 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
-
-
