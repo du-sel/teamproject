@@ -210,30 +210,52 @@ public class ProductController {
 	////* 상품 관리 페이지 띄우기 (판매자별 상품 목록) *////
 	//------------------------------------------------------정희
 	// 상품 관리 페이지 띄우기
-    @GetMapping("/products/management")
-    public String showProductManagement(Model model, HttpSession session) {
-        // 현재 로그인한 판매자의 아이디를 세션에서 가져옴
-    	Long id = (Long) session.getAttribute("id");
+	@GetMapping("/products/management")
+	public String showProductManagement(@RequestParam(defaultValue = "1") int page, Model model, HttpSession session) {
+	    // 페이지당 아이템 개수 설정
+	    int itemsPerPage = 5;
 
-    	// 세션에 "id"라는 속성이 없는 경우 예외 처리
-        if (id == null) {
-            // 로그인이 되어있지 않으므로 로그인 페이지로 이동하거나 다른 처리를 수행해야 할 수 있음
-            // 예를 들면, 로그인 페이지로 리다이렉트하려면 아래와 같이 처리할 수 있습니다.
-            return "redirect:/login"; // 로그인 페이지로 리다이렉트
-        }
+	    // 현재 로그인한 판매자의 아이디를 세션에서 가져옴
+	    Long id = (Long) session.getAttribute("id");
+	    if (id == null) {
+	        // 로그인이 되어있지 않으므로 로그인 페이지로 이동하거나 다른 처리를 수행해야 할 수 있음
+	        // 예를 들면, 로그인 페이지로 리다이렉트하려면 아래와 같이 처리할 수 있습니다.
+	        return "redirect:/store/"; // store 페이지로 리다이렉트
+	    }
 
-        // 판매자의 상품 리스트 조회 (현재 판매자가 등록한 상품들만 조회)
-        List<ProductVO> productList = productService.getProductListBySellerId(id);
+	    // 판매자의 상품 리스트 조회 (현재 판매자가 등록한 상품들만 조회)
+	    List<ProductVO> productList = productService.getProductListBySellerId(id);
 
-        // 서버로부터 삭제된 상품 ID 목록을 받아옴
-        List<Long> deletedProductIds = productService.getDeletedProductIds();
+	    // 전체 페이지 수 계산
+	    int totalPages = (int) Math.ceil((double) productList.size() / itemsPerPage);
 
-        // 삭제된 상품 ID 목록을 JSP에 전달하여 숨겨진 상품 처리를 위해 JavaScript에서 사용
-        model.addAttribute("deletedProductIds", deletedProductIds);
-        model.addAttribute("productList", productList);
+	    // 요청한 페이지 번호가 유효하지 않은 경우 기본값으로 설정
+	    if (page <= 0) {
+	        page = 1;
+	    } else if (page > totalPages) {
+	        page = totalPages;
+	    }
 
-        return "my-store/product-management";
-    }
+	    // 페이징을 위한 상품 리스트
+	    int startIndex = (page - 1) * itemsPerPage;
+	    int endIndex = Math.min(startIndex + itemsPerPage, productList.size());
+	    List<ProductVO> pagedProductList = productList.subList(startIndex, endIndex);
+
+	    // 서버로부터 삭제된 상품 ID 목록을 받아옴
+	    List<Long> deletedProductIds = productService.getDeletedProductIds();
+	    
+	    // 총 상품 개수를 JSP에 전달
+	    model.addAttribute("totalProducts", productList.size());
+
+	    // 삭제된 상품 ID 목록을 JSP에 전달하여 숨겨진 상품 처리를 위해 JavaScript에서 사용
+	    model.addAttribute("deletedProductIds", deletedProductIds);
+	    model.addAttribute("productList", pagedProductList);
+	    model.addAttribute("totalPages", totalPages);
+	    model.addAttribute("currentPage", page);
+
+	    return "my-store/product-management";
+	}
+
     //------------------------------------------------------정희
 	
     
