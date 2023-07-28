@@ -236,7 +236,7 @@ function goPurchase() {
 						</c:choose>
 				    </td>
 				    <td>${inquiry.title}</td>
-				    <td>${fn:substring(inquiry.name, 0, 3)}***</td>
+				    <td>${fn:substring(inquiry.name, 0, 2)}******</td>
 				    <td>${fn:substring(inquiry.creDate, 0, 10)}</td>
 				  </tr>
 				  <c:if test="${!empty inquiry.answer}">

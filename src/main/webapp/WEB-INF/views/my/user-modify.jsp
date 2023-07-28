@@ -21,11 +21,12 @@
 			<div id="modify-input-container" class="d-flex flex-column">
 				<form action="/users" method="post" onsubmit="return modify_chk('user', 2);">
 					<input type="hidden" name="_method" value="put">
-					<div class="form-group">		<!-- 이름(닉네임) -->
+					<div class="form-group name">		<!-- 이름(닉네임) -->
 						<div class="input-group">
 							<p>이름</p>
-							<input type="text" class="form-control" name="name" value="${user.name}" placeholder="닉네임" required oninput="remove(3 ,this);">
+							<input type="text" class="form-control" name="name" value="${user.name}" placeholder="닉네임" onkeyup="name_len();" maxlength="8" required oninput="remove(3 ,this);">
 						</div>
+						<p></p>
 					</div>
 					<div class="form-group">		<!-- 핸드폰번호 -->
 						<div class="input-group">
@@ -46,16 +47,12 @@
 						<div class="input-group">
 							<p>SNS</p>
 		              		<span class="input-group-addon"><i class="fa fa-instagram"></i></span>
-							<input type="text" class="form-control" name="instagram" value="${user.instagram}" placeholder="Instagram URL" oninput="remove(1, this)">
+							<input type="text" class="form-control" name="instagram" value="${user.instagram}" placeholder="Instagram URL" oninput="remove(1, this); at(this);">
 						</div>
 						<div class="input-group">
 		              		<span class="input-group-addon"><i class="fa fa-youtube-play"></i></span>
-							<input type="text" class="form-control" name="youtube" value="${user.youtube}" placeholder="YouTube URL" oninput="remove(1, this)">
+							<input type="text" class="form-control" name="youtube" value="${user.youtube}" placeholder="YouTube URL" oninput="remove(1, this); at(this);">
 						</div>
-						<!-- <div class="input-group">
-		              		<span class="input-group-addon"><i class="fa fa-twitter"></i></span>
-							<input type="text" class="form-control" name="sns" placeholder="Twitter URL" oninput="remove(1, this)">
-						</div> -->
 					</div>
 					
 					<div class="form-group">
