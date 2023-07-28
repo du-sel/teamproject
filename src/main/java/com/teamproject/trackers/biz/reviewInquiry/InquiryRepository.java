@@ -21,6 +21,7 @@ public interface InquiryRepository extends JpaRepository<InquiryVO, Long> {
 	
 	// 크리에이터별 상품 문의 리스트
 	@Query(value = "SELECT i.* FROM inquiry i, products p WHERE i.p_id=p.p_id AND p.id=:c_id", 
+			countQuery = "SELECT i.* FROM inquiry i, products p WHERE i.p_id=p.p_id AND p.id=:c_id", 
 			nativeQuery = true)
 	Page<InquiryVO> findAllByCId(@Param("c_id")long c_id, Pageable pageable);
 	
