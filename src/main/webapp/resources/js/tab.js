@@ -79,16 +79,16 @@ function tabActive(){
 	if(path.includes('/community/posts')){
 		$('#co-tab').addClass("active").css('background', '#f2f2f6');
 		$('#header-back-color').css('width', '100%').css('right', '0');
-		$('#body-back-color').css('width', '100%').css('right', '0');
+		$('#body-back-color').css('width', '100%').css('right', '0');		
 	}
-	else if(path.includes('users?path') || (path.includes("/profiles/") && 
-    		(!path.includes('reviews') && !path.includes('inquiries') && !path.includes('notices') && !path.includes('creators')))){
-		$('#co-tab').addClass("active").css('background', '#fff');
+	else if(path.includes('users?path') || path.includes("/profiles/")){
+		$('#co-tab').addClass("active").css('background', '#fff');		
 	}
 	else{
 		$('#st-tab').addClass("active").css('background', '#fff');
         $('#header-back-color').css('width', '0%').css('left', '0');
         $('#body-back-color').css('width', '0%').css('left', '0');		
 	}
+	
 }
 
