@@ -131,7 +131,7 @@
 			                </c:when>
 			                <c:otherwise>
 			                	<c:if test="${getCreator.getId() eq sessionScope.user.id}">
-			                		<div id="buttonright" class="longtext"><a href="/store/sales">마이스토어 관리</a></div>
+			                		<div id="buttonright" class="longtext"><a href="/store/my/sales">마이스토어 관리</a></div>
 			                	</c:if>
 			                	<c:if test="${getCreator.getId() ne sessionScope.user.id}">
 			                		<div id="buttonright" onclick="onStoreModal()" class="longtext"><a href="#" data-toggle="modal" data-target="#store-modal">마이스토어 개설</a></div>

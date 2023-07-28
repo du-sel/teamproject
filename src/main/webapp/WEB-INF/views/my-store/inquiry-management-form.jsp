@@ -62,7 +62,7 @@
                 		<h6>문의 내용</h6>
                 		<p>${inquiry.content}</p>
                 	</div>
-                	<form class="col-lg-12" action="/profiles/${p_info.url}/inquiries/${inquiry.inquiryId}/comment" method="post" onsubmit="enter('answer');">
+                	<form class="col-lg-12" action="/store/inquiries/${inquiry.inquiryId}/comment" method="post" onsubmit="enter('answer');">
                 		<h6>답변</h6>
                 		<c:choose>	
 						    <c:when test="${!empty inquiry.answer}">	<!-- 답변 존재 --> 

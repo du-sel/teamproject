@@ -292,7 +292,7 @@
 		
 		// 일단 프로필에만 적용
 		// 마이스토어는 공통 URI 정한 뒤 적용 예정
-		if(path.includes('profile')) {
+		if(path.includes('profile') || path.includes('my-store')) {
 			$(header).addClass('narrow-header');
 			return;
 		} else {
