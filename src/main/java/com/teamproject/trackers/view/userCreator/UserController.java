@@ -53,7 +53,7 @@ public class UserController {
 	
 	
 	// 로그아웃
-	@RequestMapping(value="/users/logout")
+	@RequestMapping(value="/users/logout", method=RequestMethod.POST)
 	public String logout(){
 		if(session.getAttribute("id") != null) {
 			session.invalidate();
