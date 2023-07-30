@@ -10,7 +10,7 @@
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
         <div class="container-lg">
-            <div class="row">
+            <div class="row"> 
                 <div class="col-lg-12">
                     <div class="left-content">
                         <div class="thumb">
