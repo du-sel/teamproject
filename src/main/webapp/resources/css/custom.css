@@ -452,7 +452,8 @@ header
 
 
 
-.header-area .main-nav .nav div a {
+.header-area .main-nav .nav div a,
+.header-area .main-nav .nav div.submenu ul li form input {
   display: block;
   font-weight: 600;
   font-size: 18px;
@@ -521,7 +522,8 @@ header
   padding-right: 0px;
 }
 .header-area .main-nav .nav div.submenu ul li.category,
-.header-area .main-nav .nav div.submenu ul li a {
+.header-area .main-nav .nav div.submenu ul li a,
+.header-area .main-nav .nav div.submenu ul li form input {
   opacity: 1;
   display: block;
   background: #fff;
@@ -538,6 +540,10 @@ header
   font-weight: 400;
   border-bottom: 1px solid #eee;
 }
+.header-area .main-nav .nav div.submenu ul li form input{
+	width: 100%;
+	text-align: left;
+}
 .header-area .main-nav .nav div.submenu ul li.all a{
 	font-size: 14px;
   	font-weight: 600;
@@ -548,7 +554,8 @@ header
   	cursor: default;
 }
 
-.header-area .main-nav .nav div.submenu ul li a:hover {
+.header-area .main-nav .nav div.submenu ul li a:hover,
+.header-area .main-nav .nav div.submenu ul li form input:hover {
   background: #f2f2f6;
   color: #b8b8c4!important;
   padding-left: 25px;
@@ -995,12 +1002,12 @@ header
   -moz-transition: all .1s ease 0s;
   -o-transition: all .1s ease 0s;
   transition: all .1s ease 0s;
-  display: flex;
+  /* display: flex; */
   align-items: center;
 }
 
 .narrow-header .menu-trigger{
-  top: inherit !important;
+  /* top: inherit !important; */
 }
 
 

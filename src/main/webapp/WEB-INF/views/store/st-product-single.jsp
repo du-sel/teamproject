@@ -14,6 +14,12 @@
 
 // p_id 컨트롤러로 넘겨주기
 function goPurchase() {
+	
+	let id = '${user.id}';
+	if(id == null || id.length <= 0) {
+		alert('로그인이 필요한 메뉴입니다');
+		return;
+	}
 
 	let pidList = new Array();
 	let path = window.location.pathname;
@@ -101,10 +107,14 @@ function goPurchase() {
 	                    </div>
 	                    <div class="buy-content">                        
 	                        <div class="d-flex justify-content-center">
-	                        	<%-- <form:form name="cart" id="cart" action="/store/carts/${product.pid }" method="post"> --%>
-   									<button type="button" onclick="goCart(${product.pid })">장바구니</button>
-   								<%-- </form:form> --%>
-   								
+	                        	<c:choose>
+	                        		<c:when test="${user.id == null }">
+	                        			<button type="button" onclick="loginAlert(event)">장바구니</button>
+	                        		</c:when>
+	                        		<c:otherwise>
+   										<button type="button" onclick="goCart('${product.pid }')">장바구니</button>
+	                        		</c:otherwise>
+	                        	</c:choose>
    								<button onclick="goPurchase()">바로 구매</button> 															
 	      					</div>
 	                    </div>
@@ -226,7 +236,7 @@ function goPurchase() {
 						</c:choose>
 				    </td>
 				    <td>${inquiry.title}</td>
-				    <td>${fn:substring(inquiry.name, 0, 3)}***</td>
+				    <td>${fn:substring(inquiry.name, 0, 2)}******</td>
 				    <td>${fn:substring(inquiry.creDate, 0, 10)}</td>
 				  </tr>
 				  <c:if test="${!empty inquiry.answer}">

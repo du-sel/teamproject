@@ -416,9 +416,9 @@ function getCreatorProductList(page, sort) {
 						location.href='/store/products/'+product.pid;
 					});
 					
-					let cart = $(newBox).find('.hover-content li');
+					let cart = $(newBox).find('.hover-content li.has-id');
 					cart.on('click', function() {
-						preventDefaultGoCart(event, product.pid)
+						preventDefaultGoCart(event, product.pid);
 					});
 					
 					let thumbnail = $(newBox).find('img');
