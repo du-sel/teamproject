@@ -53,7 +53,7 @@ public class UserController {
 	
 	
 	// 로그아웃
-	@RequestMapping(value="/users/logout")
+	@RequestMapping(value="/users/logout", method=RequestMethod.POST)
 	public String logout(){
 		if(session.getAttribute("id") != null) {
 			session.invalidate();
@@ -100,7 +100,7 @@ public class UserController {
 	
 	// 회원 정보 수정
 	@RequestMapping(value="/users", method=RequestMethod.PUT)
-	public String updateUserPwd(UserVO vo) {	
+	public String updateUser(UserVO vo) {	
 		vo.setId((long)session.getAttribute("id"));
 		userService.updateUser(vo);
 		
@@ -114,7 +114,7 @@ public class UserController {
 	
 	// 비밀번호 수정
 	@RequestMapping(value="/users/pwd", method=RequestMethod.PUT)
-	public String updateUser(UserVO vo) {
+	public String updateUserPwd(UserVO vo) {
 		vo.setId((long)session.getAttribute("id"));
 		userService.updateUserPwd(vo);
 	 

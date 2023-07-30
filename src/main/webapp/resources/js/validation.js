@@ -16,6 +16,7 @@ let email_flag = -1;
 let pwd_flag = false;
 let store_flag = -1;
 let url_flag = -1;
+let name_flag = false;
 let inputs, parents;
 let pwd_chk_str = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
 
@@ -26,11 +27,13 @@ function chk_reset(flag){
 	else if(flag == "store"){ store_flag = -1; }
 	else if(flag == "url"){ url_flag = -1; }
 	else if(flag == "pwd"){ pwd_flag = false; }
+	else if(flag == "name"){ name_flag = false; }
 	else{
 		email_flag = -1;
 		store_flag = -1;
 		url_flag = -1;
 		pwd_flag = false;
+		name_flag = false;
 	}
 }
 
@@ -60,6 +63,27 @@ function tel_hyphen(target){
 // textarea 줄바꿈 db에 저장
 function enter(id){
 	$('#'+id).val($('#'+id).val().replace(/\n/g, "<br>"));
+}
+
+// 인스타그램, 유튜브 insert시 맨 앞 @ 추가
+function at(target){
+	target.value = target.value.replace(/^([0-9a-zA-Z._])/g, "@$1");
+}
+
+// 닉네임 길이 체크
+function name_len(){
+	let len = $("input[name=name]").val().length;
+	let p = $(".form-group.name").children().last();
+	console.log(len);
+	if(len > 1 && len < 9){
+		p.text("");
+		name_flag = true;
+	}
+	else{
+		p.text("닉네임은 최소 2글자 ~ 최대 8글자까지 작성 가능합니다.").css('color','#e97d7d');
+		name_flag = false;
+	}
+	
 }
 
 /*****signin-modal*****/
@@ -291,7 +315,7 @@ function sign_chk(){
 
 		p.text("중복 확인이 되지않았습니다.").css('color','#e97d7d');
 		return false;
-	}else if(email_flag == 0 || !pwd_flag || url_flag == 0){
+	}else if(email_flag == 0 || !pwd_flag || url_flag == 0 || !name_flag){
 		return false;
 	}
 	
@@ -419,7 +443,7 @@ function modify_chk(path, idx){    		// 함수 사용 페이지, input 위치
 
 		p.text("중복 확인이 되지않았습니다.").css('color','#e97d7d');
 		return false;
-	}else if(url_flag == 0 || store_flag == 0){
+	}else if(url_flag == 0 || store_flag == 0 || !name_flag){
 		return false;
 	}
 	

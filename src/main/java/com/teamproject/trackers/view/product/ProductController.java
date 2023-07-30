@@ -124,8 +124,8 @@ public class ProductController {
 		}
 		
 		model.addAttribute("product", product);	
-		model.addAttribute("reviews", reviewService.getProductReviewList(Long.parseLong(p_id)));
-		model.addAttribute("inquiries", inquiryService.getInquiryList(Long.parseLong(p_id)));
+		model.addAttribute("reviews", reviewService.getProductReviewList(Long.parseLong(p_id)));		// 해당 상품 리뷰 리스트
+		model.addAttribute("inquiries", inquiryService.getInquiryList(Long.parseLong(p_id)));			// 해당 상품 문의 리스트
 		
 		return "store/st-product-single";
 	}
