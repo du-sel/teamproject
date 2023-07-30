@@ -9,14 +9,14 @@
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
-        <div class="container-fluid">
-            <div class="row">
+        <div class="container-lg">
+            <div class="row"> 
                 <div class="col-lg-12">
                     <div class="left-content">
                         <div class="thumb">
                             <div class="inner-content">
                             </div>
-                            <img src="/resources/images/left-banner-image.jpg" alt="">
+                            <img src="/resources/images/banner-logo.png" alt="">
                         </div>
                     </div>
                 </div>
