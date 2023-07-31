@@ -89,7 +89,7 @@ public class FollowController {
 	 
 	// 팔로우, 구독 취소
 	 @RequestMapping(value ="/profiles/{url}", method = RequestMethod.DELETE)
-	 public String unFollow(@PathVariable("url") String url, Model model,@RequestParam("type") String type, UserVO uvo, FollowVO fvo,SubscribeInfoVO sivo, SubscribePurchaseVO spvo) {
+	 public String unFollowSub(@PathVariable("url") String url, Model model,@RequestParam("type") String type, UserVO uvo, FollowVO fvo,SubscribeInfoVO sivo, SubscribePurchaseVO spvo) {
 		 String c = "unSub";
 		 String f= "unFollow";
 		
