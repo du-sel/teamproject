@@ -38,7 +38,14 @@
 			</div> 
 			
 			<div class="col-md-4 offset-md-1 col-lg-4">
-				<div class="nickname">${profile.getName()} </div>
+				<c:choose>
+					<c:when test="${getCreator != null }">
+						<div class="nickname">${getCreator.getStoreName() } (${profile.getName()})</div>
+					</c:when>
+					<c:otherwise>
+						<div class="nickname">${profile.getName()} </div>
+					</c:otherwise>
+				</c:choose>
 				<div class="count">
 					팔로워  &nbsp;${count}명&nbsp;&nbsp;|&nbsp;&nbsp;구독 &nbsp;${subcount}명
 				</div>
@@ -179,7 +186,7 @@
 			 	</li>
 			 	<c:if test="${getCreator != null }">
 				 	<li class="nav-item navli" id="li">
-				 		<div class="nav-link" onclick="getCreatorProductList(0, 'creDate')" data-toggle="tab" id="storenamediv">${getCreator.getStoreName() } 스토어</div>
+				 		<div class="nav-link" onclick="getCreatorProductList(0, 'creDate')" data-toggle="tab" id="storenamediv">스토어</div>
 				 	</li>
 				 	<li class="nav-item navli" id="li">
 				 		<a class="nav-link" href="#notice" data-toggle="tab">공지</a>
