@@ -24,10 +24,9 @@ function testpay(subscribe_id, id, payment, pay_date){
 		buyer_tel : '010-1111-2222'
 	}, function(rsp) {
 		if ( rsp.success ) {
-		 console.log(subscribe_id);
-		 console.log(id);
-		 console.log(payment);
-		 console.log(pay_date);
+		 
+		 
+		 
 			var value = getParameterValueFromUrl();
 			
 			const params = {

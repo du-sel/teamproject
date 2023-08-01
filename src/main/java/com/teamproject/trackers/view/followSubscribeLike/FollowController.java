@@ -87,6 +87,11 @@ public class FollowController {
 		 //if( session.getAttribute("id") != null){
 			System.out.println("controller");
 			
+			
+			// 실제 결제 메소드 실행
+			String doPurchase = doPurchase(spvo.getPayment());
+			System.out.println(doPurchase);
+			
 
 			// 정기결제 스케줄링 메소드 실행 
 			setPurchaseSchedule(spvo.getPayment());
@@ -111,6 +116,47 @@ public class FollowController {
 	 }
 	 
 
+	 
+	 // 정기결제 실제 결제 과정
+	 public String doPurchase(String customer_uid) {
+		 System.out.println("doPurchase() 실행");
+		 	 
+		 // 토큰 발급
+		 String token = verifyService.getToken();
+		 Gson str = new Gson();
+		 token = token.substring(token.indexOf("response") + 10);
+		 token = token.substring(0, token.length() - 1);
+		 
+		 TokenVO tokenVO = str.fromJson(token, TokenVO.class);
+		 
+		 String access_token = tokenVO.getAccess_token();
+		 System.out.println("doPurchase() 에서 print한 Token : "+access_token);
+		 
+		 
+		 // 서버로 요청할 헤더
+		 RestTemplate restTemplate = new RestTemplate();
+		 
+		 HttpHeaders headers = new HttpHeaders();
+		 headers.setContentType(MediaType.APPLICATION_JSON);
+		 headers.add("Authorization", access_token);
+		 
+		 
+		 //서버로 요청할 Body
+		 JsonObject jsonObject = new JsonObject();
+		 jsonObject.addProperty("merchant_uid", "정기결제 실결제");
+		 jsonObject.addProperty("customer_uid", customer_uid);
+		 jsonObject.addProperty("amount", 120);
+		 jsonObject.addProperty("name", "월간구독상품");
+		 
+		 String json = str.toJson(jsonObject); 
+		 System.out.println(json);
+		 HttpEntity<String> entity = new HttpEntity<>(json, headers);
+		 
+		 String url = "https://api.iamport.kr/subscribe/payments/again";
+		 
+		 return restTemplate.postForObject(url, entity, String.class);
+	 }
+	 
 	 
 	// 정기결제 스케줄링 
 	public String setPurchaseSchedule(String customer_uid) {
