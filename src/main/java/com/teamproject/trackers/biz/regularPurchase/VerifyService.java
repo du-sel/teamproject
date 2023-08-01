@@ -39,7 +39,7 @@ public class VerifyService {
 	   
 	    HttpEntity<String> entity = new HttpEntity<>(json,headers);
 		String result = restTemplate.postForObject("https://api.iamport.kr/users/getToken", entity, String.class);
-		System.out.println(result);
+		System.out.println("getToken() 의 RESULT "+result);
 		return restTemplate.postForObject("https://api.iamport.kr/users/getToken", entity, String.class);
 		
 		
