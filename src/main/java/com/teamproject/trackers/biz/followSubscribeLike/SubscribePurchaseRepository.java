@@ -12,7 +12,7 @@ public interface SubscribePurchaseRepository extends JpaRepository<SubscribePurc
 	
 	SubscribePurchaseVO findBySubscribeIdAndId(long subscribeId, long id);
 	
-	@Query(value ="SELECT sp.subscribe_id , sp.id FROM subscribepurchase sp WHERE sp.subscribe_id = (SELECT si.subscribe_id FROM subscribeinfo si WHERE si.id = (SELECT u.id FROM user u WHERE u.url = :url)) AND sp.id = :id" , nativeQuery = true)
+	@Query(value ="SELECT sp.subscribe_id , sp.id, sp.payment FROM subscribepurchase sp WHERE sp.subscribe_id = (SELECT si.subscribe_id FROM subscribeinfo si WHERE si.id = (SELECT u.id FROM user u WHERE u.url = :url)) AND sp.id = :id" , nativeQuery = true)
 	public SubscribePurchaseVO subT(@Param("url") String url, @Param("id") long id);
 	
 	@Query(value = "SELECT ifnull(si.subscribe_id, 0) FROM user u left join subscribeinfo si on u.id=si.id where u.url=:url", nativeQuery = true)

@@ -143,7 +143,7 @@ public class UserController {
 	
 	// 회원 조회
 	@RequestMapping(value = "/users", method=RequestMethod.GET)
-	public String getUser(String path, @ModelAttribute("user") UserVO vo, Model model) {
+	public String getUser(String path, UserVO vo, Model model) {
 		vo.setId((long)session.getAttribute("id"));
 		model.addAttribute("user", userService.getUser(vo).get());
 		
