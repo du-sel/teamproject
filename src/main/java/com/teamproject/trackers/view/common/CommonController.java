@@ -24,13 +24,6 @@ public class CommonController {
 		return "common/alert";
 	}
 	
-
-	// 내소식
-	@RequestMapping(value = "/news", method = RequestMethod.GET)
-	public String getNewsList() {
-		return "/my/news";
-	}
-
 	
 	// 문의 내역(고객센터)
 	@RequestMapping(value = "/store/center/inquires", method = RequestMethod.GET)
@@ -49,10 +42,6 @@ public class CommonController {
 	}
 	
 	
-	
-	
-
-		
 	
 	// 관리자
 	// 고객센터 문의 리스트
