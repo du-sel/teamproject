@@ -168,8 +168,8 @@ public class WebhookController {
             	purchase.setC_id(product.getId());
             	purchase.setPrice(product.getPrice()-product.getSale());  
             	
-            	LocalDate now = LocalDate.now();
-            	purchase.setCre_date(Date.valueOf(now));
+            	
+            	purchase.setCre_date(new java.util.Date());
 
             	purchaseService.insertPurchase(purchase);
             	
