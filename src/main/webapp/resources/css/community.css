@@ -34,7 +34,7 @@ community-main
 	}
 	footer {
 		text-align:center;
-    		padding : 220px 0 30px 0;
+    		padding : 370px 0 30px 0;
   	}
 }
 @media (max-width: 767px) {	
@@ -45,7 +45,7 @@ community-main
 	}
 	footer {
 		text-align:center;
-    		padding : 300px 0 30px 0;
+    		padding : 400px 0 30px 0;
   	}
 }
 @media (max-width:575px){
@@ -55,7 +55,7 @@ community-main
 		padding: 5px;		
 	}
 	footer {
-    		padding : 380px 0 30px 0;
+    		padding : 440px 0 30px 0;
   	}
 }
 	
