@@ -29,7 +29,7 @@ public class PurchaseVO {
 	@Id
 	private long bak_p_id;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date cre_date;
 	private long c_id;
 	private int price;

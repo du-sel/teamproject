@@ -59,7 +59,7 @@ public class DriveService {
 	* 
 	*/
 	private static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE);		// DRIVE_METADATA_READONLY
-	private static final String CREDENTIALS_FILE_PATH = "";
+	private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
 	/**
 	* Creates an authorized Credential object.

@@ -1763,6 +1763,11 @@ Single Product Page
 }
 
 
+#product #description * {
+	max-width: 100%;
+}
+
+
 /* 태그 모아보기 버튼 */
 #product .tag-btn-container {
 	margin-bottom: 30px;
@@ -2765,6 +2770,15 @@ news
 }
 #news .check{
 	background-color: #f2f2f6;
+}
+
+#news .empty-data{
+	height: 100px;
+}
+
+#news .empty-data h6{
+    height: 100px;
+    padding-top: 70px;
 }
 
 
