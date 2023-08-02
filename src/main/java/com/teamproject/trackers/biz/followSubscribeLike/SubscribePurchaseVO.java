@@ -20,9 +20,9 @@ public class SubscribePurchaseVO {
 	private long subscribeId;
 	@Id
 	private long id;
-	/*
 	private String payment;
 	
+	/*
 	@Column(name="pay_date")
 	@Temporal(TemporalType.DATE)
 	private Date payDate;
@@ -40,7 +40,6 @@ public class SubscribePurchaseVO {
 	public void setId(long id) {
 		this.id = id;
 	}
-	/*
 	public String getPayment() {
 		return payment;
 	}
@@ -48,6 +47,7 @@ public class SubscribePurchaseVO {
 		this.payment = payment;
 	}
 	
+	/*
 	public Date getPayDate() {
 		return payDate;
 	}
