@@ -20,7 +20,11 @@ community-main
 	.co #co-post {
 		padding: 50px;	
 		margin: 200px auto 0;	
-	}	
+	}
+	footer {
+		text-align:center;
+    		padding : 60px 0 30px 0;
+  	}
 }
 @media (max-width:991px){
 	.co #co-main,
@@ -28,6 +32,10 @@ community-main
 		padding: 30px;	
 		margin: 200px auto 0;	
 	}
+	footer {
+		text-align:center;
+    		padding : 220px 0 30px 0;
+  	}
 }
 @media (max-width: 767px) {	
 	.co #co-main,
@@ -37,7 +45,7 @@ community-main
 	}
 	footer {
 		text-align:center;
-    		padding : 60px 0 30px 0;
+    		padding : 300px 0 30px 0;
   	}
 }
 @media (max-width:575px){
@@ -47,7 +55,7 @@ community-main
 		padding: 5px;		
 	}
 	footer {
-    		padding : 60px 0 30px 0;
+    		padding : 380px 0 30px 0;
   	}
 }
 	
