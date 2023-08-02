@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
   <!-- 
   =========================================
@@ -30,8 +29,9 @@
 			<h2>상품 정보 수정</h2>
       	</div>
       
-      	<form method="post" action="/store/products/${product.pid}" name="frm" id="frm" enctype="multipart/form-data" onsubmit="insert_p_chk(this); return false;">    
+      	<form name="frm" id="frm" action="/store/products/${product.pid}" method="post" enctype="multipart/form-data" onsubmit="insert_p_chk(this); return false;">    
 		  <input type="hidden" name="_method" value="put" />
+		  <input type="hidden" name="pid" value="${product.pid }" />
 	        <div class="row justify-content-center page-content">
 	          <div class="col-xxl-8 col-xl-10 col-lg-12 info">
 	            <div class="row name-container">
@@ -46,7 +46,7 @@
 		           	<p class="desc">∙ 파일 용량이 너무 크면 구매자가 다운로드를 하기 어려울 수 있으니 유의해주세요</p>
 		           	<p class="desc">∙ 등록하는 콘텐츠가 타인의 저작권 또는 초상권을 침해하지 않도록 유의해주세요</p>
 		           	<div class="d-flex align-content-center file-input-container">
-			           	<input type="file" name="file_f" id="file" onchange="getFileSize(this)">
+			           	<input type="file" name="file_f" id="file" onchange="getFileSize(this)" value="${product.file}">
 			           	<p class="file-size-container desc"></p>
 		           	</div>
 	            </div>
@@ -55,7 +55,7 @@
 			           	<label for="product-price"><h5 class="must">금액</h5></label>
 			           	<div class="form-control-container d-flex">
 			           		<span>&#8361;</span>
-			           		<input type="number" name="price" id="product-price" class="form-control form-number" placeholder="금액을 입력하세요" onchange="getNumber(this); getSalePrice();" onkeyup="getNumber(this);" value="${product.price}" required>
+			           		<input type="text" name="price" id="product-price" class="form-control form-number" placeholder="금액을 입력하세요" onchange="getNumber(this); getSalePrice();" onkeyup="getNumber(this);" value="${product.price}" required />
 			           	</div>
 		            </div>
 					<div class="row flex-column">
@@ -73,7 +73,7 @@
 			           		<div class="d-flex align-items-center product-sale-container">
 			           			<div class="form-control-container d-flex">
 					           		<span>&#8361;</span>
-					           		<input type="text" name="sale" id="product-sale" class="form-control form-number" placeholder="할인 금액을 입력하세요" onchange="getNumber(this); getSalePrice();" onkeyup="getNumber(this);">
+					           		<input type="text" name="sale" id="product-sale" class="form-control form-number" placeholder="할인 금액을 입력하세요" onchange="getNumber(this); getSalePrice();" onkeyup="getNumber(this);" value="${product.sale }">
 					           	</div>
 				           		<p>할인</p>
 			           		</div>
@@ -165,7 +165,7 @@
 					<div id="thumb-preview" class="thumb-preview">
 						<img id="img-modify-white" src="/resources/images/img-modify-white.svg" alt="썸네일 업로드 버튼">
 					</div>
-					<input type="file" accept="image/*" name="thumbnail_f" id="thumbnail" onchange="imgPreview(this);">
+					<input type="file" accept="image/*" name="thumbnail_f" id="thumbnail" onchange="imgPreview(this);" value="${product.thumbnail}">
 				</div>     	
 	
 				<div class="row flex-column">
@@ -175,7 +175,7 @@
 				</div>
 	
 				<div id="insert-btn-container" class="row justify-content-center insert-btn-container">
-					<button type="submit">수정하기</button>
+					<button onclick="handleEditClick()">수정하기</button>
 				</div>
 	            
 	          </div>
@@ -308,6 +308,57 @@
 	}
       
   </script>
+  
+  
+  
+  
+  <script>
+  /* 썸네일 미리보기를 초기화하는 함수 추가 */
+  function resetThumbnailPreview() {
+    document.getElementById('thumb-preview').style.backgroundImage = "none";
+    document.getElementById('thumb-preview').style.backgroundColor = "#e4e4eb";
+    document.getElementById('img-modify-white').style.display = "block";
+  }
+
+  /* 파일 등록 시 용량 표시 */
+  // ... 이미 존재하는 getFileSize(obj) 함수 ...
+
+  /* 금액 입력창 */
+  // ... 이미 존재하는 getNumber(obj)와 getSalePrice() 함수 ...
+
+  /* 썸네일 미리보기를 업데이트하는 함수 추가 */
+  function updateThumbnailPreview(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('thumb-preview').style.backgroundImage = "url("+e.target.result+")";
+        document.getElementById('thumb-preview').style.backgroundSize = "cover";
+        document.getElementById('thumb-preview').style.backgroundColor = "transparent";
+        document.getElementById('img-modify-white').style.display = "none";
+      };
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      resetThumbnailPreview();
+    }
+  }
+
+  /* 페이지 로드 시 updateThumbnailPreview 함수 호출하여 기존의 썸네일 미리보기를 표시합니다. */
+  window.onload = function() {
+    const thumbnailInput = document.getElementById('thumbnail');
+    updateThumbnailPreview(thumbnailInput);
+  }
+
+  /* "수정하기" 버튼 클릭 시 호출되는 함수 추가 */
+  function handleEditClick() {
+    // 폼 제출 전에 할인 금액 계산
+    getSalePrice();
+
+    // 폼 제출 전에 썸네일 미리보기 다시 업데이트
+    const thumbnailInput = document.getElementById('thumbnail');
+    updateThumbnailPreview(thumbnailInput);
+  }
+</script>
+  
   
   
   
