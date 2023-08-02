@@ -2767,6 +2767,15 @@ news
 	background-color: #f2f2f6;
 }
 
+#news .empty-data{
+	height: 100px;
+}
+
+#news .empty-data h6{
+    height: 100px;
+    padding-top: 70px;
+}
+
 
 
 
