@@ -157,7 +157,7 @@ public class WebhookController {
             id = id.substring(0, id.indexOf("-"));
             System.out.println("final id: "+id);
         	
-            // 이것도 배열로 돌려서 저장
+            // 이것도 배열로 돌려서 저장 
             for(int i = 0; i<productList.size(); i++) {
             	// VO 만들어서 보내주기
             	PurchaseVO purchase = new PurchaseVO();
