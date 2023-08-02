@@ -138,7 +138,7 @@ function goPurchase() {
          <!-- 첫번째 탭 (상세정보) -->
          <div class = "tab-content">
            <!-- 상세정보 페이지 이미지 크게 들어갈 공간만 있으면 되므로 img태그만 사용합니다.-->
-           <div id = "description" class ="tab-pane active">
+           <div id = "description" class ="container tab-pane active">
             
 	            <c:choose>
 					<c:when test="${fn:length(product.content) > 0}">
