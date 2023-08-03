@@ -493,7 +493,7 @@ function insert_p_chk(frm) {
 	
 	// 할인 미적용일 경우 sale 을 0으로 넘기기	
 	if($("input:radio[name='do-sale'][value='no']").prop('checked')) {
-		//console.log("할인 미적용");
+		console.log("할인 미적용");
 		$("input#product-sale").attr("value","0");
 	}
 	
