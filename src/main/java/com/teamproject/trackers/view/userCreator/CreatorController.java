@@ -78,7 +78,7 @@ public class CreatorController {
 	
 		
 	// 스토어 닫기
-	@RequestMapping(value="/store/my/creators", method=RequestMethod.DELETE)
+	@RequestMapping(value="/store/creators", method=RequestMethod.DELETE)
 	public String deleteCreator(CreatorVO vo) {
 		vo.setId((long)session.getAttribute("id"));
 		creatorService.deleteCreator(vo);
