@@ -323,7 +323,7 @@
 
 						<c:if test="${sessionScope.user.url == profile.url}">
 							<div class="writenew line">
-								<a href="/store/products/management">상품 관리</a>
+								<a href="/store/my/products/">상품 관리</a>
 							</div>	
 						</c:if>				
 

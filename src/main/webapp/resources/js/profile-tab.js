@@ -153,7 +153,7 @@ function getUserPostList(page) {
 
 					// 본문
 					let content = $(newBox).find('.post-content-inner');
-					content.text(post.content);
+					content.html(post.content);
 					
 					
 					// 좋아요 버튼 onclick
@@ -424,6 +424,21 @@ function getCreatorProductList(page, sort) {
 					let thumbnail = $(newBox).find('img');
 					thumbnail.attr('src', product.thumbnail)
 					
+					// 상품이미지 초기 height
+					let w = $(window).width();
+				    if(w < 576) {       
+				       thumbnail.css('height', w-60+"px");
+				    }else if(w < 768){
+				       thumbnail.css('height', "510px");
+				    }else if(w < 992){
+				       thumbnail.css('height', "690px");
+				    }else if(w < 1200){
+				       thumbnail.css('height', "289.98px");
+				    }else{
+				       thumbnail.css('height', "350px");
+				    }
+					
+					
 					let p_name = $(newBox).find('.p_name');
 					p_name.text(product.pname);
 					
@@ -511,6 +526,31 @@ function getCreatorProductList(page, sort) {
 $(()=> {
 	
 	getUserPostList(0);
+	
+	
+	
+	// 스토어탭 상품 이미지 height
+	$(window).on('resize', function() {
+      imgHeight();
+   	});
+   
+   	function imgHeight(){
+      let img = $('.new-box img');
+      console.log(img);
+      let w = $(window).width();
+      if(w < 576) {       
+         img.css('height', w-60+"px");
+      }else if(w < 768){
+         img.css('height', "510px");
+      }else if(w < 992){
+         img.css('height', "690px");
+      }else if(w < 1200){
+         img.css('height', "289.98px");
+      }else{
+         img.css('height', "350px");
+      }
+   	}
+	
 	
 });
 
