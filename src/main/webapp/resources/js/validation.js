@@ -86,6 +86,7 @@ function name_len(){
 	
 }
 
+
 /*****signin-modal*****/
 // 로그인
 function login(){
@@ -385,12 +386,13 @@ function store_chk(old_store, path){				// 기존 store 이름, 페이지 path
 	let p = $(parents[0]).children().last();
 	let store = $(inputs[0]).val();
 	let store_chk;
+	let len = store.length;
 	
-	if(store == ""){
-		p.text("스토어 이름이 입력되지 않았습니다.").css('color','#e97d7d');
+	if(len < 2 || len > 8){
+		p.text("스토어 이름은 최소 2글자 ~ 최대 8글자까지 작성 가능합니다.").css('color','#e97d7d');
 		store_flag = 0;
 		return;
-	}else if(store.length > 0 && store == old_store){
+	}else if(len > 1 && store == old_store){
 		p.text("기존 스토어 이름을 사용합니다.").css('color','#586579');
 		store_flag = 1;
 		return;
