@@ -115,7 +115,7 @@ function requestPay() {
     merchant_uid : merchant_uid,
     name : 'Trackers',	
     amount : amount,
-    buyer_email : '${user.email}',
+    buyer_email : '${user.email}',	// 인풋값 받아서 사용하는 것으로 변경
     buyer_name : '${user.name}',
     buyer_tel : '${user.tel}',
   }, function (rsp) { // callback

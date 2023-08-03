@@ -298,7 +298,7 @@
 		let do_sale_val = null;
 		
 		$(do_sale).on('change', function() {
-			do_sale_val = $("input[name='do-sale']:checked").val();
+			do_sale_val = $("input[name='do-sale']:checked").val();			
 			$('.sale-info').slideToggle('300');
 		});
 		
