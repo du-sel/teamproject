@@ -104,6 +104,11 @@ public class UserController {
 		vo.setId((long)session.getAttribute("id"));
 		userService.updateUser(vo);
 		
+		UserVO user = (UserVO) session.getAttribute("user");
+		user.setName(vo.getName());
+		user.setUrl(vo.getUrl());
+		user.setTel(vo.getTel());
+		
 		common.alert.setStr("회원정보가 수정되었습니다.");
 		common.alert.setPath("/users?path=info");
 		common.alert.setFlag(true);

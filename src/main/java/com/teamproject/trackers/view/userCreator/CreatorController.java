@@ -13,6 +13,7 @@ import com.teamproject.trackers.biz.common.AlertVO;
 import com.teamproject.trackers.biz.userCreator.CreatorService;
 import com.teamproject.trackers.biz.userCreator.CreatorVO;
 import com.teamproject.trackers.biz.userCreator.CreatorViewVO;
+import com.teamproject.trackers.biz.userCreator.UserVO;
 import com.teamproject.trackers.view.common.CommonController;
 import com.teamproject.trackers.view.userCreator.UserController;
 
@@ -43,6 +44,11 @@ public class CreatorController {
 		
 		creatorService.insertCreator(vo);
 		creatorService.updateUrlTel(view_vo);
+		
+		UserVO user = (UserVO) session.getAttribute("user");
+		user.setUrl(view_vo.getUrl());
+		user.setTel(view_vo.getTel());
+		
 
 		common.alert.setStr("스토어가 생성되었습니다.");
 		common.alert.setPath("/profiles/"+view_vo.getUrl());
@@ -67,6 +73,9 @@ public class CreatorController {
 		creatorService.updateCreator(vo);
 		creatorService.updateUrl(vo);		
 		
+		UserVO user = (UserVO) session.getAttribute("user");
+		user.setUrl(vo.getUrl());
+
 		session.setAttribute("store_name", vo.getStoreName());
 		
 		common.alert.setStr("스토어 정보가 수정되었습니다.");
