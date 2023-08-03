@@ -113,7 +113,7 @@
         
         
         
-      <!-- 페이지 번호 -->
+<!-- 페이지 번호 -->
 <div class="col-lg-12">
   <div class="pagination">
     <ul>

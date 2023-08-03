@@ -92,7 +92,6 @@ public class PostController {
 	// 태그 모달창
 	@RequestMapping(value="/tag-modal")
 	public String taggModal(Model model) {
-		model.addAttribute("test", "TEST");
 		return "modal/tag-modal";
 	}
 	
