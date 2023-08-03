@@ -207,10 +207,16 @@ function goPurchase() {
          <!-- 세번째 탭 (상품문의) -->
           <div id = "inquiry" class ="tab-pane">
            	<div class="inquiry-btn-container">
-           		<button type="button" class="inquiry-btn" onclick="javascript:location.href='/store/products/${product.pid}/inquiries'">문의하기</button>
-           	</div>
+           		<c:choose>
+					<c:when test="${!empty sessionScope.user}">
+						<button type="button" class="inquiry-btn" onclick="javascript:location.href='/store/products/${product.pid}/inquiries'">문의하기</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="inquiry-btn" onclick="javascript:alert('로그인이 필요합니다.')">문의하기</button>
+					</c:otherwise>			
+				</c:choose>
+           	</div> 
              
-			
             <table id="myTable" class="my-custom-table">
 			  <tr>
 			    <th>답변 여부</th>
