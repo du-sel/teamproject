@@ -107,6 +107,10 @@ function requestPay() {
 	let amount = $('#total-price').text().replaceAll(',','');
 	console.log(amount);
 	
+	let b_name = document.getElementById('buyer-name').value;
+	let b_email = document.getElementById('buyer-email').value;
+	let b_tel = document.getElementById('buyer-tel').value;
+	
 	var IMP = window.IMP;
     IMP.init('imp41250534'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
     IMP.request_pay({
@@ -115,9 +119,9 @@ function requestPay() {
     merchant_uid : merchant_uid,
     name : 'Trackers',	
     amount : amount,
-    buyer_email : '${user.email}',	// 인풋값 받아서 사용하는 것으로 변경
-    buyer_name : '${user.name}',
-    buyer_tel : '${user.tel}',
+    buyer_email : b_email,	// 인풋값 받아서 사용하는 것으로 변경
+    buyer_name : b_name,
+    buyer_tel : b_tel,
   }, function (rsp) { // callback
       if (rsp.success) {
       	alert("상품을 구매하셨습니다!");
