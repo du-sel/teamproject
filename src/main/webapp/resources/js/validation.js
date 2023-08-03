@@ -431,6 +431,7 @@ function modify_chk(path, idx){    		// 함수 사용 페이지, input 위치
 			let p = $(parents[idx-1]).children().last();
 	
 			p.text("중복 확인이 되지않았습니다.").css('color','#e97d7d');
+			
 			return false;
 		}
 	}else{
@@ -443,7 +444,7 @@ function modify_chk(path, idx){    		// 함수 사용 페이지, input 위치
 
 		p.text("중복 확인이 되지않았습니다.").css('color','#e97d7d');
 		return false;
-	}else if(url_flag == 0 || store_flag == 0 || !name_flag){
+	}else if(url_flag == 0 || store_flag == 0){
 		return false;
 	}
 	
