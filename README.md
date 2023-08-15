@@ -41,7 +41,7 @@
 - HTML
 - CSS
 - JavaScript
-<br>
+
 - I'mport API
 - Google Drive API
 
